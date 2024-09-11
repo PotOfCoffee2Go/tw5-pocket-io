@@ -1,0 +1,9 @@
+created: 20240830063056005
+modified: 20240902092123127
+tags: app
+title: Basic TW app
+type: text/vnd.tiddlywiki
+
+```js
+rt.setPrompt(hue('Basic TW app > ',214))
+```

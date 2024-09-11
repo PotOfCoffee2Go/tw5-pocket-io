@@ -1,0 +1,10 @@
+caption: Get Server Tiddler
+created: 20240826223617046
+fn: syncGet
+modified: 20240829193409981
+tags: Docs
+title: syncGet Docs
+type: text/vnd.tiddlywiki
+writeup: syncGet Writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

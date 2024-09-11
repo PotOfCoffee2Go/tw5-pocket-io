@@ -1,0 +1,14 @@
+caption: Save apps as programs
+created: 20240901174108314
+modified: 20240902094542374
+tags: flotsam
+title: Save apps job
+type: text/vnd.tiddlywiki
+
+{{App Prerequisites}}
+
+```js
+rt.setPrompt(hue('Save applications > ',214))
+await twBoot()
+commander.execute($tw.wiki,['--saveapps'])
+```

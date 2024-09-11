@@ -1,0 +1,10 @@
+created: 20240829195401998
+modified: 20240829195448218
+tags: writeup
+title: twServerInit Writeup
+type: text/vnd.tiddlywiki
+
+This function will check the [[twOutput|Config Docs]] directory and if required will initialize a new server edition `tiddlywiki.info` file needed to start up a server.
+If a server directory is already present the function performs no action.
+
+This function is async so should be called `await twServerInit()` to wait for the initialization process to be completed.

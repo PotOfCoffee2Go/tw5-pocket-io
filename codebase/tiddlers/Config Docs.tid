@@ -1,0 +1,10 @@
+caption: Configuration
+created: 20240826125421005
+fn: Config
+modified: 20240829192909527
+tags: Docs prerequisite
+title: Config Docs
+type: text/vnd.tiddlywiki
+writeup: Config Writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

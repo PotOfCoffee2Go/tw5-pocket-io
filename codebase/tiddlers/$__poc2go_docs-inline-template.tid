@@ -1,0 +1,22 @@
+created: 20240828070830545
+modified: 20240829230802851
+tags: 
+title: $:/poc2go/docs-inline-template
+type: text/vnd.tiddlywiki
+
+<br>
+/*
+<details style="display:inline-block">
+<summary>{{!!caption}}</summary>
+<div>
+
+Code: <$link to={{!!fn}}> {{!!fn}} </$link> | Writeup: <$link to={{!!writeup}}> {{!!writeup}} </$link> |
+
+!! {{!!caption}}<br>
+
+<$transclude $tiddler={{!!writeup}}/>
+
+</div>
+</details>
+*/
+<$transclude $tiddler={{!!fn}}/>

@@ -1,0 +1,10 @@
+caption: Local TiddlyWiki Install
+created: 20240828113014712
+fn: twInstall
+modified: 20240829195053859
+tags: Docs
+title: twInstall Docs
+type: text/vnd.tiddlywiki
+writeup: twInstall Writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

@@ -1,0 +1,25 @@
+{
+  "name": "tw5-pocket-io",
+  "version": "0.4.0",
+  "description": "Pocket.io interface for single file wikis to a code and database wiki. ",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "pocket.io": "^0.1.4",
+    "tiddlywiki": "^5.3.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "xxx"
+  },
+  "keywords": [
+    "tiddlywiki",
+    "server"
+  ],
+  "author": "PotOfCoffee2Go",
+  "license": "MIT"
+}

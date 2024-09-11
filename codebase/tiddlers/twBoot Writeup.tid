@@ -1,0 +1,7 @@
+created: 20240829194548890
+modified: 20240829194624794
+tags: writeup
+title: twBoot Writeup
+type: text/vnd.tiddlywiki
+
+The objective is to use TiddlyWiki as a framework to run Node.js applications. To have access to the TiddlyWiki functions need to start an instance of TiddlyWiki. 

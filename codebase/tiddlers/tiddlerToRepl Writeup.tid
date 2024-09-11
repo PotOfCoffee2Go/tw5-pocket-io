@@ -1,0 +1,7 @@
+created: 20240830081210064
+modified: 20240830095202884
+tags: writeup wip
+title: tiddlerToRepl Writeup
+type: text/vnd.tiddlywiki
+
+Moves a tiddler to the REPL. Is Generally used for tiddlers tagged with 'function' but will attempt to load the tiddler regardless of the type. If the tiddler does not exist then no action is performed.

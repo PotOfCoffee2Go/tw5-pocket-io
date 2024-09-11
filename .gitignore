@@ -1,0 +1,11 @@
+# Ignore npm modules directory
+/node_modules
+
+# Ignore hidden files in project directory
+/.*
+# Except gitignore itself
+!/.gitignore
+
+# TW MultiWikiServer database
+/public/mws/store
+/public/mws/archive

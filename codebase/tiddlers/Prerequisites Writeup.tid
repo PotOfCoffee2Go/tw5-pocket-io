@@ -1,0 +1,7 @@
+created: 20240829203454323
+modified: 20240902170735607
+tags: writeup
+title: Prerequisites Writeup
+type: text/vnd.tiddlywiki
+
+Transclude this tiddler at the beginning of applications to provide the basic code that is commonly used by programs that will be using the [[TiddlyWiki Codebase]].

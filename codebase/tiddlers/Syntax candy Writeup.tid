@@ -1,0 +1,15 @@
+created: 20240829193945706
+modified: 20240829194024033
+tags: writeup
+title: Syntax candy Writeup
+type: text/vnd.tiddlywiki
+
+These are shorthand for commonly used functions. They should be placed before other functions are defined. It is a good idea to define variables prior to use in a REPL (but there are ways of hoisting them - topic for another day).
+
+ * log - is equilent to `console.log`
+ * dbg - is equilent to `console.dir`.
+   ** second parameter allows changing the levels to display
+ * hue - colorizes text
+   ** see [[Terminal colors]]
+ * wrt - displays objects using the REPL inspector
+ * ask - ask a question and calls given function with the answer

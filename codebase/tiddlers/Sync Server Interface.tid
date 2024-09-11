@@ -1,0 +1,35 @@
+created: 20240821214007368
+modified: 20240902093802026
+tags: flotsam
+title: Sync Server Interface
+type: text/vnd.tiddlywiki
+
+/* [[Globals]] */
+{{Globals}}
+
+/* [[Syntax candyr]] */
+{{Syntax candy}}
+
+/* [[twBootr]] */
+{{twBoot}}
+
+/* [[twCommanderr]] */
+{{twCommander}}
+
+/* [[twSyncServer]] */
+{{twSyncServer}}
+
+/* [[twDatabase]] */
+{{twDatabase}}
+
+```js
+// Startup
+rt.setPrompt('TW-DB > ');
+await twBoot()
+await twSyncServer()
+
+loadDB()
+$db.allTitles()
+
+
+```

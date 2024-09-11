@@ -1,0 +1,10 @@
+caption: List Sync Directory
+created: 20240829220715243
+fn: listSyncFiles
+modified: 20240829221354710
+tags: Docs
+title: listSyncFiles Docs
+type: text/vnd.tiddlywiki
+writeup: listSyncFiles Writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>
