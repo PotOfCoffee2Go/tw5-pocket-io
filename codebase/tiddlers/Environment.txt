@@ -1,6 +1,0 @@
-mkdir flotsam
-cd flotsam
-npm --prefix ./ install tiddlywiki@v5.3.5
-node_modules/tiddlywiki/tiddlywiki.js --version
-node_modules/tiddlywiki/tiddlywiki.js ./db-wiki --init server
-

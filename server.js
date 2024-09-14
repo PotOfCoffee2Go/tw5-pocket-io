@@ -36,8 +36,10 @@ app.use(express.static('public'));
 var rt;
 function replContext() {
 	rt.context.rt = rt;
-	rt.context.$tw = $tw;
 	rt.context.$sockets = $sockets;
+	rt.context.$tw = $tw;
+	rt.context.$cw = $codebase;
+	rt.context.$dw = $database;
 	rt.context.$code = $codebase.wiki;
 	rt.context.$data = $database.wiki;
 	rt.context.getCode = getCode;

@@ -1,11 +1,11 @@
-const commander = {
+var commander = {
   checkForErrors: (err) => {
     if (err) {
-      $tw.utils.error("Error: " + err);
+      $dw.utils.error("Error: " + err);
     }
   },
-  execute: (wiki, cmds) => {
-    new $tw.Commander(cmds, commander.checkForErrors, wiki,
+  execute: (cmds) => {
+    new $dw.Commander(cmds, commander.checkForErrors, $data,
       {output: process.stdout, error: process.stderr})
     .execute();
   }
