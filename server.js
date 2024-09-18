@@ -39,9 +39,9 @@ function replContext() {
 	rt.context.$sockets = $sockets;
 	rt.context.$tw = $tw;
 	rt.context.$cw = $codebase;
-	rt.context.$dw = $database;
+	rt.context.$dw = $dw;
 	rt.context.$code = $codebase.wiki;
-	rt.context.$data = $database.wiki;
+	rt.context.$data = $dw.wiki;
 	rt.context.getCode = getCode;
 	rt.context.getData = getData;
 	rt.context.setData = setData;
@@ -92,18 +92,18 @@ function codebaseBoot() {
 }
 
 // Shared tiddler wiki
-var $database, databaseServer;
+var $dw, databaseServer;
 function databaseBoot() {
 	return new Promise((resolve) => {
-		if ($database) {
-			resolve(`$database v${$database.version} already running`);
+		if ($dw) {
+			resolve(`$dw v${$dw.version} already running`);
 			return;
 		}
-		$database = require('tiddlywiki').TiddlyWiki();
-		$database.boot.argv = ['database']; // TW 'server' edition wiki
-		$database.boot.boot(() => {
+		$dw = require('tiddlywiki').TiddlyWiki();
+		$dw.boot.argv = ['database']; // TW 'server' edition wiki
+		$dw.boot.boot(() => {
 			log();
-			databaseServer = new twSyncServer($database, host, dataPort, resolve)
+			databaseServer = new twSyncServer($dw, host, dataPort, resolve)
 			databaseServer.twListen();
 		});
 	})
@@ -114,7 +114,7 @@ var $tw;
 function replTwBoot() {
 	return new Promise((resolve) => {
 		if ($tw) {
-			resolve(`$twRepl v${$database.version} already running`);
+			resolve(`$twRepl v${$dw.version} already running`);
 			return;
 		}
 		$tw = require('tiddlywiki').TiddlyWiki();
@@ -203,7 +203,7 @@ function getCode(filter, show = false, viewOnly = false) {
 
 // Copy tiddlers from database wiki to client single file wiki
 function getData(socket, filter, tostory = false) {
-	let tiddlers = $database.wiki.getTiddlersAsJson(filter);
+	let tiddlers = $dw.wiki.getTiddlersAsJson(filter);
 	if (tostory) {
 		socket.emit('tostory',tiddlers);
 	}
@@ -217,10 +217,10 @@ function getData(socket, filter, tostory = false) {
 function setData(tiddlers = []) {
 	if (!Array.isArray(tiddlers)) { tiddlers = [tiddlers] }
 	tiddlers.forEach(tiddler => {
-		$database.wiki.addTiddler(new $database.Tiddler(
-			$database.wiki.getCreationFields(),
+		$dw.wiki.addTiddler(new $dw.Tiddler(
+			$dw.wiki.getCreationFields(),
 			tiddler,
-			$database.wiki.getModificationFields(),
+			$dw.wiki.getModificationFields(),
 		))
 	})
 	return `${tiddlers.length} tiddlers updated on $data wiki`;
