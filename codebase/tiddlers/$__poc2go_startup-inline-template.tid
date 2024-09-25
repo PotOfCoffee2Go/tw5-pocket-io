@@ -1,0 +1,21 @@
+created: 20240924211114833
+modified: 20240925020607173
+tags: 
+title: $:/poc2go/startup-inline-template
+type: text/vnd.tiddlywiki
+
+<$tiddler tiddler=<<currentTab>>>
+
+<h2 style="text-align: center;">{{!!caption}}</h2>
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-replcmd getCode('&#91;&#91;{{!!fn}}&#93;&#93;')@@|
+
+|tc-center tc-table-no-border|k
+|Code: <$link to={{!!fn}}> {{!!fn}} </$link> | Writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
+
+<$transclude $tiddler={{!!writeup}} />
+
+<<tabs "[tag[$:/pocket-io/tabs/startup]addsuffix[ docs]]" "" "$:/state/pocket-io/tabs/startup">>
+
+</$tiddler>

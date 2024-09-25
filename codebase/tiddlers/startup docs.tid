@@ -1,0 +1,10 @@
+caption: startup
+created: 20240924201254573
+fn: startup
+modified: 20240924213019730
+tags: Docs
+title: startup docs
+type: text/vnd.tiddlywiki
+writeup: startup writeup
+
+<$transclude $tiddler="$:/poc2go/startup-inline-template"/>

@@ -1,0 +1,22 @@
+caption: helpers
+created: 20240914113545024
+modified: 20240925015350148
+startup: yes
+tags: writeup
+title: helpers writeup
+type: text/vnd.tiddlywiki
+
+It is handy to have shortcuts that perform common actions when using the REPL.
+
+|tc-center tc-table-no-border|k
+|log|same as 'console.log(...)'|
+|dir|same as 'console.dir(...)' with second param added to specify depth|
+|cpy|copies a Javascript object |
+|hue|wraps text with 0-255 terminal color code|
+|wrt|displays text formatted as REPL output|
+|ask|ask a question and display answer|
+|add|add a tiddler to the $data database|
+|lst|get list of tiddlers in $data database|
+|fld|return Javascript object of a tiddlers fields|
+|sid|last 12 characters of the socket id|
+|sub|submit text as if typed at the REPL prompt|

@@ -1,22 +1,21 @@
 created: 20240828070830545
-modified: 20240829230802851
+modified: 20240925020527614
 tags: 
 title: $:/poc2go/docs-inline-template
 type: text/vnd.tiddlywiki
 
-<br>
-/*
-<details style="display:inline-block">
-<summary>{{!!caption}}</summary>
-<div>
+<$tiddler tiddler=<<currentTab>>>
 
-Code: <$link to={{!!fn}}> {{!!fn}} </$link> | Writeup: <$link to={{!!writeup}}> {{!!writeup}} </$link> |
+<h2 style="text-align: center;">{{!!caption}}</h2>
 
-!! {{!!caption}}<br>
+|tc-center tc-table-no-border|k
+|@@.poc2go-replcmd getCode('&#91;&#91;{{!!fn}}&#93;&#93;')@@|
 
-<$transclude $tiddler={{!!writeup}}/>
+|tc-center tc-table-no-border|k
+|Code: <$link to={{!!fn}}> {{!!fn}} </$link> | Writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
 
-</div>
-</details>
-*/
+<$transclude $tiddler={{!!writeup}} />
+
 <$transclude $tiddler={{!!fn}}/>
+
+</$tiddler>

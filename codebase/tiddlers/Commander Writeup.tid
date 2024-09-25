@@ -1,9 +1,0 @@
-created: 20240829192329086
-modified: 20240915003737307
-tags: writeup
-title: Commander Writeup
-type: text/vnd.tiddlywiki
-
-Executes TiddlyWiki [[commands|https://tiddlywiki.com/static/Commands.html]] on $data common database. The Commander takes an array of commands to be executed. Performs the same actions that `tiddlywiki ...` from the terminal commandline can do.
-
-See [[commands|https://tiddlywiki.com/static/Commands.html]]

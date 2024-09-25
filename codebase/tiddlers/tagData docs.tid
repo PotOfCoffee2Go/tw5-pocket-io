@@ -1,0 +1,10 @@
+caption: tagData
+created: 20240924042339963
+fn: tagData
+modified: 20240924042432303
+tags: Docs
+title: tagData docs
+type: text/vnd.tiddlywiki
+writeup: tagData writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

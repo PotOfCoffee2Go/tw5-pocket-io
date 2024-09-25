@@ -1,0 +1,33 @@
+/* hide the tiddler controls - info, edit, close */
+[data-tags*="$:/tags/poc2go/hidecontrols"].tc-tiddler-view-frame .tc-tiddler-controls {
+    display: none;
+}
+/* hide tags display */
+[data-tags*="$:/tags/poc2go/hidecontrols"].tc-tiddler-view-frame .tc-tags-wrapper {
+    display: none;
+}
+
+pre.hljs {
+  border: solid 1px aqua;
+}
+blockquote {
+  border: solid 1px silver;
+  border-radius: 15px;
+  padding-right: .3em;
+}
+summary::marker {
+  border-top: solid 1px aqua;
+}
+.details-border {
+  border-top: solid 1px aqua;
+}
+.poc2go-exclaim {
+  color:red;
+  background-color:lightcyan;
+  padding: .3em 1em;
+  border-radius: 6px;
+}
+.poc2go-replcmd {
+  font-family:Monospace;
+  font-size:1.1em;
+}

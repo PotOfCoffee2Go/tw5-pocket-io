@@ -1,0 +1,10 @@
+caption: template
+created: 20240914122110394
+fn: template
+modified: 20240924042251467
+tags: Docs
+title: template docs
+type: text/vnd.tiddlywiki
+writeup: template writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

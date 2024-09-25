@@ -1,0 +1,10 @@
+caption: setData
+created: 20240924114726197
+fn: setData
+modified: 20240924120922432
+tags: Docs
+title: setData docs
+type: text/vnd.tiddlywiki
+writeup: setData writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

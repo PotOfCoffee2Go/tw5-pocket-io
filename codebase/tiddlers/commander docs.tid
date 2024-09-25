@@ -1,0 +1,10 @@
+caption: commander
+created: 20240826131324228
+fn: commander
+modified: 20240924084531852
+tags: Docs
+title: commander docs
+type: text/vnd.tiddlywiki
+writeup: commander writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

@@ -1,7 +1,11 @@
 created: 20240914113910483
-modified: 20240914114222633
-tags: 
+modified: 20240924175959572
+tags: $:/tags/SideBar
 title: Contents
 type: text/vnd.tiddlywiki
 
+!!! Applications
+<<list-links filter:"[tag[Apps]]">>
+
+!!! Functions
 <<list-links filter:"[tag[Docs]]">>

@@ -27,6 +27,8 @@ const sid = (socket) => socket.id.split('-').pop();
 // Network interface
 var socket = null;
 var msg = '';
+// Attempt reconnect to server in milliseconds
+const reconnectMs = 10000;
 
 // ------------------------
 // TiddlyWiki interface
@@ -176,7 +178,7 @@ const initialize = () => {
 // Attempt re-connect
 function reConnect() {
 	if (!socket) {
-		setTimeout(() => { initialize(); }, 10000);
+		setTimeout(() => { initialize(); }, reconnectMs);
 	}
 }
 

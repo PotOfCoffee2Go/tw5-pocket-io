@@ -1,0 +1,14 @@
+created: 20231107195051015
+modified: 20240925004001129
+tags: $:/tags/Macro
+title: $:/poc2go/macros/codesample
+type: text/vnd.tiddlywiki
+
+\define .codesample(n,lng,eg)
+<div class="doc-example">
+	<$macrocall $name="copy-to-clipboard" style="" src="""$eg$"""/>
+	<$codeblock language="$lng$" code="""$eg$"""/>
+</div>
+\end
+
+<!-- codesample hacked from $:/editions/tw5.com/wikitext-macros -->
