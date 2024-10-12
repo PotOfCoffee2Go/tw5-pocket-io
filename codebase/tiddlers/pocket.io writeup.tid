@@ -1,7 +1,17 @@
 caption: pocket.io
 created: 20240924204533162
-modified: 20240924204548979
+modified: 20240926130511988
 title: pocket.io writeup
 type: text/vnd.tiddlywiki
 
-pocket.io
+Server processes requests from client wikis.
+
+Request :
+
+ * ackConnect
+ ** indicates client-side connection is complete
+ * eval
+ ** request from client to be evaluated by REPL
+ * disconnect
+ ** client has disconnected from server
+

@@ -1,0 +1,6 @@
+created: 20240928023217933
+modified: 20240928112022777
+title: fetch writeup
+type: text/vnd.tiddlywiki
+
+Requesting a URL returns the text or JSON of the response.

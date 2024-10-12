@@ -1,6 +1,8 @@
 // Load tiddlers to $data database
 function setData(tiddlers = []) {
-	if (!Array.isArray(tiddlers)) { tiddlers = [tiddlers] }
+	if (!Array.isArray(tiddlers)) {
+		tiddlers = [tiddlers]
+	}
 	tiddlers.forEach(tiddler => {
 		$dw.wiki.addTiddler(new $dw.Tiddler(
 			$dw.wiki.getCreationFields(),

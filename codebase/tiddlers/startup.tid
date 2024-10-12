@@ -1,10 +1,10 @@
 created: 20240924120938213
-modified: 20240924212957087
+modified: 20241010095647810
 tags: Apps
 title: startup
 type: text/vnd.tiddlywiki
 
 See [[startup docs]] for documentation.
 
-<<tabs "[tag[$:/pocket-io/tabs/startup]]" "" "$:/state/pocket-io/tabs/startup">>
+<<tabs "[tag[$:/pocket-io/tabs/startup]]" "" "$:/state/pocket-io/tabs/startup" "tc-horizontal">>
 

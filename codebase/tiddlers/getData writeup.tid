@@ -1,7 +1,13 @@
 caption: getData
 created: 20240924204337331
-modified: 20240924204359288
+modified: 20240926123525518
 title: getData writeup
 type: text/vnd.tiddlywiki
 
-getData
+Select and transfer tiddlers from the data database wiki to client wiki.
+
+Given :
+
+ * socket of client wiki making the request
+ * filter that selects tiddlers from data database
+ * flag indicating to open selected tiddlers in the story

@@ -1,0 +1,10 @@
+caption: fetch
+created: 20240928023121528
+fn: fetch
+modified: 20240928023203503
+tags: Docs
+title: fetch docs
+type: text/vnd.tiddlywiki
+writeup: fetch writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

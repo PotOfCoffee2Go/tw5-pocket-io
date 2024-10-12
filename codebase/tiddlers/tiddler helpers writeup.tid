@@ -1,7 +1,11 @@
 caption: tiddler helpers
 created: 20240924204143347
-modified: 20240924204219431
+modified: 20240926120445942
 title: tiddler helpers writeup
 type: text/vnd.tiddlywiki
 
-tiddler helpers
+Tiddler Helpers for transport on the network
+
+Given a string - makes into a tiddler that is stringified
+
+Given a JSON string of tiddler(s) - makes JS object

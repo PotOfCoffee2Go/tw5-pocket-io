@@ -1,10 +1,8 @@
 created: 20240914122435307
-modified: 20240925020757481
+modified: 20240926115407632
 title: startup writeup
 type: text/vnd.tiddlywiki
 
-!!! Code
-
 These functions are loaded in the order of the tabs upon startup. They are required for the TW5-pocket-io application to run properly.
 
-Can add to this list by tagging a function code tiddler with `$:/pocket-io/tabs/startup`.
+Can add to this list by tagging a code tiddler with `$:/pocket-io/tabs/startup`.
