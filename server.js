@@ -3,7 +3,6 @@ const host='0.0.0.0', codePort = 8082, dataPort = 8083, pocketPort = 3000;
 
 // Node.js REPL
 const repl = require('node:repl');
-const vm = require('node:vm');
 
 // Manage sync servers and removal of code comments
 const { twSyncBoot, twSyncServer } = require('./lib/twSyncServer');
