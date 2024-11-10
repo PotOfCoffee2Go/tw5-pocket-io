@@ -6,7 +6,7 @@ const repl = require('node:repl');
 
 // Manage sync servers and removal of code comments
 const { twSyncBoot, twSyncServer } = require('./lib/twSyncServer');
-const { removeBlockComments } = require('./lib/removeBlockComments');
+const UglifyJS = require("uglify-js");
 
 // ----------------------
 // Pocket.io server setup
@@ -80,7 +80,7 @@ function codebaseBoot() {
 			return;
 		}
 		$cw = require('tiddlywiki').TiddlyWiki();
-		$cw.boot.argv = ['codebase']; // TW 'server' edition wiki
+		$cw.boot.argv = ['wikis/codebase']; // TW 'server' edition wiki
 		$cw.boot.boot(() => {
 			codebaseServer = new twSyncServer($cw, host, codePort, resolve)
 			codebaseServer.twListen();
@@ -97,7 +97,7 @@ function databaseBoot() {
 			return;
 		}
 		$dw = require('tiddlywiki').TiddlyWiki();
-		$dw.boot.argv = ['database']; // TW 'server' edition wiki
+		$dw.boot.argv = ['wikis/database']; // TW 'server' edition wiki
 		$dw.boot.boot(() => {
 			log();
 			databaseServer = new twSyncServer($dw, host, dataPort, resolve)
@@ -133,29 +133,27 @@ function getCode(filter, show = false, viewOnly = false) {
 	var type = 'text/plain';
 	var parser = $cw.wiki.parseTiddler('$:/poc2go/rendered-plain-text');
 
-	var lnCount = 0;
+	var tidCount = 0;
+	log(hue(`Loading ${filter} code tiddlers to server ...`,149));
 	rt.write('.editor\n');
 	$cw.wiki.filterTiddlers(filter).forEach(title => {
-		var widgetNode = $cw.wiki.makeWidget(
-				parser,
-				{variables: $cw.utils.extend({},
-					{currentTiddler: title,storyTiddler: title})}
+		var widgetNode = $cw.wiki.makeWidget(parser,
+			{variables: $cw.utils.extend({},
+				{currentTiddler: title, storyTiddler: title})
+			}
 		);
 		var container = $cw.fakeDocument.createElement("div");
 		widgetNode.render(container,null);
-		var text = container.textContent;
-		text = removeBlockComments(text);
-		text.split('\n').forEach(line => {
-			if (line !== '') {
-				rt.write(`${line.trim()}\n`);
-				lnCount++;
-			}
-		})
+		var tiddlerText = container.textContent;
+		var minified = UglifyJS.minify(tiddlerText);
+		log(hue(`\n${title}`, 149));
+        rt.write(minified.code + '\n');
+        tidCount++;
 	})
 	rt.write(null,{ctrl:true, name:'d'})
 	rt.history = prevHistory;
 	rt.setPrompt(prevPrompt);
-  return `${lnCount} code lines evaluated`;
+	return `${tidCount} code tiddlers loaded`;
 }
 
 

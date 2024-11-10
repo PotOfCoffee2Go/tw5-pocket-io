@@ -10,7 +10,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "pocket.io": "^0.1.4",
-    "tiddlywiki": "^5.3.5"
+    "tiddlywiki": "^5.3.5",
+    "uglify-js": "github:mishoo/UglifyJS"
   },
   "repository": {
     "type": "git",
