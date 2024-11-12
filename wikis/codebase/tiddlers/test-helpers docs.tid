@@ -1,0 +1,10 @@
+caption: helpers
+created: 20241111120350163
+fn: test-helpers
+modified: 20241111120350163
+tags: Docs test
+title: test-helpers docs
+type: text/vnd.tiddlywiki
+writeup: test-helpers writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

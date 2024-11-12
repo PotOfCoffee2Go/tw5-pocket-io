@@ -1,6 +1,6 @@
 created: 20241010181747278
-modified: 20241010181747278
+modified: 20241110170605883
 title: $:/config/DefaultSidebarTab
 type: text/vnd.tiddlywiki
 
-$:/core/ui/SideBar/Recent
+$:/core/ui/SideBar/Open

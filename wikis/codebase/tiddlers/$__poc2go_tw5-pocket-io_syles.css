@@ -7,6 +7,11 @@
     display: none;
 }
 
+[data-tags*="Appdocs"].tc-tiddler-view-frame {
+    background: #181818;
+    border-radius: 20px;
+}
+
 pre.hljs {
   border: solid 1px aqua;
 }

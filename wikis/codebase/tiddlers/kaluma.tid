@@ -1,0 +1,23 @@
+autoLoad: no
+created: 20241111211009443
+modified: 20241112020029163
+tags: Apps kaluma
+title: kaluma
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-replcmd getApp('&#91;&#91;{{!!title}}&#93;&#93;')@@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+See [[kaluma docs]] for documentation and setup instructions required to interface to a Pico plugged into a USB port on the server.
+
+Code tiddlers tagged with `$:/pocket-io/tabs/kaluma` are loaded into the project.
+
+<<tabs "[tag[$:/pocket-io/tabs/kaluma]]" "" "$:/state/pocket-io/tabs/kaluma" "tc-horizontal">>
+
+Code for the pico is in the [[pico project|pico]] (tagged with `$:/pocket-io/tabs/pico`) also shown below.
+
+<<tabs "[tag[$:/pocket-io/tabs/pico]]" "" "$:/state/pocket-io/tabs/pico" "tc-horizontal">>
+

@@ -1,0 +1,10 @@
+caption: kaluma
+created: 20241111211009444
+fn: kaluma
+modified: 20241111211009444
+tags: Appdocs kaluma
+title: kaluma docs
+type: text/vnd.tiddlywiki
+writeup: kaluma writeup
+
+<$transclude $tiddler="$:/poc2go/kaluma-inline-template"/>

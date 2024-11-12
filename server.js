@@ -4,12 +4,12 @@ const host='0.0.0.0', codePort = 8082, dataPort = 8083, pocketPort = 3000;
 // Node.js REPL
 const repl = require('node:repl');
 
-// Manage sync servers and removal of code comments
+// Manage sync servers and minify of code tiddlers
 const { twSyncBoot, twSyncServer } = require('./lib/twSyncServer');
 const UglifyJS = require("uglify-js");
 
 // ----------------------
-// Pocket.io server setup
+// Pocket.io server
 const express = require('express');
 const app = express();
 const http = require('node:http').Server(app);
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 app.use(express.static('public'));
 
 // ----------------------
-// REPL context setup
+// REPL context
 var rt;
 function replContext() {
 	rt.context.rt = rt;
@@ -33,7 +33,7 @@ function replContext() {
 	rt.context.$cw = $cw;
 	rt.context.$data = $dw.wiki;
 	rt.context.$code = $cw.wiki;
-	rt.context.getCode = getCode;
+	rt.context.UglifyJS = UglifyJS;
 
 	rt.setPrompt(hue('tw5-pocket-io > ',214));
 }
@@ -61,7 +61,7 @@ codebaseBoot().then (() => {
 				log(`\n'pocket.io' server started`)
 				log(hue(`Serving on http://${host}:${pocketPort}`,185));
 				log(hue('(press ctrl-C to exit)\n',9));
-				sub(`getCode('[tag[$:/pocket-io/tabs/startup]]')\n`);
+				getApps();
 				rt.displayPrompt();
 			})
 		})
@@ -122,18 +122,35 @@ function replTwBoot() {
 		});
 	})
 }
-// ----------------------
-// Built-in fuctions accessable by REPL
 
+function getApps() {
+	// 'startup' app loads first
+	var appFilter = '[tag[$:/pocket-io/tabs/startup]]';
+
+	// The rest of the apps with 'autoLoad field === 'yes'
+	var	filter = '[tag[Apps]]';
+	$cw.wiki.filterTiddlers(filter).forEach(title => {
+		if (title !== 'startup') {
+			var appTid = $cw.wiki.getTiddler(title);
+			if (appTid && appTid.fields && appTid.fields.autoLoad === 'yes') {
+				appFilter += `[tag[$:/pocket-io/tabs/${title}]]`;
+			}
+		}
+	})
+	getCode(appFilter);
+}
+
+// ----------------------
 // Get code from codebase wiki into the REPL
-function getCode(filter, show = false, viewOnly = false) {
+// This function is used to autoload on startup
+// A copy is in $Code database [[startup-getCode]]
+function getCode(filter) {
 	const prevHistory = cpy(rt.history);
 	const prevPrompt = rt.getPrompt(); rt.setPrompt('');
 
-	var type = 'text/plain';
 	var parser = $cw.wiki.parseTiddler('$:/poc2go/rendered-plain-text');
 
-	var tidCount = 0;
+	var tidCount = 0, errList = [];
 	log(hue(`Loading ${filter} code tiddlers to server ...`,149));
 	rt.write('.editor\n');
 	$cw.wiki.filterTiddlers(filter).forEach(title => {
@@ -146,15 +163,22 @@ function getCode(filter, show = false, viewOnly = false) {
 		widgetNode.render(container,null);
 		var tiddlerText = container.textContent;
 		var minified = UglifyJS.minify(tiddlerText);
-		log(hue(`\n${title}`, 149));
-        rt.write(minified.code + '\n');
-        tidCount++;
+		if (minified.error) {
+			errList.push(hue(`Error processing code tiddler: '${title}'\n${minified.error}`,9));
+		} else {
+			log(hue(`\n${title}`, 149));
+			rt.write(minified.code + '\n');
+			tidCount++;
+		}
 	})
+	rt.write(`\n'$code database ${filter} --> ${tidCount} code tiddlers loaded'\n`);
 	rt.write(null,{ctrl:true, name:'d'})
 	rt.history = prevHistory;
 	rt.setPrompt(prevPrompt);
-	return `${tidCount} code tiddlers loaded`;
+	errList.forEach(err => {
+		log(err);
+	})
+	if (errList.length) {process.exit(1);}
 }
-
 
 // REPL info - https://www.cs.unb.ca/~bremner/teaching/cs2613/books/nodejs-api/repl/

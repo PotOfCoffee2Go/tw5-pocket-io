@@ -1,0 +1,10 @@
+caption: test
+created: 20241111120350162
+fn: test
+modified: 20241111120350162
+tags: Appdocs test
+title: test docs
+type: text/vnd.tiddlywiki
+writeup: test writeup
+
+<$transclude $tiddler="$:/poc2go/test-inline-template"/>

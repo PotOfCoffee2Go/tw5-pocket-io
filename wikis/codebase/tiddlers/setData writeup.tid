@@ -1,9 +1,0 @@
-caption: setData
-created: 20240924204437190
-modified: 20240926124206732
-title: setData writeup
-type: text/vnd.tiddlywiki
-
-Select and transfer tiddlers from the client wiki to data database.
-
-Given array of tiddlers in the client wiki, add/replace tiddlers in data database wiki.

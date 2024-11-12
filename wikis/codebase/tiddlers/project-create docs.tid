@@ -1,0 +1,10 @@
+caption: create
+created: 20241111094043847
+fn: project-create
+modified: 20241111094043847
+tags: Docs project
+title: project-create docs
+type: text/vnd.tiddlywiki
+writeup: project-create writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

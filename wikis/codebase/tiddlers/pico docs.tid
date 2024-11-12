@@ -1,0 +1,10 @@
+caption: pico
+created: 20241110230314555
+fn: pico
+modified: 20241111004655985
+tags: Appdocs pico
+title: pico docs
+type: text/vnd.tiddlywiki
+writeup: pico writeup
+
+<$transclude $tiddler="$:/poc2go/pico-inline-template"/>

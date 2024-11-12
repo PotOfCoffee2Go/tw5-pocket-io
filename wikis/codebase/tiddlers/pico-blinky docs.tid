@@ -1,0 +1,10 @@
+caption: blinky
+created: 20241110234806874
+fn: pico-blinky
+modified: 20241111002531037
+tags: Docs pico
+title: pico-blinky docs
+type: text/vnd.tiddlywiki
+writeup: pico-blinky writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

@@ -1,0 +1,10 @@
+caption: install
+created: 20241111212539510
+fn: kaluma-install
+modified: 20241111212539510
+tags: Docs kaluma
+title: kaluma-install docs
+type: text/vnd.tiddlywiki
+writeup: kaluma-install writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

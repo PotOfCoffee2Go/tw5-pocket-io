@@ -1,0 +1,13 @@
+created: 20241111153344874
+modified: 20241111153910740
+tags: writeup startup
+title: startup-getData writeup
+type: text/vnd.tiddlywiki
+
+Select and transfer tiddlers from the data database wiki to client wiki.
+
+Given :
+
+ * socket of client wiki making the request
+ * filter that selects tiddlers from data database
+ * flag indicating to open selected tiddlers in the story

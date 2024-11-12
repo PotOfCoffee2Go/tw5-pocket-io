@@ -1,0 +1,10 @@
+caption: getApp
+created: 20241112025644715
+fn: startup-getApp
+modified: 20241112031416152
+tags: Docs startup
+title: startup-getApp docs
+type: text/vnd.tiddlywiki
+writeup: startup-getApp writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

@@ -1,0 +1,10 @@
+caption: getCode
+created: 20241112041612328
+fn: startup-getCode
+modified: 20241112041641843
+tags: Docs startup
+title: startup-getCode docs
+type: text/vnd.tiddlywiki
+writeup: startup-getCode writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

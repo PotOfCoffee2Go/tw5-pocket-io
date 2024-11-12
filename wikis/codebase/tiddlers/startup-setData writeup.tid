@@ -1,0 +1,9 @@
+created: 20241111154516268
+modified: 20241111154746423
+tags: writeup startup
+title: startup-setData writeup
+type: text/vnd.tiddlywiki
+
+Select and transfer tiddlers from the client wiki to data database.
+
+Given array of tiddlers in the client wiki, add/replace tiddlers in data database wiki.

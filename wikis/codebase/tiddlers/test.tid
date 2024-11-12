@@ -1,0 +1,19 @@
+autoLoad: no
+created: 20241111120350162
+modified: 20241111171200721
+tags: Apps test
+title: test
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-replcmd getApp('&#91;&#91;{{!!title}}&#93;&#93;')@@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+See [[test docs]] for documentation.
+
+Code tiddlers tagged with `$:/pocket-io/tabs/test` are loaded as application 'test'.
+
+<<tabs "[tag[$:/pocket-io/tabs/test]]" "" "$:/state/pocket-io/tabs/test" "tc-horizontal">>
+
