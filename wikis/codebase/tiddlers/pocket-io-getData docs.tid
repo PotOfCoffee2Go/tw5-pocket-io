@@ -1,0 +1,10 @@
+caption: getData
+created: 20241112192034803
+fn: pocket-io-getData
+modified: 20241112192034803
+tags: Docs pocket-io
+title: pocket-io-getData docs
+type: text/vnd.tiddlywiki
+writeup: pocket-io-getData writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

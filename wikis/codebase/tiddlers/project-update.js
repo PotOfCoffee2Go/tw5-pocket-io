@@ -35,7 +35,7 @@ function projectUpdate(project, fnName) {
 		var newJsonTiddlers = tiddlerText
 			.replace(/pprojectt/g, project)
 			.replace(/hhelperss/g, fnName);
-		var tiddlers = $tw.utils.parseJSONSafe(newJsonTiddlers,[]);
+		var tiddlers = $cw.utils.parseJSONSafe(newJsonTiddlers,[]);
 		tiddlers.forEach(tiddler => {
 			$cw.wiki.addTiddler(new $cw.Tiddler(
 				$cw.wiki.getCreationFields(),

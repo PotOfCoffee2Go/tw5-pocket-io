@@ -3,11 +3,11 @@ function projectDelete(project, fnName) {
 	if (!(project && fnName)) {
 		return 'A project and function name are required!\n' +
 			'deleteProjectTiddlers(project, fnName)\n' +
-			`use deleteProjectTiddlers(project, '!!!delete all!!!') to remove project.`
+			`use deleteProjectTiddlers(project, '!!!delete all!!!') to remove project.`;
 	}
 	var filter, action;
 	if (fnName === '!!!delete all!!!') {
-		filter = `[tag[${project}]][[$:/poc2go/${project}-inline-template]]`;
+		filter = `[tag[${project}]]`;
 		action = `Delete project '${project}'.`;
 	} else {
 		if (!$cw.wiki.tiddlerExists(`${project}-${fnName}`)) {

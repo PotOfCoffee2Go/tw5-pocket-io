@@ -1,0 +1,13 @@
+[
+    {
+        "created": "20241113074207268",
+        "title": "New Tiddler 3",
+        "modified": "20241113144541927",
+        "tags": "",
+        "type": "text/vnd.tiddlywiki",
+        "text": "Pocket URL: <$edit-text field=\"pocketUrl\" class=\"poc2go-url\"/>\n\n<$button actions=\"<<pocket-fetch ''>>\">\nfetch\n</$button>\n\n\n{{!!pocketresult}}",
+        "pocketUrl": "/project/update/tests/zzz",
+        "pocketfetched": "{\"command\":\"update\",\"project\":\"tests\",\"fnName\":\"zzz\",\"result\":\"Function 'tests-zzz' already exists in $code wiki.\\n\"}",
+        "pocketresult": "Function 'tests-zzz' already exists in $code wiki.\n"
+    }
+]

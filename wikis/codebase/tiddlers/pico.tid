@@ -1,11 +1,11 @@
 created: 20241110230111979
-modified: 20241112021122274
+modified: 20241112164422936
 tags: Apps pico
 title: pico
 type: text/vnd.tiddlywiki
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-replcmd getApp('&#91;&#91;{{!!title}}&#93;&#93;')@@|
+|@@.poc2go-replcmd Documentation: [[pico docs]] @@|
 
 |tc-center tc-table-no-border|k
 | See [[Kaluma project|kaluma]] for |

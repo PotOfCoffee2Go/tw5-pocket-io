@@ -1,0 +1,7 @@
+created: 20241112174454817
+modified: 20241112174454817
+tags: writeup tests
+title: tests-helpers writeup
+type: text/vnd.tiddlywiki
+
+These functions are shorthand for common tasks.

@@ -1,0 +1,20 @@
+created: 20241113045847247
+modified: 20241113050047785
+tags: 
+title: New Tiddler 2
+type: text/vnd.tiddlywiki
+
+\procedure store-fetched-output()
+<$action-setfield $tiddler=Output status=<<status>> error=<<error>> data=<<data>> headers=<<headers>>/>
+\end
+
+\procedure http-get()
+	<$action-sendmessage
+		$message="tm-http-request"
+		url="http://127.0.0.1:3000/project/xxx/yyyy/zzzzz"
+		method="GET"
+		oncompletion=<<store-fetched-output>>
+	/>
+\end
+
+<$button actions=<<http-get>>>send HTTP GET</$button>

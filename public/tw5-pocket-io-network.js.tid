@@ -11,6 +11,9 @@ module-type: macro
 Macro that interfaces TiddlyWiki Client to pocket.io server.
 \*/
 
+if ($tw.browser) {
+
+
 // Path to pocket.io library on server
 const socketLibrary = '/pocket.io/pocket.io.js';
 
@@ -130,15 +133,23 @@ const initialize = () => {
 
 	// Tiddlers shared with the server
 	addInterfaceTiddler();
-	fieldsToWiki(replInterface, true);
+	if (!$tw.wiki.tiddlerExists('Pocket-io REPL')) {
+		fieldsToWiki(replInterface, true);
+	}
 
 	// Macros simplify access to pocket.io server
 	$tw.wiki.addTiddler(new $tw.Tiddler(pocketIoDefines));
+	// Network status
+	$tw.wiki.addTiddler(new $tw.Tiddler(netStatus));
 
 	socket.on('text', jsonStringified => {
 		var tiddlers = parseTiddlers(jsonStringified);
 		msg = $tw.wiki.getTiddlerText('$:/temp/pocket-io/repldata');
-		msg += (JSON.stringify(tiddlers[0].text,null,2) + '\n');
+		if (typeof tiddlers[0].text === 'string') {
+			msg += tiddlers[0].text;
+		} else {
+			msg += (JSON.stringify(tiddlers[0].text,null,2) + '\n');
+		}
 		addInterfaceTiddler();
 	});
 
@@ -159,6 +170,7 @@ const initialize = () => {
 	socket.on('close', () => {
 		msg = ('Disconnnected\n');
 		addInterfaceTiddler();
+		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io Disconnected');
 		socket = null;
 		msg = '';
 		reConnect();
@@ -167,7 +179,8 @@ const initialize = () => {
 	socket.on('connect', () => {
 		msg += `pocket.io id: ${sid(socket)} connected\n`;
 		addInterfaceTiddler();
-	  socket.emit('ackConnect', 'ackConnect');
+		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io Connected');
+		socket.emit('ackConnect', 'ackConnect');
 	})
 
 	msg = `pocket.io initialized\n`;
@@ -257,7 +270,7 @@ Filter: <$edit-text field='wikiFilter' class="tid-input"/>
 
 ----
 
-Commands can be sent to the REPL by entering the command and press 'Send'. Ex: \`$data.getTiddlers()\`
+Commands can be sent to the REPL by entering the command and press 'Send'. Ex: \`$dw.wiki.getTiddlers()\`
 
 <$edit-text field="sendtext" class="tid-input"/>
 <$button actions="<<pio>>"> Send </$button>
@@ -280,3 +293,12 @@ const pocketIoDefines = {
 pocket.io macro
 `
 };
+
+const netStatus = {
+	title: '$:/poc2go/SideBarSegment',
+	'list-before': '$:/core/ui/SideBarSegments/page-controls',
+	tags: '$:/tags/SideBarSegment',
+	text: `{{$:/temp/pocket-io/netstat}}`
+}
+
+} // if ($tw.browser)

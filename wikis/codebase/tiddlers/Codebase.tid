@@ -1,12 +1,15 @@
 created: 20240914113910483
-modified: 20241112063906437
+modified: 20241113032339653
 tags: 
 title: Codebase
 type: text/vnd.tiddlywiki
 
 <style>.cols3{column-count:3}</style>
 
+[[$Data wiki|http://localhost:8083/]]  [[Pocket-io Client|http://localhost:3000/]]
+
 <details><summary>Manuals</summary>
+
 
 <h4> [[Introduction|Introduction Manual]] </h4>
 Summary of writing functions to be run by the server.
@@ -30,36 +33,8 @@ Different places to provide code documentation
 
 <<list-links filter:"[tag[Apps]]" class:"cols3">>
 
-!!!! [[Set to Auto Load on Startup :|Startup Manual]]
+!!!! Set to Auto Load on Startup :
 
 <<list-links filter:"[autoLoad[yes]]" class:"cols3">>
 
 ---
-
-<div style="text-align: center;">Documentation</div>
-
----
-
-!!!! [[Startup|startup docs]]
-
-<<list-links filter:"[tag[Docs]tag[startup]]" class:"cols3">>
-
-!!!! [[Server|Server Manual]]
-<<list-links filter:"[tag[Docs]tag[startup]][tag[Docs]tag[server]]" class:"cols3">>
-
-<div style="border: 1px solid #888888; border-radius: 16px; padding-left:1em;">
-
-!!!! [[Kaluma|kaluma docs]]
-<<list-links filter:"[tag[Docs]tag[kaluma]]" class:"cols3">>
-!!!! [[Pico|pico docs]]
-<<list-links filter:"[tag[Docs]tag[pico]]" class:"cols3">>
-
-</div>
-
-!!!! [[Project Builder|project docs]]
-<<list-links filter:"[tag[Docs]tag[project]][tag[project]tag[json]]" class:"cols3">>
-
-!!!! [[Tests|test docs]]
-
-<<list-links filter:"[tag[Docs]tag[test]][tag[test]tag[json]]" class:"cols3">>
-

@@ -1,20 +1,18 @@
 autoLoad: yes
 created: 20241111150158121
-modified: 20241112030514738
+modified: 20241112164748430
 tags: Apps startup
 title: startup
 type: text/vnd.tiddlywiki
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-replcmd getApp('&#91;&#91;{{!!title}}&#93;&#93;')@@|
+|@@.poc2go-replcmd Documentation: [[startup docs]] @@|
 
 |tc-center tc-table-no-border|k
 |''startup project always loads''|
 | ''and is first!'' |
 
-See [[startup docs]] for documentation.
-
-Code tiddlers tagged with `$:/pocket-io/tabs/startup` are loaded this project.
+Tag Code tiddlers `$:/pocket-io/tabs/startup` to add to project.
 
 <<tabs "[tag[$:/pocket-io/tabs/startup]]" "" "$:/state/pocket-io/tabs/startup" "tc-horizontal">>
 

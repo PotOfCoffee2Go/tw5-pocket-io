@@ -1,0 +1,29 @@
+autoLoad: yes
+created: 20241112191809092
+modified: 20241112203316301
+tags: Apps pocket-io
+title: pocket-io
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-replcmd Documentation: [[pocket-io docs]] @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+<$button>
+<$action-setfield $tiddler="$:/state/pocket-io/tabs/pocket-io-tid-760107862" text=""/>
+Close
+</$button> Associated tiddlers:
+
+This tiddler resides in ''./public/tw5-pocket-io-network.js.tid''. Import into a single file wiki and save the wiki in ''./public''. The wiki will then have access to TW5-pocket-io.  
+
+<<tabs "[tag[tid]tag[pocket-io]]" "" "$:/state/pocket-io/tabs/pocket-io-tid" "tc-horizontal">>
+
+<$button>
+<$action-setfield $tiddler="$:/state/pocket-io/tabs/pocket-io-760107862" text=""/>
+Close
+</$button> Tag Code tiddlers `$:/pocket-io/tabs/pocket-io` to add to project.
+
+<<tabs "[tag[$:/pocket-io/tabs/pocket-io]]" "" "$:/state/pocket-io/tabs/pocket-io" "tc-horizontal">>
+

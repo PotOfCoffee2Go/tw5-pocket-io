@@ -1,0 +1,17 @@
+autoLoad: no
+created: 20241112174454814
+modified: 20241112174454814
+tags: Apps tests
+title: tests
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-replcmd Documentation: [[tests docs]] @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+Tag Code tiddlers `$:/pocket-io/tabs/tests` to add to project.
+
+<<tabs "[tag[$:/pocket-io/tabs/tests]]" "" "$:/state/pocket-io/tabs/tests" "tc-horizontal">>
+

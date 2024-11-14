@@ -1,0 +1,10 @@
+caption: tempfn
+created: 20241113002229998
+fn: tests-tempfn
+modified: 20241113002333158
+tags: Docs tests
+title: tests-tempfn docs
+type: text/vnd.tiddlywiki
+writeup: tests-tempfn writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

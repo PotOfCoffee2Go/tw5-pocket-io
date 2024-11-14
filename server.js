@@ -5,6 +5,7 @@ const host='0.0.0.0', codePort = 8082, dataPort = 8083, pocketPort = 3000;
 const repl = require('node:repl');
 
 // Manage sync servers and minify of code tiddlers
+const cors = require('cors')
 const { twSyncBoot, twSyncServer } = require('./lib/twSyncServer');
 const UglifyJS = require("uglify-js");
 
@@ -15,12 +16,29 @@ const app = express();
 const http = require('node:http').Server(app);
 const io = require('pocket.io')(http);
 
+const httpProxy = require('http-proxy');
+const twProxy = httpProxy.createProxyServer();
+const codeWiki = 'http://127.0.0.1:8082';
+
+// Allow all to access
+//app.options('*', cors());
+//app.use(cors());
+
+/*
+app.all('/*', (req, res) => {
+	console.dir(req.url);
+	twProxy.web(req, res, {target: codeWiki});
+});
+*/
+
 // Deliver default single file wiki
-app.get('/', (req, res) => {
+app.get('/data', (req, res) => {
 	res.sendFile(__dirname + '/public/tw5-pocket.html');
 });
 // root directory of HTTP server
 app.use(express.static('public'));
+
+
 
 // ----------------------
 // REPL context
@@ -28,11 +46,11 @@ var rt;
 function replContext() {
 	rt.context.rt = rt;
 	rt.context.io = io;
+	rt.context.app = app;
 	rt.context.$tw = $tw;
 	rt.context.$dw = $dw;
 	rt.context.$cw = $cw;
-	rt.context.$data = $dw.wiki;
-	rt.context.$code = $cw.wiki;
+	rt.context.twProxy = twProxy;
 	rt.context.UglifyJS = UglifyJS;
 
 	rt.setPrompt(hue('tw5-pocket-io > ',214));

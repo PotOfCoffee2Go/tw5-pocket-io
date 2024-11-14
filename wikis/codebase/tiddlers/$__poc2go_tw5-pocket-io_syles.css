@@ -8,7 +8,8 @@
 }
 
 [data-tags*="Appdocs"].tc-tiddler-view-frame {
-    background: #181818;
+/*  background: #181818; */
+    border: solid 3px;
     border-radius: 20px;
 }
 
@@ -35,4 +36,7 @@ summary::marker {
 .poc2go-replcmd {
   font-family:Monospace;
   font-size:1.1em;
+}
+.poc2go-url {
+  width: 50%;
 }

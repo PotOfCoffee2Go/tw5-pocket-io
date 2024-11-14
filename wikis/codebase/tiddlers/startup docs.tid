@@ -1,10 +1,20 @@
 caption: startup
 created: 20241111150158121
 fn: startup
-modified: 20241111150158121
+modified: 20241112180403096
 tags: Appdocs startup
 title: startup docs
 type: text/vnd.tiddlywiki
 writeup: startup writeup
 
-<$transclude $tiddler="$:/poc2go/startup-inline-template"/>
+<h2 style="text-align: center;">{{!!caption}}</h2>
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-replcmd getApp('&#91;&#91;{{!!fn}}&#93;&#93;')@@|
+
+|tc-center tc-table-no-border|k
+|Project: <$link to={{!!fn}}> {{!!fn}} </$link> | Writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
+
+<$transclude $tiddler={{!!writeup}} />
+
+<<tabs "[tag[$:/pocket-io/tabs/startup]addsuffix[ docs]]" "" "$:/state/pocket-io/tabs/startup">>

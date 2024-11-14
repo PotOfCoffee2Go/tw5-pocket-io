@@ -1,0 +1,10 @@
+caption: routes
+created: 20241112234424884
+fn: project-routes
+modified: 20241112234424884
+tags: Docs project
+title: project-routes docs
+type: text/vnd.tiddlywiki
+writeup: project-routes writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

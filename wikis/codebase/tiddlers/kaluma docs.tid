@@ -1,10 +1,20 @@
 caption: kaluma
 created: 20241111211009444
 fn: kaluma
-modified: 20241111211009444
+modified: 20241112175742394
 tags: Appdocs kaluma
 title: kaluma docs
 type: text/vnd.tiddlywiki
 writeup: kaluma writeup
 
-<$transclude $tiddler="$:/poc2go/kaluma-inline-template"/>
+<h2 style="text-align: center;">{{!!caption}}</h2>
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-replcmd getApp('&#91;&#91;{{!!fn}}&#93;&#93;')@@|
+
+|tc-center tc-table-no-border|k
+|Project: <$link to={{!!fn}}> {{!!fn}} </$link> | Writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
+
+<$transclude $tiddler={{!!writeup}} />
+
+<<tabs "[tag[$:/pocket-io/tabs/kaluma]addsuffix[ docs]]" "" "$:/state/pocket-io/tabs/kaluma">>

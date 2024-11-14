@@ -1,0 +1,20 @@
+caption: pocket-io
+created: 20241112191809093
+fn: pocket-io
+modified: 20241112191809093
+tags: Appdocs pocket-io
+title: pocket-io docs
+type: text/vnd.tiddlywiki
+writeup: pocket-io writeup
+
+<h2 style="text-align: center;">{{!!caption}}</h2>
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-replcmd getApp('&#91;&#91;{{!!fn}}&#93;&#93;')@@|
+
+|tc-center tc-table-no-border|k
+|Project: <$link to={{!!fn}}> {{!!fn}} </$link> | Writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
+
+<$transclude $tiddler={{!!writeup}} />
+
+<<tabs "[tag[$:/pocket-io/tabs/pocket-io]addsuffix[ docs]]" "" "$:/state/pocket-io/tabs/pocket-io">>

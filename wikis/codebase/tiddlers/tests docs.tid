@@ -1,0 +1,20 @@
+caption: tests
+created: 20241112174454815
+fn: tests
+modified: 20241112174454815
+tags: Appdocs tests
+title: tests docs
+type: text/vnd.tiddlywiki
+writeup: tests writeup
+
+<h2 style="text-align: center;">{{!!caption}}</h2>
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-replcmd getApp('&#91;&#91;{{!!fn}}&#93;&#93;')@@|
+
+|tc-center tc-table-no-border|k
+|Project: <$link to={{!!fn}}> {{!!fn}} </$link> | Writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
+
+<$transclude $tiddler={{!!writeup}} />
+
+<<tabs "[tag[$:/pocket-io/tabs/tests]addsuffix[ docs]]" "" "$:/state/pocket-io/tabs/tests">>

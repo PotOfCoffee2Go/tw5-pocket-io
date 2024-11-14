@@ -1,0 +1,24 @@
+[
+  {
+    "title": "pprojectt-hhelperss",
+    "text": "// Code goes here\n",
+    "caption": "hhelperss",
+    "tags": "function $:/pocket-io/tabs/pprojectt pprojectt",
+    "type": "application/javascript"
+  },
+  {
+    "title": "pprojectt-hhelperss docs",
+    "caption": "hhelperss",
+    "fn": "pprojectt-hhelperss",
+    "tags": "Docs pprojectt",
+    "type": "text/vnd.tiddlywiki",
+    "writeup": "pprojectt-hhelperss writeup",
+    "text": "<$transclude $tiddler=\"$:/poc2go/docs-inline-template\"/>\n"
+  },
+  {
+    "title": "pprojectt-hhelperss writeup",
+    "tags": "writeup pprojectt",
+    "type": "text/vnd.tiddlywiki",
+    "text": "These functions are shorthand for common tasks.\n"
+  }
+]

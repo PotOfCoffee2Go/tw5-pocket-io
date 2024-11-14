@@ -1,19 +1,24 @@
 autoLoad: yes
 created: 20241110230111979
-modified: 20241111162658122
+modified: 20241112164005845
 tags: Apps project
 title: project
 type: text/vnd.tiddlywiki
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-replcmd getApp('&#91;&#91;{{!!title}}&#93;&#93;')@@|
+|@@.poc2go-replcmd Documentation: [[project docs]] @@|
 
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
-See [[project docs]] for documentation.
+<$button>
+<$action-setfield $tiddler="$:/state/pocket-io/tabs/project-json--569430170" text=""/>
+Close
+</$button> Associated tiddlers:
 
-Code tiddlers tagged with `$:/pocket-io/tabs/project` are loaded as a project.
+<<tabs "[tag[project]tag[json]]" "" "$:/state/pocket-io/tabs/project-json" "tc-horizontal">>
+
+Tag Code tiddlers `$:/pocket-io/tabs/project` to add to project.
 
 <<tabs "[tag[$:/pocket-io/tabs/project]]" "" "$:/state/pocket-io/tabs/project" "tc-horizontal">>
 
