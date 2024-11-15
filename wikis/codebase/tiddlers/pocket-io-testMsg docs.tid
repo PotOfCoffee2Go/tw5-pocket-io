@@ -1,0 +1,10 @@
+caption: testMsg
+created: 20241114203914138
+fn: pocket-io-testMsg
+modified: 20241115040001228
+tags: Docs pocket-io
+title: pocket-io-testMsg docs
+type: text/vnd.tiddlywiki
+writeup: pocket-io-testMsg writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

@@ -2,15 +2,25 @@
 //  If the function already exists - exits with no action
 //  If project already exists will create a new function
 //  If project does not exist - will be created containing given function name
-function projectUpdate(project, fnName) {
-	var filter = '';
-	if (!(project && fnName)) {
-		return 'A project and function name are required!\n' +
-			'newProjectTiddlers(project, fnName)\n'
+function projectUpdate(socket, msg) {
+	var senderTid = cpy(msg.senderTiddler);
+	senderTid.ioResult = '';
+
+	var project = senderTid.ioPrjProject;
+	var codeName = senderTid.ioPrjCodename;
+
+	if (!(project && codeName)) {
+		senderTid.ioResult = 'A project and function name are required.';
 	}
-	if ($cw.wiki.tiddlerExists(`${project}-${fnName}`)) {
-		return `Function '${project}-${fnName}' already exists in $code wiki.\n`;
+	else if ($cw.wiki.tiddlerExists(`${project}-${codeName}`)) {
+		senderTid.ioResult = `Function '${project}-${codeName}' already exists in $code wiki.`;
 	}
+
+	if (senderTid.ioResult) {
+		msg.resultTiddlers.push(senderTid);
+		return msg;
+	}
+
 	var filter, action;
 	if ($cw.wiki.tiddlerExists(project)) {
 		filter = '[[new-function.json]]';
@@ -20,9 +30,9 @@ function projectUpdate(project, fnName) {
 		action = 'new project';
 	}
 	
-	var parser = $cw.wiki.parseTiddler('$:/poc2go/rendered-plain-text');
 	var tidCount = 0;
-	log(hue(`Creating ${action} '${project}' function '${fnName}' ...`, 149));
+	var parser = $cw.wiki.parseTiddler('$:/poc2go/rendered-plain-text');
+	log(hue(`Creating ${action} '${project}' function '${codeName}'`, 149));
 	$cw.wiki.filterTiddlers(filter).forEach(title => {
 		var widgetNode = $cw.wiki.makeWidget(parser,
 			{variables: $cw.utils.extend({},
@@ -34,7 +44,7 @@ function projectUpdate(project, fnName) {
 		var tiddlerText = container.textContent;
 		var newJsonTiddlers = tiddlerText
 			.replace(/pprojectt/g, project)
-			.replace(/hhelperss/g, fnName);
+			.replace(/hhelperss/g, codeName);
 		var tiddlers = $cw.utils.parseJSONSafe(newJsonTiddlers,[]);
 		tiddlers.forEach(tiddler => {
 			$cw.wiki.addTiddler(new $cw.Tiddler(
@@ -45,7 +55,11 @@ function projectUpdate(project, fnName) {
 		})
 		tidCount += tiddlers.length;
 	})
-	var result = `${tidCount} tiddlers updated on $code wiki`;
-	log(hue(result, 149));
-	return result;
+	
+	senderTid.ioResult = `${tidCount} tiddlers updated on $code wiki.`;
+	msg.resultTiddlers.push(senderTid);
+//	log(hue(result, 149));
+	return msg;
 }
+
+topics.projectUpdate = projectUpdate;

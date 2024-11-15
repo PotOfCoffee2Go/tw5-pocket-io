@@ -1,14 +1,19 @@
 // Load tiddlers to $data database
-function setData(tiddlers = []) {
-	if (!Array.isArray(tiddlers)) {
-		tiddlers = [tiddlers]
-	}
-	tiddlers.forEach(tiddler => {
+function setData(socket, msg) {
+	var senderTid = cpy(msg.senderTiddler);
+	senderTid.ioResult = '';
+
+	msg.filterTiddlers.forEach(tiddler => {
 		$dw.wiki.addTiddler(new $dw.Tiddler(
 			$dw.wiki.getCreationFields(),
 			tiddler,
 			$dw.wiki.getModificationFields(),
 		))
 	})
-	return `${tiddlers.length} tiddlers updated on $data wiki`;
+
+	senderTid.ioResult = `${msg.filterTiddlers.length} tiddlers updated on $data wiki`;
+	msg.resultTiddlers.push(senderTid);
+	return msg;
 }
+
+topics.setData = setData;

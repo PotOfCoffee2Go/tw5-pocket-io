@@ -1,5 +1,5 @@
 created: 20241112192142620
-list: pocket-io-helpers pocket-io-pocket.io pocket-io-getApp pocket-io-getData pocket-io-setData
-modified: 20241112192147987
+list: pocket-io-helpers pocket-io-pocket.io pocket-io-getData pocket-io-setData pocket-io-testMsg pocket-io-badMsg
+modified: 20241114212541724
 title: $:/pocket-io/tabs/pocket-io
 type: text/vnd.tiddlywiki

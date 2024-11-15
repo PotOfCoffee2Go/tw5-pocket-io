@@ -1,7 +1,7 @@
 created: 20241112234424885
-modified: 20241112234424885
+modified: 20241115100233867
 tags: writeup project
 title: project-routes writeup
 type: text/vnd.tiddlywiki
 
-These functions are shorthand for common tasks.
+Routes add a URL to this express server.

@@ -1,6 +1,10 @@
 autoLoad: yes
 created: 20241112191809092
-modified: 20241112203316301
+ioFilter: [tag[about]]
+ioResult: 1 tiddlers recieved from $data wiki
+ioTopic: getData
+ioTostory: yes
+modified: 20241115044654614
 tags: Apps pocket-io
 title: pocket-io
 type: text/vnd.tiddlywiki
@@ -11,19 +15,23 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
-<$button>
+Associated tiddlers:
+
+''tw5-pocket-io-network.js.tid'' resides in ''./public/tw5-pocket-io-network.js.tid''. Import into a wiki and the wiki will then have access to TW5-pocket-io.
+
+The example shows getting data from the http://localhost:8083 $Data wiki database.
+
+<$button style="float:right;margin-top: .6em;">
 <$action-setfield $tiddler="$:/state/pocket-io/tabs/pocket-io-tid-760107862" text=""/>
 Close
-</$button> Associated tiddlers:
+</$button>
+<<tabs "[[tw5-pocket-io-network.js.tid]][[Pocket.io Example]]" "" "$:/state/pocket-io/tabs/pocket-io-tid" "tc-horizontal">>
 
-This tiddler resides in ''./public/tw5-pocket-io-network.js.tid''. Import into a single file wiki and save the wiki in ''./public''. The wiki will then have access to TW5-pocket-io.  
+Tag Code tiddlers `$:/pocket-io/tabs/pocket-io` to add to project.
 
-<<tabs "[tag[tid]tag[pocket-io]]" "" "$:/state/pocket-io/tabs/pocket-io-tid" "tc-horizontal">>
-
-<$button>
+<$button style="float:right;margin-top: .6em;">
 <$action-setfield $tiddler="$:/state/pocket-io/tabs/pocket-io-760107862" text=""/>
 Close
-</$button> Tag Code tiddlers `$:/pocket-io/tabs/pocket-io` to add to project.
-
+</$button> 
 <<tabs "[tag[$:/pocket-io/tabs/pocket-io]]" "" "$:/state/pocket-io/tabs/pocket-io" "tc-horizontal">>
 

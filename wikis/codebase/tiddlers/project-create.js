@@ -1,11 +1,27 @@
-// Create a project with a 'helpers' function
-function projectCreate(project) {
-	var fnName = 'helpers';
+// Create a project
+// Verify input - calls projectUpdate to create project
+function projectCreate(socket, msg) {
+	var senderTid = cpy(msg.senderTiddler);
+	senderTid.ioResult = '';
+
+	var project = senderTid.ioPrjProject;
+	var codeName = senderTid.ioPrjCodename;
+
 	if ($cw.wiki.tiddlerExists(`${project}`)) {
-		return `Project '${project}' already exists in $code wiki.\n`;
+		senderTid.ioResult = `Project '${project}' already exists in $code wiki.`;
 	}
-	if ($cw.wiki.tiddlerExists(`${project}-${fnName}`)) {
-		return `Function '${project}-${fnName}' already exists in $code wiki.\n`;
+	if ($cw.wiki.tiddlerExists(`${project}-${codeName}`)) {
+		senderTid.ioResult = `Function '${project}-${codeName}' already exists in $code wiki.`;
 	}
-	return projectUpdate(project, fnName);
+
+	// Return error
+	if (senderTid.ioResult) {
+		msg.resultTiddlers.push(senderTid);
+		return msg;
+	}
+
+	// Have projectUpdate create the project
+	return projectUpdate(socket, msg);
 }
+
+topics.projectCreate = projectCreate;
