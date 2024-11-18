@@ -1,10 +1,8 @@
-// ----------------------
 // Get code from codebase wiki into the REPL
-/*
-Note: This code is an identical copy of the getCode() function
-   in './server.js' used for initial code loading on startup.
-   If changing here - will probably also want to change there too.
-*/
+// This function is also in server.js for initial
+//   load on startup
+// A copy is in $Code database [[startup-getCode]]
+//   for use once system has been loaded
 function getCode(filter) {
 	const prevHistory = cpy(rt.history);
 	const prevPrompt = rt.getPrompt(); rt.setPrompt('');
@@ -14,6 +12,7 @@ function getCode(filter) {
 	var tidCount = 0, errList = [];
 	log(hue(`Loading ${filter} code tiddlers to server ...`,149));
 	rt.write('.editor\n');
+	rt.write(`var Done = 'Load complete';\n`);
 	$cw.wiki.filterTiddlers(filter).forEach(title => {
 		var widgetNode = $cw.wiki.makeWidget(parser,
 			{variables: $cw.utils.extend({},
@@ -27,13 +26,14 @@ function getCode(filter) {
 		if (minified.error) {
 			errList.push(hue(`Error processing code tiddler: '${title}'\n${minified.error}`,9));
 		} else {
-			log(hue(`\n${title}`, 149));
+			log(hue(`\nTiddler '${title}'`, 149));
 			rt.write(minified.code + '\n');
 			tidCount++;
 		}
 	})
-	rt.write(`\n'$code database ${filter} --> ${tidCount} code tiddlers loaded'\n`);
+	rt.write('Done\n');
 	rt.write(null,{ctrl:true, name:'d'})
+	log(hue(`Code loaded from $code database\n${filter}\n${tidCount} code tiddlers loaded.`, 149));
 	rt.history = prevHistory;
 	rt.setPrompt(prevPrompt);
 	errList.forEach(err => {

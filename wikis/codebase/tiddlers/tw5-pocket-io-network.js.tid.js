@@ -25,46 +25,72 @@ const socketLibrary = '/pocket.io/pocket.io.js';
 
 // Last 12 characters of socket id
 const sid = (socket) => socket.id.split('-').pop();
+const cpy = (obj) => JSON.parse(JSON.stringify(obj));
 
 // ------------------------
 // Network interface
 var socket = null;
-var msg = '';
+
 // Attempt reconnect to server in milliseconds
 const reconnectMs = 10000;
 
 // ------------------------
 // TiddlyWiki interface
 exports.name = 'pocket';
+
 exports.params = [
 	{name: 'command'},
 	{name: 'topic'},
-	{name: 'sendFilter'},
+	{name: 'filter'},
 	{name: 'sender'},
 ];
-exports.run = (command, topic, sendFilter, sender) => {
+
+exports.run = (command, topic, filter, sender) => {
+	if (!(sender && $tw.wiki.getTiddler(sender).fields)) {
+		console.log(`pocket.io sender tiddler ${sender} required.`);
+		return;
+	}
+	var senderTid = cpy($tw.wiki.getTiddler(sender).fields);
 	if (command !== 'emit') {
-		console.log(`Network: Invalid command - ${command}.`);
+		senderTid.ioResult = `pocket.io invalid command - ${command}.`;
+		fieldsToWiki(senderTid);
 		return;
 	}
-	if (topic === 'setData') {
-		let tiddlers = $tw.wiki.getTiddlersAsJson(sendFilter);
-		socket.emit('eval', stringifyTiddler(`setData(${tiddlers})`));
-		return;
+	var msg = JSON.stringify(createMessage(command, topic, filter, sender));
+	socket.emit('msg', msg);
+}
+
+// Message
+function createMessage(command, topic, filter, sender) {
+	// Merge values passed by macro with senders fields
+	// The macro call values takes precidence
+	var macroReq = {sender};
+	if (command) { macroReq.command = command; }
+	if (topic) { macroReq.topic = topic; }
+	if (filter) { macroReq.filter = filter; }
+	// Make a tiddler title into a filter - if not already
+	if (macroReq.filter && !/^\[/.test(macroReq.filter)) {
+		macroReq.filter = `[[${macroReq.filter}]]`;
 	}
-	if (topic === 'getData') {
-		socket.emit('eval', stringifyTiddler(`getData('${sendFilter}')`));
-		return;
+
+	var senderFields = $tw.utils.parseJSONSafe($tw.wiki.getTiddlerAsJson(sender),{});
+	var senderReq = {
+		command: senderFields.ioCommand,
+		topic: senderFields.ioTopic,
+		filter: senderFields.ioFilter,
+		sender: senderFields.title,
+		tostory: senderFields.ioTostory === 'yes' ? true : false,
 	}
-	if (topic === 'getDataTostory') {
-		socket.emit('eval', stringifyTiddler(`getData('${sendFilter}',true)`));
-		return;
+	// Make a tiddler title into a filter - if not already
+	if (senderReq.filter && !/^\[/.test(senderReq.filter)) {
+		senderReq.filter = `[[${senderReq.filter}]]`;
 	}
-	if (!topic || topic !== 'eval') {
-		console.log(`Network: A topic is required to send a message to the server.`);
-		return;
-	}
-	socket.emit(topic, stringifyTiddler(`${sendFilter}`));
+
+	var msg = {	req: Object.assign({}, senderReq, macroReq)	};
+	msg.senderTiddler = $tw.utils.parseJSONSafe($tw.wiki.getTiddlerAsJson(msg.req.sender),{});
+	msg.filterTiddlers = $tw.utils.parseJSONSafe($tw.wiki.getTiddlersAsJson(msg.req.filter),[]);
+	msg.resultTiddlers = [];
+	return msg;
 }
 
 // ------------------------
@@ -98,88 +124,47 @@ const stampFetched = (fields) => {
 		};
 }
 
-// Messages sent from the server
-const addInterfaceTiddler = () => {
-	fieldsToWiki(
-		{
-			title: '$:/temp/pocket-io/repldata',
-			tags: 'pocket-io',
-			type: 'application/javascript',
-			text: `${msg}`
-		});
-}
-
-// Messages are tiddlers - so strings are made into tiddlers
-function stringifyTiddler(text, title = 'undefined') {
-	return JSON.stringify({ title, text, id: socket.id });
-}
-
-// Tiddlers are in an array
-function parseTiddlers(jsonStringified) {
-	var tiddlers;
-	try {
-		tiddlers = JSON.parse(jsonStringified);
-	} catch(e) {
-		tiddlers = [];
-	}
-	if (!Array.isArray(tiddlers)) { tiddlers = [tiddlers] }
-	return tiddlers;
-}
 
 // ------------------------
 // Post pocket.io macros and network event handlers
 const initialize = () => {
 	socket = io();
 
-	// Tiddlers shared with the server
-	addInterfaceTiddler();
-	fieldsToWiki(replInterface, true);
+	// Default tiddler that interfaces to the REPL
+	if (!$tw.wiki.tiddlerExists('Pocket-io REPL')) {
+		fieldsToWiki(replInterface, true);
+	}
 
 	// Macros simplify access to pocket.io server
 	$tw.wiki.addTiddler(new $tw.Tiddler(pocketIoDefines));
 	// Network status
 	$tw.wiki.addTiddler(new $tw.Tiddler(netStatus));
 
-	socket.on('text', jsonStringified => {
-		var tiddlers = parseTiddlers(jsonStringified);
-		msg = $tw.wiki.getTiddlerText('$:/temp/pocket-io/repldata');
-		msg += (JSON.stringify(tiddlers[0].text,null,2) + '\n');
-		addInterfaceTiddler();
-	});
-
-	socket.on('tiddlers', jsonStringified => {
-		var tiddlers = parseTiddlers(jsonStringified);
-		tiddlers.forEach(tiddler => {
-			fieldsToWiki(tiddler);
-		})
-	})
-
-	socket.on('tostory', jsonStringified => {
-		var tiddlers = parseTiddlers(jsonStringified);
-		tiddlers.forEach(tiddler => {
-			fieldsToWiki(tiddler, true);
-		})
-	})
-
-	socket.on('close', () => {
-		msg = ('Disconnnected\n');
-		addInterfaceTiddler();
-		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io Disconnected');
-		socket = null;
-		msg = '';
-		reConnect();
-	})
-
 	socket.on('connect', () => {
-		msg += `pocket.io id: ${sid(socket)} connected\n`;
-		addInterfaceTiddler();
+		console.log(`pocket.io id: ${sid(socket)} connected`);
 		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io Connected');
 		socket.emit('ackConnect', 'ackConnect');
 	})
 
-	msg = `pocket.io initialized\n`;
-	addInterfaceTiddler();
+	socket.on('msg', msgStr => {
+		var msg = $tw.utils.parseJSONSafe(msgStr,{ resultTiddlers: [] });
+		msg.resultTiddlers.forEach(tiddler => {
+			if (tiddler.title === msg.req.sender) {
+				fieldsToWiki(tiddler); // skip forcing sender to story
+			} else {
+				fieldsToWiki(tiddler, msg.req.tostory);
+			}
+		})
+	})
 
+	socket.on('close', () => {
+		console.log('pocket.i0 disconnnected');
+		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io Disconnected');
+		socket = null;
+		reConnect();
+	})
+
+	console.log(`pocket.io initialized`);
 }
 
 // Attempt re-connect
@@ -224,13 +209,13 @@ const replInterface = {
 	tags: 'pocket-io',
 	tostory: 'getData',
 	text: `\\define pio()
-<$macrocall $name=pocket command=emit topic='eval' sendFilter={{!!sendtext}} sender="$(currentTiddler)$" />
+<$macrocall $name=pocket command=emit topic='eval' filter={{!!sendtext}} sender="$(currentTiddler)$" />
 \\end
 \\define getData()
-<$macrocall $name=pocket command=emit topic={{!!tostory}} sendFilter={{!!wikiFilter}}  sender="$(currentTiddler)$" />
+<$macrocall $name=pocket command=emit topic={{!!tostory}} filter={{!!wikiFilter}}  sender="$(currentTiddler)$" />
 \\end
 \\define setData()
-<$macrocall $name=pocket command=emit topic='setData' sendFilter={{!!wikiFilter}} sender="$(currentTiddler)$" />
+<$macrocall $name=pocket command=emit topic='setData' filter={{!!wikiFilter}} sender="$(currentTiddler)$" />
 \\end
 
 <style>
@@ -264,7 +249,7 @@ Filter: <$edit-text field='wikiFilter' class="tid-input"/>
 
 ----
 
-Commands can be sent to the REPL by entering the command and press 'Send'. Ex: \`$data.getTiddlers()\`
+Commands can be sent to the REPL by entering the command and press 'Send'. Ex: \`$dw.wiki.getTiddlers()\`
 
 <$edit-text field="sendtext" class="tid-input"/>
 <$button actions="<<pio>>"> Send </$button>
@@ -282,7 +267,7 @@ Commands can be sent to the REPL by entering the command and press 'Send'. Ex: \
 const pocketIoDefines = {
 	title: '$:/temp/pocket-io/macros',
 	tags: '$:/tags/Macro pocket-io',
-  text: `\\define pocket-io(topic sendFilter:"") <$macrocall $name=pocket command=emit topic='$topic$' sendFilter='$sendFilter$' sender="$(currentTiddler)$" />
+	text: `\\define pocket-io(topic filter:"") <$macrocall $name=pocket command=emit topic='$topic$' filter='$filter$' sender="$(currentTiddler)$" />
 
 pocket.io macro
 `

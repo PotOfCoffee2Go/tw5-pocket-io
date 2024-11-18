@@ -7,13 +7,13 @@ function projectUpdate(socket, msg) {
 	senderTid.ioResult = '';
 
 	var project = senderTid.ioPrjProject;
-	var codeName = senderTid.ioPrjCodename;
+	var tabName = senderTid.ioPrjTabName;
 
-	if (!(project && codeName)) {
-		senderTid.ioResult = 'A project and function name are required.';
+	if (!(project && tabName)) {
+		senderTid.ioResult = 'A project and tab name are required.';
 	}
-	else if ($cw.wiki.tiddlerExists(`${project}-${codeName}`)) {
-		senderTid.ioResult = `Function '${project}-${codeName}' already exists in $code wiki.`;
+	else if ($cw.wiki.tiddlerExists(`${project}-${tabName}`)) {
+		senderTid.ioResult = `Tab '[[${project}-${tabName}]]' @@already exists!@@`;
 	}
 
 	if (senderTid.ioResult) {
@@ -30,9 +30,9 @@ function projectUpdate(socket, msg) {
 		action = 'new project';
 	}
 	
-	var tidCount = 0;
+	var titles = [];
 	var parser = $cw.wiki.parseTiddler('$:/poc2go/rendered-plain-text');
-	log(hue(`Creating ${action} '${project}' function '${codeName}'`, 149));
+	log(hue(`Creating ${action} '${project}' function '${tabName}'`, 149));
 	$cw.wiki.filterTiddlers(filter).forEach(title => {
 		var widgetNode = $cw.wiki.makeWidget(parser,
 			{variables: $cw.utils.extend({},
@@ -44,7 +44,7 @@ function projectUpdate(socket, msg) {
 		var tiddlerText = container.textContent;
 		var newJsonTiddlers = tiddlerText
 			.replace(/pprojectt/g, project)
-			.replace(/hhelperss/g, codeName);
+			.replace(/hhelperss/g, tabName);
 		var tiddlers = $cw.utils.parseJSONSafe(newJsonTiddlers,[]);
 		tiddlers.forEach(tiddler => {
 			$cw.wiki.addTiddler(new $cw.Tiddler(
@@ -52,11 +52,11 @@ function projectUpdate(socket, msg) {
 				tiddler,
 				$cw.wiki.getModificationFields(),
 			))
+			titles.push(`[[${tiddler.title}]]`);
 		})
-		tidCount += tiddlers.length;
 	})
 	
-	senderTid.ioResult = `${tidCount} tiddlers updated on $code wiki.`;
+	senderTid.ioResult = `Tiddlers created:\n${titles.join(', ')}`;
 	msg.resultTiddlers.push(senderTid);
 //	log(hue(result, 149));
 	return msg;

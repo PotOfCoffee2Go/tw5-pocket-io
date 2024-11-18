@@ -4,36 +4,35 @@ function projectDelete(socket, msg) {
 	senderTid.ioResult = '';
 
 	var project = senderTid.ioPrjProject;
-	var codeName = senderTid.ioPrjCodename;
+	var tabName = senderTid.ioPrjTabName;
 
-	if (!(project && codeName)) {
-		senderTid.ioResult = 'A project and function name are required! ' +
-			`Use codeName '!!!delete all!!!' to remove project.`;
+	if (!(project && tabName)) {
+		senderTid.ioResult = 'A @@project and Tab name@@ are required!\n\n ' +
+			`Use ioPrjTabName '!!!delete all!!!' to remove a project.`;
 		msg.resultTiddlers.push(senderTid);
 		return msg;
 	}
 	var filter, action;
-	if (codeName === '!!!delete all!!!') {
+	if (tabName === '!!!delete all!!!') {
 		filter = `[tag[${project}]]`;
 		action = `Delete project '${project}'.`;
 	} else {
-		if (!$cw.wiki.tiddlerExists(`${project}-${codeName}`)) {
-			senderTid.ioResult =  `Function '${project}-${codeName}' does not exist in $code wiki.`;
+		if (!$cw.wiki.tiddlerExists(`${project}-${tabName}`)) {
+			senderTid.ioResult =  `Tab '${project}-${tabName}' does not exist.`;
 			msg.resultTiddlers.push(senderTid);
 			return msg;
 		}
-		filter = `[prefix[${project}-${codeName}]]`;
-		action = `Delete function '${project}-${codeName}'.`;
+		filter = `[prefix[${project}-${tabName}]]`;
+		action = `Delete Tab '${project}-${tabName}'.`;
 	}
 
 	var tidDeleted = [];
 	$cw.wiki.filterTiddlers(filter).forEach(title => {
 		$cw.wiki.deleteTiddler(title);
-		tidDeleted.push(`  ${title}`);
+		tidDeleted.push(`${title}`);
 	})
 
-	senderTid.ioResult = `${action}\nTiddlers deleted from $code wiki: ` +
-		`${tidDeleted.join('\n\n')}`;
+	senderTid.ioResult = `${action}\n\nTiddlers deleted: ${tidDeleted.join(', ')}`;
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }

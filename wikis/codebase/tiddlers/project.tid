@@ -1,6 +1,8 @@
 autoLoad: yes
-created: 20241110230111979
-modified: 20241115083222916
+created: 20240101000000000
+ioPrjUpload: AALLLL
+ioResult: Upload code tiddlers: [[project-helpers]]
+modified: 20241118065545395
 tags: Apps project
 title: project
 type: text/vnd.tiddlywiki
@@ -11,15 +13,18 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
+{{||$:/pocket-io/uploadCode}}
+
 Associated tiddlers:
 
 <$button style="float:right;margin-top: .6em;">
 <$action-setfield $tiddler="$:/state/pocket-io/tabs/project-json--569430170" text=""/>
 Close
 </$button>
-<<tabs "[tag[project]tag[json]]" "" "$:/state/pocket-io/tabs/project-json" "tc-horizontal">>
+<<tabs "[[Project Example]][tag[project]tag[json]]" "" "$:/state/pocket-io/tabs/project-json" "tc-horizontal">>
 
-Tag Code tiddlers `$:/pocket-io/tabs/project` to add to project.
+|tc-center|k
+|Tag Code tiddlers {{$:/pocket-io/tabs/project||$:/core/ui/TagTemplate}} to add to this project. |
 
 <$button style="float:right;margin-top: .6em;">
 <$action-setfield $tiddler="$:/state/pocket-io/tabs/project--569430170" text=""/>

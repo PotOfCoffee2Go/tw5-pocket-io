@@ -1,6 +1,8 @@
 autoLoad: yes
 created: 20241111150158121
-modified: 20241112164748430
+ioPrjUpload: AALLLL
+ioResult: Uploaded code tiddlers: [[startup-getCode]]
+modified: 20241118063108206
 tags: Apps startup
 title: startup
 type: text/vnd.tiddlywiki
@@ -12,7 +14,9 @@ type: text/vnd.tiddlywiki
 |''startup project always loads''|
 | ''and is first!'' |
 
-Tag Code tiddlers `$:/pocket-io/tabs/startup` to add to project.
+{{||$:/pocket-io/uploadCode}}
+
+Tag Code tiddlers {{$:/pocket-io/tabs/startup||$:/core/ui/TagTemplate}}  to add to this project.
 
 <<tabs "[tag[$:/pocket-io/tabs/startup]]" "" "$:/state/pocket-io/tabs/startup" "tc-horizontal">>
 

@@ -1,11 +1,7 @@
 created: 20241112191809094
-modified: 20241113164102806
+modified: 20241118071701951
 tags: writeup pocket-io
 title: pocket-io-helpers writeup
 type: text/vnd.tiddlywiki
 
 Tiddler Helpers for transport on the network
-
-stringifyTiddler() Given a string - makes into a tiddler that is stringified
-
-parseTiddlers() Given a JSON string of tiddler(s) - makes JS array of tiddlers

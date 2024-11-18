@@ -5,13 +5,13 @@ function projectCreate(socket, msg) {
 	senderTid.ioResult = '';
 
 	var project = senderTid.ioPrjProject;
-	var codeName = senderTid.ioPrjCodename;
+	var tabName = senderTid.ioPrjTabName;
 
 	if ($cw.wiki.tiddlerExists(`${project}`)) {
-		senderTid.ioResult = `Project '${project}' already exists in $code wiki.`;
+		senderTid.ioResult = `Project '[[${project}]]' @@already exists!@@`;
 	}
-	if ($cw.wiki.tiddlerExists(`${project}-${codeName}`)) {
-		senderTid.ioResult = `Function '${project}-${codeName}' already exists in $code wiki.`;
+	if ($cw.wiki.tiddlerExists(`${project}-${tabName}`)) {
+		senderTid.ioResult = `Project tab '[[${project}-${tabName}]]' @@already exists!@@`;
 	}
 
 	// Return error

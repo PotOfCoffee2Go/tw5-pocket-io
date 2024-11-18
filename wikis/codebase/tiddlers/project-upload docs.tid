@@ -1,0 +1,10 @@
+caption: upload
+created: 20241117095830661
+fn: project-upload
+modified: 20241117095830661
+tags: Docs project
+title: project-upload docs
+type: text/vnd.tiddlywiki
+writeup: project-upload writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

@@ -1,4 +1,4 @@
-// Load tiddlers to $data database
+// Copy tiddlers from web client to $data database wiki 
 function setData(socket, msg) {
 	var senderTid = cpy(msg.senderTiddler);
 	senderTid.ioResult = '';

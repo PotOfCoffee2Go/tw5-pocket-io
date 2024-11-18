@@ -1,5 +1,11 @@
 function badMsg(socket, msg, errText) {
-	log(hue(errText),9);
+	var senderTid = cpy(msg.senderTiddler);
+	senderTid.ioResult = errText;
+
+	log(hue(errText,9));
+	rt.displayPrompt();
+
+	msg.resultTiddlers.push(senderTid);
 	return msg;
 }
 
