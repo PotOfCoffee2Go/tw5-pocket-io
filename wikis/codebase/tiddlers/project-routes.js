@@ -11,5 +11,5 @@ router.get('/codebase/tiddlers/:filter', (req, res) => {
 router.get('/loopback/:command', (req, res) => {
   var { command } = req.params;
   res.set('content-type', 'text/plain');
-  res.send(`You said: ${command}\n`);
+  res.send(`You said: ${command}`);
 });

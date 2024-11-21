@@ -1,7 +1,7 @@
 caption: pocket-io
 created: 20241112191809093
 fn: pocket-io
-modified: 20241112191809093
+modified: 20241119053824687
 tags: Appdocs pocket-io
 title: pocket-io docs
 type: text/vnd.tiddlywiki
@@ -10,11 +10,22 @@ writeup: pocket-io writeup
 <h2 style="text-align: center;">{{!!caption}}</h2>
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-replcmd getApp('&#91;&#91;{{!!fn}}&#93;&#93;')@@|
-
-|tc-center tc-table-no-border|k
 |Project: <$link to={{!!fn}}> {{!!fn}} </$link> | Writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
 
 <$transclude $tiddler={{!!writeup}} />
 
-<<tabs "[tag[$:/pocket-io/tabs/pocket-io]addsuffix[ docs]]" "" "$:/state/pocket-io/tabs/pocket-io">>
+<$button style="float:right;margin-top: .6em;">
+<$action-setfield $tiddler="$:/state/pocket-io/tabs/pocket-io-docs--268111516" text=""/>
+Close
+</$button> 
+<<tabs "[tag[$:/pocket-io/code/pocket-io]addsuffix[ docs]]" "" "$:/state/pocket-io/tabs/pocket-io-docs">>
+
+Associated tiddlers:
+
+[[tw5-pocket-io-network.js.tid]] resides in ''./public/tw5-pocket-io-network.js.tid''. Import into a wiki and the wiki will then have access to TW5-pocket-io.
+
+[[Pocket.io Basic Example]] sends a test message to the server. [[Pocket.io Example]] shows getting data from the $Data wiki database.
+
+[[$:/pocket-io/ioResult-template]] is a template used to format the display of server result messages.
+
+<hr class="poc2go-hr">

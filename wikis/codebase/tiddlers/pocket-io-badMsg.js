@@ -1,12 +1,13 @@
 function badMsg(socket, msg, errText) {
-	var senderTid = cpy(msg.senderTiddler);
-	senderTid.ioResult = errText;
+ var senderTid = cpy(msg.senderTiddler);
+ senderTid.ioResult = errText;
 
-	log(hue(errText,9));
-	rt.displayPrompt();
+ log(hue(errText,9));
+ rt.displayPrompt();
 
-	msg.resultTiddlers.push(senderTid);
-	return msg;
+ senderTid.ioResult = formatIoResult(errText);
+ msg.resultTiddlers = [senderTid];
+ return msg;
 }
 
 topics.badMsg = badMsg;

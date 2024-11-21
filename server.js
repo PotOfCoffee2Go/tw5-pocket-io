@@ -157,7 +157,7 @@ function replTwBoot() {
 // Load the javascript code from $Code wiki
 function getApps() {
 	// 'startup project' loads first
-	var appFilter = '[tag[$:/pocket-io/tabs/startup]]';
+	var appFilter = '[tag[$:/pocket-io/code/startup]]';
 
 	// The rest of the projects with 'autoLoad field === 'yes'
 	var	filter = '[tag[Apps]]';
@@ -165,7 +165,7 @@ function getApps() {
 		if (title !== 'startup') {
 			var appTid = $cw.wiki.getTiddler(title);
 			if (appTid && appTid.fields && appTid.fields.autoLoad === 'yes') {
-				appFilter += `[tag[$:/pocket-io/tabs/${title}]]`;
+				appFilter += `[tag[$:/pocket-io/code/${title}]]`;
 			}
 		}
 	})

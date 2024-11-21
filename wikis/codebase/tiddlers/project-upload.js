@@ -1,22 +1,21 @@
 // Upload code to server
 function projectUpload(socket, msg) {
-	var senderTid = cpy(msg.senderTiddler);
-	senderTid.ioResult = '';
-	if (!/^\[/.test(senderTid.ioPrjUpload)) {
-		senderTid.ioPrjUpload = `[[${senderTid.ioPrjUpload}]]`;
-	}
+ var senderTid = cpy(msg.senderTiddler);
+ senderTid.ioResult = '';
 
-	var titles = [];
-	$cw.wiki.filterTiddlers(senderTid.ioPrjUpload).forEach(title => {
-		var codeTid = `[[${title}]]`;
-		getCode(codeTid);
-		titles.push(codeTid);
-	})
+ var project = senderTid.title;
+ var tabName = senderTid.ioPrjTabSelected;
 
-	senderTid.ioResult = `Uploaded code tiddlers: ${titles.join(', ')}`;
-	senderTid.ioPrjUpload = stripBrackets(senderTid.ioPrjUpload);
-	msg.resultTiddlers.push(senderTid);
-	return msg;
+ if (tabName === 'AALLLL') {
+  tabName = `[tag[$:/pocket-io/code/${project}]]`;
+ }
+ if (!/^\[/.test(tabName)) {
+  tabName = `[[${tabName}]]`;
+ }
+
+ senderTid.ioResult = formatIoResult(getCode(tabName));
+ msg.resultTiddlers.push(senderTid);
+ return msg;
 }
 
 topics.projectUpload = projectUpload;

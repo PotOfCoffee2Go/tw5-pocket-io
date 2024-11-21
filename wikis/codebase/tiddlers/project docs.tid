@@ -1,7 +1,7 @@
 caption: project
 created: 20241110230314555
 fn: project
-modified: 20241113235602221
+modified: 20241119053901580
 tags: Appdocs project
 title: project docs
 type: text/vnd.tiddlywiki
@@ -10,11 +10,22 @@ writeup: project writeup
 <h2 style="text-align: center;">{{!!caption}}</h2>
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-replcmd getApp('&#91;&#91;{{!!fn}}&#93;&#93;')@@|
-
-|tc-center tc-table-no-border|k
 |Project: <$link to={{!!fn}}> {{!!fn}} </$link> | Writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
 
 <$transclude $tiddler={{!!writeup}} />
 
-<<tabs "[tag[$:/pocket-io/tabs/project]addsuffix[ docs]]" "" "$:/state/pocket-io/tabs/project">>
+<$button style="float:right;margin-top: .6em;">
+<$action-setfield $tiddler="$:/state/pocket-io/tabs/project-docs--859542676" text=""/>
+Close
+</$button>
+<<tabs "[tag[$:/pocket-io/code/project]addsuffix[ docs]]" "" "$:/state/pocket-io/tabs/project-docs">>
+
+Associated tiddlers:
+
+[[Project Example]]
+
+[[new-function.json]]
+
+[[new-project.json]]
+
+<hr class="poc2go-hr">

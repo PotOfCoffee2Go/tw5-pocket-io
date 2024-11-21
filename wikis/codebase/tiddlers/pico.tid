@@ -1,5 +1,9 @@
 created: 20241110230111979
-modified: 20241112164422936
+ioConfirmDelete: no
+ioPrjTabSelected: pico-blinky
+ioPrjTabToDelete: pico-helpers
+ioResult: 
+modified: 20241121040318844
 tags: Apps pico
 title: pico
 type: text/vnd.tiddlywiki
@@ -7,17 +11,19 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |@@.poc2go-replcmd Documentation: [[pico docs]] @@|
 
-|tc-center tc-table-no-border|k
-| See [[Kaluma project|kaluma]] for |
-| auto load on startup. |
+{{||$:/pocket-io/project/autosave-template}}
 
-See [[pico docs]] for documentation. See [[kaluma docs]] for setup instructions required to interface to a Pico plugged into a USB port on the server.
+{{||$:/pocket-io/project/upload-template}}
+{{||$:/pocket-io/project/newtab-template}}
+{{||$:/pocket-io/project/delete-template}}
 
-Code tiddlers tagged with `$:/pocket-io/tabs/pico` are loaded to the pico.
+{{!!ioResult}}
 
+<hr class="poc2go-hr">
+
+{{$:/pocket-io/tabs/pico||$:/core/ui/TagTemplate}}
+
+<$button class="poc2go-tabs-close">
+<$action-setfield $tiddler="$:/state/pocket-io/tabs/pico--1887475854" text=""/> Close </$button>
 <<tabs "[tag[$:/pocket-io/tabs/pico]]" "" "$:/state/pocket-io/tabs/pico" "tc-horizontal">>
-
-The [[Kaluma|kaluma]] project is used to flash the code into the Pico. Code tiddlers tagged with `$:/pocket-io/tabs/kaluma` run on the server. Kaluma code is also shown below.
-
-<<tabs "[tag[$:/pocket-io/tabs/kaluma]]" "" "$:/state/pocket-io/tabs/kaluma" "tc-horizontal">>
 

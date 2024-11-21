@@ -1,7 +1,7 @@
 caption: kaluma
 created: 20241111211009444
 fn: kaluma
-modified: 20241112175742394
+modified: 20241119062708648
 tags: Appdocs kaluma
 title: kaluma docs
 type: text/vnd.tiddlywiki
@@ -17,4 +17,8 @@ writeup: kaluma writeup
 
 <$transclude $tiddler={{!!writeup}} />
 
-<<tabs "[tag[$:/pocket-io/tabs/kaluma]addsuffix[ docs]]" "" "$:/state/pocket-io/tabs/kaluma">>
+<$button style="float:right;margin-top: .6em;">
+<$action-setfield $tiddler="$:/state/pocket-io/tabs/kaluma-docs-573787018" text=""/>
+Close
+</$button>
+<<tabs "[tag[$:/pocket-io/code/kaluma]addsuffix[ docs]]" "" "$:/state/pocket-io/tabs/kaluma-docs">>

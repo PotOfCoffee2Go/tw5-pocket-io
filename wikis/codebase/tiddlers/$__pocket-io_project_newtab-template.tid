@@ -1,0 +1,21 @@
+created: 20241120053726893
+modified: 20241120200807234
+tags: template project
+title: $:/pocket-io/project/newtab-template
+type: text/vnd.tiddlywiki
+
+\define submitNewTab()
+<$macrocall $name=pocket command=emit topic="projectUpdate" sender=$(currentTiddler)$ />
+<$action-sendmessage $message="tm-server-refresh"/>
+\end
+
+\define newTabButton()
+<$button actions="<<submitNewTab>>"> New Tab </$button>
+\end
+
+\define newTabEditBox()
+<$edit-text field="ioPrjTabName" class="tid-input"/>
+\end
+
+|tc-center tc-table-no-border|k
+|<<newTabButton>> |<<newTabEditBox>> |

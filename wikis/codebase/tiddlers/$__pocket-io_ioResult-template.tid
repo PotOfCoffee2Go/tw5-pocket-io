@@ -1,0 +1,12 @@
+created: 20241118160926827
+modified: 20241118184947886
+tags: pocket-io tiddler
+title: $:/pocket-io/ioResult-template
+type: text/vnd.tiddlywiki
+
+<div style="border: 1px solid;border-radius: 16px; padding-left: 1em;">
+
+<$button actions='<$action-setfield $field="ioResult" $value="" />' style="float:right;margin-right:1em;"> close </$button>
+$$$text$$$
+
+</div>

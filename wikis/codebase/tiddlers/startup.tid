@@ -1,8 +1,9 @@
 autoLoad: yes
 created: 20241111150158121
-ioPrjUpload: AALLLL
-ioResult: Uploaded code tiddlers: [[startup-getCode]]
-modified: 20241118063108206
+ioPrjTabSelected: startup-helpers
+ioPrjUpload: startup-getApp
+ioResult: 
+modified: 20241121032438711
 tags: Apps startup
 title: startup
 type: text/vnd.tiddlywiki
@@ -11,12 +12,19 @@ type: text/vnd.tiddlywiki
 |@@.poc2go-replcmd Documentation: [[startup docs]] @@|
 
 |tc-center tc-table-no-border|k
-|''startup project always loads''|
+|''startup always loads''|
 | ''and is first!'' |
 
-{{||$:/pocket-io/uploadCode}}
+{{||$:/pocket-io/project/upload-template}}
+{{||$:/pocket-io/project/newtab-template}}
 
-Tag Code tiddlers {{$:/pocket-io/tabs/startup||$:/core/ui/TagTemplate}}  to add to this project.
+{{!!ioResult}}
 
-<<tabs "[tag[$:/pocket-io/tabs/startup]]" "" "$:/state/pocket-io/tabs/startup" "tc-horizontal">>
+<hr class="poc2go-hr">
+
+{{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}}
+
+<$button class="poc2go-tabs-close">
+<$action-setfield $tiddler="$:/state/pocket-io/code/startup--727332778" text=""/> Close </$button>
+<<tabs "[tag[$:/pocket-io/code/startup]]" "" "$:/state/pocket-io/code/startup" "tc-horizontal">>
 

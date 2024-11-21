@@ -1,0 +1,10 @@
+created: 20241118181004932
+ioResult: 
+modified: 20241118193811833
+tags: example pocket-io
+title: Pocket.io Basic Example
+type: text/vnd.tiddlywiki
+
+<$button actions=<<pocket-io 'testMsg'>> >test</$button>
+
+{{!!ioResult}}

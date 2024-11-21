@@ -1,8 +1,11 @@
 autoLoad: yes
 created: 20240101000000000
-ioPrjUpload: AALLLL
-ioResult: Upload code tiddlers: [[project-helpers]]
-modified: 20241118065545395
+ioConfirmDelete: no
+ioPrjProject: project
+ioPrjTabName: 
+ioPrjTabSelected: project-create
+ioResult: 
+modified: 20241121032109814
 tags: Apps project
 title: project
 type: text/vnd.tiddlywiki
@@ -10,25 +13,17 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |@@.poc2go-replcmd Documentation: [[project docs]] @@|
 
-|tc-center tc-table-no-border|k
-|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+{{||$:/pocket-io/project/autosave-template}}
+{{||$:/pocket-io/project/upload-template}}
 
-{{||$:/pocket-io/uploadCode}}
+{{!!ioResult}}
 
-Associated tiddlers:
+<hr class="poc2go-hr">
 
-<$button style="float:right;margin-top: .6em;">
-<$action-setfield $tiddler="$:/state/pocket-io/tabs/project-json--569430170" text=""/>
-Close
-</$button>
-<<tabs "[[Project Example]][tag[project]tag[json]]" "" "$:/state/pocket-io/tabs/project-json" "tc-horizontal">>
+{{$:/pocket-io/code/project||$:/core/ui/TagTemplate}}
 
-|tc-center|k
-|Tag Code tiddlers {{$:/pocket-io/tabs/project||$:/core/ui/TagTemplate}} to add to this project. |
-
-<$button style="float:right;margin-top: .6em;">
-<$action-setfield $tiddler="$:/state/pocket-io/tabs/project--569430170" text=""/>
-Close
-</$button>
-<<tabs "[tag[$:/pocket-io/tabs/project]]" "" "$:/state/pocket-io/tabs/project" "tc-horizontal">>
+<$button class="poc2go-tabs-close">
+<$action-setfield $tiddler="$:/state/pocket-io/code/project--569430170"
+ text=""/> Close </$button>
+<<tabs "[tag[$:/pocket-io/code/project]]" "" "$:/state/pocket-io/code/project" "tc-horizontal">>
 

@@ -40,3 +40,14 @@ summary::marker {
 .poc2go-url {
   width: 50%;
 }
+.poc2go-hr {
+  opacity: .6;
+}
+.poc2go-delete-confirm {
+  padding: 0 0.6em 0 0.6em;
+  border: 1px solid red;
+}
+.poc2go-tabs-close {
+  float:right;
+  margin-top: .6em;
+}

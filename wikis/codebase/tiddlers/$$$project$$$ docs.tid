@@ -1,0 +1,27 @@
+caption: $$$project$$$
+created: 20241110230314555
+fn: $$$project$$$
+modified: 20241120231034953
+tags: Appdocs $$$project$$$
+title: $$$project$$$ docs
+type: text/vnd.tiddlywiki
+writeup: $$$project$$$ writeup
+
+<h2 style="text-align: center;">{{!!caption}}</h2>
+
+|tc-center tc-table-no-border|k
+|Project: <$link to={{!!fn}}> {{!!fn}} </$link> | Writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
+
+<$transclude $tiddler={{!!writeup}} />
+
+{{$:/pocket-io/code/$$$project$$$/docs||$:/core/ui/TagTemplate}}
+
+<$button style="float:right;margin-top: .6em;">
+<$action-setfield $tiddler="$:/state/pocket-io/code/$$$project$$$/docs--1417213376" text=""/>
+Close
+</$button>
+<<tabs "[tag[$:/pocket-io/code/$$$project$$$/docs]]" "" "$:/state/pocket-io/code/$$$project$$$/docs">>
+
+Associated tiddlers:
+
+<hr class="poc2go-hr">

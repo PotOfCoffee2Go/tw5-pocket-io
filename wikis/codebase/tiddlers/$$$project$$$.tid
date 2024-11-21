@@ -1,0 +1,34 @@
+autoLoad: no
+created: 20241120105017114
+ioConfirmDelete: no
+ioPrjProject: $$$project$$$
+ioPrjTabSelected: $$$project$$$-$$$helpers$$$
+ioPrjTabToDelete: $$$project$$$-$$$helpers$$$
+ioResult: 
+modified: 20241121040026260
+tags: Apps $$$project$$$
+title: $$$project$$$
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-replcmd Documentation: [[$$$project$$$ docs]] @@|
+
+{{||$:/pocket-io/project/autosave-template}}
+{{||$:/pocket-io/project/upload-template}}
+{{||$:/pocket-io/project/newtab-template}}
+{{||$:/pocket-io/project/delete-template}}
+
+{{!!ioResult}}
+
+<hr class="poc2go-hr">
+
+{{$:/pocket-io/code/$$$project$$$||$:/core/ui/TagTemplate}}
+
+<$button class="poc2go-tabs-close">
+<$action-setfield
+$tiddler="$:/state/pocket-io/code/$$$project$$$-966113230" text=""/>
+Close
+</$button>
+
+<<tabs "[tag[$:/pocket-io/code/$$$project$$$]]" ""
+"$:/state/pocket-io/code/$$$project$$$" "tc-horizontal">>

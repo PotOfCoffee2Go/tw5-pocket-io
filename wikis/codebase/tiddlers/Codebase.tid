@@ -1,15 +1,12 @@
 created: 20240914113910483
-modified: 20241113032339653
+modified: 20241121043037236
 tags: 
 title: Codebase
 type: text/vnd.tiddlywiki
 
 <style>.cols3{column-count:3}</style>
 
-[[$Data wiki|http://localhost:8083/]]  [[Pocket-io Client|http://localhost:3000/]]
-
 <details><summary>Manuals</summary>
-
 
 <h4> [[Introduction|Introduction Manual]] </h4>
 Summary of writing functions to be run by the server.
@@ -27,14 +24,19 @@ Different places to provide code documentation
 
 ---
 
-<div style="text-align: center;">Projects</div>
+|tc-center tc-table-no-border|k
+|@@.poc2go-replcmd Projects @@|
 
----
+{{||$:/pocket-io/project/create-template}}
 
-<<list-links filter:"[tag[Apps]]" class:"cols3">>
+<hr class="poc2go-hr">
+
+<<list-links filter:"[tag[Apps]] -[[$$$project$$$]]" class:"cols3">>
 
 !!!! Set to Auto Load on Startup :
 
 <<list-links filter:"[autoLoad[yes]]" class:"cols3">>
+
+!!!! Create project template: [[$$$project$$$]]
 
 ---

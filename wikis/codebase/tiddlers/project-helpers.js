@@ -1,1 +1,1 @@
-var stripBrackets = (txt) => txt.replace(/^\[\[/,'').replace(/\]\]$/, '');
+// Code goes here

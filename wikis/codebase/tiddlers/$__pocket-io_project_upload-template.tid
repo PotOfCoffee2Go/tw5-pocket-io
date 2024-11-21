@@ -1,0 +1,21 @@
+created: 20240101000000000
+modified: 20241121032955585
+tags: template project
+title: $:/pocket-io/project/upload-template
+type: text/vnd.tiddlywiki
+
+\define submitUpload()
+<$macrocall $name=pocket command=emit topic="projectUpload" sender=$(currentTiddler)$ />
+<$action-sendmessage $message="tm-server-refresh"/>
+\end
+
+\define uploadButton()
+<$button actions="<<submitUpload>>"> Upload </$button>
+\end
+
+\define tabSelect()
+<$select field="ioPrjTabSelected" default="AALLLL"><option value="AALLLL" >All</option><$list filter="[tag{!!title}tag[tab]]"><option value={{!!title}} ><$view field='caption'/></option></$list></$select>
+\end
+
+|tc-center tc-table-no-border|k
+|<<uploadButton>> |<<tabSelect>> |

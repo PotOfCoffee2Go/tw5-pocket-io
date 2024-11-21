@@ -1,0 +1,10 @@
+caption: $$$helpers$$$
+created: 20241120225208225
+fn: $$$project$$$-$$$helpers$$$
+modified: 20241120230651510
+tags: Docs $$$project$$$ $:/pocket-io/code/$$$project$$$/docs
+title: $$$project$$$-$$$helpers$$$ docs
+type: text/vnd.tiddlywiki
+writeup: $$$project$$$-$$$helpers$$$ writeup
+
+<$transclude $tiddler="$:/poc2go/docs-inline-template"/>

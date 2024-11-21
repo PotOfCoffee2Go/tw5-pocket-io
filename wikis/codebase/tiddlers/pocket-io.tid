@@ -1,11 +1,10 @@
 autoLoad: yes
 created: 20241112191809092
-ioFilter: pocket-io-getData
-ioPrjUpload: pocket-io-badMsg
-ioResult: Uploaded code tiddlers: [[pocket-io-badMsg]]
-ioTopic: getData
-ioTostory: yes
-modified: 20241118065931275
+ioConfirmDelete: no
+ioPrjTabSelected: pocket-io-getData
+ioPrjUpload: pocket-io-pocket.io
+ioResult: 
+modified: 20241121040347587
 tags: Apps pocket-io
 title: pocket-io
 type: text/vnd.tiddlywiki
@@ -13,25 +12,17 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |@@.poc2go-replcmd Documentation: [[pocket-io docs]] @@|
 
-|tc-center tc-table-no-border|k
-|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+{{||$:/pocket-io/project/autosave-template}}
+{{||$:/pocket-io/project/upload-template}}
+{{||$:/pocket-io/project/newtab-template}}
 
-{{||$:/pocket-io/uploadCode}}
+{{!!ioResult}}
 
-Associated tiddlers:
+<hr class="poc2go-hr">
 
-[[tw5-pocket-io-network.js.tid]] resides in ''./public/tw5-pocket-io-network.js.tid''. Import into a wiki and the wiki will then have access to TW5-pocket-io.
+{{$:/pocket-io/code/pocket-io||$:/core/ui/TagTemplate}}
 
-The [[Pocket.io Example]] shows getting data from the http://localhost:8083 $Data wiki database.
-
----
-
-|tc-center|k
-|Tag Code tiddlers {{$:/pocket-io/tabs/pocket-io||$:/core/ui/TagTemplate}}  to add to project. |
-
-<$button style="float:right;margin-top: .6em;">
-<$action-setfield $tiddler="$:/state/pocket-io/tabs/pocket-io-760107862" text=""/>
-Close
-</$button> 
-<<tabs "[tag[$:/pocket-io/tabs/pocket-io]]" "" "$:/state/pocket-io/tabs/pocket-io" "tc-horizontal">>
+<$button class="poc2go-tabs-close">
+<$action-setfield $tiddler="$:/state/pocket-io/code/pocket-io-760107862" text=""/>Close</$button> 
+<<tabs "[tag[$:/pocket-io/code/pocket-io]]" "" "$:/state/pocket-io/code/pocket-io" "tc-horizontal">>
 
