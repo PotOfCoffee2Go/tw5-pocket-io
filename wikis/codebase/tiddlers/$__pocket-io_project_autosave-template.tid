@@ -1,9 +1,0 @@
-created: 20241119042245123
-modified: 20241119045357157
-tags: project template
-title: $:/pocket-io/project/autosave-template
-type: text/vnd.tiddlywiki
-
-|tc-center tc-table-no-border|k
-|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
-

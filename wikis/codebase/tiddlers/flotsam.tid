@@ -1,0 +1,34 @@
+autoLoad: no
+created: 20241121182116624
+ioConfirmDelete: no
+ioPrjProject: flotsam
+ioPrjTabName: tagData
+ioPrjTabSelected: AALLLL
+ioPrjTabToDelete: flotsam-commander
+ioResult: 
+modified: 20241121182656593
+tags: Apps flotsam
+title: flotsam
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-replcmd Documentation: [[flotsam docs]] @@|
+
+{{||$:/pocket-io/project/autoload-template}}
+{{||$:/pocket-io/project/upload-template}}
+{{||$:/pocket-io/project/newtab-template}}
+{{||$:/pocket-io/project/delete-template}}
+
+{{!!ioResult}}
+
+<hr class="poc2go-hr">
+
+{{$:/pocket-io/code/flotsam||$:/core/ui/TagTemplate}}
+
+<$button class="poc2go-tabs-close">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/flotsam">> text=""/>
+Close
+</$button>
+
+<<tabs "[tag[$:/pocket-io/code/flotsam]]" ""
+"$:/state/tab/pocket-io/code/flotsam" "tc-horizontal">>

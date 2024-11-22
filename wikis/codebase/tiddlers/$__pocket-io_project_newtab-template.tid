@@ -1,6 +1,7 @@
+caption: newtab
 created: 20241120053726893
-modified: 20241120200807234
-tags: template project
+modified: 20241122022737729
+tags: template project $:/pocket-io/template/project
 title: $:/pocket-io/project/newtab-template
 type: text/vnd.tiddlywiki
 
@@ -10,7 +11,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define newTabButton()
-<$button actions="<<submitNewTab>>"> New Tab </$button>
+<$button actions="<<submitNewTab>>"> New code tab </$button>
 \end
 
 \define newTabEditBox()

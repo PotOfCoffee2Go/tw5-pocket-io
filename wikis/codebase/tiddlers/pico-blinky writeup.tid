@@ -1,7 +1,0 @@
-created: 20241110234551256
-modified: 20241111000805773
-tags: writeup pico
-title: pico-blinky writeup
-type: text/vnd.tiddlywiki
-
-Have the on-board LED blink the given number of milliseconds.

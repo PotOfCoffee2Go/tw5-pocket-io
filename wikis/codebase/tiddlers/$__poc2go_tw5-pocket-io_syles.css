@@ -42,6 +42,7 @@ summary::marker {
 }
 .poc2go-hr {
   opacity: .6;
+  margin: 0 10% 0 10%;
 }
 .poc2go-delete-confirm {
   padding: 0 0.6em 0 0.6em;

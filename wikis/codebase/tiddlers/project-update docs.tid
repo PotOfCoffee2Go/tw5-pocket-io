@@ -1,10 +1,10 @@
 caption: update
+codetitle: project-update
 created: 20241111044411117
-fn: project-update
-modified: 20241112150029975
-tags: Docs project
+modified: 20241122010446133
+tags: Docs project $:/pocket-io/code/project/docs
 title: project-update docs
 type: text/vnd.tiddlywiki
 writeup: project-update writeup
 
-<$transclude $tiddler="$:/poc2go/docs-inline-template"/>
+{{||$:/pocket-io/project/tabdocs-template}}

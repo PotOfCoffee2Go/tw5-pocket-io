@@ -4,7 +4,7 @@ ioConfirmDelete: no
 ioPrjTabSelected: pocket-io-getData
 ioPrjUpload: pocket-io-pocket.io
 ioResult: 
-modified: 20241121040347587
+modified: 20241121171148628
 tags: Apps pocket-io
 title: pocket-io
 type: text/vnd.tiddlywiki
@@ -12,7 +12,7 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |@@.poc2go-replcmd Documentation: [[pocket-io docs]] @@|
 
-{{||$:/pocket-io/project/autosave-template}}
+{{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}
 {{||$:/pocket-io/project/newtab-template}}
 
@@ -23,6 +23,6 @@ type: text/vnd.tiddlywiki
 {{$:/pocket-io/code/pocket-io||$:/core/ui/TagTemplate}}
 
 <$button class="poc2go-tabs-close">
-<$action-setfield $tiddler="$:/state/pocket-io/code/pocket-io-760107862" text=""/>Close</$button> 
-<<tabs "[tag[$:/pocket-io/code/pocket-io]]" "" "$:/state/pocket-io/code/pocket-io" "tc-horizontal">>
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/pocket-io">> text=""/>Close</$button> 
+<<tabs "[tag[$:/pocket-io/code/pocket-io]]" "" "$:/state/tab/pocket-io/code/pocket-io" "tc-horizontal">>
 

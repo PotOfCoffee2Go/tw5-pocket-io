@@ -1,21 +1,26 @@
 caption: startup
 created: 20241111150158121
-fn: startup
-modified: 20241119061016405
+modified: 20241122013133683
+project: startup
 tags: Appdocs startup
 title: startup docs
 type: text/vnd.tiddlywiki
 writeup: startup writeup
 
-<h2 style="text-align: center;">{{!!caption}}</h2>
-
-|tc-center tc-table-no-border|k
-|Project: <$link to={{!!fn}}> {{!!fn}} </$link> | Writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
-
-<$transclude $tiddler={{!!writeup}} />
-
+\define closeTabsButton()
 <$button style="float:right;margin-top: .6em;">
-<$action-setfield $tiddler="$:/state/pocket-io/tabs/startup-docs--704886876" text=""/>
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/docs/startup">> text=""/>
 Close
 </$button>
-<<tabs "[tag[$:/pocket-io/code/startup]addsuffix[ docs]]" "" "$:/state/pocket-io/tabs/startup-docs">>
+\end
+
+{{||$:/pocket-io/project/docs-template}}
+
+{{$:/pocket-io/code/startup/docs||$:/core/ui/TagTemplate}}
+
+<<closeTabsButton>>
+<<tabs "[tag[$:/pocket-io/code/startup/docs]]" "" "$:/state/tab/pocket-io/docs/startup">>
+
+Associated tiddlers:
+
+<hr class="poc2go-hr">

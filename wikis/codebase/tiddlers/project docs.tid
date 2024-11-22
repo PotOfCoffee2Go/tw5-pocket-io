@@ -1,31 +1,40 @@
 caption: project
 created: 20241110230314555
-fn: project
-modified: 20241119053901580
+modified: 20241122011014154
+project: project
 tags: Appdocs project
 title: project docs
 type: text/vnd.tiddlywiki
 writeup: project writeup
 
-<h2 style="text-align: center;">{{!!caption}}</h2>
-
-|tc-center tc-table-no-border|k
-|Project: <$link to={{!!fn}}> {{!!fn}} </$link> | Writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
-
-<$transclude $tiddler={{!!writeup}} />
-
+\define closeTabsButton()
 <$button style="float:right;margin-top: .6em;">
-<$action-setfield $tiddler="$:/state/pocket-io/tabs/project-docs--859542676" text=""/>
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/docs/project">> text=""/>
 Close
 </$button>
-<<tabs "[tag[$:/pocket-io/code/project]addsuffix[ docs]]" "" "$:/state/pocket-io/tabs/project-docs">>
+\end
 
-Associated tiddlers:
+\define closeTemplateTabsButton()
+<$button style="float:right;margin-top: .6em;">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/template/project">> text=""/>
+Close
+</$button>
+\end
 
-[[Project Example]]
+{{||$:/pocket-io/project/docs-template}}
 
-[[new-function.json]]
+{{$:/pocket-io/code/project/docs||$:/core/ui/TagTemplate}}
 
-[[new-project.json]]
+<<closeTabsButton>>
+<<tabs "[tag[$:/pocket-io/code/project/docs]]" "" "$:/state/tab/pocket-io/docs/project">>
+
+!!! Associated tiddlers:
+
+!!!! Templates
+
+{{$:/pocket-io/template/project||$:/core/ui/TagTemplate}}
+
+<<closeTemplateTabsButton>>
+<<tabs "[tag[$:/pocket-io/template/project]]" "" "$:/state/tab/pocket-io/template/project">>
 
 <hr class="poc2go-hr">

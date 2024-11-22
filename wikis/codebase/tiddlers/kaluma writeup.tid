@@ -1,7 +1,0 @@
-created: 20241111211009444
-modified: 20241112011349502
-tags: writeup kaluma
-title: kaluma writeup
-type: text/vnd.tiddlywiki
-
-[[Kaluma|https://kalumajs.org/docs]] is used to interface to the [[Raspberry Pi Pico or Pico 2|https://datasheets.raspberrypi.com/pico/pico-2-product-brief.pdf]]. Instead of programming the Pico in MicroPython or C; Kaluma uses JavaScript.

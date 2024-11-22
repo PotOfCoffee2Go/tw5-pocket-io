@@ -1,5 +1,8 @@
 created: 20240914113910483
-modified: 20241121043037236
+ioPrjProject: test5
+ioPrjTabName: yyyy
+ioResult: 
+modified: 20241122020745550
 tags: 
 title: Codebase
 type: text/vnd.tiddlywiki
@@ -22,18 +25,22 @@ Different places to provide code documentation
 
 </details>
 
----
+<hr class="poc2go-hr">
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-replcmd Projects @@|
 
+<hr class="poc2go-hr">
+
 {{||$:/pocket-io/project/create-template}}
 
-<hr class="poc2go-hr">
+<div style="margin-top: 0.6em; border: 1px solid; border-radius: 10px;">
 
 <<list-links filter:"[tag[Apps]] -[[$$$project$$$]]" class:"cols3">>
 
-!!!! Set to Auto Load on Startup :
+</div>
+
+!!!! Auto Load on Startup :
 
 <<list-links filter:"[autoLoad[yes]]" class:"cols3">>
 

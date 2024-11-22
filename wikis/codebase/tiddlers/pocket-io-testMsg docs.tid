@@ -1,10 +1,10 @@
 caption: testMsg
+codetitle: pocket-io-testMsg
 created: 20241114203914138
-fn: pocket-io-testMsg
-modified: 20241115040001228
-tags: Docs pocket-io
+modified: 20241122004349925
+tags: Docs pocket-io $:/pocket-io/code/pocket-io/docs
 title: pocket-io-testMsg docs
 type: text/vnd.tiddlywiki
 writeup: pocket-io-testMsg writeup
 
-<$transclude $tiddler="$:/poc2go/docs-inline-template"/>
+{{||$:/pocket-io/project/tabdocs-template}}

@@ -1,7 +1,0 @@
-created: 20240928023217933
-modified: 20241111012308982
-tags: writeup server
-title: fetch writeup
-type: text/vnd.tiddlywiki
-
-Requesting a URL returns the text or JSON of the response.

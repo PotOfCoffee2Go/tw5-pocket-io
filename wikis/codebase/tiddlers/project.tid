@@ -3,9 +3,9 @@ created: 20240101000000000
 ioConfirmDelete: no
 ioPrjProject: project
 ioPrjTabName: 
-ioPrjTabSelected: project-create
+ioPrjTabSelected: project-update
 ioResult: 
-modified: 20241121032109814
+modified: 20241122022053702
 tags: Apps project
 title: project
 type: text/vnd.tiddlywiki
@@ -13,7 +13,7 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |@@.poc2go-replcmd Documentation: [[project docs]] @@|
 
-{{||$:/pocket-io/project/autosave-template}}
+{{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}
 
 {{!!ioResult}}
@@ -23,7 +23,5 @@ type: text/vnd.tiddlywiki
 {{$:/pocket-io/code/project||$:/core/ui/TagTemplate}}
 
 <$button class="poc2go-tabs-close">
-<$action-setfield $tiddler="$:/state/pocket-io/code/project--569430170"
- text=""/> Close </$button>
-<<tabs "[tag[$:/pocket-io/code/project]]" "" "$:/state/pocket-io/code/project" "tc-horizontal">>
-
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/project">> text=""/> Close </$button>
+<<tabs "[tag[$:/pocket-io/code/project]]" "" "$:/state/tab/pocket-io/code/project" "tc-horizontal">>

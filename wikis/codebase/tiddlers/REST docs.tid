@@ -1,0 +1,26 @@
+caption: REST
+created: 20241121075506315
+modified: 20241122012056297
+project: REST
+tags: Appdocs REST
+title: REST docs
+type: text/vnd.tiddlywiki
+writeup: REST writeup
+
+\define closeTabsButton()
+<$button style="float:right;margin-top: .6em;">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/docs/REST">> text=""/>
+Close
+</$button>
+\end
+
+{{||$:/pocket-io/project/docs-template}}
+
+{{$:/pocket-io/code/REST/docs||$:/core/ui/TagTemplate}}
+
+<<closeTabsButton>>
+<<tabs "[tag[$:/pocket-io/code/REST/docs]]" "" "$:/state/tab/pocket-io/docs/REST">>
+
+Associated tiddlers:
+
+<hr class="poc2go-hr">

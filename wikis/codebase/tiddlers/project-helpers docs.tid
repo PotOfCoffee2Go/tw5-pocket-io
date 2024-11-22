@@ -1,10 +1,10 @@
 caption: helpers
+codetitle: project-helpers
 created: 20241118042520273
-fn: project-helpers
-modified: 20241118042520273
-tags: Docs project
+modified: 20241122010318252
+tags: Docs project $:/pocket-io/code/project/docs
 title: project-helpers docs
 type: text/vnd.tiddlywiki
 writeup: project-helpers writeup
 
-<$transclude $tiddler="$:/poc2go/docs-inline-template"/>
+{{||$:/pocket-io/project/tabdocs-template}}

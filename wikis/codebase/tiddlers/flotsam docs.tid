@@ -1,0 +1,26 @@
+caption: flotsam
+created: 20241121182116625
+modified: 20241122013219285
+project: flotsam
+tags: Appdocs flotsam
+title: flotsam docs
+type: text/vnd.tiddlywiki
+writeup: flotsam writeup
+
+\define closeTabsButton()
+<$button style="float:right;margin-top: .6em;">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/docs/flotsam">> text=""/>
+Close
+</$button>
+\end
+
+{{||$:/pocket-io/project/docs-template}}
+
+{{$:/pocket-io/code/flotsam/docs||$:/core/ui/TagTemplate}}
+
+<<closeTabsButton>>
+<<tabs "[tag[$:/pocket-io/code/flotsam/docs]]" "" "$:/state/tab/pocket-io/docs/flotsam">>
+
+Associated tiddlers:
+
+<hr class="poc2go-hr">

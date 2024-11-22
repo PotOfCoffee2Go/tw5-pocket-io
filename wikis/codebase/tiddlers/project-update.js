@@ -8,7 +8,7 @@ function projectFromFilter(filter, project, tabName) {
 	var json = $cw.wiki.getTiddlersAsJson(filter);
 	var text = json
 		.replace(/\$\$\$project\$\$\$/g, project)
-		.replace(/\$\$\$helpers\$\$\$/g, tabName);
+		.replace(/\$\$\$tab\$\$\$/g, tabName);
 	var tiddlers = $cw.wiki.deserializeTiddlers(null,text,
 		{title: 'unused'},
 		{deserializer: 'application/json'});
@@ -47,7 +47,7 @@ function projectUpdate(socket, msg) {
 
 	var filter;
 	if ($cw.wiki.tiddlerExists(project)) {
-		filter = '[prefix[$$$project$$$-$$$helpers$$$]]'; // Tab
+		filter = '[prefix[$$$project$$$-$$$tab$$$]]'; // Tab
 	} else {
 		filter = '[prefix[$$$project$$$]]'; // Project
 	}
@@ -59,4 +59,4 @@ function projectUpdate(socket, msg) {
 	return msg;
 }
 
-topics.projectUpdate = projectUpdate;
+$topics.projectUpdate = projectUpdate;

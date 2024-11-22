@@ -1,15 +1,25 @@
+caption: create
 created: 20241119044637337
-modified: 20241120114540215
-tags: project template
+modified: 20241121171828695
+tags: project template $:/pocket-io/template/project
 title: $:/pocket-io/project/create-template
 type: text/vnd.tiddlywiki
 
-\define createProject()
-<$action-setfield $field="ioPrjUpload" $value="[tag[project]tag[tab]]" />
+\define submitCreate()
 <$macrocall $name=pocket command=emit topic="projectCreate" sender=$(currentTiddler)$ />
+<$action-sendmessage $message="tm-server-refresh"/>
 \end
 
+\define createButton()
+<$button actions="<<submitCreate>>"> Create </$button>
+\end
+
+\define newTabEditBox()
+<$edit-text field="ioPrjTabName"/>
+\end
+
+
 |tc-center tc-table-no-border|k
-|<$button> New Project </$button> |<$edit-text field='ioPrjProject' class="tid-input"/> |
+| New Project |<$edit-text field="ioPrjProject"/> | With Tab |<<newTabEditBox>> |<<createButton>> |
 
 {{!!ioResult}}

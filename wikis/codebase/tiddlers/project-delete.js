@@ -1,51 +1,49 @@
 // Delete a project's code or a project completely
 function projectDelete(socket, msg) {
- var senderTid = cpy(msg.senderTiddler);
- senderTid.ioResult = '';
+	var senderTid = cpy(msg.senderTiddler);
+	senderTid.ioResult = '';
 
- var project = senderTid.title;
- var tabName = senderTid.ioPrjTabToDelete;
- var confirm = senderTid.ioConfirmDelete;
+	var project = senderTid.title;
+	var tabName = senderTid.ioPrjTabToDelete;
+	var confirm = senderTid.ioConfirmDelete;
 
- if (confirm !== 'yes') {
-  senderTid.ioResult = formatIoResult(`Must check the confirm checkbox to delete code tiddlers`);
-  senderTid.ioConfirmDelete = 'no';
-  msg.resultTiddlers.push(senderTid);
-  return msg;
- }
- senderTid.ioConfirmDelete = 'no';
+	if (confirm !== 'yes') {
+		senderTid.ioResult = formatIoResult(`Must check the confirm checkbox to delete code tiddlers`);
+		senderTid.ioConfirmDelete = 'no';
+		msg.resultTiddlers.push(senderTid);
+		return msg;
+	}
+	senderTid.ioConfirmDelete = 'no';
 
- if (!(project && tabName)) {
-  senderTid.ioResult = formatIoResult('A project and Tab name are required!');
-  msg.resultTiddlers.push(senderTid);
-  return msg;
- }
+	if (!(project && tabName)) {
+		senderTid.ioResult = formatIoResult('A project and Tab name are required!');
+		msg.resultTiddlers.push(senderTid);
+		return msg;
+	}
 
- var filter, action;
- if (tabName === 'AALLLL') {
-  filter = `[tag[${project}]]`;
-  action = `Delete project '${project}'.`;
- } else {
-  if (!$cw.wiki.tiddlerExists(`${tabName}`)) {
-   senderTid.ioResult =  formatIoResult(`Tab '${tabName}' does not exist.`);
-   msg.resultTiddlers.push(senderTid);
-   return msg;
-  }
-  filter = `[prefix[${tabName}]]`;
-  action = `Delete Tab '${tabName}'.`;
- }
+	var filter, action;
+	if (tabName === 'AALLLL') {
+		filter = `[tag[${project}]]`;
+		action = `Delete project '${project}'.`;
+	} else {
+		if (!$cw.wiki.tiddlerExists(`${tabName}`)) {
+			senderTid.ioResult =  formatIoResult(`Tab '${tabName}' does not exist.`);
+			msg.resultTiddlers.push(senderTid);
+			return msg;
+		}
+		filter = `[prefix[${tabName}]]`;
+		action = `Delete Tab '${tabName}'.`;
+	}
 
- var tidDeleted = [];
- $cw.wiki.filterTiddlers(filter).forEach(title => {
-  $cw.wiki.deleteTiddler(title);
-  tidDeleted.push(`${title}`);
- })
+	var tidDeleted = [];
+	$cw.wiki.filterTiddlers(filter).forEach(title => {
+		$cw.wiki.deleteTiddler(title);
+		tidDeleted.push(`${title}`);
+	})
 
- senderTid.ioResult = formatIoResult(`${action}
-
-Tiddlers deleted: ${tidDeleted.join(', ')}`);
- msg.resultTiddlers.push(senderTid);
- return msg;
+	senderTid.ioResult = formatIoResult(`${action}\n\nTiddlers deleted:\n\n${tidDeleted.join(', ')}`);
+	msg.resultTiddlers.push(senderTid);
+	return msg;
 }
 
-topics.projectDelete = projectDelete;
+$topics.projectDelete = projectDelete;

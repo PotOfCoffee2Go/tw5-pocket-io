@@ -1,10 +1,10 @@
 caption: delete
+codetitle: project-delete
 created: 20241111061448251
-fn: project-delete
-modified: 20241111065533257
-tags: Docs project
+modified: 20241122010636614
+tags: Docs project $:/pocket-io/code/project/docs
 title: project-delete docs
 type: text/vnd.tiddlywiki
 writeup: project-delete writeup
 
-<$transclude $tiddler="$:/poc2go/docs-inline-template"/>
+{{||$:/pocket-io/project/tabdocs-template}}

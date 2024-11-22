@@ -2,10 +2,10 @@ autoLoad: no
 created: 20241120105017114
 ioConfirmDelete: no
 ioPrjProject: $$$project$$$
-ioPrjTabSelected: $$$project$$$-$$$helpers$$$
-ioPrjTabToDelete: $$$project$$$-$$$helpers$$$
+ioPrjTabSelected: $$$project$$$-$$$tab$$$
+ioPrjTabToDelete: $$$project$$$-$$$tab$$$
 ioResult: 
-modified: 20241121040026260
+modified: 20241122021811013
 tags: Apps $$$project$$$
 title: $$$project$$$
 type: text/vnd.tiddlywiki
@@ -13,7 +13,7 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |@@.poc2go-replcmd Documentation: [[$$$project$$$ docs]] @@|
 
-{{||$:/pocket-io/project/autosave-template}}
+{{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}
 {{||$:/pocket-io/project/newtab-template}}
 {{||$:/pocket-io/project/delete-template}}
@@ -25,10 +25,9 @@ type: text/vnd.tiddlywiki
 {{$:/pocket-io/code/$$$project$$$||$:/core/ui/TagTemplate}}
 
 <$button class="poc2go-tabs-close">
-<$action-setfield
-$tiddler="$:/state/pocket-io/code/$$$project$$$-966113230" text=""/>
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/$$$project$$$">> text=""/>
 Close
 </$button>
 
 <<tabs "[tag[$:/pocket-io/code/$$$project$$$]]" ""
-"$:/state/pocket-io/code/$$$project$$$" "tc-horizontal">>
+"$:/state/tab/pocket-io/code/$$$project$$$" "tc-horizontal">>

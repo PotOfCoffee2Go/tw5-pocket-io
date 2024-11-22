@@ -1,10 +1,10 @@
 caption: create
+codetitle: project-create
 created: 20241111094043847
-fn: project-create
-modified: 20241111094043847
-tags: Docs project
+modified: 20241122010401698
+tags: Docs project $:/pocket-io/code/project/docs
 title: project-create docs
 type: text/vnd.tiddlywiki
 writeup: project-create writeup
 
-<$transclude $tiddler="$:/poc2go/docs-inline-template"/>
+{{||$:/pocket-io/project/tabdocs-template}}

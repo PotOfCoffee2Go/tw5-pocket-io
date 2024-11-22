@@ -1,10 +1,10 @@
 caption: getData
+codetitle: pocket-io-getData
 created: 20241112192034803
-fn: pocket-io-getData
-modified: 20241112192034803
-tags: Docs pocket-io
+modified: 20241122004624295
+tags: Docs pocket-io $:/pocket-io/code/pocket-io/docs
 title: pocket-io-getData docs
 type: text/vnd.tiddlywiki
 writeup: pocket-io-getData writeup
 
-<$transclude $tiddler="$:/poc2go/docs-inline-template"/>
+{{||$:/pocket-io/project/tabdocs-template}}

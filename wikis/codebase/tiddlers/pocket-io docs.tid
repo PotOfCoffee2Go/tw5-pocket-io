@@ -1,24 +1,25 @@
 caption: pocket-io
 created: 20241112191809093
-fn: pocket-io
-modified: 20241119053824687
+modified: 20241122005014137
+project: pocket-io
 tags: Appdocs pocket-io
 title: pocket-io docs
 type: text/vnd.tiddlywiki
 writeup: pocket-io writeup
 
-<h2 style="text-align: center;">{{!!caption}}</h2>
-
-|tc-center tc-table-no-border|k
-|Project: <$link to={{!!fn}}> {{!!fn}} </$link> | Writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
-
-<$transclude $tiddler={{!!writeup}} />
-
+\define closeTabsButton()
 <$button style="float:right;margin-top: .6em;">
-<$action-setfield $tiddler="$:/state/pocket-io/tabs/pocket-io-docs--268111516" text=""/>
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/docs/pocket-io">> text=""/>
 Close
-</$button> 
-<<tabs "[tag[$:/pocket-io/code/pocket-io]addsuffix[ docs]]" "" "$:/state/pocket-io/tabs/pocket-io-docs">>
+</$button>
+\end
+
+{{||$:/pocket-io/project/docs-template}}
+
+{{$:/pocket-io/code/pocket-io/docs||$:/core/ui/TagTemplate}}
+
+<<closeTabsButton>>
+<<tabs "[tag[$:/pocket-io/code/pocket-io/docs]]" "" "$:/state/tab/pocket-io/docs/pocket-io">>
 
 Associated tiddlers:
 

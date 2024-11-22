@@ -3,7 +3,7 @@ created: 20241111150158121
 ioPrjTabSelected: startup-helpers
 ioPrjUpload: startup-getApp
 ioResult: 
-modified: 20241121032438711
+modified: 20241121072627418
 tags: Apps startup
 title: startup
 type: text/vnd.tiddlywiki
@@ -25,6 +25,6 @@ type: text/vnd.tiddlywiki
 {{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}}
 
 <$button class="poc2go-tabs-close">
-<$action-setfield $tiddler="$:/state/pocket-io/code/startup--727332778" text=""/> Close </$button>
-<<tabs "[tag[$:/pocket-io/code/startup]]" "" "$:/state/pocket-io/code/startup" "tc-horizontal">>
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/startup">>  text=""/> Close </$button>
+<<tabs "[tag[$:/pocket-io/code/startup]]" "" "$:/state/tab/pocket-io/code/startup" "tc-horizontal">>
 

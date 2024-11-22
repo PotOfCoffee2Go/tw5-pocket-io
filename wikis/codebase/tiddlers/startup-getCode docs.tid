@@ -1,10 +1,10 @@
 caption: getCode
+codetitle: startup-getCode
 created: 20241112041612328
-fn: startup-getCode
-modified: 20241112041641843
-tags: Docs startup
+modified: 20241122013044886
+tags: Docs startup $:/pocket-io/code/startup/docs
 title: startup-getCode docs
 type: text/vnd.tiddlywiki
 writeup: startup-getCode writeup
 
-<$transclude $tiddler="$:/poc2go/docs-inline-template"/>
+{{||$:/pocket-io/project/tabdocs-template}}

@@ -1,10 +1,10 @@
 caption: badMsg
+codetitle: pocket-io-badMsg
 created: 20241114212203164
-fn: pocket-io-badMsg
-modified: 20241114212203164
-tags: Docs pocket-io
+modified: 20241122004658941
+tags: Docs pocket-io $:/pocket-io/code/pocket-io/docs
 title: pocket-io-badMsg docs
 type: text/vnd.tiddlywiki
 writeup: pocket-io-badMsg writeup
 
-<$transclude $tiddler="$:/poc2go/docs-inline-template"/>
+{{||$:/pocket-io/project/tabdocs-template}}
