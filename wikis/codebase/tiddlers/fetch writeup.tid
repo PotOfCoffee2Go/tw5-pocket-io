@@ -1,0 +1,15 @@
+created: 20241122171936891
+modified: 20241122190556813
+tags: writeup fetch
+title: fetch writeup
+type: text/vnd.tiddlywiki
+
+Project 'fetch' has the server fetch from a URL a tiddler or array of tiddlers that will be added to the TW5-pocket-io wiki performing the request.
+
+There are two types of requests - 'json' or 'text'. When making a JSON request the URL result is expected to be similar to the format of a .json file as exported by TiddlyWiki. 
+
+> See the [[REST|REST docs]] project which has the server return tiddler(s) from the $data or $code wiki databases in the format expected.
+
+When using 'text' - tiddler(s) are generated containing the text of the result in the tiddler 'text' field. The names of the generated tiddlers is displayed in field 'ioResult' or can view the 'recent' tab in the sidebar for tiddlers containing the text received from the request.
+
+   

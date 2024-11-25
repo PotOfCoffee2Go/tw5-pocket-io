@@ -1,6 +1,6 @@
 caption: project
 created: 20241110230314555
-modified: 20241122011014154
+modified: 20241123193825091
 project: project
 tags: Appdocs project
 title: project docs
@@ -28,9 +28,11 @@ Close
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/project/docs]]" "" "$:/state/tab/pocket-io/docs/project">>
 
+<$transclude $tiddler={{!!writeup}} />
+
 !!! Associated tiddlers:
 
-!!!! Templates
+!!!! GUI Templates
 
 {{$:/pocket-io/template/project||$:/core/ui/TagTemplate}}
 

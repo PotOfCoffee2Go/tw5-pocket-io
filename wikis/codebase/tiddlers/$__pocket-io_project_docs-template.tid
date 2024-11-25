@@ -1,6 +1,6 @@
 caption: docs
 created: 20241121190910030
-modified: 20241122003401231
+modified: 20241123185947085
 tags: $:/pocket-io/template/project project template
 title: $:/pocket-io/project/docs-template
 type: text/vnd.tiddlywiki
@@ -9,6 +9,4 @@ type: text/vnd.tiddlywiki
 
 |tc-center tc-table-no-border|k
 |Project: <$link to={{!!project}}> {{!!project}} </$link> | Writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
-
-<$transclude $tiddler={{!!writeup}} />
 

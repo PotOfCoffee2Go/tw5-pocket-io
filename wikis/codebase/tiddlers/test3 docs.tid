@@ -1,0 +1,28 @@
+caption: test3
+created: 20241122080449010
+modified: 20241123185916071
+project: test3
+tags: Appdocs test3
+title: test3 docs
+type: text/vnd.tiddlywiki
+writeup: test3 writeup
+
+\define closeTabsButton()
+<$button style="float:right;margin-top: .6em;">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/docs/test3">> text=""/>
+Close
+</$button>
+\end
+
+{{||$:/pocket-io/project/docs-template}}
+
+{{$:/pocket-io/code/test3/docs||$:/core/ui/TagTemplate}}
+
+<<closeTabsButton>>
+<<tabs "[tag[$:/pocket-io/code/test3/docs]]" "" "$:/state/tab/pocket-io/docs/test3">>
+
+<$transclude $tiddler={{!!writeup}} />
+
+Associated tiddlers:
+
+<hr class="poc2go-hr">

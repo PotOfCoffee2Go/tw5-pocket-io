@@ -6,6 +6,8 @@ function tagData(filter, tags = []) {
 		var tiddler = $dw.wiki.getTiddler(title);
 		var tiddlerTags = tiddler.getFieldList('tags');
 		tiddlerTags = tiddlerTags.concat(tags);
-		$dw.wiki.addTiddler(new $dw.Tiddler(tiddler,{ tags: $dw.utils.stringifyList(tiddlerTags) }));
+		$dw.wiki.addTiddler(new $dw.Tiddler(tiddler,
+			{ tags: $dw.utils.stringifyList(tiddlerTags) }
+		));
 	})
 }

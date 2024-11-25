@@ -1,0 +1,10 @@
+caption: text
+codetitle: fetch-text
+created: 20241122171936892
+modified: 20241122171936892
+tags: Docs fetch $:/pocket-io/code/fetch/docs
+title: fetch-text docs
+type: text/vnd.tiddlywiki
+writeup: fetch-text writeup
+
+{{||$:/pocket-io/project/tabdocs-template}}

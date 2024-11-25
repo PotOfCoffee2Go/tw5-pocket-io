@@ -1,16 +1,25 @@
 autoLoad: yes
+color: #5dcbc9
 created: 20241112191809092
 ioConfirmDelete: no
-ioPrjTabSelected: pocket-io-getData
+ioPrjTabSelected: AALLLL
+ioPrjTabToDelete: pocket-io-helpers
 ioPrjUpload: pocket-io-pocket.io
 ioResult: 
-modified: 20241121171148628
+modified: 20241124111001923
 tags: Apps pocket-io
 title: pocket-io
 type: text/vnd.tiddlywiki
 
+\define closeTabsButton()
+<$button class="poc2go-tabs-close">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/pocket-io">> text=""/>
+Close
+</$button> 
+\end
+
 |tc-center tc-table-no-border|k
-|@@.poc2go-replcmd Documentation: [[pocket-io docs]] @@|
+|@@.poc2go-mono Documentation: [[pocket-io docs]] @@|
 
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}
@@ -22,7 +31,6 @@ type: text/vnd.tiddlywiki
 
 {{$:/pocket-io/code/pocket-io||$:/core/ui/TagTemplate}}
 
-<$button class="poc2go-tabs-close">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/pocket-io">> text=""/>Close</$button> 
+<<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/pocket-io]]" "" "$:/state/tab/pocket-io/code/pocket-io" "tc-horizontal">>
 

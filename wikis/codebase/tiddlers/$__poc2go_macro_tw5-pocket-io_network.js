@@ -9,6 +9,16 @@ if ($tw.browser) {
 // Path to pocket.io library on server
 const socketLibrary = '/pocket.io/pocket.io.js';
 
+// Network status
+const netStatus = {
+	title: '$:/poc2go/SideBarSegment',
+	'list-before': '$:/core/ui/SideBarSegments/page-controls',
+	tags: '$:/tags/SideBarSegment',
+	text: `{{$:/temp/pocket-io/netstat}}`
+}
+$tw.wiki.addTiddler(new $tw.Tiddler(netStatus));
+$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io Initializing...');
+
 (function(){
 
 /*jslint node: true, browser: true */
@@ -17,11 +27,18 @@ const socketLibrary = '/pocket.io/pocket.io.js';
 
 // Last 12 characters of socket id
 const sid = (socket) => socket.id.split('-').pop();
-const cpy = (obj) => JSON.parse(JSON.stringify(obj));
 
 // ------------------------
 // Network interface
 var socket = null;
+
+// If socket not assigned then display pocket-io as unavailable
+setTimeout(() => {
+	if (!socket) {
+		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io unavailable');
+	}	
+}, 10000);
+
 
 // Attempt reconnect to server in milliseconds
 const reconnectMs = 10000;
@@ -42,10 +59,8 @@ exports.run = (command, topic, filter, sender) => {
 		console.log(`pocket.io sender tiddler ${sender} required.`);
 		return;
 	}
-	var senderTid = cpy($tw.wiki.getTiddler(sender).fields);
 	if (command !== 'emit') {
-		senderTid.ioResult = `pocket.io invalid command - ${command}.`;
-		fieldsToWiki(senderTid);
+		console.log(`pocket.io  invalid command - ${command}.`);
 		return;
 	}
 	var msg = JSON.stringify(createMessage(command, topic, filter, sender));
@@ -60,12 +75,9 @@ function createMessage(command, topic, filter, sender) {
 	if (command) { macroReq.command = command; }
 	if (topic) { macroReq.topic = topic; }
 	if (filter) { macroReq.filter = filter; }
-	// Make a tiddler title into a filter - if not already
-	if (macroReq.filter && !/^\[/.test(macroReq.filter)) {
-		macroReq.filter = `[[${macroReq.filter}]]`;
-	}
 
 	var senderFields = $tw.utils.parseJSONSafe($tw.wiki.getTiddlerAsJson(sender),{});
+
 	var senderReq = {
 		command: senderFields.ioCommand,
 		topic: senderFields.ioTopic,
@@ -73,15 +85,12 @@ function createMessage(command, topic, filter, sender) {
 		sender: senderFields.title,
 		tostory: senderFields.ioTostory === 'yes' ? true : false,
 	}
-	// Make a tiddler title into a filter - if not already
-	if (senderReq.filter && !/^\[/.test(senderReq.filter)) {
-		senderReq.filter = `[[${senderReq.filter}]]`;
+	var msg = {
+		req: Object.assign({}, senderReq, macroReq),
+		senderTiddler: $tw.utils.parseJSONSafe($tw.wiki.getTiddlerAsJson(sender),{}),
+		filterTiddlers: $tw.utils.parseJSONSafe($tw.wiki.getTiddlersAsJson(filter),[]),
+		resultTiddlers: []
 	}
-
-	var msg = {	req: Object.assign({}, senderReq, macroReq)	};
-	msg.senderTiddler = $tw.utils.parseJSONSafe($tw.wiki.getTiddlerAsJson(msg.req.sender),{});
-	msg.filterTiddlers = $tw.utils.parseJSONSafe($tw.wiki.getTiddlersAsJson(msg.req.filter),[]);
-	msg.resultTiddlers = [];
 	return msg;
 }
 
@@ -129,8 +138,6 @@ const initialize = () => {
 
 	// Macros simplify access to pocket.io server
 	$tw.wiki.addTiddler(new $tw.Tiddler(pocketIoDefines));
-	// Network status
-	$tw.wiki.addTiddler(new $tw.Tiddler(netStatus));
 
 	socket.on('connect', () => {
 		console.log(`pocket.io id: ${sid(socket)} connected`);
@@ -264,12 +271,5 @@ const pocketIoDefines = {
 pocket.io macro
 `
 };
-
-const netStatus = {
-	title: '$:/poc2go/SideBarSegment',
-	'list-before': '$:/core/ui/SideBarSegments/page-controls',
-	tags: '$:/tags/SideBarSegment',
-	text: `{{$:/temp/pocket-io/netstat}}`
-}
 
 } // if ($tw.browser)

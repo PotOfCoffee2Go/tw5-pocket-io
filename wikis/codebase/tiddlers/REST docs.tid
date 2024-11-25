@@ -1,6 +1,7 @@
 caption: REST
+color: #661f6f
 created: 20241121075506315
-modified: 20241122012056297
+modified: 20241123185755831
 project: REST
 tags: Appdocs REST
 title: REST docs
@@ -20,6 +21,8 @@ Close
 
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/REST/docs]]" "" "$:/state/tab/pocket-io/docs/REST">>
+
+<$transclude $tiddler={{!!writeup}} />
 
 Associated tiddlers:
 

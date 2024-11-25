@@ -1,18 +1,29 @@
 autoLoad: no
+color: #3522c9
 created: 20241121182116624
 ioConfirmDelete: no
 ioPrjProject: flotsam
-ioPrjTabName: tagData
-ioPrjTabSelected: AALLLL
-ioPrjTabToDelete: flotsam-commander
+ioPrjTabName: 
+ioPrjTabSelected: flotsam-fetch
+ioPrjTabToDelete: flotsam-fetch
 ioResult: 
-modified: 20241121182656593
+modified: 20241124182009805
 tags: Apps flotsam
 title: flotsam
 type: text/vnd.tiddlywiki
 
+\define closeTabsButton()
+<$button class="poc2go-tabs-close">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/flotsam">> text=""/>
+Close
+</$button>
+\end
+
 |tc-center tc-table-no-border|k
-|@@.poc2go-replcmd Documentation: [[flotsam docs]] @@|
+|@@.poc2go-mono Handy Code @@|
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono Documentation: [[flotsam docs]] @@|
 
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}
@@ -25,10 +36,6 @@ type: text/vnd.tiddlywiki
 
 {{$:/pocket-io/code/flotsam||$:/core/ui/TagTemplate}}
 
-<$button class="poc2go-tabs-close">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/flotsam">> text=""/>
-Close
-</$button>
-
+<<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/flotsam]]" ""
-"$:/state/tab/pocket-io/code/flotsam" "tc-horizontal">>
+"$:/state/tab/pocket-io/code/flotsam">>

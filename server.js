@@ -1,5 +1,6 @@
-// Domain is the protocal and address to access this server
-// Needs to be IP address (no lookup) for reverse proxy to work
+// Reverse proxy is the protocal and address to access
+//   $code TW 'server' edition server 
+// Needs to be hard IP address (no lookup) for reverse proxy to work
 const proxyTargetIp ='http://127.0.0.1';
 
 // host='0.0.0.0' network access - host='127.0.0.1' local system only
@@ -12,7 +13,7 @@ const repl = require('node:repl');
 
 // Manage server edition sync servers and minify of code tiddlers
 const cors = require('cors')
-const { twSyncBoot, twSyncServer } = require('./lib/twSyncServer');
+const { twSyncServer } = require('./lib/twSyncServer');
 const UglifyJS = require("uglify-js");
 
 // ----------------------
@@ -42,7 +43,7 @@ router.get('/pocket', (req, res) => {
 // roote directory of static content
 app.use(express.static('public'));
 
-// Routes that are loaded when $Code wiki is started
+// Routes - see $Code wiki 'REST' project for examples
 app.use(router);
 
 // $Code server edition wiki proxy
@@ -154,7 +155,7 @@ function replTwBoot() {
 	})
 }
 
-// Load the javascript code from $Code wiki
+// Pull JavaScript code from $code wiki
 function getApps() {
 	// 'startup project' loads first
 	var appFilter = '[tag[$:/pocket-io/code/startup]]';
@@ -171,45 +172,35 @@ function getApps() {
 	})
 
 	// Load the code from the tiddlers
-	getCode(appFilter);
+	onBootGetCode(appFilter);
 }
 
 // ----------------------
 // Get code from codebase wiki into the REPL
-// This function is used for initial load on startup
-// A copy is in $Code database [[startup-getCode]]
-//   for use once system has been loaded
-function getCode(filter) {
+// This function is used for initial code load on startup
+// A slightly modified  copy is in $Code 'startup' project [[startup-getCode]]
+function onBootGetCode(filter) {
 	const prevHistory = cpy(rt.history);
 	const prevPrompt = rt.getPrompt(); rt.setPrompt('');
 
-	var parser = $cw.wiki.parseTiddler('$:/poc2go/rendered-plain-text');
-
-	var tidCount = 0, errList = [];
+	var tidList = [], errList = [];
 	log(hue(`Loading ${filter} code tiddlers to server ...`,149));
 	rt.write('.editor\n');
 	rt.write(`var Done = 'Load complete';\n`);
-	$cw.wiki.filterTiddlers(filter).forEach(title => {
-		var widgetNode = $cw.wiki.makeWidget(parser,
-			{variables: $cw.utils.extend({},
-				{currentTiddler: title, storyTiddler: title})
-			}
-		);
-		var container = $cw.fakeDocument.createElement("div");
-		widgetNode.render(container,null);
-		var tiddlerText = container.textContent;
-		var minified = UglifyJS.minify(tiddlerText);
+	var tiddlers = JSON.parse($cw.wiki.getTiddlersAsJson(filter));
+	tiddlers.forEach(tiddler => {
+		var minified = UglifyJS.minify(tiddler.text);
 		if (minified.error) {
-			errList.push(hue(`Error processing code tiddler: '${title}'\n${minified.error}`,9));
+			errList.push(hue(`Error processing code tiddler: '${tiddler.title}'\n${minified.error}`,9));
 		} else {
-			log(hue(`\nTiddler '${title}'`, 149));
+			log(hue(`\nTiddler '${tiddler.title}'`, 149));
 			rt.write(minified.code + '\n');
-			tidCount++;
+			tidList.push(`[[${tiddler.title}]]`);
 		}
 	})
 	rt.write('Done\n');
 	rt.write(null,{ctrl:true, name:'d'})
-	log(hue(`Code loaded from $code database\n${filter} --> ${tidCount} code tiddlers loaded.`, 149));
+	log(hue(`Code loaded from $code database\n${filter} --> ${tidList.length} code tiddlers loaded.`, 149));
 	rt.history = prevHistory;
 	rt.setPrompt(prevPrompt);
 	errList.forEach(err => {

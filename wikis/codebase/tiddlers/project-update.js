@@ -2,8 +2,7 @@
 //  If the tab already exists - exits with no action
 //  If project already exists will create a new tab
 //  If project does not exist - will be created containing a tab
-
-function projectFromFilter(filter, project, tabName) {
+function projectCreateFromFilter(filter, project, tabName) {
 	var titles = [];
 	var json = $cw.wiki.getTiddlersAsJson(filter);
 	var text = json
@@ -30,9 +29,11 @@ function projectUpdate(socket, msg) {
 
 	var project = senderTid.ioPrjProject;
 	var tabName = senderTid.ioPrjTabName;
-
-	if (!(project && tabName)) {
-		resultMsg = 'A project and tab name are required.';
+	if (!tabName) {
+		tabName = 'default';
+	}
+	if (!project) {
+		resultMsg = 'A project name is required.';
 	}
 	else if ($cw.wiki.tiddlerExists(`${project}-${tabName}`)) {
 		resultMsg = `Tab '[[${project}-${tabName}]]' already exists!`;
@@ -52,8 +53,13 @@ function projectUpdate(socket, msg) {
 		filter = '[prefix[$$$project$$$]]'; // Project
 	}
 	
-	var titles = projectFromFilter(filter, project, tabName);
+	var titles = projectCreateFromFilter(filter, project, tabName);
 	
+	// Clear tabName (and project when create) on success
+	senderTid.ioPrjTabName = '';
+	if (msg.req.topic === 'projectCreate') {
+		senderTid.ioPrjProject = '';
+	}
 	senderTid.ioResult = formatIoResult(`Tiddlers created:\n\n${titles.join(', ')}`);
 	msg.resultTiddlers.push(senderTid);
 	return msg;

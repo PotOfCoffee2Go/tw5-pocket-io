@@ -1,0 +1,28 @@
+caption: HelloWorld
+created: 20241124190719195
+modified: 20241124190719195
+project: HelloWorld
+tags: Appdocs HelloWorld
+title: HelloWorld docs
+type: text/vnd.tiddlywiki
+writeup: HelloWorld writeup
+
+\define closeTabsButton()
+<$button style="float:right;margin-top: .6em;">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/docs/HelloWorld">> text=""/>
+Close
+</$button>
+\end
+
+{{||$:/pocket-io/project/docs-template}}
+
+{{$:/pocket-io/code/HelloWorld/docs||$:/core/ui/TagTemplate}}
+
+<<closeTabsButton>>
+<<tabs "[tag[$:/pocket-io/code/HelloWorld/docs]]" "" "$:/state/tab/pocket-io/docs/HelloWorld">>
+
+<$transclude $tiddler={{!!writeup}} />
+
+Associated tiddlers:
+
+<hr class="poc2go-hr">

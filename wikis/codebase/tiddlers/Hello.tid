@@ -1,0 +1,10 @@
+created: 20241124135956813
+ioResult: 
+modified: 20241125114903368
+tags: example HelloWorld
+title: Hello
+type: text/vnd.tiddlywiki
+
+<$button actions="<<pocket-io 'helloworld'>>">Hello World</$button>
+
+{{!!ioResult}}

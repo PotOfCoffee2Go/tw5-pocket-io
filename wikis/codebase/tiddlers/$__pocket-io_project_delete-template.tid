@@ -1,6 +1,6 @@
 caption: delete
 created: 20241121032615871
-modified: 20241121171900127
+modified: 20241124181256254
 tags: template project $:/pocket-io/template/project
 title: $:/pocket-io/project/delete-template
 type: text/vnd.tiddlywiki
@@ -11,10 +11,10 @@ type: text/vnd.tiddlywiki
 \end
 
 \define tabSelect()
-<$select field="ioPrjTabToDelete" default="AALLLL"><option value="AALLLL" >All</option><$list filter="[tag{!!title}tag[tab]]"><option value={{!!title}} ><$view field='caption'/></option></$list></$select>
+<$select field="ioPrjTabToDelete" default="AALLLL"><option value="AALLLL" >PROJECT</option><$list filter="[tag{!!title}tag[tab]]"><option value={{!!title}} ><$view field='caption'/></option></$list></$select>
 \end
 
-\define deleteButtons()
+\define deleteButton()
 <$button actions="<<submitDelete>>"> Delete </$button>
 \end
 
@@ -23,4 +23,4 @@ type: text/vnd.tiddlywiki
 \end
 
 |tc-center tc-table-no-border|k
-|<<deleteButtons>> |<<tabSelect>> |<<confirmButton>> |
+|<<deleteButton>> |<<tabSelect>> |<<confirmButton>> |

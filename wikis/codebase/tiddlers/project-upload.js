@@ -12,8 +12,11 @@ function projectUpload(socket, msg) {
 	if (!/^\[/.test(tabName)) {
 		tabName = `[[${tabName}]]`;
 	}
-
-	senderTid.ioResult = formatIoResult(getCode(tabName));
+	var minify = true;
+	if (senderTid.ioPrjMinify && senderTid.ioPrjMinify !== 'yes') {
+		minify = false;
+	}
+	senderTid.ioResult = formatIoResult(getCode(tabName, minify));
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }

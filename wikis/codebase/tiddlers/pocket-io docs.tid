@@ -1,6 +1,6 @@
 caption: pocket-io
 created: 20241112191809093
-modified: 20241122005014137
+modified: 20241123184854681
 project: pocket-io
 tags: Appdocs pocket-io
 title: pocket-io docs
@@ -21,9 +21,11 @@ Close
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/pocket-io/docs]]" "" "$:/state/tab/pocket-io/docs/pocket-io">>
 
+<$transclude $tiddler={{!!writeup}} />
+
 Associated tiddlers:
 
-[[tw5-pocket-io-network.js.tid]] resides in ''./public/tw5-pocket-io-network.js.tid''. Import into a wiki and the wiki will then have access to TW5-pocket-io.
+[[$:/poc2go/macro/tw5-pocket-io/network.js]] resides in ''./public/tw5-pocket-io-network.js.tid''. Import into a wiki and the wiki will then have access to TW5-pocket-io codebase.
 
 [[Pocket.io Basic Example]] sends a test message to the server. [[Pocket.io Example]] shows getting data from the $Data wiki database.
 

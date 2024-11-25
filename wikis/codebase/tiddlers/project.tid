@@ -1,17 +1,30 @@
 autoLoad: yes
+color: #003fa3
 created: 20240101000000000
 ioConfirmDelete: no
+ioPrjMinify: no
 ioPrjProject: project
 ioPrjTabName: 
-ioPrjTabSelected: project-update
+ioPrjTabSelected: project-create
+ioPrjTabToDelete: project-helpers
 ioResult: 
-modified: 20241122022053702
+modified: 20241124185643703
 tags: Apps project
 title: project
 type: text/vnd.tiddlywiki
 
+\define closeTabsButton()
+<$button class="poc2go-tabs-close">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/project">> text=""/>
+Close
+</$button>
+\end
+
 |tc-center tc-table-no-border|k
-|@@.poc2go-replcmd Documentation: [[project docs]] @@|
+|@@.poc2go-mono Project Management System@@|
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono Documentation: [[project docs]] @@|
 
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}
@@ -22,6 +35,5 @@ type: text/vnd.tiddlywiki
 
 {{$:/pocket-io/code/project||$:/core/ui/TagTemplate}}
 
-<$button class="poc2go-tabs-close">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/project">> text=""/> Close </$button>
+<<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/project]]" "" "$:/state/tab/pocket-io/code/project" "tc-horizontal">>

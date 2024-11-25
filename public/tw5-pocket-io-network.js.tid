@@ -17,6 +17,16 @@ if ($tw.browser) {
 // Path to pocket.io library on server
 const socketLibrary = '/pocket.io/pocket.io.js';
 
+// Network status
+const netStatus = {
+	title: '$:/poc2go/SideBarSegment',
+	'list-before': '$:/core/ui/SideBarSegments/page-controls',
+	tags: '$:/tags/SideBarSegment',
+	text: `{{$:/temp/pocket-io/netstat}}`
+}
+$tw.wiki.addTiddler(new $tw.Tiddler(netStatus));
+$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io Initializing...');
+
 (function(){
 
 /*jslint node: true, browser: true */
@@ -29,6 +39,14 @@ const sid = (socket) => socket.id.split('-').pop();
 // ------------------------
 // Network interface
 var socket = null;
+
+// If socket not assigned then display pocket-io as unavailable
+setTimeout(() => {
+	if (!socket) {
+		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io unavailable');
+	}	
+}, 10000);
+
 
 // Attempt reconnect to server in milliseconds
 const reconnectMs = 10000;
@@ -128,8 +146,6 @@ const initialize = () => {
 
 	// Macros simplify access to pocket.io server
 	$tw.wiki.addTiddler(new $tw.Tiddler(pocketIoDefines));
-	// Network status
-	$tw.wiki.addTiddler(new $tw.Tiddler(netStatus));
 
 	socket.on('connect', () => {
 		console.log(`pocket.io id: ${sid(socket)} connected`);
@@ -263,12 +279,5 @@ const pocketIoDefines = {
 pocket.io macro
 `
 };
-
-const netStatus = {
-	title: '$:/poc2go/SideBarSegment',
-	'list-before': '$:/core/ui/SideBarSegments/page-controls',
-	tags: '$:/tags/SideBarSegment',
-	text: `{{$:/temp/pocket-io/netstat}}`
-}
 
 } // if ($tw.browser)

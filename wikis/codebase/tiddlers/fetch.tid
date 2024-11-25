@@ -1,0 +1,41 @@
+autoLoad: no
+color: #f0f34f
+created: 20241122171936890
+ioConfirmDelete: no
+ioPrjProject: fetch
+ioPrjTabName: 
+ioPrjTabSelected: fetch-text
+ioPrjTabToDelete: fetch-json
+ioResult: 
+modified: 20241124182112272
+tags: Apps fetch
+title: fetch
+type: text/vnd.tiddlywiki
+
+\define closeTabsButton()
+<$button class="poc2go-tabs-close">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/fetch">> text=""/>
+Close
+</$button>
+\end
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono Server Fetch Tiddlers by URL @@|
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono Documentation: [[fetch docs]] @@|
+
+{{||$:/pocket-io/project/autoload-template}}
+{{||$:/pocket-io/project/upload-template}}
+{{||$:/pocket-io/project/newtab-template}}
+{{||$:/pocket-io/project/delete-template}}
+
+{{!!ioResult}}
+
+<hr class="poc2go-hr">
+
+{{$:/pocket-io/code/fetch||$:/core/ui/TagTemplate}}
+
+<<closeTabsButton>>
+<<tabs "[tag[$:/pocket-io/code/fetch]]" ""
+"$:/state/tab/pocket-io/code/fetch" "tc-horizontal">>

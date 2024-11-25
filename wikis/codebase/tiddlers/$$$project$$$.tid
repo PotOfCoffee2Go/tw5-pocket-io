@@ -5,13 +5,23 @@ ioPrjProject: $$$project$$$
 ioPrjTabSelected: $$$project$$$-$$$tab$$$
 ioPrjTabToDelete: $$$project$$$-$$$tab$$$
 ioResult: 
-modified: 20241122021811013
+modified: 20241124182400316
 tags: Apps $$$project$$$
 title: $$$project$$$
 type: text/vnd.tiddlywiki
 
+\define closeTabsButton()
+<$button class="poc2go-tabs-close">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/$$$project$$$">> text=""/>
+Close
+</$button>
+\end
+
 |tc-center tc-table-no-border|k
-|@@.poc2go-replcmd Documentation: [[$$$project$$$ docs]] @@|
+|@@.poc2go-mono Edit this tiddler to name project @@|
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono Documentation: [[$$$project$$$ docs]] @@|
 
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}
@@ -24,10 +34,6 @@ type: text/vnd.tiddlywiki
 
 {{$:/pocket-io/code/$$$project$$$||$:/core/ui/TagTemplate}}
 
-<$button class="poc2go-tabs-close">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/$$$project$$$">> text=""/>
-Close
-</$button>
-
+<<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/$$$project$$$]]" ""
 "$:/state/tab/pocket-io/code/$$$project$$$" "tc-horizontal">>

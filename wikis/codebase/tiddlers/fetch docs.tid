@@ -1,0 +1,30 @@
+caption: fetch
+created: 20241122171936891
+modified: 20241123185359717
+project: fetch
+tags: Appdocs fetch
+title: fetch docs
+type: text/vnd.tiddlywiki
+writeup: fetch writeup
+
+\define closeTabsButton()
+<$button style="float:right;margin-top: .6em;">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/docs/fetch">> text=""/>
+Close
+</$button>
+\end
+
+{{||$:/pocket-io/project/docs-template}}
+
+{{$:/pocket-io/code/fetch/docs||$:/core/ui/TagTemplate}}
+
+<<closeTabsButton>>
+<<tabs "[tag[$:/pocket-io/code/fetch/docs]]" "" "$:/state/tab/pocket-io/docs/fetch">>
+
+<$transclude $tiddler={{!!writeup}} />
+
+Associated tiddlers:
+
+[[Fetch Tiddlers Example]] - example of having server fetch tiddlers from a URL.
+
+<hr class="poc2go-hr">

@@ -1,6 +1,6 @@
 caption: startup
 created: 20241111150158121
-modified: 20241122013133683
+modified: 20241123185839505
 project: startup
 tags: Appdocs startup
 title: startup docs
@@ -20,6 +20,8 @@ Close
 
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/startup/docs]]" "" "$:/state/tab/pocket-io/docs/startup">>
+
+<$transclude $tiddler={{!!writeup}} />
 
 Associated tiddlers:
 

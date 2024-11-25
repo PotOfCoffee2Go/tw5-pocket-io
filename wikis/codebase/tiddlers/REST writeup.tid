@@ -1,7 +1,10 @@
 created: 20241121075506315
-modified: 20241121075506315
+modified: 20241122184942062
 tags: writeup REST
 title: REST writeup
 type: text/vnd.tiddlywiki
 
-Javascript code of this project.
+RESTful access to both the $code and $data wikis.
+
+> Note that changes to the express routing tables can not be dynamically uploaded as express API does not have a standard method of removing or replacing an existing route.
+> A server restart is required to load changes to routes.

@@ -1,15 +1,30 @@
 autoLoad: yes
+color: #3eb65c
 created: 20241111150158121
+ioConfirmDelete: no
+ioPrjMinify: yes
+ioPrjProject: startup
+ioPrjTabName: 
 ioPrjTabSelected: startup-helpers
-ioPrjUpload: startup-getApp
+ioPrjTabToDelete: startup-hello
 ioResult: 
-modified: 20241121072627418
+modified: 20241124191221015
 tags: Apps startup
 title: startup
 type: text/vnd.tiddlywiki
 
+\define closeTabsButton()
+<$button class="poc2go-tabs-close">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/startup">>  text=""/>
+Close
+</$button>
+\end
+
 |tc-center tc-table-no-border|k
-|@@.poc2go-replcmd Documentation: [[startup docs]] @@|
+|@@.poc2go-mono System Startup Code @@|
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono Documentation: [[startup docs]] @@|
 
 |tc-center tc-table-no-border|k
 |''startup always loads''|
@@ -24,7 +39,6 @@ type: text/vnd.tiddlywiki
 
 {{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}}
 
-<$button class="poc2go-tabs-close">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/startup">>  text=""/> Close </$button>
+<<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/startup]]" "" "$:/state/tab/pocket-io/code/startup" "tc-horizontal">>
 

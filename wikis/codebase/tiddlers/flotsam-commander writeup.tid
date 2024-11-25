@@ -1,7 +1,7 @@
 created: 20241121182116627
-modified: 20241121182116627
+modified: 20241122192017784
 tags: writeup flotsam
 title: flotsam-commander writeup
 type: text/vnd.tiddlywiki
 
-These functions are shorthand for common tasks.
+Performs same tasks as using '[[tiddlywiki ...|https://tiddlywiki.com/static/Commands.html]]' from the command line. 

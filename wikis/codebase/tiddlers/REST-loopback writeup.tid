@@ -1,0 +1,9 @@
+created: 20241122182837278
+modified: 20241123191606267
+tags: writeup REST
+title: REST-loopback writeup
+type: text/vnd.tiddlywiki
+
+The loopback URL replies with the text that follows the URL request.
+
+Example: `/loopback/some text here`

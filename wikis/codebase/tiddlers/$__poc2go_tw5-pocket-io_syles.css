@@ -6,10 +6,14 @@
 [data-tags*="$:/tags/poc2go/hidecontrols"].tc-tiddler-view-frame .tc-tags-wrapper {
     display: none;
 }
-
+/* Rounded blue borders for project tiddlers */
+[data-tags*="App"].tc-tiddler-view-frame {
+    border: 1px solid #006994;
+    border-radius: 20px;
+}
+/* Thick rounded borders for documentation tiddlers */
 [data-tags*="Appdocs"].tc-tiddler-view-frame {
-/*  background: #181818; */
-    border: solid 3px;
+    border: 2px solid #006994;
     border-radius: 20px;
 }
 
@@ -33,7 +37,7 @@ summary::marker {
   padding: .3em 1em;
   border-radius: 6px;
 }
-.poc2go-replcmd {
+.poc2go-mono {
   font-family:Monospace;
   font-size:1.1em;
 }
@@ -51,4 +55,7 @@ summary::marker {
 .poc2go-tabs-close {
   float:right;
   margin-top: .6em;
+}
+.poc2go-center {
+  text-align: center;
 }

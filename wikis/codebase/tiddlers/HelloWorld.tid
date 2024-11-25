@@ -1,0 +1,45 @@
+autoLoad: yes
+color: #083a0c
+created: 20241124190719194
+ioConfirmDelete: no
+ioPrjProject: HelloWorld
+ioPrjTabName: 
+ioPrjTabSelected: HelloWorld-helloworld
+ioPrjTabToDelete: HelloWorld-hello
+ioResult: 
+modified: 20241125114844165
+tags: Apps HelloWorld
+title: HelloWorld
+type: text/vnd.tiddlywiki
+
+\define closeTabsButton()
+<$button class="poc2go-tabs-close">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/HelloWorld">> text=""/>
+Close
+</$button>
+\end
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono Hello World! @@|
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono Documentation: [[HelloWorld docs]] @@|
+
+{{||$:/pocket-io/project/autoload-template}}
+{{||$:/pocket-io/project/upload-template}}
+{{||$:/pocket-io/project/newtab-template}}
+{{||$:/pocket-io/project/delete-template}}
+
+{{!!ioResult}}
+
+<hr class="poc2go-hr">
+
+See [[Hello]] for a tiddler that calls the server-side 'helloworld' function.
+
+<hr class="poc2go-hr">
+
+{{$:/pocket-io/code/HelloWorld||$:/core/ui/TagTemplate}}
+
+<<closeTabsButton>>
+<<tabs "[tag[$:/pocket-io/code/HelloWorld]]" "HelloWorld-hello"
+"$:/state/tab/pocket-io/code/HelloWorld" "tc-horizontal">>

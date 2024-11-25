@@ -22,6 +22,8 @@ function projectCreate(socket, msg) {
 		return msg;
 	}
 
+log(project,tabName);
+
 	// Have projectUpdate create the project
 	return projectUpdate(socket, msg);
 }

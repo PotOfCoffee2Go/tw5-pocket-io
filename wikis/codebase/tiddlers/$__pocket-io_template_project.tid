@@ -1,5 +1,6 @@
+color: #003fa3
 created: 20241121172410302
-list: $:/pocket-io/project/autoload-template $:/pocket-io/project/create-template $:/pocket-io/project/newtab-template $:/pocket-io/project/upload-template $:/pocket-io/project/delete-template
-modified: 20241121172417196
+list: $:/pocket-io/project/autoload-template $:/pocket-io/project/create-template $:/pocket-io/project/newtab-template $:/pocket-io/project/upload-template $:/pocket-io/project/copy-template $:/pocket-io/project/delete-template $:/pocket-io/project/docs-template $:/pocket-io/project/tabdocs-template $:/pocket-io/ioResult-template
+modified: 20241124073927797
 title: $:/pocket-io/template/project
 type: text/vnd.tiddlywiki

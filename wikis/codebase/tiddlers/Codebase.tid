@@ -1,8 +1,12 @@
 created: 20240914113910483
-ioPrjProject: test5
-ioPrjTabName: yyyy
+ioPrjCopyAction: Move
+ioPrjFromProject: project
+ioPrjFromTab: project-update
+ioPrjProject: 
+ioPrjTabName: 
+ioPrjToProject: flotsam
 ioResult: 
-modified: 20241122020745550
+modified: 20241125111236881
 tags: 
 title: Codebase
 type: text/vnd.tiddlywiki
@@ -10,33 +14,35 @@ type: text/vnd.tiddlywiki
 <style>.cols3{column-count:3}</style>
 
 <details><summary>Manuals</summary>
-
-<h4> [[Introduction|Introduction Manual]] </h4>
-Summary of writing functions to be run by the server.
-
-<h4>  [[Project Management|Project Manual]] </h4>
-How projects are used to control which code is loaded to the server.
-
-<h4>  [[Projects that load on startup|Startup Manual]] </h4>
-How to set up automatic loading of code to the server
-
-<h4> [[Documenting Projects and Code|Documenting Manual]] </h4>
-Different places to provide code documentation
-
+<br>
+[[Introduction|Introduction Manual]] - Summary of writing functions to be run by the server.
+<br>
+[[Project Management|Project Manual]] - How projects are used to control which code is loaded to the server.
+<br>
+[[Projects that load on startup|Startup Manual]] - How to set up automatic loading of code to the server
+<br>
+[[Documenting Projects and Code|Documenting Manual]] - Different places to provide code documentation
+<br>
 </details>
 
-<hr class="poc2go-hr">
-
 |tc-center tc-table-no-border|k
-|@@.poc2go-replcmd Projects @@|
-
-<hr class="poc2go-hr">
-
-{{||$:/pocket-io/project/create-template}}
+|@@.poc2go-mono Projects @@|
 
 <div style="margin-top: 0.6em; border: 1px solid; border-radius: 10px;">
 
 <<list-links filter:"[tag[Apps]] -[[$$$project$$$]]" class:"cols3">>
+
+</div>
+
+<div style="margin-top: 0.6em; border: 1px solid aqua; border-radius: 10px;">
+
+{{||$:/pocket-io/project/create-template}}
+
+<hr class="poc2go-hr">
+
+{{||$:/pocket-io/project/copy-template}}
+
+{{!!ioResult}}
 
 </div>
 

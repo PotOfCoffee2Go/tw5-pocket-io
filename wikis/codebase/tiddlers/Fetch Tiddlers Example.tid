@@ -1,0 +1,15 @@
+created: 20241122100656000
+ioResult: 
+ioUrl: http://pocket-io.local:3000/database/tiddlers/[tag[about]]
+modified: 20241123164128850
+tags: fetch example
+title: Fetch Tiddlers Example
+type: text/vnd.tiddlywiki
+
+Set this tiddler's 'ioUrl' field to a URL that returns tiddler(s) in JSON format.
+
+Currently: {{!!ioUrl}} 
+
+<$button actions=<<pocket-io 'fetchJsonTiddlers'>> >fetch tiddlers</$button>
+
+{{!!ioResult}}
