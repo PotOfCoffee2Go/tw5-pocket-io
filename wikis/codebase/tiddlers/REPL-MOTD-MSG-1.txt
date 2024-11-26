@@ -1,0 +1,25 @@
+
+current: log(hue($cw.wiki.getTiddlerText('REPL-MOTD-MSG-1'), 40))
+
+You could shorten this command line with a function.
+
+For example could enter :
+function motd(tiddler) {
+  log(hue($cw.wiki.getTiddlerText(tiddler), 40))
+}
+
+Then typing motd('REPL-MOTD-MSG-1') and pressing enter.
+
+BUT! There are already two shorthand functions defined to
+display tiddlers : 'cog' and 'dog'.
+
+'cog' is like 'log' but starts with 'c' to display tiddlers from
+the '$cw' code wiki.
+
+While 'dog' (is also like 'log') but instead displays tiddlers
+from the '$dw' data wiki.
+
+Since these REPL-MOTD-MSG tiddlers are in the $cw code wiki,
+will be using cog().
+
+Next: cog('REPL-MOTD-MSG-2')

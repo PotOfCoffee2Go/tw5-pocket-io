@@ -1,0 +1,11 @@
+[
+    {
+        "created": "20241124135956813",
+        "title": "Hello",
+        "modified": "20241125181303638",
+        "tags": "example HelloWorld",
+        "type": "text/vnd.tiddlywiki",
+        "text": "<$button actions=\"<<pocket-io 'helloworld'>>\">Hello World</$button>\n\n{{!!ioResult}}",
+        "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\nMon Nov 25 2024 13:13:03 GMT-0500 (Eastern Standard Time)\n\nHello tiddler '[[Hello]]' !\n\n</div>\n"
+    }
+]

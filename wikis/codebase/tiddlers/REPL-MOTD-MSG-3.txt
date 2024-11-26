@@ -1,0 +1,10 @@
+
+current: cog('REPL-MOTD-MSG-3')
+
+Will get a list of the tiddlers in the code wiki with the tag 'REPL' :
+$cw.wiki.filterTiddlers('[tag[REPL]]')
+
+The same can be done for the data wiki - using $dw instead of $cw :
+$dw.wiki.filterTiddlers('[tag[about]]')
+
+Next: cog('REPL-MOTD-MSG-4')

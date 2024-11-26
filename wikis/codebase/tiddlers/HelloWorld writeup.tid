@@ -1,7 +1,7 @@
 created: 20241124190719195
-modified: 20241124190719195
+modified: 20241126205752024
 tags: writeup HelloWorld
 title: HelloWorld writeup
 type: text/vnd.tiddlywiki
 
-Documentation of project 'HelloWorld'.
+See [[Hello]] for a tiddler that calls the server-side 'helloworld' function.

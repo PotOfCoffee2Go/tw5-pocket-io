@@ -36,7 +36,7 @@ var socket = null;
 setTimeout(() => {
 	if (!socket) {
 		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io unavailable');
-	}	
+	}
 }, 10000);
 
 
@@ -141,8 +141,13 @@ const initialize = () => {
 
 	socket.on('connect', () => {
 		console.log(`pocket.io id: ${sid(socket)} connected`);
-		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io Connected');
+		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io connecting...');
 		socket.emit('ackConnect', 'ackConnect');
+	})
+
+	socket.on('ackConnect', () => {
+		console.log(`pocket.io id: ${sid(socket)} connected`);
+		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, `Pocket.io connected ${sid(socket)}`);
 	})
 
 	socket.on('msg', msgStr => {
@@ -158,7 +163,7 @@ const initialize = () => {
 
 	socket.on('close', () => {
 		console.log('pocket.i0 disconnnected');
-		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io Disconnected');
+		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io disconnected');
 		socket = null;
 		reConnect();
 	})

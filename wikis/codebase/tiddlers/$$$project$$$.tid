@@ -5,10 +5,11 @@ ioPrjProject: $$$project$$$
 ioPrjTabSelected: $$$project$$$-$$$tab$$$
 ioPrjTabToDelete: $$$project$$$-$$$tab$$$
 ioResult: 
-modified: 20241124182400316
+modified: 20241126203337111
 tags: Apps $$$project$$$
 title: $$$project$$$
 type: text/vnd.tiddlywiki
+writeup: $$$project$$$ writeup
 
 \define closeTabsButton()
 <$button class="poc2go-tabs-close">
@@ -37,3 +38,5 @@ Close
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/$$$project$$$]]" ""
 "$:/state/tab/pocket-io/code/$$$project$$$" "tc-horizontal">>
+
+<$transclude $tiddler={{!!writeup}}>

@@ -7,10 +7,11 @@ ioPrjTabName:
 ioPrjTabSelected: fetch-text
 ioPrjTabToDelete: fetch-json
 ioResult: 
-modified: 20241124182112272
+modified: 20241126210511649
 tags: Apps fetch
 title: fetch
 type: text/vnd.tiddlywiki
+writeup: fetch writeup
 
 \define closeTabsButton()
 <$button class="poc2go-tabs-close">
@@ -39,3 +40,5 @@ Close
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/fetch]]" ""
 "$:/state/tab/pocket-io/code/fetch" "tc-horizontal">>
+
+<$transclude $tiddler={{!!writeup}}>

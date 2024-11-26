@@ -8,10 +8,11 @@ ioPrjTabName:
 ioPrjTabSelected: startup-helpers
 ioPrjTabToDelete: startup-hello
 ioResult: 
-modified: 20241124191221015
+modified: 20241126211003017
 tags: Apps startup
 title: startup
 type: text/vnd.tiddlywiki
+writeup: startup writeup
 
 \define closeTabsButton()
 <$button class="poc2go-tabs-close">
@@ -41,4 +42,6 @@ Close
 
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/startup]]" "" "$:/state/tab/pocket-io/code/startup" "tc-horizontal">>
+
+<$transclude $tiddler={{!!writeup}}>
 

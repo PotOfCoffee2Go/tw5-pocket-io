@@ -1,0 +1,10 @@
+caption: MSG-2
+codetitle: REPL-MOTD-MSG-2
+created: 20241126193102092
+modified: 20241126202357861
+tags: Docs REPL-MOTD $:/pocket-io/code/REPL-MOTD/docs
+title: REPL-MOTD-MSG-2 docs
+type: text/vnd.tiddlywiki
+writeup: REPL-MOTD-MSG-2 writeup
+
+{{||$:/pocket-io/project/tabtext-template}}

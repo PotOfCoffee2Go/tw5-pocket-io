@@ -4,13 +4,14 @@ created: 20241124190719194
 ioConfirmDelete: no
 ioPrjProject: HelloWorld
 ioPrjTabName: 
-ioPrjTabSelected: HelloWorld-helloworld
-ioPrjTabToDelete: HelloWorld-hello
+ioPrjTabSelected: HelloWorld-filterTiddlers
+ioPrjTabToDelete: HelloWorld-allTitles
 ioResult: 
-modified: 20241125114844165
+modified: 20241126205727603
 tags: Apps HelloWorld
 title: HelloWorld
 type: text/vnd.tiddlywiki
+writeup: HelloWorld writeup
 
 \define closeTabsButton()
 <$button class="poc2go-tabs-close">
@@ -34,12 +35,10 @@ Close
 
 <hr class="poc2go-hr">
 
-See [[Hello]] for a tiddler that calls the server-side 'helloworld' function.
-
-<hr class="poc2go-hr">
-
 {{$:/pocket-io/code/HelloWorld||$:/core/ui/TagTemplate}}
 
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/HelloWorld]]" "HelloWorld-hello"
 "$:/state/tab/pocket-io/code/HelloWorld" "tc-horizontal">>
+
+<$transclude $tiddler={{!!writeup}}>

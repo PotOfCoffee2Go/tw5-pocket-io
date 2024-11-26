@@ -1,0 +1,24 @@
+caption: REPL-MOTD
+created: 20241126192538452
+modified: 20241126202810877
+project: REPL-MOTD
+tags: Appdocs REPL-MOTD
+title: REPL-MOTD docs
+type: text/vnd.tiddlywiki
+writeup: REPL-MOTD writeup
+
+\define closeTabsButton()
+<$button style="float:right;margin-top: .6em;">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/docs/REPL-MOTD">> text=""/>
+Close
+</$button>
+\end
+
+{{||$:/pocket-io/project/docs-template}}
+
+{{$:/pocket-io/code/REPL-MOTD/docs||$:/core/ui/TagTemplate}}
+
+<<closeTabsButton>>
+<<tabs "[tag[$:/pocket-io/code/REPL-MOTD/docs]]" "" "$:/state/tab/pocket-io/docs/REPL-MOTD">>
+
+<$transclude $tiddler={{!!writeup}} />
