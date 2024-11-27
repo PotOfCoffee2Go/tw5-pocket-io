@@ -1,7 +1,7 @@
 caption: copy
 created: 20241124072956896
 ioPrjCopyAction: Move
-modified: 20241124104711907
+modified: 20241127025858532
 tags: project template $:/pocket-io/template/project
 title: $:/pocket-io/project/copy-template
 type: text/vnd.tiddlywiki
@@ -20,11 +20,11 @@ type: text/vnd.tiddlywiki
 \end
 
 \define fromProjectSelect()
-<$select field="ioPrjFromProject"><$list filter="[tag[Apps]] -[[$$$project$$$]]"><option value={{!!title}} ><$view field='title'/></option></$list></$select>
+<$select field="ioPrjFromProject"><$list filter="[tag[Projects]] -[[$$$project$$$]]"><option value={{!!title}} ><$view field='title'/></option></$list></$select>
 \end
 
 \define toProjectSelect()
-<$select field="ioPrjToProject" default=""><$list filter="[tag[Apps]] -[[$$$project$$$]]"><option value={{!!title}} ><$view field='title'/></option></$list></$select>
+<$select field="ioPrjToProject" default=""><$list filter="[tag[Projects]] -[[$$$project$$$]]"><option value={{!!title}} ><$view field='title'/></option></$list></$select>
 \end
 
 \define fromTabSelect()

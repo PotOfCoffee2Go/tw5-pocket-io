@@ -1,0 +1,10 @@
+caption: abc_3
+codetitle: test2-abc_3
+created: 20241127020854370
+modified: 20241127020854370
+tags: Docs test2 $:/pocket-io/code/test2/docs
+title: test2-abc_3 docs
+type: text/vnd.tiddlywiki
+writeup: test2-abc_3 writeup
+
+{{||$:/pocket-io/project/tabdocs-template}}

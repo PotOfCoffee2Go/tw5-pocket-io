@@ -1,6 +1,6 @@
-color: #3eb65c
+color: #025517
 created: 20241119055724508
-list: startup-globals startup-helpers startup-hello startup-formatIoResult startup-getCode
-modified: 20241124135404700
+list: startup-globals startup-$code-server startup-$data-server startup-console startup-commands startup-helpers startup-formatIoResult startup-getCode
+modified: 20241127091926815
 title: $:/pocket-io/code/startup
 type: text/vnd.tiddlywiki

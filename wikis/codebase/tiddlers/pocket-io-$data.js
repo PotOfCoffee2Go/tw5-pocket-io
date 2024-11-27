@@ -6,7 +6,7 @@ $data.io.on('connection', (socket) => {
 		// getData(socket, '[tag[onStartup]]', true); // to story
 		socket.emit('ackConnect','ackConnect'); // ack the ack
  		log(hue(`Client wiki ${sid(socket)} connected`, 44));
-		rt.displayPrompt();
+		$rt.displayPrompt();
 	})
 	// Message from client
 	socket.on('msg', msgStr => {
@@ -26,6 +26,6 @@ $data.io.on('connection', (socket) => {
 	socket.on('disconnect', () => {
 		delete $sockets[socket.id];
 		log(hue(`Client wiki ${sid(socket)} disconnected`, 128));
-		rt.displayPrompt();
+		$rt.displayPrompt();
 	});
 });

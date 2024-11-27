@@ -1,0 +1,10 @@
+caption: hideStdout
+codetitle: flotsam-hideStdout
+created: 20241126232657969
+modified: 20241126232657969
+tags: Docs flotsam $:/pocket-io/code/flotsam/docs
+title: flotsam-hideStdout docs
+type: text/vnd.tiddlywiki
+writeup: flotsam-hideStdout writeup
+
+{{||$:/pocket-io/project/tabdocs-template}}

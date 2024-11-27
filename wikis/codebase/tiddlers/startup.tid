@@ -1,15 +1,15 @@
 autoLoad: yes
-color: #3eb65c
+color: #025517
 created: 20241111150158121
 ioConfirmDelete: no
 ioPrjMinify: yes
 ioPrjProject: startup
 ioPrjTabName: 
-ioPrjTabSelected: startup-helpers
-ioPrjTabToDelete: startup-hello
+ioPrjTabSelected: startup-data-server
+ioPrjTabToDelete: startup-data-server
 ioResult: 
-modified: 20241126211003017
-tags: Apps startup
+modified: 20241127092000659
+tags: startup Projects
 title: startup
 type: text/vnd.tiddlywiki
 writeup: startup writeup
@@ -28,8 +28,8 @@ Close
 |@@.poc2go-mono Documentation: [[startup docs]] @@|
 
 |tc-center tc-table-no-border|k
-|''startup always loads''|
-| ''and is first!'' |
+|''startup is hard coded to always''|
+| ''load first!'' |
 
 {{||$:/pocket-io/project/upload-template}}
 {{||$:/pocket-io/project/newtab-template}}

@@ -7,8 +7,8 @@ ioPrjTabName:
 ioPrjTabSelected: REPL-MOTD-MSG
 ioPrjTabToDelete: REPL-MOTD-MSG
 ioResult: 
-modified: 20241126205917682
-tags: Apps REPL-MOTD
+modified: 20241127032732203
+tags: REPL-MOTD Projects
 title: REPL-MOTD
 type: text/vnd.tiddlywiki
 writeup: REPL-MOTD writeup
@@ -31,7 +31,6 @@ Close
 | So never autoLoad or uploaded to server |
 
 {{||$:/pocket-io/project/newtab-template}}
-{{||$:/pocket-io/project/delete-template}}
 
 {{!!ioResult}}
 

@@ -1,0 +1,42 @@
+autoLoad: no
+created: 20241127020854368
+ioConfirmDelete: no
+ioPrjProject: test2
+ioPrjTabSelected: test2-abc_3
+ioPrjTabToDelete: test2-abc_3
+ioResult: 
+modified: 20241127025258291
+tags: test2 Projects
+title: test2
+type: text/vnd.tiddlywiki
+writeup: test2 writeup
+
+\define closeTabsButton()
+<$button class="poc2go-tabs-close">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/test2">> text=""/>
+Close
+</$button>
+\end
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono Edit this tiddler to name project @@|
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono Documentation: [[test2 docs]] @@|
+
+{{||$:/pocket-io/project/autoload-template}}
+{{||$:/pocket-io/project/upload-template}}
+{{||$:/pocket-io/project/newtab-template}}
+{{||$:/pocket-io/project/delete-template}}
+
+{{!!ioResult}}
+
+<hr class="poc2go-hr">
+
+{{$:/pocket-io/code/test2||$:/core/ui/TagTemplate}}
+
+<<closeTabsButton>>
+<<tabs "[tag[$:/pocket-io/code/test2]]" ""
+"$:/state/tab/pocket-io/code/test2" "tc-horizontal">>
+
+<$transclude $tiddler={{!!writeup}}>

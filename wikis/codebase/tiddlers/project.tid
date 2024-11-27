@@ -2,14 +2,14 @@ autoLoad: yes
 color: #003fa3
 created: 20240101000000000
 ioConfirmDelete: no
-ioPrjMinify: no
+ioPrjMinify: yes
 ioPrjProject: project
 ioPrjTabName: 
 ioPrjTabSelected: project-create
 ioPrjTabToDelete: project-helpers
 ioResult: 
-modified: 20241126210837709
-tags: Apps project
+modified: 20241127024944888
+tags: project Projects
 title: project
 type: text/vnd.tiddlywiki
 writeup: project writeup

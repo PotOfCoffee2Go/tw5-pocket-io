@@ -2,8 +2,8 @@ function badMsg(socket, msg, errText) {
 	var senderTid = cpy(msg.senderTiddler);
 	senderTid.ioResult = errText;
 
-	log(hue(errText,9));
-	rt.displayPrompt();
+	hog(errText,9);
+	$rt.displayPrompt();
 
 	senderTid.ioResult = formatIoResult(errText);
 	msg.resultTiddlers = [senderTid];

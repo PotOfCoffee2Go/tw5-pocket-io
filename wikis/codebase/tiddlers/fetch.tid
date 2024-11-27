@@ -7,8 +7,8 @@ ioPrjTabName:
 ioPrjTabSelected: fetch-text
 ioPrjTabToDelete: fetch-json
 ioResult: 
-modified: 20241126210511649
-tags: Apps fetch
+modified: 20241127025123845
+tags: fetch Projects
 title: fetch
 type: text/vnd.tiddlywiki
 writeup: fetch writeup

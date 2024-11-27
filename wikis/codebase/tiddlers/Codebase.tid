@@ -1,19 +1,19 @@
 created: 20240914113910483
 ioPrjCopyAction: Move
-ioPrjFromProject: project
+ioPrjFromProject: pocket-io
 ioPrjFromTab: project-update
 ioPrjProject: 
 ioPrjTabName: 
 ioPrjToProject: flotsam
 ioResult: 
-modified: 20241126192541410
+modified: 20241127025930108
 tags: 
 title: Codebase
 type: text/vnd.tiddlywiki
 
 \define details(label:"", src:"source", status:"", labelClass:"", srcClass:"")
 <$vars  source = {{{ [<__src__>get[text]else<__src__>] }}} >
-<details class="kk-shiraz-details" $status$>
+<details style="float:left;" $status$>
  <$let tv-wikilinks="no">
  <summary class="$labelClass$">$label$</summary>
  </$let>
@@ -38,11 +38,12 @@ type: text/vnd.tiddlywiki
 """ >>
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-mono Projects @@|
+|@@.poc2go-mono {{Projects||$:/core/ui/TagTemplate}} @@|
 
 <div style="margin-top: 0.6em; border: 1px solid; border-radius: 10px;">
 
-<<list-links filter:"[tag[Apps]] -[[$$$project$$$]]" class:"cols3">>
+
+<<list-links filter:"[tag[Projects]] -[[$$$project$$$]]" class:"cols3">>
 
 </div>
 

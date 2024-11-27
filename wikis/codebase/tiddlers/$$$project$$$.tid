@@ -5,8 +5,8 @@ ioPrjProject: $$$project$$$
 ioPrjTabSelected: $$$project$$$-$$$tab$$$
 ioPrjTabToDelete: $$$project$$$-$$$tab$$$
 ioResult: 
-modified: 20241126203337111
-tags: Apps $$$project$$$
+modified: 20241127025347961
+tags: $$$project$$$ Projects
 title: $$$project$$$
 type: text/vnd.tiddlywiki
 writeup: $$$project$$$ writeup
@@ -19,11 +19,12 @@ Close
 \end
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-mono Edit this tiddler to name project @@|
+|@@.poc2go-mono Edit this tiddler to make descriptive name @@|
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono Documentation: [[$$$project$$$ docs]] @@|
 
+<!-- Remove templates not applicable for this  -->
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}
 {{||$:/pocket-io/project/newtab-template}}

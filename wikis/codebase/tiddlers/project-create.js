@@ -8,7 +8,17 @@ function projectCreate(socket, msg) {
 	var project = senderTid.ioPrjProject;
 	var tabName = senderTid.ioPrjTabName;
 
-	if ($cw.wiki.tiddlerExists(`${project}`)) {
+	if (!/^[\w-]+$/.test(project)) {
+		resultMsg = `Project name may only contain letters, numbers, underbars, and dashes\n\n` +
+			`Notably spaces and special characters are not allowed.\n\n` +
+			`Once created can change the 'caption' field to display as desired.`;
+	}
+	else if (!/^[\w-]+$/.test(tabName)) {
+		resultMsg = `Tab name may only contain letters, numbers, underbars, and dashes\n\n` +
+			`Notably spaces and special characters are not allowed.\n\n` +
+			`Once created can change the 'caption' field to display as desired.`;
+	}
+	else if ($cw.wiki.tiddlerExists(`${project}`)) {
 		resultMsg = `Project '[[${project}]]' already exists!`;
 	}
 	else if ($cw.wiki.tiddlerExists(`${project}-${tabName}`)) {
@@ -21,8 +31,6 @@ function projectCreate(socket, msg) {
 		msg.resultTiddlers.push(senderTid);
 		return msg;
 	}
-
-log(project,tabName);
 
 	// Have projectUpdate create the project
 	return projectUpdate(socket, msg);

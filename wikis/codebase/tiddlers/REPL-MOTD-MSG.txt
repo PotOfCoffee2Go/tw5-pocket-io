@@ -1,17 +1,27 @@
 
-current: log(hue($cw.wiki.getTiddlerText('REPL-MOTD-MSG'), 40))
+current: cog('REPL-MOTD-MSG')
 
-Displays the text of tiddler 'REPL MOTD' from the code wiki.
+The cog(title) function displays the text of the given 
+tiddler title from the $cw code wiki. The text you are
+reading is the text of tiddler 'REPL-MOTD-MSG' from the
+code wiki.
+
+cog(title) is shorthand for :
+  log(hue($cw.wiki.getTiddlerText(title),40));
+
 log is shorthand for console.log()
 hue colorizes text using the 256 terminal color codes
-$cw is the tiddlywiki instance connected to the code wiki
-  (if was $dw would be the tiddlywiki instance of the data wiki)
-wiki is the active tiddler store of the code wiki
-  (or tiddler store of data wiki if using $dw)
-getTiddlerText is the tiddlywiki function to get the text of a tiddler
-'REPL MOTD' is the tiddler to get the text from
-40 is the terminal color code to colorize the text
+$cw.wiki.getTiddlerText(title) is a tiddlywiki function
+  that returns the text of the given tiddler title.
+40 is the terminal color code to colorize the text (green)
 
-Press up-arrow and change 'REPL-MOTD-MSG' to 'REPL-MOTD-MSG-1' then press enter.
+The system has access to all tiddlywiki JavaScript functions
+for three wikis; $dw, $cw, and $tw.
+  $dw is the data wiki
+  $cw is the code wiki
+  $tw is a wiki that is used by this REPL
 
-Next: log(hue($cw.wiki.getTiddlerText('REPL-MOTD-MSG-1'), 40))
+Press up-arrow and change 'REPL-MOTD-MSG' to 'REPL-MOTD-MSG-1'
+ then press enter.
+
+Next: cog('REPL-MOTD-MSG-1')
