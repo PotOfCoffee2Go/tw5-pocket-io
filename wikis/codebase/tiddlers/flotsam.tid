@@ -1,4 +1,5 @@
 autoLoad: no
+caption: Code Toolbox
 color: #3522c9
 created: 20241121182116624
 ioConfirmDelete: no
@@ -7,7 +8,7 @@ ioPrjTabName:
 ioPrjTabSelected: flotsam-fetch
 ioPrjTabToDelete: flotsam-fetch
 ioResult: 
-modified: 20241127025152026
+modified: 20241129061408587
 tags: flotsam Projects
 title: flotsam
 type: text/vnd.tiddlywiki
@@ -33,12 +34,10 @@ Close
 
 {{!!ioResult}}
 
-<hr class="poc2go-hr">
+{{||$:/pocket-io/project/writeup-template}}
 
 {{$:/pocket-io/code/flotsam||$:/core/ui/TagTemplate}}
 
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/flotsam]]" ""
 "$:/state/tab/pocket-io/code/flotsam">>
-
-<$transclude $tiddler={{!!writeup}}>

@@ -15,13 +15,13 @@ function fetchJsonTiddlers(socket, msg) {
 				titles.push(`[[${maybe.title}]]`);
 			}
 		})
-		senderTid.ioResult = formatIoResult(`Fetched:\n\n ${titles.join(', ')}`);
+		senderTid.ioResult = $tpi.fn.formatIoResult(`Fetched:\n\n ${titles.join(', ')}`);
 		msg.resultTiddlers.unshift(senderTid); // put sender as first tiddler in response
 		socket.emit('msg', JSON.stringify(msg));
 		return;
 	})
 
-	senderTid.ioResult = formatIoResult(`Fetching URL... ${url}`);
+	senderTid.ioResult = $tpi.fn.formatIoResult(`Fetching URL... ${url}`);
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }

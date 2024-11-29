@@ -1,0 +1,43 @@
+autoLoad: yes
+caption: Proxy Servers
+created: 20241129054823221
+ioConfirmDelete: no
+ioPrjProject: proxies
+ioPrjTabName: 
+ioPrjTabSelected: proxies-code
+ioPrjTabToDelete: proxies-$data
+ioResult: 
+modified: 20241129055448113
+tags: proxies Projects
+title: proxies
+type: text/vnd.tiddlywiki
+writeup: proxies writeup
+
+\define closeTabsButton()
+<$button class="poc2go-tabs-close">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/proxies">> text=""/>
+Close
+</$button>
+\end
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono $code and $data proxy servers @@|
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono Documentation: [[proxies docs]] @@|
+
+<!-- Remove templates not applicable for this project -->
+{{||$:/pocket-io/project/autoload-template}}
+{{||$:/pocket-io/project/upload-template}}
+{{||$:/pocket-io/project/newtab-template}}
+{{||$:/pocket-io/project/delete-template}}
+
+{{!!ioResult}}
+
+{{||$:/pocket-io/project/writeup-template}}
+
+{{$:/pocket-io/code/proxies||$:/core/ui/TagTemplate}}
+
+<<closeTabsButton>>
+<<tabs "[tag[$:/pocket-io/code/proxies]]" ""
+"$:/state/tab/pocket-io/code/proxies" "tc-horizontal">>

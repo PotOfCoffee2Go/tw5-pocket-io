@@ -5,7 +5,7 @@ function getData(socket, msg) {
 
 	msg.resultTiddlers = $tw.utils.parseJSONSafe(
 		$dw.wiki.getTiddlersAsJson(msg.req.filter), []);
-	senderTid.ioResult = formatIoResult(`{{!!modified}}\n\n${msg.resultTiddlers.length} tiddlers recieved from $data wiki`);
+	senderTid.ioResult = $tpi.fn.formatIoResult(`{{!!modified}}\n\n${msg.resultTiddlers.length} tiddlers recieved from $data wiki`);
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }

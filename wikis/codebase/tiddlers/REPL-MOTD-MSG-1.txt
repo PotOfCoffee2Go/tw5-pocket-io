@@ -1,6 +1,15 @@
 
-current: cog('REPL-MOTD-MSG-1')
+current: cmd.cog('REPL-MOTD-MSG-1')
 
+The majority of server-side code is stored in tiddlers on the $cw
+ code wiki.
 
+For example: cmd.cog('startup-commands') displays the server-side
+code that provides short-cuts to common tiddlywiki functions for
+use by the REPL. Notice the 'cog' function is defined there.
 
-Next: cog('REPL-MOTD-MSG-2')
+To see the code in the browser go to http://localhost:3001
+  and select Project 'startup' tab 'commands'.
+(to edit the code - press the little paperclip that displays on the tab)
+
+Next: cmd.cog('REPL-MOTD-MSG-2')

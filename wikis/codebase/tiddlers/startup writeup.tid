@@ -1,7 +1,31 @@
 created: 20241111150158122
-modified: 20241111160044466
+modified: 20241129010244978
 tags: writeup startup
 title: startup writeup
 type: text/vnd.tiddlywiki
 
-Javascript code of this project.
+The startup project contains tabs that will be loaded to the REPL when the system is started. It is hard coded in ./server.js regardless of the 'autoLoad' setting.
+
+The order of the loading can be changed by clicking the {{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}} tag and drag/drop items in the order desired.
+
+The REPL places all top-level assignments (ie: not within a function) in the REPL global context. This would include var, const, let, and function.
+
+To see what is global - start node REPL and press tab twice at the prompt:
+
+```
+$ node 
+Welcome to Node.js v18.20.5.
+Type ".help" for more information.
+>     <-- press {tab} twice -->
+AbortController                   AbortSignal
+AggregateError                    Array
+ArrayBuffer                       Atomics
+BigInt                            BigInt64Array
+              ...
+unescape                          url
+util                              v8
+vm                                wasi
+worker_threads                    zlib
+>.exit
+$
+```

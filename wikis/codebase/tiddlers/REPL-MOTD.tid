@@ -1,5 +1,5 @@
 autoLoad: no
-caption: REPL MOTD
+caption: REPL Quickstart
 created: 20241126192538452
 ioConfirmDelete: no
 ioPrjProject: REPL-MOTD
@@ -7,7 +7,7 @@ ioPrjTabName:
 ioPrjTabSelected: REPL-MOTD-MSG
 ioPrjTabToDelete: REPL-MOTD-MSG
 ioResult: 
-modified: 20241127032732203
+modified: 20241129074652211
 tags: REPL-MOTD Projects
 title: REPL-MOTD
 type: text/vnd.tiddlywiki
@@ -34,13 +34,10 @@ Close
 
 {{!!ioResult}}
 
-<hr class="poc2go-hr">
+{{||$:/pocket-io/project/writeup-template}}
 
 {{$:/pocket-io/code/REPL-MOTD||$:/core/ui/TagTemplate}}
 
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/REPL-MOTD]]" ""
 "$:/state/tab/pocket-io/code/REPL-MOTD" "tc-horizontal">>
-
-<$transclude $tiddler={{!!writeup}}>
-

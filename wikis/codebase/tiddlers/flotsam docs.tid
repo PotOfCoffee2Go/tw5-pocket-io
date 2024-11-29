@@ -1,6 +1,6 @@
 caption: flotsam
 created: 20241121182116625
-modified: 20241123185542382
+modified: 20241129054312551
 project: flotsam
 tags: Appdocs flotsam
 title: flotsam docs
@@ -21,8 +21,4 @@ Close
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/flotsam/docs]]" "" "$:/state/tab/pocket-io/docs/flotsam">>
 
-<$transclude $tiddler={{!!writeup}} />
-
 Associated tiddlers:
-
-<hr class="poc2go-hr">

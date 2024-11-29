@@ -1,19 +1,12 @@
 
-current: cog('REPL-MOTD-MSG')
+current: cmd.cog('REPL-MOTD-MSG')
 
 The cog(title) function displays the text of the given 
 tiddler title from the $cw code wiki. The text you are
 reading is the text of tiddler 'REPL-MOTD-MSG' from the
 code wiki.
 
-cog(title) is shorthand for :
-  log(hue($cw.wiki.getTiddlerText(title),40));
-
-log is shorthand for console.log()
-hue colorizes text using the 256 terminal color codes
-$cw.wiki.getTiddlerText(title) is a tiddlywiki function
-  that returns the text of the given tiddler title.
-40 is the terminal color code to colorize the text (green)
+cog(title) uses tiddlywiki functions to get the text.
 
 The system has access to all tiddlywiki JavaScript functions
 for three wikis; $dw, $cw, and $tw.
@@ -22,6 +15,6 @@ for three wikis; $dw, $cw, and $tw.
   $tw is a wiki that is used by this REPL
 
 Press up-arrow and change 'REPL-MOTD-MSG' to 'REPL-MOTD-MSG-1'
- then press enter.
+ then press enter to continue.
 
-Next: cog('REPL-MOTD-MSG-1')
+Next: cmd.cog('REPL-MOTD-MSG-1')

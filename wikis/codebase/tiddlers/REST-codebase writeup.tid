@@ -1,9 +1,9 @@
 created: 20241121080318568
-modified: 20241123193328030
+modified: 20241129033211690
 tags: writeup REST
 title: REST-codebase writeup
 type: text/vnd.tiddlywiki
 
 Returns tiddlers from the $Code wiki that match the given [[TiddlyWiki filter|https://tiddlywiki.com/static/Filters.html]].
 
-Example from browser: `/codebase/tiddlers/[tag[REST]]`
+Example from browser: `http:localhost:3001/tiddlers/[tag[REST]]`

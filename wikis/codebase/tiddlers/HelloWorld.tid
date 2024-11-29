@@ -1,13 +1,14 @@
 autoLoad: yes
+caption: Hello World!
 color: #083a0c
 created: 20241124190719194
 ioConfirmDelete: no
 ioPrjProject: HelloWorld
 ioPrjTabName: 
 ioPrjTabSelected: HelloWorld-filterTiddlers
-ioPrjTabToDelete: HelloWorld-allTitles
+ioPrjTabToDelete: HelloWorld-broke
 ioResult: 
-modified: 20241127025016877
+modified: 20241129072639370
 tags: HelloWorld Projects
 title: HelloWorld
 type: text/vnd.tiddlywiki
@@ -33,12 +34,10 @@ Close
 
 {{!!ioResult}}
 
-<hr class="poc2go-hr">
+{{||$:/pocket-io/project/writeup-template}}
 
 {{$:/pocket-io/code/HelloWorld||$:/core/ui/TagTemplate}}
 
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/HelloWorld]]" "HelloWorld-hello"
 "$:/state/tab/pocket-io/code/HelloWorld" "tc-horizontal">>
-
-<$transclude $tiddler={{!!writeup}}>

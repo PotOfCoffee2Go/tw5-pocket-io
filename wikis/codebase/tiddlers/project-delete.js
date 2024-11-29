@@ -8,7 +8,7 @@ function projectDelete(socket, msg) {
 	var confirm = senderTid.ioConfirmDelete;
 
 	if (confirm !== 'yes') {
-		senderTid.ioResult = formatIoResult(`Must check the confirm checkbox to delete code tiddlers`);
+		senderTid.ioResult = $tpi.fn.formatIoResult(`Must check the confirm checkbox to delete code tiddlers`);
 		senderTid.ioConfirmDelete = 'no';
 		msg.resultTiddlers.push(senderTid);
 		return msg;
@@ -16,7 +16,7 @@ function projectDelete(socket, msg) {
 	senderTid.ioConfirmDelete = 'no';
 
 	if (!(project && tabName)) {
-		senderTid.ioResult = formatIoResult('A project and Tab name are required!');
+		senderTid.ioResult = $tpi.fn.formatIoResult('A project and Tab name are required!');
 		msg.resultTiddlers.push(senderTid);
 		return msg;
 	}
@@ -41,7 +41,7 @@ function projectDelete(socket, msg) {
 		tidDeleted.push(`${title}`);
 	})
 
-	senderTid.ioResult = formatIoResult(`${action}\n\nTiddlers deleted:\n\n${tidDeleted.join(', ')}`);
+	senderTid.ioResult = $tpi.fn.formatIoResult(`${action}\n\nTiddlers deleted:\n\n${tidDeleted.join(', ')}`);
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }

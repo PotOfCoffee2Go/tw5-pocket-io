@@ -1,6 +1,6 @@
 caption: HelloWorld
 created: 20241124190719195
-modified: 20241124190719195
+modified: 20241129053942265
 project: HelloWorld
 tags: Appdocs HelloWorld
 title: HelloWorld docs
@@ -21,8 +21,4 @@ Close
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/HelloWorld/docs]]" "" "$:/state/tab/pocket-io/docs/HelloWorld">>
 
-<$transclude $tiddler={{!!writeup}} />
-
 Associated tiddlers:
-
-<hr class="poc2go-hr">

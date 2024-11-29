@@ -1,15 +1,21 @@
 
-current: cog('REPL-MOTD-MSG-2')
+current: cmd.cog('REPL-MOTD-MSG-2')
 
-There are other shorthand helper functions.
+Notice that http://localhost:3001 displays a standard node.js TiddlyWiki
+client. However, the wiki is actually running on port 8083 which
+http://localhost:3001 routes all the TiddlyWiki client HTTP requests.
+(Is a reverse proxy server.)
 
-The code of the system is loaded from the code wiki on startup.
-which has the 'cog' and 'dog' functions defined among many others.
+Just above the sidebar buttons, 'Pocket.io connected ...' is displayed.
+This provides the wiki client with a second communications channel
+(websockets) connection to the server.
 
-Let's go to the $cw code wiki in a browser and take a look.
-If using the default settings the wiki is at 'http://localhost/3001'
+A tiddler with :
 
-In the list of Projects - click on 'startup' then click the 'helpers' tab.
-To see the same code here in the REPL enter: cog('startup-helpers')
+<$button actions=<<pocket-io 'testMsg'>> >test</$button>
+{{!!ioResult}}
 
-Next: cog('REPL-MOTD-MSG-3')
+Sends a request to the server over the socket connection with the server
+response placed in the tiddlers 'ioResult' field and displayed.
+
+Next: cmd.cog('REPL-MOTD-MSG-3')

@@ -1,9 +1,9 @@
 created: 20241121080350272
-modified: 20241123193427130
+modified: 20241129033047612
 tags: writeup REST
 title: REST-database writeup
 type: text/vnd.tiddlywiki
 
 Returns tiddlers from the $Data wiki that match the given  [[TiddlyWiki filter|https://tiddlywiki.com/static/Filters.html]].
 
-Example from browser: `/database/tiddlers/[tag[about]]`
+Example : `http:localhost:3000/tiddlers/[tag[about]]`

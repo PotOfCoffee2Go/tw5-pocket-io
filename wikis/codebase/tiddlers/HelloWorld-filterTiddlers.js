@@ -7,7 +7,7 @@ function filterTiddlers(socket, msg) {
 	var json = $dw.wiki.filterTiddlers(filter);
 	var resultText = `Filter: ${filter}\n\n` + JSON.stringify(json,null,2);
 
-	senderTid.ioResult = formatIoResult(resultText);
+	senderTid.ioResult = $tpi.fn.formatIoResult(resultText);
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }

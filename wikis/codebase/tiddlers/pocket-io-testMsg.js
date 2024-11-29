@@ -1,11 +1,11 @@
-function testMsg(socket, msg) {
+$tpi.fn.testMsg = (socket, msg) => {
 	var senderTid = cpy(msg.senderTiddler);
 	senderTid.ioResult = '';
 	var tiddler = senderTid.title;
 
-	senderTid.ioResult = formatIoResult(`Test message received from tiddler [[${tiddler}]]!`);
+	senderTid.ioResult = $tpi.fn.formatIoResult(`Test message received from tiddler [[${tiddler}]]!`);
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }
 
-$topics.testMsg = testMsg; // is a topic
+$topics.testMsg = $tpi.fn.testMsg; // is a topic

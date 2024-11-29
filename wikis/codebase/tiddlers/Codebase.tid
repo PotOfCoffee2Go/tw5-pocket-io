@@ -6,33 +6,20 @@ ioPrjProject:
 ioPrjTabName: 
 ioPrjToProject: flotsam
 ioResult: 
-modified: 20241127025930108
+modified: 20241129080803852
 tags: 
 title: Codebase
 type: text/vnd.tiddlywiki
-
-\define details(label:"", src:"source", status:"", labelClass:"", srcClass:"")
-<$vars  source = {{{ [<__src__>get[text]else<__src__>] }}} >
-<details style="float:left;" $status$>
- <$let tv-wikilinks="no">
- <summary class="$labelClass$">$label$</summary>
- </$let>
-  <div class="$srcClass$">
-   <$transclude tiddler=<<source>> field=title mode=block/>
-  </div>
-</details>
-</$vars>
-\end
 
 <style>.cols3{column-count:3}</style>
 
 <<details 'Manuals' """
 
-!!!! [[Introduction|Introduction Manual]] - Summary of writing functions to be run by the server.
+!!!! [[Introduction|Introduction Manual]] - Summary of writing functions to be run by the system.
 
-!!!! [[Project Management|Project Manual]] - How projects are used to control which code is loaded to the server.
+!!!! [[Project Management|Project Manual]] - How projects are used to control which code is loaded to the system.
 
-!!!! [[Projects that load on startup|Startup Manual]] - How to set up automatic loading of code to the server
+!!!! [[Projects that load on startup|Startup Manual]] - How to set up automatic loading of code to the system
 
 !!!! [[Documenting Projects and Code|Documenting Manual]] - Different places to provide code documentation
 """ >>
@@ -40,14 +27,18 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono {{Projects||$:/core/ui/TagTemplate}} @@|
 
-<div style="margin-top: 0.6em; border: 1px solid; border-radius: 10px;">
-
+<div style="margin-top: 0.6em; border: 1px solid #70b351; border-radius: 10px;" >
 
 <<list-links filter:"[tag[Projects]] -[[$$$project$$$]]" class:"cols3">>
 
 </div>
 
-<div style="margin-top: 0.6em; border: 1px solid aqua; border-radius: 10px;">
+!!!! Auto Load on Startup :
+
+<<list-links filter:"[tag[Projects]autoLoad[yes]] -[[$$$project$$$]]" class:"cols3">>
+
+
+<div style="margin-top: 2em; border: 1px solid aqua; border-radius: 10px;">
 
 {{||$:/pocket-io/project/create-template}}
 
@@ -59,10 +50,5 @@ type: text/vnd.tiddlywiki
 
 </div>
 
-!!!! Auto Load on Startup :
-
-<<list-links filter:"[autoLoad[yes]]" class:"cols3">>
-
 !!!! Create project template: [[$$$project$$$]]
 
----

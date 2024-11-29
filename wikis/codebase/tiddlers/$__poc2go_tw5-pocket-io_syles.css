@@ -7,7 +7,7 @@
     display: none;
 }
 /* Rounded blue borders for project tiddlers */
-[data-tags*="App"].tc-tiddler-view-frame {
+[data-tags*="Projects"].tc-tiddler-view-frame {
     border: 1px solid #006994;
     border-radius: 20px;
 }
@@ -38,8 +38,8 @@ summary::marker {
   border-radius: 6px;
 }
 .poc2go-mono {
-  font-family:Monospace;
-  font-size:1.1em;
+  font-family: Monospace;
+  font-size: 1.1em;
 }
 .poc2go-url {
   width: 50%;
@@ -58,4 +58,11 @@ summary::marker {
 }
 .poc2go-center {
   text-align: center;
+}
+.poc2go-detail {
+  font-family: Courier New, Courier, Monospace;
+  font-size: 0.95em;
+  min-width: 450px;
+  max-height: 550px;
+  overflow: auto;
 }

@@ -1,10 +1,12 @@
 
-current: cog('REPL-MOTD-MSG-3')
+current: cmd.cog('REPL-MOTD-MSG-3')
 
-Will get a list of the tiddlers in the code wiki with the tag 'REPL' :
-$cw.wiki.filterTiddlers('[tag[REPL]]')
+The http://localhost:3001 server can also add HTTP requests of it's own.
+See cog('REST-codebase') or in browser Project 'REST' tab 'code tiddlers'.
 
-The same can be done for the data wiki - using $dw instead of $cw :
-$dw.wiki.filterTiddlers('[tag[about]]')
+This server side code accepts a TW filter and returns a JSON response of
+the tiddlers matching the filter.
+ http://localhost:3001/tiddlers/[tag[REPL-MOTD]]
+returns all tiddlers the REPL-MOTD project in JSON format.
 
-Next: cog('REPL-MOTD-MSG-4')
+Next: cmd.cog('REPL-MOTD-MSG-4')

@@ -1,4 +1,5 @@
 autoLoad: yes
+caption: REST Interface
 color: #661f6f
 created: 20241121075506314
 ioConfirmDelete: no
@@ -7,7 +8,7 @@ ioPrjTabName:
 ioPrjTabSelected: REST-helpers
 ioPrjTabToDelete: AALLLL
 ioResult: 
-modified: 20241127025054675
+modified: 20241129061221667
 tags: REST Projects
 title: REST
 type: text/vnd.tiddlywiki
@@ -20,6 +21,9 @@ $tiddler=<<qualify "$:/state/tab/pocket-io/code/REST">> text=""/>
 Close
 </$button>
 \end
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono REST Access to Wikis @@|
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono Documentation: [[REST docs]] @@|
@@ -36,12 +40,10 @@ Enable 'Auto load on startup' and restart server to load updated code.
 
 {{!!ioResult}}
 
-<hr class="poc2go-hr">
+{{||$:/pocket-io/project/writeup-template}}
 
 {{$:/pocket-io/code/REST||$:/core/ui/TagTemplate}}
 
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/REST]]" ""
 "$:/state/tab/pocket-io/code/REST" "tc-horizontal">>
-
-<$transclude $tiddler={{!!writeup}}>

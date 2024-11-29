@@ -1,4 +1,5 @@
 autoLoad: no
+caption: Server Fetch URL
 color: #f0f34f
 created: 20241122171936890
 ioConfirmDelete: no
@@ -7,7 +8,7 @@ ioPrjTabName:
 ioPrjTabSelected: fetch-text
 ioPrjTabToDelete: fetch-json
 ioResult: 
-modified: 20241127025123845
+modified: 20241129061313463
 tags: fetch Projects
 title: fetch
 type: text/vnd.tiddlywiki
@@ -33,12 +34,10 @@ Close
 
 {{!!ioResult}}
 
-<hr class="poc2go-hr">
+{{||$:/pocket-io/project/writeup-template}}
 
 {{$:/pocket-io/code/fetch||$:/core/ui/TagTemplate}}
 
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/fetch]]" ""
 "$:/state/tab/pocket-io/code/fetch" "tc-horizontal">>
-
-<$transclude $tiddler={{!!writeup}}>

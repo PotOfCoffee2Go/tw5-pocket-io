@@ -5,7 +5,7 @@ ioPrjProject: $$$project$$$
 ioPrjTabSelected: $$$project$$$-$$$tab$$$
 ioPrjTabToDelete: $$$project$$$-$$$tab$$$
 ioResult: 
-modified: 20241127025347961
+modified: 20241129042908078
 tags: $$$project$$$ Projects
 title: $$$project$$$
 type: text/vnd.tiddlywiki
@@ -24,7 +24,7 @@ Close
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono Documentation: [[$$$project$$$ docs]] @@|
 
-<!-- Remove templates not applicable for this  -->
+<!-- Remove templates not applicable for this project -->
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}
 {{||$:/pocket-io/project/newtab-template}}
@@ -32,12 +32,10 @@ Close
 
 {{!!ioResult}}
 
-<hr class="poc2go-hr">
+{{||$:/pocket-io/project/writeup-template}}
 
 {{$:/pocket-io/code/$$$project$$$||$:/core/ui/TagTemplate}}
 
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/$$$project$$$]]" ""
 "$:/state/tab/pocket-io/code/$$$project$$$" "tc-horizontal">>
-
-<$transclude $tiddler={{!!writeup}}>

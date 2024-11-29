@@ -1,6 +1,6 @@
 caption: $$$project$$$
 created: 20241110230314555
-modified: 20241123190044294
+modified: 20241129044221046
 project: $$$project$$$
 tags: Appdocs $$$project$$$
 title: $$$project$$$ docs
@@ -21,8 +21,4 @@ Close
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/$$$project$$$/docs]]" "" "$:/state/tab/pocket-io/docs/$$$project$$$">>
 
-<$transclude $tiddler={{!!writeup}} />
-
 Associated tiddlers:
-
-<hr class="poc2go-hr">

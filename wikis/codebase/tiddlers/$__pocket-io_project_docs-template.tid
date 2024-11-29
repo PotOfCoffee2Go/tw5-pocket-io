@@ -1,12 +1,24 @@
 caption: docs
 created: 20241121190910030
-modified: 20241123185947085
+modified: 20241129052522793
 tags: $:/pocket-io/template/project project template
 title: $:/pocket-io/project/docs-template
 type: text/vnd.tiddlywiki
 
+\define writeup()
+<<details 'Writeup' """
+
+<$transclude $tiddler={{!!writeup}}>
+
+""" >>
+\end
+
 <h2 style="text-align: center;">{{!!caption}}</h2>
 
 |tc-center tc-table-no-border|k
-|Project: <$link to={{!!project}}> {{!!project}} </$link> | Writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
+|Project: <$link to={{!!project}}> {{!!project}} </$link> | Edit writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
+
+|tc-center tc-table-no-border|k
+| <<writeup>> |
+
 

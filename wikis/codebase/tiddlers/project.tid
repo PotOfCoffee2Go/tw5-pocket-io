@@ -1,4 +1,5 @@
 autoLoad: yes
+caption: Project Manager
 color: #003fa3
 created: 20240101000000000
 ioConfirmDelete: no
@@ -8,7 +9,7 @@ ioPrjTabName:
 ioPrjTabSelected: project-create
 ioPrjTabToDelete: project-helpers
 ioResult: 
-modified: 20241127024944888
+modified: 20241129061042344
 tags: project Projects
 title: project
 type: text/vnd.tiddlywiki
@@ -32,11 +33,9 @@ Close
 
 {{!!ioResult}}
 
-<hr class="poc2go-hr">
+{{||$:/pocket-io/project/writeup-template}}
 
 {{$:/pocket-io/code/project||$:/core/ui/TagTemplate}}
 
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/project]]" "" "$:/state/tab/pocket-io/code/project" "tc-horizontal">>
-
-<$transclude $tiddler={{!!writeup}}>

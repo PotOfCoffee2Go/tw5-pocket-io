@@ -1,14 +1,15 @@
 autoLoad: yes
+caption: System Startup
 color: #025517
 created: 20241111150158121
 ioConfirmDelete: no
 ioPrjMinify: yes
 ioPrjProject: startup
 ioPrjTabName: 
-ioPrjTabSelected: startup-data-server
-ioPrjTabToDelete: startup-data-server
+ioPrjTabSelected: startup-globals
+ioPrjTabToDelete: startup-formatIoResult
 ioResult: 
-modified: 20241127092000659
+modified: 20241129102554051
 tags: startup Projects
 title: startup
 type: text/vnd.tiddlywiki
@@ -28,20 +29,19 @@ Close
 |@@.poc2go-mono Documentation: [[startup docs]] @@|
 
 |tc-center tc-table-no-border|k
-|''startup is hard coded to always''|
+| ''startup is hard coded to always'' |
 | ''load first!'' |
 
 {{||$:/pocket-io/project/upload-template}}
 {{||$:/pocket-io/project/newtab-template}}
+{{||$:/pocket-io/project/delete-template}}
 
 {{!!ioResult}}
 
-<hr class="poc2go-hr">
+{{||$:/pocket-io/project/writeup-template}}
 
 {{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}}
 
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/startup]]" "" "$:/state/tab/pocket-io/code/startup" "tc-horizontal">>
-
-<$transclude $tiddler={{!!writeup}}>
 

@@ -11,7 +11,7 @@ function helloworld(socket, msg) {
 	var resultText = `${new Date().toString()}\n\nHello tiddler '[[${title}]]' !`;
 
 	// Format the respone text - see $:/pocket-io/ioResult-template
-	senderTid.ioResult = formatIoResult(resultText);
+	senderTid.ioResult = $tpi.fn.formatIoResult(resultText);
 	// Push the tiddler onto array that is sent back to client wiki
 	msg.resultTiddlers.push(senderTid);
 	return msg;

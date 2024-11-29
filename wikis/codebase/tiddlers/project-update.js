@@ -41,7 +41,7 @@ function projectUpdate(socket, msg) {
 
 	// Return if error
 	if (resultMsg) {
-		senderTid.ioResult = formatIoResult(resultMsg);
+		senderTid.ioResult = $tpi.fn.formatIoResult(resultMsg);
 		msg.resultTiddlers.push(senderTid);
 		return msg;
 	}
@@ -52,15 +52,15 @@ function projectUpdate(socket, msg) {
 	} else {
 		filter = '[prefix[$$$project$$$]]'; // Project
 	}
-	
+
 	var titles = projectCreateFromFilter(filter, project, tabName);
-	
+
 	// Clear tabName (and project when create) on success
 	senderTid.ioPrjTabName = '';
 	if (msg.req.topic === 'projectCreate') {
 		senderTid.ioPrjProject = '';
 	}
-	senderTid.ioResult = formatIoResult(`Tiddlers created:\n\n${titles.join(', ')}`);
+	senderTid.ioResult = $tpi.fn.formatIoResult(`Tiddlers created:\n\n${titles.join(', ')}`);
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }

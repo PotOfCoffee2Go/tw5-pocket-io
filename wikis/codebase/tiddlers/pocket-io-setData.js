@@ -1,4 +1,4 @@
-// Copy tiddlers from web client to $data database wiki 
+// Copy tiddlers from web client to $data database wiki
 function setData(socket, msg) {
 	var senderTid = cpy(msg.senderTiddler);
 	senderTid.ioResult = '';
@@ -11,7 +11,7 @@ function setData(socket, msg) {
 		))
 	})
 
-	senderTid.ioResult = formatIoResult(`{{!!modified}}\n\n${msg.filterTiddlers.length} tiddlers updated on $data wiki`);
+	senderTid.ioResult = $tpi.fn.formatIoResult(`{{!!modified}}\n\n${msg.filterTiddlers.length} tiddlers updated on $data wiki`);
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }

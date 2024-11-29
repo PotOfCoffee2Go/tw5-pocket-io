@@ -1,6 +1,6 @@
 caption: fetch
 created: 20241122171936891
-modified: 20241123185359717
+modified: 20241129054217613
 project: fetch
 tags: Appdocs fetch
 title: fetch docs
@@ -21,10 +21,6 @@ Close
 <<closeTabsButton>>
 <<tabs "[tag[$:/pocket-io/code/fetch/docs]]" "" "$:/state/tab/pocket-io/docs/fetch">>
 
-<$transclude $tiddler={{!!writeup}} />
-
 Associated tiddlers:
 
 [[Fetch Tiddlers Example]] - example of having server fetch tiddlers from a URL.
-
-<hr class="poc2go-hr">

@@ -27,7 +27,7 @@ function projectCreate(socket, msg) {
 
 	// Return error
 	if (resultMsg) {
-		senderTid.ioResult = formatIoResult(resultMsg);
+		senderTid.ioResult = $tpi.fn.formatIoResult(resultMsg);
 		msg.resultTiddlers.push(senderTid);
 		return msg;
 	}

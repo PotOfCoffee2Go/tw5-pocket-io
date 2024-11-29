@@ -16,7 +16,7 @@ function projectUpload(socket, msg) {
 	if (senderTid.ioPrjMinify && senderTid.ioPrjMinify !== 'yes') {
 		minify = false;
 	}
-	senderTid.ioResult = formatIoResult(getCode(tabName, minify));
+	senderTid.ioResult = $tpi.fn.formatIoResult(getCode(tabName, minify));
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }
