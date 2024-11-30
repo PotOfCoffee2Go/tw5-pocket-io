@@ -9,18 +9,11 @@ ioPrjTabName:
 ioPrjTabSelected: project-create
 ioPrjTabToDelete: project-helpers
 ioResult: 
-modified: 20241129061042344
+modified: 20241130142836260
 tags: project Projects
 title: project
 type: text/vnd.tiddlywiki
 writeup: project writeup
-
-\define closeTabsButton()
-<$button class="poc2go-tabs-close">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/project">> text=""/>
-Close
-</$button>
-\end
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono Project Management System@@|
@@ -37,5 +30,7 @@ Close
 
 {{$:/pocket-io/code/project||$:/core/ui/TagTemplate}}
 
-<<closeTabsButton>>
+<<closeTabsButton '$:/state/tab/pocket-io/code/project'>>
 <<tabs "[tag[$:/pocket-io/code/project]]" "" "$:/state/tab/pocket-io/code/project" "tc-horizontal">>
+
+<<topButton>>

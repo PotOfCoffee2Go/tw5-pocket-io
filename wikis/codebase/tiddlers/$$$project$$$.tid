@@ -5,37 +5,37 @@ ioPrjProject: $$$project$$$
 ioPrjTabSelected: $$$project$$$-$$$tab$$$
 ioPrjTabToDelete: $$$project$$$-$$$tab$$$
 ioResult: 
-modified: 20241129042908078
+modified: 20241130150335640
 tags: $$$project$$$ Projects
 title: $$$project$$$
 type: text/vnd.tiddlywiki
 writeup: $$$project$$$ writeup
 
-\define closeTabsButton()
-<$button class="poc2go-tabs-close">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/$$$project$$$">> text=""/>
-Close
-</$button>
-\end
-
 |tc-center tc-table-no-border|k
-|@@.poc2go-mono Edit this tiddler to make descriptive name @@|
+|@@.poc2go-mono Edit this tiddler to display descriptive project name @@|
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono Documentation: [[$$$project$$$ docs]] @@|
 
-<!-- Remove templates not applicable for this project -->
+<!-- Comment out templates not applicable for this project -->
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}
 {{||$:/pocket-io/project/newtab-template}}
-{{||$:/pocket-io/project/delete-template}}
+<!-- {{||$:/pocket-io/project/delete-template}} -->
 
+<!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
+<!-- Project writeup text details -->
 {{||$:/pocket-io/project/writeup-template}}
 
+<!-- Tag pill of code tiddlers in project -->
 {{$:/pocket-io/code/$$$project$$$||$:/core/ui/TagTemplate}}
 
-<<closeTabsButton>>
+<<closeTabsButton "$:/state/tab/pocket-io/code/$$$project$$$">>
+
+<!-- Tabs that contain server-side code -->
 <<tabs "[tag[$:/pocket-io/code/$$$project$$$]]" ""
 "$:/state/tab/pocket-io/code/$$$project$$$" "tc-horizontal">>
+
+<<topButton>>

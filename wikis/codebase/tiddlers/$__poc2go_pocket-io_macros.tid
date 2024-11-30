@@ -1,8 +1,19 @@
 created: 20231107195051015
-modified: 20241129095444883
+modified: 20241130145342017
 tags: $:/tags/Macro
 title: $:/poc2go/pocket-io/macros
 type: text/vnd.tiddlywiki
+
+\define topButton()
+<$button class="poc2go-tiddler-top tc-btn-invisible tc-tiddlylink" to=<<currentTiddler>> >Top</$button>
+\end
+
+\define closeTabsButton(tab)
+<$button class="poc2go-tabs-close tc-btn-invisible tc-tiddlylink">
+<$action-setfield $tiddler=<<qualify "$tab$">>  text=""/>
+Close
+</$button>
+\end
 
 \define .codesample(n,lng,eg)
 <div class="doc-example">

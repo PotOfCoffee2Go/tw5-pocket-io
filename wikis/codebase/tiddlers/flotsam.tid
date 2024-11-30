@@ -8,18 +8,11 @@ ioPrjTabName:
 ioPrjTabSelected: flotsam-fetch
 ioPrjTabToDelete: flotsam-fetch
 ioResult: 
-modified: 20241129061408587
+modified: 20241130145459862
 tags: flotsam Projects
 title: flotsam
 type: text/vnd.tiddlywiki
 writeup: flotsam writeup
-
-\define closeTabsButton()
-<$button class="poc2go-tabs-close">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/flotsam">> text=""/>
-Close
-</$button>
-\end
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono Handy Code @@|
@@ -38,6 +31,8 @@ Close
 
 {{$:/pocket-io/code/flotsam||$:/core/ui/TagTemplate}}
 
-<<closeTabsButton>>
+<<closeTabsButton "$:/state/tab/pocket-io/code/flotsam">>
 <<tabs "[tag[$:/pocket-io/code/flotsam]]" ""
 "$:/state/tab/pocket-io/code/flotsam">>
+
+<<topButton>>

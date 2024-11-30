@@ -8,18 +8,11 @@ ioPrjTabName:
 ioPrjTabSelected: HelloWorld-filterTiddlers
 ioPrjTabToDelete: HelloWorld-broke
 ioResult: 
-modified: 20241129072639370
+modified: 20241130143525630
 tags: HelloWorld Projects
 title: HelloWorld
 type: text/vnd.tiddlywiki
 writeup: HelloWorld writeup
-
-\define closeTabsButton()
-<$button class="poc2go-tabs-close">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/HelloWorld">> text=""/>
-Close
-</$button>
-\end
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono Hello World! @@|
@@ -30,7 +23,7 @@ Close
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}
 {{||$:/pocket-io/project/newtab-template}}
-{{||$:/pocket-io/project/delete-template}}
+<!-- {{||$:/pocket-io/project/delete-template}} -->
 
 {{!!ioResult}}
 
@@ -38,6 +31,8 @@ Close
 
 {{$:/pocket-io/code/HelloWorld||$:/core/ui/TagTemplate}}
 
-<<closeTabsButton>>
+<<closeTabsButton '$:/state/tab/pocket-io/code/HelloWorld'>>
 <<tabs "[tag[$:/pocket-io/code/HelloWorld]]" "HelloWorld-hello"
-"$:/state/tab/pocket-io/code/HelloWorld" "tc-horizontal">>
+"$:/state/tab/pocket-io/code/HelloWorld" "tc-horizontial">>
+
+<<topButton>>

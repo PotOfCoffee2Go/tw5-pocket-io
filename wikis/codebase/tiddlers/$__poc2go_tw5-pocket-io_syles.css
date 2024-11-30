@@ -17,6 +17,15 @@
     border-radius: 20px;
 }
 
+.poc2go-tabs-close {
+  float:right;
+  margin-top: .6em;
+}
+.poc2go-tiddler-top {
+  float:right;
+  margin-top: .6em;
+}
+
 pre.hljs {
   border: solid 1px aqua;
 }
@@ -51,10 +60,6 @@ summary::marker {
 .poc2go-delete-confirm {
   padding: 0 0.6em 0 0.6em;
   border: 1px solid red;
-}
-.poc2go-tabs-close {
-  float:right;
-  margin-top: .6em;
 }
 .poc2go-center {
   text-align: center;

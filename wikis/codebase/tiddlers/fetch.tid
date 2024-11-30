@@ -8,18 +8,11 @@ ioPrjTabName:
 ioPrjTabSelected: fetch-text
 ioPrjTabToDelete: fetch-json
 ioResult: 
-modified: 20241129061313463
+modified: 20241130143926766
 tags: fetch Projects
 title: fetch
 type: text/vnd.tiddlywiki
 writeup: fetch writeup
-
-\define closeTabsButton()
-<$button class="poc2go-tabs-close">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/fetch">> text=""/>
-Close
-</$button>
-\end
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono Server Fetch Tiddlers by URL @@|
@@ -30,7 +23,7 @@ Close
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}
 {{||$:/pocket-io/project/newtab-template}}
-{{||$:/pocket-io/project/delete-template}}
+<!-- {{||$:/pocket-io/project/delete-template}} -->
 
 {{!!ioResult}}
 
@@ -38,6 +31,8 @@ Close
 
 {{$:/pocket-io/code/fetch||$:/core/ui/TagTemplate}}
 
-<<closeTabsButton>>
+<<closeTabsButton '$:/state/tab/pocket-io/code/fetch'>>
 <<tabs "[tag[$:/pocket-io/code/fetch]]" ""
 "$:/state/tab/pocket-io/code/fetch" "tc-horizontal">>
+
+<<topButton>>

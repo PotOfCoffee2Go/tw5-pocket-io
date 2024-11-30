@@ -14,7 +14,7 @@ var $data = {
 
 $data.app = express();
 $data.http = http.Server($data.app);
-$data.io = io($data.http);
+//$data.io = io($data.http);
 $data.twProxy = httpProxy.createProxyServer();
 
 // Allow all to access

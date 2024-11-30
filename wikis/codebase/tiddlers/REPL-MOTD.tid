@@ -7,18 +7,11 @@ ioPrjTabName:
 ioPrjTabSelected: REPL-MOTD-MSG
 ioPrjTabToDelete: REPL-MOTD-MSG
 ioResult: 
-modified: 20241129074652211
+modified: 20241130145701012
 tags: REPL-MOTD Projects
 title: REPL-MOTD
 type: text/vnd.tiddlywiki
 writeup: REPL-MOTD writeup
-
-\define closeTabsButton()
-<$button class="poc2go-tabs-close">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/REPL-MOTD">> text=""/>
-Close
-</$button>
-\end
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono REPL Messages of the Day @@|
@@ -38,6 +31,8 @@ Close
 
 {{$:/pocket-io/code/REPL-MOTD||$:/core/ui/TagTemplate}}
 
-<<closeTabsButton>>
+<<closeTabsButton "$:/state/tab/pocket-io/code/REPL-MOTD">>
 <<tabs "[tag[$:/pocket-io/code/REPL-MOTD]]" ""
 "$:/state/tab/pocket-io/code/REPL-MOTD" "tc-horizontal">>
+
+<<topButton>>

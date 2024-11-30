@@ -8,19 +8,11 @@ ioPrjTabName:
 ioPrjTabSelected: REST-helpers
 ioPrjTabToDelete: AALLLL
 ioResult: 
-modified: 20241129061221667
+modified: 20241130142954520
 tags: REST Projects
 title: REST
 type: text/vnd.tiddlywiki
 writeup: REST writeup
-
-\define closeTabsButton()
-<$button class="poc2go-tabs-close">
-<$action-setfield
-$tiddler=<<qualify "$:/state/tab/pocket-io/code/REST">> text=""/>
-Close
-</$button>
-\end
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono REST Access to Wikis @@|
@@ -36,7 +28,7 @@ Enable 'Auto load on startup' and restart server to load updated code.
 
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/newtab-template}}
-{{||$:/pocket-io/project/delete-template}}
+<!-- {{||$:/pocket-io/project/delete-template}} -->
 
 {{!!ioResult}}
 
@@ -44,6 +36,8 @@ Enable 'Auto load on startup' and restart server to load updated code.
 
 {{$:/pocket-io/code/REST||$:/core/ui/TagTemplate}}
 
-<<closeTabsButton>>
+<<closeTabsButton '$:/state/tab/pocket-io/code/REST'>>
 <<tabs "[tag[$:/pocket-io/code/REST]]" ""
 "$:/state/tab/pocket-io/code/REST" "tc-horizontal">>
+
+<<topButton>>

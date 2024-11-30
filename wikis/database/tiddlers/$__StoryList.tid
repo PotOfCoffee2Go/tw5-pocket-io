@@ -1,2 +1,3 @@
 list: $:/TagManager
 title: $:/StoryList
+type: text/vnd.tiddlywiki

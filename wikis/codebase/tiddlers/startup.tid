@@ -9,18 +9,11 @@ ioPrjTabName:
 ioPrjTabSelected: startup-globals
 ioPrjTabToDelete: startup-formatIoResult
 ioResult: 
-modified: 20241129102554051
+modified: 20241130134419000
 tags: startup Projects
 title: startup
 type: text/vnd.tiddlywiki
 writeup: startup writeup
-
-\define closeTabsButton()
-<$button class="poc2go-tabs-close">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/startup">>  text=""/>
-Close
-</$button>
-\end
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono System Startup Code @@|
@@ -34,7 +27,7 @@ Close
 
 {{||$:/pocket-io/project/upload-template}}
 {{||$:/pocket-io/project/newtab-template}}
-{{||$:/pocket-io/project/delete-template}}
+<!-- {{||$:/pocket-io/project/delete-template}} -->
 
 {{!!ioResult}}
 
@@ -42,6 +35,7 @@ Close
 
 {{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}}
 
-<<closeTabsButton>>
+<<closeTabsButton '$:/state/tab/pocket-io/code/startup'>>
 <<tabs "[tag[$:/pocket-io/code/startup]]" "" "$:/state/tab/pocket-io/code/startup" "tc-horizontal">>
 
+<<topButton>>

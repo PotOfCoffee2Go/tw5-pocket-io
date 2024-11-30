@@ -9,18 +9,11 @@ ioPrjTabSelected: pocket-io-testMsg
 ioPrjTabToDelete: pocket-io-ss%rt
 ioPrjUpload: pocket-io-pocket.io
 ioResult: 
-modified: 20241129060937821
+modified: 20241130135009173
 tags: pocket-io Projects
 title: pocket-io
 type: text/vnd.tiddlywiki
 writeup: pocket-io writeup
-
-\define closeTabsButton()
-<$button class="poc2go-tabs-close">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/code/pocket-io">> text=""/>
-Close
-</$button> 
-\end
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono Pocket-io sockets interface @@|
@@ -31,7 +24,7 @@ Close
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}
 {{||$:/pocket-io/project/newtab-template}}
-{{||$:/pocket-io/project/delete-template}}
+<!-- {{||$:/pocket-io/project/delete-template}} -->
 
 {{!!ioResult}}
 
@@ -39,5 +32,7 @@ Close
 
 {{$:/pocket-io/code/pocket-io||$:/core/ui/TagTemplate}}
 
-<<closeTabsButton>>
+<<closeTabsButton '$:/state/tab/pocket-io/code/pocket-io'>>
 <<tabs "[tag[$:/pocket-io/code/pocket-io]]" "" "$:/state/tab/pocket-io/code/pocket-io" "tc-horizontal">>
+
+<<topButton>>
