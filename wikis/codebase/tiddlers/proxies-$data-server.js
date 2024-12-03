@@ -18,8 +18,7 @@ $data.http = http.Server($data.app);
 $data.twProxy = httpProxy.createProxyServer();
 
 // Allow all to access
-// handle some rare CORS cases
-$data.app.options('*', cors());
+$data.app.options('*', cors()); // handle some rare CORS cases
 $data.app.use(cors());
 
 // Routes - add express routes to this router

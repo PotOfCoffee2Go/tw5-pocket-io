@@ -1,5 +1,5 @@
 // Server-side topics are passed the socket and msg from client wiki
-function helloworld(socket, msg) {
+$tpi.topic.helloworld = function helloworld(socket, msg) {
 	dir(msg,3) // Display msg on server console
 
 	// Copy the tiddler that sent the request
@@ -16,8 +16,6 @@ function helloworld(socket, msg) {
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }
-// Assign 'helloworld' function as a server topic
-$topics.helloworld = helloworld;
 
 // Example Tiddler that calls server topic 'hellowrld'
 /*

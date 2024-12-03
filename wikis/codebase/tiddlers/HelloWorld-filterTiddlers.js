@@ -1,5 +1,5 @@
 // Server-side topics are passed the socket and msg from client wiki
-function filterTiddlers(socket, msg) {
+$tpi.topic.filterTiddlers = function filterTiddlers(socket, msg) {
 	var senderTid = cpy(msg.senderTiddler);
 	senderTid.ioResult = '';
 
@@ -11,5 +11,3 @@ function filterTiddlers(socket, msg) {
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }
-
-$topics.filterTiddlers = filterTiddlers;

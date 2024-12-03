@@ -1,5 +1,5 @@
 // Delete a project's code or a project completely
-function projectDelete(socket, msg) {
+$tpi.topic.projectDelete = function projectDelete(socket, msg) {
 	var senderTid = cpy(msg.senderTiddler);
 	senderTid.ioResult = '';
 
@@ -45,5 +45,3 @@ function projectDelete(socket, msg) {
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }
-
-$topics.projectDelete = projectDelete;

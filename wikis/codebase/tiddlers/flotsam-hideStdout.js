@@ -7,7 +7,7 @@
 //     will hide text being displayed on console terminal
 //   showStdout();
 //     will show stdout text on console
-function hideStdout() {
+$tpi.fn.hideStdout = function hideStdout() {
 	var old_stdout_write = process.stdout.write;
 
 	process.stdout.write = (function (write) {
@@ -19,7 +19,7 @@ function hideStdout() {
 	}(process.stdout.write));
 
 	// puts back to original
-	return function showStdout() {
+	$tpi.fn.showStdout = function showStdout() {
 		process.stdout.write = old_stdout_write;
 	};
 };

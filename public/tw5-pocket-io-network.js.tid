@@ -121,30 +121,11 @@ const fieldsToWiki = (fields, tostory = false, fromServer = false) => {
 }
 
 // ------------------------
-// Helpers
-// Timestamp when tiddler was 'fetched' from server
-//  and tags the tiddler as from the server (Default: 'node-red')
-const stampFetched = (fields) => {
-	return {
-		fetched: $tw.utils.stringifyDate(new Date()),
-		tags: fields.tags
-			? `${fields.tags} repl`
-			: `repl`
-		};
-}
-
-
-// ------------------------
-// Post pocket.io macros and network event handlers
+// Pocket.io event handlers
 const initialize = () => {
 	socket = io();
 
-	// Default tiddler that interfaces to the REPL
-	if (!$tw.wiki.tiddlerExists('Pocket-io REPL')) {
-		fieldsToWiki(replInterface, true);
-	}
-
-	// Macros simplify access to pocket.io server
+	// Macro to access pocket.io server
 	$tw.wiki.addTiddler(new $tw.Tiddler(pocketIoDefines));
 
 	socket.on('connect', () => {
@@ -215,63 +196,6 @@ fetch(socketLibrary).then((res) => {
 
 
 })();
-
-const replInterface = {
-	title: 'Pocket-io REPL',
-	tags: 'pocket-io',
-	tostory: 'getData',
-	text: `\\define pio()
-<$macrocall $name=pocket command=emit topic='eval' filter={{!!sendtext}} sender="$(currentTiddler)$" />
-\\end
-\\define getData()
-<$macrocall $name=pocket command=emit topic={{!!tostory}} filter={{!!wikiFilter}}  sender="$(currentTiddler)$" />
-\\end
-\\define setData()
-<$macrocall $name=pocket command=emit topic='setData' filter={{!!wikiFilter}} sender="$(currentTiddler)$" />
-\\end
-
-<style>
-.tid-input {
-  width:50%;
-	font-family: monospace;
-	font-size: 1.1em;
-}
-</style>
-
-<details><summary>Instructions</summary>
-
-Given a TiddlyWiki [[filter|https://tiddlywiki.com/static/Filters.html]] will get tiddlers from the $data wiki and add/change the tiddlers in this single file wiki. For example:
-
-<ul>
-<li> Edit [[tw5-pocket-io.png]] and draw something. </li>
-<li> Put \`[[tw5-pocket-io.png]]\` as the filter and press 'Store tiddler'.</li>
-<li> In another browser tab 'http://localhost:3000'</li>
-<li> Put \`[[tw5-pocket-io.png]]\` as the filter and press 'Get tiddler'</li>
-</ul>
-
-</details>
-
-Tiddlers can be sent to the $data wiki given filter of tiddlers in this single file wiki and pressing 'Store tiddlers'. Other single file wikis connected to the server can now retrieve them with 'Get tiddlers'. When 'Get tiddlers' can open received tiddlers in the story river.
-
-<$checkbox field="tostory" checked="getDataTostory" unchecked="getData" default="getData"> open in story?</$checkbox>
-
-Filter: <$edit-text field='wikiFilter' class="tid-input"/>
-<$button actions="<<getData>>"> Get tiddlers </$button>
-<$button actions="<<setData>>"> Store tiddlers </$button>
-
-----
-
-Commands can be sent to the REPL by entering the command and press 'Send'. Ex: \`$dw.wiki.getTiddlers()\`
-
-<$edit-text field="sendtext" class="tid-input"/>
-<$button actions="<<pio>>"> Send </$button>
-
-<$button> <$action-setfield $tiddler="$:/temp/pocket-io/repldata" text=""/> Clear display </$button>
-
-{{$:/temp/pocket-io/repldata}}
-
-`
-}
 
 // Global macros for TiddlyWiki access to server
 //  If problems loading the network these macros will not be loaded

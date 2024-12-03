@@ -1,7 +1,8 @@
 created: 20241129055408751
-modified: 20241129055408751
+modified: 20241202093407737
 tags: writeup proxies
 title: proxies-$code-server writeup
 type: text/vnd.tiddlywiki
 
-Documentation of tab '$code-server' in project 'proxies'.
+The code wiki contains tiddlers with the JavaScript code that is loaded and run by the TW5-pocket-io server. Code tiddlers are loaded similar to [[modules|https://nodejs.org/api/modules.html#modules-commonjs-modules]] on Node.js but there are exceptions as the code is loaded into a Node.js REPL for execution. Is akin to loading code into a browser. See the [[Introduction Manual]].
+

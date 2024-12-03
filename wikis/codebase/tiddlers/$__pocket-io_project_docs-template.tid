@@ -1,6 +1,6 @@
 caption: docs
 created: 20241121190910030
-modified: 20241129052522793
+modified: 20241201171714737
 tags: $:/pocket-io/template/project project template
 title: $:/pocket-io/project/docs-template
 type: text/vnd.tiddlywiki
@@ -10,7 +10,7 @@ type: text/vnd.tiddlywiki
 
 <$transclude $tiddler={{!!writeup}}>
 
-""" >>
+""" "open">>
 \end
 
 <h2 style="text-align: center;">{{!!caption}}</h2>

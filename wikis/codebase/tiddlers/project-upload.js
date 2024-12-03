@@ -1,5 +1,5 @@
 // Upload code to server
-function projectUpload(socket, msg) {
+$tpi.topic.projectUpload = function projectUpload(socket, msg) {
 	var senderTid = cpy(msg.senderTiddler);
 	senderTid.ioResult = '';
 
@@ -16,9 +16,7 @@ function projectUpload(socket, msg) {
 	if (senderTid.ioPrjMinify && senderTid.ioPrjMinify !== 'yes') {
 		minify = false;
 	}
-	senderTid.ioResult = $tpi.fn.formatIoResult(getCode(tabName, minify));
+	senderTid.ioResult = $tpi.fn.formatIoResult($tpi.getCode(tabName, minify));
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }
-
-$topics.projectUpload = projectUpload;

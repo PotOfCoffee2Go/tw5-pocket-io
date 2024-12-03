@@ -1,24 +1,19 @@
 caption: proxies
 created: 20241129054823221
-modified: 20241129054823221
+modified: 20241201094107215
 project: proxies
-tags: Appdocs proxies
+tags: proxies Projectdocs
 title: proxies docs
 type: text/vnd.tiddlywiki
 writeup: proxies writeup
-
-\define closeTabsButton()
-<$button style="float:right;margin-top: .6em;">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/docs/proxies">> text=""/>
-Close
-</$button>
-\end
 
 {{||$:/pocket-io/project/docs-template}}
 
 {{$:/pocket-io/code/proxies/docs||$:/core/ui/TagTemplate}}
 
-<<closeTabsButton>>
+<<closeTabsButton "$:/state/tab/pocket-io/docs/proxies">>
 <<tabs "[tag[$:/pocket-io/code/proxies/docs]]" "" "$:/state/tab/pocket-io/docs/proxies">>
 
 Associated tiddlers:
+
+<<topButton>>

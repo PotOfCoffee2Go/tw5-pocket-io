@@ -1,4 +1,4 @@
-function Commander(tw) {
+$tpi.fn.Commander = function Commander(tw) {
 	this.checkForErrors = (err) => {
 		if (err) {
 			tw.utils.log("Error: " + err,'red');
@@ -11,6 +11,7 @@ function Commander(tw) {
 	}
 }
 
-cwCmdr = new Commander($cw);
-dwCmdr = new Commander($dw);
-twCmdr = new Commander($tw);
+$tpi.dsCmdr = new Commander($ds);
+$tpi.cwCmdr = new Commander($cw);
+$tpi.dwCmdr = new Commander($dw);
+$tpi.twCmdr = new Commander($tw);

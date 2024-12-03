@@ -6,7 +6,7 @@ ioPrjProject:
 ioPrjTabName: 
 ioPrjToProject: flotsam
 ioResult: 
-modified: 20241130150001143
+modified: 20241202101740422
 tags: 
 title: Codebase
 type: text/vnd.tiddlywiki
@@ -17,7 +17,9 @@ type: text/vnd.tiddlywiki
 
 !!!! [[Introduction|Introduction Manual]] - Summary of writing functions to be run by the system.
 
-!!!! [[Project Management|Project Manual]] - How projects are used to control which code is loaded to the system.
+!!!! [[Code Wiki Usage|Usage Manual]] - How to create and manage projects.
+
+!!!! [[Project Management|Project Manual]] - How projects are used to control which code tiddlers are loaded to the system.
 
 !!!! [[Projects that load on startup|Startup Manual]] - How to set up automatic loading of code to the system
 
@@ -50,5 +52,5 @@ type: text/vnd.tiddlywiki
 
 </div>
 
-!!!! Create project template: [[$$$project$$$]]
+!!!! Create project templates: [[$$$project$$$]]
 

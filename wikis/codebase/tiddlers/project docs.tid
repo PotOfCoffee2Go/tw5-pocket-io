@@ -1,38 +1,24 @@
 caption: project
 created: 20241110230314555
-modified: 20241129053650380
+modified: 20241201094035594
 project: project
-tags: Appdocs project
+tags: project Projectdocs
 title: project docs
 type: text/vnd.tiddlywiki
 writeup: project writeup
-
-\define closeTabsButton()
-<$button style="float:right;margin-top: .6em;">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/docs/project">> text=""/>
-Close
-</$button>
-\end
-
-\define closeTemplateTabsButton()
-<$button style="float:right;margin-top: .6em;">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/template/project">> text=""/>
-Close
-</$button>
-\end
 
 {{||$:/pocket-io/project/docs-template}}
 
 {{$:/pocket-io/code/project/docs||$:/core/ui/TagTemplate}}
 
-<<closeTabsButton>>
+<<closeTabsButton "$:/state/tab/pocket-io/docs/project">>
 <<tabs "[tag[$:/pocket-io/code/project/docs]]" "" "$:/state/tab/pocket-io/docs/project">>
 
 !!! Associated tiddlers:
 
-!!!! GUI Templates
+!!!! GUI Templates {{$:/pocket-io/template/project||$:/core/ui/TagTemplate}}
 
-{{$:/pocket-io/template/project||$:/core/ui/TagTemplate}}
-
-<<closeTemplateTabsButton>>
+<<closeTabsButton "$:/state/tab/pocket-io/template/project">>
 <<tabs "[tag[$:/pocket-io/template/project]]" "" "$:/state/tab/pocket-io/template/project">>
+
+<<topButton>>

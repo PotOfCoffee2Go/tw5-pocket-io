@@ -16,11 +16,11 @@ $code.io.on('connection', (socket) => {
 			dir(msg);
 			return;
 		}
-		if (!(msg.req.topic && !!$topics[msg.req.topic])) {
-			socket.emit('msg',JSON.stringify($topics['badMsg'](socket, msg, `Invalid topic: ${msg.req.topic}`)));
+		if (!(msg.req.topic && !!$tpi.topic[msg.req.topic])) {
+			socket.emit('msg',JSON.stringify($tpi.topic['badMsg'](socket, msg, `Invalid topic: ${msg.req.topic}`)));
 			return;
 		}
-		socket.emit('msg',JSON.stringify($topics[msg.req.topic](socket, msg)));
+		socket.emit('msg',JSON.stringify($tpi.topic[msg.req.topic](socket, msg)));
 	})
 	// Remove from connected sockets
 	socket.on('disconnect', () => {

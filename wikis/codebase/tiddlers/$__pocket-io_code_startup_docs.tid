@@ -1,6 +1,7 @@
 color: #025517
 created: 20241122085228519
 list: [[startup-globals docs]] [[startup-console docs]] [[startup-commands docs]] [[startup-$code-server docs]] [[startup-$data-server docs]] [[startup-formatIoResult docs]] [[startup-getCode docs]]
-modified: 20241128111525254
+modified: 20241201041419296
+shortname: startup docs
 title: $:/pocket-io/code/startup/docs
 type: text/vnd.tiddlywiki

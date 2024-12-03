@@ -1,13 +1,13 @@
-function tagData(filter, tags = []) {
+$tpi.fn.tagData = function tagData(tw, filter, tags = []) {
 	if (!Array.isArray(tags)) {
-		tags = $dw.utils.parseStringArray(tags);
+		tags = tw.utils.parseStringArray(tags);
 	} 
-	$dw.wiki.filterTiddlers(filter).forEach(title => {
-		var tiddler = $dw.wiki.getTiddler(title);
+	tw.wiki.filterTiddlers(filter).forEach(title => {
+		var tiddler = tw.wiki.getTiddler(title);
 		var tiddlerTags = tiddler.getFieldList('tags');
 		tiddlerTags = tiddlerTags.concat(tags);
-		$dw.wiki.addTiddler(new $dw.Tiddler(tiddler,
-			{ tags: $dw.utils.stringifyList(tiddlerTags) }
+		tw.wiki.addTiddler(new tw.Tiddler(tiddler,
+			{ tags: tw.utils.stringifyList(tiddlerTags) }
 		));
 	})
 }

@@ -1,26 +1,18 @@
 caption: pocket-io
 created: 20241112191809093
-modified: 20241129053532981
+modified: 20241201094002804
 project: pocket-io
-tags: Appdocs pocket-io
+tags: pocket-io Projectdocs
 title: pocket-io docs
 type: text/vnd.tiddlywiki
 writeup: pocket-io writeup
-
-\define closeTabsButton()
-<$button style="float:right;margin-top: .6em;">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/docs/pocket-io">> text=""/>
-Close
-</$button>
-\end
 
 {{||$:/pocket-io/project/docs-template}}
 
 {{$:/pocket-io/code/pocket-io/docs||$:/core/ui/TagTemplate}}
 
-<<closeTabsButton>>
+<<closeTabsButton "$:/state/tab/pocket-io/docs/pocket-io">>
 <<tabs "[tag[$:/pocket-io/code/pocket-io/docs]]" "" "$:/state/tab/pocket-io/docs/pocket-io">>
-
 
 Associated tiddlers:
 
@@ -29,3 +21,5 @@ Associated tiddlers:
 [[Pocket.io Basic Example]] sends a test message to the server. [[Pocket.io Example]] shows getting data from the $Data wiki database.
 
 [[$:/pocket-io/ioResult-template]] is a template used to format the display of server result messages.
+
+<<topButton>>

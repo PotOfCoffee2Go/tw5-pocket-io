@@ -2,7 +2,7 @@
 //  If the tab already exists - exits with no action
 //  If project already exists will create a new tab
 //  If project does not exist - will be created containing a tab
-function projectCreateFromFilter(filter, project, tabName) {
+$tpi.fn.projectCreateFromFilter = function projectCreateFromFilter(filter, project, tabName) {
 	var titles = [];
 	var json = $cw.wiki.getTiddlersAsJson(filter);
 	var text = json
@@ -22,7 +22,7 @@ function projectCreateFromFilter(filter, project, tabName) {
 	return titles;
 }
 
-function projectUpdate(socket, msg) {
+$tpi.topic.projectUpdate = function projectUpdate(socket, msg) {
 	var senderTid = cpy(msg.senderTiddler);
 	var resultMsg = '';
 	senderTid.ioResult = '';
@@ -53,7 +53,7 @@ function projectUpdate(socket, msg) {
 		filter = '[prefix[$$$project$$$]]'; // Project
 	}
 
-	var titles = projectCreateFromFilter(filter, project, tabName);
+	var titles = $tpi.fn.projectCreateFromFilter(filter, project, tabName);
 
 	// Clear tabName (and project when create) on success
 	senderTid.ioPrjTabName = '';
@@ -64,5 +64,3 @@ function projectUpdate(socket, msg) {
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }
-
-$topics.projectUpdate = projectUpdate;

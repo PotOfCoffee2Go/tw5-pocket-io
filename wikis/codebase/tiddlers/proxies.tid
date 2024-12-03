@@ -7,14 +7,14 @@ ioPrjTabName:
 ioPrjTabSelected: proxies-code
 ioPrjTabToDelete: proxies-$data
 ioResult: 
-modified: 20241130134606037
+modified: 20241202072354752
 tags: proxies Projects
 title: proxies
 type: text/vnd.tiddlywiki
 writeup: proxies writeup
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-mono $code and $data proxy servers @@|
+|@@.poc2go-mono TiddlyWiki Proxy Servers @@|
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono Documentation: [[proxies docs]] @@|
@@ -23,7 +23,7 @@ writeup: proxies writeup
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}
 {{||$:/pocket-io/project/newtab-template}}
-{{||$:/pocket-io/project/delete-template}}
+<!-- {{||$:/pocket-io/project/delete-template}} -->
 
 {{!!ioResult}}
 

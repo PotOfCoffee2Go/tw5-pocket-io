@@ -1,4 +1,4 @@
-function badMsg(socket, msg, errText) {
+$tpi.topic.badMsg = function badMsg(socket, msg, errText) {
 	var senderTid = cpy(msg.senderTiddler);
 	senderTid.ioResult = errText;
 
@@ -9,5 +9,3 @@ function badMsg(socket, msg, errText) {
 	msg.resultTiddlers = [senderTid];
 	return msg;
 }
-
-$topics.badMsg = badMsg;

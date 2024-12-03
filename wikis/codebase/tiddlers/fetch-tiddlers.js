@@ -1,4 +1,4 @@
-function fetchJsonTiddlers(socket, msg) {
+$tpi.topic.fetchJsonTiddlers = function(socket, msg) {
 	var senderTid = cpy(msg.senderTiddler);
 	var resultMsg = '';
 	senderTid.ioResult = '';
@@ -25,5 +25,3 @@ function fetchJsonTiddlers(socket, msg) {
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }
-
-$topics.fetchJsonTiddlers = fetchJsonTiddlers; // is a topic

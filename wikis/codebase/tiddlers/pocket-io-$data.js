@@ -1,4 +1,6 @@
 // Server side Socket message handler
+if ($data.io) {
+
 $data.io.on('connection', (socket) => {
 	// Client acknowledges connect sequence is complete
 	socket.on('ackConnect', () => {
@@ -16,11 +18,11 @@ $data.io.on('connection', (socket) => {
 			dir(msg);
 			return;
 		}
-		if (!(msg.req.topic && !!$topics[msg.req.topic])) {
-			socket.emit('msg',JSON.stringify($topics['badMsg'](socket, msg, `Invalid topic: ${msg.req.topic}`)));
+		if (!(msg.req.topic && !!$tpi.topic[msg.req.topic])) {
+			socket.emit('msg',JSON.stringify($tpi.topic['badMsg'](socket, msg, `Invalid topic: ${msg.req.topic}`)));
 			return;
 		}
-		socket.emit('msg',JSON.stringify($topics[msg.req.topic](socket, msg)));
+		socket.emit('msg',JSON.stringify($tpi.topic[msg.req.topic](socket, msg)));
 	})
 	// Remove from connected sockets
 	socket.on('disconnect', () => {
@@ -29,3 +31,5 @@ $data.io.on('connection', (socket) => {
 		$rt.displayPrompt();
 	});
 });
+
+} // if (!$data.io)

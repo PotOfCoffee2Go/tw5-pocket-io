@@ -1,25 +1,20 @@
 caption: REST
 color: #661f6f
 created: 20241121075506315
-modified: 20241129054046818
+modified: 20241201094208676
 project: REST
-tags: Appdocs REST
+tags: REST Projectdocs
 title: REST docs
 type: text/vnd.tiddlywiki
 writeup: REST writeup
-
-\define closeTabsButton()
-<$button style="float:right;margin-top: .6em;">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/docs/REST">> text=""/>
-Close
-</$button>
-\end
 
 {{||$:/pocket-io/project/docs-template}}
 
 {{$:/pocket-io/code/REST/docs||$:/core/ui/TagTemplate}}
 
-<<closeTabsButton>>
+<<closeTabsButton "$:/state/tab/pocket-io/docs/REST">>
 <<tabs "[tag[$:/pocket-io/code/REST/docs]]" "" "$:/state/tab/pocket-io/docs/REST">>
 
 Associated tiddlers:
+
+<<topButton>>

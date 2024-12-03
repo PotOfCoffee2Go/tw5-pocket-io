@@ -1,5 +1,5 @@
 // Copy tiddlers from $data database wiki to web client
-function getData(socket, msg) {
+$tpi.topic.getData = function getData(socket, msg) {
 	var senderTid = cpy(msg.senderTiddler);
 	senderTid.ioResult = '';
 
@@ -9,5 +9,3 @@ function getData(socket, msg) {
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }
-
-$topics.getData = getData;

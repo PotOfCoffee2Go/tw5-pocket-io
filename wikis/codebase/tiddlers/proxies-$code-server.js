@@ -18,8 +18,7 @@ $code.io = io($code.http);
 $code.twProxy = httpProxy.createProxyServer();
 
 // Allow all to access
-// handle some rare CORS cases
-$code.app.options('*', cors());
+$code.app.options('*', cors()); // handle some rare CORS cases
 $code.app.use(cors());
 
 // Routes - add express routes to this router

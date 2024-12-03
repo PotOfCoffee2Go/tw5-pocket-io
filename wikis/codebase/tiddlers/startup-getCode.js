@@ -1,6 +1,6 @@
-// Server gets code from code (this!) wiki and updates itself
-// If gets an error displays on the server's console
-function getCode(filter, minify = true) {
+// Get code from code (this!) wiki and updates REPL
+// If an error displays on the server's console
+$tpi.getCode = function getCode(filter, minify = true) {
 	const prevHistory = cpy($rt.history);
 	const prevPrompt = $rt.getPrompt(); $rt.setPrompt('');
 

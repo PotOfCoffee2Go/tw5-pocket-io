@@ -1,6 +1,6 @@
 // Create a project
 // Verify input - calls projectUpdate to create project
-function projectCreate(socket, msg) {
+$tpi.topic.projectCreate = function projectCreate(socket, msg) {
 	var senderTid = cpy(msg.senderTiddler);
 	var resultMsg = '';
 	senderTid.ioResult = '';
@@ -35,5 +35,3 @@ function projectCreate(socket, msg) {
 	// Have projectUpdate create the project
 	return projectUpdate(socket, msg);
 }
-
-$topics.projectCreate = projectCreate;

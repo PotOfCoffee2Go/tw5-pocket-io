@@ -6,10 +6,10 @@ ioConfirmDelete: no
 ioPrjMinify: yes
 ioPrjProject: startup
 ioPrjTabName: 
-ioPrjTabSelected: startup-globals
+ioPrjTabSelected: startup-getCode
 ioPrjTabToDelete: startup-formatIoResult
 ioResult: 
-modified: 20241130134419000
+modified: 20241202094616105
 tags: startup Projects
 title: startup
 type: text/vnd.tiddlywiki
@@ -22,8 +22,8 @@ writeup: startup writeup
 |@@.poc2go-mono Documentation: [[startup docs]] @@|
 
 |tc-center tc-table-no-border|k
-| ''startup is hard coded to always'' |
-| ''load first!'' |
+| Code in 'startup' is hard coded to always load. |
+| The code is loaded before other projects. |
 
 {{||$:/pocket-io/project/upload-template}}
 {{||$:/pocket-io/project/newtab-template}}

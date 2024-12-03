@@ -15,19 +15,22 @@ const proxyTargetIp ='http://127.0.0.1';
 // codeWikiDir is directory of code 'server' edition wiki
 // codePort is the Code 'server' edition wiki port - ie: http://localhost:8083
 const wikihost='127.0.0.1', // local access only since proxy running on this computer
-	dataWikiDir = 'wikis/database', dataPort = 8082,
-	codeWikiDir = 'wikis/codebase', codePort = 8083;
+	dashWikiDir = 'wikis/dashbase', dashPort = 8082,
+	codeWikiDir = 'wikis/codebase', codePort = 8083,
+	dataWikiDir = 'wikis/database', dataPort = 8084;
 
 // pocketDataPort is sockets with a reverse proxy to data wiki
 // pocketCodePort is sockets with a reverse proxy to code wiki
 const pockethost='0.0.0.0', // access from network
-	pocketDataPort = 3000,
+	pocketDashPort = 3000,
 	pocketCodePort = 3001;
+	pocketDataPort = 3002;
 
 // REPL
 var $rt = require('node:repl').start({ prompt: '', ignoreUndefined: true });
 
 // data & code proxy server settings
+var $dash = { proxyTarget: `${proxyTargetIp}:${dashPort}` };
 var $data = { proxyTarget: `${proxyTargetIp}:${dataPort}` };
 var $code = { proxyTarget: `${proxyTargetIp}:${codePort}` };
 
@@ -35,16 +38,19 @@ var $code = { proxyTarget: `${proxyTargetIp}:${codePort}` };
 const { twServerBoot } = require('./lib/twServerBoot');
 const { replTwBoot } = require('./lib/replTwBoot');
 
-var $dw, $cw, $tw;
-twServerBoot(dataWikiDir, wikihost, dataPort).then(tw => {
-	$dw = tw;
-	twServerBoot(codeWikiDir, wikihost, codePort).then(tw => {
-		$cw = tw;
-		replTwBoot().then(tw => {
-			$tw = tw;
-			replContext();
-			loadCodeToRepl();
-			startProxyServers();
+var $ds, $dw, $cw, $tw, $sockets = {};
+twServerBoot(dashWikiDir, wikihost, dashPort).then(tw => {
+	$ds = tw;
+	twServerBoot(dataWikiDir, wikihost, dataPort).then(tw => {
+		$dw = tw;
+		twServerBoot(codeWikiDir, wikihost, codePort).then(tw => {
+			$cw = tw;
+			replTwBoot().then(tw => {
+				$tw = tw;
+				replContext();
+				loadCodeToRepl();
+				startProxyServers();
+			})
 		})
 	})
 })
@@ -60,10 +66,13 @@ const hog = (txt, nbr) => log(hue(txt, nbr));
 function replContext() {
 	$rt.context.$rt = $rt;	// the REPL itself
 	$rt.context.$tw = $tw;	// tiddlywiki instance for REPL use
+	$rt.context.$ds = $ds;	// Dash tiddlywiki instance
 	$rt.context.$dw = $dw;	// Data tiddlywiki instance
 	$rt.context.$cw = $cw;	// Code tiddlywiki instance
+	$rt.context.$dash = $dash;	// dashboard proxy server
 	$rt.context.$data = $data;	// data proxy server
 	$rt.context.$code = $code;	// code proxy server
+	$rt.context.$sockets = $sockets;
 
 	$rt.setPrompt(hue('tw5-pocket-io > ',214));
 }
@@ -96,19 +105,32 @@ function loadCodeToRepl() {
 
 }
 
-// Start the socket/proxy server to data and code wikis
-const { replMOTD } = require('./lib/replMOTD');
+// Start the socket/proxy server to dash, data, and code wikis
+function replMOTD() {
+	hog(`Welcome to TW5-pocket-io\n`, 40);
+	hog(`Type: cmd.cog('REPL-MOTD-MSG') for more info.`, 40);
+	hog('  Is in the command history - just press up-arrow then enter.', 40);
+	hog('');
+	$rt.history.push(`cmd.cog('REPL-MOTD-MSG')`);
+	$rt.history.push(`$dash.`);
+	$rt.displayPrompt();
+}
+
 function startProxyServers() {
-	$data.http.listen(pocketDataPort, pockethost, () => {
-		log(`\n'pocket.io' $data proxy server started`)
-		hog(`Serving on http://${pockethost}:${pocketDataPort}`,185);
+	$dash.http.listen(pocketDashPort, pockethost, () => {
+		log(`\n'pocket.io' $dash dashboard proxy server started`)
+		hog(`Serving on http://${pockethost}:${pocketDashPort}`,185);
 		hog('(press ctrl-C to exit)',9);
-		$code.http.listen(pocketCodePort, pockethost, () => {
-			log(`'pocket.io' $code proxy server started`)
-			hog(`Serving on http://${pockethost}:${pocketCodePort}`,185);
-			hog('(press ctrl-C to exit)\n',9);
-			replMOTD($rt);
-			$rt.displayPrompt();
+		$data.http.listen(pocketDataPort, pockethost, () => {
+			log(`'pocket.io' $data database proxy server started`)
+			hog(`Serving on http://${pockethost}:${pocketDataPort}`,185);
+			hog('(press ctrl-C to exit)',9);
+			$code.http.listen(pocketCodePort, pockethost, () => {
+				log(`'pocket.io' $code codebase proxy server started`)
+				hog(`Serving on http://${pockethost}:${pocketCodePort}`,185);
+				hog('(press ctrl-C to exit)\n',9);
+				replMOTD();
+			})
 		})
 	})
 }

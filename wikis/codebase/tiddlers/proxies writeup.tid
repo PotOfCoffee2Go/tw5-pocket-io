@@ -1,7 +1,13 @@
 created: 20241129054823222
-modified: 20241129054823222
+modified: 20241202093121920
 tags: writeup proxies
 title: proxies writeup
 type: text/vnd.tiddlywiki
 
-Documentation of project 'proxies'.
+The system starts 'server' edition Node.js [[WebServers|https://tiddlywiki.com/static/WebServer.html]] on localhost (usually ports 8082-8084). 
+
+The Webservers can be accessed directly on localhost by going to http://localhost:8083 which runs a TiddlyWiki Webserver on Node.js as usual out-of-the-box.
+
+There are corresponding proxy servers which allows adding routes, for example; a REST interface to the standard TiddlyWiki web requests. The proxies can also operate as middleware which monitors or pre-processes requests to the TiddlyWiki Webserver.
+
+The proxies are based on [[express|http://expressjs.com/]] server running [[http-proxy|https://github.com/http-party/node-http-proxy#readme]] middleware. 

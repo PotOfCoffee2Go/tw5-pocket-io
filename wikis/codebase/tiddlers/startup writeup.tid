@@ -1,31 +1,14 @@
 created: 20241111150158122
-modified: 20241129010244978
+modified: 20241201011058508
 tags: writeup startup
 title: startup writeup
 type: text/vnd.tiddlywiki
 
-The startup project contains tabs that will be loaded to the REPL when the system is started. It is hard coded in ./server.js regardless of the 'autoLoad' setting.
+The startup project contains tabs that will be loaded to the server when the system is started. The 'startup' project load is hard coded in ./server.js to always load regardless of the 'autoLoad' setting.
 
-The order of the loading can be changed by clicking the {{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}} tag and drag/drop items in the order desired.
+As with all projects, the order of tab loading can be changed by clicking the {{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}} tag and drag/drop items in the order desired.
 
-The REPL places all top-level assignments (ie: not within a function) in the REPL global context. This would include var, const, let, and function.
+The code in the $code wiki is loaded into a custom Node.js REPL which is the center of the system; communicates via terminal prompt, client wikis over the net, and directly manages tiddlers of Node.js wikis in the `./wikis` directory of the server.
 
-To see what is global - start node REPL and press tab twice at the prompt:
+The REPL places all top-level assignments (ie: not within a function) in the REPL global context. The Node.js REPL, by design, allows this 'global pollution' to occur which provides a high degree of customization. But one needs to take care not to override existing variables and functions in REPL global context. Is similar to the 'windows' object in a browser. Is generally not a concern, see [[Node.js REPL programming]] for more details.
 
-```
-$ node 
-Welcome to Node.js v18.20.5.
-Type ".help" for more information.
->     <-- press {tab} twice -->
-AbortController                   AbortSignal
-AggregateError                    Array
-ArrayBuffer                       Atomics
-BigInt                            BigInt64Array
-              ...
-unescape                          url
-util                              v8
-vm                                wasi
-worker_threads                    zlib
->.exit
-$
-```

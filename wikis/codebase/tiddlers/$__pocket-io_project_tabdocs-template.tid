@@ -1,18 +1,27 @@
 caption: tabdocs
 created: 20241122001054207
-modified: 20241129052250707
+modified: 20241201172915334
 tags: $:/pocket-io/template/project project template
 title: $:/pocket-io/project/tabdocs-template
 type: text/vnd.tiddlywiki
+
+\define writeup()
+<<details 'Writeup' """
+
+<$transclude $tiddler={{!!writeup}}>
+
+""" "open">>
+\end
 
 <$tiddler tiddler=<<currentTab>>>
 
 <h2 style="text-align: center;">{{!!caption}}</h2>
 
 |tc-center tc-table-no-border|k
-|Edit writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
+|Edit code: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!codetitle}}/> {{!!codetitle}} </$button>|Edit writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
 
-<$transclude $tiddler={{!!writeup}} />
+|tc-center tc-table-no-border|k
+| <<writeup>> |
 
 <$transclude $tiddler={{!!codetitle}}/>
 

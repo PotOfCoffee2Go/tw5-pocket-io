@@ -1,23 +1,17 @@
 caption: startup
 created: 20241111150158121
-modified: 20241129010428269
+modified: 20241201094240969
 project: startup
-tags: Appdocs startup
+tags: startup Projectdocs
 title: startup docs
 type: text/vnd.tiddlywiki
 writeup: startup writeup
 
-\define closeTabsButton()
-<$button style="float:right;margin-top: .6em;">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/docs/startup">> text=""/>
-Close
-</$button>
-\end
-
 {{||$:/pocket-io/project/docs-template}}
 
-{{$:/pocket-io/code/startup/docs||$:/core/ui/TagTemplate}}
+Docs: {{$:/pocket-io/code/startup/docs||$:/core/ui/TagTemplate}}
 
-<<closeTabsButton>>
+<<closeTabsButton "$:/state/tab/pocket-io/docs/startup">>
 <<tabs "[tag[$:/pocket-io/code/startup/docs]]" "" "$:/state/tab/pocket-io/docs/startup">>
 
+<<topButton>>

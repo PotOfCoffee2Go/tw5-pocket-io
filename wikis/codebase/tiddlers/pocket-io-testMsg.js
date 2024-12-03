@@ -1,4 +1,4 @@
-$tpi.fn.testMsg = (socket, msg) => {
+$tpi.topic.testMsg = function testMsg(socket, msg) {
 	var senderTid = cpy(msg.senderTiddler);
 	senderTid.ioResult = '';
 	var tiddler = senderTid.title;
@@ -7,5 +7,3 @@ $tpi.fn.testMsg = (socket, msg) => {
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }
-
-$topics.testMsg = $tpi.fn.testMsg; // is a topic

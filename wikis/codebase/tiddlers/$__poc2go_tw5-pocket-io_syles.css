@@ -12,11 +12,14 @@
     border-radius: 20px;
 }
 /* Thick rounded borders for documentation tiddlers */
-[data-tags*="Appdocs"].tc-tiddler-view-frame {
+[data-tags*="Projectdocs"].tc-tiddler-view-frame {
     border: 2px solid #006994;
     border-radius: 20px;
 }
-
+/* Do not display 'paperclip' on document tabs */
+[data-tags*="Projectdocs"].tc-tiddler-view-frame .tc-tab-selected + .wltc-link-to-tab {
+    display: none;
+}
 .poc2go-tabs-close {
   float:right;
   margin-top: .6em;
