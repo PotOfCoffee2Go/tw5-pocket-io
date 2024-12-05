@@ -1,7 +1,7 @@
 created: 20241201174614129
-modified: 20241201174614129
+modified: 20241203090633318
 tags: writeup proxies
 title: proxies-$dash-server writeup
 type: text/vnd.tiddlywiki
 
-Documentation of tab '$dash-server' in project 'proxies'.
+The $dash (dashboard) wiki is used as a dashboard for the apllication you are building. The dashboard will gnerally access the $data wiki via the pocket.io interface which uses TiddlyWiki functions to directly updata the data wiki.

@@ -1,5 +1,5 @@
 // Server side Socket message handler
-$code.io.on('connection', (socket) => {
+$code.pocketio.on('connection', (socket) => {
 	// Client acknowledges connect sequence is complete
 	socket.on('ackConnect', () => {
 		$sockets[sid(socket)] = socket;

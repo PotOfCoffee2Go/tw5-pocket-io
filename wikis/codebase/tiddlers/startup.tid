@@ -3,13 +3,13 @@ caption: System Startup
 color: #025517
 created: 20241111150158121
 ioConfirmDelete: no
-ioPrjMinify: yes
+ioPrjMinify: no
 ioPrjProject: startup
 ioPrjTabName: 
 ioPrjTabSelected: startup-getCode
 ioPrjTabToDelete: startup-formatIoResult
 ioResult: 
-modified: 20241202094616105
+modified: 20241204213257919
 tags: startup Projects
 title: startup
 type: text/vnd.tiddlywiki
@@ -33,7 +33,7 @@ writeup: startup writeup
 
 {{||$:/pocket-io/project/writeup-template}}
 
-{{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}}
+@@.poc2go-mono {{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}} @@
 
 <<closeTabsButton '$:/state/tab/pocket-io/code/startup'>>
 <<tabs "[tag[$:/pocket-io/code/startup]]" "" "$:/state/tab/pocket-io/code/startup" "tc-horizontal">>

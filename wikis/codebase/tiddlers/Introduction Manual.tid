@@ -1,5 +1,9 @@
 created: 20241112033409758
-modified: 20241112033416634
+modified: 20241203092751088
 tags: Manual
 title: Introduction Manual
 type: text/vnd.tiddlywiki
+
+!! Welcome to TW5-pocket-io system.
+
+The system is a development environment for [[TiddlyWiki5|https://tiddlywiki.com]] applications. The system uses TiddlyWiki as the web front-end as well as the server-side.

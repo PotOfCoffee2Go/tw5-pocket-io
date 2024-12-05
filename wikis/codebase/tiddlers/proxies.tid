@@ -7,7 +7,7 @@ ioPrjTabName:
 ioPrjTabSelected: proxies-code
 ioPrjTabToDelete: proxies-$data
 ioResult: 
-modified: 20241202072354752
+modified: 20241203160938688
 tags: proxies Projects
 title: proxies
 type: text/vnd.tiddlywiki
@@ -29,7 +29,7 @@ writeup: proxies writeup
 
 {{||$:/pocket-io/project/writeup-template}}
 
-{{$:/pocket-io/code/proxies||$:/core/ui/TagTemplate}}
+@@.poc2go-mono {{$:/pocket-io/code/proxies||$:/core/ui/TagTemplate}} @@
 
 <<closeTabsButton '$:/state/tab/pocket-io/code/proxies'>>
 <<tabs "[tag[$:/pocket-io/code/proxies]]" ""

@@ -14,7 +14,7 @@ var $code = {
 
 $code.app = express();
 $code.http = http.Server($code.app);
-$code.io = io($code.http);
+$code.pocketio = pocketio($code.http);
 $code.twProxy = httpProxy.createProxyServer();
 
 // Allow all to access

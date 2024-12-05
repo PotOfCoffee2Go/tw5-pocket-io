@@ -10,7 +10,7 @@ const $tpi = { fn: {}, topic: {} }
 // Express server and middleware
 const express = require('express');
 const cors = require('cors');
-const io = require('pocket.io');
+const pocketio = require('pocket.io');
 const httpProxy = require('http-proxy');
 
 // Minify code

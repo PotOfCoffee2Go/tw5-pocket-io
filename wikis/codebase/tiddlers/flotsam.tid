@@ -8,7 +8,7 @@ ioPrjTabName:
 ioPrjTabSelected: flotsam-fetch
 ioPrjTabToDelete: flotsam-fetch
 ioResult: 
-modified: 20241130145459862
+modified: 20241203162416407
 tags: flotsam Projects
 title: flotsam
 type: text/vnd.tiddlywiki
@@ -29,7 +29,7 @@ writeup: flotsam writeup
 
 {{||$:/pocket-io/project/writeup-template}}
 
-{{$:/pocket-io/code/flotsam||$:/core/ui/TagTemplate}}
+@@.poc2go-mono {{$:/pocket-io/code/flotsam||$:/core/ui/TagTemplate}} @@
 
 <<closeTabsButton "$:/state/tab/pocket-io/code/flotsam">>
 <<tabs "[tag[$:/pocket-io/code/flotsam]]" ""

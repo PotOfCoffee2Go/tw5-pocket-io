@@ -1,7 +1,7 @@
 // Server side Socket message handler
-if ($dash.io) {
+if ($dash.pocketio) {
 
-$dash.io.on('connection', (socket) => {
+$dash.pocketio.on('connection', (socket) => {
 	// Client acknowledges connect sequence is complete
 	socket.on('ackConnect', () => {
 		$sockets[sid(socket)] = socket;
@@ -32,4 +32,4 @@ $dash.io.on('connection', (socket) => {
 	});
 });
 
-} // if (!$dash.io)
+} // if (!$dash.pocketio)

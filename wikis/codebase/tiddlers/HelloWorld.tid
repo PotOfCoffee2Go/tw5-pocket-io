@@ -7,9 +7,9 @@ ioPrjMinify: yes
 ioPrjProject: HelloWorld
 ioPrjTabName: 
 ioPrjTabSelected: HelloWorld-helloworld
-ioPrjTabToDelete: HelloWorld-broke
+ioPrjTabToDelete: HelloWorld-default
 ioResult: 
-modified: 20241201170715319
+modified: 20241204213840844
 tags: HelloWorld Projects
 title: HelloWorld
 type: text/vnd.tiddlywiki
@@ -30,7 +30,7 @@ writeup: HelloWorld writeup
 
 {{||$:/pocket-io/project/writeup-template}}
 
-{{$:/pocket-io/code/HelloWorld||$:/core/ui/TagTemplate}}
+@@.poc2go-mono {{$:/pocket-io/code/HelloWorld||$:/core/ui/TagTemplate}} @@
 
 <<closeTabsButton '$:/state/tab/pocket-io/code/HelloWorld'>>
 <<tabs "[tag[$:/pocket-io/code/HelloWorld]]" "HelloWorld-hello"

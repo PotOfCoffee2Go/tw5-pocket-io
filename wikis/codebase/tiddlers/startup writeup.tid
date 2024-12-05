@@ -1,10 +1,10 @@
 created: 20241111150158122
-modified: 20241201011058508
+modified: 20241203092318116
 tags: writeup startup
 title: startup writeup
 type: text/vnd.tiddlywiki
 
-The startup project contains tabs that will be loaded to the server when the system is started. The 'startup' project load is hard coded in ./server.js to always load regardless of the 'autoLoad' setting.
+The startup project contains tabs that will be loaded to the server when the system is started. The 'startup' project load is hard coded in ./servers.js to always load regardless of the 'autoLoad' setting.
 
 As with all projects, the order of tab loading can be changed by clicking the {{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}} tag and drag/drop items in the order desired.
 

@@ -3,7 +3,7 @@
 /*
  *  $data initially contains:
 var $data = {
-	proxyTarget: 'http://127.0.0.1:8083',
+	proxyTarget: 'http://127.0.0.1:8084',
 }
  *  proxyTarget is whatever configured in ./server.js
  * ./server.js will perform the listen()
@@ -14,7 +14,7 @@ var $data = {
 
 $data.app = express();
 $data.http = http.Server($data.app);
-//$data.io = io($data.http);
+//$data.pocketio = pocketio($data.http);
 $data.twProxy = httpProxy.createProxyServer();
 
 // Allow all to access

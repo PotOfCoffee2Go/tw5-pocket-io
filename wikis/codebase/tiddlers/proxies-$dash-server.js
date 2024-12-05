@@ -3,7 +3,7 @@
 /*
  *  $dash initially contains:
 var $dash = {
-	proxyTarget: 'http://127.0.0.1:8083',
+	proxyTarget: 'http://127.0.0.1:8082',
 }
  *  proxyTarget is whatever configured in ./server.js
  * ./server.js will perform the listen()
@@ -14,7 +14,7 @@ var $dash = {
 
 $dash.app = express();
 $dash.http = http.Server($dash.app);
-$dash.io = io($dash.http);
+$dash.pocketio = pocketio($dash.http);
 $dash.twProxy = httpProxy.createProxyServer();
 
 // Allow all to access

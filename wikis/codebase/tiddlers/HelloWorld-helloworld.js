@@ -1,6 +1,6 @@
 // Server-side topics are passed the socket and msg from client wiki
 $tpi.topic.helloworld = function helloworld(socket, msg) {
-	dir(msg,3) // Display msg on server console
+	// dir(msg,3) // Display pocket.io msg on server console
 
 	// Copy the tiddler that sent the request
 	var senderTid = cpy(msg.senderTiddler);

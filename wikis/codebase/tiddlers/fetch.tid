@@ -8,7 +8,7 @@ ioPrjTabName:
 ioPrjTabSelected: fetch-text
 ioPrjTabToDelete: fetch-json
 ioResult: 
-modified: 20241130143926766
+modified: 20241203162337371
 tags: fetch Projects
 title: fetch
 type: text/vnd.tiddlywiki
@@ -29,7 +29,7 @@ writeup: fetch writeup
 
 {{||$:/pocket-io/project/writeup-template}}
 
-{{$:/pocket-io/code/fetch||$:/core/ui/TagTemplate}}
+@@.poc2go-mono {{$:/pocket-io/code/fetch||$:/core/ui/TagTemplate}} @@
 
 <<closeTabsButton '$:/state/tab/pocket-io/code/fetch'>>
 <<tabs "[tag[$:/pocket-io/code/fetch]]" ""

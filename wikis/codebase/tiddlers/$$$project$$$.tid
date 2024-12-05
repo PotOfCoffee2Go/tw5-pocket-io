@@ -5,7 +5,7 @@ ioPrjProject: $$$project$$$
 ioPrjTabSelected: $$$project$$$-$$$tab$$$
 ioPrjTabToDelete: $$$project$$$-$$$tab$$$
 ioResult: 
-modified: 20241130150335640
+modified: 20241203155031365
 tags: $$$project$$$ Projects
 title: $$$project$$$
 type: text/vnd.tiddlywiki
@@ -30,7 +30,7 @@ writeup: $$$project$$$ writeup
 {{||$:/pocket-io/project/writeup-template}}
 
 <!-- Tag pill of code tiddlers in project -->
-{{$:/pocket-io/code/$$$project$$$||$:/core/ui/TagTemplate}}
+@@.poc2go-mono {{$:/pocket-io/code/$$$project$$$||$:/core/ui/TagTemplate}} @@
 
 <<closeTabsButton "$:/state/tab/pocket-io/code/$$$project$$$">>
 
