@@ -1,6 +1,6 @@
 caption: proxies
 created: 20241129054823221
-modified: 20241201094107215
+modified: 20241205110143807
 project: proxies
 tags: proxies Projectdocs
 title: proxies docs
@@ -9,7 +9,7 @@ writeup: proxies writeup
 
 {{||$:/pocket-io/project/docs-template}}
 
-{{$:/pocket-io/code/proxies/docs||$:/core/ui/TagTemplate}}
+@@.poc2go-mono Docs: {{$:/pocket-io/code/proxies/docs||$:/core/ui/TagTemplate}} @@
 
 <<closeTabsButton "$:/state/tab/pocket-io/docs/proxies">>
 <<tabs "[tag[$:/pocket-io/code/proxies/docs]]" "" "$:/state/tab/pocket-io/docs/proxies">>

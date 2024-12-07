@@ -1,6 +1,6 @@
 caption: newtab
 created: 20241129011414976
-modified: 20241129013530381
+modified: 20241207122821247
 tags: template project $:/pocket-io/template/project
 title: $:/pocket-io/project/writeup-template
 type: text/vnd.tiddlywiki
@@ -14,4 +14,4 @@ type: text/vnd.tiddlywiki
 \end
 
 |tc-center tc-table-no-border|k
-|<<writeup>>|
+|<<writeup>>|{{||$:/pocket-io/project/button/edit-writeup}}|

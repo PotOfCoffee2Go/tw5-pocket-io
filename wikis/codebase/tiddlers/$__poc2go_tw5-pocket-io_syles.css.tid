@@ -1,3 +1,9 @@
+created: 20240911072738777
+modified: 20241205202819692
+tags: $:/tags/Stylesheet
+title: $:/poc2go/tw5-pocket-io/syles.css
+type: text/vnd.tiddlywiki
+
 /* hide the tiddler controls - info, edit, close */
 [data-tags*="$:/tags/poc2go/hidecontrols"].tc-tiddler-view-frame .tc-tiddler-controls {
     display: none;
@@ -16,9 +22,19 @@
     border: 2px solid #006994;
     border-radius: 20px;
 }
-/* Do not display 'paperclip' on document tabs */
+/* Link-to-Tabs 'paperclip' */
+/* Do not display 'paperclip' on sidebar tabs */
+.tc-sidebar-tabs .wltc-link-to-tab {
+    display: none;
+}
+/* Do not display 'paperclip' on `<<tabs>>` in tiddlers tagged 'Projectdocs' */
 [data-tags*="Projectdocs"].tc-tiddler-view-frame .tc-tab-selected + .wltc-link-to-tab {
     display: none;
+}
+/* Display 'paperclip' larger on `<<tabs>>` in tiddlers tagged 'Projects' */
+[data-tags*="Projects"].tc-tiddler-view-frame .tc-tab-selected + .wltc-link-to-tab svg {
+  width: 2.0em;
+  height: 2.0em;
 }
 .poc2go-tabs-close {
   float:right;
@@ -51,7 +67,7 @@ summary::marker {
 }
 .poc2go-mono {
   font-family: Monospace;
-  font-size: 1.1em;
+  font-size: 1.03em;
 }
 .poc2go-url {
   width: 50%;

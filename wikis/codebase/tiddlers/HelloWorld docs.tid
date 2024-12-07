@@ -1,6 +1,6 @@
 caption: HelloWorld
 created: 20241124190719195
-modified: 20241201093925679
+modified: 20241205111425188
 project: HelloWorld
 tags: HelloWorld Projectdocs
 title: HelloWorld docs
@@ -9,7 +9,7 @@ writeup: HelloWorld writeup
 
 {{||$:/pocket-io/project/docs-template}}
 
-{{$:/pocket-io/code/HelloWorld/docs||$:/core/ui/TagTemplate}}
+@@.poc2go-mono Docs: {{$:/pocket-io/code/HelloWorld/docs||$:/core/ui/TagTemplate}} @@
 
 <<closeTabsButton  "$:/state/tab/pocket-io/docs/HelloWorld">>
 <<tabs "[tag[$:/pocket-io/code/HelloWorld/docs]]" "" "$:/state/tab/pocket-io/docs/HelloWorld">>

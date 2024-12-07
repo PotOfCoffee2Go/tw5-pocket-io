@@ -1,6 +1,6 @@
 caption: fetch
 created: 20241122171936891
-modified: 20241201093733981
+modified: 20241205111739317
 project: fetch
 tags: fetch Projectdocs
 title: fetch docs
@@ -9,7 +9,7 @@ writeup: fetch writeup
 
 {{||$:/pocket-io/project/docs-template}}
 
-{{$:/pocket-io/code/fetch/docs||$:/core/ui/TagTemplate}}
+@@.poc2go-mono Docs: {{$:/pocket-io/code/fetch/docs||$:/core/ui/TagTemplate}} @@
 
 <<closeTabsButton "$:/state/tab/pocket-io/docs/fetch">>
 <<tabs "[tag[$:/pocket-io/code/fetch/docs]]" "" "$:/state/tab/pocket-io/docs/fetch">>

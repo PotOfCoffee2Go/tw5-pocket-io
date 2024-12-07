@@ -5,7 +5,7 @@ ioPrjProject: $$$project$$$
 ioPrjTabSelected: $$$project$$$-$$$tab$$$
 ioPrjTabToDelete: $$$project$$$-$$$tab$$$
 ioResult: 
-modified: 20241203155031365
+modified: 20241206210854310
 tags: $$$project$$$ Projects
 title: $$$project$$$
 type: text/vnd.tiddlywiki
@@ -35,7 +35,7 @@ writeup: $$$project$$$ writeup
 <<closeTabsButton "$:/state/tab/pocket-io/code/$$$project$$$">>
 
 <!-- Tabs that contain server-side code -->
-<<tabs "[tag[$:/pocket-io/code/$$$project$$$]]" ""
-"$:/state/tab/pocket-io/code/$$$project$$$" "tc-horizontal">>
+@@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/$$$project$$$]]" ""
+"$:/state/tab/pocket-io/code/$$$project$$$" "tc-horizontal">> @@
 
 <<topButton>>

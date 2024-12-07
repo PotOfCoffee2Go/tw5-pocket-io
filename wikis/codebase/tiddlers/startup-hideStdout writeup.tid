@@ -1,7 +1,17 @@
 created: 20241204213254243
-modified: 20241204213254243
+modified: 20241207102700229
 tags: writeup startup
 title: startup-hideStdout writeup
 type: text/vnd.tiddlywiki
 
-Documentation of tab 'hideStdout' in project 'startup'.
+```
+// Idea Borrowed.
+// https://github.com/sfarthin/intercept-stdout/tree/master
+// which borrowed Gist.
+// https://gist.github.com/benbuckman/2758563
+// usage:
+//   var showStdout = hideStdout();
+//     will hide text being displayed on console terminal
+//   showStdout();
+//     will show(unhide) stdout text on console
+```

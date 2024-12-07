@@ -1,7 +1,7 @@
 caption: REST
 color: #661f6f
 created: 20241121075506315
-modified: 20241201094208676
+modified: 20241205111239662
 project: REST
 tags: REST Projectdocs
 title: REST docs
@@ -10,7 +10,7 @@ writeup: REST writeup
 
 {{||$:/pocket-io/project/docs-template}}
 
-{{$:/pocket-io/code/REST/docs||$:/core/ui/TagTemplate}}
+@@.poc2go-mono Docs: {{$:/pocket-io/code/REST/docs||$:/core/ui/TagTemplate}} @@
 
 <<closeTabsButton "$:/state/tab/pocket-io/docs/REST">>
 <<tabs "[tag[$:/pocket-io/code/REST/docs]]" "" "$:/state/tab/pocket-io/docs/REST">>

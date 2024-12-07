@@ -1,6 +1,6 @@
 caption: $$$project$$$
 created: 20241110230314555
-modified: 20241201093652266
+modified: 20241206212735733
 project: $$$project$$$
 tags: $$$project$$$ Projectdocs
 title: $$$project$$$ docs
@@ -9,10 +9,10 @@ writeup: $$$project$$$ writeup
 
 {{||$:/pocket-io/project/docs-template}}
 
-Docs: {{$:/pocket-io/code/$$$project$$$/docs||$:/core/ui/TagTemplate}}
+@@.poc2go-mono Docs: {{$:/pocket-io/code/$$$project$$$/docs||$:/core/ui/TagTemplate}} @@
 
 <<closeTabsButton "$:/state/tab/pocket-io/docs/$$$project$$$">>
-<<tabs "[tag[$:/pocket-io/code/$$$project$$$/docs]]" "" "$:/state/tab/pocket-io/docs/$$$project$$$">>
+@@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/$$$project$$$/docs]]" "" "$:/state/tab/pocket-io/docs/$$$project$$$">> @@
 
 Associated tiddlers:
 

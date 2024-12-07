@@ -1,6 +1,6 @@
 caption: REPL-MOTD
 created: 20241126192538452
-modified: 20241201094137761
+modified: 20241205112003134
 project: REPL-MOTD
 tags: REPL-MOTD Projectdocs
 title: REPL-MOTD docs
@@ -9,7 +9,7 @@ writeup: REPL-MOTD writeup
 
 {{||$:/pocket-io/project/docs-template}}
 
-{{$:/pocket-io/code/REPL-MOTD/docs||$:/core/ui/TagTemplate}}
+@@.poc2go-mono Docs: {{$:/pocket-io/code/REPL-MOTD/docs||$:/core/ui/TagTemplate}} @@
 
 <<closeTabsButton "$:/state/tab/pocket-io/docs/REPL-MOTD">>
 <<tabs "[tag[$:/pocket-io/code/REPL-MOTD/docs]]" "" "$:/state/tab/pocket-io/docs/REPL-MOTD">>

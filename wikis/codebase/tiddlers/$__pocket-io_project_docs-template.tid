@@ -1,6 +1,6 @@
 caption: docs
 created: 20241121190910030
-modified: 20241201171714737
+modified: 20241207120920970
 tags: $:/pocket-io/template/project project template
 title: $:/pocket-io/project/docs-template
 type: text/vnd.tiddlywiki
@@ -13,12 +13,8 @@ type: text/vnd.tiddlywiki
 """ "open">>
 \end
 
-<h2 style="text-align: center;">{{!!caption}}</h2>
+|tc-center tc-table-no-border|k
+| @@font-size:2.0em; <$link to={{!!project}}> {{!!project}} </$link> @@ |
 
 |tc-center tc-table-no-border|k
-|Project: <$link to={{!!project}}> {{!!project}} </$link> | Edit writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
-
-|tc-center tc-table-no-border|k
-| <<writeup>> |
-
-
+|<<writeup>>|{{||$:/pocket-io/project/button/edit-writeup}}|

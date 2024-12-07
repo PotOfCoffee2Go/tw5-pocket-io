@@ -115,15 +115,15 @@ function replMOTD() {
 // Start the socket/proxy server to dash, data, and code wikis
 function startProxyServers() {
 	$dash.http.listen(pocketDashPort, pockethost, () => {
-		log(`\n$dash dashboard proxy server to ${$dash.proxyTarget} started`)
+		log(`\n$dash dashboard proxy server to ` + hue($dash.proxyTarget,156) + ` started`)
 		hog(`Serving on http://${pockethost}:${pocketDashPort}`,185);
 		hog('(press ctrl-C to exit)',9);
 		$code.http.listen(pocketCodePort, pockethost, () => {
-			log(`$code codebase proxy server started`)
+			log(`$code codebase proxy server to ` + hue($code.proxyTarget,156) + ` started`)
 			hog(`Serving on http://${pockethost}:${pocketCodePort}`,185);
 			hog('(press ctrl-C to exit)',9);
 			$data.http.listen(pocketDataPort, pockethost, () => {
-				log(`$data database proxy server started`)
+				log(`$data database proxy server to ` + hue($data.proxyTarget,156) + ` started`)
 				hog(`Serving on http://${pockethost}:${pocketDataPort}`,185);
 				hog('(press ctrl-C to exit)\n',9);
 				replMOTD();

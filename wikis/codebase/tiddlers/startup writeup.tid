@@ -1,14 +1,11 @@
 created: 20241111150158122
-modified: 20241203092318116
+modified: 20241207100551134
 tags: writeup startup
 title: startup writeup
 type: text/vnd.tiddlywiki
 
-The startup project contains tabs that will be loaded to the server when the system is started. The 'startup' project load is hard coded in ./servers.js to always load regardless of the 'autoLoad' setting.
+The startup project contains code that will be uploaded to the server when the system is started. The 'startup' project upload is hard coded in ./servers.js to always upload regardless of the project's 'autoLoad' setting.
 
 As with all projects, the order of tab loading can be changed by clicking the {{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}} tag and drag/drop items in the order desired.
 
-The code in the $code wiki is loaded into a custom Node.js REPL which is the center of the system; communicates via terminal prompt, client wikis over the net, and directly manages tiddlers of Node.js wikis in the `./wikis` directory of the server.
-
-The REPL places all top-level assignments (ie: not within a function) in the REPL global context. The Node.js REPL, by design, allows this 'global pollution' to occur which provides a high degree of customization. But one needs to take care not to override existing variables and functions in REPL global context. Is similar to the 'windows' object in a browser. Is generally not a concern, see [[Node.js REPL programming]] for more details.
-
+The code in the $code wiki is uploaded into a Node.js REPL which is the center of the system; communicates via terminal prompt, client wikis over the net, and directly manages tiddlers of wikis in the `./wikis` directory of the server.

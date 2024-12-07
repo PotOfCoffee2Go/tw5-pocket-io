@@ -1,6 +1,6 @@
 caption: pocket-io
 created: 20241112191809093
-modified: 20241201094002804
+modified: 20241205110228451
 project: pocket-io
 tags: pocket-io Projectdocs
 title: pocket-io docs
@@ -9,7 +9,7 @@ writeup: pocket-io writeup
 
 {{||$:/pocket-io/project/docs-template}}
 
-{{$:/pocket-io/code/pocket-io/docs||$:/core/ui/TagTemplate}}
+@@.poc2go-mono Docs: {{$:/pocket-io/code/pocket-io/docs||$:/core/ui/TagTemplate}} @@
 
 <<closeTabsButton "$:/state/tab/pocket-io/docs/pocket-io">>
 <<tabs "[tag[$:/pocket-io/code/pocket-io/docs]]" "" "$:/state/tab/pocket-io/docs/pocket-io">>

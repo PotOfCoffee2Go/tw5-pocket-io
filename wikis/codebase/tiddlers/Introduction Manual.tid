@@ -1,5 +1,5 @@
 created: 20241112033409758
-modified: 20241203092751088
+modified: 20241207100632757
 tags: Manual
 title: Introduction Manual
 type: text/vnd.tiddlywiki
@@ -7,3 +7,5 @@ type: text/vnd.tiddlywiki
 !! Welcome to TW5-pocket-io system.
 
 The system is a development environment for [[TiddlyWiki5|https://tiddlywiki.com]] applications. The system uses TiddlyWiki as the web front-end as well as the server-side.
+
+The REPL places all top-level assignments (ie: not within a function) in the REPL global context. The Node.js REPL, by design, allows this 'global pollution' to occur which provides a high degree of customization. But one needs to take care not to override existing variables and functions in REPL global context. Is similar to the 'windows' object in a browser. Is generally not a concern, see [[Node.js REPL programming]] for more details.
