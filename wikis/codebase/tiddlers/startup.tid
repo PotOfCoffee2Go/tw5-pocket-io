@@ -6,20 +6,17 @@ ioConfirmDelete: no
 ioPrjMinify: yes
 ioPrjProject: startup
 ioPrjTabName: 
-ioPrjTabSelected: AALLLL
+ioPrjTabSelected: startup-getCode
 ioPrjTabToDelete: startup-formatIoResult
 ioResult: 
-modified: 20241206210430548
+modified: 20241208033003156
 tags: startup Projects
 title: startup
 type: text/vnd.tiddlywiki
 writeup: startup writeup
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-mono System Startup Code @@|
-
-|tc-center tc-table-no-border|k
-|@@.poc2go-mono Documentation: [[startup docs]] @@|
+|@@.poc2go-project-header [[System Startup Code|startup docs]] @@|
 
 |tc-center tc-table-no-border|k
 | Code in 'startup' is hard coded to always load. |

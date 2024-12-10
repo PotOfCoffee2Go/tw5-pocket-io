@@ -1,5 +1,5 @@
 // Returns a Promise to fetch tiddler(s) in JSON format
-function fetchJsonUrl(getUrl) {
+$tpi.fn.fetchJsonUrl = function fetchJsonUrl(getUrl) {
 	return new Promise((resolve) => {
 		fetch(getUrl)
 			.then(res => res.json())

@@ -8,17 +8,14 @@ ioPrjTabName:
 ioPrjTabSelected: fetch-text
 ioPrjTabToDelete: fetch-json
 ioResult: 
-modified: 20241203162337371
+modified: 20241207180954977
 tags: fetch Projects
 title: fetch
 type: text/vnd.tiddlywiki
 writeup: fetch writeup
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-mono Server Fetch Tiddlers by URL @@|
-
-|tc-center tc-table-no-border|k
-|@@.poc2go-mono Documentation: [[fetch docs]] @@|
+|@@.poc2go-project-header [[Server Fetch Tiddlers by URL|fetch docs]] @@|
 
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}

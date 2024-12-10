@@ -9,17 +9,14 @@ ioPrjTabName:
 ioPrjTabSelected: project-upload
 ioPrjTabToDelete: project-helpers
 ioResult: 
-modified: 20241203161716309
+modified: 20241207173135096
 tags: project Projects
 title: project
 type: text/vnd.tiddlywiki
 writeup: project writeup
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-mono Project Management System@@|
-
-|tc-center tc-table-no-border|k
-|@@.poc2go-mono Documentation: [[project docs]] @@|
+|@@.poc2go-project-header [[Project Management System|project docs]] @@|
 
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}

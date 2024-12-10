@@ -7,17 +7,14 @@ ioPrjTabName:
 ioPrjTabSelected: REPL-MOTD-MSG
 ioPrjTabToDelete: REPL-MOTD-MSG
 ioResult: 
-modified: 20241203162457629
+modified: 20241207181716259
 tags: REPL-MOTD Projects
 title: REPL-MOTD
 type: text/vnd.tiddlywiki
 writeup: REPL-MOTD writeup
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-mono REPL Messages of the Day @@|
-
-|tc-center tc-table-no-border|k
-|@@.poc2go-mono Documentation: [[REPL-MOTD docs]] @@|
+|@@.poc2go-project-header [[REPL Messages of the Day|REPL-MOTD docs]] @@|
 
 |tc-center tc-table-no-border|k
 | This project does not contain code |

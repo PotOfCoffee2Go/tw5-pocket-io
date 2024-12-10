@@ -1,7 +1,10 @@
-// cmd is assigned to REPL global context
+// 'cmd' is a REPL global
 // Shorthand used when typing commands into the REPL
 //   generally, should not be used when coding functions
-// In REPL ex: cmd.cog('A Tiddler Title')
+// At REPL prompt:
+//   cmd.cog('A code wiki Tiddler Title')
+//   cmd.dog('A data wiki Tiddler Title')
+
 const cmd = {
 	cog: (title) => hog($cw.wiki.getTiddlerText(title),40),
 	dog: (title) => hog($dw.wiki.getTiddlerText(title),39),

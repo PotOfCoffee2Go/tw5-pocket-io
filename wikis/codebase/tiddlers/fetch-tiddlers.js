@@ -6,7 +6,7 @@ $tpi.topic.fetchJsonTiddlers = function(socket, msg) {
 	var url = senderTid.ioUrl;
 
 	var titles = [];
-	fetchJsonUrl(url).then(maybeTiddlers => {
+	$tpi.fn.fetchJsonUrl(url).then(maybeTiddlers => {
 		msg.resultTiddlers = []; // reset result tiddlers
 		if (!Array.isArray(maybeTiddlers)) { maybeTiddlers = [maybeTiddlers]; }
 		maybeTiddlers.forEach(maybe => {

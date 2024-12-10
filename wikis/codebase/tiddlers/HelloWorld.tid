@@ -9,17 +9,14 @@ ioPrjTabName:
 ioPrjTabSelected: HelloWorld-helloworld
 ioPrjTabToDelete: HelloWorld-default
 ioResult: 
-modified: 20241204213840844
+modified: 20241207180639390
 tags: HelloWorld Projects
 title: HelloWorld
 type: text/vnd.tiddlywiki
 writeup: HelloWorld writeup
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-mono Hello World! @@|
-
-|tc-center tc-table-no-border|k
-|@@.poc2go-mono Documentation: [[HelloWorld docs]] @@|
+|@@.poc2go-project-header [[Hello World!|HelloWorld docs]] @@|
 
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}

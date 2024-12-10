@@ -1,5 +1,5 @@
 created: 20240911072738777
-modified: 20241205202819692
+modified: 20241207183040001
 tags: $:/tags/Stylesheet
 title: $:/poc2go/tw5-pocket-io/syles.css
 type: text/vnd.tiddlywiki
@@ -64,6 +64,10 @@ summary::marker {
   background-color:lightcyan;
   padding: .3em 1em;
   border-radius: 6px;
+}
+.poc2go-project-header {
+  font-family: Monospace;
+  font-size: 1.2em;
 }
 .poc2go-mono {
   font-family: Monospace;

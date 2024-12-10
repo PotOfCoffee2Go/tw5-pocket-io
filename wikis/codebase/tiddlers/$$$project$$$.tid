@@ -5,17 +5,14 @@ ioPrjProject: $$$project$$$
 ioPrjTabSelected: $$$project$$$-$$$tab$$$
 ioPrjTabToDelete: $$$project$$$-$$$tab$$$
 ioResult: 
-modified: 20241206210854310
+modified: 20241207173251420
 tags: $$$project$$$ Projects
 title: $$$project$$$
 type: text/vnd.tiddlywiki
 writeup: $$$project$$$ writeup
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-mono Edit this tiddler to display descriptive project name @@|
-
-|tc-center tc-table-no-border|k
-|@@.poc2go-mono Documentation: [[$$$project$$$ docs]] @@|
+|@@.poc2go-project-header [[Edit this tiddler to show a descriptive project name|$$$project$$$ docs]] @@|
 
 <!-- Comment out templates not applicable for this project -->
 {{||$:/pocket-io/project/autoload-template}}

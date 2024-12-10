@@ -1,28 +1,38 @@
-"use strict";
+// Start up the webservers, load code
+//  into REPL, and startup proxies
 
-// Start up the servers and load code
-//  into REPL from code wiki
+"use strict";
 
 // Start of config
 
-// Target computer running 'server' edition wikis
-const proxyTargetIp ='http://127.0.0.1';
+// dashboard and code webservers available to browsers on network
+const dashboardWebserver = true
+const codebaseWebserver = true;
+// data webserver is always available to browsers
 
-// host of '0.0.0.0' network access - host='127.0.0.1' local system only
-// Server edition TiddlyWikis
-// local access only since proxy running on this computer
+// Server edition TiddlyWikis Webservers
+// host='127.0.0.1' local system
+// local access only - (proxies have access)
 const wikihost='127.0.0.1',
 	dashWikiDir = 'wikis/dashbase', dashPort = 8082,
 	codeWikiDir = 'wikis/codebase', codePort = 8083,
 	dataWikiDir = 'wikis/database', dataPort = 8084;
 
-// Reverse proxy to server editon wikis
-const pockethost='0.0.0.0', // access from network
-	pocketDashPort = 3000,
-	pocketCodePort = 3001,
-	pocketDataPort = 3002;
+// Reverse proxy to server editon webservers above
+const proxyhost='0.0.0.0', // proxies accessable from network
+	dashProxyPort = 3000, codeProxyPort = 3001, dataProxyPort = 3002;
+
+// Target computer running 'server' edition webservers
+//  - needs to be localhost ip address - not 'localhost'
+//  - why? the proxy servers do not have DNS lookup implemented!
+const proxyTargetIp ='http://127.0.0.1';
 
 // end of config
+
+// Proxy server settings
+var $dash = { proxyTarget: `${proxyTargetIp}:${dashPort}` };
+var $code = { proxyTarget: `${proxyTargetIp}:${codePort}` };
+var $data = { proxyTarget: `${proxyTargetIp}:${dataPort}` };
 
 // Helpers
 const log = (...args) => {console.log(...args);}
@@ -33,22 +43,21 @@ const wrt = (txt) => $rt.write(txt + '\n');
 // REPL
 var $rt = require('node:repl').start({ prompt: '', ignoreUndefined: true });
 
-// Proxy server settings
-var $dash = { proxyTarget: `${proxyTargetIp}:${dashPort}` };
-var $code = { proxyTarget: `${proxyTargetIp}:${codePort}` };
-var $data = { proxyTarget: `${proxyTargetIp}:${dataPort}` };
-
 // Startup the system
 hog(`Startup TiddlyWiki 'server' edition Webservers:`, 156);
 const { twServerBoot } = require('./lib/twServerBoot');
 const { replTwBoot } = require('./lib/replTwBoot');
 
+// Create tiddlywiki instances to the wikis
+//  start up the TiddlyWiki Webservers and boot the REPL
+//  Once REPL booted load the code tiddlers from $code wiki
+//  then fire up the proxy servers
 var $ds, $dw, $cw, $tw, $sockets = {};
-twServerBoot(dashWikiDir, wikihost, dashPort).then(tw => {
+twServerBoot(dashWikiDir, wikihost, dashPort, dashboardWebserver).then(tw => {
 	$ds = tw;
-	twServerBoot(codeWikiDir, wikihost, codePort).then(tw => {
+	twServerBoot(codeWikiDir, wikihost, codePort, codebaseWebserver).then(tw => {
 		$cw = tw;
-		twServerBoot(dataWikiDir, wikihost, dataPort).then(tw => {
+		twServerBoot(dataWikiDir, wikihost, dataPort, true).then(tw => {
 			$dw = tw;
 			replTwBoot().then(tw => {
 				$tw = tw;
@@ -81,6 +90,7 @@ $rt.on('reset', () => {
 
 // Pull JavaScript code from code wiki into REPL
 const { replGetCode } = require('./lib/replGetCode');
+
 function loadCodeToRepl() {
 	hog('\nREPL startup...', 156);
 	// 'startup project' loads first
@@ -102,8 +112,45 @@ function loadCodeToRepl() {
 	hog(`REPL startup complete${hadErrors ? hue(' - with an error in a code tiddler', 163) : ''}`, 156);
 }
 
+// Each proxy server startup
+// proxy to Dashboard webserver
+function dashListen(next) {
+	if (dashboardWebserver) {
+		$dash.http.listen(dashProxyPort, proxyhost, () => {
+			log(`\n$dash dashboard proxy server to ` + hue($dash.proxyTarget,156) + ` started`)
+			hog(`Serving on http://${proxyhost}:${dashProxyPort}`,185);
+			return next;
+		})
+	} else {
+		hog(`\n$dash dashboard proxy server disabled\n TiddlyWiki Webserver was disabled`,9);
+		return next;
+	}
+}
+// proxy to codebase webserver
+function codeListen(next) {
+	if (codebaseWebserver) {
+		$code.http.listen(codeProxyPort, proxyhost, () => {
+			log(`$code codebase proxy server to ` + hue($code.proxyTarget,156) + ` started`)
+			hog(`Serving on http://${proxyhost}:${codeProxyPort}`,185);
+			return next;
+		})
+	} else {
+		hog(`\n$code codebase proxy server disabled\n TiddlyWiki Webserver was disabled`,9);
+		return next;
+	}
+}
+// proxy to database webserver
+function dataListen() {
+	$data.http.listen(dataProxyPort, proxyhost, () => {
+		log(`$data database proxy server to ` + hue($data.proxyTarget,156) + ` started`)
+		hog(`Serving on http://${proxyhost}:${dataProxyPort}`,185);
+		replMOTD();
+	})
+}
+
+// REPL MOTD and prompt
 function replMOTD() {
-	hog(`Welcome to TW5-pocket-io\n`, 40);
+	hog(`\nWelcome to TW5-pocket-io\n`, 40);
 	hog(`Type: cmd.cog('REPL-MOTD-MSG') for more info.`, 40);
 	hog('  Is in the command history - just press up-arrow then enter.', 40);
 	hog('');
@@ -112,24 +159,9 @@ function replMOTD() {
 	$rt.displayPrompt();
 }
 
-// Start the socket/proxy server to dash, data, and code wikis
+// Start the proxy servers to dash, data, and code webservers
 function startProxyServers() {
-	$dash.http.listen(pocketDashPort, pockethost, () => {
-		log(`\n$dash dashboard proxy server to ` + hue($dash.proxyTarget,156) + ` started`)
-		hog(`Serving on http://${pockethost}:${pocketDashPort}`,185);
-		hog('(press ctrl-C to exit)',9);
-		$code.http.listen(pocketCodePort, pockethost, () => {
-			log(`$code codebase proxy server to ` + hue($code.proxyTarget,156) + ` started`)
-			hog(`Serving on http://${pockethost}:${pocketCodePort}`,185);
-			hog('(press ctrl-C to exit)',9);
-			$data.http.listen(pocketDataPort, pockethost, () => {
-				log(`$data database proxy server to ` + hue($data.proxyTarget,156) + ` started`)
-				hog(`Serving on http://${pockethost}:${pocketDataPort}`,185);
-				hog('(press ctrl-C to exit)\n',9);
-				replMOTD();
-			})
-		})
-	})
+	dataListen(codeListen(dashListen()));
 }
 
 // footnote: a good writeup on REPL development

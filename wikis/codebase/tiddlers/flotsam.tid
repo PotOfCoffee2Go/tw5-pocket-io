@@ -8,17 +8,14 @@ ioPrjTabName:
 ioPrjTabSelected: flotsam-fetch
 ioPrjTabToDelete: flotsam-fetch
 ioResult: 
-modified: 20241203162416407
+modified: 20241207181254967
 tags: flotsam Projects
 title: flotsam
 type: text/vnd.tiddlywiki
 writeup: flotsam writeup
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-mono Handy Code @@|
-
-|tc-center tc-table-no-border|k
-|@@.poc2go-mono Documentation: [[flotsam docs]] @@|
+|@@.poc2go-project-header [[Handy Code|flotsam docs]] @@|
 
 {{||$:/pocket-io/project/autoload-template}}
 {{||$:/pocket-io/project/upload-template}}

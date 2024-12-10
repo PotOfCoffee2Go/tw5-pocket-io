@@ -1,30 +1,17 @@
 created: 20240914113910483
-ioPrjCopyAction: Move
-ioPrjFromProject: pocket-io
-ioPrjFromTab: project-update
+ioPrjCopyAction: Copy
+ioPrjFromProject: HelloWorld
+ioPrjFromTab: HelloWorld-filterTiddlers
 ioPrjProject: 
 ioPrjTabName: 
 ioPrjToProject: flotsam
 ioResult: 
-modified: 20241205112619206
+modified: 20241208164828990
 tags: 
 title: Codebase
 type: text/vnd.tiddlywiki
 
 <style>.cols3{column-count:3}</style>
-
-<<details 'Manuals' """
-
-!!!! [[Introduction|Introduction Manual]] - Summary of writing functions to be run by the system.
-
-!!!! [[Code Wiki Usage|Usage Manual]] - How to create and manage projects.
-
-!!!! [[Project Management|Project Manual]] - How projects are used to control which code tiddlers are loaded to the system.
-
-!!!! [[Projects that load on startup|Startup Manual]] - How to set up automatic loading of code to the system
-
-!!!! [[Documenting Projects and Code|Documenting Manual]] - Different places to provide code documentation
-""" >>
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono {{Projects||$:/core/ui/TagTemplate}} @@|

@@ -1,3 +1,10 @@
+caption: MSG
+created: 20241126192538453
+modified: 20241208152601956
+tags: tab REPL-MOTD $:/pocket-io/code/REPL-MOTD
+title: REPL-MOTD-MSG
+type: text/vnd.tiddlywiki
+
 
 current: cmd.cog('REPL-MOTD-MSG')
 

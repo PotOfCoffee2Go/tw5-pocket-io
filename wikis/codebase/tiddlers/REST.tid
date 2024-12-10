@@ -8,17 +8,14 @@ ioPrjTabName:
 ioPrjTabSelected: REST-helpers
 ioPrjTabToDelete: AALLLL
 ioResult: 
-modified: 20241203161753183
+modified: 20241207175349969
 tags: REST Projects
 title: REST
 type: text/vnd.tiddlywiki
 writeup: REST writeup
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-mono REST Access to Wikis @@|
-
-|tc-center tc-table-no-border|k
-|@@.poc2go-mono Documentation: [[REST docs]] @@|
+|@@.poc2go-project-header [[REST Access to Wikis|REST docs]] @@|
 
 <div class="poc2go-center">
 Dynamic update of express server routes is not implemented in express API.

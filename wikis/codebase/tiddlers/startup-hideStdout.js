@@ -1,3 +1,5 @@
+// hide and show console process.stdout text
+ 
 $tpi.fn.hideStdout = function hideStdout() {
 	var old_stdout_write = process.stdout.write;
 
