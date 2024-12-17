@@ -1,0 +1,19 @@
+caption: repl-tut
+created: 20241212190443571
+modified: 20241212190443571
+project: repl-tut
+tags: repl-tut Projectdocs
+title: repl-tut docs
+type: text/vnd.tiddlywiki
+writeup: repl-tut writeup
+
+{{||$:/pocket-io/project/docs-template}}
+
+@@.poc2go-mono Docs: {{$:/pocket-io/code/repl-tut/docs||$:/core/ui/TagTemplate}} @@
+
+<<closeTabsButton "$:/state/tab/pocket-io/docs/repl-tut">>
+@@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/repl-tut/docs]]" "" "$:/state/tab/pocket-io/docs/repl-tut">> @@
+
+Associated tiddlers:
+
+<<topButton>>

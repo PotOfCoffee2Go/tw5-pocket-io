@@ -1,0 +1,39 @@
+autoLoad: yes
+caption: REPL Pages
+created: 20241213000011288
+ioConfirmDelete: no
+ioPrjProject: repl-pages
+ioPrjTabSelected: repl-pages-command
+ioPrjTabToDelete: repl-pages-command
+ioResult: 
+modified: 20241215123608738
+tags: repl-pages Projects
+title: repl-pages
+type: text/vnd.tiddlywiki
+writeup: repl-pages writeup
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header [[Page through REPL tutorials|repl-pages docs]] @@|
+
+<!-- Comment out templates not applicable for this project -->
+{{||$:/pocket-io/project/autoload-template}}
+{{||$:/pocket-io/project/upload-template}}
+{{||$:/pocket-io/project/newtab-template}}
+<!-- {{||$:/pocket-io/project/delete-template}} -->
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<!-- Project writeup text details -->
+{{||$:/pocket-io/project/writeup-template}}
+
+<!-- Tag pill of code tiddlers in project -->
+@@.poc2go-mono {{$:/pocket-io/code/repl-pages||$:/core/ui/TagTemplate}} @@
+
+<<closeTabsButton "$:/state/tab/pocket-io/code/repl-pages">>
+
+<!-- Tabs that contain server-side code -->
+@@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/repl-pages]]" ""
+"$:/state/tab/pocket-io/code/repl-pages" "tc-horizontal">> @@
+
+<<topButton>>

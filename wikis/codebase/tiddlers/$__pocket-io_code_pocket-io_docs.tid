@@ -1,6 +1,6 @@
 color: #5dcbc9
 created: 20241122005024845
-list: [[pocket-io-$dash docs]] [[pocket-io-$code docs]] [[pocket-io-$data docs]] [[pocket-io-badMsg docs]] [[pocket-io-getData docs]] [[pocket-io-setData docs]] [[pocket-io-testMsg docs]] [[pocket-io-formatIoResult docs]]
-modified: 20241207122328789
+list: [[pocket-io-ackConnect docs]] [[pocket-io-msg docs]] [[pocket-io-disconnect docs]] [[pocket-io-$dash docs]] [[pocket-io-$code docs]] [[pocket-io-$data docs]] [[pocket-io-formatIoResult docs]] [[pocket-io-getData docs]] [[pocket-io-setData docs]]
+modified: 20241210204259148
 title: $:/pocket-io/code/pocket-io/docs
 type: text/vnd.tiddlywiki

@@ -1,0 +1,40 @@
+autoLoad: no
+caption: REPL Tutorial
+created: 20241212190443570
+ioConfirmDelete: no
+ioPrjProject: repl-tut
+ioPrjTabName: 
+ioPrjTabSelected: repl-tut-readme
+ioPrjTabToDelete: 
+ioResult: 
+modified: 20241214100601333
+tags: repl-tut Projects Tutorials
+title: repl-tut
+type: text/vnd.tiddlywiki
+writeup: repl-tut writeup
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header [[REPL Tutorial|repl-tut docs]] @@|
+
+<!-- Comment out templates not applicable for this project -->
+{{||$:/pocket-io/project/autoload-template}}
+{{||$:/pocket-io/project/upload-template}}
+{{||$:/pocket-io/project/newtab-template}}
+<!-- {{||$:/pocket-io/project/delete-template}} -->
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<!-- Project writeup text details -->
+{{||$:/pocket-io/project/writeup-template}}
+
+<!-- Tag pill of code tiddlers in project -->
+@@.poc2go-mono {{$:/pocket-io/code/repl-tut||$:/core/ui/TagTemplate}} @@
+
+<<closeTabsButton "$:/state/tab/pocket-io/code/repl-tut">>
+
+<!-- Tabs that contain server-side code -->
+@@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/repl-tut]]" ""
+"$:/state/tab/pocket-io/code/repl-tut" "tc-horizontal">> @@
+
+<<topButton>>

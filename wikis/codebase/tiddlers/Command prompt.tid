@@ -1,0 +1,7 @@
+created: 20241212051846083
+modified: 20241212052929088
+tags: Manual REPL tab
+title: Command prompt
+type: text/vnd.tiddlywiki
+
+At the end of the startup the system displays a prompt and waits for commands.

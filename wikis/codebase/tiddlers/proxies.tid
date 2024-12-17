@@ -1,0 +1,35 @@
+autoLoad: no
+caption: Proxy Servers
+created: 20241129054823221
+ioConfirmDelete: no
+ioPrjProject: proxies
+ioPrjTabName: 
+ioPrjTabSelected: AALLLL
+ioPrjTabToDelete: proxies-$data
+ioResult: 
+modified: 20241216113835678
+tags: proxies Projects Tutorials
+title: proxies
+type: text/vnd.tiddlywiki
+writeup: proxies writeup
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header [[TiddlyWiki Proxy Servers|proxies docs]] @@|
+
+<!-- Remove templates not applicable for this project -->
+{{||$:/pocket-io/project/autoload-template}}
+{{||$:/pocket-io/project/upload-template}}
+{{||$:/pocket-io/project/newtab-template}}
+<!-- {{||$:/pocket-io/project/delete-template}} -->
+
+{{!!ioResult}}
+
+{{||$:/pocket-io/project/writeup-template}}
+
+@@.poc2go-mono {{$:/pocket-io/code/proxies||$:/core/ui/TagTemplate}} @@
+
+<<closeTabsButton '$:/state/tab/pocket-io/code/proxies'>>
+<<tabs "[tag[$:/pocket-io/code/proxies]]" ""
+"$:/state/tab/pocket-io/code/proxies" "tc-horizontal">>
+
+<<topButton>>

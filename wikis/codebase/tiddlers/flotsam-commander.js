@@ -14,4 +14,4 @@ $tpi.fn.Commander = function Commander(tw) {
 $tpi.dsCmdr = new Commander($ds);
 $tpi.cwCmdr = new Commander($cw);
 $tpi.dwCmdr = new Commander($dw);
-$tpi.twCmdr = new Commander($tw);
+$tpi.rwCmdr = new Commander($rw);

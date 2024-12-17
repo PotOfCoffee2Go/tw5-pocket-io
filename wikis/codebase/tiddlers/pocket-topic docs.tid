@@ -1,0 +1,19 @@
+caption: pocket-topic
+created: 20241210190706510
+modified: 20241210190706510
+project: pocket-topic
+tags: pocket-topic Projectdocs
+title: pocket-topic docs
+type: text/vnd.tiddlywiki
+writeup: pocket-topic writeup
+
+{{||$:/pocket-io/project/docs-template}}
+
+@@.poc2go-mono Docs: {{$:/pocket-io/code/pocket-topic/docs||$:/core/ui/TagTemplate}} @@
+
+<<closeTabsButton "$:/state/tab/pocket-io/docs/pocket-topic">>
+@@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/pocket-topic/docs]]" "" "$:/state/tab/pocket-io/docs/pocket-topic">> @@
+
+Associated tiddlers:
+
+<<topButton>>

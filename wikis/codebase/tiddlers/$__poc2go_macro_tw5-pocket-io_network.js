@@ -117,9 +117,6 @@ const fieldsToWiki = (fields, tostory = false, fromServer = false) => {
 const initialize = () => {
 	socket = io();
 
-	// Macro to access pocket.io server
-	$tw.wiki.addTiddler(new $tw.Tiddler(pocketIoDefines));
-
 	socket.on('connect', () => {
 		console.log(`pocket.io id: ${sid(socket)} connected`);
 		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io connecting...');
@@ -180,6 +177,8 @@ fetch(socketLibrary).then((res) => {
 	elem.innerHTML = text;
 	document.head.appendChild(elem);
 }).then(() => {
+	// Macro to access pocket.io server
+	$tw.wiki.addTiddler(new $tw.Tiddler(pocketIoDefines));
 	// Initialize the network interface
 	initialize();
 }).catch((err) => {

@@ -1,9 +1,9 @@
 created: 20241114205348073
 ioFilter: [tag[about]]
 ioResult: 
-ioTopic: setData
+ioTopic: pullTiddlers
 ioTostory: yes
-modified: 20241118194702386
+modified: 20241210235338809
 tags: pocket-io example
 title: Pocket.io Example
 type: text/vnd.tiddlywiki
@@ -12,14 +12,14 @@ type: text/vnd.tiddlywiki
 .tid-input {
 	font-family: monospace;
 	font-size: 1.1em;
-    width: 100%;
+    min-width: 200px;
 }
 </style>
 
 |tc-table-no-border|k
 |ioTostory |<$checkbox field="ioTostory" checked="yes" unchecked="no" default="no"> open in story?</$checkbox> |
 |&nbsp; | |
-|ioTopic |<$select field="ioTopic" tooltip='Choose a topic' class="tid-input"><option>getData</option><option>setData</option></$select> |
+|ioTopic |<$select field="ioTopic" tooltip='Choose a topic' class="tid-input"><option>pullTiddlers</option><option>pushTiddlers</option></$select> |
 |ioFilter |<$edit-text field='ioFilter' class="tid-input"/> |
 |&nbsp; | |
 | |<$button actions="<<pocket-io>>"> submit </$button> |

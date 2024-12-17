@@ -1,18 +1,19 @@
 autoLoad: no
+caption: $$$project$$
 created: 20241120105017114
 ioConfirmDelete: no
 ioPrjProject: $$$project$$$
 ioPrjTabSelected: $$$project$$$-$$$tab$$$
 ioPrjTabToDelete: $$$project$$$-$$$tab$$$
 ioResult: 
-modified: 20241207173251420
+modified: 20241213000347427
 tags: $$$project$$$ Projects
 title: $$$project$$$
 type: text/vnd.tiddlywiki
 writeup: $$$project$$$ writeup
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-project-header [[Edit this tiddler to show a descriptive project name|$$$project$$$ docs]] @@|
+|@@.poc2go-project-header [[Edit this description and change caption|$$$project$$$ docs]] @@|
 
 <!-- Comment out templates not applicable for this project -->
 {{||$:/pocket-io/project/autoload-template}}

@@ -6,10 +6,10 @@ ioConfirmDelete: no
 ioPrjMinify: yes
 ioPrjProject: startup
 ioPrjTabName: 
-ioPrjTabSelected: startup-getCode
+ioPrjTabSelected: startup-commands
 ioPrjTabToDelete: startup-formatIoResult
 ioResult: 
-modified: 20241208033003156
+modified: 20241215112257942
 tags: startup Projects
 title: startup
 type: text/vnd.tiddlywiki

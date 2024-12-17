@@ -1,0 +1,10 @@
+caption: testMsg
+codetitle: pocket-topic-testMsg
+created: 20241210190706511
+modified: 20241210190706511
+tags: Docs pocket-topic $:/pocket-io/code/pocket-topic/docs
+title: pocket-topic-testMsg docs
+type: text/vnd.tiddlywiki
+writeup: pocket-topic-testMsg writeup
+
+{{||$:/pocket-io/project/tabdocs-template}}

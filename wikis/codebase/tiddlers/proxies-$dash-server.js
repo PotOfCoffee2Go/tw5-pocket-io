@@ -1,17 +1,34 @@
-// Pocket.io socket & reverse proxy to
+// proxy to Dashboard webserver
+var $dashlisten = function (next) {
+	$dash = new $rt.ProxyServer(`${proxyTargetIp}:${dashPort}`);
+	if (true) { // (dashboardWebserver) {
+		$dash.listen(dashProxyPort, proxyhost, () => {
+			log(`\n$dash dashboard proxy server to ` + hue($dash.proxyTarget,156) + ` started`)
+			hog(`Serving on http://${proxyhost}:${dashProxyPort}`,185);
+			return next;
+		})
+	} else {
+		hog(`\n$dash dashboard proxy server disabled\n TiddlyWiki Webserver was disabled`,9);
+		return next;
+	}
+}
+
+
+
+// Reverse proxy with Pocket.io sockets to
 //   TW 'server' edition dash wiki
 /*
  *  $dash initially contains:
 var $dash = {
 	proxyTarget: 'http://127.0.0.1:8082',
 }
- *  proxyTarget is whatever configured in ./server.js
- * ./server.js will perform the listen()
+ *  proxyTarget is whatever configured in ./servers.js
+ * ./servers.js will perform the listen()
 */
 
 // ----------------------
-// Pocket.io $dash server
-
+// $dash proxy server
+/*
 $dash.app = express();
 $dash.http = http.Server($dash.app);
 $dash.pocketio = pocketio($dash.http);
@@ -36,3 +53,4 @@ $dash.app.use('/docs', express.static('docs'));
 $dash.app.all('/*', (req, res) => {
 	$dash.twProxy.web(req, res, {target: $dash.proxyTarget});
 });
+*/

@@ -1,0 +1,29 @@
+caption: tut-1
+created: 20241212190704567
+modified: 20241212203638788
+tags: tab repl-tut $:/pocket-io/code/repl-tut
+title: repl-tut-1
+type: text/vnd.tiddlywiki
+
+
+current: cmd.code('repl-tut-1')
+
+The cmd.code(title) function displays the text of the given 
+tiddler title from the $cw code wiki. The text you are
+reading is the text of tiddler 'repl-tut-1' from the
+code wiki.
+
+cmd.code(title) uses tiddlywiki functions to get the tiddler text.
+
+The system has direct access to all tiddlywiki JavaScript
+functions for four wikis; $ds, $dw, $cw, and $rw.
+
+ * $ds is the $tw for dashboard wiki (./wikis/dashboard)
+ * $cw is the $tw for code wiki (./wikis/codebase)
+ * $dw is the $tw for data wiki (./wikis/database)
+ * $rw is a memory-only $tw tiddlywiki instance used by the REPL
+
+Press up-arrow and change 'REPL-MOTD-MSG' to 'REPL-MOTD-MSG-1'
+ then press enter to continue.
+
+Next: cmd.code('repl-tut-2')

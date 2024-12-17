@@ -33,5 +33,5 @@ $tpi.topic.projectCreate = function projectCreate(socket, msg) {
 	}
 
 	// Have projectUpdate create the project
-	return projectUpdate(socket, msg);
+	return $tpi.topic.projectUpdate(socket, msg);
 }

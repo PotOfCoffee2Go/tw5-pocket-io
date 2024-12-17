@@ -6,7 +6,7 @@
 // Start of config
 
 // dashboard and code webservers available to browsers on network
-const dashboardWebserver = true
+const dashboardWebserver = true;
 const codebaseWebserver = true;
 // data webserver is always available to browsers
 
@@ -18,21 +18,16 @@ const wikihost='127.0.0.1',
 	codeWikiDir = 'wikis/codebase', codePort = 8083,
 	dataWikiDir = 'wikis/database', dataPort = 8084;
 
+// Target computer running 'server' edition webservers
+//  - needs to be '127.0.0.1' ip address - not 'localhost'
+//  - why? the proxy servers do not always have DNS lookup available
+const proxyTargetIp ='http://127.0.0.1';
+
 // Reverse proxy to server editon webservers above
 const proxyhost='0.0.0.0', // proxies accessable from network
 	dashProxyPort = 3000, codeProxyPort = 3001, dataProxyPort = 3002;
 
-// Target computer running 'server' edition webservers
-//  - needs to be localhost ip address - not 'localhost'
-//  - why? the proxy servers do not have DNS lookup implemented!
-const proxyTargetIp ='http://127.0.0.1';
-
 // end of config
-
-// Proxy server settings
-var $dash = { proxyTarget: `${proxyTargetIp}:${dashPort}` };
-var $code = { proxyTarget: `${proxyTargetIp}:${codePort}` };
-var $data = { proxyTarget: `${proxyTargetIp}:${dataPort}` };
 
 // Helpers
 const log = (...args) => {console.log(...args);}
@@ -43,24 +38,30 @@ const wrt = (txt) => $rt.write(txt + '\n');
 // REPL
 var $rt = require('node:repl').start({ prompt: '', ignoreUndefined: true });
 
-// Startup the system
+// Proxy servers
+const { ProxyServer } = require('./lib/twProxyServer');
+var $dash = new ProxyServer(`${proxyTargetIp}:${dashPort}`);
+var $code = new ProxyServer(`${proxyTargetIp}:${codePort}`);
+var $data = new ProxyServer(`${proxyTargetIp}:${dataPort}`);
+
+// Startup TiddlyWiki Webservers
 hog(`Startup TiddlyWiki 'server' edition Webservers:`, 156);
 const { twServerBoot } = require('./lib/twServerBoot');
 const { replTwBoot } = require('./lib/replTwBoot');
 
-// Create tiddlywiki instances to the wikis
+// Create tiddlywiki instances
 //  start up the TiddlyWiki Webservers and boot the REPL
 //  Once REPL booted load the code tiddlers from $code wiki
-//  then fire up the proxy servers
-var $ds, $dw, $cw, $tw, $sockets = {};
-twServerBoot(dashWikiDir, wikihost, dashPort, dashboardWebserver).then(tw => {
+//  then fire up the proxy serve rs
+var $ds, $dw, $cw, $rw, $sockets = {};
+twServerBoot('$ds', dashWikiDir, wikihost, dashPort, dashboardWebserver).then(tw => {
 	$ds = tw;
-	twServerBoot(codeWikiDir, wikihost, codePort, codebaseWebserver).then(tw => {
+	twServerBoot('$cw', codeWikiDir, wikihost, codePort, codebaseWebserver).then(tw => {
 		$cw = tw;
-		twServerBoot(dataWikiDir, wikihost, dataPort, true).then(tw => {
+		twServerBoot('$dw', dataWikiDir, wikihost, dataPort, true).then(tw => {
 			$dw = tw;
 			replTwBoot().then(tw => {
-				$tw = tw;
+				$rw = tw;
 				replContext();
 				loadCodeToRepl();
 				startProxyServers();
@@ -72,14 +73,18 @@ twServerBoot(dashWikiDir, wikihost, dashPort, dashboardWebserver).then(tw => {
 // REPL context
 function replContext() {
 	$rt.context.$rt = $rt;	// the REPL itself
-	$rt.context.$tw = $tw;	// tiddlywiki instance for REPL use
+	$rt.context.$rw = $rw;	// tiddlywiki instance for REPL use
 	$rt.context.$ds = $ds;	// Dash tiddlywiki instance
-	$rt.context.$dw = $dw;	// Data tiddlywiki instance
 	$rt.context.$cw = $cw;	// Code tiddlywiki instance
-	$rt.context.$dash = $dash;	// dashboard proxy server
-	$rt.context.$data = $data;	// data proxy server
+	$rt.context.$dw = $dw;	// Data tiddlywiki instance
+	$rt.context.$dash = $dash;	// dash proxy server
 	$rt.context.$code = $code;	// code proxy server
-	$rt.context.$sockets = $sockets;
+	$rt.context.$data = $data;	// data proxy server
+
+	// Application objects
+	$rt.context.$sockets = $sockets; // clients connected to server
+	$rt.context.$tpi = { fn: { io:{} }, topic: {} }; // tw5-pocket-io code
+	$rt.context.$tmp = {}; // object for temporary use
 
 	$rt.setPrompt(hue('tw5-pocket-io > ',214));
 }
@@ -109,7 +114,7 @@ function loadCodeToRepl() {
 
 	// Load the code tiddlers from code wiki into REPL
 	var hadErrors = replGetCode($rt, $cw, projectFilter);
-	hog(`REPL startup complete${hadErrors ? hue(' - with an error in a code tiddler', 163) : ''}`, 156);
+	hog(`REPL startup complete - tw instance $rw ${hadErrors ? hue(' - with an error in a code tiddler', 163) : ''}`, 156);
 }
 
 // Each proxy server startup
@@ -150,12 +155,8 @@ function dataListen() {
 
 // REPL MOTD and prompt
 function replMOTD() {
-	hog(`\nWelcome to TW5-pocket-io\n`, 40);
-	hog(`Type: cmd.cog('REPL-MOTD-MSG') for more info.`, 40);
-	hog('  Is in the command history - just press up-arrow then enter.', 40);
-	hog('');
-	$rt.history.push(`cmd.cog('REPL-MOTD-MSG')`);
-	$rt.history.push(`$dash.`);
+	hog(`\nPress {up-arrow}{enter} for more info\n`,40);
+	$rt.history.push(`cmd.man('repl-tut')`);
 	$rt.displayPrompt();
 }
 

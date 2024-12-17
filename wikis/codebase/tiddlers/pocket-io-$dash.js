@@ -1,35 +1,11 @@
-// Server side Socket message handler
+// Server side $dash proxy socket message handlers:
+//  Client acknowledges connect sequence is complete
+//  Message from client
+//  Disconnect removes socket from connected sockets
 if ($dash.pocketio) {
-
-$dash.pocketio.on('connection', (socket) => {
-	// Client acknowledges connect sequence is complete
-	socket.on('ackConnect', () => {
-		$sockets[sid(socket)] = socket;
-		// getData(socket, '[tag[onStartup]]', true); // to story
-		socket.emit('ackConnect','ackConnect'); // ack the ack
- 		log(hue(`Client wiki ${sid(socket)} connected`, 44));
-		$rt.displayPrompt();
-	})
-	// Message from client
-	socket.on('msg', msgStr => {
-		var msg = $tw.utils.parseJSONSafe(msgStr,{ resultTiddlers: [] });
-		if (!(msg.req && msg.req.topic)) {
-			log(hue('Malformed message - no msg.req.topic field',9));
-			dir(msg);
-			return;
-		}
-		if (!(msg.req.topic && !!$tpi.topic[msg.req.topic])) {
-			socket.emit('msg',JSON.stringify($tpi.topic['badMsg'](socket, msg, `Invalid topic: ${msg.req.topic}`)));
-			return;
-		}
-		socket.emit('msg',JSON.stringify($tpi.topic[msg.req.topic](socket, msg)));
-	})
-	// Remove from connected sockets
-	socket.on('disconnect', () => {
-		delete $sockets[socket.id];
-		log(hue(`Client wiki ${sid(socket)} disconnected`, 128));
-		$rt.displayPrompt();
+	$dash.pocketio.on('connection', (socket) => {
+		socket.on('ackConnect', () => $tpi.fn.io.ackConnect(socket));
+		socket.on('msg', (msgStr) => $tpi.fn.io.msg(socket, msgStr));
+		socket.on('disconnect', () => $tpi.fn.io.disconnect(socket));
 	});
-});
-
-} // if (!$dash.pocketio)
+}

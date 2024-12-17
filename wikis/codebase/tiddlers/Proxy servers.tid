@@ -1,11 +1,11 @@
 created: 20241208154034301
-modified: 20241208203747763
+modified: 20241212052116638
 tags: Manual tab
 title: Proxy servers
 type: text/vnd.tiddlywiki
 
 !!! Proxy servers
-> Due to [[CORS|https://en.wikipedia.org/wiki/Cross-origin_resource_sharing]] policies - reverse proxies are needed for the client web page to have access to both Tiddlywiki [[Webservers|https://tiddlywiki.com/static/WebServer.html]] and other system resources as a single server entity. Access to the out-of-the-box TiddlyWiki 'server' edition Webservers is through built-in reverse proxies.
+Due to [[CORS|https://en.wikipedia.org/wiki/Cross-origin_resource_sharing]] policies - reverse proxies are needed for the client web page to have access to both Tiddlywiki [[Webservers|https://tiddlywiki.com/static/WebServer.html]] and other system resources as a single server entity. Access to the out-of-the-box TiddlyWiki 'server' edition Webservers is through built-in reverse proxies.
 
 Each wiki in the system is a 'server' edition [[Webserver|https://tiddlywiki.com/static/WebServer.html]] wiki stored server-side in the `./wikis` sub-directory. The TW5-pocket-io server is technically not a single server - but a manager of multiple servers. On startup ('npm start'), TW5-pocket-io will launch three TiddlyWikis on Node.js ('server' edition) [[Webservers|https://tiddlywiki.com/static/WebServer.html]] :
 
@@ -46,19 +46,13 @@ $dash dashboard proxy server to http://127.0.0.1:8082 started
 
 Serving on http://0.0.0.0:3000
 
-(press ctrl-C to exit)
-
 $code codebase proxy server to http://127.0.0.1:8083 started
 
 Serving on http://0.0.0.0:3001
 
-(press ctrl-C to exit)
-
 $data database proxy server to http://127.0.0.1:8084 started
 
 Serving on http://0.0.0.0:3002
-
-(press ctrl-C to exit)
 @@
 
 <hr class="poc2go-hr">

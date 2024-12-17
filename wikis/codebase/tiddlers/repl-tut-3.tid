@@ -1,0 +1,30 @@
+caption: tut-3
+created: 20241212201152243
+modified: 20241212201505562
+tags: tab repl-tut $:/pocket-io/code/repl-tut
+title: repl-tut-3
+type: text/vnd.tiddlywiki
+
+
+current: cmd.code('repl-tut-3')
+
+Notice that http://localhost:3001 displays a standard node.js TiddlyWiki
+client. However, the wiki is actually running on port 8083 which
+http://localhost:3001 routes all the TiddlyWiki client HTTP requests.
+(Is a reverse proxy server.)
+
+Just above the sidebar buttons, 'Pocket.io connected ...' is displayed.
+This provides the wiki client with a second communications channel
+(websockets) connection to the server.
+
+A tiddler with :
+
+```js
+<$button actions=<<pocket-io 'testMsg'>> >test</$button>
+{{!!ioResult}}
+```
+
+Sends a request to the server over the socket connection with the server
+response placed in the tiddlers 'ioResult' field and displayed.
+
+Next: cmd.code('repl-tut-4')

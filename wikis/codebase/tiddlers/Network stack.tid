@@ -1,0 +1,35 @@
+created: 20241211191209326
+modified: 20241212044823674
+tags: Manual tab
+title: Network stack
+type: text/vnd.tiddlywiki
+
+!!! Network stack
+
+[[Express|http://expressjs.com/]] servers are used as the reverse proxy to 'server' ediition [[Webservers|https://tiddlywiki.com/static/WebServer.html]] 
+
+@@float:left;width:30%;margin-right:1em;
+[img[tw5-pocket-io-servers-proxy.png]]
+@@
+
+Access is to the 'wikis/database' Webserver directory (contains 'tiddlywiki.info' file and 'tiddlers' directory). When a message is received by the proxy server :
+
+CORS middlware handles the [[CORS|https://en.wikipedia.org/wiki/Cross-origin_resource_sharing]] policies. The default is to allow any origin.
+
+The [[express.Router|http://expressjs.com/en/api.html#router]] instance allows adding routes to the server. Authentication/authorization methods would be added to the router. Or for example; could create the routes for a [[RESTful API|https://aws.amazon.com/what-is/restful-api/]] to the tiddlers of the './wikis/database' wiki.
+
+[[express.static|http://expressjs.com/en/api.html#express.static]] defines the directories containing static content. By default; the '/' (root) path delivers resources from the './public' directory and the '/docs' path delivers from the './docs' directory.
+
+A socket I/O channel is provided by the [[pocket.io|https://github.com/WebReflection/pocket.io#readme]] package which is a thin wrapper which simplifies using [[websockets|https://en.wikipedia.org/wiki/WebSocket]] protocol by using Node.js event emitters. To connect via WebSockets the [[$:/poc2go/macro/tw5-pocket-io/network.js]] macro must be imported into the wiki.
+
+When a request is not processed by the above middleware stack, it is passed to the 'server' edition Webserver for processing. Thus when connecting to http://localhost:3002 it is as if were connecting directly to http://localhost:8084 (but with the added functionality).
+
+The Webserver is started automatically and is equivalent to 
+
+`tiddlywiki ./wikis/database --listen port=8084`.
+
+<div style="clear:both;"></div>
+
+[[proxies-$data-server]]
+
+{{proxies-$data-server}}

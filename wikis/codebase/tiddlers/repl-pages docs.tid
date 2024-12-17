@@ -1,0 +1,19 @@
+caption: repl-pages
+created: 20241213000011289
+modified: 20241213000011289
+project: repl-pages
+tags: repl-pages Projectdocs
+title: repl-pages docs
+type: text/vnd.tiddlywiki
+writeup: repl-pages writeup
+
+{{||$:/pocket-io/project/docs-template}}
+
+@@.poc2go-mono Docs: {{$:/pocket-io/code/repl-pages/docs||$:/core/ui/TagTemplate}} @@
+
+<<closeTabsButton "$:/state/tab/pocket-io/docs/repl-pages">>
+@@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/repl-pages/docs]]" "" "$:/state/tab/pocket-io/docs/repl-pages">> @@
+
+Associated tiddlers:
+
+<<topButton>>
