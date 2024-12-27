@@ -6,7 +6,7 @@ ioPrjProject:
 ioPrjTabName: 
 ioPrjToProject: flotsam
 ioResult: 
-modified: 20241213000018579
+modified: 20241222141906906
 tags: 
 title: Codebase
 type: text/vnd.tiddlywiki
@@ -31,9 +31,11 @@ type: text/vnd.tiddlywiki
 
 {{||$:/pocket-io/project/create-template}}
 
+<!--
 <hr class="poc2go-hr">
 
 {{||$:/pocket-io/project/copy-template}}
+-->
 
 {{!!ioResult}}
 

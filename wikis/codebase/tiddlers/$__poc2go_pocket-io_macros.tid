@@ -1,5 +1,5 @@
 created: 20231107195051015
-modified: 20241130145342017
+modified: 20241222134804394
 tags: $:/tags/Macro
 title: $:/poc2go/pocket-io/macros
 type: text/vnd.tiddlywiki
@@ -13,6 +13,14 @@ type: text/vnd.tiddlywiki
 <$action-setfield $tiddler=<<qualify "$tab$">>  text=""/>
 Close
 </$button>
+\end
+
+\define writeup()
+<<details 'Writeup' """
+
+<$transclude $tiddler={{!!writeup}}>
+
+""" "open">>
 \end
 
 \define .codesample(n,lng,eg)

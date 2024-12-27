@@ -1,14 +1,13 @@
 // cmd.man('repl-tut')
 cmd.man = function(projectTitle, pageMode = true) {
-	var tutorialTag = 'Tutorials';
+	var tutorialTag = 'Projects';
 
-	var pages = [];
-	var pageIdx = 0;
-	var pageMode = pageMode;
+	var pages = [], pageIdx = 0, pageMode = pageMode;
+	var view = 'script'; // or 'writeup'
 
-	var start = 'Toggle page mode, Next, Prev, Quit t/(n)/p/q : ';
-	var brief = 't/(n)/p/q : ';
-	var end = 'End t/n/p/(q) : ';
+	var start = 'Toggle page mode, view Script or Writeup, Next, Prev, Quit t/s/w/(n)/p/q : ';
+	var brief = 't/s/w/(n)/p/q : ';
+	var end = 'End t/s/w/n/p/(q) : ';
 	var prompt = start;
 
 	var history = cpy($rt.history);
@@ -30,27 +29,18 @@ cmd.man = function(projectTitle, pageMode = true) {
 		}
 	}
 
-	function tutorials(projectTitle) {
-		if (!projectTitle) {
-			return $cw.wiki.getTiddlersWithTag(tutorialTag);
+	function query() {
+		if (view === 'writeup') {
+			return `[list[$:/pocket-io/code/startup]addsuffix[ writeup]]`;
 		}
-		const tutorials = $cw.wiki.getTiddlersWithTag(tutorialTag);
-		if (!tutorials.includes(projectTitle)) {
-			hog(`'Project '${projectTitle}' doesn't exist or is not tagged as '${tutorialTag}'`, 9);
-			return;
-		}
-		pages = JSON.parse($cw.wiki.getTiddlersAsJson(`[tag[$:/pocket-io/code/${projectTitle}]]`));
-		if (pages.length === 0) {
-			hog(`'Project '${projectTitle}' doesn't have any pages to display'`, 9);
-			return;
-		}
-		ask();
+		return `[tag[$:/pocket-io/code/${projectTitle}]]`;
+	}
+	function getPages() {
+		pages = JSON.parse($cw.wiki.getTiddlersAsJson(query()));
 	}
 
 	function ask() {
-		if (pageMode) {
-			console.clear();
-		}
+		if (pageMode) {	console.clear(); }
 		$rt.write(`cmd.show.code('${pages[pageIdx].title}')\n`);
 		$rt.question(prompt, (answer) => {
 			if (!answer && prompt === end) {
@@ -60,6 +50,16 @@ cmd.man = function(projectTitle, pageMode = true) {
 			prompt = brief;
 			if (!answer || answer[0].toLowerCase() === 'n') {
 				incPageIdx();
+				ask();
+			}
+			else if (answer[0].toLowerCase() === 's') {
+				view = 'script';
+				getPages();
+				ask();
+			}
+			else if (answer[0].toLowerCase() === 'w') {
+				view = 'writeup';
+				getPages();
 				ask();
 			}
 			else if (answer[0].toLowerCase() === 't') {
@@ -74,9 +74,22 @@ cmd.man = function(projectTitle, pageMode = true) {
 				quit();
 			}
 			else {
+				prompt = `Invalid '${answer}' - ` + start;
 				ask();
 			}
 		});
+	}
+
+	function tutorials(projectTitle) {
+		if (!projectTitle) {
+			return $cw.wiki.getTiddlersWithTag(tutorialTag);
+		}
+		getPages();
+		if (pages.length === 0) {
+			hog(`'Project '${projectTitle}' doesn't have any pages to display'`, 9);
+			return;
+		}
+		ask();
 	}
 
 	return tutorials(projectTitle);

@@ -17,7 +17,6 @@ const netStatus = {
 	text: `{{$:/temp/pocket-io/netstat}}`
 }
 $tw.wiki.addTiddler(new $tw.Tiddler(netStatus));
-$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io Initializing...');
 
 (function(){
 
@@ -100,8 +99,8 @@ const story = new $tw.Story();
 
 // Create/overwrite tiddler and add to wiki from hashmap of fields
 //  includes timestamps
-//  optional display to story and fetch from server fields
-const fieldsToWiki = (fields, tostory = false, fromServer = false) => {
+//  optional display to story river
+const fieldsToWiki = (fields, tostory = false) => {
 	$tw.wiki.addTiddler(new $tw.Tiddler(
 		$tw.wiki.getCreationFields(),
 		fields,
@@ -112,20 +111,26 @@ const fieldsToWiki = (fields, tostory = false, fromServer = false) => {
 	}
 }
 
+// Update network status
+function setNetstat(txt) {
+	var site = `${location.protocol}//${location.hostname}:${location.port}<br>`;
+	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, site + txt);
+}
+
 // ------------------------
 // Pocket.io event handlers
-const initialize = () => {
+const initSocketHandlers = () => {
 	socket = io();
 
 	socket.on('connect', () => {
 		console.log(`pocket.io id: ${sid(socket)} connected`);
-		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io connecting...');
+		setNetstat('Pocket.io connecting...');
 		socket.emit('ackConnect', 'ackConnect');
 	})
 
 	socket.on('ackConnect', () => {
 		console.log(`pocket.io id: ${sid(socket)} connected`);
-		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, `Pocket.io connected ${sid(socket)}`);
+		setNetstat(`Pocket.io connected ${sid(socket)}`);
 	})
 
 	socket.on('msg', msgStr => {
@@ -139,9 +144,14 @@ const initialize = () => {
 		})
 	})
 
+	socket.on('refresh', () => {
+		console.log('pocket.i0 request to server-refresh');
+		$tw.syncer.syncFromServer();
+	})
+
 	socket.on('close', () => {
 		console.log('pocket.i0 disconnnected');
-		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io disconnected');
+		setNetstat('Pocket.io disconnected');
 		socket = null;
 		reConnect();
 	})
@@ -152,7 +162,7 @@ const initialize = () => {
 // Attempt re-connect
 function reConnect() {
 	if (!socket) {
-		setTimeout(() => { initialize(); }, reconnectMs);
+		setTimeout(() => { initSocketHandlers(); }, reconnectMs);
 	}
 }
 
@@ -180,7 +190,8 @@ fetch(socketLibrary).then((res) => {
 	// Macro to access pocket.io server
 	$tw.wiki.addTiddler(new $tw.Tiddler(pocketIoDefines));
 	// Initialize the network interface
-	initialize();
+	setNetstat('Pocket.io Initializing...');
+	initSocketHandlers();
 }).catch((err) => {
 	console.log(err);
 });
