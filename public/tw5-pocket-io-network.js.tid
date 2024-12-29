@@ -121,8 +121,9 @@ const fieldsToWiki = (fields, tostory = false) => {
 
 // Update network status
 function setNetstat(txt) {
-	var site = `${location.protocol}//${location.hostname}:${location.port}<br>`;
-	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, site + txt);
+	var site = `${location.protocol}//${location.hostname}:${location.port}`;
+	$tw.wiki.setText('$:/temp/pocket-io/site','text', null, site);
+	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, `{{$:/temp/pocket-io/site}}<br>` + txt);
 }
 
 // ------------------------

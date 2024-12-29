@@ -1,12 +1,14 @@
 caption: readme
 created: 20241212190443572
-modified: 20241212202127146
+modified: 20241229133334694
 tags: tab repl-tut $:/pocket-io/code/repl-tut
 title: repl-tut-readme
 type: text/vnd.tiddlywiki
 
 Welcome to TW5-pocket-io
 
-Type: cmd.code('repl-tut-1') for more info.
+ * Dashboard: http://localhost:3000
+ * codebase : http://localhost:3001
+ * database : http://localhost:3002
 
-Is in the command history - just press up-arrow then enter.
+Next: cmd.show.code('repl-tut-1') for more info.

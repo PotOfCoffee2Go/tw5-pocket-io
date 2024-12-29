@@ -113,8 +113,9 @@ const fieldsToWiki = (fields, tostory = false) => {
 
 // Update network status
 function setNetstat(txt) {
-	var site = `${location.protocol}//${location.hostname}:${location.port}<br>`;
-	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, site + txt);
+	var site = `${location.protocol}//${location.hostname}:${location.port}`;
+	$tw.wiki.setText('$:/temp/pocket-io/site','text', null, site);
+	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, `{{$:/temp/pocket-io/site}}<br>` + txt);
 }
 
 // ------------------------
@@ -123,7 +124,7 @@ const initSocketHandlers = () => {
 	socket = io();
 
 	socket.on('connect', () => {
-		console.log(`pocket.io id: ${sid(socket)} connected`);
+		console.log(`pocket.io id: ${sid(socket)} connecting`);
 		setNetstat('Pocket.io connecting...');
 		socket.emit('ackConnect', 'ackConnect');
 	})
@@ -145,7 +146,7 @@ const initSocketHandlers = () => {
 	})
 
 	socket.on('refresh', () => {
-		console.log('pocket.i0 request to server-refresh');
+		console.log('pocket.io request to server-refresh');
 		$tw.syncer.syncFromServer();
 	})
 

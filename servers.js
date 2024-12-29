@@ -122,7 +122,7 @@ function loadCodeToRepl() {
 function dashListen(next) {
 	if (dashboardWebserver) {
 		$dash.http.listen(dashProxyPort, proxyhost, () => {
-			log(`\n$dash dashboard proxy server to ` + hue($dash.proxyTarget,156) + ` started`)
+			log(`\n$dash dashboard proxy server to $ds ` + hue($dash.proxyTarget,156) + ` started`)
 			hog(`Serving on http://${proxyhost}:${dashProxyPort}`,185);
 			return next;
 		})
@@ -135,7 +135,7 @@ function dashListen(next) {
 function codeListen(next) {
 	if (codebaseWebserver) {
 		$code.http.listen(codeProxyPort, proxyhost, () => {
-			log(`$code codebase proxy server to ` + hue($code.proxyTarget,156) + ` started`)
+			log(`$code codebase proxy server to $cw ` + hue($code.proxyTarget,156) + ` started`)
 			hog(`Serving on http://${proxyhost}:${codeProxyPort}`,185);
 			return next;
 		})
@@ -147,7 +147,7 @@ function codeListen(next) {
 // proxy to database webserver
 function dataListen() {
 	$data.http.listen(dataProxyPort, proxyhost, () => {
-		log(`$data database proxy server to ` + hue($data.proxyTarget,156) + ` started`)
+		log(`$data database proxy server to $dw ` + hue($data.proxyTarget,156) + ` started`)
 		hog(`Serving on http://${proxyhost}:${dataProxyPort}`,185);
 		replMOTD();
 	})

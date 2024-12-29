@@ -1,6 +1,6 @@
 caption: create
 created: 20241119044637337
-modified: 20241129051028952
+modified: 20241227013506787
 tags: project template $:/pocket-io/template/project
 title: $:/pocket-io/project/create-template
 type: text/vnd.tiddlywiki
@@ -23,4 +23,6 @@ type: text/vnd.tiddlywiki
 \end
 
 |tc-center tc-table-no-border|k
-| New Project |<<newProjectEditBox>> | With Tab |<<newTabEditBox>> |<<createButton>> |
+| | <<createButton>> |
+| New Project |<<newProjectEditBox>> |
+| With Tab |<<newTabEditBox>> | |
