@@ -70,7 +70,7 @@ exports.run = (command, topic, filter, sender) => {
 		console.log(`pocket.io  invalid command - ${command}.`);
 		return;
 	}
-	var msg = JSON.stringify(createMessage(command, topic, filter, sender));
+	var msg = createMessage(command, topic, filter, sender);
 	socket.emit('msg', msg);
 }
 
@@ -142,8 +142,7 @@ const initSocketHandlers = () => {
 		setNetstat(`Pocket.io connected ${sid(socket)}`);
 	})
 
-	socket.on('msg', msgStr => {
-		var msg = $tw.utils.parseJSONSafe(msgStr,{ resultTiddlers: [] });
+	socket.on('msg', msg => {
 		msg.resultTiddlers.forEach(tiddler => {
 			if (tiddler.title === msg.req.sender) {
 				fieldsToWiki(tiddler); // skip forcing sender to story

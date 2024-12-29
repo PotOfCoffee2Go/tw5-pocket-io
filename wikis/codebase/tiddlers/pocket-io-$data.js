@@ -5,7 +5,7 @@
 if ($data.pocketio) {
 	$data.pocketio.on('connection', (socket) => {
 		socket.on('ackConnect', () => $tpi.fn.io.ackConnect(socket, '$data'));
-		socket.on('msg', (msgStr) => $tpi.fn.io.msg(socket, msgStr));
+		socket.on('msg', (msg) => $tpi.fn.io.msg(socket, msg));
 		socket.on('disconnect', () => $tpi.fn.io.disconnect(socket, '$data'));
 	});
 }

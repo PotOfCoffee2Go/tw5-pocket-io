@@ -9,7 +9,7 @@ ioPrjTabName:
 ioPrjTabSelected: HelloWorld-helloworld
 ioPrjTabToDelete: HelloWorld-default
 ioResult: 
-modified: 20241222135809114
+modified: 20241229185220661
 tags: HelloWorld Projects
 title: HelloWorld
 type: text/vnd.tiddlywiki
@@ -24,6 +24,10 @@ writeup: HelloWorld writeup
 <!-- {{||$:/pocket-io/project/delete-template}} -->
 
 {{!!ioResult}}
+
+|tc-center tc-table-no-border|k
+| See [[Hello]] for a tiddler that calls the server-side 'helloworld' function below. |
+
 
 {{||$:/pocket-io/project/writeup-template}}
 

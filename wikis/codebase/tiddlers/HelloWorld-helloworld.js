@@ -1,15 +1,7 @@
-// Example Tiddler that calls server topic 'helloworld'
-/*
-title: Hello
-tags: HelloWorld example
-type: text/vnd.tiddlywiki
-
-<$button actions="<<pocket-io 'helloworld'>>">Hello World</$button>
-
-{{!!ioResult}}
-*/
-
 // Server-side topics are passed the socket and msg from client wiki
+// $tw is $ds, $cw, or $dw - dashboard, codebase, or database wiki
+//   default is $dw
+
 $tpi.topic.helloworld = function helloworld(socket, msg, $tw) {
 	// dir(msg,3) // Display pocket.io msg on server console
 
@@ -27,3 +19,15 @@ $tpi.topic.helloworld = function helloworld(socket, msg, $tw) {
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }
+
+// ------------------
+// Example Tiddler that calls server topic 'helloworld'
+/*
+title: Hello
+tags: HelloWorld example
+type: text/vnd.tiddlywiki
+
+<$button actions="<<pocket-io 'helloworld'>>">Hello World</$button>
+
+{{!!ioResult}}
+*/
