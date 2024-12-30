@@ -156,7 +156,7 @@ function dataListen() {
 // REPL MOTD and prompt
 function replMOTD() {
 	hog(`\nPress {up-arrow}{enter} for more info\n`,40);
-	$rt.history.push(`cmd.man('repl-tut')`);
+	$rt.history.push(`cmd.run('help')`);
 	$rt.displayPrompt();
 }
 

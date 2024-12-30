@@ -3,10 +3,11 @@ caption: REPL Pages
 created: 20241213000011288
 ioConfirmDelete: no
 ioPrjProject: repl-pages
-ioPrjTabSelected: repl-pages-command
-ioPrjTabToDelete: repl-pages-command
+ioPrjTabName: 
+ioPrjTabSelected: repl-pages-cmd.run
+ioPrjTabToDelete: repl-pages-cmd.run
 ioResult: 
-modified: 20241220003542250
+modified: 20241230110859201
 tags: repl-pages Projects
 title: repl-pages
 type: text/vnd.tiddlywiki
