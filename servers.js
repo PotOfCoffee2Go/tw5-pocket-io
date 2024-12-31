@@ -83,7 +83,7 @@ function replContext() {
 
 	// Application objects
 	$rt.context.$sockets = $sockets; // clients connected to server
-	$rt.context.$tpi = { fn: { io:{} }, topic: {} }; // tw5-pocket-io code
+	$rt.context.$tpi = { fn: { io:{} }, topic: {}, repl: {} }; // tw5-pocket-io code
 	$rt.context.$tmp = {}; // object for temporary use
 
 	$rt.setPrompt(hue('tw5-pocket-io > ',214));

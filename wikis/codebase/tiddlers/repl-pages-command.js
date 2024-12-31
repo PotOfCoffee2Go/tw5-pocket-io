@@ -31,7 +31,7 @@ cmd.man = function(projectTitle, pageMode = true) {
 
 	function query() {
 		if (view === 'writeup') {
-			return `[list[$:/pocket-io/code/startup]addsuffix[ writeup]]`;
+			return `[list[$:/pocket-io/code/${projectTitle}/docs]removesuffix[ docs]addsuffix[ writeup]]`;
 		}
 		return `[tag[$:/pocket-io/code/${projectTitle}]]`;
 	}
