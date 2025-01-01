@@ -5,7 +5,6 @@ const { Command, Option } = commander;
 
 const program = new Command();
 $tpi.repl.program = program; // assign for global access
-$tpi.repl.action = $tpi.repl.action ?? {};
  
 // Do not 'process.exit()' on errors
 //  (place $tpi.repl.program.parse(...) in a try/catch instead)
@@ -22,13 +21,13 @@ cmd.run = function(commandStr) {
 
 // Set color of help text
 program.configureHelp({
-  styleTitle: (str) => hue(str, 158),
-  styleCommandText: (str) => hue(str, 158),
-  styleCommandDescription: (str) => hue(str, 158),
-  styleDescriptionText: (str) => hue(str, 158),
-  styleOptionText: (str) => hue(str, 158),
-  styleArgumentText: (str) => hue(str, 158),
-  styleSubcommandText: (str) => hue(str, 158),
+	styleTitle: (str) => hue(str, 158),
+	styleCommandText: (str) => hue(str, 158),
+	styleCommandDescription: (str) => hue(str, 158),
+	styleDescriptionText: (str) => hue(str, 158),
+	styleOptionText: (str) => hue(str, 158),
+	styleArgumentText: (str) => hue(str, 158),
+	styleSubcommandText: (str) => hue(str, 158),
 });
 
 program
@@ -47,18 +46,6 @@ program
 	.requiredOption('-p,--port <port_number>', 'web port')
 	.action((wiki_name,options) => {
 		hog(`${wiki_name} server on port ${options.port}`,40);
-	});
-
-program
-	.command('project')
-	.usage('[project-name] [options]')
-	.description('display a code project')
-	.argument('[project-name]')
-	.option('-i, --interactive', 'page thru project code tiddlers')
-	.option('-s, --script <script-title>', 'script to display')
-	.option('-w, --writeup', 'display writeup of script')
-	.action((project, options, command) => {
-		$tpi.repl.action.project(project, options, command);
 	});
 
 })()

@@ -1,20 +1,20 @@
 autoLoad: yes
-caption: REPL Pages
-created: 20241213000011288
+caption: REPL Program
+created: 20241231100829266
 ioConfirmDelete: no
-ioPrjProject: repl-pages
+ioPrjProject: program
 ioPrjTabName: 
-ioPrjTabSelected: repl-pages-cmd.run
-ioPrjTabToDelete: repl-pages-cmd.run
+ioPrjTabSelected: program-cmd.man
+ioPrjTabToDelete: program-commander
 ioResult: 
-modified: 20241231072714912
-tags: repl-pages Projects
-title: repl-pages
+modified: 20241231191050663
+tags: program Projects
+title: program
 type: text/vnd.tiddlywiki
-writeup: repl-pages writeup
+writeup: program writeup
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-project-header [[Page through REPL tutorials|repl-pages docs]] @@|
+|@@.poc2go-project-header [[Program that runs REPL commands|program docs]] @@|
 
 <!-- Comment out templates not applicable for this project -->
 {{||$:/pocket-io/project/autoload-template}}
@@ -29,12 +29,12 @@ writeup: repl-pages writeup
 {{||$:/pocket-io/project/writeup-template}}
 
 <!-- Tag pill of code tiddlers in project -->
-@@.poc2go-mono {{$:/pocket-io/code/repl-pages||$:/core/ui/TagTemplate}} @@
+@@.poc2go-mono {{$:/pocket-io/code/program||$:/core/ui/TagTemplate}} @@
 
-<<closeTabsButton "$:/state/tab/pocket-io/code/repl-pages">>
+<<closeTabsButton "$:/state/tab/pocket-io/code/program">>
 
 <!-- Tabs that contain server-side code -->
-@@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/repl-pages]]" ""
-"$:/state/tab/pocket-io/code/repl-pages" "tc-horizontal">> @@
+@@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/program]]" ""
+"$:/state/tab/pocket-io/code/program" "tc-horizontal">> @@
 
 <<topButton>>

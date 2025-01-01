@@ -1,0 +1,19 @@
+caption: program
+created: 20241231100829267
+modified: 20241231100829267
+project: program
+tags: program Projectdocs
+title: program docs
+type: text/vnd.tiddlywiki
+writeup: program writeup
+
+{{||$:/pocket-io/project/docs-template}}
+
+@@.poc2go-mono Docs: {{$:/pocket-io/code/program/docs||$:/core/ui/TagTemplate}} @@
+
+<<closeTabsButton "$:/state/tab/pocket-io/docs/program">>
+@@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/program/docs]]" "" "$:/state/tab/pocket-io/docs/program">> @@
+
+Associated tiddlers:
+
+<<topButton>>

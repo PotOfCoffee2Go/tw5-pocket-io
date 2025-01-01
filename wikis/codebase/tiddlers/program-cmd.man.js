@@ -12,10 +12,13 @@ cmd.man = function(projectTitle, pageMode = true) {
 
 	var history = cpy($rt.history);
 
-	function quit() {
-		$rt.history = history;
-		$rt.displayPrompt();
+	var queryWriteup = () => `[list[$:/pocket-io/code/${projectTitle}/docs]removesuffix[ docs]addsuffix[ writeup]]`;
+	var queryCode = () => `[tag[$:/pocket-io/code/${projectTitle}]]`;
+	var query = () => view === 'writeup' ? queryWriteup() : queryCode();
+	function getPages() {
+		pages = JSON.parse($cw.wiki.getTiddlersAsJson(query()));
 	}
+
 	function incPageIdx() {
 		if (++pageIdx >= pages.length-1) {
 			pageIdx = pages.length-1;
@@ -28,55 +31,28 @@ cmd.man = function(projectTitle, pageMode = true) {
 			prompt = start;
 		}
 	}
-
-	function query() {
-		if (view === 'writeup') {
-			return `[list[$:/pocket-io/code/${projectTitle}/docs]removesuffix[ docs]addsuffix[ writeup]]`;
-		}
-		return `[tag[$:/pocket-io/code/${projectTitle}]]`;
-	}
-	function getPages() {
-		pages = JSON.parse($cw.wiki.getTiddlersAsJson(query()));
+	function quit() {
+		$rt.history = history;
+		$rt.displayPrompt();
 	}
 
 	function ask() {
 		if (pageMode) {	console.clear(); }
 		$rt.write(`cmd.show.code('${pages[pageIdx].title}')\n`);
 		$rt.question(prompt, (answer) => {
-			if (!answer && prompt === end) {
+			var ans = (answer[0] ?? 'n').toLowerCase();
+			if ( (!answer && prompt === end) || ans === 'q') {
 				quit();
 				return;
 			}
 			prompt = brief;
-			if (!answer || answer[0].toLowerCase() === 'n') {
-				incPageIdx();
-				ask();
-			}
-			else if (answer[0].toLowerCase() === 's') {
-				view = 'script';
-				getPages();
-				ask();
-			}
-			else if (answer[0].toLowerCase() === 'w') {
-				view = 'writeup';
-				getPages();
-				ask();
-			}
-			else if (answer[0].toLowerCase() === 't') {
-				pageMode = !pageMode;
-				ask();
-			}
-			else if (answer[0].toLowerCase() === 'p') {
-				decPageIdx();
-				ask();
-			}
-			else if (answer[0].toLowerCase() === 'q') {
-				quit();
-			}
-			else {
-				prompt = `Invalid '${answer}' - ` + start;
-				ask();
-			}
+			if (ans === 'n') { incPageIdx(); }
+			else if (ans === 'p') { decPageIdx(); }
+			else if (ans === 't') { pageMode = !pageMode; }
+			else if (ans === 's') { view = 'script'; getPages(); }
+			else if (ans === 'w') { view = 'writeup'; getPages(); }
+			else { prompt = `Invalid '${answer}' - ` + start; }
+			ask();
 		});
 	}
 
