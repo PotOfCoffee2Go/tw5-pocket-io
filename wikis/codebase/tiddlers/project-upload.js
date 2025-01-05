@@ -1,5 +1,6 @@
 // Upload code to server
 $tpi.topic.projectUpload = function projectUpload(socket, msg) {
+	var $cw = get$tw('codebase');
 	var senderTid = cpy(msg.senderTiddler);
 	senderTid.ioResult = '';
 

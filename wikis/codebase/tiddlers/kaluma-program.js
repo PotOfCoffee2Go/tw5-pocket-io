@@ -1,20 +1,23 @@
-$tpi.kaluma.program = function () {
+(function () {
+$tpi.kamula = $tpi.kamula ?? {};
 
-const fs = require("fs");
-const path = require("path");
+// const fs = require("fs");
+// const path = require("path");
 const { program } = require("commander");
+$tpi.kaluma.program = program;
+	
 const SerialPort = require("serialport");
-const config = require("../package.json");
+const config = require("./package.json");
 const colors = require("colors/safe");
 const filesize = require("file-size");
 
-const flash = require("../lib/flash");
-const erase = require("../lib/erase");
-const bundle = require("../lib/bundle");
-const put = require("../lib/put");
-const get = require("../lib/get");
-const eval = require("../util/eval");
-const { BufferedSerial } = require("../util/buffered-serial");
+const flash = $tpi.kaluma.flash;
+const erase = $tpi.kaluma.erase;
+const bundle = $tpi.kaluma.bundle;
+const put = $tpi.kaluma.put;
+const get = $tpi.kaluma.get;
+const eval = $tpi.kaluma.eval;
+const BufferedSerial = $tpi.kaluma.BufferedSerial;
 
 const serialOptions = {
 	autoOpen: false,
@@ -48,7 +51,7 @@ function colorSize(size) {
 }
 
 function bind(serial, intercept) {
-	process.stdin.setRawMode(true);
+//	process.stdin.setRawMode(true);
 	process.stdin.on("data", (chunk) => {
 		if (Array.isArray(intercept)) {
 			let intercepted = false;

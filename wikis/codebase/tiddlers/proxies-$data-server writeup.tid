@@ -1,7 +1,0 @@
-created: 20241129055444630
-modified: 20241203091404471
-tags: writeup proxies
-title: proxies-$data-server writeup
-type: text/vnd.tiddlywiki
-
-The $data wiki is a standard 'server' edition [[WebServers|https://tiddlywiki.com/static/WebServer.html]]  wiki. The proxy provides the ability to add routes to the web requests. Pocket.io is not included in the communications stack - as the $dash wiki provides access to the tiddlers of the $data wiki.

@@ -1,5 +1,6 @@
 // cmd.man('repl-tut')
 cmd.man = function(projectTitle, pageMode = true) {
+	var $cw = get$tw('codebase');
 	var tutorialTag = 'Projects';
 
 	var pages = [], pageIdx = 0, pageMode = pageMode;
@@ -39,6 +40,7 @@ cmd.man = function(projectTitle, pageMode = true) {
 	function ask() {
 		if (pageMode) {	console.clear(); }
 		$rt.write(`cmd.show.code('${pages[pageIdx].title}')\n`);
+		$tpi.stdin.getNextChar = true;
 		$rt.question(prompt, (answer) => {
 			var ans = (answer[0] ?? 'n').toLowerCase();
 			if ( (!answer && prompt === end) || ans === 'q') {

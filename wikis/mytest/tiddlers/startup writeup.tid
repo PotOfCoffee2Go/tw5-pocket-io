@@ -1,0 +1,11 @@
+created: 20241111150158122
+modified: 20241207100551134
+tags: writeup startup
+title: startup writeup
+type: text/vnd.tiddlywiki
+
+The startup project contains code that will be uploaded to the server when the system is started. The 'startup' project upload is hard coded in ./servers.js to always upload regardless of the project's 'autoLoad' setting.
+
+As with all projects, the order of tab loading can be changed by clicking the {{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}} tag and drag/drop items in the order desired.
+
+The code in the $code wiki is uploaded into a Node.js REPL which is the center of the system; communicates via terminal prompt, client wikis over the net, and directly manages tiddlers of wikis in the `./wikis` directory of the server.

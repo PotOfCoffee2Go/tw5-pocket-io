@@ -3,6 +3,7 @@
 //  If project already exists will create a new tab
 //  If project does not exist - will be created containing a tab
 $tpi.fn.projectCreateFromFilter = function projectCreateFromFilter(filter, project, tabName) {
+	var $cw = get$tw('codebase');
 	var titles = [];
 	var json = $cw.wiki.getTiddlersAsJson(filter);
 	var text = json

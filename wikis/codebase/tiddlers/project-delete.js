@@ -1,5 +1,6 @@
 // Delete a project's code or a project completely
 $tpi.topic.projectDelete = function projectDelete(socket, msg) {
+	var $cw = get$tw('codebase');
 	var senderTid = cpy(msg.senderTiddler);
 	senderTid.ioResult = '';
 

@@ -1,6 +1,7 @@
 // Create a project
 // Verify input - calls projectUpdate to create project
 $tpi.topic.projectCreate = function projectCreate(socket, msg) {
+	var $cw = get$tw('codebase');
 	var senderTid = cpy(msg.senderTiddler);
 	var resultMsg = '';
 	senderTid.ioResult = '';

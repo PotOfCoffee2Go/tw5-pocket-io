@@ -2,9 +2,10 @@
 //   ex: '/tiddlers/[tag[project]]'
 
 // Route for $code server
-$code.router.get('/tiddlers/:filter', (req, res) => {
+get$router('codebase').get('/tiddlers/:filter', (req, res) => {
+	const $tw = get$tw('codebase');
 	var { filter } = req.params;
-	var tiddlers = JSON.parse($cw.wiki.getTiddlersAsJson(filter));
+	var tiddlers = JSON.parse($tw.wiki.getTiddlersAsJson(filter));
 	res.set('content-type', 'application/json');
 	res.send(JSON.stringify(tiddlers, null, 4)); // insures formatted
 });
