@@ -1,0 +1,25 @@
+caption: delete
+created: 20241121032615871
+modified: 20250114024414230
+tags: template project $:/pocket-io/template/project
+title: $:/pocket-io/project/delete-template
+type: text/vnd.tiddlywiki
+
+\define submitDelete()
+<<pocket-io "projectDelete">>
+\end
+
+\define tabSelect()
+<$select field="ioPrjTabToDelete" default="AALLLL"><option value="AALLLL" >PROJECT</option><$list filter="[tag{!!title}tag[tab]]"><option value={{!!title}} ><$view field='caption'/></option></$list></$select>
+\end
+
+\define deleteButton()
+<$button actions="<<submitDelete>>"> Delete </$button>
+\end
+
+\define confirmButton()
+<span class="poc2go-delete-confirm"><$checkbox field="ioConfirmDelete" checked="yes" unchecked="no" default="no"> confirm</$checkbox></span>
+\end
+
+|tc-center tc-table-no-border|k
+|<<deleteButton>> |<<tabSelect>> |<<confirmButton>> |

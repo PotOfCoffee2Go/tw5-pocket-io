@@ -10,6 +10,5 @@ $tpi.fn.io.msg = function msg(socket, msg) {
 		socket.emit('msg',$tpi.topic['badMsg'](socket, msg, `Invalid topic: ${msg.req.topic}`));
 		return;
 	}
-	var $tw = get$tw('database'); // default wiki is database
-	socket.emit('msg', $tpi.topic[msg.req.topic](socket, msg, $tw));
+	socket.emit('msg', $tpi.topic[msg.req.topic](socket, msg));
 }

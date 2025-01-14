@@ -1,0 +1,47 @@
+autoLoad: no
+caption: test1
+created: 20250114033257311
+ioConfirmDelete: no
+ioPrjProject: test1
+ioPrjTabName: 
+ioPrjTabSelected: test1-default
+ioPrjTabToDelete: test1-default
+ioPrjTabType: template
+ioResult: 
+modified: 20250114033257311
+tags: test1 Projects
+title: test1
+type: text/vnd.tiddlywiki
+writeup: test1 writeup
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header Edit this description and change caption @@|
+
+<!-- Comment out templates not applicable for this project -->
+{{||$:/pocket-io/project/autoload-template}}
+{{||$:/pocket-io/project/upload-template}}
+{{||$:/pocket-io/project/newtab-template}}
+<!-- {{||$:/pocket-io/project/delete-template}} -->
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<!-- Project writeup text details -->
+{{||$:/pocket-io/project/writeup-template}}
+
+@@.poc2go-mono {{$:/pocket-io/test1/dashboard||$:/core/ui/TagTemplate}} Dashboard @@
+
+<<closeTabsButton "$:/state/tab/pocket-io/test1/dashboard">>
+<<tabs "[tag[$:/pocket-io/test1/dashboard]]" "" "$:/state/tab/pocket-io/test1/dashboard">>
+
+@@.poc2go-mono {{$:/pocket-io/test1/template||$:/core/ui/TagTemplate}} GUI Templates @@
+
+<<closeTabsButton "$:/state/tab/pocket-io/test1/template">>
+<<tabs "[tag[$:/pocket-io/test1/template]]" "" "$:/state/tab/pocket-io/test1/template">>
+
+@@.poc2go-mono {{$:/pocket-io/test1/code||$:/core/ui/TagTemplate}} Server Code @@
+
+<<closeTabsButton '$:/state/tab/pocket-io/test1/code'>>
+<<tabs "[tag[$:/pocket-io/test1/code]]" "" "$:/state/tab/pocket-io/test1/code" "tc-horizontal">>
+
+<<topButton>>

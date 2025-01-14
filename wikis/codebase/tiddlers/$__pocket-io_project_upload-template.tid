@@ -1,13 +1,12 @@
 caption: upload
 created: 20240101000000000
-modified: 20241215010755263
+modified: 20250107185652372
 tags: template project $:/pocket-io/template/project
 title: $:/pocket-io/project/upload-template
 type: text/vnd.tiddlywiki
 
 \define submitUpload()
-<$macrocall $name=pocket command=emit topic="projectUpload" sender=$(currentTiddler)$ />
-<$action-sendmessage $message="tm-server-refresh"/>
+<<pocket-io "projectUpload">>
 \end
 
 \define uploadButton()

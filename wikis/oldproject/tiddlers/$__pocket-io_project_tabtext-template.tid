@@ -1,0 +1,19 @@
+caption: textdocs
+created: 20241126202146726
+modified: 20250113154330213
+tags: $:/pocket-io/template/project project template
+title: $:/pocket-io/project/tabtext-template
+type: text/vnd.tiddlywiki
+
+<$tiddler tiddler=<<currentTab>>>
+
+<h2 style="text-align: center;">{{!!caption}}</h2>
+
+|tc-center tc-table-no-border|k
+|Text: <$link to={{!!codetitle}}> {{!!codetitle}} </$link> | Writeup: <$button class="tc-btn-invisible tc-tiddlylink"><$action-sendmessage $message="tm-edit-tiddler" $param={{!!writeup}}/> {{!!writeup}} </$button>|
+
+<$transclude $tiddler={{!!writeup}} />
+
+<$transclude $tiddler={{!!codetitle}}/>
+
+</$tiddler>

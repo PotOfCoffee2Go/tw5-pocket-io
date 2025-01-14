@@ -2,11 +2,11 @@ created: 20240914113910483
 ioPrjCopyAction: Copy
 ioPrjFromProject: HelloWorld
 ioPrjFromTab: HelloWorld-filterTiddlers
-ioPrjProject: startup-globals
+ioPrjProject: 
 ioPrjTabName: 
 ioPrjToProject: flotsam
 ioResult: 
-modified: 20250104193231390
+modified: 20250108175714211
 tags: 
 title: Codebase
 type: text/vnd.tiddlywiki

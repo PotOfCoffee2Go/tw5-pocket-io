@@ -6,14 +6,14 @@ ioPrjProject: $$$project$$$
 ioPrjTabSelected: $$$project$$$-$$$tab$$$
 ioPrjTabToDelete: $$$project$$$-$$$tab$$$
 ioResult: 
-modified: 20241231100941315
+modified: 20250113153100561
 tags: $$$project$$$ Projects
 title: $$$project$$$
 type: text/vnd.tiddlywiki
 writeup: $$$project$$$ writeup
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-project-header [[Edit this description and change caption|$$$project$$$ docs]] @@|
+|@@.poc2go-project-header Edit this description and change caption @@|
 
 <!-- Comment out templates not applicable for this project -->
 {{||$:/pocket-io/project/autoload-template}}
@@ -28,12 +28,31 @@ writeup: $$$project$$$ writeup
 {{||$:/pocket-io/project/writeup-template}}
 
 <!-- Tag pill of code tiddlers in project -->
-@@.poc2go-mono {{$:/pocket-io/code/$$$project$$$||$:/core/ui/TagTemplate}} @@
+@@.poc2go-mono {{$:/pocket-io/code/$$$project$$$||$:/core/ui/TagTemplate}}
+Server Code [[Docs|$$$project$$$ docs]]
+@@
 
 <<closeTabsButton "$:/state/tab/pocket-io/code/$$$project$$$">>
-
-<!-- Tabs that contain server-side code -->
 @@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/$$$project$$$]]" ""
 "$:/state/tab/pocket-io/code/$$$project$$$" "tc-horizontal">> @@
+
+<!-- Tag pill of template tiddlers in project -->
+@@.poc2go-mono {{$:/pocket-io/template/$$$project$$$||$:/core/ui/TagTemplate}}
+GUI Templates
+@@
+
+<<closeTabsButton "$:/state/tab/pocket-io/template/$$$project$$$">>
+@@.poc2go-mono <<tabs "[tag[$:/pocket-io/template/$$$project$$$]]" ""
+"$:/state/tab/pocket-io/template/$$$project$$$" "tc-horizontal">> @@
+
+<!-- Tag pill of dashboard tiddlers in project -->
+@@.poc2go-mono {{$:/pocket-io/dashboard/$$$project$$$||$:/core/ui/TagTemplate}}
+Dashboard Tiddlers
+@@
+
+<<closeTabsButton "$:/state/tab/pocket-io/dashboard/$$$project$$$">>
+@@.poc2go-mono <<tabs "[tag[$:/pocket-io/dashboard/$$$project$$$]]" ""
+"$:/state/tab/pocket-io/dashboard/$$$project$$$" "tc-horizontal">> @@
+
 
 <<topButton>>

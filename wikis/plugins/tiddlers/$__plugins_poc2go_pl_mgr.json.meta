@@ -1,0 +1,9 @@
+created: 20250110162300508
+dependents: 
+description: 
+modified: 20250111040913487
+name: pl_mgr
+plugin-type: plugin
+title: $:/plugins/poc2go/pl_mgr
+type: application/json
+version: 0.0.9

@@ -1,10 +1,10 @@
 created: 20241124135956813
 ioResult: 
-modified: 20250104110714249
-tags: example HelloWorld
+modified: 20250110004756278
+tags: HelloWorld dashboard
 title: Hello
 type: text/vnd.tiddlywiki
 
-<$button actions="<<pocket-io 'HelloWorld'>>">Hello World</$button>
+<$button actions="<<pocket-io 'helloworld'>>">Hello World</$button>
 
 {{!!ioResult}}

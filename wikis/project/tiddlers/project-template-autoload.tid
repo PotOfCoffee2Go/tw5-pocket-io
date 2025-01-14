@@ -1,0 +1,9 @@
+caption: autoload
+created: 20250114041828003
+modified: 20250114041926534
+tags: project $:/pocket-io/project/template template
+title: project-template-autoload
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|

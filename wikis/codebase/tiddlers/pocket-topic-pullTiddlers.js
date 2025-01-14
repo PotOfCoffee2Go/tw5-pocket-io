@@ -1,5 +1,5 @@
 // Copy tiddlers from $data database wiki to web client
-$tpi.topic.pullTiddlers = function pullTiddlers(socket, msg, $tw) {
+$tpi.topic.pullTiddlers = function pullTiddlers(socket, msg) {
 	var senderTid = cpy(msg.senderTiddler);
 	senderTid.ioResult = '';
 

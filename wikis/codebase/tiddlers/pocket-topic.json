@@ -1,0 +1,19 @@
+[
+    {
+        "created": "20241210190706509",
+        "text": "|tc-center tc-table-no-border|k\n|@@.poc2go-project-header [[Pocket Topics|pocket-topic docs]] @@|\n\n<!-- Comment out templates not applicable for this project -->\n{{||$:/pocket-io/project/autoload-template}}\n{{||$:/pocket-io/project/upload-template}}\n{{||$:/pocket-io/project/newtab-template}}\n<!-- {{||$:/pocket-io/project/delete-template}} -->\n\n<!-- Response to pocket.io requests -->\n{{!!ioResult}}\n\n<!-- Project writeup text details -->\n{{||$:/pocket-io/project/writeup-template}}\n\n<!-- Tag pill of code tiddlers in project -->\n@@.poc2go-mono {{$:/pocket-io/code/pocket-topic||$:/core/ui/TagTemplate}} @@\n\n<<closeTabsButton \"$:/state/tab/pocket-io/code/pocket-topic\">>\n\n<!-- Tabs that contain server-side code -->\n@@.poc2go-mono <<tabs \"[tag[$:/pocket-io/code/pocket-topic]]\" \"\"\n\"$:/state/tab/pocket-io/code/pocket-topic\" \"tc-horizontal\">> @@\n\n<<topButton>>\n",
+        "title": "pocket-topic",
+        "modified": "20250113164321793",
+        "tags": "pocket-topic Projects",
+        "type": "text/vnd.tiddlywiki",
+        "autoLoad": "yes",
+        "caption": "Pocket Topics",
+        "ioConfirmDelete": "no",
+        "ioPrjProject": "pocket-topic",
+        "ioPrjTabName": "",
+        "ioPrjTabSelected": "pocket-topic-copyTiddlers",
+        "ioPrjTabToDelete": "pocket-topic-testMsg",
+        "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n01/07/2025 13:01 \n1 code tiddlers loaded - 0.803K bytes.\n\n</div>\n",
+        "writeup": "pocket-topic writeup"
+    }
+]

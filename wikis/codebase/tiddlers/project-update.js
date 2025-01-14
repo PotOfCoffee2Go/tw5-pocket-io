@@ -2,14 +2,13 @@
 //  If the tab already exists - exits with no action
 //  If project already exists will create a new tab
 //  If project does not exist - will be created containing a tab
-$tpi.fn.projectCreateFromFilter = function projectCreateFromFilter(filter, project, tabName) {
-	var $cw = get$tw('codebase');
+$tpi.fn.projectCreateFromFilter = function projectCreateFromFilter(filter, project, tabName, $cw) {
 	var titles = [];
-	var json = $cw.wiki.getTiddlersAsJson(filter);
+	var json = get$tw('codebase').wiki.getTiddlersAsJson(filter);
 	var text = json
 		.replace(/\$\$\$project\$\$\$/g, project)
 		.replace(/\$\$\$tab\$\$\$/g, tabName);
-	var tiddlers = $cw.wiki.deserializeTiddlers(null,text,
+	var tiddlers = get$tw('codebase').wiki.deserializeTiddlers(null,text,
 		{title: 'unused'},
 		{deserializer: 'application/json'});
 	$cw.utils.each(tiddlers, (tiddler) => {
@@ -24,6 +23,7 @@ $tpi.fn.projectCreateFromFilter = function projectCreateFromFilter(filter, proje
 }
 
 $tpi.topic.projectUpdate = function projectUpdate(socket, msg) {
+	var $cw = get$tw(msg.req.wikiName);
 	var senderTid = cpy(msg.senderTiddler);
 	var resultMsg = '';
 	senderTid.ioResult = '';
@@ -54,7 +54,7 @@ $tpi.topic.projectUpdate = function projectUpdate(socket, msg) {
 		filter = '[prefix[$$$project$$$]]'; // Project
 	}
 
-	var titles = $tpi.fn.projectCreateFromFilter(filter, project, tabName);
+	var titles = $tpi.fn.projectCreateFromFilter(filter, project, tabName, $cw);
 
 	// Clear tabName (and project when create) on success
 	senderTid.ioPrjTabName = '';

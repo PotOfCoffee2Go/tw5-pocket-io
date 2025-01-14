@@ -1,0 +1,45 @@
+caption: unpack
+created: 20250109053724467
+modified: 20250110153113478
+tags: template $:/pocket-io/template/plugin plugin
+title: $:/pocket-io/plugin/unpack-template
+type: text/vnd.tiddlywiki
+
+\define submitUnpack()
+<<pocket-io "pluginUnpack">>
+\end
+
+\define submitRepack()
+<<pocket-io "pluginRepack">>
+\end
+
+\define unpackButton()
+<$button actions="<<submitUnpack>>"> Unpack </$button>
+\end
+
+\define repackButton()
+<$button actions="<<submitRepack>>"> Repack </$button>
+\end
+
+\define deleteButton()
+<$button actions='<$action-deletetiddler $filter={{Plugin Management!!ioPluginFilter}}/>'>
+Delete unpacked {{Plugin Management!!ioPluginFilter}}
+</$button>
+\end
+
+\define toWikiSelect()
+<$select field="ioPluginToWiki" default=""><$list filter="[list[$:/temp/pocket-io/wikinames]] -[[codebase]]"><option value={{!!title}} ><$view field='title'/></option></$list></$select>
+\end
+
+\define pluginSelect()
+<$select field="ioPluginSelected">
+<$list filter='[plugin-type[plugin]] -[[$:/core]] -[prefix[$:/plugins/tiddlywiki/]]'>
+<option><$view field='title'/></option>
+</$list>
+</$select>
+\end
+
+|tc-table-no-border|k
+| To Wiki |<<toWikiSelect>> |
+| Plugin |<<pluginSelect>> |
+| |<<unpackButton>> <<repackButton>> <<deleteButton>> |

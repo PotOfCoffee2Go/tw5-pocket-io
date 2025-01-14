@@ -1,0 +1,9 @@
+created: 20250111041637499
+dependents: 
+description: 
+modified: 20250111042008016
+name: program
+plugin-type: plugin
+title: $:/plugins/poc2go/program
+type: application/json
+version: 0.0.4

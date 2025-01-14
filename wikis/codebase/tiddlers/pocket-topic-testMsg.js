@@ -1,9 +1,12 @@
-$tpi.topic.testMsg = function testMsg(socket, msg, $tw) {
+$tpi.topic.testMsg = function testMsg(socket, msg) {
+//	dir(msg,1);
+//	$rt.displayPrompt();
+	
 	var senderTid = cpy(msg.senderTiddler);
 	senderTid.ioResult = '';
 
-	var tiddler = senderTid.title;
-	senderTid.ioResult = $tpi.fn.formatIoResult(`Test message received from tiddler [[${tiddler}]]!`);
+	var title = senderTid.title;
+	senderTid.ioResult = $tpi.fn.formatIoResult(`Test message received from tiddler [[${title}]]!`);
 
 	msg.resultTiddlers.push(senderTid);
 	return msg;

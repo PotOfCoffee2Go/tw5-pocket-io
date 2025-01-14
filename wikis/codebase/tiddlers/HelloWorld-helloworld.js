@@ -1,8 +1,5 @@
 // Server-side topics are passed the socket and msg from client wiki
-// $tw is $ds, $cw, or $dw - dashboard, codebase, or database wiki
-//   default is $dw
-
-$tpi.topic.helloworld = function helloworld(socket, msg, $tw) {
+$tpi.topic.helloworld = function helloworld(socket, msg) {
 	// dir(msg,3) // Display pocket.io msg on server console
 
 	// Copy the tiddler that sent the request
@@ -11,7 +8,7 @@ $tpi.topic.helloworld = function helloworld(socket, msg, $tw) {
 	senderTid.ioResult = '';
 
 	var title = senderTid.title;
-	var resultText = `${new Date().toString()}\n\nHello tiddler '[[${title}]]' !`;
+	var resultText = `Hello tiddler '[[${title}]]' !`;
 
 	// Format the respone text - see $:/pocket-io/ioResult-template
 	senderTid.ioResult = $tpi.fn.formatIoResult(resultText);

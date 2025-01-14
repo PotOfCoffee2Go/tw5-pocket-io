@@ -1,0 +1,117 @@
+{
+    "tiddlers": {
+        "Filter Tiddlers": {
+            "title": "Filter Tiddlers",
+            "created": "20250109064957718",
+            "ioResult": "",
+            "modified": "20250109064957718",
+            "tags": "example HelloWorld",
+            "type": "text/vnd.tiddlywiki",
+            "text": "<$button actions=\"<<pocket-io 'filterTiddlers'>>\">Filter Tiddlerss</$button>\n\n{{!!ioResult}}"
+        },
+        "Hello": {
+            "created": "20250109064957719",
+            "text": "Press the button\n\n<$button actions=\"<<pocket-io 'helloworld'>>\">Hello World</$button>\n\n{{!!ioResult}}",
+            "title": "Hello",
+            "modified": "20250109064957719",
+            "tags": "example HelloWorld",
+            "type": "text/vnd.tiddlywiki",
+            "bag": "default",
+            "ioResult": ""
+        },
+        "HelloWorld": {
+            "created": "20250109064957719",
+            "text": "|tc-center tc-table-no-border|k\n|@@.poc2go-project-header [[Hello World!|HelloWorld docs]] @@|\n\n{{||$:/pocket-io/project/autoload-template}}\n{{||$:/pocket-io/project/upload-template}}\n{{||$:/pocket-io/project/newtab-template}}\n<!-- {{||$:/pocket-io/project/delete-template}} -->\n\n{{!!ioResult}}\n\n|tc-center tc-table-no-border|k\n| See [[Hello]] for a tiddler that calls the server-side 'helloworld' function below. |\n\n\n{{||$:/pocket-io/project/writeup-template}}\n\n@@.poc2go-mono {{$:/pocket-io/code/HelloWorld||$:/core/ui/TagTemplate}} @@\n\n<<closeTabsButton '$:/state/tab/pocket-io/code/HelloWorld'>>\n<<tabs \"[tag[$:/pocket-io/code/HelloWorld]]\" \"HelloWorld-hello\"\n\"$:/state/tab/pocket-io/code/HelloWorld\" \"tc-horizontial\">>\n\n<<topButton>>\n",
+            "title": "HelloWorld",
+            "modified": "20250109064957719",
+            "tags": "HelloWorld Projects",
+            "type": "text/vnd.tiddlywiki",
+            "autoLoad": "yes",
+            "caption": "Hello World!",
+            "color": "#083a0c",
+            "ioConfirmDelete": "no",
+            "ioPrjMinify": "yes",
+            "ioPrjProject": "HelloWorld",
+            "ioPrjTabName": "",
+            "ioPrjTabSelected": "HelloWorld-helloworld",
+            "ioPrjTabToDelete": "HelloWorld-default",
+            "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n01/07/2025 13:15 \n1 code tiddlers loaded - 0.184K bytes.\n\n</div>\n",
+            "writeup": "HelloWorld writeup"
+        },
+        "HelloWorld docs": {
+            "title": "HelloWorld docs",
+            "caption": "HelloWorld",
+            "created": "20250109064957719",
+            "modified": "20250109064957719",
+            "project": "HelloWorld",
+            "tags": "HelloWorld Projectdocs",
+            "type": "text/vnd.tiddlywiki",
+            "writeup": "HelloWorld writeup",
+            "text": "{{||$:/pocket-io/project/docs-template}}\n\n@@.poc2go-mono Docs: {{$:/pocket-io/code/HelloWorld/docs||$:/core/ui/TagTemplate}} @@\n\n<<closeTabsButton  \"$:/state/tab/pocket-io/docs/HelloWorld\">>\n<<tabs \"[tag[$:/pocket-io/code/HelloWorld/docs]]\" \"\" \"$:/state/tab/pocket-io/docs/HelloWorld\">>\n\nAssociated tiddlers:\n\n<<topButton>>\n"
+        },
+        "HelloWorld writeup": {
+            "title": "HelloWorld writeup",
+            "created": "20250109064957720",
+            "modified": "20250109064957720",
+            "tags": "writeup HelloWorld",
+            "type": "text/vnd.tiddlywiki",
+            "text": "See [[Hello]] for a tiddler that calls the server-side 'helloworld' function.\n"
+        },
+        "HelloWorld-filterTiddlers": {
+            "title": "HelloWorld-filterTiddlers",
+            "text": "// Server-side topics are passed the socket and msg from client wiki\n$tpi.topic.filterTiddlers = function filterTiddlers(socket, msg) {\n\tvar senderTid = cpy(msg.senderTiddler);\n\tsenderTid.ioResult = '';\n\n\tvar filter = '[tags[]!is[system]sort[title]]';\n\tvar json = $tw.wiki.filterTiddlers(filter);\n\tvar resultText = `Filter: ${filter}\\n\\n` + JSON.stringify(json,null,2);\n\n\tsenderTid.ioResult = $tpi.fn.formatIoResult(resultText);\n\tmsg.resultTiddlers.push(senderTid);\n\treturn msg;\n}\n",
+            "caption": "filterTiddlers",
+            "created": "20250109064957720",
+            "modified": "20250109064957720",
+            "tags": "tab HelloWorld $:/pocket-io/code/HelloWorld",
+            "type": "application/javascript"
+        },
+        "HelloWorld-filterTiddlers docs": {
+            "title": "HelloWorld-filterTiddlers docs",
+            "caption": "filterTiddlers",
+            "codetitle": "HelloWorld-filterTiddlers",
+            "created": "20250109064957720",
+            "modified": "20250109064957720",
+            "tags": "Docs HelloWorld $:/pocket-io/code/HelloWorld/docs",
+            "type": "text/vnd.tiddlywiki",
+            "writeup": "HelloWorld-filterTiddlers writeup",
+            "text": "{{||$:/pocket-io/project/tabdocs-template}}\n"
+        },
+        "HelloWorld-filterTiddlers writeup": {
+            "title": "HelloWorld-filterTiddlers writeup",
+            "created": "20250109064957721",
+            "modified": "20250109064957721",
+            "tags": "writeup HelloWorld",
+            "type": "text/vnd.tiddlywiki",
+            "text": "Documentation of tab 'filterTiddlers' in project 'HelloWorld'.\n"
+        },
+        "HelloWorld-helloworld": {
+            "title": "HelloWorld-helloworld",
+            "text": "// Server-side topics are passed the socket and msg from client wiki\n$tpi.topic.helloworld = function helloworld(socket, msg) {\n\t// dir(msg,3) // Display pocket.io msg on server console\n\n\t// Copy the tiddler that sent the request\n\tvar senderTid = cpy(msg.senderTiddler);\n\t// Clear the tiddler field that holds the response text\n\tsenderTid.ioResult = '';\n\n\tvar title = senderTid.title;\n\tvar resultText = `Hello tiddler '[[${title}]]' !`;\n\n\t// Format the respone text - see $:/pocket-io/ioResult-template\n\tsenderTid.ioResult = $tpi.fn.formatIoResult(resultText);\n\t// Push the tiddler onto array that is sent back to client wiki\n\tmsg.resultTiddlers.push(senderTid);\n\treturn msg;\n}\n\n// ------------------\n// Example Tiddler that calls server topic 'helloworld'\n/*\ntitle: Hello\ntags: HelloWorld example\ntype: text/vnd.tiddlywiki\n\n<$button actions=\"<<pocket-io 'helloworld'>>\">Hello World</$button>\n\n{{!!ioResult}}\n*/\n",
+            "caption": "helloworld",
+            "created": "20250109064957721",
+            "modified": "20250109064957721",
+            "tags": "tab HelloWorld $:/pocket-io/code/HelloWorld",
+            "type": "application/javascript"
+        },
+        "HelloWorld-helloworld docs": {
+            "title": "HelloWorld-helloworld docs",
+            "caption": "helloworld",
+            "codetitle": "HelloWorld-helloworld",
+            "created": "20250109064957721",
+            "modified": "20250109064957721",
+            "tags": "Docs HelloWorld $:/pocket-io/code/HelloWorld/docs",
+            "type": "text/vnd.tiddlywiki",
+            "writeup": "HelloWorld-helloworld writeup",
+            "text": "{{||$:/pocket-io/project/tabdocs-template}}\n"
+        },
+        "HelloWorld-helloworld writeup": {
+            "title": "HelloWorld-helloworld writeup",
+            "created": "20250109064957722",
+            "modified": "20250109064957722",
+            "tags": "writeup HelloWorld",
+            "type": "text/vnd.tiddlywiki",
+            "text": "Documentation of tab 'helloworld' in project 'HelloWorld'.\n"
+        }
+    }
+}

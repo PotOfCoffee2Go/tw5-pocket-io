@@ -1,5 +1,5 @@
 created: 20231107195051015
-modified: 20241222134804394
+modified: 20250114065838414
 tags: $:/tags/Macro
 title: $:/poc2go/pocket-io/macros
 type: text/vnd.tiddlywiki
@@ -11,7 +11,7 @@ type: text/vnd.tiddlywiki
 \define closeTabsButton(tab)
 <$button class="poc2go-tabs-close tc-btn-invisible tc-tiddlylink">
 <$action-setfield $tiddler=<<qualify "$tab$">>  text=""/>
-Close
+Fold
 </$button>
 \end
 

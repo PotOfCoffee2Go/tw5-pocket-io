@@ -1,0 +1,25 @@
+caption: upload
+created: 20250114043207324
+modified: 20250114062743494
+tags: project $:/pocket-io/project/template template
+title: project-template-upload
+type: text/vnd.tiddlywiki
+
+\define submitUpload()
+<<pocket-io "projectUpload">>
+\end
+
+\define uploadButton()
+<$button actions="<<submitUpload>>"> Upload </$button>
+\end
+
+\define tabSelect()
+<$select field="ioPrjTabSelected" default="AALLLL"><option value="AALLLL" >All</option><$list filter="[tag{!!title}tag[code]]"><option value={{!!title}} ><$view field='caption'/></option></$list></$select>
+\end
+
+\define minifyCheckbox()
+<$checkbox field="ioPrjMinify" checked="yes" unchecked="no" default="yes"> Minify code</$checkbox>
+\end
+
+|tc-table-no-border|k
+|<<uploadButton>> |<<tabSelect>> |<<minifyCheckbox>> |

@@ -1,13 +1,12 @@
 caption: create
 created: 20241119044637337
-modified: 20241227013506787
+modified: 20250107184906149
 tags: project template $:/pocket-io/template/project
 title: $:/pocket-io/project/create-template
 type: text/vnd.tiddlywiki
 
 \define submitCreate()
-<$macrocall $name=pocket command=emit topic="projectCreate" sender=$(currentTiddler)$ />
-<$action-sendmessage $message="tm-server-refresh"/>
+<<pocket-io "projectCreate">>
 \end
 
 \define createButton()

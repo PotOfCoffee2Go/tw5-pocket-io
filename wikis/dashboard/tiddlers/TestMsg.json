@@ -1,0 +1,11 @@
+[
+    {
+        "created": "20250106183309529",
+        "title": "TestMsg",
+        "modified": "20250106203207124",
+        "tags": "example HelloWorld",
+        "type": "text/vnd.tiddlywiki",
+        "text": "<$button actions=\"<<pocket-io 'testMsg'>>\">Test Message</$button>\n\n{{!!ioResult}}",
+        "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\nTest message received from tiddler [[TestMsg]]!\n\n</div>\n"
+    }
+]

@@ -1,13 +1,12 @@
 // Get code from code (this!) wiki and updates REPL
 // If an error - displays on the server's console
-$tpi.getCode = function replGetCode(filter, minify = true) {
-	const $cw = get$tw('codebase');
+$tpi.getCode = function replGetCode(wikiName, $cw, filter, minify = true) {
 	const prevHistory = cpy($rt.history);
 	const prevPrompt = $rt.getPrompt();
 	$rt.setPrompt('');
 
 	var byteCount = 0, hasErrors = false;
-	hog(`\nLoading minified code tiddlers (application/javascript) to REPL ...`, 149);
+	hog(`\nLoading minified code tiddlers from wiki '${wikiName}' to REPL ...`, 149);
 	hog(`Filters:\n${' ' + filter.replace(/\]\]/g, ']]\n ')}`, 149);
 
 	// Do not display the minified code being loaded to REPL

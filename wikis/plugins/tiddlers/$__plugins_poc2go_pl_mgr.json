@@ -1,0 +1,167 @@
+{
+    "tiddlers": {
+        "$:/pocket-io/plugin/create-template": {
+            "created": "20250110162300492",
+            "title": "$:/pocket-io/plugin/create-template",
+            "modified": "20250111034944851",
+            "tags": "template $:/pocket-io/template/plugin plugin",
+            "type": "text/vnd.tiddlywiki",
+            "text": "\\define submitCreate()\n<<pocket-io \"pluginCreate\">>\n\\end\n\n\\define createButton()\n<$button actions=\"<<submitCreate>>\"> Create </$button>\n\\end\n\n\\define pluginNameEditBox()\n<$edit-text field=\"ioPluginName\"/>\n\\end\n\n\\define pluginAuthorEditBox()\n<$edit-text field=\"ioPluginAuthor\" />\n\\end\n\n\\define pluginFilterEditBox()\n<$edit-text field=\"ioPluginFilter\" />\n\\end\n\n|tc-table-no-border|k\n|  | New Plugin | Author |\n| <<createButton>> |<<pluginNameEditBox>> |<<pluginAuthorEditBox>> |\n| Filter | <<pluginFilterEditBox>> |\n",
+            "caption": "create"
+        },
+        "$:/pocket-io/plugin/unpack-template": {
+            "created": "20250110162300493",
+            "text": "\\define submitUnpack()\n<<pocket-io \"pluginUnpack\">>\n\\end\n\n\\define submitRepack()\n<<pocket-io \"pluginRepack\">>\n\\end\n\n\\define unpackButton()\n<$button actions=\"<<submitUnpack>>\"> Unpack </$button>\n\\end\n\n\\define repackButton()\n<$button actions=\"<<submitRepack>>\"> Repack </$button>\n\\end\n\n\\define deleteButton()\n<$button actions='<$action-deletetiddler $filter={{Plugin Management!!ioPluginFilter}}/>'>\nDelete unpacked {{Plugin Management!!ioPluginFilter}}\n</$button>\n\\end\n\n\\define toWikiSelect()\n<$select field=\"ioPluginToWiki\" default=\"\"><$list filter=\"[list[$:/temp/pocket-io/wikinames]] -[[codebase]]\"><option value={{!!title}} ><$view field='title'/></option></$list></$select>\n\\end\n\n\\define pluginSelect()\n<$select field=\"ioPluginSelected\">\n<$list filter='[plugin-type[plugin]] -[[$:/core]] -[prefix[$:/plugins/tiddlywiki/]]'>\n<option><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n|tc-table-no-border|k\n| To Wiki three |<<toWikiSelect>> |\n| Plugin |<<pluginSelect>> |\n| |<<unpackButton>> <<repackButton>> <<deleteButton>> |\n",
+            "title": "$:/pocket-io/plugin/unpack-template",
+            "modified": "20250111034944851",
+            "tags": "template $:/pocket-io/template/plugin plugin",
+            "type": "text/vnd.tiddlywiki",
+            "caption": "unpack"
+        },
+        "plugin": {
+            "created": "20250110162300493",
+            "title": "plugin",
+            "modified": "20250110162300493",
+            "tags": "plugin Projects",
+            "type": "text/vnd.tiddlywiki",
+            "text": "|tc-center tc-table-no-border|k\n|@@.poc2go-project-header [[Plugin Manager|plugin docs]] @@|\n\n<!-- Comment out templates not applicable for this project -->\n{{||$:/pocket-io/project/autoload-template}}\n{{||$:/pocket-io/project/upload-template}}\n{{||$:/pocket-io/project/newtab-template}}\n<!-- {{||$:/pocket-io/project/delete-template}} -->\n\n<!-- Response to pocket.io requests -->\n{{!!ioResult}}\n\n<!-- Project writeup text details -->\n{{||$:/pocket-io/project/writeup-template}}\n\n<!-- Tag pill of code tiddlers in project -->\n@@.poc2go-mono {{$:/pocket-io/code/plugin||$:/core/ui/TagTemplate}}\n[[Docs|plugin docs]]\n@@\n\n<<closeTabsButton \"$:/state/tab/pocket-io/code/plugin\">>\n\n<!-- Tabs that contain server-side code -->\n@@.poc2go-mono <<tabs \"[tag[$:/pocket-io/code/plugin]]\" \"\"\n\"$:/state/tab/pocket-io/code/plugin\" \"tc-horizontal\">> @@\n\n!!!! GUI Templates \n\n@@.poc2go-mono {{$:/pocket-io/template/plugin||$:/core/ui/TagTemplate}} @@\n\n<<closeTabsButton \"$:/state/tab/pocket-io/template/plugin\">>\n<<tabs \"[tag[$:/pocket-io/template/plugin]]\" \"\" \"$:/state/tab/pocket-io/template/plugin\">>\n\n<<topButton>>\n",
+            "bag": "default",
+            "autoLoad": "yes",
+            "caption": "Plugin Manager",
+            "ioConfirmDelete": "no",
+            "ioPrjProject": "plugin",
+            "ioPrjTabName": "",
+            "ioPrjTabSelected": "AALLLL",
+            "ioPrjTabToDelete": "plugin-default",
+            "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n01/10/2025 02:36 \n3 code tiddlers loaded - 2.227K bytes.\n\n</div>\n",
+            "writeup": "plugin writeup"
+        },
+        "plugin docs": {
+            "title": "plugin docs",
+            "created": "20250110162300494",
+            "modified": "20250110162300494",
+            "tags": "plugin Projectdocs",
+            "type": "text/vnd.tiddlywiki",
+            "text": "{{||$:/pocket-io/project/docs-template}}\n\n@@.poc2go-mono Docs: {{$:/pocket-io/code/plugin/docs||$:/core/ui/TagTemplate}} @@\n\n<<closeTabsButton \"$:/state/tab/pocket-io/docs/plugin\">>\n@@.poc2go-mono <<tabs \"[tag[$:/pocket-io/code/plugin/docs]]\" \"\" \"$:/state/tab/pocket-io/docs/plugin\">> @@\n\nAssociated tiddlers:\n\n<<topButton>>\n",
+            "bag": "default",
+            "caption": "plugin",
+            "project": "plugin",
+            "writeup": "plugin writeup"
+        },
+        "Plugin Management": {
+            "created": "20250110162300494",
+            "title": "Plugin Management",
+            "modified": "20250111035024428",
+            "tags": "plugin dashboard",
+            "type": "text/vnd.tiddlywiki",
+            "text": "This automates [[How to create plugins in the browser|https://tiddlywiki.com/dev/static/How%2520to%2520create%2520plugins%2520in%2520the%2520browser.html]].\n\n<div style=\"margin-top: 0.6em; border: 1px solid #70b351; border-radius: 10px;\" >\n\n{{||$:/pocket-io/plugin/create-template}}\n\n</div>\n\n{{||$:/pocket-io/plugin/unpack-template}}\n\n{{!!ioResult}}\n",
+            "ioPluginAuthor": "",
+            "ioPluginFilter": "[tag[plugin]]",
+            "ioPluginName": "",
+            "ioPluginSelected": "$:/plugins/poc2go/pl_mgr",
+            "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n01/10/2025 22:49 Done\n\n</div>\n"
+        },
+        "plugin writeup": {
+            "title": "plugin writeup",
+            "created": "20250110162300494",
+            "modified": "20250110162300494",
+            "tags": "writeup plugin",
+            "type": "text/vnd.tiddlywiki",
+            "text": "Documentation of project 'plugin'.",
+            "bag": "default"
+        },
+        "plugin-create": {
+            "title": "plugin-create",
+            "text": "// Create a plugin\n$tpi.topic.pluginCreate = function pluginCreate(socket, msg) {\n\tvar $tw = get$tw(msg.req.wikiName);\n\tvar senderTid = cpy(msg.senderTiddler);\n\tsenderTid.ioResult = '';\n\n\tvar pluginTiddler = '$:/plugins/$$$author$$$/$$$pluginname$$$'\n\t\t.replace('$$$author$$$', senderTid.ioPluginAuthor)\n\t\t.replace('$$$pluginname$$$', senderTid.ioPluginName)\n\t\n\tif (!$tw.wiki.tiddlerExists(pluginTiddler)) {\n\t\t$rw.wiki.addTiddler(new $rw.Tiddler({\n\t\t\t\ttitle: pluginTiddler,\n\t\t\t\tdependents:\t'',\n\t\t\t\tdescription:'',\n\t\t\t\tname: senderTid.ioPluginName,\n\t\t\t\t'plugin-type': 'plugin',\n\t\t\t\ttype: 'application/json',\n\t\t\t\tversion: '0.0.1',\n\t\t\t\ttext: `{\"tiddlers\": {}}`\n\t\t}))\n\t} else {\n\t\tsenderTid.ioResult = $tpi.fn.formatIoResult(`${pluginTiddler} already exists`);\n\t\tmsg.resultTiddlers.push(senderTid);\n\t\treturn msg;\n\t}\n\n\tvar tiddlersJson = $tw.wiki.getTiddlersAsJson(senderTid.ioPluginFilter);\n\n\tvar titles = [];\n\tvar tiddlers = $rw.wiki.deserializeTiddlers(null, tiddlersJson,\n\t\t{title: 'unused'}, {deserializer: 'application/json'});\n\t$rw.utils.each(tiddlers, (tiddler) => {\n\t\t$rw.wiki.addTiddler(new $rw.Tiddler(\n\t\t\ttiddler,\n\t\t\t$rw.wiki.getCreationFields(),\n\t\t\t$rw.wiki.getModificationFields()\n\t\t))\n\t\ttitles.push(tiddler.title);\n\t\t// send system tiddlers to client via sockets\n\t\tif (/^\\$:\\//.test(tiddler.title)) {\n\t\t\tmsg.resultTiddlers.push(tiddler);\n\t\t}\n\t});\n\n\t$rw.utils.repackPlugin(pluginTiddler, titles);\n\n\tmsg.resultTiddlers.push(JSON.parse($rw.wiki.getTiddlerAsJson(pluginTiddler)));\n\n\tsenderTid.ioResult = $tpi.fn.formatIoResult(`Done`);\n\tmsg.resultTiddlers.push(senderTid);\n\treturn msg;\n}\n",
+            "created": "20250110162300494",
+            "modified": "20250110162300494",
+            "tags": "tab plugin $:/pocket-io/code/plugin",
+            "type": "application/javascript",
+            "bag": "default",
+            "caption": "create"
+        },
+        "plugin-create docs": {
+            "title": "plugin-create docs",
+            "created": "20250110162300494",
+            "modified": "20250110162300494",
+            "tags": "Docs plugin $:/pocket-io/code/plugin/docs",
+            "type": "text/vnd.tiddlywiki",
+            "text": "{{||$:/pocket-io/project/tabdocs-template}}\n",
+            "bag": "default",
+            "caption": "create",
+            "codetitle": "plugin-create",
+            "writeup": "plugin-create writeup"
+        },
+        "plugin-create writeup": {
+            "created": "20250110162300495",
+            "text": "Documentation of tab 'create' in project 'plugin'.\n\n\nhas beenb changed!!!\n",
+            "title": "plugin-create writeup",
+            "modified": "20250111040536467",
+            "tags": "writeup plugin",
+            "type": "text/vnd.tiddlywiki",
+            "bag": "default"
+        },
+        "plugin-repack": {
+            "title": "plugin-repack",
+            "text": "// Repack a plugin\n$tpi.topic.pluginRepack = function pluginRepack(socket, msg) {\n\tvar $tw = get$tw(msg.req.wikiName);\n\tvar senderTid = cpy(msg.senderTiddler);\n\tsenderTid.ioResult = '';\n\n\tvar pluginTitle = senderTid.ioPluginSelected;\n\n\tif (msg.req.wikiName === 'codebase') {\n\t\tsenderTid.ioResult = $tpi.fn.formatIoResult(`'codebase' not allowed to repack`);\n\t\tmsg.resultTiddlers.push(senderTid);\n\t\treturn msg;\n\t}\n\tif (!$tw.wiki.tiddlerExists(pluginTitle)) {\n\t\tsenderTid.ioResult = $tpi.fn.formatIoResult(`${senderTid.ioPluginSelected} NOT FOUNd`);\n\t\tmsg.resultTiddlers.push(senderTid);\n\t\treturn msg;\n\t}\n\n\tvar tiddlersJson = $tw.wiki.getTiddlersAsJson(senderTid.ioPluginFilter);\n\n\tvar titles = [];\n\tvar tiddlers = $rw.wiki.deserializeTiddlers(null, tiddlersJson,\n\t\t{title: 'unused'}, {deserializer: 'application/json'});\n\t$rw.utils.each(tiddlers, (tiddler) => {\n\t\t$rw.wiki.addTiddler(new $rw.Tiddler(tiddler));\n\t\ttitles.push(tiddler.title);\n\t});\n\n\t$rw.wiki.addTiddler(new $rw.Tiddler(JSON.parse($tw.wiki.getTiddlerAsJson(pluginTitle))));\n\t$rw.utils.repackPlugin(pluginTitle, titles);\n\tmsg.resultTiddlers.push(JSON.parse($rw.wiki.getTiddlerAsJson(pluginTitle)));\n\t\n\ttitles.forEach(title => $rw.wiki.deleteTiddler(title));\n\t$rw.wiki.deleteTiddler(pluginTitle);\n\t\n\tsenderTid.ioResult = $tpi.fn.formatIoResult(`Done`);\n\tmsg.resultTiddlers.push(senderTid);\n\tmsg.req.tostory = true;\n\treturn msg;\n}\n",
+            "created": "20250110162300495",
+            "modified": "20250110162300495",
+            "tags": "tab plugin $:/pocket-io/code/plugin",
+            "type": "application/javascript",
+            "bag": "default",
+            "caption": "repack"
+        },
+        "plugin-repack docs": {
+            "title": "plugin-repack docs",
+            "created": "20250110162300495",
+            "modified": "20250110162300495",
+            "tags": "Docs plugin $:/pocket-io/code/plugin/docs",
+            "type": "text/vnd.tiddlywiki",
+            "text": "{{||$:/pocket-io/project/tabdocs-template}}\n",
+            "bag": "default",
+            "caption": "repack",
+            "codetitle": "plugin-repack",
+            "writeup": "plugin-repack writeup"
+        },
+        "plugin-repack writeup": {
+            "created": "20250110162300496",
+            "text": "Documentation of tab 'repack' in project 'plugin'.\nPocket-io Plugins\nPlugins of projects\nWiki: plugins\nhttp://raspberrypi.local:3005\nPocket.io connected 812e861e6d32\n\n\n\n",
+            "title": "plugin-repack writeup",
+            "modified": "20250111040841499",
+            "tags": "writeup plugin",
+            "type": "text/vnd.tiddlywiki",
+            "bag": "default"
+        },
+        "plugin-unpack": {
+            "title": "plugin-unpack",
+            "text": "$tpi.topic.pluginUnpack = function pluginUnpack(socket, msg) {\n\tvar $tw = get$tw(msg.req.wikiName);\n\tvar senderTid = cpy(msg.senderTiddler);\n\tsenderTid.ioResult = '';\n\t\n\tvar pluginData = $tw.wiki.getTiddlerDataCached(senderTid.ioPluginSelected);\n\tif (!pluginData) {\n\t\tsenderTid.ioResult = $tpi.fn.formatIoResult(`Plugin '${senderTid.ioPluginSelected}' not found`);\n\t} else {\n\t\t$tw.utils.each(pluginData.tiddlers,function(tiddler) {\n\t\t\t$tw.wiki.addTiddler(new $tw.Tiddler(tiddler));\n\t\t\t// system tiddlers will be sent via socket\n\t\t\tif (/^\\$:\\//.test(tiddler.title)) {\n\t\t\t\tmsg.resultTiddlers.push(tiddler);\n\t\t\t}\n\t\t});\n\t\tsenderTid.ioResult = $tpi.fn.formatIoResult(`Plugin '${senderTid.ioPluginSelected}' unpacked`);\n\t}\n\n\tmsg.resultTiddlers.push(senderTid);\n\treturn msg;\n}\n",
+            "created": "20250110162300496",
+            "modified": "20250110162300496",
+            "tags": "tab plugin $:/pocket-io/code/plugin",
+            "type": "application/javascript",
+            "bag": "default",
+            "caption": "unpack"
+        },
+        "plugin-unpack docs": {
+            "title": "plugin-unpack docs",
+            "created": "20250110162300496",
+            "modified": "20250110162300496",
+            "tags": "Docs plugin $:/pocket-io/code/plugin/docs",
+            "type": "text/vnd.tiddlywiki",
+            "text": "{{||$:/pocket-io/project/tabdocs-template}}\n",
+            "bag": "default",
+            "caption": "unpack",
+            "codetitle": "plugin-unpack",
+            "writeup": "plugin-unpack writeup"
+        },
+        "plugin-unpack writeup": {
+            "title": "plugin-unpack writeup",
+            "created": "20250110162300496",
+            "modified": "20250110162300496",
+            "tags": "writeup plugin",
+            "type": "text/vnd.tiddlywiki",
+            "text": "Documentation of tab 'unpack' in project 'plugin'.\n",
+            "bag": "default"
+        }
+    }
+}

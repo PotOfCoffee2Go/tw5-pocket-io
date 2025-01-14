@@ -9,14 +9,14 @@ ioPrjTabName:
 ioPrjTabSelected: startup-commands
 ioPrjTabToDelete: startup-formatIoResult
 ioResult: 
-modified: 20250101190315085
+modified: 20250106094856095
 tags: startup Projects
 title: startup
 type: text/vnd.tiddlywiki
 writeup: startup writeup
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-project-header [[System Startup Code|startup docs]] @@|
+|@@.poc2go-project-header System Startup Code @@|
 
 |tc-center tc-table-no-border|k
 | Code in 'startup' is hard coded to always load. |
@@ -30,7 +30,9 @@ writeup: startup writeup
 
 {{||$:/pocket-io/project/writeup-template}}
 
-@@.poc2go-mono {{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}} @@
+@@.poc2go-mono {{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}} 
+[[Docs|startup docs]]
+@@
 
 <<closeTabsButton '$:/state/tab/pocket-io/code/startup'>>
 @@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/startup]]" "" "$:/state/tab/pocket-io/code/startup" "tc-horizontal">> @@

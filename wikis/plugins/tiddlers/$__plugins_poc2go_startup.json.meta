@@ -1,0 +1,9 @@
+created: 20250111042414733
+dependents: 
+description: 
+modified: 20250111042414733
+name: startup
+plugin-type: plugin
+title: $:/plugins/poc2go/startup
+type: application/json
+version: 0.0.2

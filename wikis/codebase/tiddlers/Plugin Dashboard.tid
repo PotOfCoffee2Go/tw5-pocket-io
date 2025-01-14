@@ -1,0 +1,9 @@
+created: 20250113093835363
+modified: 20250113094731752
+tags: dashboard plugin $:/pocket-io/dashboard/plugin
+title: Plugin Dashboard
+type: text/vnd.tiddlywiki
+
+Dashboard
+
+{{||$:/pocket-io/plugin/create-template}}

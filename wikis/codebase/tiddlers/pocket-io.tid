@@ -1,15 +1,15 @@
 autoLoad: yes
-caption: Pocket.io Sockets
+caption: Pocket.io sockets
 color: #5dcbc9
 created: 20241112191809092
 ioConfirmDelete: no
 ioPrjProject: pocket-io
 ioPrjTabName: 
-ioPrjTabSelected: pocket-io-$code
-ioPrjTabToDelete: pocket-io-setData
+ioPrjTabSelected: pocket-io-formatIoResult
+ioPrjTabToDelete: pocket-io-$data
 ioPrjUpload: pocket-io-pocket.io
 ioResult: 
-modified: 20250103041452472
+modified: 20250107155958077
 tags: pocket-io Projects
 title: pocket-io
 type: text/vnd.tiddlywiki

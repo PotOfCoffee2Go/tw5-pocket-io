@@ -1,4 +1,4 @@
-autoLoad: yes
+autoLoad: no
 caption: Project Manager
 color: #003fa3
 created: 20240101000000000
@@ -6,10 +6,10 @@ ioConfirmDelete: no
 ioPrjMinify: yes
 ioPrjProject: project
 ioPrjTabName: 
-ioPrjTabSelected: project-upload
+ioPrjTabSelected: project-update
 ioPrjTabToDelete: project-helpers
 ioResult: 
-modified: 20250104210538192
+modified: 20250113164335067
 tags: project Projects
 title: project
 type: text/vnd.tiddlywiki
@@ -29,5 +29,12 @@ writeup: project writeup
 
 <<closeTabsButton '$:/state/tab/pocket-io/code/project'>>
 <<tabs "[tag[$:/pocket-io/code/project]]" "" "$:/state/tab/pocket-io/code/project" "tc-horizontal">>
+
+!!!! GUI Templates 
+
+@@.poc2go-mono {{$:/pocket-io/template/project||$:/core/ui/TagTemplate}} @@
+
+<<closeTabsButton "$:/state/tab/pocket-io/template/project">>
+<<tabs "[tag[$:/pocket-io/template/project]]" "" "$:/state/tab/pocket-io/template/project">>
 
 <<topButton>>

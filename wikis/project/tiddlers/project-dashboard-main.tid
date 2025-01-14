@@ -1,0 +1,15 @@
+caption: main
+created: 20250114040843341
+modified: 20250114075013504
+tags: project dashboard $:/pocket-io/project/dashboard
+title: project-dashboard-main
+type: text/vnd.tiddlywiki
+
+Projects are composed of 4 types of tiddlers
+
+ * Dashboard Tiddlers
+ * GUI Templates
+ * Server JavaScript Code
+ * Documentation
+
+[[project]]

@@ -1,0 +1,210 @@
+{
+    "tiddlers": {
+        "startup": {
+            "title": "startup",
+            "autoLoad": "yes",
+            "caption": "System Startup",
+            "color": "#025517",
+            "created": "20250111042414719",
+            "ioConfirmDelete": "no",
+            "ioPrjMinify": "yes",
+            "ioPrjProject": "startup",
+            "ioPrjTabName": "",
+            "ioPrjTabSelected": "startup-commands",
+            "ioPrjTabToDelete": "startup-formatIoResult",
+            "ioResult": "",
+            "modified": "20250111042414719",
+            "tags": "startup Projects",
+            "type": "text/vnd.tiddlywiki",
+            "writeup": "startup writeup",
+            "text": "|tc-center tc-table-no-border|k\n|@@.poc2go-project-header System Startup Code @@|\n\n|tc-center tc-table-no-border|k\n| Code in 'startup' is hard coded to always load. |\n| The code is loaded before other projects. |\n\n{{||$:/pocket-io/project/upload-template}}\n{{||$:/pocket-io/project/newtab-template}}\n<!-- {{||$:/pocket-io/project/delete-template}} -->\n\n{{!!ioResult}}\n\n{{||$:/pocket-io/project/writeup-template}}\n\n@@.poc2go-mono {{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}} \n[[Docs|startup docs]]\n@@\n\n<<closeTabsButton '$:/state/tab/pocket-io/code/startup'>>\n@@.poc2go-mono <<tabs \"[tag[$:/pocket-io/code/startup]]\" \"\" \"$:/state/tab/pocket-io/code/startup\" \"tc-horizontal\">> @@\n\n<<topButton>>\n"
+        },
+        "startup docs": {
+            "title": "startup docs",
+            "caption": "startup",
+            "created": "20250111042414720",
+            "modified": "20250111042414720",
+            "project": "startup",
+            "tags": "startup Projectdocs",
+            "type": "text/vnd.tiddlywiki",
+            "writeup": "startup writeup",
+            "text": "{{||$:/pocket-io/project/docs-template}}\n\n@@.poc2go-mono Docs: {{$:/pocket-io/code/startup/docs||$:/core/ui/TagTemplate}} @@\n\n<<closeTabsButton \"$:/state/tab/pocket-io/docs/startup\">>\n@@.poc2go-mono <<tabs \"[tag[$:/pocket-io/code/startup/docs]]\" \"\" \"$:/state/tab/pocket-io/docs/startup\">> @@\n\n<<topButton>>\n"
+        },
+        "startup writeup": {
+            "title": "startup writeup",
+            "created": "20250111042414720",
+            "modified": "20250111042414720",
+            "tags": "writeup startup",
+            "type": "text/vnd.tiddlywiki",
+            "text": "The startup project contains code that will be uploaded to the server when the system is started. The 'startup' project upload is hard coded in ./servers.js to always upload regardless of the project's 'autoLoad' setting.\n\nAs with all projects, the order of tab loading can be changed by clicking the {{$:/pocket-io/code/startup||$:/core/ui/TagTemplate}} tag and drag/drop items in the order desired.\n\nThe code in the $code wiki is uploaded into a Node.js REPL which is the center of the system; communicates via terminal prompt, client wikis over the net, and directly manages tiddlers of wikis in the `./wikis` directory of the server.\n"
+        },
+        "startup-char-input": {
+            "title": "startup-char-input",
+            "text": "// Single character input (experimental)\n$tpi.stdin = $tpi.stdin ?? {};\n$tpi.stdin.getNextChar = false;\n$tpi.stdin.ifGetNextChar = function () {\n\tif ($tpi.stdin.getNextChar) {\n\t\t$tpi.stdin.getNextChar = false;\n\t\treturn true;\n\t}\n\treturn false;\n}\n\n$tpi.stdin.singleCharHandler = function (chunk) {\n\tif ($tpi.stdin.ifGetNextChar()) {\n\t\tif ($rt._previousKey.name !== 'return') { // enter key\n\t\t\tprocess.nextTick(() => $rt.write(null, {name:'return'}));\n//\t\t\tprocess.nextTick(() => $rt.write('b'));\n\t\t}\n\t}\n}\n\n// uncommment to activate\n//process.stdin.on('data', $tpi.stdin.singleCharHandler);\n",
+            "caption": "char-input",
+            "created": "20250111042414720",
+            "modified": "20250111042414720",
+            "tags": "tab startup $:/pocket-io/code/startup",
+            "type": "application/javascript"
+        },
+        "startup-char-input docs": {
+            "title": "startup-char-input docs",
+            "caption": "char-input",
+            "codetitle": "startup-char-input",
+            "created": "20250111042414720",
+            "modified": "20250111042414720",
+            "tags": "Docs startup $:/pocket-io/code/startup/docs",
+            "type": "text/vnd.tiddlywiki",
+            "writeup": "startup-char-input writeup",
+            "text": "{{||$:/pocket-io/project/tabdocs-template}}\n"
+        },
+        "startup-char-input writeup": {
+            "title": "startup-char-input writeup",
+            "created": "20250111042414720",
+            "modified": "20250111042414720",
+            "tags": "writeup startup",
+            "type": "text/vnd.tiddlywiki",
+            "text": "Documentation of tab 'char-input' in project 'startup'.\n"
+        },
+        "startup-commands": {
+            "title": "startup-commands",
+            "text": "// 'cmd' is a REPL global\n\nconst cmd = {\n\tlist: { repl: () => $rw.wiki.getTiddlers() },\n\ttext: { repl: (title) => hog($rw.wiki.getTiddlerText(title),39) },\n\tget: { repl: (title) => cpy($rw.wiki.getTiddler(title).fields) },\n\tset: { repl: (title, txt) => $rw.wiki.setText(title,'text', null, txt) },\n\tadd: { repl: (tiddler) => $rw.wiki.addTiddler(new $rw.Tiddler(tiddler)) },\n}\n\nget$wikiNames.forEach(name => {\n\tcmd.list[name] = () => get$tw(name).wiki.getTiddlers();\n\tcmd.text[name] = (title) => hog(get$tw(name).wiki.getTiddlerText(title),39);\n\tcmd.get[name] = (title) => cpy(get$tw(name).wiki.getTiddler(title).fields);\n\tcmd.set[name] = (title, txt) => get$tw(name).wiki.setText(title,'text', null, txt);\n\tcmd.add[name] = (tiddler) => get$tw(name).wiki.addTiddler(new get$tw(name).Tiddler(tiddler));\n})\n\t\t\t\t\t\t\t\t\t\t\t",
+            "caption": "commands",
+            "created": "20250111042414721",
+            "modified": "20250111042414721",
+            "tags": "tab startup $:/pocket-io/code/startup",
+            "type": "application/javascript"
+        },
+        "startup-commands docs": {
+            "title": "startup-commands docs",
+            "caption": "commands",
+            "codetitle": "startup-commands",
+            "created": "20250111042414721",
+            "modified": "20250111042414721",
+            "tags": "Docs startup $:/pocket-io/code/startup/docs",
+            "type": "text/vnd.tiddlywiki",
+            "writeup": "startup-commands writeup",
+            "text": "{{||$:/pocket-io/project/tabdocs-template}}\n"
+        },
+        "startup-commands writeup": {
+            "title": "startup-commands writeup",
+            "created": "20250111042414721",
+            "modified": "20250111042414721",
+            "tags": "writeup startup",
+            "type": "text/vnd.tiddlywiki",
+            "text": "Shorthand used when typing commands into the REPL\n\ngenerally, should not be used when coding functions\n\nAt REPL prompt - ex:\n\n@@font-family:monospace;\n * cmd.show.dash('A dashboard wiki Tiddler Title')\n * cmd.show.code('A code wiki Tiddler Title')\n *   cmd.show.data('A data wiki Tiddler Title')\n@@"
+        },
+        "startup-console": {
+            "title": "startup-console",
+            "text": "// These functions are REPL globals\n// log, dir, and hog are used throughout the code\n//  to display to the REPL console.\nconst log = (...args) => { console.log(...args); }\nconst dir = (property, depth = 0) => { console.dir(property, { depth }); }\nconst hue = (txt, nbr = 214) => `\\x1b[38;5;${nbr}m${txt}\\x1b[0m`;\nconst hog = (txt, nbr) => log(hue(txt, nbr));\nconst tog = (txt, nbr) => {\n\tvar curLine = $rt.line;\n\t$rt.clearLine();\n\thog(tStamp() + txt, nbr);\n\t$rt.displayPrompt();\n\t$rt.write(curLine);\n}\n",
+            "caption": "console",
+            "created": "20250111042414721",
+            "modified": "20250111042414721",
+            "tags": "tab startup $:/pocket-io/code/startup",
+            "type": "application/javascript"
+        },
+        "startup-console docs": {
+            "title": "startup-console docs",
+            "caption": "console",
+            "codetitle": "startup-console",
+            "created": "20250111042414722",
+            "modified": "20250111042414722",
+            "tags": "Docs startup $:/pocket-io/code/startup/docs",
+            "type": "text/vnd.tiddlywiki",
+            "writeup": "startup-console writeup",
+            "text": "{{||$:/pocket-io/project/tabdocs-template}}\n"
+        },
+        "startup-console writeup": {
+            "title": "startup-console writeup",
+            "created": "20250111042414722",
+            "modified": "20250111042414722",
+            "tags": "writeup startup",
+            "type": "text/vnd.tiddlywiki",
+            "text": "Documentation of tab 'console' in project 'startup'.\n"
+        },
+        "startup-getCode": {
+            "title": "startup-getCode",
+            "text": "// Get code from code (this!) wiki and updates REPL\n// If an error - displays on the server's console\n$tpi.getCode = function replGetCode(filter, minify = true) {\n\tconst $cw = get$tw('codebase');\n\tconst prevHistory = cpy($rt.history);\n\tconst prevPrompt = $rt.getPrompt();\n\t$rt.setPrompt('');\n\n\tvar byteCount = 0, hasErrors = false;\n\thog(`\\nLoading minified code tiddlers (application/javascript) to REPL ...`, 149);\n\thog(`Filters:\\n${' ' + filter.replace(/\\]\\]/g, ']]\\n ')}`, 149);\n\n\t// Do not display the minified code being loaded to REPL\n\t$tpi.fn.hideStdout();\n\t$rt.write('.editor\\n');\n\t$rt.write(`var Done = 'Load complete';\\n`);\n\tvar tiddlers = JSON.parse($cw.wiki.getTiddlersAsJson(filter));\n\ttiddlers.forEach(tiddler => {\n\t\tif (tiddler.type !== 'application/javascript') {\n\t\t\t$tpi.fn.showStdout();\n\t\t\thog(`Tiddler '${tiddler.title}' bypassed - is not type application/javascript`, 163);\n\t\t\t$tpi.fn.hideStdout();\n\t\t\treturn;\n\t\t}\n\t\tvar codeText = { code: tiddler.text };\n\t\tif (minify) {\n\t\t\tcodeText = UglifyJS.minify(codeText.code);\n\t\t\tif (codeText.error) {\n\t\t\t\t$tpi.fn.showStdout();\n\t\t\t\thog(`Error processing tiddler: '${tiddler.title}'\\n${minified.error}`,9);\n\t\t\t\t$tpi.fn.hideStdout();\n\t\t\t\thasErrors = true;\n\t\t\t\treturn;\n\t\t\t}\n\t\t}\n\t\t$tpi.fn.showStdout();\n\t\thog(`\\nTiddler '${tiddler.title}' ${codeText.code.length} bytes`, 149);\n\t\t$rt.write(codeText.code + '\\n');\n\t\tbyteCount += codeText.code.length;\n\t\t$tpi.fn.hideStdout();\n\t})\n\t$rt.write('Done\\n');\n\t$rt.write(null,{ctrl:true, name:'d'})\n\t$tpi.fn.showStdout();\n\t$rt.history = prevHistory;\n\t$rt.setPrompt(prevPrompt);\n\n\tvar result = `\\n${tiddlers.length} code tiddlers loaded - ${(byteCount/1024).toFixed(3)}K bytes.`;\n\thog(`\\n${tiddlers.length} code tiddlers loaded - ${(byteCount/1024).toFixed(3)}K bytes.`, 149);\n\t$rt.displayPrompt();\n\treturn result;\n}\n",
+            "caption": "getCode",
+            "created": "20250111042414722",
+            "modified": "20250111042414722",
+            "tags": "tab startup $:/pocket-io/code/startup",
+            "type": "application/javascript"
+        },
+        "startup-getCode docs": {
+            "title": "startup-getCode docs",
+            "caption": "getCode",
+            "codetitle": "startup-getCode",
+            "created": "20250111042414722",
+            "modified": "20250111042414722",
+            "tags": "Docs startup $:/pocket-io/code/startup/docs",
+            "type": "text/vnd.tiddlywiki",
+            "writeup": "startup-getCode writeup",
+            "text": "{{||$:/pocket-io/project/tabdocs-template}}\n"
+        },
+        "startup-getCode writeup": {
+            "title": "startup-getCode writeup",
+            "created": "20250111042414722",
+            "modified": "20250111042414722",
+            "tags": "writeup startup",
+            "type": "text/vnd.tiddlywiki",
+            "text": "These functions are shorthand for common tasks.\n"
+        },
+        "startup-globals": {
+            "title": "startup-globals",
+            "text": "// These are all assigned to REPL global context\n\n// External packages\n// Minify code\nconst UglifyJS = require('uglify-js');\n\n// Helpers\n// Copy a JS object\n// Get last 12 digits of socket ID\nconst cpy = (obj) => JSON.parse(JSON.stringify(obj));\nconst sid = (socket) => socket.id.split('-').pop();\n\n// $ss is shorthand for 'serverSettings'\nconst get$wikiNames = $ss.map(settings => settings.name);\nconst get$settings = (name) => $ss.find(settings => settings.name === name) ?? {};\nconst get$tw = (name) => get$settings(name).$tw;\nconst get$proxy = (name) => get$settings(name).proxy ?? {};\nconst get$server = (name) => get$proxy(name).server ?? {};\nconst get$router = (name) => get$server(name).router ?? {};\nconst get$pocketio = (name) => get$server(name).pocketio ?? {};\n\nconst tStamp = () => {\n\treturn ((new Date()).toLocaleDateString(undefined, {\n\t\thourCycle: 'h23',\n\t\tyear: 'numeric', month: '2-digit', day: '2-digit',\n\t\thour: '2-digit', minute: '2-digit' //, second: '2-digit'\n\t\t})).replace(',', '') + ' ';\n}\n",
+            "caption": "globals",
+            "created": "20250111042414723",
+            "modified": "20250111042414723",
+            "tags": "tab startup $:/pocket-io/code/startup",
+            "type": "application/javascript"
+        },
+        "startup-globals docs": {
+            "title": "startup-globals docs",
+            "caption": "globals",
+            "codetitle": "startup-globals",
+            "created": "20250111042414723",
+            "modified": "20250111042414723",
+            "tags": "Docs startup $:/pocket-io/code/startup/docs",
+            "type": "text/vnd.tiddlywiki",
+            "writeup": "startup-globals writeup",
+            "text": "{{||$:/pocket-io/project/tabdocs-template}}\n"
+        },
+        "startup-globals writeup": {
+            "title": "startup-globals writeup",
+            "created": "20250111042414723",
+            "modified": "20250111042414723",
+            "tags": "writeup startup",
+            "type": "text/vnd.tiddlywiki",
+            "text": "There are modules and variables which need to be accessible by functions written as $code tiddlers. The 'startup' project sets these global functions and vaiables.\n\nTiddlyWiki instances are running throughout the system to access tiddlers in the dashboard, code, and data wikis - which are considered as databases.\n\nSee [[startup-commands]] for REPL commands\n\nSee [[startup-console]] - REPL console \n"
+        },
+        "startup-hideStdout": {
+            "title": "startup-hideStdout",
+            "text": "// hide and show console process.stdout text\n \n$tpi.fn.hideStdout = function hideStdout() {\n\tvar old_stdout_write = process.stdout.write;\n\n\tprocess.stdout.write = (function (write) {\n\t\treturn (string, encoding, fd) => {\n\t\t\tvar args = Object.values(arguments);\n\t\t\targs[0] = '';\n\t\t\twrite.apply(process.stdout, args);\n\t\t};\n\t}(process.stdout.write));\n\n\t// puts back to original\n\t$tpi.fn.showStdout = function showStdout() {\n\t\tprocess.stdout.write = old_stdout_write;\n\t};\n};\n",
+            "caption": "hideStdout",
+            "created": "20250111042414723",
+            "modified": "20250111042414723",
+            "tags": "tab startup $:/pocket-io/code/startup",
+            "type": "application/javascript"
+        },
+        "startup-hideStdout docs": {
+            "title": "startup-hideStdout docs",
+            "caption": "hideStdout",
+            "codetitle": "startup-hideStdout",
+            "created": "20250111042414723",
+            "modified": "20250111042414723",
+            "tags": "Docs startup $:/pocket-io/code/startup/docs",
+            "type": "text/vnd.tiddlywiki",
+            "writeup": "startup-hideStdout writeup",
+            "text": "{{||$:/pocket-io/project/tabdocs-template}}\n"
+        },
+        "startup-hideStdout writeup": {
+            "title": "startup-hideStdout writeup",
+            "created": "20250111042414723",
+            "modified": "20250111042414723",
+            "tags": "writeup startup",
+            "type": "text/vnd.tiddlywiki",
+            "text": "```\n// Idea Borrowed.\n// https://github.com/sfarthin/intercept-stdout/tree/master\n// which borrowed Gist.\n// https://gist.github.com/benbuckman/2758563\n// usage:\n//   var showStdout = hideStdout();\n//     will hide text being displayed on console terminal\n//   showStdout();\n//     will show(unhide) stdout text on console\n```\n"
+        }
+    }
+}

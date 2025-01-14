@@ -1,0 +1,10 @@
+caption: create
+codetitle: plugin-create
+created: 20250108180745389
+modified: 20250108180745389
+tags: Docs plugin $:/pocket-io/code/plugin/docs
+title: plugin-create docs
+type: text/vnd.tiddlywiki
+writeup: plugin-create writeup
+
+{{||$:/pocket-io/project/tabdocs-template}}

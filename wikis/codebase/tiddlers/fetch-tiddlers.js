@@ -1,4 +1,4 @@
-$tpi.topic.fetchJsonTiddlers = function fetchJsonTiddlers(socket, msg, $tw) {
+$tpi.topic.fetchJsonTiddlers = function fetchJsonTiddlers(socket, msg) {
 	var senderTid = cpy(msg.senderTiddler);
 	var resultMsg = '';
 	senderTid.ioResult = '';

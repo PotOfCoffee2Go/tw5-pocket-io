@@ -1,0 +1,15 @@
+[
+    {
+        "created": "20250110152533750",
+        "title": "Plugin Management 1",
+        "modified": "20250111040913489",
+        "tags": "",
+        "type": "text/vnd.tiddlywiki",
+        "text": "This automates [[How to create plugins in the browser|https://tiddlywiki.com/dev/static/How%2520to%2520create%2520plugins%2520in%2520the%2520browser.html]].\n\n<div style=\"margin-top: 0.6em; border: 1px solid #70b351; border-radius: 10px;\" >\n\n{{||$:/pocket-io/plugin/create-template}}\n\n</div>\n\n{{||$:/pocket-io/plugin/unpack-template}}\n\n{{!!ioResult}}\n",
+        "ioPluginAuthor": "poc2go",
+        "ioPluginFilter": "[all[shadows+tiddlers]tag[plugin]]",
+        "ioPluginName": "pl_mgr",
+        "ioPluginSelected": "$:/plugins/poc2go/pl_mgr",
+        "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n01/10/2025 23:09 Done\n\n</div>\n"
+    }
+]

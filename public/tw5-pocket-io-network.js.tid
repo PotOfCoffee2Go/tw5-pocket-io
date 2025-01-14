@@ -61,7 +61,7 @@ exports.params = [
 	{name: 'sender'},
 ];
 
-exports.run = (command, topic, filter, sender) => {
+exports.run = (command, topic, filter, sender, sender1) => {
 	if (!(sender && $tw.wiki.getTiddler(sender).fields)) {
 		console.log(`pocket.io sender tiddler ${sender} required.`);
 		return;
@@ -89,6 +89,7 @@ function createMessage(command, topic, filter, sender) {
 		command: senderFields.ioCommand,
 		topic: senderFields.ioTopic,
 		filter: senderFields.ioFilter,
+		wikiName: $tw.wiki.getTiddlerText('$:/temp/pocket-io/wikinames'),
 		sender: senderFields.title,
 		tostory: senderFields.ioTostory === 'yes' ? true : false,
 	}
@@ -123,7 +124,8 @@ const fieldsToWiki = (fields, tostory = false) => {
 function setNetstat(txt) {
 	var site = `${location.protocol}//${location.hostname}:${location.port}`;
 	$tw.wiki.setText('$:/temp/pocket-io/site','text', null, site);
-	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, `{{$:/temp/pocket-io/site}}<br>` + txt);
+	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null,
+		`Wiki: {{$:/temp/pocket-io/wikinames}}<br>{{$:/temp/pocket-io/site}}<br>` + txt);
 }
 
 // ------------------------
@@ -137,9 +139,10 @@ const initSocketHandlers = () => {
 		socket.emit('ackConnect', 'ackConnect');
 	})
 
-	socket.on('ackConnect', () => {
+	socket.on('ackConnect', wikiRequires => {
 		console.log(`pocket.io id: ${sid(socket)} connected`);
 		setNetstat(`Pocket.io connected ${sid(socket)}`);
+		wikiRequires.forEach(tiddler => fieldsToWiki(tiddler));
 	})
 
 	socket.on('msg', msg => {
@@ -150,6 +153,7 @@ const initSocketHandlers = () => {
 				fieldsToWiki(tiddler, msg.req.tostory);
 			}
 		})
+		$tw.syncer.syncFromServer();
 	})
 
 	socket.on('refresh', () => {

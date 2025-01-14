@@ -1,17 +1,20 @@
 caption: newtab
 created: 20241120053726893
-modified: 20241122022737729
+modified: 20250113103401149
 tags: template project $:/pocket-io/template/project
 title: $:/pocket-io/project/newtab-template
 type: text/vnd.tiddlywiki
 
 \define submitNewTab()
-<$macrocall $name=pocket command=emit topic="projectUpdate" sender=$(currentTiddler)$ />
-<$action-sendmessage $message="tm-server-refresh"/>
+<<pocket-io "projectUpdate">>
 \end
 
 \define newTabButton()
-<$button actions="<<submitNewTab>>"> New code tab </$button>
+<$button actions="<<submitNewTab>>"> New tab </$button>
+\end
+
+\define newTabType()
+<$select field="ioPrjTabType" default="code"><option>code</option><option>template</option><option>dashboard</option></$select>
 \end
 
 \define newTabEditBox()
@@ -19,4 +22,4 @@ type: text/vnd.tiddlywiki
 \end
 
 |tc-center tc-table-no-border|k
-|<<newTabButton>> |<<newTabEditBox>> |
+|<<newTabButton>> |<<newTabType>> |<<newTabEditBox>> |

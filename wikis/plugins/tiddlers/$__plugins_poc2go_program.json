@@ -1,0 +1,136 @@
+{
+    "tiddlers": {
+        "program": {
+            "title": "program",
+            "created": "20241231100829266",
+            "modified": "20250104004956164",
+            "tags": "program Projects",
+            "type": "text/vnd.tiddlywiki",
+            "text": "|tc-center tc-table-no-border|k\n|@@.poc2go-project-header [[Program that runs REPL commands|program docs]] @@|\n\n<!-- Comment out templates not applicable for this project -->\n{{||$:/pocket-io/project/autoload-template}}\n{{||$:/pocket-io/project/upload-template}}\n{{||$:/pocket-io/project/newtab-template}}\n<!-- {{||$:/pocket-io/project/delete-template}} -->\n\n<!-- Response to pocket.io requests -->\n{{!!ioResult}}\n\n<!-- Project writeup text details -->\n{{||$:/pocket-io/project/writeup-template}}\n\n<!-- Tag pill of code tiddlers in project -->\n@@.poc2go-mono {{$:/pocket-io/code/program||$:/core/ui/TagTemplate}} @@\n\n<<closeTabsButton \"$:/state/tab/pocket-io/code/program\">>\n\n<!-- Tabs that contain server-side code -->\n@@.poc2go-mono <<tabs \"[tag[$:/pocket-io/code/program]]\" \"\"\n\"$:/state/tab/pocket-io/code/program\" \"tc-horizontal\">> @@\n\n<<topButton>>\n",
+            "bag": "default",
+            "autoLoad": "yes",
+            "caption": "REPL Program",
+            "ioConfirmDelete": "no",
+            "ioPrjProject": "program",
+            "ioPrjTabName": "",
+            "ioPrjTabSelected": "program-cmd.man",
+            "ioPrjTabToDelete": "program-commander",
+            "ioResult": "",
+            "writeup": "program writeup"
+        },
+        "program docs": {
+            "title": "program docs",
+            "created": "20241231100829267",
+            "modified": "20241231100829267",
+            "tags": "program Projectdocs",
+            "type": "text/vnd.tiddlywiki",
+            "text": "{{||$:/pocket-io/project/docs-template}}\n\n@@.poc2go-mono Docs: {{$:/pocket-io/code/program/docs||$:/core/ui/TagTemplate}} @@\n\n<<closeTabsButton \"$:/state/tab/pocket-io/docs/program\">>\n@@.poc2go-mono <<tabs \"[tag[$:/pocket-io/code/program/docs]]\" \"\" \"$:/state/tab/pocket-io/docs/program\">> @@\n\nAssociated tiddlers:\n\n<<topButton>>\n",
+            "bag": "default",
+            "caption": "program",
+            "project": "program",
+            "writeup": "program writeup"
+        },
+        "program writeup": {
+            "title": "program writeup",
+            "created": "20241231100829268",
+            "modified": "20241231100829268",
+            "tags": "writeup program",
+            "type": "text/vnd.tiddlywiki",
+            "text": "Documentation of project 'program'.",
+            "bag": "default"
+        },
+        "program-action.project": {
+            "title": "program-action.project",
+            "text": "(function () {\n\n$tpi.repl.program\n\t.command('project')\n\t.usage('[project-name] [options]')\n\t.description('display a code project')\n\t.argument('[project-name]')\n\t.option('-i, --interactive', 'page thru project code tiddlers')\n\t.option('-s, --script <script-title>', 'script to display')\n\t.option('-w, --writeup', 'display writeup of script')\n\t.action((project, options, command) => {\n\t\tif (!project) {\n\t\t\t$rt.write(`cmd.man('')\\n`);\n\t\t\treturn;\n\t\t}\n\t\tif (options.interactive) {\n\t\t\t$rt.write(`cmd.man('${project}')\\n`);\n\t\t\treturn;\n\t\t}\n\t\thog('not -i',9);\n\t});\n\n})()\n",
+            "created": "20241231101807047",
+            "modified": "20241231110312661",
+            "tags": "tab program $:/pocket-io/code/program",
+            "type": "application/javascript",
+            "bag": "default",
+            "caption": "action.project"
+        },
+        "program-action.project docs": {
+            "title": "program-action.project docs",
+            "created": "20241231101807048",
+            "modified": "20241231101807048",
+            "tags": "Docs program $:/pocket-io/code/program/docs",
+            "type": "text/vnd.tiddlywiki",
+            "text": "{{||$:/pocket-io/project/tabdocs-template}}\n",
+            "bag": "default",
+            "caption": "action.project",
+            "codetitle": "program-action.project",
+            "writeup": "program-action.project writeup"
+        },
+        "program-action.project writeup": {
+            "title": "program-action.project writeup",
+            "created": "20241231101807048",
+            "modified": "20241231101807048",
+            "tags": "writeup program",
+            "type": "text/vnd.tiddlywiki",
+            "text": "Documentation of tab 'action.project' in project 'program'.\n",
+            "bag": "default"
+        },
+        "program-cmd.man": {
+            "title": "program-cmd.man",
+            "text": "// cmd.man('repl-tut')\ncmd.man = function(projectTitle, pageMode = true) {\n\tvar $cw = get$tw('codebase');\n\tvar tutorialTag = 'Projects';\n\n\tvar pages = [], pageIdx = 0, pageMode = pageMode;\n\tvar view = 'script'; // or 'writeup'\n\n\tvar start = 'Toggle page mode, view Script or Writeup, Next, Prev, Quit t/s/w/(n)/p/q : ';\n\tvar brief = 't/s/w/(n)/p/q : ';\n\tvar end = 'End t/s/w/n/p/(q) : ';\n\tvar prompt = start;\n\n\tvar history = cpy($rt.history);\n\n\tvar queryWriteup = () => `[list[$:/pocket-io/code/${projectTitle}/docs]removesuffix[ docs]addsuffix[ writeup]]`;\n\tvar queryCode = () => `[tag[$:/pocket-io/code/${projectTitle}]]`;\n\tvar query = () => view === 'writeup' ? queryWriteup() : queryCode();\n\tfunction getPages() {\n\t\tpages = JSON.parse($cw.wiki.getTiddlersAsJson(query()));\n\t}\n\n\tfunction incPageIdx() {\n\t\tif (++pageIdx >= pages.length-1) {\n\t\t\tpageIdx = pages.length-1;\n\t\t\tprompt = end;\n\t\t}\n\t}\n\tfunction decPageIdx() {\n\t\tif (--pageIdx <= 0) {\n\t\t\tpageIdx = 0;\n\t\t\tprompt = start;\n\t\t}\n\t}\n\tfunction quit() {\n\t\t$rt.history = history;\n\t\t$rt.displayPrompt();\n\t}\n\n\tfunction ask() {\n\t\tif (pageMode) {\tconsole.clear(); }\n\t\t$rt.write(`cmd.show.code('${pages[pageIdx].title}')\\n`);\n\t\t$tpi.stdin.getNextChar = true;\n\t\t$rt.question(prompt, (answer) => {\n\t\t\tvar ans = (answer[0] ?? 'n').toLowerCase();\n\t\t\tif ( (!answer && prompt === end) || ans === 'q') {\n\t\t\t\tquit();\n\t\t\t\treturn;\n\t\t\t}\n\t\t\tprompt = brief;\n\t\t\tif (ans === 'n') { incPageIdx(); }\n\t\t\telse if (ans === 'p') { decPageIdx(); }\n\t\t\telse if (ans === 't') { pageMode = !pageMode; }\n\t\t\telse if (ans === 's') { view = 'script'; getPages(); }\n\t\t\telse if (ans === 'w') { view = 'writeup'; getPages(); }\n\t\t\telse { prompt = `Invalid '${answer}' - ` + start; }\n\t\t\task();\n\t\t});\n\t}\n\n\tfunction tutorials(projectTitle) {\n\t\tif (!projectTitle) {\n\t\t\treturn $cw.wiki.getTiddlersWithTag(tutorialTag);\n\t\t}\n\t\tgetPages();\n\t\tif (pages.length === 0) {\n\t\t\thog(`'Project '${projectTitle}' doesn't have any pages to display'`, 9);\n\t\t\treturn;\n\t\t}\n\t\task();\n\t}\n\n\treturn tutorials(projectTitle);\n}\n",
+            "created": "20241231101559386",
+            "modified": "20250104004930262",
+            "tags": "tab program $:/pocket-io/code/program",
+            "type": "application/javascript",
+            "bag": "default",
+            "caption": "cmd.man"
+        },
+        "program-cmd.man docs": {
+            "title": "program-cmd.man docs",
+            "created": "20241231101559386",
+            "modified": "20241231101559386",
+            "tags": "Docs program $:/pocket-io/code/program/docs",
+            "type": "text/vnd.tiddlywiki",
+            "text": "{{||$:/pocket-io/project/tabdocs-template}}\n",
+            "bag": "default",
+            "caption": "cmd.man",
+            "codetitle": "program-cmd.man",
+            "writeup": "program-cmd.man writeup"
+        },
+        "program-cmd.man writeup": {
+            "title": "program-cmd.man writeup",
+            "created": "20241231101559386",
+            "modified": "20241231101559387",
+            "tags": "writeup program",
+            "type": "text/vnd.tiddlywiki",
+            "text": "Documentation of tab 'cmd.man' in project 'program'.\n",
+            "bag": "default"
+        },
+        "program-commander": {
+            "title": "program-commander",
+            "text": "// REPL Commands\n(function () {\nconst commander = require('commander');\nconst { Command, Option } = commander;\n\nconst program = new Command();\n$tpi.repl.program = program; // assign for global access\n \n// Do not 'process.exit()' on errors\n//  (place $tpi.repl.program.parse(...) in a try/catch instead)\nprogram.exitOverride();\n\n// Run a command - ex: cmd.run('help')\ncmd.run = function(commandStr) {\n\tvar commands = ('node placeholder ' + commandStr).split(' ');\n\tcommands[1] = '-'; // replace the placeholder with a dash\n\ttry {\n\t\t$tpi.repl.program.parse(commands);\n\t} catch (err) {} // do not process.exit()\n}\n\n// Set color of help text\nprogram.configureHelp({\n\tstyleTitle: (str) => hue(str, 158),\n\tstyleCommandText: (str) => hue(str, 158),\n\tstyleCommandDescription: (str) => hue(str, 158),\n\tstyleDescriptionText: (str) => hue(str, 158),\n\tstyleOptionText: (str) => hue(str, 158),\n\tstyleArgumentText: (str) => hue(str, 158),\n\tstyleSubcommandText: (str) => hue(str, 158),\n});\n\nprogram\n\t.command('clone <source> [destination]')\n\t.description('clone a repository into a newly created directory')\n\t.action((source, destination) => {\n\t\tconsole.log('clone command called');\n\t});\n\nprogram\n\t.command('serve')\n\t.description('launch web server')\n\t.addArgument(new commander.Argument('<wiki-name>', 'wiki to serve')\n\t\t.choices(['dash', 'code', 'data'])\n\t)\n\t.requiredOption('-p,--port <port_number>', 'web port')\n\t.action((wiki_name,options) => {\n\t\thog(`${wiki_name} server on port ${options.port}`,40);\n\t});\n\n})()\n",
+            "created": "20241231100829268",
+            "modified": "20241231111257215",
+            "tags": "tab program $:/pocket-io/code/program",
+            "type": "application/javascript",
+            "bag": "default",
+            "caption": "commander"
+        },
+        "program-commander docs": {
+            "title": "program-commander docs",
+            "created": "20241231100829269",
+            "modified": "20241231100829269",
+            "tags": "Docs program $:/pocket-io/code/program/docs",
+            "type": "text/vnd.tiddlywiki",
+            "text": "{{||$:/pocket-io/project/tabdocs-template}}\n",
+            "bag": "default",
+            "caption": "commander",
+            "codetitle": "program-commander",
+            "writeup": "program-commander writeup"
+        },
+        "program-commander writeup": {
+            "title": "program-commander writeup",
+            "created": "20241231100829271",
+            "modified": "20241231100829271",
+            "tags": "writeup program",
+            "type": "text/vnd.tiddlywiki",
+            "text": "Documentation of tab 'commander' in project 'program'.\n",
+            "bag": "default"
+        }
+    }
+}

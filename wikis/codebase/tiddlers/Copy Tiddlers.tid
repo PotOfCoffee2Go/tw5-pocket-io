@@ -1,0 +1,31 @@
+created: 20250108083629945
+modified: 20250109130138418
+tags: pocket-io
+title: Copy Tiddlers
+type: text/vnd.tiddlywiki
+
+\define submitCopyTiddlers()
+<<pocket-io "copyTiddlers">>
+\end
+
+\define copyButton()
+<$button actions="<<submitCopyTiddlers>>"> Copy </$button>
+\end
+
+\define filterEditBox()
+<$edit-text field="ioFilter" class="tid-input"/>
+\end
+
+\define fromSelect()
+<$select field="ioFromWiki" default=""><$list filter="[list[$:/temp/pocket-io/wikinames]]"><option value={{!!title}} ><$view field='title'/></option></$list></$select>
+\end
+
+\define toSelect()
+<$select field="ioToWiki" default=""><$list filter="[list[$:/temp/pocket-io/wikinames]]"><option value={{!!title}} ><$view field='title'/></option></$list></$select>
+\end
+
+|tc-table-no-border|k
+| Filter | From wiki | To wiki |  |
+|<<filterEditBox>> |<<fromSelect>> |<<toSelect>> |<<copyButton>> |
+
+{{!!ioResult}}

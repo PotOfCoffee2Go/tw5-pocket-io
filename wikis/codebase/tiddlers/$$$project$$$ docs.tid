@@ -1,6 +1,6 @@
 caption: $$$project$$$
 created: 20241110230314555
-modified: 20241206212735733
+modified: 20250108184945716
 project: $$$project$$$
 tags: $$$project$$$ Projectdocs
 title: $$$project$$$ docs
@@ -15,5 +15,14 @@ writeup: $$$project$$$ writeup
 @@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/$$$project$$$/docs]]" "" "$:/state/tab/pocket-io/docs/$$$project$$$">> @@
 
 Associated tiddlers:
+
+!!! Associated tiddlers:
+
+!!!! GUI Templates 
+
+@@.poc2go-mono {{$:/pocket-io/template/$$$project$$$||$:/core/ui/TagTemplate}} @@
+
+<<closeTabsButton "$:/state/tab/pocket-io/template/$$$project$$$">>
+<<tabs "[tag[$:/pocket-io/template/$$$project$$$]]" "" "$:/state/tab/pocket-io/template/$$$project$$$">>
 
 <<topButton>>

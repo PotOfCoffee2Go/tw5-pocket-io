@@ -1,14 +1,13 @@
 caption: copy
 created: 20241124072956896
 ioPrjCopyAction: Move
-modified: 20241127025858532
+modified: 20250107184808076
 tags: project template $:/pocket-io/template/project
 title: $:/pocket-io/project/copy-template
 type: text/vnd.tiddlywiki
 
 \define submitCopy()
-<$macrocall $name=pocket command=emit topic="projectCopy" sender=$(currentTiddler)$ />
-<$action-sendmessage $message="tm-server-refresh"/>
+<<pocket-io "projectCopy">>
 \end
 
 \define copyButton()

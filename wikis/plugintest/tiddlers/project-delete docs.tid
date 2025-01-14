@@ -1,0 +1,10 @@
+caption: delete
+codetitle: project-delete
+created: 20241111061448251
+modified: 20241122010636614
+tags: Docs project $:/pocket-io/code/project/docs
+title: project-delete docs
+type: text/vnd.tiddlywiki
+writeup: project-delete writeup
+
+{{||$:/pocket-io/project/tabdocs-template}}
