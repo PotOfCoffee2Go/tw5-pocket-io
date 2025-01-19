@@ -1,6 +1,6 @@
 // Client acknowledges connect sequence is complete
 $tpi.fn.io.ackConnect = function ackConnect(socket, wiki) {
-	var wikiRequires = JSON.parse(get$tw('codebase').wiki.getTiddlersAsJson('[prefix[$:/poc2go/pocket-io/]] [[Copy Tiddlers]]'));
+	var wikiRequires = JSON.parse(get$tw('codebase').wiki.getTiddlersAsJson('[[$:/plugins/poc2go/pocket-io]] [[Copy Tiddlers]]'));
 	// codebase already has required tiddlers
 	wikiRequires = wiki === 'codebase' ? [] : wikiRequires;
 	wikiRequires.push({
@@ -10,5 +10,5 @@ $tpi.fn.io.ackConnect = function ackConnect(socket, wiki) {
 	});
 	$sockets[sid(socket)] = { socket, wiki };
 	socket.emit('ackConnect', wikiRequires);
-	tog(`Client wiki '${wiki}' ${sid(socket)} connected`, 44);
+	tog(`Client wiki '${wiki}' ${sid(socket)} connected`);
 }

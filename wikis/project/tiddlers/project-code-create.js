@@ -2,20 +2,20 @@
 // Verify input - calls projectUpdate to create project
 $tpi.topic.projectCreate = function projectCreate(socket, msg) {
 	var $cw = get$tw(msg.req.wikiName);
-	var senderTid = cpy(msg.senderTiddler);
+	var sender = cpy(msg.senderTiddler);
 	var resultMsg = '';
-	senderTid.ioResult = '';
+	sender.ioResult = '';
 
-	var project = senderTid.ioPrjProject;
-	var tabName = senderTid.ioPrjTabName;
+	var project = sender.ioPrjProject;
+	var tabName = sender.ioPrjTabName;
 
-	if (!/^[\w-]+$/.test(project)) {
-		resultMsg = `Project name may only contain letters, numbers, underbars, and dashes\n\n` +
+	if (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(project)) {
+		resultMsg = `Project name may only contain letters, numbers, dollar-sign, underbars, and dashes\n\n` +
 			`Notably spaces and special characters are not allowed.\n\n` +
 			`Once created can change the 'caption' field to display as desired.`;
 	}
-	else if (!/^[\w-]+$/.test(tabName)) {
-		resultMsg = `Tab name may only contain letters, numbers, underbars, and dashes\n\n` +
+	else if (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(tabName)) {
+		resultMsg = `Tab name may only contain letters, numbers, dollar-sign, underbars, and dashes\n\n` +
 			`Notably spaces and special characters are not allowed.\n\n` +
 			`Once created can change the 'caption' field to display as desired.`;
 	}
@@ -28,8 +28,8 @@ $tpi.topic.projectCreate = function projectCreate(socket, msg) {
 
 	// Return error
 	if (resultMsg) {
-		senderTid.ioResult = $tpi.fn.formatIoResult(resultMsg);
-		msg.resultTiddlers.push(senderTid);
+		sender.ioResult = $tpi.fn.formatIoResult(resultMsg);
+		msg.resultTiddlers.push(sender);
 		return msg;
 	}
 

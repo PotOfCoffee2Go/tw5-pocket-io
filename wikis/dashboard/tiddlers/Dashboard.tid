@@ -1,7 +1,9 @@
 created: 20241201191648815
-modified: 20241201191713910
+modified: 20250119172334558
 tags: 
 title: Dashboard
 type: text/vnd.tiddlywiki
 
-Will be here
+<$list filter="[plugin-type[plugin]!prefix[$:/plugins/tiddlywiki/]!prefix[$:/core]]">
+<$link/><br>
+</$list>

@@ -1,9 +1,0 @@
-created: 20241111094043848
-modified: 20241123041432911
-tags: writeup project
-title: project-create writeup
-type: text/vnd.tiddlywiki
-
-This tab contains the server side code to create a new project. For the most part, it just verifies that the project requested does not already exist and insures that at least one tab will exist under the project.
-
-It uses the [[$:/pocket-io/project/create-template]] to provide the information required to create a new project,

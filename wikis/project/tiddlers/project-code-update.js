@@ -24,14 +24,14 @@ $tpi.topic.projectUpdate = function projectUpdate(socket, msg) {
 		return titles;
 	}
 
-	var senderTid = cpy(msg.senderTiddler);
+	var sender = cpy(msg.senderTiddler);
 	var resultMsg = '';
-	senderTid.ioResult = '';
+	sender.ioResult = '';
 
-	var dstWiki = senderTid.ioPrjWiki;
-	var project = senderTid.ioPrjProject;
-	var tabName = senderTid.ioPrjTabName;
-	var tabType = senderTid.ioPrjTabType;
+	var dstWiki = sender.ioPrjWiki;
+	var project = sender.ioPrjProject;
+	var tabName = sender.ioPrjTabName;
+	var tabType = sender.ioPrjTabType;
 	var $tw = get$tw(dstWiki); // get$tw(msg.req.wikiName);
 	if (!tabName) {
 		tabName = 'default';
@@ -51,8 +51,8 @@ $tpi.topic.projectUpdate = function projectUpdate(socket, msg) {
 
 	// Return if error
 	if (resultMsg) {
-		senderTid.ioResult = $tpi.fn.formatIoResult(resultMsg);
-		msg.resultTiddlers.push(senderTid);
+		sender.ioResult = $tpi.fn.formatIoResult(resultMsg);
+		msg.resultTiddlers.push(sender);
 		return msg;
 	}
 
@@ -65,8 +65,9 @@ $tpi.topic.projectUpdate = function projectUpdate(socket, msg) {
 
 	var titles = createFromFilter($tw, filter, project, tabName, tabType);
 
-	senderTid.ioPrjTabName = '';
-	senderTid.ioResult = $tpi.fn.formatIoResult(`Tiddlers created:\n\n${titles.join(', ')}`);
-	msg.resultTiddlers.push(senderTid);
+	sender.ioPrjTabName = '';
+	sender.ioResult = $tpi.fn.formatIoResult(`Tiddlers created:\n\n${titles.join(', ')}`);
+	msg.resultTiddlers.push(sender);
+	$tpi.fn.io.refreshClients(dstWiki);
 	return msg;
 }

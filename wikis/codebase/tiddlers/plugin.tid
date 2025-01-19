@@ -1,4 +1,4 @@
-autoLoad: yes
+autoLoad: no
 caption: Plugin Manager
 created: 20250108175711003
 ioConfirmDelete: no
@@ -8,7 +8,7 @@ ioPrjTabSelected: AALLLL
 ioPrjTabToDelete: plugin-default
 ioPrjTabType: code
 ioResult: 
-modified: 20250113104115762
+modified: 20250114193605785
 tags: plugin Projects
 title: plugin
 type: text/vnd.tiddlywiki

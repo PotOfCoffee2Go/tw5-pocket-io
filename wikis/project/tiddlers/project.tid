@@ -4,13 +4,13 @@ created: 20250114040241341
 ioConfirmDelete: no
 ioPrjProject: project
 ioPrjTabName: 
-ioPrjTabSelected: AALLLL
+ioPrjTabSelected: project-code-update
 ioPrjTabToDelete: project-default
-ioPrjTabType: code
-ioPrjWiki: project
+ioPrjTabType: docs
+ioPrjWiki: oldproject
 ioResult: 
 ioToWiki: 
-modified: 20250114155958743
+modified: 20250119080342714
 tags: project Projects
 title: project
 type: text/vnd.tiddlywiki
@@ -19,11 +19,13 @@ writeup: project writeup
 |tc-center tc-table-no-border|k
 |@@.poc2go-project-header Project Mangement System @@|
 
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
 <!-- Comment out templates not applicable for this project -->
-{{||project-template-autoload}}
 {{||project-template-create}}
 {{||project-template-newtab}}
-{{||project-template-delete}}
+<!-- {{||project-template-delete}} -->
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
@@ -31,34 +33,19 @@ writeup: project writeup
 <!-- Project writeup text details -->
 {{||$:/pocket-io/project/writeup-template}}
 
-<hr class="poc2go-hr">
+<<closeTabsButton "project" "template">>
+<<tabs "[all[shadows+tiddlers]tag[$:/pocket-io/project/template]]" "" "$:/state/tab/pocket-io/project/template">>
 
-@@.poc2go-mono {{$:/pocket-io/project/dashboard||$:/core/ui/TagTemplate}} Dashboard @@
+<<closeTabsButton "project" "dashboard">>
+<<tabs "[all[shadows+tiddlers]tag[$:/pocket-io/project/dashboard]]" "" "$:/state/tab/pocket-io/project/dashboard">>
 
-<<closeTabsButton "$:/state/tab/pocket-io/project/dashboard">>
-<<tabs "[tag[$:/pocket-io/project/dashboard]]" "" "$:/state/tab/pocket-io/project/dashboard">>
+<<closeTabsButton "project" "code">>
+<<tabs "[all[shadows+tiddlers]tag[$:/pocket-io/project/code]]" "" "$:/state/tab/pocket-io/project/code" "tc-horizontal">>
 
-<hr class="poc2go-hr">
+<<closeTabsButton "project" "info">>
+<<tabs "[all[shadows+tiddlers]tag[$:/pocket-io/project/info]]" "" "$:/state/tab/pocket-io/project/info" "tc-horizontal">>
 
-@@.poc2go-mono {{$:/pocket-io/project/template||$:/core/ui/TagTemplate}} GUI Templates @@
-
-<<closeTabsButton "$:/state/tab/pocket-io/project/template">>
-<<tabs "[tag[$:/pocket-io/project/template]]" "" "$:/state/tab/pocket-io/project/template">>
-
-<hr class="poc2go-hr">
-
-@@.poc2go-mono {{$:/pocket-io/project/code||$:/core/ui/TagTemplate}} Server Code @@
-
-{{||project-template-upload}}
-
-<<closeTabsButton '$:/state/tab/pocket-io/project/code'>>
-<<tabs "[tag[$:/pocket-io/project/code]]" "" "$:/state/tab/pocket-io/project/code" "tc-horizontal">>
-
-<hr class="poc2go-hr">
-
-@@.poc2go-mono {{$:/pocket-io/project/docs||$:/core/ui/TagTemplate}} Documentation @@
-
-<<closeTabsButton '$:/state/tab/pocket-io/project/docs'>>
-<<tabs "[tag[$:/pocket-io/project/docs]]" "" "$:/state/tab/pocket-io/project/docs" "tc-horizontal">>
+<<closeTabsButton "project" "docs">>
+<<tabs "[all[shadows+tiddlers]tag[$:/pocket-io/project/docs]]" "" "$:/state/tab/pocket-io/project/docs" "tc-horizontal">>
 
 <<topButton>>

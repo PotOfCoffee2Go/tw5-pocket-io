@@ -1,5 +1,5 @@
 created: 20250114055757973
-list: project-template-copy project-template-autoload project-template-create project-template-newtab project-template-upload project-template-delete
-modified: 20250114055810671
+list: project-template-create project-template-newtab project-template-upload project-template-delete project-template-copy
+modified: 20250118172809107
 title: $:/pocket-io/project/template
 type: text/vnd.tiddlywiki

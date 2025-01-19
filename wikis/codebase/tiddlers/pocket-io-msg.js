@@ -11,4 +11,5 @@ $tpi.fn.io.msg = function msg(socket, msg) {
 		return;
 	}
 	socket.emit('msg', $tpi.topic[msg.req.topic](socket, msg));
+	$tpi.fn.io.refreshClients(msg.req.wikiName);
 }

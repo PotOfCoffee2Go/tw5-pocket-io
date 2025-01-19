@@ -6,7 +6,7 @@ ioPrjProject: $$$project$$$
 ioPrjTabSelected: $$$project$$$-$$$tab$$$
 ioPrjTabToDelete: $$$project$$$-$$$tab$$$
 ioResult: 
-modified: 20250113153100561
+modified: 20250116215943008
 tags: $$$project$$$ Projects
 title: $$$project$$$
 type: text/vnd.tiddlywiki
@@ -14,6 +14,9 @@ writeup: $$$project$$$ writeup
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-project-header Edit this description and change caption @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
 <!-- Comment out templates not applicable for this project -->
 {{||$:/pocket-io/project/autoload-template}}

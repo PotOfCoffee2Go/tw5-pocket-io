@@ -1,0 +1,11 @@
+caption: Create Plugin
+created: 20250116214131949
+creator: poc2go
+modified: 20250117161618806
+modifier: poc2go
+tags: plugin dashboard $:/pocket-io/plugin/dashboard
+title: Create Plugin
+type: text/vnd.tiddlywiki
+
+
+{{||plugin-template-create}}

@@ -8,7 +8,7 @@ ioPrjTabSelected: $$$project$$$-$$$tab$$$
 ioPrjTabToDelete: $$$project$$$-$$$tab$$$
 ioPrjTabType: template
 ioResult: 
-modified: 20250114032328323
+modified: 20250117153043067
 tags: $$$project$$$ Projects
 title: $$$project$$$
 type: text/vnd.tiddlywiki
@@ -17,31 +17,45 @@ writeup: $$$project$$$ writeup
 |tc-center tc-table-no-border|k
 |@@.poc2go-project-header Edit this description and change caption @@|
 
-<!-- Comment out templates not applicable for this project -->
-{{||$:/pocket-io/project/autoload-template}}
-{{||$:/pocket-io/project/upload-template}}
-{{||$:/pocket-io/project/newtab-template}}
-<!-- {{||$:/pocket-io/project/delete-template}} -->
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
+<!-- Comment out templates not applicable for this project
+{{||project-template-autoload}}
+{{||project-template-create}}
+{{||project-template-newtab}}
+{{||project-template-delete}}
+ -->
+ 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
 <!-- Project writeup text details -->
 {{||$:/pocket-io/project/writeup-template}}
 
-@@.poc2go-mono {{$:/pocket-io/$$$project$$$/dashboard||$:/core/ui/TagTemplate}} Dashboard @@
+@@.poc2go-mono {{$:/pocket-io/$$$project$$$/dashboard||$:/core/ui/TagTemplate}} Dashboard (dashboard) @@
 
 <<closeTabsButton "$:/state/tab/pocket-io/$$$project$$$/dashboard">>
 <<tabs "[tag[$:/pocket-io/$$$project$$$/dashboard]]" "" "$:/state/tab/pocket-io/$$$project$$$/dashboard">>
 
-@@.poc2go-mono {{$:/pocket-io/$$$project$$$/template||$:/core/ui/TagTemplate}} GUI Templates @@
+@@.poc2go-mono {{$:/pocket-io/$$$project$$$/template||$:/core/ui/TagTemplate}} GUI Templates (template) @@
 
 <<closeTabsButton "$:/state/tab/pocket-io/$$$project$$$/template">>
 <<tabs "[tag[$:/pocket-io/$$$project$$$/template]]" "" "$:/state/tab/pocket-io/$$$project$$$/template">>
 
-@@.poc2go-mono {{$:/pocket-io/$$$project$$$/code||$:/core/ui/TagTemplate}} Server Code @@
+@@.poc2go-mono {{$:/pocket-io/$$$project$$$/code||$:/core/ui/TagTemplate}} Server Code (code) @@
 
 <<closeTabsButton '$:/state/tab/pocket-io/$$$project$$$/code'>>
 <<tabs "[tag[$:/pocket-io/$$$project$$$/code]]" "" "$:/state/tab/pocket-io/$$$project$$$/code" "tc-horizontal">>
+
+@@.poc2go-mono {{$:/pocket-io/$$$project$$$/info||$:/core/ui/TagTemplate}} Plugin Information (info) @@
+
+<<closeTabsButton '$:/state/tab/pocket-io/$$$project$$$/docs'>>
+<<tabs "[tag[$:/pocket-io/$$$project$$$/docs]]" "" "$:/state/tab/pocket-io/$$$project$$$/docs" "tc-horizontal">>
+
+@@.poc2go-mono {{$:/pocket-io/$$$project$$$/docs||$:/core/ui/TagTemplate}} Documentation (docs) @@
+
+<<closeTabsButton '$:/state/tab/pocket-io/$$$project$$$/docs'>>
+<<tabs "[tag[$:/pocket-io/$$$project$$$/docs]]" "" "$:/state/tab/pocket-io/$$$project$$$/docs" "tc-horizontal">>
 
 <<topButton>>

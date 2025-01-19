@@ -1,24 +1,24 @@
 // Delete a project's code or a project completely
 $tpi.topic.projectDelete = function projectDelete(socket, msg) {
 	var $cw = get$tw(msg.req.wikiName);
-	var senderTid = cpy(msg.senderTiddler);
-	senderTid.ioResult = '';
+	var sender = cpy(msg.senderTiddler);
+	sender.ioResult = '';
 
-	var project = senderTid.title;
-	var tabName = senderTid.ioPrjTabToDelete;
-	var confirm = senderTid.ioConfirmDelete;
+	var project = sender.title;
+	var tabName = sender.ioPrjTabToDelete;
+	var confirm = sender.ioConfirmDelete;
 
 	if (confirm !== 'yes') {
-		senderTid.ioResult = $tpi.fn.formatIoResult(`Must check the confirm checkbox to delete code tiddlers`);
-		senderTid.ioConfirmDelete = 'no';
-		msg.resultTiddlers.push(senderTid);
+		sender.ioResult = $tpi.fn.formatIoResult(`Must check the confirm checkbox to delete code tiddlers`);
+		sender.ioConfirmDelete = 'no';
+		msg.resultTiddlers.push(sender);
 		return msg;
 	}
-	senderTid.ioConfirmDelete = 'no';
+	sender.ioConfirmDelete = 'no';
 
 	if (!(project && tabName)) {
-		senderTid.ioResult = $tpi.fn.formatIoResult('A project and Tab name are required!');
-		msg.resultTiddlers.push(senderTid);
+		sender.ioResult = $tpi.fn.formatIoResult('A project and Tab name are required!');
+		msg.resultTiddlers.push(sender);
 		return msg;
 	}
 
@@ -28,8 +28,8 @@ $tpi.topic.projectDelete = function projectDelete(socket, msg) {
 		action = `Delete project '${project}'.`;
 	} else {
 		if (!$cw.wiki.tiddlerExists(`${tabName}`)) {
-			senderTid.ioResult =  formatIoResult(`Tab '${tabName}' does not exist.`);
-			msg.resultTiddlers.push(senderTid);
+			sender.ioResult =  formatIoResult(`Tab '${tabName}' does not exist.`);
+			msg.resultTiddlers.push(sender);
 			return msg;
 		}
 		filter = `[prefix[${tabName}]]`;
@@ -42,7 +42,7 @@ $tpi.topic.projectDelete = function projectDelete(socket, msg) {
 		tidDeleted.push(`${title}`);
 	})
 
-	senderTid.ioResult = $tpi.fn.formatIoResult(`${action}\n\nTiddlers deleted:\n\n${tidDeleted.join(', ')}`);
-	msg.resultTiddlers.push(senderTid);
+	sender.ioResult = $tpi.fn.formatIoResult(`${action}\n\nTiddlers deleted:\n\n${tidDeleted.join(', ')}`);
+	msg.resultTiddlers.push(sender);
 	return msg;
 }

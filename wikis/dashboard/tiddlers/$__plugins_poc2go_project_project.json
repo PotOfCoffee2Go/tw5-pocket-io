@@ -1,0 +1,161 @@
+{
+    "tiddlers": {
+        "project": {
+            "title": "project",
+            "autoLoad": "yes",
+            "caption": "Project Management",
+            "created": "20250114040241341",
+            "ioConfirmDelete": "no",
+            "ioPrjProject": "project",
+            "ioPrjTabName": "",
+            "ioPrjTabSelected": "project-code-update",
+            "ioPrjTabToDelete": "project-default",
+            "ioPrjTabType": "docs",
+            "ioPrjWiki": "oldproject",
+            "ioResult": "",
+            "ioToWiki": "",
+            "modified": "20250119080342714",
+            "tags": "project Projects",
+            "type": "text/vnd.tiddlywiki",
+            "writeup": "project writeup",
+            "text": "|tc-center tc-table-no-border|k\n|@@.poc2go-project-header Project Mangement System @@|\n\n|tc-center tc-table-no-border|k\n|<$checkbox field=\"autoLoad\" checked=\"yes\" unchecked=\"no\" default=\"no\"> Auto load on startup</$checkbox>|\n\n<!-- Comment out templates not applicable for this project -->\n{{||project-template-create}}\n{{||project-template-newtab}}\n<!-- {{||project-template-delete}} -->\n\n<!-- Response to pocket.io requests -->\n{{!!ioResult}}\n\n<!-- Project writeup text details -->\n{{||$:/pocket-io/project/writeup-template}}\n\n<<closeTabsButton \"project\" \"template\">>\n<<tabs \"[all[shadows+tiddlers]tag[$:/pocket-io/project/template]]\" \"\" \"$:/state/tab/pocket-io/project/template\">>\n\n<<closeTabsButton \"project\" \"dashboard\">>\n<<tabs \"[all[shadows+tiddlers]tag[$:/pocket-io/project/dashboard]]\" \"\" \"$:/state/tab/pocket-io/project/dashboard\">>\n\n<<closeTabsButton \"project\" \"code\">>\n<<tabs \"[all[shadows+tiddlers]tag[$:/pocket-io/project/code]]\" \"\" \"$:/state/tab/pocket-io/project/code\" \"tc-horizontal\">>\n\n<<closeTabsButton \"project\" \"info\">>\n<<tabs \"[all[shadows+tiddlers]tag[$:/pocket-io/project/info]]\" \"\" \"$:/state/tab/pocket-io/project/info\" \"tc-horizontal\">>\n\n<<closeTabsButton \"project\" \"docs\">>\n<<tabs \"[all[shadows+tiddlers]tag[$:/pocket-io/project/docs]]\" \"\" \"$:/state/tab/pocket-io/project/docs\" \"tc-horizontal\">>\n\n<<topButton>>\n"
+        },
+        "project-code-create": {
+            "title": "project-code-create",
+            "text": "// Create a project\n// Verify input - calls projectUpdate to create project\n$tpi.topic.projectCreate = function projectCreate(socket, msg) {\n\tvar $cw = get$tw(msg.req.wikiName);\n\tvar sender = cpy(msg.senderTiddler);\n\tvar resultMsg = '';\n\tsender.ioResult = '';\n\n\tvar project = sender.ioPrjProject;\n\tvar tabName = sender.ioPrjTabName;\n\n\tif (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(project)) {\n\t\tresultMsg = `Project name may only contain letters, numbers, dollar-sign, underbars, and dashes\\n\\n` +\n\t\t\t`Notably spaces and special characters are not allowed.\\n\\n` +\n\t\t\t`Once created can change the 'caption' field to display as desired.`;\n\t}\n\telse if (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(tabName)) {\n\t\tresultMsg = `Tab name may only contain letters, numbers, dollar-sign, underbars, and dashes\\n\\n` +\n\t\t\t`Notably spaces and special characters are not allowed.\\n\\n` +\n\t\t\t`Once created can change the 'caption' field to display as desired.`;\n\t}\n\telse if ($cw.wiki.tiddlerExists(`${project}`)) {\n\t\tresultMsg = `Project '[[${project}]]' already exists!`;\n\t}\n\telse if ($cw.wiki.tiddlerExists(`${project}-${tabName}`)) {\n\t\tresultMsg = `Project tab '[[${project}-${tabName}]]' already exists!`;\n\t}\n\n\t// Return error\n\tif (resultMsg) {\n\t\tsender.ioResult = $tpi.fn.formatIoResult(resultMsg);\n\t\tmsg.resultTiddlers.push(sender);\n\t\treturn msg;\n\t}\n\n\t// Have projectUpdate create the project\n\treturn $tpi.topic.projectUpdate(socket, msg);\n}\n",
+            "caption": "create",
+            "created": "20250114045709587",
+            "modified": "20250118091912530",
+            "tags": "project code $:/pocket-io/project/code",
+            "type": "application/javascript"
+        },
+        "project-code-delete": {
+            "title": "project-code-delete",
+            "text": "// Delete a project's code or a project completely\n$tpi.topic.projectDelete = function projectDelete(socket, msg) {\n\tvar $cw = get$tw(msg.req.wikiName);\n\tvar sender = cpy(msg.senderTiddler);\n\tsender.ioResult = '';\n\n\tvar project = sender.title;\n\tvar tabName = sender.ioPrjTabToDelete;\n\tvar confirm = sender.ioConfirmDelete;\n\n\tif (confirm !== 'yes') {\n\t\tsender.ioResult = $tpi.fn.formatIoResult(`Must check the confirm checkbox to delete code tiddlers`);\n\t\tsender.ioConfirmDelete = 'no';\n\t\tmsg.resultTiddlers.push(sender);\n\t\treturn msg;\n\t}\n\tsender.ioConfirmDelete = 'no';\n\n\tif (!(project && tabName)) {\n\t\tsender.ioResult = $tpi.fn.formatIoResult('A project and Tab name are required!');\n\t\tmsg.resultTiddlers.push(sender);\n\t\treturn msg;\n\t}\n\n\tvar filter, action;\n\tif (tabName === 'AALLLL') {\n\t\tfilter = `[tag[${project}]]`;\n\t\taction = `Delete project '${project}'.`;\n\t} else {\n\t\tif (!$cw.wiki.tiddlerExists(`${tabName}`)) {\n\t\t\tsender.ioResult =  formatIoResult(`Tab '${tabName}' does not exist.`);\n\t\t\tmsg.resultTiddlers.push(sender);\n\t\t\treturn msg;\n\t\t}\n\t\tfilter = `[prefix[${tabName}]]`;\n\t\taction = `Delete Tab '${tabName}'.`;\n\t}\n\n\tvar tidDeleted = [];\n\t$cw.wiki.filterTiddlers(filter).forEach(title => {\n\t\t$cw.wiki.deleteTiddler(title);\n\t\ttidDeleted.push(`${title}`);\n\t})\n\n\tsender.ioResult = $tpi.fn.formatIoResult(`${action}\\n\\nTiddlers deleted:\\n\\n${tidDeleted.join(', ')}`);\n\tmsg.resultTiddlers.push(sender);\n\treturn msg;\n}\n",
+            "caption": "delete",
+            "created": "20250114050841454",
+            "modified": "20250118085853196",
+            "tags": "project code $:/pocket-io/project/code",
+            "type": "application/javascript"
+        },
+        "project-code-update": {
+            "title": "project-code-update",
+            "text": "// Create a new project or a new tab for an existing project\n//  If the tab already exists - exits with no action\n//  If project already exists will create a new tab\n//  If project does not exist - will be created containing a tab\n$tpi.topic.projectUpdate = function projectUpdate(socket, msg) {\n\tfunction createFromFilter($tw, filter, project, tabName, tabType) {\n\t\tvar titles = [];\n\t\tvar json = get$tw('project').wiki.getTiddlersAsJson(filter);\n\t\tvar text = json\n\t\t\t.replace(/\\$\\$\\$project\\$\\$\\$/g, project)\n\t\t\t.replace(/\\$\\$\\$tab\\$\\$\\$/g, tabName)\n\t\t\t.replace(/\\$\\$\\$type\\$\\$\\$/g, tabType);\n\t\tvar tiddlers = get$tw('project').wiki.deserializeTiddlers(null,text,\n\t\t\t{title: 'unused'},\n\t\t\t{deserializer: 'application/json'});\n\t\t$tw.utils.each(tiddlers, (tiddler) => {\n\t\t\t$tw.wiki.addTiddler(new $tw.Tiddler(\n\t\t\t\ttiddler,\n\t\t\t\t$tw.wiki.getCreationFields(),\n\t\t\t\t$tw.wiki.getModificationFields()\n\t\t\t))\n\t\t\ttitles.push(`[[${tiddler.title}]]`);\n\t\t});\n\t\treturn titles;\n\t}\n\n\tvar sender = cpy(msg.senderTiddler);\n\tvar resultMsg = '';\n\tsender.ioResult = '';\n\n\tvar dstWiki = sender.ioPrjWiki;\n\tvar project = sender.ioPrjProject;\n\tvar tabName = sender.ioPrjTabName;\n\tvar tabType = sender.ioPrjTabType;\n\tvar $tw = get$tw(dstWiki); // get$tw(msg.req.wikiName);\n\tif (!tabName) {\n\t\ttabName = 'default';\n\t}\n\tif (!tabType) {\n\t\ttabType = 'code';\n\t}\n\tif (!project) {\n\t\tresultMsg = 'A project name is required.';\n\t}\n\telse if (!dstWiki) {\n\t\tresultMsg = 'A destination wiki (On Wiki) name is required.';\n\t}\n\telse if ($tw.wiki.tiddlerExists(`${project}-${tabType}-${tabName}`)) {\n\t\tresultMsg = `Tab '[[${project}-${tabType}-${tabName}]]' already exists!`;\n\t}\n\n\t// Return if error\n\tif (resultMsg) {\n\t\tsender.ioResult = $tpi.fn.formatIoResult(resultMsg);\n\t\tmsg.resultTiddlers.push(sender);\n\t\treturn msg;\n\t}\n\n\tvar filter;\n\tif ($tw.wiki.tiddlerExists(project)) {\n\t\tfilter = `[[$$$project$$$-${tabType}-$$$tab$$$]]`; // Tab\n\t} else {\n\t\tfilter = '[[$$$project$$$]]'; // Project\n\t}\n\n\tvar titles = createFromFilter($tw, filter, project, tabName, tabType);\n\n\tsender.ioPrjTabName = '';\n\tsender.ioResult = $tpi.fn.formatIoResult(`Tiddlers created:\\n\\n${titles.join(', ')}`);\n\tmsg.resultTiddlers.push(sender);\n\t$tpi.fn.io.refreshClients(dstWiki);\n\treturn msg;\n}\n",
+            "caption": "update",
+            "created": "20250114051014394",
+            "modified": "20250118091525941",
+            "tags": "project code $:/pocket-io/project/code",
+            "type": "application/javascript"
+        },
+        "project-code-upload": {
+            "title": "project-code-upload",
+            "text": "// Upload code to server\n$tpi.topic.projectUpload = function projectUpload(socket, msg) {\n\tvar $cw = get$tw(msg.req.wikiName);\n\tvar sender = cpy(msg.senderTiddler);\n\tsender.ioResult = '';\n\n\tvar project = sender.title;\n\tvar tabName = sender.ioPrjTabSelected;\n\n\tif (tabName === 'AALLLL') {\n\t\ttabName = `[tag[$:/pocket-io/code/${project}]]`;\n\t}\n\tif (!/^\\[/.test(tabName)) {\n\t\ttabName = `[[${tabName}]]`;\n\t}\n\tvar minify = true;\n\tif (sender.ioPrjMinify && sender.ioPrjMinify !== 'yes') {\n\t\tminify = false;\n\t}\n\tsender.ioResult = $tpi.fn.formatIoResult($tpi.getCode(msg.req.wikiName,$cw, tabName, minify));\n\tmsg.resultTiddlers.push(sender);\n\treturn msg;\n}\n",
+            "caption": "upload",
+            "created": "20250114051152456",
+            "modified": "20250118091656954",
+            "tags": "project code $:/pocket-io/project/code",
+            "type": "application/javascript"
+        },
+        "project-dashboard-main": {
+            "title": "project-dashboard-main",
+            "caption": "main",
+            "created": "20250114040843341",
+            "modified": "20250118094959271",
+            "tags": "project dashboard $:/pocket-io/project/dashboard",
+            "type": "text/vnd.tiddlywiki",
+            "text": "Projects are composed of 5 types of tiddlers\n\n * GUI Templates\n * Dashboard Tiddlers\n * Server JavaScript Code\n * Plugin Information\n * Documentation\n\n[[project]]\n"
+        },
+        "project-docs-writeup": {
+            "title": "project-docs-writeup",
+            "caption": "writeup",
+            "created": "20250114065124338",
+            "modified": "20250114065124338",
+            "tags": "project docs $:/pocket-io/project/docs",
+            "type": "text/vnd.tiddlywiki",
+            "text": "docs goes here"
+        },
+        "project-info-license": {
+            "title": "project-info-license",
+            "caption": "license",
+            "created": "20250118080940869",
+            "modified": "20250118080940869",
+            "tags": "project info $:/pocket-io/project/info",
+            "type": "text/vnd.tiddlywiki",
+            "text": "info Plugin Information (ex: readme, license) goes here"
+        },
+        "project-info-readme": {
+            "title": "project-info-readme",
+            "caption": "readme",
+            "created": "20250118080529756",
+            "modified": "20250118080529756",
+            "tags": "project info $:/pocket-io/project/info",
+            "type": "text/vnd.tiddlywiki",
+            "text": "info Plugin Information (ex: readme, license) goes here"
+        },
+        "project-template-copy": {
+            "title": "project-template-copy",
+            "caption": "copy",
+            "created": "20250114042050726",
+            "modified": "20250114055729960",
+            "tags": "project $:/pocket-io/project/template template",
+            "type": "text/vnd.tiddlywiki",
+            "text": "\\define submitCopy()\n<<pocket-io \"projectCopy\">>\n\\end\n\n\\define copyButton()\n<$button actions=\"<<submitCopy>>\"> {{!!ioPrjCopyAction}} </$button>\n\\end\n\n\\define copyAction()\n<$select field=\"ioPrjCopyAction\" default=\"Move\"><option>Copy</option><option>Move</option></$select>\n\\end\n\n\\define fromProjectSelect()\n<$select field=\"ioPrjFromProject\"><$list filter=\"[tag[Projects]] -[[$$$project$$$]]\"><option value={{!!title}} ><$view field='title'/></option></$list></$select>\n\\end\n\n\\define toProjectSelect()\n<$select field=\"ioPrjToProject\" default=\"\"><$list filter=\"[tag[Projects]] -[[$$$project$$$]]\"><option value={{!!title}} ><$view field='title'/></option></$list></$select>\n\\end\n\n\\define fromTabSelect()\n<$select field=\"ioPrjFromTab\"><$list filter=\"[tag{!!ioPrjFromProject}tag[tab]]\"><option value={{!!title}} ><$view field='caption'/></option></$list></$select>\n\\end\n\n!!! Not yet implemented!!!\n\n|tc-center tc-table-no-border|k\n| <<copyAction>>| Project |<<fromProjectSelect>> | Tab |<<fromTabSelect>>|\n\n|tc-center tc-table-no-border|k\n| To| Project |<<toProjectSelect>> | <<copyButton>> |<|\n"
+        },
+        "project-template-create": {
+            "title": "project-template-create",
+            "caption": "create",
+            "created": "20250114042440178",
+            "modified": "20250118082146530",
+            "tags": "project $:/pocket-io/project/template template",
+            "type": "text/vnd.tiddlywiki",
+            "text": "\\define submitCreate()\n<<pocket-io \"projectCreate\">>\n\\end\n\n\\define createButton()\n<$button actions=\"<<submitCreate>>\"> Create </$button>\n\\end\n\n\\define projectEditBox()\n<$edit-text field=\"ioPrjProject\"/>\n\\end\n\n\\define onWikiSelect()\n<$select field=\"ioPrjWiki\" default=\"\">\n<$list filter=\"[list[$:/temp/pocket-io/wikinames]] -[[codebase]]\">\n<option value={{!!title}} ><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n|tc-center tc-table-no-border|k\n| Wiki |<<onWikiSelect>> | Project |<<projectEditBox>> |<<createButton>> |\n"
+        },
+        "project-template-delete": {
+            "title": "project-template-delete",
+            "caption": "delete",
+            "created": "20250114042648227",
+            "modified": "20250114063928278",
+            "tags": "project $:/pocket-io/project/template template",
+            "type": "text/vnd.tiddlywiki",
+            "text": "\\define submitDelete()\n<<pocket-io \"projectDelete\">>\n\\end\n\n\\define tabSelect()\n<$select field=\"ioPrjTabToDelete\" default=\"AALLLL\"><option value=\"AALLLL\" >PROJECT</option><$list filter=\"[tag{!!title}tag[code]]\"><option value={{!!title}} ><$view field='caption'/></option></$list></$select>\n\\end\n\n\\define deleteButton()\n<$button actions=\"<<submitDelete>>\"> Delete </$button>\n\\end\n\n\\define confirmButton()\n<span class=\"poc2go-delete-confirm\"><$checkbox field=\"ioConfirmDelete\" checked=\"yes\" unchecked=\"no\" default=\"no\"> confirm</$checkbox></span>\n\\end\n\n|tc-center tc-table-no-border|k\n|<<deleteButton>> |<<tabSelect>> |<<confirmButton>> |"
+        },
+        "project-template-newtab": {
+            "title": "project-template-newtab",
+            "caption": "newtab",
+            "created": "20250114042927562",
+            "ioPrjTabType": "code",
+            "ioPrjWiki": "dashboard",
+            "modified": "20250118150217312",
+            "tags": "project $:/pocket-io/project/template template",
+            "type": "text/vnd.tiddlywiki",
+            "text": "\\define submitNewTab()\n<<pocket-io \"projectUpdate\">>\n\\end\n\n\\define newTabButton()\n<$button actions=\"<<submitNewTab>>\"> New tab </$button>\n\\end\n\n\\define onWikiSelect()\n<$select field=\"ioPrjWiki\" default=\"\">\n<$list filter=\"[list[$:/temp/pocket-io/wikinames]] -[[codebase]]\">\n<option value={{!!title}} ><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n\\define newTabType()\n<$select field=\"ioPrjTabType\" default=\"code\"><option>dashboard</option>\n<option>template</option>\n<option>code</option>\n<option>info</option>\n<option>docs</option>\n</$select>\n\\end\n\n\\define newTabEditBox()\n<$edit-text field=\"ioPrjTabName\" class=\"tid-input\"/>\n\\end\n\n<style> input[type=\"text\"], textarea { width: 150px; } </style>\n\n|tc-center tc-table-no-border|k\n| Wiki |<<onWikiSelect>> | Tab Type |<<newTabType>> |<<newTabEditBox>> |<<newTabButton>> |\n"
+        },
+        "project-template-upload": {
+            "title": "project-template-upload",
+            "caption": "upload",
+            "created": "20250114043207324",
+            "modified": "20250114062743494",
+            "tags": "project $:/pocket-io/project/template template",
+            "type": "text/vnd.tiddlywiki",
+            "text": "\\define submitUpload()\n<<pocket-io \"projectUpload\">>\n\\end\n\n\\define uploadButton()\n<$button actions=\"<<submitUpload>>\"> Upload </$button>\n\\end\n\n\\define tabSelect()\n<$select field=\"ioPrjTabSelected\" default=\"AALLLL\"><option value=\"AALLLL\" >All</option><$list filter=\"[tag{!!title}tag[code]]\"><option value={{!!title}} ><$view field='caption'/></option></$list></$select>\n\\end\n\n\\define minifyCheckbox()\n<$checkbox field=\"ioPrjMinify\" checked=\"yes\" unchecked=\"no\" default=\"yes\"> Minify code</$checkbox>\n\\end\n\n|tc-table-no-border|k\n|<<uploadButton>> |<<tabSelect>> |<<minifyCheckbox>> |\n"
+        },
+        "$:/plugins/poc2go/project/project/license": {
+            "title": "$:/plugins/poc2go/project/project/license",
+            "caption": "license",
+            "created": "20250118080940869",
+            "modified": "20250118080940869",
+            "tags": "",
+            "type": "text/vnd.tiddlywiki",
+            "text": "info Plugin Information (ex: readme, license) goes here"
+        },
+        "$:/plugins/poc2go/project/project/readme": {
+            "title": "$:/plugins/poc2go/project/project/readme",
+            "caption": "readme",
+            "created": "20250118080529756",
+            "modified": "20250118080529756",
+            "tags": "",
+            "type": "text/vnd.tiddlywiki",
+            "text": "info Plugin Information (ex: readme, license) goes here"
+        }
+    }
+}

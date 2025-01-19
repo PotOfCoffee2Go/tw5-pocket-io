@@ -1,0 +1,13 @@
+caption: ioResult
+created: 20250116064133466
+modified: 20250116064341683
+tags: pocket-io template $:/pocket-io/template/project
+title: $:/pocket-io/ioError-template
+type: text/vnd.tiddlywiki
+
+<div style="border: 1px solid aqua;border-radius: 10px; padding-left: 1em;">
+
+<$button actions='<$action-setfield $field="ioError" $value="" />' style="float:right;margin-right:1em;"> close </$button>
+@@color:red; $$$text$$$ @@
+
+</div>

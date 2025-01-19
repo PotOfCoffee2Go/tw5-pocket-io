@@ -11,7 +11,7 @@ const socketLibrary = '/pocket.io/pocket.io.js';
 
 // Network status
 const netStatus = {
-	title: '$:/poc2go/SideBarSegment',
+	title: '$:/poc2go/pocket-io/SideBarSegment',
 	'list-before': '$:/core/ui/SideBarSegments/page-controls',
 	tags: '$:/tags/SideBarSegment',
 	text: `{{$:/temp/pocket-io/netstat}}`
