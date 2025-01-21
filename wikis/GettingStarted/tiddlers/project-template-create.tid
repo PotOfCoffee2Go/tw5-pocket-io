@@ -1,0 +1,36 @@
+caption: create
+created: 20250114042440178
+modified: 20250120195133742
+tags: project $:/pocket-io/project/template template
+title: project-template-create
+type: text/vnd.tiddlywiki
+
+\define submitResetAll()
+<<pocket-io "resetIoFields">>
+\end
+
+\define resetAllButton()
+<$button actions="<<submitResetAll>>"> Reset </$button>
+\end
+\define submitCreate()
+<<pocket-io "projectCreate">>
+\end
+
+\define createButton()
+<$button actions="<<submitCreate>>"> Create </$button>
+\end
+
+\define projectEditBox()
+<$edit-text field="ioPrjProject"/>
+\end
+
+\define onWikiSelect()
+<$select field="ioPrjWiki" default="">
+<$list filter="[list[$:/temp/pocket-io/wikinames]] -[[codebase]]">
+<option value={{!!title}} ><$view field='title'/></option>
+</$list>
+</$select>
+\end
+
+|tc-center tc-table-no-border|k
+|<<resetAllButton>> | Wiki |<<onWikiSelect>> | New Project |<<projectEditBox>> |<<createButton>> |

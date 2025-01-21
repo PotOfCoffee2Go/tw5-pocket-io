@@ -1,0 +1,39 @@
+autoLoad: yes
+caption: Plugin Manager
+created: 20250114164318852
+creator: poc2go
+ioAuthor: 
+ioDisplayButtons: <<resetAllButton>>
+ioError: 
+ioPublisher: 
+ioResult: 
+ioSrcProjectList: $$$project$$$ helloworld plugin project
+ioSrcProjectWiki: GettingStarted
+ioSrcTiddlerList: 
+ioSystem: GettingStarted
+ioType: application/json
+ioVersion: 0.0.0
+modified: 20250121052934524
+modifier: poc2go
+tags: plugin Projects
+title: plugin
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header Plugin Management System @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+<!-- Comment out templates not applicable for this project -->
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<<closeTabsButton "plugin" "dashboard">>
+<<closeTabsButton "plugin" "template">>
+<<projectUploadButton>>
+<<closeTabsButton "plugin" "code">>
+<<closeTabsButton "plugin" "info">>
+<<closeTabsButton "plugin" "docs">>
+<<topButton>>

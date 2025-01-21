@@ -1,0 +1,129 @@
+caption: create
+created: 20250116213749229
+creator: poc2go
+modified: 20250121052515996
+modifier: poc2go
+tags: plugin $:/pocket-io/plugin/template template
+title: plugin-template-create
+type: text/vnd.tiddlywiki
+
+\define submitResetAll()
+<<pocket-io "resetIoFields">>
+\end
+
+\define resetAllButton()
+<$button actions="<<submitResetAll>>"> Reset </$button>
+\end
+
+\define submitGenerate()
+<<pocket-io "pluginCreate" "[[$:/status/UserName]]">>
+\end
+
+\define generateButton()
+<$button actions="<<submitGenerate>>"> Update </$button>
+\end
+
+\define submitBuilder()
+<<pocket-io "pluginBuilder">>
+\end
+
+\define builderButton()
+<$button actions="<<submitBuilder>>"> Build </$button>
+\end
+
+\define helpButton()
+<$button to="plugin-docs-help"> Help </$button>
+\end
+
+\define srcWikiSelect()
+<$select field="ioSrcProjectWiki" default="" 
+actions="<<submitGenerate>>" >
+<$list filter="[list[$:/temp/pocket-io/wikinames]]">
+<option value={{!!title}} ><$view field='title'/></option>
+</$list></$select>
+\end
+
+\define projectSelect()
+<$select field="ioSrcProject" default="" class="select-dropdown"
+actions="<<submitGenerate>>" >
+<$list filter="[list[!!ioSrcProjectList]]">
+<option value={{!!title}} ><$view field='title'/></option>
+</$list></$select>
+\end
+
+\define stabilitySelect()
+<$select field="ioStability" default="STABILITY_2_STABLE"
+actions="<<submitGenerate>>" >
+<option value="STABILITY_2_STABLE"> Stable </option>
+<option value="STABILITY_1_EXPERIMENTAL"> Experimental </option>
+<option value="STABILITY_3_LEGACY"> Legacy </option>
+<option value="STABILITY_0_DEPRECATED"> Deprecated </option>
+</$select>
+\end
+
+\define dstWikiSelect()
+<$select field="ioDstPluginWiki" default="" 
+actions="<<submitGenerate>>" >
+<$list filter="[list[$:/temp/pocket-io/wikinames]]">
+<option value={{!!title}} ><$view field='title'/></option>
+</$list></$select>
+\end
+
+\define infoTabs()
+<<tabs "[tag{!!ioSrcProject}tag[info]]" >>
+\end
+
+\define pluginEditBox(fieldname,placeholder)
+<$edit-text field="$fieldname$" class="create-editbox" placeholder="$placeholder$" />
+\end
+
+\define pluginEditAreaBox(fieldname,placeholder)
+<$edit-text field="$fieldname$" class="create-editbox" placeholder="$placeholder$" tag=textarea />
+\end
+
+<style>
+.create-editbox { width: 200px; }
+table { border-collapse: separate; border-spacing: .5em; }
+.create-title { width: 500px; }
+.select-dropdown { min-width: 20px; }
+</style>
+
+<<helpButton>> {{!!ioDisplayButtons}}
+
+|tc-table-no-border|k
+| From Wiki|<<srcWikiSelect>> | To Wiki|<<dstWikiSelect>> |
+| Publisher|<<pluginEditBox ioPublisher  'Required'>> | System |<<pluginEditBox ioSystem  'Recommended'>> |
+
+|tc-center tc-table-no-border|k
+| Project <<projectSelect>> |
+| Stability <<stabilitySelect>> |
+
+|tc-table-no-border|k
+|>| <$text text="$:/plugins/publisher/system/project"/> |
+| Title | <$edit-text field="ioTitle" class="create-title" /> |
+| Description|<$edit-text field="ioDescription" class="create-title" />|
+| List |<<pluginEditBox ioList>> |
+|^ Plugin Tabs|<$macrocall $name="closeTabsButton" project={{!!ioSrcProject}} tab="info" /> |
+
+<div style="float:left;">
+
+|tc-table-no-border|k
+| Name |<<pluginEditBox ioName 'Recommended'>> |
+| Author |<<pluginEditBox ioAuthor 'Recommended'>> |
+| Version |<<pluginEditBox ioVersion>> |
+| Text |<<pluginEditBox ioText>> |
+
+{{!!ioError}}
+
+</div>
+<div>
+
+|tc-table-no-border|k
+| Plugin Type |<<pluginEditBox ioPluginType>> |
+| Type |<<pluginEditBox ioType>> |
+| Plugin Priority |<<pluginEditBox ioPluginPriority>> |
+| Dependents |<<pluginEditBox ioDependents>> |
+| Parent Plugin |<<pluginEditBox ioParentPlugin>> |
+| Source |<<pluginEditBox ioSource>> |
+
+</div>

@@ -1,0 +1,31 @@
+caption: unpack
+created: 20250114165322723
+modified: 20250115094046124
+tags: plugin $:/pocket-io/plugin/template template
+title: plugin-template-unpack
+type: text/vnd.tiddlywiki
+
+\define submitUnpack()
+<<pocket-io "pluginUnpack">>
+\end
+
+\define submitRepack()
+<<pocket-io "pluginRepack">>
+\end
+
+\define unpackButton()
+<$button actions="<<submitUnpack>>"> Unpack </$button>
+\end
+
+\define repackButton()
+<$button actions="<<submitRepack>>"> Repack </$button>
+\end
+
+\define deleteButton()
+<$button actions='<$action-deletetiddler $filter={{Plugin Management!!ioPluginFilter}}/>'>
+Delete unpacked {{Plugin Management!!ioPluginFilter}}
+</$button>
+\end
+
+|tc-table-no-border|k
+| Plugin |<<unpackButton>> <<repackButton>> <<deleteButton>> |

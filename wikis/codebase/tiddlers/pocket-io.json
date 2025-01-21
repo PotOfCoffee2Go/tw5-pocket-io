@@ -1,0 +1,21 @@
+[
+    {
+        "created": "20241112191809092",
+        "title": "pocket-io",
+        "modified": "20250120205517499",
+        "tags": "pocket-io Projects",
+        "type": "text/vnd.tiddlywiki",
+        "text": "|tc-center tc-table-no-border|k\n|@@.poc2go-project-header [[Pocket-io sockets interface|pocket-io docs]] @@|\n\n{{||$:/pocket-io/project/autoload-template}}\n{{||$:/pocket-io/project/upload-template}}\n{{||$:/pocket-io/project/newtab-template}}\n<!-- {{||$:/pocket-io/project/delete-template}} -->\n\n{{!!ioResult}}\n\n{{||$:/pocket-io/project/writeup-template}}\n\n@@.poc2go-mono {{$:/pocket-io/code/pocket-io||$:/core/ui/TagTemplate}} @@\n\n<<closeTabsButton '$:/state/tab/pocket-io/code/pocket-io'>>\n<<tabs \"[tag[$:/pocket-io/code/pocket-io]]\" \"\" \"$:/state/tab/pocket-io/code/pocket-io\" \"tc-horizontal\">>\n\n<<topButton>>\n",
+        "autoLoad": "yes",
+        "caption": "Pocket.io sockets",
+        "color": "#5dcbc9",
+        "ioConfirmDelete": "no",
+        "ioPrjProject": "pocket-io",
+        "ioPrjTabName": "",
+        "ioPrjTabSelected": "pocket-io-formatIoResultUpload",
+        "ioPrjTabToDelete": "pocket-io-$data",
+        "ioPrjUpload": "pocket-io-pocket.io",
+        "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n01/20/2025 15:55 \n1 code tiddlers loaded - 0.172K bytes.\n\n</div>\n",
+        "writeup": "pocket-io writeup"
+    }
+]

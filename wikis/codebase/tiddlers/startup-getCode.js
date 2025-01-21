@@ -32,9 +32,10 @@ $tpi.getCode = function replGetCode(wikiName, $cw, filter, minify = true) {
 				return;
 			}
 		}
+		codeText.code = codeText.code.replace(/\t/g, '  ');
 		$tpi.fn.showStdout();
 		hog(`\nTiddler '${tiddler.title}' ${codeText.code.length} bytes`, 149);
-		$rt.write(codeText.code + '\n');
+		process.stdin.write(codeText.code);
 		byteCount += codeText.code.length;
 		$tpi.fn.hideStdout();
 	})

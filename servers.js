@@ -35,7 +35,7 @@ serverSettings.forEach((settings, idx) => {
 })
 
 // REPL
-var $rt = require('node:repl').start({ prompt: '', ignoreUndefined: true });
+var $rt = require('node:repl').start({ prompt: '', ignoreUndefined: true, tabSize: 2 });
 var $rw, $sockets = {};
 
 // REPL context

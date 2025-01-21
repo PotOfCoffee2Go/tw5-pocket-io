@@ -1,0 +1,36 @@
+autoLoad: yes
+caption: Project Management
+created: 20250114040241341
+ioPrjProject: plugin
+ioPrjTabName: 
+ioPrjTabSelected: project-code-update
+ioPrjWiki: GettingStarted
+ioResult: 
+ioResultUpload: 
+modified: 20250120232923373
+tags: project Projects
+title: project
+type: text/vnd.tiddlywiki
+writeup: project writeup
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header Project Mangement System @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+<!-- Comment out templates not applicable for this project -->
+{{||project-template-create}}
+{{||project-template-newtab}}
+<!-- {{||project-template-delete}} -->
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<<closeTabsButton "project" "template">>
+<<closeTabsButton "project" "dashboard">>
+<<projectUploadButton>>
+<<closeTabsButton "project" "code">>
+<<closeTabsButton "project" "info">>
+<<closeTabsButton "project" "docs">>
+<<topButton>>

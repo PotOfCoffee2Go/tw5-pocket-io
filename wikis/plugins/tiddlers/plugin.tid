@@ -6,7 +6,6 @@ ioAuthor:
 ioDisplayButtons: <<resetAllButton>> <<generateButton>> <<builderButton>>
 ioDstPluginWiki: dashboard
 ioError: 
-ioList: $:/project/readme $:/project/license
 ioName: project
 ioPluginType: plugin
 ioPublisher: poc2go
@@ -17,10 +16,10 @@ ioSrcProjectWiki: project
 ioSrcTiddlerList: project project-code-create project-code-delete project-code-update project-code-upload project-dashboard-main project-docs-writeup project-info-license project-info-readme project-template-copy project-template-create project-template-delete project-template-newtab project-template-upload
 ioSystem: project
 ioText: {"tiddlers":{}}
-ioTitle: $:/plugins/poc2go/project/project
+ioTitle: $:/plugins/poc2go/project
 ioType: application/json
 ioVersion: 0.0.0
-modified: 20250119181345866
+modified: 20250120220020385
 modifier: poc2go
 tags: plugin Projects
 title: plugin
@@ -38,18 +37,9 @@ type: text/vnd.tiddlywiki
 {{!!ioResult}}
 
 <<closeTabsButton "plugin" "dashboard">>
-<<tabs "[all[shadows+tiddlers]tag[$:/pocket-io/plugin/dashboard]]" "" "$:/state/tab/pocket-io/plugin/dashboard">>
-
 <<closeTabsButton "plugin" "template">>
-<<tabs "[all[shadows+tiddlers]tag[$:/pocket-io/plugin/template]]" "" "$:/state/tab/pocket-io/plugin/template">>
-
+<<projectUploadButton>>
 <<closeTabsButton "plugin" "code">>
-<<tabs "[all[shadows+tiddlers]tag[$:/pocket-io/plugin/code]]" "" "$:/state/tab/pocket-io/plugin/code" "tc-horizontal">>
-
 <<closeTabsButton "plugin" "info">>
-<<tabs "[tag[$:/pocket-io/plugin/info]]" "" "$:/state/tab/pocket-io/plugin/info" "tc-horizontal">>
-
 <<closeTabsButton "plugin" "docs">>
-<<tabs "[all[shadows+tiddlers]tag[$:/pocket-io/plugin/docs]]" "" "$:/state/tab/pocket-io/plugin/docs" "tc-horizontal">>
-
 <<topButton>>

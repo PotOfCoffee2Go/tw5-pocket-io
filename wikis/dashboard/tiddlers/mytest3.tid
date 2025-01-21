@@ -1,0 +1,38 @@
+autoLoad: no
+caption: mytest3
+created: 20250120042935140
+ioConfirmDelete: no
+ioPrjProject: mytest3
+ioPrjTabName: 
+ioPrjTabSelected: mytest3-a
+ioPrjTabToDelete: mytest3-a
+ioPrjTabType: template
+ioResult: 
+modified: 20250120043606128
+tags: mytest3 Projects
+title: mytest3
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header Edit this description and change caption @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+|tc-center tc-table-no-border|k
+| New tab |<<projectTabType>> |<<projectSubmitTab>>|
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<<closeTabsButton "mytest3" "template">>
+
+<<closeTabsButton "mytest3" "dashboard">>
+
+<<closeTabsButton "mytest3" "code">>
+
+<<closeTabsButton "mytest3" "info">>
+
+<<closeTabsButton "mytest3" "docs">>
+
+<<topButton>>

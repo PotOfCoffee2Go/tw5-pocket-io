@@ -1,0 +1,34 @@
+caption: Step 1<br>Syncing
+created: 20250120132220255
+modified: 20250120215557629
+tags: $:/tags/GettingStarted
+title: GettingStarted
+type: text/vnd.tiddlywiki
+
+\define extlink()
+[ext[$(currentTiddler)$|$(currentTiddler)$]]
+\end
+
+<style>.cols3{column-count:3}</style>
+
+Welcome to TW5 Pocket-io.
+
+This system networks together multiple TiddlyWikis. This is done using WikiText client-side and JavaScript server-side. The JavaScript is stored as tiddlers and uploaded to the server.
+
+Active wikis in the network:
+<$list filter="[list[$:/temp/pocket-io/wikinames]]">
+&nbsp;<<extlink>>&nbsp;
+</$list>
+
+Tasks are organized into 'Projects'.
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono {{Projects||$:/core/ui/TagTemplate}} @@|
+
+<div style="margin-top: 0.6em; border: 1px solid #70b351; border-radius: 10px;" >
+
+<<list-links filter:"[tag[Projects]!is[draft]] -[[$$$project$$$]]" class:"cols3">>
+
+</div>
+
+

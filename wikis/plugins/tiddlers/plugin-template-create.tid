@@ -1,7 +1,7 @@
 caption: create
 created: 20250116213749229
 creator: poc2go
-modified: 20250119181216104
+modified: 20250119192715055
 modifier: poc2go
 tags: plugin $:/pocket-io/plugin/template template
 title: plugin-template-create
@@ -60,20 +60,23 @@ actions="<<submitGenerate>>" >
 \end
 
 \define pluginEditBox(fieldname,placeholder)
-<$edit-text field="$fieldname$" placeholder="$placeholder$" />
+<$edit-text field="$fieldname$" class="create-editbox" placeholder="$placeholder$" />
 \end
 
 \define pluginEditAreaBox(fieldname,placeholder)
-<$edit-text field="$fieldname$" placeholder="$placeholder$" tag=textarea />
+<$edit-text field="$fieldname$" class="create-editbox" placeholder="$placeholder$" tag=textarea />
 \end
 
 <style>
-input[type=text], textarea {
+.create-editbox {
   width: 200px;
 }
 table {
   border-collapse: separate; 
   border-spacing: .5em;
+}
+.create-title {
+    width: 400px;
 }
 </style>
 
@@ -84,6 +87,9 @@ table {
 | | Plugin to Wiki|<<dstWikiSelect>> | Publisher |<<pluginEditBox ioPublisher  'Required'>> |
 
 <hr class="poc2go-hr">
+
+|tc-center tc-table-no-border|k
+| Title |<$edit-text field="ioTitle" class="create-title" /> |
 
 <div style="float:left;">
 
@@ -100,7 +106,6 @@ table {
 
 |tc-table-no-border|k
 |<<GenerateButton>> | |
-| Title |<<pluginEditBox ioTitle>> |
 | Author |<<pluginEditBox ioAuthor>> |
 | Version |<<pluginEditBox ioVersion>> |
 | List |<<pluginEditBox ioList>> |
