@@ -5,14 +5,13 @@ $tpi.getCode = function replGetCode(wikiName, $cw, filter, minify = true) {
 	const prevPrompt = $rt.getPrompt();
 	$rt.setPrompt('');
 
-	var byteCount = 0, hasErrors = false;
-	hog(`\nLoading minified code tiddlers from wiki '${wikiName}' to REPL ...`, 149);
+	var byteCount = 0, hasErrors = false, hssErrorText = [];
+	hog(`\nLoading code tiddlers from wiki '${wikiName}' to REPL ...`, 149);
 	hog(`Filters:\n${' ' + filter.replace(/\]\]/g, ']]\n ')}`, 149);
 
 	// Do not display the minified code being loaded to REPL
 	$tpi.fn.hideStdout();
 	$rt.write('.editor\n');
-	$rt.write(`var Done = 'Load complete';\n`);
 	var tiddlers = JSON.parse($cw.wiki.getTiddlersAsJson(filter));
 	tiddlers.forEach(tiddler => {
 		if (tiddler.type !== 'application/javascript') {
@@ -26,27 +25,49 @@ $tpi.getCode = function replGetCode(wikiName, $cw, filter, minify = true) {
 			codeText = UglifyJS.minify(codeText.code);
 			if (codeText.error) {
 				$tpi.fn.showStdout();
-				hog(`Error processing tiddler: '${tiddler.title}'\n${minified.error}`,9);
+				hssErrorText.push(`Error minifying tiddler: '${tiddler.title}'\n${codeText.error}`);
 				$tpi.fn.hideStdout();
 				hasErrors = true;
 				return;
 			}
 		}
-		codeText.code = codeText.code.replace(/\t/g, '  ');
+		// Set $rt.lastError to '[Error: Reset - for load]'
+		$rt.write('throw new Error("Reset - for load")\n');
 		$tpi.fn.showStdout();
 		hog(`\nTiddler '${tiddler.title}' ${codeText.code.length} bytes`, 149);
-		process.stdin.write(codeText.code);
+		$rt.write(codeText.code + '\n');
+		//		process.stdin.write(codeText.code + '\n');
 		byteCount += codeText.code.length;
 		$tpi.fn.hideStdout();
 	})
-	$rt.write('Done\n');
 	$rt.write(null,{ctrl:true, name:'d'})
 	$tpi.fn.showStdout();
+
+	var result = '';
+	if (hasErrors) {
+		result = hssErrorText.join('\n');
+		hog(result,9);		
+	}
+	else if ($rt.lastError && $rt.lastError.toString() !== 'Error: Reset - for load') {
+		if (tiddlers.length === 1) {
+			result = `Error uploading tiddler '${tiddlers[0].title}': @@ ${$rt.lastError} @@`;
+			hog(result,9);
+		} else {
+			result = `Error uploading tiddlers: @@ ${$rt.lastError} @@`;
+			hog(result,9);
+		}
+	} else {
+		if (tiddlers.length === 1) {
+			result = `Tiddler '${tiddlers[0].title}' uploaded - ${(byteCount/1024).toFixed(3)}K bytes.`;
+			hog(result);
+		} else {
+			result = `${tiddlers.length} code tiddlers uploaded - ${(byteCount/1024).toFixed(3)}K bytes.`;
+		hog(result);
+		}
+	}
+	
 	$rt.history = prevHistory;
 	$rt.setPrompt(prevPrompt);
-
-	var result = `\n${tiddlers.length} code tiddlers loaded - ${(byteCount/1024).toFixed(3)}K bytes.`;
-	hog(`\n${tiddlers.length} code tiddlers loaded - ${(byteCount/1024).toFixed(3)}K bytes.`, 149);
 	$rt.displayPrompt();
 	return result;
 }

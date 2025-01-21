@@ -8,7 +8,7 @@ $tpi.topic.helloworld = function (socket, msg) {
 	sender.ioResult = '';
 
 	var title = sender.title;
-	var resultText = `Hello tiddler '[[${title}]]' !`;
+	var resultText = `Hello tiddler '[[${title}]]' !!!`;
 
 	// Format the respone text - see $:/pocket-io/ioResult-template
 	sender.ioResult = $tpi.fn.formatIoResult(resultText);

@@ -3,7 +3,7 @@
         "created": "20250120125139850",
         "text": "|tc-center tc-table-no-border|k\n|@@.poc2go-project-header Hello World!@@|\n\n|tc-center tc-table-no-border|k\n|<$checkbox field=\"autoLoad\" checked=\"yes\" unchecked=\"no\" default=\"no\"> Auto load on startup</$checkbox>|\n\n|tc-center tc-table-no-border|k\n| New tab |<<projectTabType>> |<<projectSubmitTab>>|\n\n<!-- Response to pocket.io requests -->\n{{!!ioResult}}\n\n<<closeTabsButton \"helloworld\" \"dashboard\">>\n<<closeTabsButton \"helloworld\" \"template\">>\n<<projectUploadButton>>\n<<closeTabsButton \"helloworld\" \"code\">>\n<<closeTabsButton \"helloworld\" \"info\">>\n<<closeTabsButton \"helloworld\" \"docs\">>\n<<topButton>>\n",
         "title": "helloworld",
-        "modified": "20250120220420994",
+        "modified": "20250121211148487",
         "tags": "helloworld Projects",
         "type": "text/vnd.tiddlywiki",
         "autoLoad": "yes",
@@ -16,6 +16,7 @@
         "ioPrjTabType": "code",
         "ioResult": "",
         "ioUploadResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n01/20/2025 15:40 Topic 'test' has been called from wiki 'GettingStarted' tiddler 'helloworld'\n\n</div>\n",
-        "ioResultUpload": ""
+        "ioResultUpload": "",
+        "ioPrjMinify": "no"
     }
 ]
