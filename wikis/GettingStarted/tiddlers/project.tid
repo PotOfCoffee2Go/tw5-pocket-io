@@ -1,13 +1,14 @@
 autoLoad: yes
 caption: Project Management
 created: 20250114040241341
-ioPrjProject: plugin
+ioPrjProject: project
 ioPrjTabName: 
-ioPrjTabSelected: project-code-update
+ioPrjTabSelected: project-code-updatetabs
+ioPrjTabType: template
 ioPrjWiki: GettingStarted
 ioResult: 
 ioResultUpload: 
-modified: 20250120232923373
+modified: 20250124060654826
 tags: project Projects
 title: project
 type: text/vnd.tiddlywiki
@@ -27,10 +28,6 @@ writeup: project writeup
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<closeTabsButton "project" "template">>
-<<closeTabsButton "project" "dashboard">>
-<<projectUploadButton>>
-<<closeTabsButton "project" "code">>
-<<closeTabsButton "project" "info">>
-<<closeTabsButton "project" "docs">>
+<<displayTabTypes project>>
+
 <<topButton>>

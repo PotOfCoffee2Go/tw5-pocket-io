@@ -117,7 +117,7 @@ function setNetstat(txt) {
 	var site = `${location.protocol}//${location.hostname}:${location.port}`;
 	$tw.wiki.setText('$:/temp/pocket-io/proxy','text', null, site);
 	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null,
-		`Wiki: {{$:/temp/pocket-io/wikinames}}<br>{{$:/temp/pocket-io/wikinames!!link}}<br>` + txt);
+		`@@font-size:1.1em; Wiki: {{$:/temp/pocket-io/wikinames}}@@<br>{{$:/temp/pocket-io/wikinames!!link}}<br>` + txt);
 }
 
 // ------------------------

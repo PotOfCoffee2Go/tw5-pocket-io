@@ -1,0 +1,31 @@
+autoLoad: no
+caption: Package Maker
+created: 20250122023832259
+ioConfirmDelete: no
+ioPrjProject: package
+ioPrjTabName: 
+ioPrjTabSelected: package-code-globals
+ioPrjTabToDelete: package-a
+ioPrjTabType: info
+ioResult: 
+ioResultUpload: 
+modified: 20250124052111630
+tags: package Projects
+title: package
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header Pocket-io Package Maker @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+|tc-center tc-table-no-border|k
+| New tab |<<projectTabType>> |<<projectSubmitTab>>|
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<<displayTabTypes package>>
+
+<<topButton>>

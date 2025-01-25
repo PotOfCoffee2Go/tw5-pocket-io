@@ -8,7 +8,7 @@ ioPrjTabSelected: AALLLL
 ioPrjTabToDelete: $$$project$$$-$$$tab$$$
 ioPrjTabType: template
 ioResult: 
-modified: 20250120220626049
+modified: 20250124063908659
 tags: $$$project$$$ Projects
 title: $$$project$$$
 type: text/vnd.tiddlywiki
@@ -25,10 +25,6 @@ type: text/vnd.tiddlywiki
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<closeTabsButton "$$$project$$$" "dashboard">>
-<<closeTabsButton "$$$project$$$" "template">>
-<<projectUploadButton>>
-<<closeTabsButton "$$$project$$$" "code">>
-<<closeTabsButton "$$$project$$$" "info">>
-<<closeTabsButton "$$$project$$$" "docs">>
+<<displayTabTypes $$$project$$$>>
+
 <<topButton>>

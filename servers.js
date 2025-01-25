@@ -4,19 +4,24 @@
 "use strict";
 
 // Start of config
-
-// wikisDir - directory containing 'server' edition wikis
-//   All wikis in that diectory will be served starting on
-//   port basePort and increments by one for each wiki
-// 'server' edition host and starting port
-// express proxy host and starting port
 const config = {
+// All 'server' edition wikis in this diectory
 	wikisDir: './wikis',
-	webserver: { host: '127.0.0.1', basePort: 8082 },
-	proxy: { host: '0.0.0.0', basePort: 3002 },
+
+// Will be served on local host (127.0.0.1)
+//  starting on port basePort and increments
+//  by one for each wiki
+	webserver: { host: '127.0.0.1', basePort: 8090 },
+
+// Express proxies to above wikis
+//  DNS domain (or IP address) of this computer
+//  host available on network (0.0.0.0)
+//  starting on port basePort
+	proxy: { domain: 'raspberrypi', host: '0.0.0.0', basePort: 3000 },
+
+// Project's Node.js/NPM package
 	pkg: require('./package.json')
 }
-
 // End of config
 
 // Helpers
@@ -78,12 +83,12 @@ function loadAllCodeToRepl() {
 	var	findProjects = '[tag[Projects]]';
 	serverSettings.forEach(settings => {
 		var $tw = settings.$tw;
-		$tw.wiki.filterTiddlers(findProjects).forEach(title => {
-			if (title !== 'startup') {
-				var projectTid = $tw.wiki.getTiddler(title);
+		$tw.wiki.filterTiddlers(findProjects).forEach(projectTitle => {
+			if (projectTitle !== 'startup') {
+				var projectTid = $tw.wiki.getTiddler(projectTitle);
 				if (projectTid && projectTid.fields && projectTid.fields.autoLoad === 'yes') {
-					codeList.push({wikiName: settings.name, $tw: $tw, filter: `[tag[$:/pocket-io/code/${title}]]`});
-					codeList.push({wikiName: settings.name, $tw: $tw, filter: `[tag[$:/pocket-io/${title}/code]]`});
+					codeList.push({wikiName: settings.name, $tw: $tw, filter: `[tag[$:/pocket-io/code/${projectTitle}]]`});
+					codeList.push({wikiName: settings.name, $tw: $tw, filter: `[tag[$:/pocket-io/${projectTitle}/code]]`});
 				}
 			}
 		})

@@ -1,26 +1,28 @@
 caption: Step 1<br>Syncing
 created: 20250120132220255
-modified: 20250120215557629
+ioResult: 
+modified: 20250124052524352
 tags: $:/tags/GettingStarted
 title: GettingStarted
 type: text/vnd.tiddlywiki
 
 \define extlink()
-[ext[$(currentTiddler)$|$(currentTiddler)$]]
+[[$(currentTiddler)$]]
 \end
 
 <style>.cols3{column-count:3}</style>
 
 Welcome to TW5 Pocket-io.
 
-This system networks together multiple TiddlyWikis. This is done using WikiText client-side and JavaScript server-side. The JavaScript is stored as tiddlers and uploaded to the server.
+This system networks together multiple 'server' editon TiddlyWikis. This is done using WikiText client-side and JavaScript server-side. The JavaScript code is stored in wikis as tiddlers and uploaded to the server on-demand and upon startup.
 
-Active wikis in the network:
-<$list filter="[list[$:/temp/pocket-io/wikinames]]">
-&nbsp;<<extlink>>&nbsp;
-</$list>
+<div style="margin-top: 0.6em; padding-left: 1em; border: 1px solid #70b351; border-radius: 10px;" >
 
-Tasks are organized into 'Projects'.
+{{||Copy Tiddlers}}
+
+</div>
+
+Tasks are organized into 'Projects'. 
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-mono {{Projects||$:/core/ui/TagTemplate}} @@|
@@ -30,5 +32,9 @@ Tasks are organized into 'Projects'.
 <<list-links filter:"[tag[Projects]!is[draft]] -[[$$$project$$$]]" class:"cols3">>
 
 </div>
+
+To add a wiki to the network copy the 'server' edition wiki directory (one containing the 'tiddlywiki.info' file) to the project './wikis' directory.
+
+Can add a new wiki using the standard `tiddlywiki ./wikis/myWiki --init server` command from the project directory. The wiki will be added on startup.
 
 

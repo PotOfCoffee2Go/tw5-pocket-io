@@ -1,19 +1,24 @@
 // Client acknowledges connect sequence is complete
-$tpi.fn.io.ackConnect = function (socket, wiki, urlInfo) {
-	var linkPort = get$proxy('GettingStarted').port;
-	var wikiLink = `${urlInfo.protocol}//${urlInfo.hostname}:${linkPort}/${wiki}`;
-	get$proxy(wiki).link = wikiLink;
-	
-	var wikiRequires = JSON.parse(get$tw('codebase').wiki.getTiddlersAsJson('[[$:/plugins/poc2go/pocket-io]] [[Copy Tiddlers]]'));
+$tpi.fn.io.ackConnect = function (socket, wikiName, urlInfo) {
+	var linkPort = get$proxy(wikiName).port;
+	//var wikiLink = `${urlInfo.protocol}//${urlInfo.hostname}:${linkPort}/${wikiName}`;
+	//get$proxy(wikiName).link = wikiLink;
+
+	var wikiRequires = JSON.parse(get$tw('codebase').wiki.getTiddlersAsJson('[[$:/plugins/poc2go/pocket-io]] [tag[$:/tags/pocket-io/broadcast]]'));
 	// codebase already has required tiddlers
-	wikiRequires = wiki === 'codebase' ? [] : wikiRequires;
+	wikiRequires = wikiName === 'codebase' ? [] : wikiRequires;
+	var links = [];
+	get$wikiNames.forEach(name => {
+		links.push(`[[${name}|${get$proxy(name).link}]]`);
+	})
 	wikiRequires.push({
 		title: '$:/temp/pocket-io/wikinames',
-		text: wiki,
+		text: wikiName,
 		list: $rw.utils.stringifyList(get$wikiNames),
-		link: wikiLink
+		link: get$proxy(wikiName).link,
+		wikiLinks: $rw.utils.stringifyList(links)
 	});
-	$sockets[sid(socket)] = { socket, wiki };
+	$sockets[sid(socket)] = { socket, wikiName };
 	socket.emit('ackConnect', wikiRequires);
-	tog(`Client wiki '${wiki}' ${sid(socket)} connected`);
+	tog(`Client wiki '${wikiName}' ${sid(socket)} connected`);
 }

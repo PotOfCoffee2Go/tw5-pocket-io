@@ -1,0 +1,12 @@
+created: 20250121183446794
+dependents: 
+description: Pocket-io test package
+modified: 20250122195519262
+name: Pocket-io Package Test
+parent-plugin: $:/plugins/poc2go/pocket-io
+plugin-type: plugin
+stability: STABILITY_1_EXPERIMENTAL
+tags: 
+title: $:/plugins/poc2go/pocket-io/package/test
+type: application/json
+version: 0.0.3

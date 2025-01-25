@@ -1,8 +1,12 @@
 created: 20250108083629945
-modified: 20250121211011195
-tags: pocket-io
+modified: 20250123182550164
+tags: $:/tags/pocket-io/broadcast
 title: Copy Tiddlers
 type: text/vnd.tiddlywiki
+
+\define extlink()
+[[$(currentTiddler)$]]
+\end
 
 \define submitCopyTiddlers()
 <<pocket-io "copyTiddlers">>
@@ -23,6 +27,11 @@ type: text/vnd.tiddlywiki
 \define toSelect()
 <$select field="ioToWiki" default=""><$list filter="[list[$:/temp/pocket-io/wikinames]]"><option value={{!!title}} ><$view field='title'/></option></$list></$select>
 \end
+
+Active wikis in the network:
+<$list filter="[enlist{$:/temp/pocket-io/wikinames!!wikiLinks}]">
+&nbsp;<<extlink>>&nbsp;
+</$list>
 
 |tc-table-no-border|k
 | Filter | From wiki | To wiki |  |

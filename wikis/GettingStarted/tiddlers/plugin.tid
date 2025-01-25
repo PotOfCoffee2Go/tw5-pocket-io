@@ -13,7 +13,7 @@ ioSrcTiddlerList:
 ioSystem: GettingStarted
 ioType: application/json
 ioVersion: 0.0.0
-modified: 20250121052934524
+modified: 20250124051619440
 modifier: poc2go
 tags: plugin Projects
 title: plugin
@@ -30,10 +30,6 @@ type: text/vnd.tiddlywiki
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<closeTabsButton "plugin" "dashboard">>
-<<closeTabsButton "plugin" "template">>
-<<projectUploadButton>>
-<<closeTabsButton "plugin" "code">>
-<<closeTabsButton "plugin" "info">>
-<<closeTabsButton "plugin" "docs">>
+<<displayTabTypes plugin>>
+
 <<topButton>>

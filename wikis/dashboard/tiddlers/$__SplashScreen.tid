@@ -1,5 +1,5 @@
 created: 20180927082601825
-modified: 20241201192017258
+modified: 20250122234913658
 tags: $:/tags/RawMarkupWikified/TopBody
 title: $:/SplashScreen
 type: text/vnd.tiddlywiki
@@ -117,9 +117,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </div>
 
 <div class="tc-splash-text">
-<strong> Pocket.io dashboard </strong>
+<strong> {{$:/SiteTitle}} </strong>
 <br/>
-TW5-pocket-io dash database wiki
+{{$:/SiteSubtitle}}
 </div>
 
 

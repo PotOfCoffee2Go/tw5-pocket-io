@@ -1,8 +1,11 @@
-// Redirect to a wiki's proxy server
-// ex: '/dashboard'
-get$wikiNames.forEach(wiki => {
-	var wikiPort = get$settings(wiki).proxy.port;
-	get$router('GettingStarted').get(`/${wiki}`, (req, res) => {
+// All proxy servers can Redirect to another wiki's proxy server
+// ex: 'http://{host}/dashboard' links to dashboard wiki
+/*
+hog('fffffffff');
+get$wikiNames.forEach(wikiName => {
+	hog(`{$wikiName} setup`);
+	var wikiPort = get$settings(wikiName).proxy.port;
+	get$router(wikiName).get(`/${wikiName}`, (req, res) => {
 		var arrHost = req.get('host').split(':');
 		arrHost.pop();
 		arrHost.push(wikiPort);
@@ -11,3 +14,4 @@ get$wikiNames.forEach(wiki => {
 		res.redirect(301, fullUrl);
 	})
 })
+*/
