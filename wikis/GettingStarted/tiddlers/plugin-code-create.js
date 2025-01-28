@@ -16,22 +16,34 @@ $tpi.topic.pluginCreate = function (socket, msg) {
 		sender.ioPublisher = userName ? userName.text : '';
 	}
 	
-	var fakeTw = { wiki: { filterTiddlers: () => '' } };
-	var $prj = get$tw(sender.ioSrcProjectWiki) ?? fakeTw;
+	var $prj = get$tw(sender.ioSrcProjectWiki);
+	if (!$prj) {
+		sender.ioHelp = 'Select Wiki with the project to make into a plugin.';
+		msg.resultTiddlers.push(sender);
+		return msg;
+	}
 
 	var projectQuery = '[tag[Projects]]';
 	var srcProjectList = $prj.wiki.filterTiddlers(projectQuery);
 	var tiddlersQuery = sender.ioSrcProject ? `[tag[${sender.ioSrcProject}]]` : '[[]]';
 	var srcTiddlerList = $prj.wiki.filterTiddlers(tiddlersQuery);
-
+	var infoQuery = `[list[$:/pocket-io/${sender.ioSrcProject}/info]]`;
+	var infoTiddlerNames = $prj.wiki.filterTiddlers(infoQuery);
+	var infoTiddlers = [];
+	infoTiddlerNames.forEach(name => {
+		infoTiddlers.push(name.split('-').pop());
+	})
 	sender.ioSrcProjectList = $rw.utils.stringifyList(srcProjectList);
 	sender.ioSrcTiddlerList = $rw.utils.stringifyList(srcTiddlerList);
+	sender.ioList = $rw.utils.stringifyList(infoTiddlers);
 
 	sender.ioType = 'application/json';
 	sender.ioVersion = sender.ioVersion || '0.0.0';
-
+	sender.ioPluginPriority = '20';
+	
 	if (!sender.ioSrcProject) {
-		sender.ioDisplayButtons = '<<resetAllButton>>';
+		sender.ioDisplayButtons = `<<resetAllButton>>`;
+		sender.ioHelp = 'Select the project to make into a plugin.';
 		msg.resultTiddlers.push(sender);
 		return msg;
 	}
@@ -57,7 +69,8 @@ $tpi.topic.pluginCreate = function (socket, msg) {
 	// Display on client - {{!!ioResult}}
 //	var responseText = `see [[${projectTiddler}]]`;
 //	sender.ioResult = $tpi.fn.formatIoResult(responseText);
-	sender.ioDisplayButtons = '<<resetAllButton>> <<generateButton>> <<builderButton>>';
+	sender.ioDisplayButtons = '<<resetAllButton>> <<createButton>> <<builderButton>>';
+	sender.ioHelp = `Make any changes and 'Update'<br>Press 'Build' to create the plugin`;
 	msg.resultTiddlers.push(sender);
 	return msg;
 

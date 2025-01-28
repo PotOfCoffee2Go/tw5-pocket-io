@@ -1,14 +1,12 @@
 autoLoad: yes
 caption: Project Management
 created: 20250114040241341
-ioPrjProject: project
+ioPrjProject: plugin
 ioPrjTabName: 
-ioPrjTabSelected: project-code-updatetabs
-ioPrjTabType: template
+ioPrjTabType: code
 ioPrjWiki: GettingStarted
 ioResult: 
-ioResultUpload: 
-modified: 20250124060654826
+modified: 20250128185121629
 tags: project Projects
 title: project
 type: text/vnd.tiddlywiki

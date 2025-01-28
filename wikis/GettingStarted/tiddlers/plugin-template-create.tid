@@ -1,109 +1,37 @@
 caption: create
 created: 20250116213749229
 creator: poc2go
-modified: 20250121052515996
+modified: 20250128202816233
 modifier: poc2go
 tags: plugin $:/pocket-io/plugin/template template
 title: plugin-template-create
 type: text/vnd.tiddlywiki
 
-\define submitResetAll()
-<<pocket-io "resetIoFields">>
-\end
+\import plugin-template-procedures
 
-\define resetAllButton()
-<$button actions="<<submitResetAll>>"> Reset </$button>
-\end
+<<helpButton>> {{!!ioDisplayButtons}} {{!!ioHelp}}
 
-\define submitGenerate()
-<<pocket-io "pluginCreate" "[[$:/status/UserName]]">>
-\end
-
-\define generateButton()
-<$button actions="<<submitGenerate>>"> Update </$button>
-\end
-
-\define submitBuilder()
-<<pocket-io "pluginBuilder">>
-\end
-
-\define builderButton()
-<$button actions="<<submitBuilder>>"> Build </$button>
-\end
-
-\define helpButton()
-<$button to="plugin-docs-help"> Help </$button>
-\end
-
-\define srcWikiSelect()
-<$select field="ioSrcProjectWiki" default="" 
-actions="<<submitGenerate>>" >
-<$list filter="[list[$:/temp/pocket-io/wikinames]]">
-<option value={{!!title}} ><$view field='title'/></option>
-</$list></$select>
-\end
-
-\define projectSelect()
-<$select field="ioSrcProject" default="" class="select-dropdown"
-actions="<<submitGenerate>>" >
-<$list filter="[list[!!ioSrcProjectList]]">
-<option value={{!!title}} ><$view field='title'/></option>
-</$list></$select>
-\end
-
-\define stabilitySelect()
-<$select field="ioStability" default="STABILITY_2_STABLE"
-actions="<<submitGenerate>>" >
-<option value="STABILITY_2_STABLE"> Stable </option>
-<option value="STABILITY_1_EXPERIMENTAL"> Experimental </option>
-<option value="STABILITY_3_LEGACY"> Legacy </option>
-<option value="STABILITY_0_DEPRECATED"> Deprecated </option>
-</$select>
-\end
-
-\define dstWikiSelect()
-<$select field="ioDstPluginWiki" default="" 
-actions="<<submitGenerate>>" >
-<$list filter="[list[$:/temp/pocket-io/wikinames]]">
-<option value={{!!title}} ><$view field='title'/></option>
-</$list></$select>
-\end
-
-\define infoTabs()
-<<tabs "[tag{!!ioSrcProject}tag[info]]" >>
-\end
-
-\define pluginEditBox(fieldname,placeholder)
-<$edit-text field="$fieldname$" class="create-editbox" placeholder="$placeholder$" />
-\end
-
-\define pluginEditAreaBox(fieldname,placeholder)
-<$edit-text field="$fieldname$" class="create-editbox" placeholder="$placeholder$" tag=textarea />
-\end
-
-<style>
-.create-editbox { width: 200px; }
-table { border-collapse: separate; border-spacing: .5em; }
-.create-title { width: 500px; }
-.select-dropdown { min-width: 20px; }
-</style>
-
-<<helpButton>> {{!!ioDisplayButtons}}
+<div style="margin-top: 0.6em; padding-left: 1em; border: 1px solid #70b351; border-radius: 10px;" >
 
 |tc-table-no-border|k
-| From Wiki|<<srcWikiSelect>> | To Wiki|<<dstWikiSelect>> |
-| Publisher|<<pluginEditBox ioPublisher  'Required'>> | System |<<pluginEditBox ioSystem  'Recommended'>> |
+| From Wiki|<<srcWikiSelect>> | Project |<<projectSelect>> | |
+| Publisher&nbsp;|<<pluginEditBox ioPublisher  'Recommended'>> | System |<<pluginEditBox ioSystem  'Required'>> |
+| Description|<$edit-text field="ioDescription" class="create-title" placeholder="Recommended"/> |<|<|
+
+</div>
 
 |tc-center tc-table-no-border|k
-| Project <<projectSelect>> |
-| Stability <<stabilitySelect>> |
+| To Wiki <<dstWikiSelect>> |
+| version <$edit-text field="ioVersion" size="1" />  Stability <<stabilitySelect>>  Plugin Priority <$edit-text field="ioPluginPriority" size="1" /> |
+
+<div style="margin-top: 0.6em; padding-left: 1em; border: 1px solid #70b351; border-radius: 10px;" >
 
 |tc-table-no-border|k
 |>| <$text text="$:/plugins/publisher/system/project"/> |
 | Title | <$edit-text field="ioTitle" class="create-title" /> |
-| Description|<$edit-text field="ioDescription" class="create-title" />|
-| List |<<pluginEditBox ioList>> |
-|^ Plugin Tabs|<$macrocall $name="closeTabsButton" project={{!!ioSrcProject}} tab="info" /> |
+|^ Information Tabs|<<infoTabs>> |
+
+</div>
 
 <div style="float:left;">
 
@@ -111,6 +39,7 @@ table { border-collapse: separate; border-spacing: .5em; }
 | Name |<<pluginEditBox ioName 'Recommended'>> |
 | Author |<<pluginEditBox ioAuthor 'Recommended'>> |
 | Version |<<pluginEditBox ioVersion>> |
+| List |<<pluginEditBox ioList>> |
 | Text |<<pluginEditBox ioText>> |
 
 {{!!ioError}}
@@ -121,7 +50,6 @@ table { border-collapse: separate; border-spacing: .5em; }
 |tc-table-no-border|k
 | Plugin Type |<<pluginEditBox ioPluginType>> |
 | Type |<<pluginEditBox ioType>> |
-| Plugin Priority |<<pluginEditBox ioPluginPriority>> |
 | Dependents |<<pluginEditBox ioDependents>> |
 | Parent Plugin |<<pluginEditBox ioParentPlugin>> |
 | Source |<<pluginEditBox ioSource>> |
