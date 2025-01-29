@@ -1,7 +1,5 @@
-color: #70b351
-created: 20241127024210691
-list: startup proxies pocket-io pocket-topic project program REST HelloWorld fetch flotsam repl-tut $$$project$$$ kaluma
-modified: 20250104210531667
-tags: 
+created: 20250129081302645
+list: startup socket topic project $$$project$$$ plugin package
+modified: 20250129131412364
 title: Projects
 type: text/vnd.tiddlywiki

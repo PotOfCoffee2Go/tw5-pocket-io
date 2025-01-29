@@ -1,0 +1,5 @@
+created: 20250129061817636
+list: startup-code-globals startup-code-console startup-code-commands startup-code-getCode startup-code-hideStdout startup-code-refreashClients
+modified: 20250129061828286
+title: $:/pocket-io/startup/code
+type: text/vnd.tiddlywiki

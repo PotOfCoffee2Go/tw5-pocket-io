@@ -3,26 +3,7 @@
 
 "use strict";
 
-// Start of config
-const config = {
-// All 'server' edition wikis in this diectory
-	wikisDir: './wikis',
-
-// Will be served on local host (127.0.0.1)
-//  starting on port basePort and increments
-//  by one for each wiki
-	webserver: { host: '127.0.0.1', basePort: 8090 },
-
-// Express proxies to above wikis
-//  DNS domain (or IP address) of this computer
-//  host available on network (0.0.0.0)
-//  starting on port basePort
-	proxy: { domain: 'raspberrypi', host: '0.0.0.0', basePort: 3000 },
-
-// Project's Node.js/NPM package
-	pkg: require('./package.json')
-}
-// End of config
+const { config } = require('./config');
 
 // Helpers
 const log = (...args) => {console.log(...args);}
@@ -40,7 +21,7 @@ serverSettings.forEach((settings, idx) => {
 })
 
 // REPL
-var $rt = require('node:repl').start({ prompt: '', ignoreUndefined: true, tabSize: 2 });
+var $rt = require('node:repl').start({ prompt: '', ignoreUndefined: true});
 var $rw, $sockets = {};
 
 // REPL context
@@ -78,7 +59,7 @@ function loadAllCodeToRepl() {
 	// codebase 'startup project' loads first
 	codeList.push({wikiName: 'codebase',
 		$tw: serverSettings.find(settings => settings.name === 'codebase').$tw,
-		filter: '[tag[$:/pocket-io/code/startup]]'})
+		filter: '[tag[$:/pocket-io/startup/code]]'})
 
 	var	findProjects = '[tag[Projects]]';
 	serverSettings.forEach(settings => {
@@ -87,7 +68,6 @@ function loadAllCodeToRepl() {
 			if (projectTitle !== 'startup') {
 				var projectTid = $tw.wiki.getTiddler(projectTitle);
 				if (projectTid && projectTid.fields && projectTid.fields.autoLoad === 'yes') {
-					codeList.push({wikiName: settings.name, $tw: $tw, filter: `[tag[$:/pocket-io/code/${projectTitle}]]`});
 					codeList.push({wikiName: settings.name, $tw: $tw, filter: `[tag[$:/pocket-io/${projectTitle}/code]]`});
 				}
 			}
@@ -97,7 +77,6 @@ function loadAllCodeToRepl() {
 	hog(`Loading minified code tiddlers from wikis to REPL:`, 149);
 	codeList.forEach(codeFilter => {
 		replGetCode($rt, codeFilter.wikiName, codeFilter.$tw, codeFilter.filter);
-
 	})
 
 }

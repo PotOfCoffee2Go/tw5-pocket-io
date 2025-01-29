@@ -1,0 +1,14 @@
+[
+    {
+        "created": "20250108083629945",
+        "text": "\\define extlink()\n[[$(currentTiddler)$]]\n\\end\n\n\\define submitCopyTiddlers()\n<<pocket-io \"copyTiddlers\">>\n\\end\n\n\\define copyButton()\n<$button actions=\"<<submitCopyTiddlers>>\"> Copy </$button>\n\\end\n\n\\define filterEditBox()\n<$edit-text field=\"ioFilter\" class=\"tid-input\"/>\n\\end\n\n\\define fromSelect()\n<$select field=\"ioFromWiki\" default=\"\"><$list filter=\"[list[$:/temp/pocket-io/wikinames]]\"><option value={{!!title}} ><$view field='title'/></option></$list></$select>\n\\end\n\n\\define toSelect()\n<$select field=\"ioToWiki\" default=\"\"><$list filter=\"[list[$:/temp/pocket-io/wikinames]]\"><option value={{!!title}} ><$view field='title'/></option></$list></$select>\n\\end\n\nActive wikis in the network:\n<$list filter=\"[enlist{$:/temp/pocket-io/wikinames!!wikiLinks}]\">\n&nbsp;<<extlink>>&nbsp;\n</$list>\n\n<div style=\"margin-top: 1em; padding: 0 1em 0 1em; border: 1px solid #70b351; border-radius: 10px;\" >\n\nCopy tiddlers between wikis:\n\n|tc-table-no-border|k\n| Filter | From wiki | To wiki |  |\n|<<filterEditBox>> |<<fromSelect>> |<<toSelect>> |<<copyButton>> |\n\n</div>\n\n<div style=\"margin-top: 2em; padding: 0 1em 0 1em; border: 1px solid #70b351; border-radius: 10px;\" >\n\nCreate a new project in a wiki:\n\n{{||$:/poc2go/pocket-io/project/create}}\n\n</div>\n\n{{!!ioResult}}\n",
+        "title": "Copy Tiddlers",
+        "modified": "20250129090650760",
+        "tags": "$:/tags/pocket-io/broadcast",
+        "type": "text/vnd.tiddlywiki",
+        "ioResult": "Tiddlers created:\n\n[[sss]]",
+        "ioPrjProject": "sss",
+        "ioPrjWiki": "myWiki",
+        "ioPrjTabName": ""
+    }
+]

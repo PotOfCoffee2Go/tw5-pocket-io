@@ -1,0 +1,30 @@
+autoLoad: yes
+caption: Pocket-io Topics
+created: 20250129072620849
+ioConfirmDelete: no
+ioPrjProject: topic
+ioPrjTabName: 
+ioPrjTabSelected: AALLLL
+ioPrjTabToDelete: topic-a
+ioPrjTabType: code
+ioResult: 
+modified: 20250129081733404
+tags: topic Projects
+title: topic
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header Pocket-io Topics @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+|tc-center tc-table-no-border|k
+| New tab |<<projectTabType>> |<<projectSubmitTab>>|
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<<displayTabTypes topic>>
+
+<<topButton>>

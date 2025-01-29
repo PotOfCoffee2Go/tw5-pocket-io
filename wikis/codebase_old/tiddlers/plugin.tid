@@ -1,0 +1,50 @@
+autoLoad: no
+caption: Plugin Manager
+created: 20250108175711003
+ioConfirmDelete: no
+ioPrjProject: plugin
+ioPrjTabName: 
+ioPrjTabSelected: AALLLL
+ioPrjTabToDelete: plugin-default
+ioPrjTabType: code
+ioResult: 
+modified: 20250114193605785
+tags: plugin Projects
+title: plugin
+type: text/vnd.tiddlywiki
+writeup: plugin writeup
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header [[Plugin Manager|plugin docs]] @@|
+
+<!-- Comment out templates not applicable for this project -->
+{{||$:/pocket-io/project/autoload-template}}
+{{||$:/pocket-io/project/upload-template}}
+{{||$:/pocket-io/project/newtab-template}}
+<!-- {{||$:/pocket-io/project/delete-template}} -->
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<!-- Project writeup text details -->
+{{||$:/pocket-io/project/writeup-template}}
+
+@@.poc2go-mono {{$:/pocket-io/code/plugin||$:/core/ui/TagTemplate}}
+Server JavaScript [[Docs|plugin docs]]
+@@
+
+<<closeTabsButton "$:/state/tab/pocket-io/code/plugin">>
+@@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/plugin]]" ""
+"$:/state/tab/pocket-io/code/plugin" "tc-horizontal">> @@
+
+@@.poc2go-mono {{$:/pocket-io/template/plugin||$:/core/ui/TagTemplate}} GUI Templates @@
+
+<<closeTabsButton "$:/state/tab/pocket-io/template/plugin">>
+<<tabs "[tag[$:/pocket-io/template/plugin]]" "" "$:/state/tab/pocket-io/template/plugin">>
+
+@@.poc2go-mono {{$:/pocket-io/dashboard/plugin||$:/core/ui/TagTemplate}} Dashboard Tiddlers @@
+
+<<closeTabsButton "$:/state/tab/pocket-io/dashboard/plugin">>
+<<tabs "[tag[$:/pocket-io/dashboard/plugin]]" "" "$:/state/tab/pocket-io/dashboard/plugin">>
+
+<<topButton>>

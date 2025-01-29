@@ -1,50 +1,28 @@
-autoLoad: no
+autoLoad: yes
 caption: Plugin Manager
-created: 20250108175711003
-ioConfirmDelete: no
+created: 20250114164318852
+creator: poc2go
 ioPrjProject: plugin
 ioPrjTabName: 
-ioPrjTabSelected: AALLLL
-ioPrjTabToDelete: plugin-default
-ioPrjTabType: code
+ioPrjTabType: docs
 ioResult: 
-modified: 20250114193605785
+modified: 20250129070742740
+modifier: poc2go
 tags: plugin Projects
 title: plugin
 type: text/vnd.tiddlywiki
-writeup: plugin writeup
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-project-header [[Plugin Manager|plugin docs]] @@|
+|@@.poc2go-project-header Plugin Management System @@|
 
-<!-- Comment out templates not applicable for this project -->
-{{||$:/pocket-io/project/autoload-template}}
-{{||$:/pocket-io/project/upload-template}}
-{{||$:/pocket-io/project/newtab-template}}
-<!-- {{||$:/pocket-io/project/delete-template}} -->
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
-<!-- Response to pocket.io requests -->
+|tc-center tc-table-no-border|k
+| New tab |<<projectTabType>> |<<projectSubmitTab>>|
+
 {{!!ioResult}}
 
-<!-- Project writeup text details -->
-{{||$:/pocket-io/project/writeup-template}}
-
-@@.poc2go-mono {{$:/pocket-io/code/plugin||$:/core/ui/TagTemplate}}
-Server JavaScript [[Docs|plugin docs]]
-@@
-
-<<closeTabsButton "$:/state/tab/pocket-io/code/plugin">>
-@@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/plugin]]" ""
-"$:/state/tab/pocket-io/code/plugin" "tc-horizontal">> @@
-
-@@.poc2go-mono {{$:/pocket-io/template/plugin||$:/core/ui/TagTemplate}} GUI Templates @@
-
-<<closeTabsButton "$:/state/tab/pocket-io/template/plugin">>
-<<tabs "[tag[$:/pocket-io/template/plugin]]" "" "$:/state/tab/pocket-io/template/plugin">>
-
-@@.poc2go-mono {{$:/pocket-io/dashboard/plugin||$:/core/ui/TagTemplate}} Dashboard Tiddlers @@
-
-<<closeTabsButton "$:/state/tab/pocket-io/dashboard/plugin">>
-<<tabs "[tag[$:/pocket-io/dashboard/plugin]]" "" "$:/state/tab/pocket-io/dashboard/plugin">>
+<<displayTabTypes plugin>>
 
 <<topButton>>

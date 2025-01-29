@@ -1,0 +1,30 @@
+autoLoad: no
+caption: Code Toolbox
+created: 20250129144333716
+ioConfirmDelete: no
+ioPrjProject: flotsam
+ioPrjTabName: 
+ioPrjTabSelected: AALLLL
+ioPrjTabToDelete: flotsam-default
+ioPrjTabType: code
+ioResult: 
+modified: 20250129144538805
+tags: flotsam Projects
+title: flotsam
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header Code Toolbox @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+|tc-center tc-table-no-border|k
+| New tab |<<projectTabType>> |<<projectSubmitTab>>|
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<<displayTabTypes flotsam>>
+
+<<topButton>>

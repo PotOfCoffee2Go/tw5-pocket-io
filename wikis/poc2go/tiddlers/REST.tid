@@ -1,0 +1,36 @@
+autoLoad: yes
+caption: REST Interface
+created: 20250129135444695
+ioConfirmDelete: no
+ioPrjProject: REST
+ioPrjTabName: 
+ioPrjTabSelected: AALLLL
+ioPrjTabToDelete: REST-default
+ioPrjTabType: code
+ioResult: 
+modified: 20250129141057293
+tags: REST Projects
+title: REST
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header REST Interface @@|
+
+<div class="poc2go-center">
+Dynamic update of express server routes is not implemented in express API.
+<br>
+Enable 'Auto load on startup' and restart server to load updated code.
+</div>
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+|tc-center tc-table-no-border|k
+| New tab |<<projectTabType>> |<<projectSubmitTab>>|
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<<displayTabTypes REST>>
+
+<<topButton>>

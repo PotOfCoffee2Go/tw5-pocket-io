@@ -1,0 +1,40 @@
+autoLoad: no
+caption: REST Interface
+color: #661f6f
+created: 20241121075506314
+ioConfirmDelete: no
+ioPrjProject: REST
+ioPrjTabName: 
+ioPrjTabSelected: REST-helpers
+ioPrjTabToDelete: REST-database
+ioResult: 
+modified: 20250129074736985
+tags: REST Projects
+title: REST
+type: text/vnd.tiddlywiki
+writeup: REST writeup
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header [[REST Access to Wikis|REST docs]] @@|
+
+<div class="poc2go-center">
+Dynamic update of express server routes is not implemented in express API.
+<br>
+Enable 'Auto load on startup' and restart server to load updated code.
+</div>
+
+{{||$:/pocket-io/project/autoload-template}}
+{{||$:/pocket-io/project/newtab-template}}
+{{||$:/pocket-io/project/delete-template}}
+
+{{!!ioResult}}
+
+{{||$:/pocket-io/project/writeup-template}}
+
+@@.poc2go-mono {{$:/pocket-io/code/REST||$:/core/ui/TagTemplate}} @@
+
+<<closeTabsButton '$:/state/tab/pocket-io/code/REST'>>
+<<tabs "[tag[$:/pocket-io/code/REST]]" ""
+"$:/state/tab/pocket-io/code/REST" "tc-horizontal">>
+
+<<topButton>>

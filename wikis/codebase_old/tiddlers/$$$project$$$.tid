@@ -1,0 +1,61 @@
+autoLoad: no
+caption: $$$project$$$
+created: 20241120105017114
+ioConfirmDelete: no
+ioPrjProject: $$$project$$$
+ioPrjTabSelected: $$$project$$$-$$$tab$$$
+ioPrjTabToDelete: $$$project$$$-$$$tab$$$
+ioResult: 
+modified: 20250116215943008
+tags: $$$project$$$ Projects
+title: $$$project$$$
+type: text/vnd.tiddlywiki
+writeup: $$$project$$$ writeup
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header Edit this description and change caption @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+<!-- Comment out templates not applicable for this project -->
+{{||$:/pocket-io/project/autoload-template}}
+{{||$:/pocket-io/project/upload-template}}
+{{||$:/pocket-io/project/newtab-template}}
+<!-- {{||$:/pocket-io/project/delete-template}} -->
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<!-- Project writeup text details -->
+{{||$:/pocket-io/project/writeup-template}}
+
+<!-- Tag pill of code tiddlers in project -->
+@@.poc2go-mono {{$:/pocket-io/code/$$$project$$$||$:/core/ui/TagTemplate}}
+Server Code [[Docs|$$$project$$$ docs]]
+@@
+
+<<closeTabsButton "$:/state/tab/pocket-io/code/$$$project$$$">>
+@@.poc2go-mono <<tabs "[tag[$:/pocket-io/code/$$$project$$$]]" ""
+"$:/state/tab/pocket-io/code/$$$project$$$" "tc-horizontal">> @@
+
+<!-- Tag pill of template tiddlers in project -->
+@@.poc2go-mono {{$:/pocket-io/template/$$$project$$$||$:/core/ui/TagTemplate}}
+GUI Templates
+@@
+
+<<closeTabsButton "$:/state/tab/pocket-io/template/$$$project$$$">>
+@@.poc2go-mono <<tabs "[tag[$:/pocket-io/template/$$$project$$$]]" ""
+"$:/state/tab/pocket-io/template/$$$project$$$" "tc-horizontal">> @@
+
+<!-- Tag pill of dashboard tiddlers in project -->
+@@.poc2go-mono {{$:/pocket-io/dashboard/$$$project$$$||$:/core/ui/TagTemplate}}
+Dashboard Tiddlers
+@@
+
+<<closeTabsButton "$:/state/tab/pocket-io/dashboard/$$$project$$$">>
+@@.poc2go-mono <<tabs "[tag[$:/pocket-io/dashboard/$$$project$$$]]" ""
+"$:/state/tab/pocket-io/dashboard/$$$project$$$" "tc-horizontal">> @@
+
+
+<<topButton>>

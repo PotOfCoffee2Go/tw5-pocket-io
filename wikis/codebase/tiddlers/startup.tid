@@ -1,0 +1,34 @@
+autoLoad: yes
+caption: System Startup
+created: 20250129055110581
+ioConfirmDelete: no
+ioPrjProject: startup
+ioPrjTabName: 
+ioPrjTabSelected: AALLLL
+ioPrjTabToDelete: startup-a
+ioPrjTabType: code
+ioResult: 
+modified: 20250129081607186
+tags: startup Projects
+title: startup
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header System Startup Code @@|
+
+|tc-center tc-table-no-border|k
+| Code in 'startup' is hard coded to always load. |
+| The code is loaded before other projects. |
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+|tc-center tc-table-no-border|k
+| New tab |<<projectTabType>> |<<projectSubmitTab>>|
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<<displayTabTypes startup>>
+
+<<topButton>>

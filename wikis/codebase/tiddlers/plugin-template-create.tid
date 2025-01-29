@@ -1,0 +1,64 @@
+caption: create
+created: 20250116213749229
+creator: poc2go
+modified: 20250129000927471
+modifier: poc2go
+tags: plugin $:/pocket-io/plugin/template template
+title: plugin-template-create
+type: text/vnd.tiddlywiki
+
+\import plugin-template-procedures
+
+<style>
+.create-editbox { width: 200px; }
+table { border-collapse: separate; border-spacing: .5em; }
+.create-title { width: 500px; }
+.select-dropdown { min-width: 20px; }
+</style>
+
+<<helpButton>> {{!!ioDisplayButtons}} {{!!ioHelp}}
+
+<div style="margin-top: 0.6em; padding-left: 1em; border: 1px solid #70b351; border-radius: 10px;" >
+
+|tc-table-no-border|k
+| From Wiki|<<srcWikiSelect>> | Project |<<projectSelect>> | |
+| Publisher&nbsp;|<<pluginEditBox ioPublisher  'Recommended'>> | System |<<pluginEditBox ioSystem  'Required'>> |
+| Description|<$edit-text field="ioDescription" class="create-title" placeholder="Recommended"/> |<|<|
+
+</div>
+
+|tc-center tc-table-no-border|k
+| To Wiki <<dstWikiSelect>> |
+| version <$edit-text field="ioVersion" size="1" />  Stability <<stabilitySelect>>  Plugin Priority <$edit-text field="ioPluginPriority" size="1" /> |
+
+<div style="margin-top: 0.6em; padding-left: 1em; border: 1px solid #70b351; border-radius: 10px;" >
+
+|tc-table-no-border|k
+|>| <$text text="$:/plugins/publisher/system/project"/> |
+| Title | <$edit-text field="ioTitle" class="create-title" /> |
+|^ Information Tabs|<<infoTabs>> |
+
+</div>
+
+<div style="float:left;">
+
+|tc-table-no-border|k
+| Name |<<pluginEditBox ioName 'Recommended'>> |
+| Author |<<pluginEditBox ioAuthor 'Recommended'>> |
+| Version |<<pluginEditBox ioVersion>> |
+| List |<<pluginEditBox ioList>> |
+| Text |<<pluginEditBox ioText>> |
+
+{{!!ioError}}
+
+</div>
+<div>
+
+|tc-table-no-border|k
+| Plugin Type |<<pluginEditBox ioPluginType>> |
+| Type |<<pluginEditBox ioType>> |
+| Dependents |<<pluginEditBox ioDependents>> |
+| Parent Plugin |<<pluginEditBox ioParentPlugin>> |
+| Source |<<pluginEditBox ioSource>> |
+
+</div>

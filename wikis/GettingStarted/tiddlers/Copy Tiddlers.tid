@@ -1,5 +1,5 @@
 created: 20250108083629945
-modified: 20250128203648057
+modified: 20250129141720863
 tags: $:/tags/pocket-io/broadcast
 title: Copy Tiddlers
 type: text/vnd.tiddlywiki
@@ -33,8 +33,22 @@ Active wikis in the network:
 &nbsp;<<extlink>>&nbsp;
 </$list>
 
+<div style="margin-top: 1em; padding: 0 1em 0 1em; border: 1px solid #70b351; border-radius: 10px;" >
+
+Copy tiddlers between wikis:
+
 |tc-table-no-border|k
 | Filter | From wiki | To wiki |  |
 |<<filterEditBox>> |<<fromSelect>> |<<toSelect>> |<<copyButton>> |
+
+</div>
+
+<div style="margin-top: 2em; padding: 0 1em 0 1em; border: 1px solid #70b351; border-radius: 10px;" >
+
+Create a new project in a wiki:
+
+{{||$:/poc2go/pocket-io/project/create}}
+
+</div>
 
 {{!!ioResult}}

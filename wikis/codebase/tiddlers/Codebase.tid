@@ -1,12 +1,5 @@
 created: 20240914113910483
-ioPrjCopyAction: Copy
-ioPrjFromProject: HelloWorld
-ioPrjFromTab: HelloWorld-filterTiddlers
-ioPrjProject: 
-ioPrjTabName: 
-ioPrjToProject: flotsam
-ioResult: 
-modified: 20250108175714211
+modified: 20250129132500475
 tags: 
 title: Codebase
 type: text/vnd.tiddlywiki
@@ -22,24 +15,10 @@ type: text/vnd.tiddlywiki
 
 </div>
 
+{{!!ioResult}}
+
 !!!! Auto Load on Startup :
 
 <<list-links filter:"[tag[Projects]autoLoad[yes]] -[[$$$project$$$]]" class:"cols3">>
 
-
-<div style="margin-top: 2em; border: 1px solid aqua; border-radius: 10px;">
-
-{{||$:/pocket-io/project/create-template}}
-
-<!--
-<hr class="poc2go-hr">
-
-{{||$:/pocket-io/project/copy-template}}
--->
-
-{{!!ioResult}}
-
-</div>
-
 !!!! Create project templates: [[$$$project$$$]]
-

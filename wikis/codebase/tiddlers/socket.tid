@@ -1,0 +1,30 @@
+autoLoad: yes
+caption: Pocket-io Sockets
+created: 20250129065626216
+ioConfirmDelete: no
+ioPrjProject: socket
+ioPrjTabName: 
+ioPrjTabSelected: AALLLL
+ioPrjTabToDelete: socket-a
+ioPrjTabType: code
+ioResult: 
+modified: 20250129131452591
+tags: socket Projects
+title: socket
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header Pocket-io sockets interface @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+|tc-center tc-table-no-border|k
+| New tab |<<projectTabType>> |<<projectSubmitTab>>|
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<<displayTabTypes socket>>
+
+<<topButton>>

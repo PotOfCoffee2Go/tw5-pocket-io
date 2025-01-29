@@ -1,0 +1,80 @@
+caption: procedures
+created: 20250128105646254
+modified: 20250128220716178
+tags: plugin $:/pocket-io/plugin/template template
+title: plugin-template-procedures
+type: text/vnd.tiddlywiki
+
+\procedure helpButton()
+<$button actions="<<submitCreate>>"> Help </$button>
+\end
+
+\procedure submitResetAll()
+<<pocket-io "resetIoFields">>
+\end
+
+\procedure resetAllButton()
+<$button actions="<<submitResetAll>>"> Reset </$button>
+\end
+
+\procedure submitCreate()
+<<pocket-io "pluginCreate" "[[$:/status/UserName]]">>
+\end
+
+\procedure createButton()
+<$button actions="<<submitCreate>>"> Update </$button>
+\end
+
+\procedure submitBuilder()
+<<pocket-io "pluginBuilder">>
+\end
+
+\procedure builderButton()
+<$button actions="<<submitBuilder>>"> Build </$button>
+\end
+
+\procedure srcWikiSelect()
+<$select field="ioSrcProjectWiki" default="" 
+actions="<<submitCreate>>" >
+<$list filter="[list[$:/temp/pocket-io/wikinames]]">
+<option value={{!!title}} ><$view field='title'/></option>
+</$list></$select>
+\end
+
+\procedure projectSelect()
+<$select field="ioSrcProject" default="" class="select-dropdown"
+actions="<<submitCreate>>" >
+<$list filter="[list[!!ioSrcProjectList]] -[[$$$project$$$]]">
+<option value={{!!title}} ><$view field='title'/></option>
+</$list></$select>
+\end
+
+\procedure stabilitySelect()
+<$select field="ioStability" default="STABILITY_2_STABLE"
+actions="<<submitCreate>>" >
+<option value="STABILITY_2_STABLE"> Stable </option>
+<option value="STABILITY_1_EXPERIMENTAL"> Experimental </option>
+<option value="STABILITY_3_LEGACY"> Legacy </option>
+<option value="STABILITY_0_DEPRECATED"> Deprecated </option>
+</$select>
+\end
+
+\procedure dstWikiSelect()
+<$select field="ioDstPluginWiki" default="" 
+actions="<<submitCreate>>" >
+<$list filter="[list[$:/temp/pocket-io/wikinames]]">
+<option value={{!!title}} ><$view field='title'/></option>
+</$list></$select>
+\end
+
+\procedure infoTabs()
+{{!!ioList}}
+\end
+
+\procedure pluginEditBox(fieldname,placeholder:"")
+<$edit-text field=<<fieldname>> class="create-editbox" placeholder=<<placeholder>> />
+\end
+
+\procedure pluginEditAreaBox(fieldname,placeholder:"")
+<$edit-text field=<<fieldname>> class="create-editbox" placeholder=<<placeholder>> tag=textarea />
+\end
