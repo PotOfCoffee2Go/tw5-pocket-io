@@ -1,0 +1,76 @@
+created: 20250108083629945
+modified: 20250129234728150
+tags: $:/tags/pocket-io/broadcast
+title: Pocket-io System
+type: text/vnd.tiddlywiki
+
+\define extlink()
+[[$(currentTiddler)$]]
+\end
+
+\define submitCopyTiddlers()
+<<pocket-io "copyTiddlers">>
+\end
+
+\define copyButton()
+<$button actions="<<submitCopyTiddlers>>"> Copy </$button>
+\end
+
+\define filterEditBox()
+<$edit-text field="ioFilter" class="tid-input"/>
+\end
+
+\define fromSelect()
+<$select field="ioFromWiki" default=""><$list filter="[list[$:/temp/pocket-io/wikinames]]"><option value={{!!title}} ><$view field='title'/></option></$list></$select>
+\end
+
+\define toSelect()
+<$select field="ioToWiki" default=""><$list filter="[list[$:/temp/pocket-io/wikinames]]"><option value={{!!title}} ><$view field='title'/></option></$list></$select>
+\end
+
+<style>.cols3{column-count:3}</style>
+
+@@.poc2go-center
+Active wikis in the network:
+@@
+@@.poc2go-mono 
+<$list filter="[enlist{$:/temp/pocket-io/wikinames!!wikiLinks}]">
+&nbsp;<<extlink>>&nbsp;
+</$list>
+@@
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono The {{Projects||$:/core/ui/TagTemplate}} in this wiki: @@|
+
+<div style="margin-top: 0.6em; border: 1px solid #70b351; border-radius: 10px;" >
+
+<<list-links filter:"[tag[Projects]] -[[$$$project$$$]]" class:"cols3">>
+
+</div>
+
+!!!! Auto Load on Startup :
+
+<<list-links filter:"[tag[Projects]autoLoad[yes]] -[[$$$project$$$]]" class:"cols3">>
+
+<div style="margin-top: 2em; padding: 0 1em 0 1em; border: 1px solid #70b351; border-radius: 10px;" >
+
+Create a new project in a wiki:
+
+{{||$:/poc2go/pocket-io/project/create}}
+
+</div>
+
+{{!!ioResult}}
+
+<div style="margin-top: 1em; padding: 0 1em 0 1em; border: 1px solid #70b351; border-radius: 10px;" >
+
+Copy tiddlers between wikis:
+
+|tc-table-no-border|k
+| Filter | From wiki | To wiki |  |
+|<<filterEditBox>> |<<fromSelect>> |<<toSelect>> |<<copyButton>> |
+
+</div>
+
+|tc-center tc-table-no-border|k
+| <<resetAllButton>> |

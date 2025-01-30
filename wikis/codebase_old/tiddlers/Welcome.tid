@@ -1,8 +1,0 @@
-created: 20241208023831419
-list: [[Introduction Manual]] [[Usage Manual]] [[Startup Manual]] [[Project Manual]] [[Documenting Manual]]
-modified: 20241208034111035
-tags: TableOfContents
-title: Welcome
-type: text/vnd.tiddlywiki
-
-<<list-links filter:"[tag<currentTiddler>]" >>

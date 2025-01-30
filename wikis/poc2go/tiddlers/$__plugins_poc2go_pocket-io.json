@@ -57,9 +57,9 @@
         },
         "$:/poc2go/pocket-io/macros": {
             "created": "20231107195051015",
-            "text": "\\define topButton()\n<$button class=\"poc2go-tiddler-top tc-btn-invisible tc-tiddlylink\" to=<<currentTiddler>> >Top</$button>\n\\end\n\n\\define writeup()\n<<details 'Writeup' \"\"\"\n\n<$transclude $tiddler={{!!writeup}}>\n\n\"\"\" \"open\">>\n\\end\n\n\\define .codesample(n,lng,eg)\n<div class=\"doc-example\">\n\t<$macrocall $name=\"copy-to-clipboard\" style=\"\" src=\"\"\"$eg$\"\"\"/>\n\t<$codeblock language=\"$lng$\" code=\"\"\"$eg$\"\"\"/>\n</div>\n\\end\n\n\\define details(label:\"\", src:\"source\", status:\"\", labelClass:\"\", srcClass:\"\")\n<$vars  source = {{{ [<__src__>get[text]else<__src__>] }}} >\n<details style=\"text-align:left;min-width:100%;\" $status$>\n <$let tv-wikilinks=\"no\">\n <summary class=\"$labelClass$\" style=\"text-align: center;\">$label$</summary>\n </$let>\n  <div class=\"poc2go-detail $srcClass$\">\n   <$transclude tiddler=<<source>> field=title mode=block/>\n  </div>\n</details>\n</$vars>\n\\end\n\n<!-- codesample hacked from $:/editions/tw5.com/wikitext-macros -->\n<!-- details from Shiraz -->\n",
+            "text": "\\define submitResetAll()\n<<pocket-io \"resetIoFields\">>\n\\end\n\n\\define resetAllButton()\n<$button actions=\"<<submitResetAll>>\"> Reset </$button>\n\\end\n\n\\define topButton()\n<$button class=\"poc2go-tiddler-top tc-btn-invisible tc-tiddlylink\" to=<<currentTiddler>> >Top</$button>\n\\end\n\n\\define writeup()\n<<details 'Writeup' \"\"\"\n\n<$transclude $tiddler={{!!writeup}}>\n\n\"\"\" \"open\">>\n\\end\n\n\\define .codesample(n,lng,eg)\n<div class=\"doc-example\">\n\t<$macrocall $name=\"copy-to-clipboard\" style=\"\" src=\"\"\"$eg$\"\"\"/>\n\t<$codeblock language=\"$lng$\" code=\"\"\"$eg$\"\"\"/>\n</div>\n\\end\n\n\\define details(label:\"\", src:\"source\", status:\"\", labelClass:\"\", srcClass:\"\")\n<$vars  source = {{{ [<__src__>get[text]else<__src__>] }}} >\n<details style=\"text-align:left;min-width:100%;\" $status$>\n <$let tv-wikilinks=\"no\">\n <summary class=\"$labelClass$\" style=\"text-align: center;\">$label$</summary>\n </$let>\n  <div class=\"poc2go-detail $srcClass$\">\n   <$transclude tiddler=<<source>> field=title mode=block/>\n  </div>\n</details>\n</$vars>\n\\end\n\n<!-- codesample hacked from $:/editions/tw5.com/wikitext-macros -->\n<!-- details from Shiraz -->\n",
             "title": "$:/poc2go/pocket-io/macros",
-            "modified": "20250120120617630",
+            "modified": "20250129180751490",
             "tags": "$:/tags/Macro",
             "type": "text/vnd.tiddlywiki",
             "revision": "0",
@@ -92,10 +92,10 @@
         },
         "$:/poc2go/pocket-io/project/create": {
             "created": "20250129083808397",
-            "text": "\\define submitResetAll()\n<<pocket-io \"resetIoFields\">>\n\\end\n\n\\define resetAllButton()\n<$button actions=\"<<submitResetAll>>\"> Reset </$button>\n\\end\n\\define submitCreate()\n<<pocket-io \"projectCreate\">>\n\\end\n\n\\define createButton()\n<$button actions=\"<<submitCreate>>\"> Create </$button>\n\\end\n\n\\define projectEditBox()\n<$edit-text field=\"ioPrjProject\"/>\n\\end\n\n\\define onWikiSelect()\n<$select field=\"ioPrjWiki\" default=\"\">\n<$list filter=\"[list[$:/temp/pocket-io/wikinames]] -[[codebase]]\">\n<option value={{!!title}} ><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n|tc-center tc-table-no-border|k\n|<<resetAllButton>> | Wiki |<<onWikiSelect>> | New Project |<<projectEditBox>> |<<createButton>> |\n",
+            "text": "\\define submitCreate()\n<<pocket-io \"projectCreate\">>\n\\end\n\n\\define createButton()\n<$button actions=\"<<submitCreate>>\"> Create </$button>\n\\end\n\n\\define projectEditBox()\n<$edit-text field=\"ioPrjProject\"/>\n\\end\n\n\\define onWikiSelect()\n<$select field=\"ioPrjWiki\" default=\"\">\n<$list filter=\"[list[$:/temp/pocket-io/wikinames]] -[[codebase]]\">\n<option value={{!!title}} ><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n|tc-center tc-table-no-border|k\n| Wiki |<<onWikiSelect>> | New Project |<<projectEditBox>> |<<createButton>> |\n",
             "title": "$:/poc2go/pocket-io/project/create",
             "caption": "create",
-            "modified": "20250129084152229",
+            "modified": "20250129180852027",
             "revision": "0",
             "tags": "",
             "type": "text/vnd.tiddlywiki"

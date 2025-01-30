@@ -1,24 +1,9 @@
 created: 20240914113910483
-modified: 20250129132500475
+modified: 20250130051209389
 tags: 
 title: Codebase
 type: text/vnd.tiddlywiki
 
-<style>.cols3{column-count:3}</style>
-
-|tc-center tc-table-no-border|k
-|@@.poc2go-mono {{Projects||$:/core/ui/TagTemplate}} @@|
-
-<div style="margin-top: 0.6em; border: 1px solid #70b351; border-radius: 10px;" >
-
-<<list-links filter:"[tag[Projects]] -[[$$$project$$$]]" class:"cols3">>
-
-</div>
-
-{{!!ioResult}}
-
-!!!! Auto Load on Startup :
-
-<<list-links filter:"[tag[Projects]autoLoad[yes]] -[[$$$project$$$]]" class:"cols3">>
+{{||Pocket-io System}}
 
 !!!! Create project templates: [[$$$project$$$]]

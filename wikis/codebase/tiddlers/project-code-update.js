@@ -43,7 +43,7 @@ $tpi.topic.projectUpdate = function projectUpdate(socket, msg) {
 		resultMsg = 'A project name is required.';
 	}
 	else if (!dstWiki) {
-		resultMsg = 'A destination wiki (On Wiki) name is required.';
+		resultMsg = 'A destination wiki name is required.';
 	}
 	else if ($tw.wiki.tiddlerExists(`${project}-${tabType}-${tabName}`)) {
 		resultMsg = `Tab '[[${project}-${tabType}-${tabName}]]' already exists!`;

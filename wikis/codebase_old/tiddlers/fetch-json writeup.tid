@@ -1,7 +1,0 @@
-created: 20241122171954962
-modified: 20241122192403981
-tags: writeup fetch
-title: fetch-json writeup
-type: text/vnd.tiddlywiki
-
-Given a URL that returns a tiddler or array of tiddlers, will add those tiddlers to the TW5-pocket-io wiki making the request.

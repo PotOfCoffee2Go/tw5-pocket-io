@@ -1,9 +1,0 @@
-created: 20250113093835363
-modified: 20250113094318181
-tags: pocket-io/dashboard/plugin dashboard plugin
-title: $:/pocket-io/plugin/create-dashboard
-type: text/vnd.tiddlywiki
-
-Dashboard
-
-{{||$:/pocket-io/plugin/create-template}}

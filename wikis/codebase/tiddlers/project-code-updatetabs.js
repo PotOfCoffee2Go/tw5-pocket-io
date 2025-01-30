@@ -1,7 +1,6 @@
 // Create a new project or a new tab for an existing project
 //  If the tab already exists - exits with no action
 //  If project already exists will create a new tab
-//  If project does not exist - will be created containing a tab
 $tpi.topic.projectUpdatetabs = function (socket, msg) {
 	var sender = cpy(msg.senderTiddler);
 	var resultMsg = '';
@@ -13,19 +12,25 @@ $tpi.topic.projectUpdatetabs = function (socket, msg) {
 	var tabType = sender.ioPrjTabType;
 	var $tw = get$tw(dstWiki);
 	if (!tabName) {
-		tabName = 'default';
+		resultMsg = 'A tab name is required.';
 	}
-	if (!tabType) {
-		tabType = 'code';
+	else if (!tabType) {
+		resultMsg = 'A tab type is required.';
 	}
-	if (!project) {
+	else if (!project) {
 		resultMsg = 'A project name is required.';
 	}
 	else if (!dstWiki) {
-		resultMsg = 'A destination wiki (On Wiki) name is required.';
+		resultMsg = 'A destination wiki name is required.';
 	}
 	else if ($tw.wiki.tiddlerExists(`${project}-${tabType}-${tabName}`)) {
 		resultMsg = `Tab '[[${project}-${tabType}-${tabName}]]' already exists!`;
+	}
+
+	if (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(tabName)) {
+		resultMsg = `Tab name may only contain letters, numbers, dollar-sign, underbars, and dashes\n\n` +
+			`Notably spaces and special characters are not allowed.\n\n` +
+			`Once created can change the 'caption' field to display as desired.`;
 	}
 
 	// Return if error

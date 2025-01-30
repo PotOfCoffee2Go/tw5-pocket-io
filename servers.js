@@ -43,7 +43,8 @@ $rt.on('reset', () => {
 })
 // REPL MOTD and prompt
 function replMOTD() {
-	hog(`\nPress {up-arrow}{enter} for more info\n`,40);
+	hog(`\nGo to ${serverSettings[0].proxy.link}`,40);
+	hog(`Press {up-arrow}{enter} for more info\n`,40);
 	$rt.history.push(`cmd.run('help')`);
 	$rt.history.push(`cmd.run('project REST -i')`);
 	$rt.displayPrompt();
@@ -73,12 +74,15 @@ function loadAllCodeToRepl() {
 			}
 		})
 	})
-//	console.dir(codeList, {depth:1});
+	var totalTiddlers = 0, totalBytes = 0;
 	hog(`Loading minified code tiddlers from wikis to REPL:`, 149);
 	codeList.forEach(codeFilter => {
-		replGetCode($rt, codeFilter.wikiName, codeFilter.$tw, codeFilter.filter);
+		var { tiddlerCount, byteCount } = replGetCode($rt, codeFilter.wikiName, codeFilter.$tw, codeFilter.filter);
+		totalTiddlers += tiddlerCount;
+		totalBytes += byteCount;
 	})
-
+	hog(`\n${totalTiddlers} tiddlers loaded - ${(totalBytes/1024).toFixed(3)}K bytes.`, 149);
+	hog(`REPL startup complete`, 156);
 }
 
 function proxyListen(idx) {
@@ -87,7 +91,7 @@ function proxyListen(idx) {
 		const { server, port, host, targetUrl } = serverSettings[idx].proxy;
 		server.http.listen(port, host, () => {
 			log(`Proxy server to wiki '${name}' webserver ` + hue(targetUrl,156));
-			hog(`  serving on http://${host}:${port}`,185);
+			hog(`  serving on http://${host === '0.0.0.0' ? config.proxy.domain : host}:${port}`,185);
 			resolve();
 		})
 	})
@@ -105,6 +109,8 @@ async function startProxyServers() {
 
 // Startup blurb
 hog(`${config.pkg.name} - v${config.pkg.version}`,40);
+hog(`./config.js:`,40);
+console.dir({wikisDir: config.wikisDir, webserver: config.webserver, proxy: config.proxy});
 hog(`\nStartup TiddlyWiki 'server' edition Webservers`, 156);
 hog(`  starting from port: ${config.webserver.basePort} :`, 156);
 console.dir(serverSettings.map(settings => settings.name));

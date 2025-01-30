@@ -1,9 +1,0 @@
-created: 20241010095949414
-modified: 20241010100106686
-tags: $:/tags/TopLeftBar
-title: $:/core/ui/TopLeftBar/menu
-type: text/vnd.tiddlywiki
-
-<div style="font-size: 1.1em;margin-top: -10px;">
-<$transclude $tiddler="$:/core/ui/Buttons/home"/>
-</div>
