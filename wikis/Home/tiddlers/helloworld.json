@@ -3,7 +3,7 @@
         "created": "20250120125139850",
         "text": "|tc-center tc-table-no-border|k\n|@@.poc2go-project-header Hello World!@@|\n\n|tc-center tc-table-no-border|k\n|<$checkbox field=\"autoLoad\" checked=\"yes\" unchecked=\"no\" default=\"no\"> Auto load on startup</$checkbox>|\n\n|tc-center tc-table-no-border|k\n| New tab |<<projectTabType>> |<<projectSubmitTab>>|\n\n<!-- Response to pocket.io requests -->\n{{!!ioResult}}\n\n<<displayTabTypes helloworld>>\n\n<<topButton>>\n",
         "title": "helloworld",
-        "modified": "20250130064153493",
+        "modified": "20250130192126008",
         "tags": "helloworld Projects",
         "type": "text/vnd.tiddlywiki",
         "autoLoad": "yes",

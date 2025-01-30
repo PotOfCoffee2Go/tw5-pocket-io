@@ -9,6 +9,7 @@ const { config } = require('./config');
 const log = (...args) => {console.log(...args);}
 const hue = (txt, nbr=214) => `\x1b[38;5;${nbr}m${txt}\x1b[0m`;
 const hog = (txt, nbr) => log(hue(txt, nbr));
+const cpy = (obj) => JSON.parse(JSON.stringify(obj));
 
 // Build settings
 const { buildSettings } = require('./lib/buildSettings');
@@ -51,38 +52,22 @@ function replMOTD() {
 }
 
 // Pull JavaScript code from code wiki into REPL
-const { replGetCode } = require('./lib/replGetCode');
+const { replGetCodeFromWikis } = require('./lib/replGetCode');
 
-function loadAllCodeToRepl() {
+function autoLoadCodeToRepl() {
+	const prevHistory = cpy($rt.history);
+	const prevPrompt = $rt.getPrompt();
+	$rt.setPrompt('');
+
 	hog('\nREPL startup...', 156);
-
-	var codeList = [];
-	// codebase 'startup project' loads first
-	codeList.push({wikiName: 'codebase',
-		$tw: serverSettings.find(settings => settings.name === 'codebase').$tw,
-		filter: '[tag[$:/pocket-io/startup/code]]'})
-
-	var	findProjects = '[tag[Projects]]';
-	serverSettings.forEach(settings => {
-		var $tw = settings.$tw;
-		$tw.wiki.filterTiddlers(findProjects).forEach(projectTitle => {
-			if (projectTitle !== 'startup') {
-				var projectTid = $tw.wiki.getTiddler(projectTitle);
-				if (projectTid && projectTid.fields && projectTid.fields.autoLoad === 'yes') {
-					codeList.push({wikiName: settings.name, $tw: $tw, filter: `[tag[$:/pocket-io/${projectTitle}/code]]`});
-				}
-			}
-		})
-	})
-	var totalTiddlers = 0, totalBytes = 0;
 	hog(`Loading minified code tiddlers from wikis to REPL:`, 149);
-	codeList.forEach(codeFilter => {
-		var { tiddlerCount, byteCount } = replGetCode($rt, codeFilter.wikiName, codeFilter.$tw, codeFilter.filter);
-		totalTiddlers += tiddlerCount;
-		totalBytes += byteCount;
-	})
+	var { totalTiddlers, totalBytes, haveErrors } = replGetCodeFromWikis($rt, serverSettings);
 	hog(`\n${totalTiddlers} tiddlers loaded - ${(totalBytes/1024).toFixed(3)}K bytes.`, 149);
-	hog(`REPL startup complete`, 156);
+
+	hog(`REPL startup complete${haveErrors ? ' - with errors.' : '.'}`, haveErrors ? 9 : 156);
+
+	$rt.history = prevHistory;
+	$rt.setPrompt(prevPrompt);
 }
 
 function proxyListen(idx) {
@@ -123,7 +108,7 @@ var closingNest = `
 replTwBoot().then(tw => {
 $rw = tw;
 replContext();
-loadAllCodeToRepl();
+autoLoadCodeToRepl();
 startProxyServers();
 })
 `;
