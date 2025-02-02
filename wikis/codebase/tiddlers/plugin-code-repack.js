@@ -7,12 +7,12 @@ $tpi.topic.pluginRepack = function pluginRepack(socket, msg) {
 	var pluginTitle = senderTid.ioPluginSelected;
 
 	if (msg.req.wikiName === 'codebase') {
-		senderTid.ioResult = $tpi.fn.formatIoResult(`'codebase' not allowed to repack`);
+		senderTid.ioResult = `'codebase' not allowed to repack`;
 		msg.resultTiddlers.push(senderTid);
 		return msg;
 	}
 	if (!$tw.wiki.tiddlerExists(pluginTitle)) {
-		senderTid.ioResult = $tpi.fn.formatIoResult(`${senderTid.ioPluginSelected} NOT FOUNd`);
+		senderTid.ioResult = `${senderTid.ioPluginSelected} NOT FOUNd`;
 		msg.resultTiddlers.push(senderTid);
 		return msg;
 	}
@@ -34,7 +34,7 @@ $tpi.topic.pluginRepack = function pluginRepack(socket, msg) {
 	titles.forEach(title => $rw.wiki.deleteTiddler(title));
 	$rw.wiki.deleteTiddler(pluginTitle);
 	
-	senderTid.ioResult = $tpi.fn.formatIoResult(`Done`);
+	senderTid.ioResult = `Done`;
 	msg.resultTiddlers.push(senderTid);
 	msg.req.tostory = true;
 	return msg;

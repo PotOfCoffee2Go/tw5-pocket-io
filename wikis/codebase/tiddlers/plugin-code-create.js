@@ -1,7 +1,6 @@
 $tpi.topic.pluginCreate = function (socket, msg) {
 	var $tw = get$tw(msg.req.wikiName);
 	var sender = cpy(msg.senderTiddler);
-	sender.ioError = '';
 	sender.ioResult = '';
 
 	if (!sender.ioName && sender.ioSrcProject) {
@@ -15,7 +14,7 @@ $tpi.topic.pluginCreate = function (socket, msg) {
 		sender.ioAuthor = userName ? userName.text : '';
 		sender.ioPublisher = userName ? userName.text : '';
 	}
-	
+
 	var $prj = get$tw(sender.ioSrcProjectWiki);
 	if (!$prj) {
 		sender.ioHelp = 'Select Wiki with the project to make into a plugin.';
@@ -40,7 +39,7 @@ $tpi.topic.pluginCreate = function (socket, msg) {
 	sender.ioType = 'application/json';
 	sender.ioVersion = sender.ioVersion || '0.0.0';
 	sender.ioPluginPriority = '20';
-	
+
 	if (!sender.ioSrcProject) {
 		sender.ioDisplayButtons = `<<resetAllButton>>`;
 		sender.ioHelp = 'Select the project to make into a plugin.';
@@ -49,12 +48,12 @@ $tpi.topic.pluginCreate = function (socket, msg) {
 	}
 /*
 	if (!sender.ioName) {
-		sender.ioError = $tpi.fn.formatIoError('Plugin Name is required');
+		sender.ioError = 'Plugin Name is required';
 		msg.resultTiddlers.push(sender);
 		return msg;
 	}
 	if (!sender.ioPublisher) {
-		sender.ioError = $tpi.fn.formatIoError('Plugin Publisher is required');
+		sender.ioError = 'Plugin Publisher is required';
 		msg.resultTiddlers.push(sender);
 		return msg;
 	}
@@ -68,7 +67,7 @@ $tpi.topic.pluginCreate = function (socket, msg) {
 
 	// Display on client - {{!!ioResult}}
 //	var responseText = `see [[${projectTiddler}]]`;
-//	sender.ioResult = $tpi.fn.formatIoResult(responseText);
+//	sender.ioResult = responseText;
 	sender.ioDisplayButtons = '<<resetAllButton>> <<createButton>> <<builderButton>>';
 	sender.ioHelp = `Make any changes and 'Update'<br>Press 'Build' to create the plugin`;
 	msg.resultTiddlers.push(sender);

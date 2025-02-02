@@ -51,7 +51,7 @@ $tpi.topic.projectUpdate = function projectUpdate(socket, msg) {
 
 	// Return if error
 	if (resultMsg) {
-		sender.ioResult = $tpi.fn.formatIoResult(resultMsg);
+		sender.ioResult = resultMsg;
 		msg.resultTiddlers.push(sender);
 		return msg;
 	}
@@ -66,7 +66,7 @@ $tpi.topic.projectUpdate = function projectUpdate(socket, msg) {
 	var titles = createFromFilter($tw, filter, project, tabName, tabType);
 
 	sender.ioPrjTabName = '';
-	sender.ioResult = $tpi.fn.formatIoResult(`Tiddlers created:\n\n${titles.join(', ')}`);
+	sender.ioResult = `Tiddlers created:\n\n${titles.join(', ')}`;
 	msg.resultTiddlers.push(sender);
 	$tpi.fn.io.refreshClients(dstWiki);
 	return msg;

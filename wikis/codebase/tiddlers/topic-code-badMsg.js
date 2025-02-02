@@ -5,7 +5,7 @@ $tpi.topic.badMsg = function badMsg(socket, msg, errText) {
 	hog(errText,9);
 	$rt.displayPrompt();
 
-	senderTid.ioResult = $tpi.fn.formatIoResult(errText);
+	senderTid.ioResult = errText;
 	msg.resultTiddlers = [senderTid];
 	return msg;
 }

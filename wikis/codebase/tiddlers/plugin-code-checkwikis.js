@@ -30,7 +30,7 @@ $tpi.topic.pluginCheckWikis = function pluginCheckWikis(socket, msg) {
 	
 	// Display on client - {{!!ioResult}}
 	var responseText = `see [[${wikisTiddler}]]`;
-	senderTid.ioResult = $tpi.fn.formatIoResult(responseText);
+	senderTid.ioResult = responseText;
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }

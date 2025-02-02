@@ -65,16 +65,6 @@
             "revision": "0",
             "bag": "default"
         },
-        "$:/poc2go/pocket-io/macros/project": {
-            "created": "20250120120133576",
-            "text": "\\define closeTabsButton(project,tab)\n<$button class=\"tc-btn-invisible tc-tiddlylink\">\n<$action-setfield $tiddler=<<qualify \"$:/state/tab/pocket-io/$project$/$tab$\">>  text=\"\"/>\n{{$:/core/images/fold-button}}\n</$button>\n{{$:/pocket-io/$project$/$tab$||$:/poc2go/pocket-io/ui/Tag$tab$}}\n<<tabs \"[all[shadows+tiddlers]tag[$:/pocket-io/$project$/$tab$]!is[draft]]\" \"\" \"$:/state/tab/pocket-io/$project$/$tab$\">>\n\\end\n\n\\define projectSubmitTab()\n<$button class=\"tc-btn-invisible tc-tiddlylink\" actions=\"<<pocket-io 'projectUpdatetabs'>>\" >\n{{$:/core/images/new-button}}\n</$button>\n\\end\n\n\\define projectTabType()\n<$select field=\"ioPrjTabType\" default=\"code\">\n<option>docs</option>\n<option>dashboard</option>\n<option>template</option>\n<option>code</option>\n<option>info</option>\n<option>package</option>\n</$select>\n<$edit-text field=\"ioPrjTabName\" size=10 />\n\\end\n\n\\define projectSubmitUpload()\n<<pocket-io \"projectUpload\">>\n\\end\n\n\\define projectUploadButton()\n{{!!ioResultUpload}}\n<div style=\"float:right; margin-right: 250px; font-size: .85em;\">\n<$button actions=\"<<projectSubmitUpload>>\"> Upload </$button>&nbsp;&nbsp;\n<$select field=\"ioPrjTabSelected\" default=\"AALLLL\"><option value=\"AALLLL\" >All</option><$list filter=\"[tag{!!title}tag[code]]\"><option value={{!!title}} ><$view field='caption'/></option></$list></$select>&nbsp;&nbsp;\n<$checkbox field=\"ioPrjMinify\" checked=\"yes\" unchecked=\"no\" default=\"yes\"> Minify code</$checkbox>\n</div>\n\\end\n\n\\define displayTabTypes(project)\n<<closeTabsButton \"$project$\" \"docs\">>\n<<closeTabsButton \"$project$\" \"dashboard\">>\n<<closeTabsButton \"$project$\" \"template\">>\n<<projectUploadButton>>\n<<closeTabsButton \"$project$\" \"code\">>\n<<closeTabsButton \"$project$\" \"info\">>\n<<closeTabsButton \"$project$\" \"package\">>\n\\end\n",
-            "title": "$:/poc2go/pocket-io/macros/project",
-            "modified": "20250130052523274",
-            "tags": "$:/tags/Macro",
-            "type": "text/vnd.tiddlywiki",
-            "revision": "0",
-            "bag": "default"
-        },
         "$:/poc2go/pocket-io/readme": {
             "created": "20250122214740526",
             "text": "Readme goes here\n",
@@ -90,22 +80,12 @@
             "modified": "20250122205052263",
             "caption": "Pocket-io"
         },
-        "$:/poc2go/pocket-io/project/create": {
-            "created": "20250129083808397",
-            "text": "\\define submitCreate()\n<<pocket-io \"projectCreate\">>\n\\end\n\n\\define createButton()\n<$button actions=\"<<submitCreate>>\"> Create </$button>\n\\end\n\n\\define projectEditBox()\n<$edit-text field=\"ioPrjProject\"/>\n\\end\n\n\\define onWikiSelect()\n<$select field=\"ioPrjWiki\" default=\"\">\n<$list filter=\"[list[$:/temp/pocket-io/wikinames]]\">\n<option value={{!!title}} ><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n|tc-center tc-table-no-border|k\n| Wiki |<<onWikiSelect>> | New Project |<<projectEditBox>> |<<createButton>> |\n",
-            "title": "$:/poc2go/pocket-io/project/create",
-            "caption": "create",
-            "modified": "20250130003656475",
-            "revision": "0",
-            "tags": "",
-            "type": "text/vnd.tiddlywiki"
-        },
         "$:/poc2go/pocket-io/result/error-template": {
             "created": "20250116064133466",
-            "text": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em;\">\n\n<$button actions='<$action-setfield $field=\"ioError\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n@@color:red; $$$text$$$ @@\n\n</div>\n",
+            "text": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n@@color:red; $$$text$$$ @@\n\n</div>\n",
             "title": "$:/poc2go/pocket-io/result/error-template",
             "caption": "ioResult",
-            "modified": "20250130062350887",
+            "modified": "20250131112651289",
             "tags": "",
             "type": "text/vnd.tiddlywiki"
         },
@@ -126,6 +106,22 @@
             "modified": "20250130062135387",
             "tags": "",
             "type": "text/vnd.tiddlywiki"
+        },
+        "$:/poc2go/pocket-io/ui/active": {
+            "created": "20250131165633262",
+            "text": "\\define extlink()\n[[$(currentTiddler)$]]\n\\end\n\n@@.poc2go-center\nActive wikis in the network:\n@@\n@@.poc2go-mono \n<$list filter=\"[enlist{$:/temp/pocket-io/wikinames!!wikiLinks}]\">\n&nbsp;<<extlink>>&nbsp;\n</$list>\n@@\n",
+            "tags": "",
+            "title": "$:/poc2go/pocket-io/ui/active",
+            "modified": "20250131165728740",
+            "caption": "Active wikis"
+        },
+        "$:/poc2go/pocket-io/ui/copy": {
+            "created": "20250131163904602",
+            "text": "\\define submitCopyTiddlers()\n<<pocket-io \"copyTiddlers\">>\n\\end\n\n\\define copyButton()\n<$button actions=\"<<submitCopyTiddlers>>\"> Copy </$button>\n\\end\n\n\\define filterEditBox()\n<$edit-text field=\"ioFilter\" class=\"tid-input\"/>\n\\end\n\n\\define fromSelect()\n<$select field=\"ioFromWiki\" default=\"\"><$list filter=\"[list[$:/temp/pocket-io/wikinames]]\"><option value={{!!title}} ><$view field='title'/></option></$list></$select>\n\\end\n\n\\define toSelect()\n<$select field=\"ioToWiki\" default=\"\"><$list filter=\"[list[$:/temp/pocket-io/wikinames]]\"><option value={{!!title}} ><$view field='title'/></option></$list></$select>\n\\end\n\n<div style=\"margin-top: 1em; padding: 0 1em 0 1em; border: 1px solid #70b351; border-radius: 10px;\" >\n\nCopy tiddlers between wikis:\n\n|tc-table-no-border|k\n| Filter | From wiki | To wiki |  |\n|<<filterEditBox>> |<<fromSelect>> |<<toSelect>> |<<copyButton>> |\n\n</div>\n",
+            "tags": "",
+            "title": "$:/poc2go/pocket-io/ui/copy",
+            "modified": "20250131164036050",
+            "caption": "Copy"
         },
         "$:/poc2go/pocket-io/ui/Tagcode": {
             "created": "20250118153902216",

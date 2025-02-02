@@ -5,7 +5,7 @@ $tpi.topic.pullTiddlers = function pullTiddlers(socket, msg) {
 
 	msg.resultTiddlers = $tw.utils.parseJSONSafe(
 		$tw.wiki.getTiddlersAsJson(msg.req.filter), []);
-	senderTid.ioResult = $tpi.fn.formatIoResult(`{{!!modified}}\n\n${msg.resultTiddlers.length} tiddlers recieved from wiki`);
+	senderTid.ioResult = `{{!!modified}}\n\n${msg.resultTiddlers.length} tiddlers recieved from wiki`;
 
 	msg.resultTiddlers.push(senderTid);
 	return msg;

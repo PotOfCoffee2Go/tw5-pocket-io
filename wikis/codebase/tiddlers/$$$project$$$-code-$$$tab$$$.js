@@ -11,7 +11,7 @@ $tpi.topic.$$$tab$$$ = function (socket, msg) {
 	tog(responseText);
 	
 	// Display result on client - {{!!ioResult}}
-	sender.ioResult = $tpi.fn.formatIoResult(responseText);
+	sender.ioResult = responseText;
 	// Send the tiddler back to the client
 	msg.resultTiddlers.push(sender);
 	return msg;

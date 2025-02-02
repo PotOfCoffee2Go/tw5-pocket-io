@@ -60,7 +60,7 @@ $tpi.topic.pluginBuilder = function (socket, msg) {
 //	$tpi.fn.io.refreshClients();
 
 	var resultText = `Plugin tiddler '${packagedPlugin.title}' updated on wiki '${sender.ioDstPluginWiki}'`;
-	sender.ioResult = $tpi.fn.formatIoResult(resultText);
+	sender.ioResult = resultText;
 	msg.resultTiddlers.push(sender);
 	return msg;
 }

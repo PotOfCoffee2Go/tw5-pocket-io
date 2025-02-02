@@ -1,0 +1,14 @@
+created: 20250129035519700
+ioResult: 
+modified: 20250131053934457
+myTest: xxxyyyzzz
+tags: 
+title: NewTestTiddler
+type: text/vnd.tiddlywiki
+
+<$button actions="<<pocket-io testMsg>>">
+<$action-setfield $field="myTest" $value="xxxyyyzzz" />
+test
+</$button>
+
+{{!!ioResult}}

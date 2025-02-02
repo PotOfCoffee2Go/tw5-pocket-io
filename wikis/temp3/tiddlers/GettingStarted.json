@@ -1,0 +1,15 @@
+[
+    {
+        "created": "20250129195505934",
+        "title": "GettingStarted",
+        "modified": "20250201212805064",
+        "tags": "$:/tags/GettingStarted",
+        "type": "text/vnd.tiddlywiki",
+        "text": "Welcome to ~TiddlyWiki and the ~TiddlyWiki community\n\nVisit https://tiddlywiki.com/ to find out more about ~TiddlyWiki and what it can do.\n\n<hr class=\"poc2go-hr\">\n\nThis system interfaces multiple TiddlyWikis into a single system.\n\n<hr class=\"poc2go-hr\">\n\n{{||Pocket-io System}}\n",
+        "caption": "Step 1<br>Syncing",
+        "ioFilter": "[tag[helloworld]]",
+        "ioFromWiki": "Home",
+        "ioToWiki": "temp3",
+        "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n02/01/2025 16:28:05 15 tiddlers copied from Home to temp3\n\n</div>\n"
+    }
+]

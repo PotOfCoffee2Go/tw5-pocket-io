@@ -17,7 +17,7 @@ $tpi.topic.projectUpload = function projectUpload(socket, msg) {
 	if (sender.ioPrjMinify && sender.ioPrjMinify !== 'yes') {
 		minify = false;
 	}
-	sender.ioResultUpload = $tpi.fn.formatIoResultUpload($tpi.getCode(msg.req.wikiName,$cw, tabName, minify));
+	sender.ioResultUpload = $tpi.getCode(msg.req.wikiName,$cw, tabName, minify);
 	msg.resultTiddlers.push(sender);
 	return msg;
 }

@@ -1,15 +1,15 @@
 autoLoad: yes
 caption: Project Management
 created: 20250114040241341
-ioPrjProject: topic
+ioConfirmDelete: no
+ioPrjProject: project
 ioPrjTabName: 
-ioPrjWiki: codenew
+ioPrjTabType: docs
 ioResult: 
-modified: 20250129072624119
+modified: 20250201222236534
 tags: project Projects
 title: project
 type: text/vnd.tiddlywiki
-writeup: project writeup
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-project-header Project Mangement System @@|
@@ -17,12 +17,11 @@ writeup: project writeup
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
-<!-- Comment out templates not applicable for this project -->
-{{||project-template-create}}
-{{||project-template-newtab}}
-<!-- {{||project-template-delete}} -->
+|tc-center tc-table-no-border|k
+| New tab |<<projectTabType>> |<<projectSubmitTab>>|
 
-<!-- Response to pocket.io requests -->
+{{||$:/poc2go/pocket-io/project/delete}}
+
 {{!!ioResult}}
 
 <<displayTabTypes project>>

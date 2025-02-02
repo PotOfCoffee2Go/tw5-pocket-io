@@ -11,7 +11,7 @@ $tpi.topic.pushTiddlers = function pushTiddlers(socket, msg) {
 		))
 	})
 
-	senderTid.ioResult = $tpi.fn.formatIoResult(`{{!!modified}}\n\n${msg.filterTiddlers.length} tiddlers updated on wiki`);
+	senderTid.ioResult = `{{!!modified}}\n\n${msg.filterTiddlers.length} tiddlers updated on wiki`;
 
 	msg.resultTiddlers.push(senderTid);
 	return msg;

@@ -1,0 +1,28 @@
+created: 20250202041616326
+modified: 20250202042506768
+tags: 
+title: delete-test
+type: text/vnd.tiddlywiki
+
+\define submitDelete()
+<<pocket-io "projectDelete">>
+\end
+
+\define deleteButton()
+<$button actions="<<submitDelete>>"> Delete </$button>
+\end
+
+\define projectEditBox()
+<$edit-text field="ioPrjProject"/>
+\end
+
+\define onWikiSelect()
+<$select field="ioPrjWiki" default="">
+<$list filter="[list[$:/temp/pocket-io/wikinames]]">
+<option value={{!!title}} ><$view field='title'/></option>
+</$list>
+</$select>
+\end
+
+|tc-center tc-table-no-border|k
+| Wiki |<<onWikiSelect>> | New Project |<<projectEditBox>> |<<deleteButton>> |

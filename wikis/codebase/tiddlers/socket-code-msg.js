@@ -10,6 +10,7 @@ $tpi.fn.io.msg = function msg(socket, msg) {
 		socket.emit('msg',$tpi.topic['badMsg'](socket, msg, `Invalid topic: ${msg.req.topic}`));
 		return;
 	}
-	socket.emit('msg', $tpi.topic[msg.req.topic](socket, msg));
+	var resultMsg = $tpi.topic[msg.req.topic](socket, msg);
+	socket.emit('msg', resultMsg);
 	$tpi.fn.io.refreshClients(msg.req.wikiName);
 }

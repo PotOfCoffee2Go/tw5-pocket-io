@@ -3,8 +3,6 @@
 
 "use strict";
 
-const { config } = require('./config');
-
 // Helpers
 const log = (...args) => {console.log(...args);}
 const hue = (txt, nbr=214) => `\x1b[38;5;${nbr}m${txt}\x1b[0m`;
@@ -12,6 +10,7 @@ const hog = (txt, nbr) => log(hue(txt, nbr));
 const cpy = (obj) => JSON.parse(JSON.stringify(obj));
 
 // Build settings
+const { config } = require('./config');
 const { buildSettings } = require('./lib/buildSettings');
 const serverSettings = buildSettings(config);
 
@@ -21,11 +20,11 @@ serverSettings.forEach((settings, idx) => {
 	serverSettings[idx].proxy.server = new ProxyServer(settings);
 })
 
-// REPL
+// REPL instance
 var $rt = require('node:repl').start({ prompt: '', ignoreUndefined: true});
-var $rw, $sockets = {};
 
 // REPL context
+var $rw, $sockets = {};
 function replContext() {
 	$rt.context.$rt = $rt;	// the REPL itself
 	$rt.context.$rw = $rw;	// tiddlywiki instance for REPL use
@@ -40,8 +39,9 @@ function replContext() {
 }
 $rt.on('reset', () => {
 	replContext();
-	loadCodeToRepl();
+	autoLoadCodeToRepl();
 })
+
 // REPL MOTD and prompt
 function replMOTD() {
 	hog(`\nGo to ${serverSettings[0].proxy.link}`,40);
@@ -51,9 +51,8 @@ function replMOTD() {
 	$rt.displayPrompt();
 }
 
-// Pull JavaScript code from code wiki into REPL
+// Gets JavaScript code from wikis into REPL
 const { replGetCodeFromWikis } = require('./lib/replGetCode');
-
 function autoLoadCodeToRepl() {
 	const prevHistory = cpy($rt.history);
 	const prevPrompt = $rt.getPrompt();
@@ -70,6 +69,7 @@ function autoLoadCodeToRepl() {
 	$rt.setPrompt(prevPrompt);
 }
 
+// Proxy server to listen for connections
 function proxyListen(idx) {
 	return new Promise((resolve) => {
 		const name = serverSettings[idx].name;
@@ -101,10 +101,14 @@ hog(`  starting from port: ${config.webserver.basePort} :`, 156);
 console.dir(serverSettings.map(settings => settings.name));
 
 // Start up the TiddlyWiki Webservers and boot the REPL
-//  Once REPL booted, load the code tiddlers from codebase wiki
+//  Once REPL $tw booted, load the code tiddlers from the wikis
 //  then fire up the proxy servers
+const { replTwBoot } = require('./lib/replTwBoot');
+const { twServerBoot } = require('./lib/twServerBoot');
+
+// Create code to startup everything
 var nestWebservers = '';
-var closingNest = `
+var closeNest = `
 replTwBoot().then(tw => {
 $rw = tw;
 replContext();
@@ -113,20 +117,19 @@ startProxyServers();
 })
 `;
 
-// Create code to startup everything
+// Since can have any number of webservers
+//  (each webserver runs in the context of the previous one
+//    thus do not need spawn child processes to run the servers)
+// Generate code to startup the system
 for (let i=0; i<serverSettings.length; i++) {
 	nestWebservers += `
-twServerBoot(serverSettings[${i}])
-.then((tw) => {serverSettings[${i}].$tw = tw;`
-	closingNest += '})';
+		twServerBoot(serverSettings[${i}])
+		.then((tw) => {serverSettings[${i}].$tw = tw;`
+	closeNest += '})';
 }
 
-const { twServerBoot } = require('./lib/twServerBoot');
-const { replTwBoot } = require('./lib/replTwBoot');
-
-// Run code
-eval(nestWebservers + closingNest);
+// Run system startup code
+eval(nestWebservers + closeNest);
 
 // footnote: a good writeup on REPL development
 // https://www.cs.unb.ca/~bremner/teaching/cs2613/books/nodejs-api/repl/
-

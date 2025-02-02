@@ -1,20 +1,20 @@
 autoLoad: no
-caption: Server fetch URL
-created: 20250129142038466
+caption: xxx
+created: 20250201212603699
 ioConfirmDelete: no
-ioPrjProject: fetch
+ioPrjProject: xxx
 ioPrjTabName: 
 ioPrjTabSelected: AALLLL
-ioPrjTabToDelete: fetch-default
-ioPrjTabType: info
+ioPrjTabToDelete: AALLLL
+ioPrjTabType: template
 ioResult: 
-modified: 20250129142931408
-tags: fetch Projects
-title: fetch
+modified: 20250201222541283
+tags: xxx Projects
+title: xxx
 type: text/vnd.tiddlywiki
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-project-header Server fetch URL @@|
+|@@.poc2go-project-header Edit this description and change caption @@|
 
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
@@ -22,9 +22,11 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 | New tab |<<projectTabType>> |<<projectSubmitTab>>|
 
+{{||$:/poc2go/pocket-io/project/delete}}
+
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<displayTabTypes fetch>>
+<<displayTabTypes xxx>>
 
 <<topButton>>

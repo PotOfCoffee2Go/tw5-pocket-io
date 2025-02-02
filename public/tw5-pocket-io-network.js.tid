@@ -103,6 +103,46 @@ function createMessage(command, topic, filter, sender) {
 }
 
 // ------------------------
+// Utilities
+// Timestamp resolves to the second
+function tStamp() {
+	return ((new Date()).toLocaleDateString(undefined, {
+		hourCycle: 'h23',
+		year: 'numeric', month: '2-digit', day: '2-digit',
+		hour: '2-digit', minute: '2-digit', second: '2-digit'
+		})).replace(',', '') + ' ';
+}
+
+// Update network status
+function setNetstat(txt) {
+	var site = `${location.protocol}//${location.hostname}:${location.port}`;
+	$tw.wiki.setText('$:/temp/pocket-io/proxy','text', null, site);
+	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null,
+		`@@font-size:1.1em; Wiki: {{$:/temp/pocket-io/wikinames}}@@<br>{{$:/temp/pocket-io/wikinames!!link}}<br>` + txt);
+}
+
+// Handle ioResult fields
+const resultTemplate = $tw.wiki.getTiddlerText('$:/poc2go/pocket-io/result/template');
+const errorTemplate = $tw.wiki.getTiddlerText('$:/poc2go/pocket-io/result/error-template');
+const uploadTemplate = $tw.wiki.getTiddlerText('$:/poc2go/pocket-io/result/upload-template');
+function formatResults(tiddler) {
+	if (!resultTemplate || !errorTemplate || !uploadTemplate) { return tiddler; }
+	if (tiddler.ioResult && !/^<div/.test(tiddler.ioResult)) {
+		if (/^error: /i.test(tiddler.ioResult)) {
+			tiddler.ioResult = errorTemplate
+			  .replace('$$$text$$$', tStamp() + tiddler.ioResult.replace(/^error: /i, ''));
+		} else {
+			tiddler.ioResult = resultTemplate
+			  .replace('$$$text$$$', tStamp() + tiddler.ioResult);
+		}
+	}
+	if (tiddler.ioResultUpload && !/^<div/.test(tiddler.ioResultUpload)) {
+		tiddler.ioResultUpload = uploadTemplate
+		  .replace('$$$text$$$', tStamp() + tiddler.ioResultUpload);
+	}
+	return tiddler;
+}
+// ------------------------
 // Tiddler handling
 const story = new $tw.Story();
 
@@ -118,14 +158,6 @@ const fieldsToWiki = (fields, tostory = false) => {
 	if (tostory) {
 		story.navigateTiddler(fields.title /*, fromTitle*/);
 	}
-}
-
-// Update network status
-function setNetstat(txt) {
-	var site = `${location.protocol}//${location.hostname}:${location.port}`;
-	$tw.wiki.setText('$:/temp/pocket-io/proxy','text', null, site);
-	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null,
-		`@@font-size:1.1em; Wiki: {{$:/temp/pocket-io/wikinames}}@@<br>{{$:/temp/pocket-io/wikinames!!link}}<br>` + txt);
 }
 
 // ------------------------
@@ -152,7 +184,8 @@ const initSocketHandlers = () => {
 	socket.on('msg', msg => {
 		msg.resultTiddlers.forEach(tiddler => {
 			if (tiddler.title === msg.req.sender) {
-				fieldsToWiki(tiddler); // skip forcing sender to story
+				tiddler = formatResults(tiddler);
+				fieldsToWiki(tiddler); // skip sending the sender to the story
 			} else {
 				fieldsToWiki(tiddler, msg.req.tostory);
 			}

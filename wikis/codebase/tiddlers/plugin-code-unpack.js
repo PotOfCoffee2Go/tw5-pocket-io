@@ -5,7 +5,7 @@ $tpi.topic.pluginUnpack = function pluginUnpack(socket, msg) {
 	
 	var pluginData = $tw.wiki.getTiddlerDataCached(senderTid.ioPluginSelected);
 	if (!pluginData) {
-		senderTid.ioResult = $tpi.fn.formatIoResult(`Plugin '${senderTid.ioPluginSelected}' not found`);
+		senderTid.ioResult = `Plugin '${senderTid.ioPluginSelected}' not found`;
 	} else {
 		$tw.utils.each(pluginData.tiddlers,function(tiddler) {
 			$tw.wiki.addTiddler(new $tw.Tiddler(tiddler));
@@ -14,7 +14,7 @@ $tpi.topic.pluginUnpack = function pluginUnpack(socket, msg) {
 				msg.resultTiddlers.push(tiddler);
 			}
 		});
-		senderTid.ioResult = $tpi.fn.formatIoResult(`Plugin '${senderTid.ioPluginSelected}' unpacked`);
+		senderTid.ioResult = `Plugin '${senderTid.ioPluginSelected}' unpacked`;
 	}
 
 	msg.resultTiddlers.push(senderTid);

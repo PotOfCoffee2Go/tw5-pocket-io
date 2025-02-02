@@ -5,19 +5,19 @@ $tpi.topic.copyTiddlers = function copyTiddlers(socket, msg) {
 
 	var gotError = false;
 	if (!senderTid.ioFromWiki) {
-		senderTid.ioResult = $tpi.fn.formatIoResult(`Need the source wiki name to copy the tiddlers from.`);
+		senderTid.ioResult = `Need the source wiki name to copy the tiddlers from.`;
 		gotError = true;
 	}
 	if (!senderTid.ioToWiki) {
-		senderTid.ioResult = $tpi.fn.formatIoResult(`Need the destination wiki name to copy the tiddlers to`);
+		senderTid.ioResult = `Need the destination wiki name to copy the tiddlers to`;
 		gotError = true;
 	}
 	if (!senderTid.ioFilter) {
-		senderTid.ioResult = $tpi.fn.formatIoResult(`A filter to select the tiddlers to copy is required`);
+		senderTid.ioResult = `A filter to select the tiddlers to copy is required`;
 		gotError = true;
 	}
 	if (senderTid.ioFromWiki === senderTid.ioToWiki) {
-		senderTid.ioResult = $tpi.fn.formatIoResult(`Can not copy to the same wiki.`);
+		senderTid.ioResult = `Can not copy to the same wiki.`;
 		gotError = true;
 	}
 
@@ -34,7 +34,7 @@ $tpi.topic.copyTiddlers = function copyTiddlers(socket, msg) {
 				msg.resultTiddlers.push(tiddler);
 			}
 		})
-		senderTid.ioResult = $tpi.fn.formatIoResult(`${tiddlers.length} tiddlers copied from ${senderTid.ioFromWiki} to ${senderTid.ioToWiki}`);
+		senderTid.ioResult = `${tiddlers.length} tiddlers copied from ${senderTid.ioFromWiki} to ${senderTid.ioToWiki}`;
 	}	
 
 	msg.resultTiddlers.push(senderTid);

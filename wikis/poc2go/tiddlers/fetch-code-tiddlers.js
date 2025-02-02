@@ -1,9 +1,11 @@
 $tpi.topic.fetchJsonTiddlers = function (socket, msg) {
-	var senderTid = cpy(msg.senderTiddler);
+	var sender = cpy(msg.senderTiddler);
 	var resultMsg = '';
-	senderTid.ioResult = '';
+	sender.ioResult = '';
 
-	var url = senderTid.ioUrl;
+	// localhost does not work on my network
+	//  your milage may vary
+	var url = sender.ioUrl.replace('//localhost', '//127.0.0.1');
 
 	var titles = [];
 	$tpi.fn.fetchJsonUrl(url).then(maybeTiddlers => {
@@ -15,13 +17,13 @@ $tpi.topic.fetchJsonTiddlers = function (socket, msg) {
 				titles.push(`[[${maybe.title}]]`);
 			}
 		})
-		senderTid.ioResult = $tpi.fn.formatIoResult(`Fetched:\n\n ${titles.join(', ')}`);
-		msg.resultTiddlers.unshift(senderTid); // put sender as first tiddler in response
-		socket.emit('msg', JSON.stringify(msg));
+		sender.ioResult = `Fetched:\n\n ${titles.join(', ')}`;
+		msg.resultTiddlers.unshift(sender); // put sender as first tiddler in response
+		socket.emit('msg', msg);
 		return;
 	})
 
-	senderTid.ioResult = $tpi.fn.formatIoResult(`Fetching URL... ${url}`);
-	msg.resultTiddlers.push(senderTid);
+	sender.ioResult = `Fetching URL... ${url}`;
+	msg.resultTiddlers.push(sender);
 	return msg;
 }

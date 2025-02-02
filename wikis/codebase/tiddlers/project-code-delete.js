@@ -9,7 +9,7 @@ $tpi.topic.projectDelete = function projectDelete(socket, msg) {
 	var confirm = sender.ioConfirmDelete;
 
 	if (confirm !== 'yes') {
-		sender.ioResult = $tpi.fn.formatIoResult(`Must check the confirm checkbox to delete code tiddlers`);
+		sender.ioResult = `Must check the confirm checkbox to delete code tiddlers`;
 		sender.ioConfirmDelete = 'no';
 		msg.resultTiddlers.push(sender);
 		return msg;
@@ -17,7 +17,7 @@ $tpi.topic.projectDelete = function projectDelete(socket, msg) {
 	sender.ioConfirmDelete = 'no';
 
 	if (!(project && tabName)) {
-		sender.ioResult = $tpi.fn.formatIoResult('A project and Tab name are required!');
+		sender.ioResult = 'A project and Tab name are required!';
 		msg.resultTiddlers.push(sender);
 		return msg;
 	}
@@ -28,7 +28,7 @@ $tpi.topic.projectDelete = function projectDelete(socket, msg) {
 		action = `Delete project '${project}'.`;
 	} else {
 		if (!$cw.wiki.tiddlerExists(`${tabName}`)) {
-			sender.ioResult =  formatIoResult(`Tab '${tabName}' does not exist.`);
+			sender.ioResult = `Tab '${tabName}' does not exist.`;
 			msg.resultTiddlers.push(sender);
 			return msg;
 		}
@@ -42,7 +42,7 @@ $tpi.topic.projectDelete = function projectDelete(socket, msg) {
 		tidDeleted.push(`${title}`);
 	})
 
-	sender.ioResult = $tpi.fn.formatIoResult(`${action}\n\nTiddlers deleted:\n\n${tidDeleted.join(', ')}`);
+	sender.ioResult = `${action}\n\nTiddlers deleted:\n\n${tidDeleted.join(', ')}`;
 	msg.resultTiddlers.push(sender);
 	return msg;
 }

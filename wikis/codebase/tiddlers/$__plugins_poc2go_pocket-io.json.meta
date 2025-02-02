@@ -9,4 +9,4 @@ stability: STABILITY_1_EXPERIMENTAL
 tags: 
 title: $:/plugins/poc2go/pocket-io
 type: application/json
-version: 0.2.1
+version: 0.2.14

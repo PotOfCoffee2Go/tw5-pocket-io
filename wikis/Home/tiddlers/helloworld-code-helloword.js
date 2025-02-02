@@ -1,4 +1,5 @@
-// Server-side topics are passed the socket and msg from client wiki
+// Server-side topics are passed the socket and msg
+//  from connected client 
 $tpi.topic.helloworld = function (socket, msg) {
 	// dir(msg,3) // Display pocket.io msg on server console
 
@@ -7,12 +8,15 @@ $tpi.topic.helloworld = function (socket, msg) {
 	// Clear the tiddler field that holds the response text
 	sender.ioResult = '';
 
+	// Do smething here - for example:
 	var title = sender.title;
-	var resultText = `Hello tiddler '[[${title}]]' !!!`;
+	var resultText = `Hello tiddler '[[${sender.title}]]' !!!`;
 
-	// Format the respone text - see $:/pocket-io/ioResult-template
-	sender.ioResult = $tpi.fn.formatIoResult(resultText);
-	// Push the tiddler onto array that is sent back to client wiki
+	// Place a short reply in ioResult
+	sender.ioResult = resultText;
+	// Push tiddlers onto array of tiddlers that are
+	// sent back to client - will automatically update the
+	//  client wiki with any tiddlers in msg.resultTiddlers array
 	msg.resultTiddlers.push(sender);
 	return msg;
 }

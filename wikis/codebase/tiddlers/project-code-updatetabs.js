@@ -35,7 +35,7 @@ $tpi.topic.projectUpdatetabs = function (socket, msg) {
 
 	// Return if error
 	if (resultMsg) {
-		sender.ioResult = $tpi.fn.formatIoResult(resultMsg);
+		sender.ioResult = resultMsg;
 		msg.resultTiddlers.push(sender);
 		return msg;
 	}
@@ -51,7 +51,7 @@ $tpi.topic.projectUpdatetabs = function (socket, msg) {
 	msg.resultTiddlers.push(newTab);
 
 	sender.ioPrjTabName = '';
-//	sender.ioResult = $tpi.fn.formatIoResult(`Tiddler created : ${newTab.title}`);
+//	sender.ioResult = `Tiddler created : ${newTab.title}`;
 	msg.resultTiddlers.push(sender);
 	setTimeout(() => { $tpi.fn.io.refreshClients(dstWiki); }, 1000);
 	return msg;

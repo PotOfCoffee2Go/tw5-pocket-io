@@ -1,5 +1,5 @@
 exports.config = {
-	// All 'server' edition wikis in this diectory
+	// Startup webservers for All 'server' edition wikis in this diectory
 	wikisDir: './wikis',
 
 	// TW Webservers Will be served on local host (127.0.0.1)

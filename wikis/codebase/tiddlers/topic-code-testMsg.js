@@ -6,7 +6,7 @@ $tpi.topic.testMsg = function testMsg(socket, msg) {
 	senderTid.ioResult = '';
 
 	var title = senderTid.title;
-	senderTid.ioResult = $tpi.fn.formatIoResult(`Test message received from tiddler [[${title}]]!`);
+	senderTid.ioResult = `Test message received from tiddler [[${title}]]!`;
 
 	msg.resultTiddlers.push(senderTid);
 	return msg;

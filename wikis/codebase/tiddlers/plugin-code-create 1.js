@@ -20,7 +20,7 @@ $tpi.topic.xxxpluginCreatexxx = function pluginCreate(socket, msg) {
 				text: `{"tiddlers": {}}`
 		}))
 	} else {
-		senderTid.ioResult = $tpi.fn.formatIoResult(`${pluginTiddler} already exists`);
+		senderTid.ioResult = `${pluginTiddler} already exists`;
 		msg.resultTiddlers.push(senderTid);
 		return msg;
 	}
@@ -47,7 +47,7 @@ $tpi.topic.xxxpluginCreatexxx = function pluginCreate(socket, msg) {
 
 	msg.resultTiddlers.push(JSON.parse($rw.wiki.getTiddlerAsJson(pluginTiddler)));
 
-	senderTid.ioResult = $tpi.fn.formatIoResult(`Done`);
+	senderTid.ioResult = `Done`;
 	msg.resultTiddlers.push(senderTid);
 	return msg;
 }
