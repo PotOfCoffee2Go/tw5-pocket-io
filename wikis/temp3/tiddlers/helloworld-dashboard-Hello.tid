@@ -1,8 +1,0 @@
-caption: Hello
-created: 20250120110602064
-modified: 20250120130040487
-tags: dashboard helloworld $:/pocket-io/helloworld/dashboard
-title: helloworld-dashboard-Hello
-type: text/vnd.tiddlywiki
-
-{{||helloworld-template-Hello}}

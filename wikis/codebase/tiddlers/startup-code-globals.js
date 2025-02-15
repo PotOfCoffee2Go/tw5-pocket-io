@@ -7,8 +7,10 @@ const UglifyJS = require('uglify-js');
 // Helpers
 // Copy a JS object
 // Get last 12 digits of socket ID
+// Generate a random id
 const cpy = (obj) => JSON.parse(JSON.stringify(obj));
 const sid = (socket) => socket.id.split('-').pop();
+const uid = () => crypto.randomUUID().split('-').pop();
 
 // $ss is shorthand for 'serverSettings'
 const get$wikiNames = $ss.map(settings => settings.name);

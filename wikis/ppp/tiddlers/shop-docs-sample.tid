@@ -1,0 +1,21 @@
+caption: sample
+created: 20250213183712948
+modified: 20250213190340221
+tags: docs shop $:/pocket-io/shop/docs
+title: shop-docs-sample
+type: text/vnd.tiddlywiki
+
+
+```js
+// Create the shopping cart
+var $shop = new $Shop();
+
+$shop.itemToCart('Guest', 'bike');
+$shop.itemToCart('Guest', 'crackers', 'qty', 15);
+$shop.orderItem('Guest', 'laptop');
+
+$shop.itemToCart('Guest', 'crackers', 'price', 5.00);
+
+$shop.orderCart('Guest');
+```
+

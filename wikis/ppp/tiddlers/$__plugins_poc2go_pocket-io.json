@@ -25,10 +25,10 @@
         },
         "$:/plugins/poc2go/pocket-io/settings": {
             "created": "20250122212433283",
-            "text": "{{$:/poc2go/pocket-io/settings}}\n",
+            "text": "{{$:/poc2go/pocket-io/settings}}\n\n{{$:/poc2go/pocket-io/project/settings}}\n",
             "title": "$:/plugins/poc2go/pocket-io/settings",
             "type": "",
-            "modified": "20250122212801292",
+            "modified": "20250203121913618",
             "caption": "settings"
         },
         "$:/poc2go/pocket-io/css/styles": {
@@ -72,6 +72,36 @@
             "modified": "20250122214829679",
             "caption": "Readme"
         },
+        "$:/poc2go/pocket-io/result/error-template": {
+            "created": "20250116064133466",
+            "text": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em; margin: 0 2em 0 2em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n@@color:red; $$$text$$$ @@\n\n</div>\n",
+            "title": "$:/poc2go/pocket-io/result/error-template",
+            "caption": "ioResult",
+            "modified": "20250203111837762",
+            "tags": "",
+            "type": "text/vnd.tiddlywiki",
+            "ioResult": ""
+        },
+        "$:/poc2go/pocket-io/result/template": {
+            "created": "20241118160926827",
+            "text": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em; margin: 0 2em 0 2em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n$$$text$$$\n\n</div>\n",
+            "title": "$:/poc2go/pocket-io/result/template",
+            "caption": "ioResult",
+            "modified": "20250203111755262",
+            "tags": "",
+            "type": "text/vnd.tiddlywiki",
+            "ioResult": ""
+        },
+        "$:/poc2go/pocket-io/result/upload-template": {
+            "created": "20250120204357262",
+            "text": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em; margin: 0 2em 0 2em;\">\n\n<$button actions='<$action-setfield $field=\"ioResultUpload\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n$$$text$$$\n\n</div>\n",
+            "title": "$:/poc2go/pocket-io/result/upload-template",
+            "caption": "ioResult",
+            "modified": "20250203111904661",
+            "tags": "",
+            "type": "text/vnd.tiddlywiki",
+            "ioResultUpload": ""
+        },
         "$:/poc2go/pocket-io/settings": {
             "created": "20250122203757008",
             "text": "Settings will go here\n",
@@ -80,39 +110,19 @@
             "modified": "20250201134625037",
             "caption": "Pocket-io System"
         },
-        "$:/poc2go/pocket-io/result/error-template": {
-            "created": "20250116064133466",
-            "text": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n@@color:red; $$$text$$$ @@\n\n</div>\n",
-            "title": "$:/poc2go/pocket-io/result/error-template",
-            "caption": "ioResult",
-            "modified": "20250131112651289",
-            "tags": "",
-            "type": "text/vnd.tiddlywiki"
-        },
-        "$:/poc2go/pocket-io/result/template": {
-            "created": "20241118160926827",
-            "text": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n$$$text$$$\n\n</div>\n",
-            "title": "$:/poc2go/pocket-io/result/template",
-            "caption": "ioResult",
-            "modified": "20250130062248094",
-            "tags": "",
-            "type": "text/vnd.tiddlywiki"
-        },
-        "$:/poc2go/pocket-io/result/upload-template": {
-            "created": "20250120204357262",
-            "text": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em;\">\n\n<$button actions='<$action-setfield $field=\"ioResultUpload\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n$$$text$$$\n\n</div>\n",
-            "title": "$:/poc2go/pocket-io/result/upload-template",
-            "caption": "ioResult",
-            "modified": "20250130062135387",
-            "tags": "",
-            "type": "text/vnd.tiddlywiki"
+        "$:/poc2go/pocket-io/topbarleft/menu": {
+            "created": "20250208181451534",
+            "text": "<div style=\"font-size: 1.25em;margin-top:-0.2em;\">\n<$transclude $tiddler=\"$:/core/ui/Buttons/home\"/>\n</div>\n",
+            "tags": "$:/tags/TopLeftBar",
+            "title": "$:/poc2go/pocket-io/topbarleft/menu",
+            "modified": "20250208185135913"
         },
         "$:/poc2go/pocket-io/ui/wikilinks": {
             "created": "20250131165633262",
-            "text": "\\define extlink()\n[[$(currentTiddler)$]]\n\\end\n\n@@.poc2go-center\nWikis in the Pocket-io network:\n@@\n@@.poc2go-mono \n<$list filter=\"[enlist{$:/temp/pocket-io/wikinames!!wikiLinks}]\">\n&nbsp;<<extlink>>&nbsp;\n</$list>\n@@\n",
+            "text": "\\define extlink()\n[[$(currentTiddler)$]]\n\\end\n\n@@.poc2go-center\nWikis in the Pocket-io network:\n@@\n@@.poc2go-mono \n<$list filter=\"[list[$:/temp/pocket-io/wikinames!!wikiLinks]addsuffix[/#Pocket-io%20System]]\">\n&nbsp;<<extlink>>&nbsp;\n</$list>\n@@\n",
             "tags": "",
             "title": "$:/poc2go/pocket-io/ui/wikilinks",
-            "modified": "20250201142821130",
+            "modified": "20250202161840474",
             "caption": "Active wikis"
         },
         "$:/poc2go/pocket-io/new-wiki-icon": {
@@ -124,18 +134,18 @@
         },
         "$:/poc2go/pocket-io/ui/copy": {
             "created": "20250131163904602",
-            "text": "\\define submitCopyTiddlers()\n<<pocket-io \"copyTiddlers\">>\n\\end\n\n\\define copyButton()\n<$button actions=\"<<submitCopyTiddlers>>\"> Copy </$button>\n\\end\n\n\\define filterEditBox()\n<$edit-text field=\"ioFilter\" class=\"tid-input\"/>\n\\end\n\n\\define fromSelect()\n<$select field=\"ioFromWiki\" default=\"\"><$list filter=\"[list[$:/temp/pocket-io/wikinames]]\"><option value={{!!title}} ><$view field='title'/></option></$list></$select>\n\\end\n\n\\define toSelect()\n<$select field=\"ioToWiki\" default=\"\"><$list filter=\"[list[$:/temp/pocket-io/wikinames]]\"><option value={{!!title}} ><$view field='title'/></option></$list></$select>\n\\end\n\n<div style=\"margin-top: 1em; padding: 0 1em 0 1em; border: 1px solid #70b351; border-radius: 10px;\" >\n\nCopy tiddlers between wikis:\n\n|tc-table-no-border|k\n| Filter | From wiki | To wiki |  |\n|<<filterEditBox>> |<<fromSelect>> |<<toSelect>> |<<copyButton>> |\n\n</div>\n",
+            "text": "\\define submitCopyTiddlers()\n<<pocket-io \"copyTiddlers\">>\n\\end\n\n\\define copyButton()\n<$button actions=\"<<submitCopyTiddlers>>\"> Copy </$button>\n\\end\n\n\\define filterEditBox()\n<$edit-text field=\"ioFilter\" class=\"tid-input\"/>\n\\end\n\n\\define fromSelect()\n<$select field=\"ioFromWiki\" default=\"\"><$list filter=\"[list[$:/temp/pocket-io/wikinames]]\"><option value={{!!title}} ><$view field='title'/></option></$list></$select>\n\\end\n\n\\define toSelect()\n<$select field=\"ioToWiki\" default=\"\"><$list filter=\"[list[$:/temp/pocket-io/wikinames]]\"><option value={{!!title}} ><$view field='title'/></option></$list></$select>\n\\end\n\n|tc-table-no-border|k\n| Filter | From wiki | To wiki |  |\n|<<filterEditBox>> |<<fromSelect>> |<<toSelect>> |<<copyButton>> |\n",
             "tags": "",
             "title": "$:/poc2go/pocket-io/ui/copy",
-            "modified": "20250131164036050",
+            "modified": "20250202170006790",
             "caption": "Copy"
         },
         "$:/poc2go/pocket-io/ui/system": {
             "created": "20250201144742707",
-            "text": "<style>.cols3{column-count:3}</style>\n\n<div class=\"poc2go-center\">\n<$image source=\"$:/favicon.ico\" width=\"64px\"/>\n</div>\n\n{{||$:/poc2go/pocket-io/ui/wikilinks}}\n\n{{||$:/poc2go/pocket-io/project/projects}}\n\n!!!! Auto Load on Startup :\n\n<<list-links filter:\"[tag[Projects]autoLoad[yes]] -[[$$$project$$$]]\" class:\"cols3\">>\n\n<div style=\"margin-top: 2em; padding: 0 1em 0 1em; border: 1px solid #70b351; border-radius: 10px;\" >\n\nCreate new project in a wiki:\n\n{{||$:/poc2go/pocket-io/project/create}}\n\n</div>\n\n{{!!ioResult}}\n\n{{||$:/poc2go/pocket-io/ui/copy}}\n\n|tc-center tc-table-no-border|k\n| <<resetAllButton>> |\n",
+            "text": "<style>.cols3{column-count:3}</style>\n\n<div class=\"poc2go-center\">\n<$image source=\"$:/favicon.ico\" width=\"64px\"/>\n</div>\n\n{{||$:/poc2go/pocket-io/ui/wikilinks}}\n\n{{||$:/poc2go/pocket-io/project/projects}}\n\n<div style=\"margin: 1em; padding: 1em; border: 1px solid #70b351; border-radius: 10px;\" >\n\nCreate new project in a wiki:\n\n{{||$:/poc2go/pocket-io/project/create}}\n\n</div>\n\n|tc-center tc-table-no-border|k\n| <<resetAllButton>> |\n\n{{!!ioResult}}\n\n<div style=\"margin: 1em; padding: 1em; border: 1px solid #70b351; border-radius: 10px;\" >\n\nCopy tiddlers between wikis:\n\n{{||$:/poc2go/pocket-io/ui/copy}}\n\n</div>\n\n",
             "tags": "",
             "title": "$:/poc2go/pocket-io/ui/system",
-            "modified": "20250201160833904",
+            "modified": "20250204180546042",
             "caption": "Pocket-io System"
         },
         "$:/poc2go/pocket-io/ui/Tagcode": {

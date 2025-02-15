@@ -1,7 +1,6 @@
 // All proxy servers can Redirect to another wiki's proxy server
 // ex: 'http://{host}/dashboard' links to dashboard wiki
 /*
-hog('fffffffff');
 get$wikiNames.forEach(wikiName => {
 	hog(`{$wikiName} setup`);
 	var wikiPort = get$settings(wikiName).proxy.port;

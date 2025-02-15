@@ -1,0 +1,15 @@
+created: 20250204153948633
+modified: 20250204162740982
+tags: 
+title: New Tiddler
+type: text/vnd.tiddlywiki
+
+\define auto()
+Auto Load on Startup: <$list filter="[tag[Projects]autoLoad[yes]] -[[$$$project$$$]]">
+<$link to=<<currentTiddler>>><$view field="caption"/> 1 </$link>
+{{!!autoLoad}}
+ &nbsp;&nbsp;&nbsp; 
+</$list>
+\end
+
+<<auto>>

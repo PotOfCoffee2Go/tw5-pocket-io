@@ -6,9 +6,9 @@ ioPrjProject: REST
 ioPrjTabName: 
 ioPrjTabSelected: AALLLL
 ioPrjTabToDelete: REST-default
-ioPrjTabType: code
+ioPrjTabType: docs
 ioResult: 
-modified: 20250129190025662
+modified: 20250203032249053
 tags: REST Projects
 title: REST
 type: text/vnd.tiddlywiki
@@ -25,8 +25,7 @@ Enable 'Auto load on startup' and restart server to load updated code.
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
-|tc-center tc-table-no-border|k
-| New tab |<<projectTabType>> |<<projectSubmitTab>>|
+{{||$:/poc2go/pocket-io/project/addtab}}
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}

@@ -1,8 +1,10 @@
 caption: Fetch Tiddlers
 created: 20250131053639460
-modified: 20250131054701471
+modified: 20250206184152044
 tags: dashboard fetch $:/pocket-io/fetch/dashboard
 title: fetch-dashboard-fetchtiddlers
 type: text/vnd.tiddlywiki
+
+Provide a URL that returns one or more tiddlers in JSON format:
 
 {{||fetch-template-fetchtiddlers}}

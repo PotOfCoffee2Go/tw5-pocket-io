@@ -1,41 +1,42 @@
-// Create a new project or a new tab for an existing project
+// Create a new tab for an existing project
 //  If the tab already exists - exits with no action
 //  If project already exists will create a new tab
 $tpi.topic.projectUpdatetabs = function (socket, msg) {
 	var sender = cpy(msg.senderTiddler);
-	var resultMsg = '';
+	var errorMsg = '';
 	sender.ioResult = '';
 
-	var dstWiki = msg.req.wikiName;
+	var dstWikiName = sender.ioPrjWiki ?? msg.req.wikiName;
 	var project = sender.ioPrjProject;
 	var tabName = sender.ioPrjTabName;
 	var tabType = sender.ioPrjTabType;
-	var $tw = get$tw(dstWiki);
-	if (!tabName) {
-		resultMsg = 'A tab name is required.';
+	
+	var $tw = get$tw(dstWikiName);
+
+	if (!$tw) {
+		errorMsg = `Error: Wiki '${dstWikiName}' is not in the Pocket-io network.`;
+	}
+	else if (!tabName) {
+		errorMsg = 'Error: A tab name is required.';
 	}
 	else if (!tabType) {
-		resultMsg = 'A tab type is required.';
+		errorMsg = 'Error: A tab type is required.';
 	}
 	else if (!project) {
-		resultMsg = 'A project name is required.';
+		errorMsg = 'Error: A project name is required.';
 	}
-	else if (!dstWiki) {
-		resultMsg = 'A destination wiki name is required.';
-	}
-	else if ($tw.wiki.tiddlerExists(`${project}-${tabType}-${tabName}`)) {
-		resultMsg = `Tab '[[${project}-${tabType}-${tabName}]]' already exists!`;
-	}
-
-	if (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(tabName)) {
-		resultMsg = `Tab name may only contain letters, numbers, dollar-sign, underbars, and dashes\n\n` +
+	else if (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(tabName)) {
+		errorMsg = `Error: Tab name may only contain letters, numbers, dollar-sign, underbars, and dashes\n\n` +
 			`Notably spaces and special characters are not allowed.\n\n` +
 			`Once created can change the 'caption' field to display as desired.`;
 	}
+	else if ($tw.wiki.tiddlerExists(`${project}-${tabType}-${tabName}`)) {
+		errorMsg = `Error: Tab '[[${project}-${tabType}-${tabName}]]' already exists!`;
+	}
 
 	// Return if error
-	if (resultMsg) {
-		sender.ioResult = resultMsg;
+	if (errorMsg) {
+		sender.ioResult = errorMsg;
 		msg.resultTiddlers.push(sender);
 		return msg;
 	}
@@ -47,12 +48,11 @@ $tpi.topic.projectUpdatetabs = function (socket, msg) {
 		text: tabType === 'code' ? '// code goes here' : `${tabType} goes here`,
 		type: tabType === 'code' ? 'application/javascript' : 'text/vnd.tiddlywiki'
 	}
-
+	// Return the new tab
 	msg.resultTiddlers.push(newTab);
 
 	sender.ioPrjTabName = '';
-//	sender.ioResult = `Tiddler created : ${newTab.title}`;
 	msg.resultTiddlers.push(sender);
-	setTimeout(() => { $tpi.fn.io.refreshClients(dstWiki); }, 1000);
+	$tpi.fn.io.refreshClients(dstWikiName);
 	return msg;
 }

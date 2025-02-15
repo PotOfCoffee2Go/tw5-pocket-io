@@ -9,7 +9,7 @@ ioPrjTabToDelete: package-a
 ioPrjTabType: info
 ioResult: 
 ioResultUpload: 
-modified: 20250124052111630
+modified: 20250202182315874
 tags: package Projects
 title: package
 type: text/vnd.tiddlywiki
@@ -20,8 +20,7 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
-|tc-center tc-table-no-border|k
-| New tab |<<projectTabType>> |<<projectSubmitTab>>|
+{{||$:/poc2go/pocket-io/project/addtab}}
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}

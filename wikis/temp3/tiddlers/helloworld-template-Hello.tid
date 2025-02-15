@@ -1,8 +1,0 @@
-caption: Hello
-created: 20250120125751204
-modified: 20250120125835532
-tags: template helloworld $:/pocket-io/helloworld/template
-title: helloworld-template-Hello
-type: text/vnd.tiddlywiki
-
-<$button actions="<<pocket-io 'helloworld'>>">Hello World</$button>

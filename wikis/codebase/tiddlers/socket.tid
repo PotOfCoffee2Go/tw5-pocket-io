@@ -6,9 +6,9 @@ ioPrjProject: socket
 ioPrjTabName: 
 ioPrjTabSelected: AALLLL
 ioPrjTabToDelete: socket-a
-ioPrjTabType: docs
+ioPrjTabType: code
 ioResult: 
-modified: 20250130061403662
+modified: 20250203021314669
 tags: socket Projects
 title: socket
 type: text/vnd.tiddlywiki
@@ -19,8 +19,7 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
-|tc-center tc-table-no-border|k
-| New tab |<<projectTabType>> |<<projectSubmitTab>>|
+{{||$:/poc2go/pocket-io/project/addtab}}
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}

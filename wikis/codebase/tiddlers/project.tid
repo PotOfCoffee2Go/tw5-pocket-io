@@ -4,9 +4,11 @@ created: 20250114040241341
 ioConfirmDelete: no
 ioPrjProject: project
 ioPrjTabName: 
-ioPrjTabType: docs
+ioPrjTabSelected: project-code-allprojects
+ioPrjTabType: code
 ioResult: 
-modified: 20250201222236534
+ioResultUpload: 
+modified: 20250210163404902
 tags: project Projects
 title: project
 type: text/vnd.tiddlywiki
@@ -17,10 +19,7 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
-|tc-center tc-table-no-border|k
-| New tab |<<projectTabType>> |<<projectSubmitTab>>|
-
-{{||$:/poc2go/pocket-io/project/delete}}
+{{||$:/poc2go/pocket-io/project/addtab}}
 
 {{!!ioResult}}
 

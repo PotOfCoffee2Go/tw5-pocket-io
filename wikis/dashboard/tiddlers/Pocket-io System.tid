@@ -1,32 +1,14 @@
 created: 20250108083629945
-modified: 20250131170548001
+ioResult: 
+modified: 20250208184910275
 tags: $:/tags/pocket-io/broadcast
 title: Pocket-io System
 type: text/vnd.tiddlywiki
 
-\define extlink()
-[[$(currentTiddler)$]]
-\end
-
-<style>.cols3{column-count:3}</style>
-
-{{||$:/poc2go/pocket-io/ui/active}}
-
-!!!! Auto Load on Startup :
-
-<<list-links filter:"[tag[Projects]autoLoad[yes]] -[[$$$project$$$]]" class:"cols3">>
-
-<div style="margin-top: 2em; padding: 0 1em 0 1em; border: 1px solid #70b351; border-radius: 10px;" >
-
-Create a new project in a wiki:
-
-{{||$:/poc2go/pocket-io/project/create}}
-
-</div>
-
-{{!!ioResult}}
-
-{{||$:/poc2go/pocket-io/ui/copy}}
+{{||$:/poc2go/pocket-io/ui/system}}
 
 |tc-center tc-table-no-border|k
-| <<resetAllButton>> |
+| Display wikis and projects in the network |
+| <$button actions="<<pocket-io projectAllProjects>>"> Refresh </$button> |
+
+{{$:/temp/pocket-io/system/projects}}

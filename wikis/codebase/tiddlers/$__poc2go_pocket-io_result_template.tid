@@ -1,0 +1,13 @@
+caption: ioResult
+created: 20241118160926827
+modified: 20250203111500169
+tags: 
+title: $:/poc2go/pocket-io/result/template
+type: text/vnd.tiddlywiki
+
+<div style="border: 1px solid aqua;border-radius: 10px; padding-left: 1em; margin: 0 2em 0 2em;">
+
+<$button actions='<$action-setfield $field="ioResult" $value="" />' style="float:right;margin-right:1em;"> close </$button>
+$$$text$$$
+
+</div>

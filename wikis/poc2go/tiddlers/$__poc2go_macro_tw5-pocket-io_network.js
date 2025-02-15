@@ -182,12 +182,16 @@ const initSocketHandlers = () => {
 				fieldsToWiki(tiddler, msg.req.tostory);
 			}
 		})
-		$tw.syncer.syncFromServer();
+		if ($tw.syncer) {
+			$tw.syncer.syncFromServer();
+		}
 	})
 
 	socket.on('refresh', () => {
 		console.log('pocket.io request to server-refresh');
-		$tw.syncer.syncFromServer();
+		if ($tw.syncer) {
+			$tw.syncer.syncFromServer();
+		}
 	})
 
 	socket.on('close', () => {

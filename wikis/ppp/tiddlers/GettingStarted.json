@@ -1,0 +1,14 @@
+[
+    {
+        "created": "20250129195505934",
+        "title": "GettingStarted",
+        "modified": "20250211162007738",
+        "tags": "$:/tags/GettingStarted",
+        "type": "text/vnd.tiddlywiki",
+        "text": "Welcome to ~TiddlyWiki and the ~TiddlyWiki community\n\nVisit https://tiddlywiki.com/ to find out more about ~TiddlyWiki and what it can do.\n\n<hr class=\"poc2go-hr\">\n\nThis system interfaces multiple TiddlyWikis into a single system.\n\n<hr class=\"poc2go-hr\">\n\n{{||Pocket-io System}}\n",
+        "caption": "Step 1<br>Syncing",
+        "ioPrjWiki": "ppp",
+        "ioPrjProject": "functional",
+        "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em; margin: 0 2em 0 2em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n02/11/2025 11:20:07 Project created - http://raspberrypi:3006/#functional\n\n</div>\n"
+    }
+]

@@ -5,19 +5,19 @@ $tpi.topic.copyTiddlers = function copyTiddlers(socket, msg) {
 
 	var gotError = false;
 	if (!senderTid.ioFromWiki) {
-		senderTid.ioResult = `Need the source wiki name to copy the tiddlers from.`;
+		senderTid.ioResult = `Error: Need the source wiki name to copy the tiddlers from.`;
 		gotError = true;
 	}
-	if (!senderTid.ioToWiki) {
-		senderTid.ioResult = `Need the destination wiki name to copy the tiddlers to`;
+	else if (!senderTid.ioToWiki) {
+		senderTid.ioResult = `Error: Need the destination wiki name to copy the tiddlers to`;
 		gotError = true;
 	}
-	if (!senderTid.ioFilter) {
-		senderTid.ioResult = `A filter to select the tiddlers to copy is required`;
+	else if (!senderTid.ioFilter) {
+		senderTid.ioResult = `Error: A filter to select the tiddlers to copy is required`;
 		gotError = true;
 	}
-	if (senderTid.ioFromWiki === senderTid.ioToWiki) {
-		senderTid.ioResult = `Can not copy to the same wiki.`;
+	else if (senderTid.ioFromWiki === senderTid.ioToWiki) {
+		senderTid.ioResult = `Error: Can not copy to the same wiki.`;
 		gotError = true;
 	}
 

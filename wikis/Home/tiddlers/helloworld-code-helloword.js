@@ -18,6 +18,8 @@ $tpi.topic.helloworld = function (socket, msg) {
 	// sent back to client - will automatically update the
 	//  client wiki with any tiddlers in msg.resultTiddlers array
 	msg.resultTiddlers.push(sender);
+	// Tell all clients connected to destination wiki to refresh
+	$tpi.fn.io.refreshClients(msg.req.wikiName);
 	return msg;
 }
 

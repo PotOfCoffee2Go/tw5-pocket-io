@@ -1,0 +1,29 @@
+autoLoad: yes
+caption: Hello World
+created: 20250205034558035
+ioConfirmDelete: no
+ioPrjProject: helloworld
+ioPrjTabName: 
+ioPrjTabSelected: helloworld-code-helloword
+ioPrjTabType: docs
+ioResult: 
+ioResultUpload: 
+modified: 20250211202110113
+tags: helloworld Projects
+title: helloworld
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header Hello World! @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+{{||$:/poc2go/pocket-io/project/addtab}}
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<<displayTabTypes helloworld>>
+
+<<topButton>>

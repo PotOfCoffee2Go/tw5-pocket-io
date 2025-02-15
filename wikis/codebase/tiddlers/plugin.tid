@@ -2,11 +2,25 @@ autoLoad: yes
 caption: Plugin Manager
 created: 20250114164318852
 creator: poc2go
-ioPrjProject: plugin
-ioPrjTabName: 
-ioPrjTabType: docs
+ioAuthor: 
+ioDisplayButtons: <<resetAllButton>> <<createButton>> <<builderButton>>
+ioHelp: Make any changes and 'Update'<br>Press 'Build' to create the plugin
+ioList: 
+ioName: fetch
+ioPluginPriority: 20
+ioPluginType: plugin
+ioPublisher: 
 ioResult: 
-modified: 20250129070742740
+ioSrcProject: fetch
+ioSrcProjectList: REST ReplCommands fetch flotsam
+ioSrcProjectWiki: poc2go
+ioSrcTiddlerList: fetch fetch-code-json fetch-code-text fetch-code-tiddlers fetch-dashboard-fetchtiddlers fetch-info-readme fetch-template-fetchtiddlers
+ioSystem: poc2go
+ioText: {"tiddlers":{}}
+ioTitle: $:/plugins/poc2go/fetch
+ioType: application/json
+ioVersion: 0.0.0
+modified: 20250209072755545
 modifier: poc2go
 tags: plugin Projects
 title: plugin
@@ -18,8 +32,7 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
-|tc-center tc-table-no-border|k
-| New tab |<<projectTabType>> |<<projectSubmitTab>>|
+{{||$:/poc2go/pocket-io/project/addtab}}
 
 {{!!ioResult}}
 

@@ -1,0 +1,24 @@
+caption: Create User
+created: 20250213184007719
+ioResult: 
+modified: 20250215104745742
+tags: dashboard shop $:/pocket-io/shop/dashboard
+title: shop-dashboard-user-create
+type: text/vnd.tiddlywiki
+
+\import shop-template-procedures
+\define submitCreate()
+<<pocket-io "shopUserCreate">>
+\end
+
+\define createButton()
+<$button actions="<<submitCreate>>"> Create </$button>
+\end
+
+Create a new user
+
+<<helpButton>> <<createButton>> {{!!shopDisplayButtons}} {{!!shopHelp}}
+
+{{!!ioResult}}
+
+{{shop-template-user-create}}

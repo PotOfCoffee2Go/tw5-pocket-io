@@ -1,0 +1,24 @@
+caption: Create Item
+created: 20250215104542379
+ioResult: 
+modified: 20250215104804694
+tags: dashboard shop $:/pocket-io/shop/dashboard
+title: shop-dashboard-item-create
+type: text/vnd.tiddlywiki
+
+\import shop-template-procedures
+\define submitCreate()
+<<pocket-io "shopItemCreate">>
+\end
+
+\define createButton()
+<$button actions="<<submitCreate>>"> Create </$button>
+\end
+
+Create a new item
+
+<<helpButton>> <<createButton>> {{!!shopDisplayButtons}} {{!!shopHelp}}
+
+{{!!ioResult}}
+
+{{shop-template-item-create}}

@@ -6,9 +6,9 @@ ioPrjProject: flotsam
 ioPrjTabName: 
 ioPrjTabSelected: AALLLL
 ioPrjTabToDelete: flotsam-default
-ioPrjTabType: code
+ioPrjTabType: docs
 ioResult: 
-modified: 20250129144538805
+modified: 20250207041210868
 tags: flotsam Projects
 title: flotsam
 type: text/vnd.tiddlywiki
@@ -19,8 +19,7 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
-|tc-center tc-table-no-border|k
-| New tab |<<projectTabType>> |<<projectSubmitTab>>|
+{{||$:/poc2go/pocket-io/project/addtab}}
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}

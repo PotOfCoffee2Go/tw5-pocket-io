@@ -1,0 +1,30 @@
+autoLoad: no
+caption: Shopping Cart
+created: 20250213181039774
+ioConfirmDelete: no
+ioPrjMinify: yes
+ioPrjProject: shop
+ioPrjTabName: 
+ioPrjTabSelected: shop-code-user-create
+ioPrjTabType: code
+ioResult: 
+ioResultUpload: 
+modified: 20250215110744143
+tags: shop Projects
+title: shop
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header Shopping Cart @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+{{||$:/poc2go/pocket-io/project/addtab}}
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<<displayTabTypes shop>>
+
+<<topButton>>

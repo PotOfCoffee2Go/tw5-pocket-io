@@ -7,7 +7,7 @@ $tpi.fn.io.msg = function msg(socket, msg) {
 		return;
 	}
 	if (!(msg.req.topic && !!$tpi.topic[msg.req.topic])) {
-		socket.emit('msg',$tpi.topic['badMsg'](socket, msg, `Invalid topic: ${msg.req.topic}`));
+		socket.emit('msg',$tpi.topic['badMsg'](socket, msg, `Error: Invalid topic: ${msg.req.topic}`));
 		return;
 	}
 	var resultMsg = $tpi.topic[msg.req.topic](socket, msg);

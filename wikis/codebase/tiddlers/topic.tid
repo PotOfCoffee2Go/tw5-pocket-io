@@ -4,12 +4,12 @@ created: 20250129072620849
 ioConfirmDelete: no
 ioPrjProject: topic
 ioPrjTabName: 
-ioPrjTabSelected: topic-code-resetIoFields
+ioPrjTabSelected: topic-code-copyTiddlers
 ioPrjTabToDelete: topic-a
 ioPrjTabType: code
 ioResult: 
 ioResultUpload: 
-modified: 20250131124153294
+modified: 20250206214724988
 tags: topic Projects
 title: topic
 type: text/vnd.tiddlywiki
@@ -20,8 +20,7 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
-|tc-center tc-table-no-border|k
-| New tab |<<projectTabType>> |<<projectSubmitTab>>|
+{{||$:/poc2go/pocket-io/project/addtab}}
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}

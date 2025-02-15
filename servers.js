@@ -28,6 +28,7 @@ var $rw, $sockets = {};
 function replContext() {
 	$rt.context.$rt = $rt;	// the REPL itself
 	$rt.context.$rw = $rw;	// tiddlywiki instance for REPL use
+	$rt.context.$config = config;
 	$rt.context.$ss = serverSettings;
 
 	// Application objects
@@ -75,8 +76,7 @@ function proxyListen(idx) {
 		const name = serverSettings[idx].name;
 		const { server, port, host, targetUrl } = serverSettings[idx].proxy;
 		server.http.listen(port, host, () => {
-			log(`Proxy server to wiki '${name}' webserver ` + hue(targetUrl,156));
-			hog(`  serving on http://${host === '0.0.0.0' ? config.proxy.domain : host}:${port}`,185);
+			hog(`Proxy server to wiki '${name}' serving on http://${host === '0.0.0.0' ? config.proxy.domain : host}:${port}`,185);
 			resolve();
 		})
 	})

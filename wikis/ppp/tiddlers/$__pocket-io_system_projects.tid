@@ -1,0 +1,56 @@
+created: 20250204032554779
+modified: 20250204032554779
+title: $:/pocket-io/system/projects
+type: text/vnd.tiddlywiki
+
+|tc-center|k
+| Wiki | Project | AutoLoad |h
+|[[Home|http://raspberrypi:3000]] | | |
+| |[[helloworld|http://raspberrypi:3000/#helloworld]] | yes |
+|[[MyWiki|http://raspberrypi:3001]] | | |
+|[[codebase|http://raspberrypi:3002]] | | |
+| |[[startup|http://raspberrypi:3002/#startup]] | yes |
+| |[[socket|http://raspberrypi:3002/#socket]] | yes |
+| |[[topic|http://raspberrypi:3002/#topic]] | yes |
+| |[[project|http://raspberrypi:3002/#project]] | yes |
+| |[[plugin|http://raspberrypi:3002/#plugin]] | yes |
+| |[[package|http://raspberrypi:3002/#package]] | no |
+|[[dashboard|http://raspberrypi:3003]] | | |
+| |[[abcd|http://raspberrypi:3003/#abcd]] | no |
+| |[[mytest3|http://raspberrypi:3003/#mytest3]] | no |
+|[[poc2go|http://raspberrypi:3004]] | | |
+| |[[REST|http://raspberrypi:3004/#REST]] | yes |
+| |[[ReplCommands|http://raspberrypi:3004/#ReplCommands]] | no |
+| |[[fetch|http://raspberrypi:3004/#fetch]] | yes |
+| |[[flotsam|http://raspberrypi:3004/#flotsam]] | no |
+|[[ppp|http://raspberrypi:3005]] | | |
+| |[[ccccvv|http://raspberrypi:3005/#ccccvv]] | no |
+| |[[xyz|http://raspberrypi:3005/#xyz]] | no |
+|[[temp3|http://raspberrypi:3006]] | | |
+| |[[ccc|http://raspberrypi:3006/#ccc]] | no |
+| |[[cccc|http://raspberrypi:3006/#cccc]] | no |
+| |[[ccccd|http://raspberrypi:3006/#ccccd]] | no |
+| |[[ccccdd|http://raspberrypi:3006/#ccccdd]] | no |
+| |[[ccccdde|http://raspberrypi:3006/#ccccdde]] | no |
+| |[[ddd33ff|http://raspberrypi:3006/#ddd33ff]] | no |
+| |[[ddd33ffx|http://raspberrypi:3006/#ddd33ffx]] | no |
+| |[[ddd33ffxxx|http://raspberrypi:3006/#ddd33ffxxx]] | no |
+| |[[eee|http://raspberrypi:3006/#eee]] | no |
+| |[[eeee|http://raspberrypi:3006/#eeee]] | no |
+| |[[ffff|http://raspberrypi:3006/#ffff]] | no |
+| |[[ffffxxxx|http://raspberrypi:3006/#ffffxxxx]] | no |
+| |[[fredder|http://raspberrypi:3006/#fredder]] | no |
+| |[[fredder2|http://raspberrypi:3006/#fredder2]] | no |
+| |[[fredder22|http://raspberrypi:3006/#fredder22]] | no |
+| |[[ghty|http://raspberrypi:3006/#ghty]] | no |
+| |[[helloworld|http://raspberrypi:3006/#helloworld]] | no |
+| |[[llook|http://raspberrypi:3006/#llook]] | no |
+| |[[llooka|http://raspberrypi:3006/#llooka]] | no |
+| |[[llookaa|http://raspberrypi:3006/#llookaa]] | no |
+| |[[tttrrreee|http://raspberrypi:3006/#tttrrreee]] | no |
+| |[[tttrrreeet|http://raspberrypi:3006/#tttrrreeet]] | no |
+| |[[tttvvrrreeet|http://raspberrypi:3006/#tttvvrrreeet]] | no |
+| |[[undefined|http://raspberrypi:3006/#undefined]] | no |
+| |[[xddfxx|http://raspberrypi:3006/#xddfxx]] | no |
+| |[[xxx|http://raspberrypi:3006/#xxx]] | no |
+| |[[yyyuuuii|http://raspberrypi:3006/#yyyuuuii]] | no |
