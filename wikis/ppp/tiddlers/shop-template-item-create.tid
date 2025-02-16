@@ -1,10 +1,10 @@
 caption: Create Item
 created: 20250215102432987
-itemId: xxx
-modified: 20250215110016810
-shopItemName: dd
-shopItemPrice: 2
-shopItemQty: 2
+itemId: 
+modified: 20250216142032548
+shopItemName: 
+shopItemPrice: 
+shopItemQty: 
 shopUserWiki: ppp
 tags: template shop $:/pocket-io/shop/template
 title: shop-template-item-create

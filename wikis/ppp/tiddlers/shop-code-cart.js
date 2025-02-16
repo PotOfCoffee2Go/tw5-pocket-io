@@ -1,4 +1,6 @@
-function $Shop() {
+// This tab must be first code tab in project 'shop'
+const $shop = {};
+$shop.Cart = function() {
 	var self = this;
 	this.userCache = [];
 	this.transHistory = [];
@@ -208,5 +210,5 @@ function $Shop() {
 	}
 }
 
-// Create the shopping cart
-var $shop = new $Shop();
+// Create a shopping cart
+$shop.cart = new $shop.Cart();

@@ -1,5 +1,4 @@
 // Create a user
-// Verify input and build user tiddler from $$$shop-user$$$ template
 $tpi.topic.shopUserCreate = function (socket, msg) {
 	var sender = cpy(msg.senderTiddler);
 	var errorMsg = '';
