@@ -1,15 +1,15 @@
-autoLoad: no
+autoLoad: yes
 caption: Shopping Cart
 created: 20250213181039774
 ioConfirmDelete: no
 ioPrjMinify: yes
 ioPrjProject: shop
 ioPrjTabName: 
-ioPrjTabSelected: shop-code-cart
+ioPrjTabSelected: shop-code-user-create
 ioPrjTabType: code
 ioResult: 
 ioResultUpload: 
-modified: 20250216141201140
+modified: 20250220190002827
 tags: shop Projects
 title: shop
 type: text/vnd.tiddlywiki

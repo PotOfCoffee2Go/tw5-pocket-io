@@ -1,6 +1,6 @@
 caption: sample
 created: 20250213183712948
-modified: 20250213190340221
+modified: 20250219054558390
 tags: docs shop $:/pocket-io/shop/docs
 title: shop-docs-sample
 type: text/vnd.tiddlywiki
@@ -10,12 +10,14 @@ type: text/vnd.tiddlywiki
 // Create the shopping cart
 var $shop = new $Shop();
 
-$shop.itemToCart('Guest', 'bike');
-$shop.itemToCart('Guest', 'crackers', 'qty', 15);
-$shop.orderItem('Guest', 'laptop');
+$shop.cart.itemToCart('cdbdb0439806', '1d471126cb8f'); // Guest item4
+$shop.cart.itemToCart('cdbdb0439806', '786543c8c0e0'); // Guest crackers
+$shop.cart.itemToCart('cdbdb0439806', '786543c8c0e0', 'qty', 15); // Guest crackers
+$shop.cart.itemToCart('cdbdb0439806', '59663ccac360', 'price', 5.00); // Guest crackers
+$shop.cart.orderCart('cdbdb0439806'); // Guest 
 
-$shop.itemToCart('Guest', 'crackers', 'price', 5.00);
+$shop.cart.orderItem('cdbdb0439806', 'f014a0cabb14'); // Guest laptop
+$shop.cart.itemFromCart('cdbdb0439806', '59663ccac360'); // Guest crackers
 
-$shop.orderCart('Guest');
 ```
 

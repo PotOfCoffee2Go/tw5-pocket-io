@@ -1,0 +1,34 @@
+created: 20250217105351892
+modified: 20250217105559815
+tags: $:/tags/PageTemplate
+title: $:/core/ui/PageTemplate/story
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+<section class="tc-story-river" role="main">
+
+<section class="story-backdrop">
+
+<$list filter="[all[shadows+tiddlers]tag[$:/tags/AboveStory]!has[draft.of]]">
+
+<$transclude/>
+
+</$list>
+
+</section>
+
+<!-- $list filter="[list[$:/StoryList]]" history="$:/HistoryList" template="$:/core/ui/StoryTiddlerTemplate" storyview={{$:/view}} emptyMessage={{$:/config/EmptyStoryMessage}}/ -->
+
+<$list filter="[[$:/HistoryList]get[current-tiddler]] :intersection[list<tv-story-list>] ~[list<tv-story-list>first[]]" history="$:/HistoryList" template="$:/core/ui/StoryTiddlerTemplate" storyview={{$:/view}} emptyMessage={{$:/config/EmptyStoryMessage}}/>
+
+<section class="story-frontdrop">
+
+<$list filter="[all[shadows+tiddlers]tag[$:/tags/BelowStory]!has[draft.of]]">
+
+<$transclude/>
+
+</$list>
+
+</section>
+
+</section>

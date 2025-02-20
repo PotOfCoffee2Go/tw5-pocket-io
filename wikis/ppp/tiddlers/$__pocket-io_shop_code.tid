@@ -1,5 +1,5 @@
 created: 20250213182912376
-list: shop-code-cart shop-code-user-create shop-code-item-create shop-code-itemToCart shop-code-data-test shop-code-purchaseCartItems shop-code-oneClickOrderItem
-modified: 20250215110150443
+list: shop-code-globals shop-code-user-lookup shop-code-item-lookup shop-code-oneClickOrderItem shop-code-itemToCart shop-code-item-remove shop-code-purchaseCartItems shop-code-data-test shop-code-functions shop-code-history shop-code-items shop-code-purchases shop-code-users shop-code-startcart
+modified: 20250220190021086
 title: $:/pocket-io/shop/code
 type: text/vnd.tiddlywiki

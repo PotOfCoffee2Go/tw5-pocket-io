@@ -1,5 +1,5 @@
 created: 20250215102448452
-list: shop-template-procedures shop-template-user-create shop-template-item-create
-modified: 20250215102448452
+list: shop-template-procedures shop-template-settings shop-template-user-create shop-template-item-create shop-template-purchase shop-template-order shop-template-trans-history
+modified: 20250217173850317
 title: $:/pocket-io/shop/template
 type: text/vnd.tiddlywiki

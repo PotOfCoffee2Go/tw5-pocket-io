@@ -1,9 +1,22 @@
+caption: backup
+created: 20250220064733969
+modified: 20250220064844742
+tags: docs shop $:/pocket-io/shop/docs
+title: shop-docs-backup
+type: text/vnd.tiddlywiki
+
+```js
 // This tab must be first code tab in project 'shop'
-const $shop = {};
-$shop.Cart = function() {
+var $shop = {fn: {}, task: {}};
+$shop.Cart = function(settings) {
 	var self = this;
+	$shop.settings = Object.assign({}, settings);
+	$shop.wikis = Object.assign({}, settings.wikis);
+	
 	this.userCache = [];
 	this.transHistory = [];
+
+	this.transToBeSaved = false; // Save transaction records in wiki
 
 	// pipe - process functions left to right
 	const pipe = (f,g) => (...args) => g(f(...args));
@@ -11,21 +24,63 @@ $shop.Cart = function() {
 
 	// Tasks
 	// Order item bypassing the shopping cart (one-click order)
-	this.orderItem = pipeline(startTransaction, buySingleItem, applyFeesToPurchases, orderPurchases, endTransaction);
+	this.orderItem = pipeline(
+		startTransaction,
+		buySingleItem,
+		applyFeesToPurchases,
+		orderPurchases,
+		endTransaction,
+		saveUserRecord,
+		saveTransactionHistory);
+
 	// Place (or modify existing) item in shopping cart
-	this.itemToCart = pipeline(startTransaction, addItemToCart, endTransaction);
+	this.itemToCart = pipeline(
+		startTransaction,
+		addItemToCart,
+		endTransaction,
+		saveUserRecord,
+		saveTransactionHistory);
+
+	// Remove item from shopping cart
+	this.itemFromCart = pipeline(
+		startTransaction,
+		removeItemFromCart,
+		endTransaction,
+		saveUserRecord,
+		saveTransactionHistory);
+
 	// Purchase all items in shopping cart
-	this.orderCart = pipeline(startTransaction, buyCartItems, applyFeesToPurchases, emptyCart, orderPurchases, endTransaction);
+	this.orderCart = pipeline(
+		startTransaction,
+		buyCartItems,
+		applyFeesToPurchases,
+		emptyCart,
+		orderPurchases,
+		endTransaction,
+		saveUserRecord,
+		saveTransactionHistory);
 
 	// Get current user record
-	this.getUser = (name) => {
-		var user = self.userCache.find((user) => user.name === name);
+	this.getUser = (userId) => {
+		var user = self.userCache.find((user) => user.userId === userId);
+		if (!user) {
+			const $tw = get$tw($shop.wikis.database);
+			user = $tw.utils.parseJSONSafe(
+				$tw.wiki.getTiddlerText(`shop-user-record-${userId}`)
+			)
+		}
 		return Object.assign({},user ?? guestUser); 
 	}
 
 	// Get item
-	this.getItem = (name) => {
-		var item = items.find((item) => item.name === name);
+	this.getItem = (itemId) => {
+		var item = items.find((item) => item.itemId === itemId);
+		if (!item) {
+			const $tw = get$tw($shop.wikis.database);
+			item = $tw.utils.parseJSONSafe(
+				$tw.wiki.getTiddlerText(`shop-item-record-${itemId}`)
+			)
+		}
 		return Object.assign({}, item); // to-do not found?
 	}
 
@@ -52,10 +107,50 @@ $shop.Cart = function() {
 		}
 	}
 
-	// Transaction history
-	function storeTransHistory(transaction, nextTask) {
+	// Transaction history casce
+	function cacheTransHistory(transaction, nextTask) {
 		nextTask = nextTask ?? 'snapshot';
 		self.transHistory.push(Object.assign({}, transaction, { nextTask }));
+		return Object.assign({}, transaction);
+	}
+
+	function saveUserRecord(transaction) {
+		const $tw = get$tw($shop.wikis.user);
+		$tw.wiki.addTiddler(new $tw.Tiddler(
+			$tw.wiki.getCreationFields(),
+			$tw.wiki.getModificationFields(),
+			{
+				title: `shop-user-record-${transaction.user.userId}`,
+				tags: '$:/pocket-io/shop/record/user user record',
+				type: 'application/json',
+				text: JSON.stringify(transaction.user, null, 2)
+			}
+		))
+		$tpi.fn.io.refreshClients($shop.wikis.user);
+		return Object.assign({}, transaction);
+	}
+
+	function saveTransactionHistory(transaction) {
+		if (!this.transToBeSaved) {
+			return Object.assign({}, transaction);
+		}
+		var transRecords = self.transHistory.filter(record => record.transId === transaction.transId);
+		for (let i=0; i<transRecords.length; i++) {
+			var index = self.transHistory.indexOf(record => record.transId === transaction.transId);
+			self.transHistory.splice(index, 1);
+		}
+		const $tw = get$tw($shop.wikis.trans);
+		$tw.wiki.addTiddler(new $tw.Tiddler(
+			$tw.wiki.getCreationFields(),
+			$tw.wiki.getModificationFields(),
+			{
+				title: `shop-trans-record-${transaction.transId}`,
+				tags: '$:/pocket-io/shop/record/trans trans record',
+				type: 'application/json',
+				text: JSON.stringify(transRecords, null, 2)
+			}
+		))
+		$tpi.fn.io.refreshClients($shop.wikis.trans);
 		return Object.assign({}, transaction);
 	}
 
@@ -64,24 +159,25 @@ $shop.Cart = function() {
 	// Only userName - accesses the current user record
 	//  with itemName includes the item of that name
 	//  plus field and value - updates item[fieeeeeeeeeld] = value
-	function startTransaction(userName, itemName, field, value) {
+	function startTransaction(userId, itemId, field, value) {
 		// Passed a transaction object - just return it
-		if (typeof userName === 'object') {
-			return Object.assign({}, userName);
+		if (typeof userId === 'object') {
+			return Object.assign({}, userId);
 		}
 
 		var transaction = {
 			transId: uuid(),
-			user: self.getUser(userName),
-			item: self.getItem(itemName)
+			user: self.getUser(userId),
+			item: self.getItem(itemId)
 		}
-		storeTransHistory(transaction, 'startTransaction');
+		cacheTransHistory(transaction, 'startTransaction');
 		if (field) {
-			transaction = modifyCartField(transaction, itemName, field, value);
+			transaction = modifyCartField(transaction, itemId, field, value);
 		}
 		if (!transaction.item.name) {
 			delete transaction.item;
 		}
+		dir(transaction,8);
 		return Object.assign({}, transaction);
 	}
 
@@ -89,16 +185,17 @@ $shop.Cart = function() {
 	// It is here that transaction results are stored
 	// until queried to update the TW wiki database(s)
 	function endTransaction(transaction) {
-		storeTransHistory(transaction, 'endTransaction');
+		cacheTransHistory(transaction, 'endTransaction');
 		self.userCache.unshift(Object.assign({}, transaction.user));
 		return Object.assign({}, transaction);
 	}
 
 	// Modify field of an item in the shopping cart
-	function modifyCartField(transaction, itemName, field, value) {
-		function getCartItem(transaction, itemName) {
+	function modifyCartField(transaction, itemId, field, value) {
+		function getCartItem(transaction, itemId) {
 			const { cart } = transaction.user;
-			transaction.item = cart.find((element) => element.name === itemName);
+			tog('Need to-do!');
+			transaction.item = cart.find((element) => element.itemId === itemId);
 			if (!transaction.item) {
 				transaction.item = items.find((element) => element.name === itemName);
 			}
@@ -114,9 +211,9 @@ $shop.Cart = function() {
 			return transaction;
 		}
 
-		var trns = getCartItem(transaction, itemName)
+		var trns = getCartItem(transaction, itemId)
 		trns = updateCartItemField(trns, field, value)
-		storeTransHistory(transaction, 'modifyCartField');
+		cacheTransHistory(transaction, 'modifyCartField');
 		return Object.assign({}, trns);
 	}
 
@@ -133,7 +230,7 @@ $shop.Cart = function() {
 		}
 		const updatedCart = transaction.user.cart.concat(transaction.item);
 		const user = Object.assign({}, transaction.user, { cart: updatedCart, state });
-		storeTransHistory(transaction, state);
+		cacheTransHistory(transaction, state);
 		return Object.assign({}, transaction, { user });
 	}
 
@@ -144,7 +241,7 @@ $shop.Cart = function() {
 		transaction.item.oneClickBuy = true;
 		const updatedPurchases = transaction.user.purchases.concat([transaction.item]);
 		const user = Object.assign({}, transaction.user, { purchases: updatedPurchases, state });
-		storeTransHistory(transaction, state);
+		cacheTransHistory(transaction, state);
 		return Object.assign({}, transaction, { user });
 	}
 
@@ -153,7 +250,7 @@ $shop.Cart = function() {
 		const state =  'buyCartItems';
 		const updatedPurchases = transaction.user.purchases.concat(transaction.user.cart);
 		const user = Object.assign({}, transaction.user, { purchases: updatedPurchases, state });
-		storeTransHistory(transaction, state);
+		cacheTransHistory(transaction, state);
 		return Object.assign({}, transaction, { user });
 	}
 
@@ -163,7 +260,7 @@ $shop.Cart = function() {
 		const { taxRate, purchases} = transaction.user;
 		const updatedPurchases = purchases.map(item => purchaseItem(transaction, item));
 		const user = Object.assign({}, transaction.user, { purchases: updatedPurchases, state });
-		storeTransHistory(transaction, state);
+		cacheTransHistory(transaction, state);
 		return Object.assign({}, transaction, { user });
 	}
 
@@ -198,17 +295,43 @@ $shop.Cart = function() {
 			orders,
 			state
 		});
-		storeTransHistory(transaction, state);
+		cacheTransHistory(transaction, state);
 		return Object.assign({}, transaction, { user });
 	}
 
 	// Clear the shopping cart
 	function emptyCart(transaction) {
 		const user = Object.assign({}, transaction.user, {cart: []});
-		storeTransHistory(transaction, 'emptyCart');
+		cacheTransHistory(transaction, 'emptyCart');
+		return Object.assign({}, transaction, { user });
+	}
+
+	// Remove item from the shopping cart
+	function removeItemFromCart(transaction) {
+		const state =  'removeItemFromCart';
+		transaction.item.source = transaction.item.source ? transaction.item.source : state;
+		if (transaction.item.itemId) {
+			const itemIdx = transaction.user.cart.findIndex((element) => element.itemId === transaction.item.itemId);
+			if (itemIdx > -1) {
+			  transaction.user.cart.splice(itemIdx, 1);
+			}
+		}
+		const user = Object.assign({}, transaction.user, { cart: transaction.user.cart });
+		cacheTransHistory(transaction, state);
 		return Object.assign({}, transaction, { user });
 	}
 }
 
 // Create a shopping cart
-$shop.cart = new $shop.Cart();
+$shop.cart = new $shop.Cart({
+	wikis: {
+		trans: 'ShopDb',
+		user: 'ShopDashboard',
+		item: 'ShopDashboard',
+		database: 'ShopDb',
+		purchase: 'ppp',
+		order: 'ppp' 
+	},
+	transToBeSaved: false,
+});
+```

@@ -1,0 +1,29 @@
+caption: Order
+created: 20250216205701300
+modified: 20250217094947674
+orderId: 
+purchaseIds: 
+shopOrderComplete: 
+shopOrderCost: 
+shopOrderTax: 
+shopOrderTotal: 
+tags: template shop $:/pocket-io/shop/template
+title: shop-template-order
+transId: 
+type: text/vnd.tiddlywiki
+
+\import shop-template-procedures
+
+<style>
+.order-editbox { width: 100px; }
+</style>
+
+|tc-table-no-border|k
+|@@.poc2go-project-header {{!!shopUserName}} @@|
+| Order Id |{{!!orderId}}  &nbsp;&nbsp;&nbsp; <$checkbox field="shopOrderComplete" checked="true" unchecked="false" default="false"> Order is complete </$checkbox> | | |
+| Wiki|<<shopOrderWikiSelect>> | | |
+| Transaction Id|{{!!transId}} | | |
+| Purchase Ids|{{!!purchaseIds}} | | |
+| Cost|<<shopEditBox shopOrderCost '' 'order-editbox'>> | | |
+| Tax|<<shopEditBox shopOrderTax '' 'order-editbox'>> | | |
+| Total|<<shopEditBox shopOrderTotal '' 'order-editbox'>> | | |

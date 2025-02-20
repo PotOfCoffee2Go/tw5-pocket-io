@@ -1,0 +1,42 @@
+caption: Purchase
+created: 20250216191210200
+itemId: 
+modified: 20250216202339688
+orderId: 
+purchaseId: 
+shopItemName: 
+shopPurchaseCost: 
+shopPurchaseOneClickBuy: false
+shopPurchasePrice: 
+shopPurchaseQty: 
+shopPurchaseSource: 
+shopPurchaseTax: 
+shopPurchaseTotal: 
+tags: template shop $:/pocket-io/shop/template
+title: shop-template-purchase
+transId: 
+type: text/vnd.tiddlywiki
+userId: 
+
+\import shop-template-procedures
+
+<style>
+.purchase-editbox { width: 100px; }
+</style>
+
+|tc-table-no-border|k
+|@@.poc2go-project-header {{!!shopUserName}} @@|
+| PurchaseId |{{!!purchaseId}}  &nbsp;&nbsp;&nbsp; <$checkbox field="shopPurcaseComplete" checked="true" unchecked="false" default="false"> Purchase is complete</$checkbox> | | |
+| Wiki|<<shopPurchaseWikiSelect>> | | |
+| Transaction Id|{{!!transId}} | | |
+| User Id|{{!!userId}} | | |
+| Item Id|{{!!itemId}} | | |
+| Order Id|{{!!orderId}} | | |
+| Name|<<shopEditBox shopItemName>> | | |
+| Price|<<shopEditBox shopPurchasePrice '' 'purchase-editbox'>> | | |
+| Quantity|<<shopEditBox shopPurchaseQty '' 'purchase-editbox'>> | | |
+| Cost|<<shopEditBox shopPurchaseCost '' 'purchase-editbox'>> | | |
+| Tax|<<shopEditBox shopPurchaseTax '' 'purchase-editbox'>> | | |
+| Total|<<shopEditBox shopPurchaseTotal '' 'purchase-editbox'>> | | |
+| One-Click Buy|{{!!shopPurchaseOneClickBuy}} | | |
+| Source|{{!!shopPurchaseSource}} | | |

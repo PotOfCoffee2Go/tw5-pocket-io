@@ -1,18 +1,17 @@
+active: true
+address: aaaa
 caption: Create User
+city: bbbb
 created: 20250214220603322
-ioResult: 
-modified: 20250215105931307
-shopUserAddress: x
-shopUserCity: y
-shopUserName: sds ggg rrrr234567
-shopUserState: z
-shopUserTaxRate: 
-shopUserWiki: MyWiki
-shopUserZip: 
+modified: 20250220090420195
+name: uuuttttttt
+state: sssss
 tags: shop template $:/pocket-io/shop/template
+taxrate: .03
 title: shop-template-user-create
 type: text/vnd.tiddlywiki
 userId: 
+zip: 12345
 
 \import shop-template-procedures
 
@@ -24,11 +23,10 @@ userId:
 |@@.poc2go-project-header {{!!shopUserName}} @@|
 
 |tc-table-no-border|k
-| User Id |{{!!userId}} &nbsp;&nbsp;&nbsp; <$checkbox field="shopUserActive" checked="true" unchecked="false" default="true"> User is active</$checkbox> | | |
-| Wiki|<<shopUserWikiSelect>> | | |
-| Name|<<shopEditBox shopUserName  'Required'>> | | |
-| Address|<<shopEditBox shopUserAddress  ''>> | | |
-| City|<<shopEditBox shopUserCity  ''>> | | |
-| State|<<shopEditBox shopUserState  ''>> | | |
-| Zip|<<shopEditBox shopUserZip  '' 'zip-editbox'>> | | |
-| Tax Rate|<<shopEditBox shopUserTaxRate '4%' 'zip-editbox'>> | | |
+| User Id|{{!!userId}} &nbsp;&nbsp;&nbsp; <$checkbox field="active" checked="true" unchecked="false" default="true"> User is active</$checkbox> | | |
+| Name|<<shopEditBox name  'Required'>> | | |
+| Address|<<shopEditBox address  ''>> | | |
+| City|<<shopEditBox city  ''>> | | |
+| State|<<shopEditBox state  ''>> | | |
+| Zip|<<shopEditBox zip  '' 'zip-editbox'>> | | |
+| Tax Rate|<<shopEditBox taxrate '4%' 'zip-editbox'>> | | |
