@@ -1,0 +1,13 @@
+caption: spf
+created: 20241026144627811
+creator: poc2go
+modified: 20241027163318152
+modifier: poc2go
+tags: cmd
+title: spf
+type: text/vnd.tiddlywiki
+
+```
+bash -c "$(curl -sLo- https://superfile.netlify.app/install.sh)"
+spf -v
+```

@@ -74,9 +74,9 @@ function autoLoadCodeToRepl() {
 function proxyListen(idx) {
 	return new Promise((resolve) => {
 		const name = serverSettings[idx].name;
-		const { server, port, host, targetUrl } = serverSettings[idx].proxy;
+		const { server, domain, port, host, targetUrl } = serverSettings[idx].proxy;
 		server.http.listen(port, host, () => {
-			hog(`Proxy server to wiki '${name}' serving on http://${host === '0.0.0.0' ? config.proxy.domain : host}:${port}`,185);
+			hog(`Proxy server to wiki '${name}' serving on http://${domain}:${port}`,185);
 			resolve();
 		})
 	})
@@ -84,11 +84,14 @@ function proxyListen(idx) {
 
 // Start the proxy servers
 async function startProxyServers() {
-	hog(`\nStartup express http-proxy servers`, 156);
-	hog(`  starting from port: ${config.proxy.basePort} :`, 156);
+	hog(`\nStartup express http-proxy servers starting at port: ${config.proxy.basePort}`, 156);
 	for (let i=0; i<serverSettings.length; i++) {
 		await proxyListen(i);
 	}
+
+	// Remove 'codebase' for list of wikis
+//	$rt.context.$ss.splice($rt.context.$ss.findIndex(el => el.name === 'codebase'), 1);
+
 	replMOTD();
 }
 
@@ -96,9 +99,9 @@ async function startProxyServers() {
 hog(`${config.pkg.name} - v${config.pkg.version}`,40);
 hog(`./config.js:`,40);
 console.dir({wikisDir: config.wikisDir, webserver: config.webserver, proxy: config.proxy});
-hog(`\nStartup TiddlyWiki 'server' edition Webservers`, 156);
-hog(`  starting from port: ${config.webserver.basePort} :`, 156);
+hog(`\nStartup TiddlyWiki 'server' edition Webservers from directory ${config.wikisDir}`, 156);
 console.dir(serverSettings.map(settings => settings.name));
+hog(`Webservers starting at port: ${config.webserver.basePort} :`, 156);
 
 // Start up the TiddlyWiki Webservers and boot the REPL
 //  Once REPL $tw booted, load the code tiddlers from the wikis

@@ -1,0 +1,52 @@
+{
+  "userId": "9b86cc3182f2",
+  "name": "silly me",
+  "active": true,
+  "taxrate": ".03",
+  "cart": [
+    {
+      "title": "shop-item-bd38f4f205af",
+      "active": "true",
+      "caption": "computer console",
+      "created": "20250221074904693",
+      "itemId": "bd38f4f205af",
+      "modified": "20250221074904693",
+      "name": "computer console",
+      "price": "4.44",
+      "qty": "2",
+      "tags": "$:/pocket-io/shop/item shop item",
+      "type": "text/vnd.tiddlywiki",
+      "source": "modifiedCartItem",
+      "oneClickBuy": false
+    }
+  ],
+  "purchases": [
+    {
+      "transId": "327122755d3e",
+      "itemId": "bd38f4f205af",
+      "purchaseId": "26b7255a4936",
+      "name": "computer console",
+      "price": "4.44",
+      "qty": "1",
+      "cost": 4.44,
+      "tax": 0.13,
+      "total": 4.57,
+      "oneClickBuy": true,
+      "source": "buySingleItem",
+      "orderId": "ff57143d7c7d"
+    }
+  ],
+  "orders": [
+    {
+      "transId": "327122755d3e",
+      "orderId": "ff57143d7c7d",
+      "purchaseIds": [
+        "26b7255a4936"
+      ],
+      "cost": 4.44,
+      "tax": 0.13,
+      "total": 4.57
+    }
+  ],
+  "state": "addItemToCart"
+}

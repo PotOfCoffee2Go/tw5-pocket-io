@@ -12,8 +12,13 @@ const cpy = (obj) => JSON.parse(JSON.stringify(obj));
 const sid = (socket) => socket.id.split('-').pop();
 const uid = () => crypto.randomUUID().split('-').pop();
 
+const get$twCodebase = $ss.find(settings => settings.name === 'codebase').$tw;
+
 // $ss is shorthand for 'serverSettings'
-const get$wikiNames = $ss.map(settings => settings.name);
+const get$wikiNames = $ss.
+	filter(settings => settings.excludeLinks === false).
+	map(settings => settings.name);
+
 const get$settings = (name) => $ss.find(settings => settings.name === name) ?? {};
 const get$tw = (name) => get$settings(name).$tw;
 const get$proxy = (name) => get$settings(name).proxy ?? {};

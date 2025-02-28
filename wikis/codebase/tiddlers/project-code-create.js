@@ -36,7 +36,7 @@ $tpi.topic.projectCreate = function (socket, msg) {
 
 	// Get the project template and replace occurances of $$$project$$
 	//  with the project name
-	var json = get$tw('codebase').wiki.getTiddlersAsJson('[[$$$project$$$]]');
+	var json = get$twCodebase.wiki.getTiddlersAsJson('[[$$$project$$$]]');
 	var text = json.replace(/\$\$\$project\$\$\$/g, project);
 	var tiddlers = $tw.wiki.deserializeTiddlers(null,text,
 		{title: 'unused'}, {deserializer: 'application/json'});

@@ -31,19 +31,31 @@ const sid = (socket) => socket.id.split('-').pop();
 // Network interface
 var socket = null;
 
-// If socket not assigned then display pocket-io as unavailable
+// Attempt reconnect to server in milliseconds
+const reconnectMs = 10000;
+
+// If socket not initially assigned with in 10 seconds then display pocket-io as unavailable
 setTimeout(() => {
 	if (!socket) {
 		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io unavailable');
 	}
-}, 10000);
+}, reconnectMs);
 
-
-// Attempt reconnect to server in milliseconds
-const reconnectMs = 10000;
 
 // ------------------------
 // TiddlyWiki interface
+
+// Global macros for TiddlyWiki access to server
+//  If problems loading the network these macros will not be loaded
+//   so TiddlyWiki will quietly do nothing when they are called.
+const pocketIoDefines = {
+	title: '$:/temp/pocket-io/macros',
+	tags: '$:/tags/Macro pocket-io',
+	text: `\\define pocket-io(topic filter:"") <$macrocall $name=pocket command=emit topic='$topic$' filter='$filter$' sender="$(currentTiddler)$" />
+
+pocket.io macro
+`};
+
 exports.name = 'pocket';
 
 exports.params = [
@@ -53,7 +65,7 @@ exports.params = [
 	{name: 'sender'},
 ];
 
-exports.run = (command, topic, filter, sender, sender1) => {
+exports.run = (command, topic, filter, sender) => {
 	if (!(sender && $tw.wiki.getTiddler(sender).fields)) {
 		console.log(`pocket.io sender tiddler ${sender} required.`);
 		return;
@@ -66,7 +78,7 @@ exports.run = (command, topic, filter, sender, sender1) => {
 	socket.emit('msg', msg);
 }
 
-// Message
+// Network Message
 function createMessage(command, topic, filter, sender) {
 	// Merge values passed by macro with senders fields
 	// The macro call values takes precidence
@@ -110,7 +122,10 @@ function setNetstat(txt) {
 	var site = `${location.protocol}//${location.hostname}:${location.port}`;
 	$tw.wiki.setText('$:/temp/pocket-io/proxy','text', null, site);
 	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null,
-		`@@font-size:1.1em; Wiki: {{$:/temp/pocket-io/wikinames}}@@<br>{{$:/temp/pocket-io/wikinames!!link}}<br>` + txt);
+		`@@font-size:1.1em; Wiki: {{$:/temp/pocket-io/wikinames}}@@<br>` +
+		`{{$:/temp/pocket-io/wikinames!!link}}<br>` +
+		txt
+	);
 }
 
 // Handle ioResult fields
@@ -139,8 +154,7 @@ function formatResults(tiddler) {
 const story = new $tw.Story();
 
 // Create/overwrite tiddler and add to wiki from hashmap of fields
-//  includes timestamps
-//  optional display to story river
+//  includes timestamps and optional display to story river
 const fieldsToWiki = (fields, tostory = false) => {
 	$tw.wiki.addTiddler(new $tw.Tiddler(
 		$tw.wiki.getCreationFields(),
@@ -153,18 +167,14 @@ const fieldsToWiki = (fields, tostory = false) => {
 }
 
 // ------------------------
-// Pocket.io event handlers
+// Pocket.io socket event handlers
 const initSocketHandlers = () => {
 	socket = io();
 
 	socket.on('connect', () => {
 		console.log(`pocket.io id: ${sid(socket)} connecting`);
 		setNetstat('Pocket.io connecting...');
-		socket.emit('ackConnect', {
-			protocol: location.protocol,
-			hostname: location.hostname,
-			port: location.port
-		})
+		socket.emit('ackConnect')
 	})
 
 	socket.on('ackConnect', wikiRequires => {
@@ -211,15 +221,14 @@ function reConnect() {
 	}
 }
 
-
 // ------------------------
 // Fetch pocket-io library from server
 //  load into site <head>,
-//   (it will connect to server automatically)
+//   (it will create socket connection to server automatically)
 //  initialize pocket.io macros and events
 
 // Is async so TW $:/boot continues loading wiki
-//  while uibuilder is being initialized
+//  while library is being initialized
 fetch(socketLibrary).then((res) => {
 	// Verify library fetch successful
 	if (res.status !== 200) {
@@ -241,19 +250,6 @@ fetch(socketLibrary).then((res) => {
 	console.log(err);
 });
 
-
 })();
-
-// Global macros for TiddlyWiki access to server
-//  If problems loading the network these macros will not be loaded
-//   so TiddlyWiki will quietly do nothing when they are called.
-const pocketIoDefines = {
-	title: '$:/temp/pocket-io/macros',
-	tags: '$:/tags/Macro pocket-io',
-	text: `\\define pocket-io(topic filter:"") <$macrocall $name=pocket command=emit topic='$topic$' filter='$filter$' sender="$(currentTiddler)$" />
-
-pocket.io macro
-`
-};
 
 } // if ($tw.browser)

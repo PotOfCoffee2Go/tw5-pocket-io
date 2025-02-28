@@ -1,0 +1,32 @@
+active: true
+address: aaaa
+caption: Create User
+city: bbbb
+created: 20250214220603322
+modified: 20250221073036599
+name: silly me
+state: sssss
+tags: shop template $:/pocket-io/shop/template
+taxrate: .03
+title: shop-template-user-create
+type: text/vnd.tiddlywiki
+userId: 
+zip: 12345
+
+\import shop-template-procedures
+
+<style>
+.zip-editbox { width: 70px; }
+</style>
+
+|tc-table-no-border|k
+|@@.poc2go-project-header {{!!shopUserName}} @@|
+
+|tc-table-no-border|k
+| User Id|{{!!userId}} &nbsp;&nbsp;&nbsp; <$checkbox field="active" checked="true" unchecked="false" default="true"> User is active</$checkbox> | | |
+| Name|<<shopEditBox name  'Required'>> | | |
+| Address|<<shopEditBox address  ''>> | | |
+| City|<<shopEditBox city  ''>> | | |
+| State|<<shopEditBox state  ''>> | | |
+| Zip|<<shopEditBox zip  '' 'zip-editbox'>> | | |
+| Tax Rate|<<shopEditBox taxrate '4%' 'zip-editbox'>> | | |

@@ -7,7 +7,7 @@ ioPrjTabName:
 ioPrjTabSelected: AALLLL
 ioPrjTabType: docs
 ioResult: 
-modified: 20250203040929833
+modified: 20250227151153162
 tags: $$$project$$$ Projects
 title: $$$project$$$
 type: text/vnd.tiddlywiki
@@ -23,6 +23,12 @@ type: text/vnd.tiddlywiki
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<displayTabTypes $$$project$$$>>
+<<closeTabsButton "$$$project$$$" "dashboard">>
+<<closeTabsButton "$$$project$$$" "docs">>
+<<closeTabsButton "$$$project$$$" "template">>
+<<projectUploadButton>>
+<<closeTabsButton "$$$project$$$" "code">>
+<<closeTabsButton "$$$project$$$" "info">>
+<<closeTabsButton "$$$project$$$" "package">>
 
 <<topButton>>

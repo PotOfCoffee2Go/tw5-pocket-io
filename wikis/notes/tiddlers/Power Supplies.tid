@@ -1,0 +1,14 @@
+caption: Power Supplies
+created: 20241024123342860
+creator: poc2go
+modified: 20241024134639503
+modifier: poc2go
+tags: power
+title: Power Supplies
+type: text/vnd.tiddlywiki
+
+!! Power Supplies
+
+A power supply is not needed to run the Zero as a TW Wiki Host - a USB 3.0 port will work fine to power the Zero because there are no devices plugged into it.
+
+If going to plug devices into the Zero will probably want to power it from a power supply. I would recommend purchasing a power supply that is designed to power the RPi Zero 2 W - (which would be a 5V - 2.5A supply).

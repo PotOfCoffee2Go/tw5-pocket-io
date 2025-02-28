@@ -8,7 +8,7 @@ ioPrjTabSelected: AALLLL
 ioPrjTabToDelete: startup-a
 ioPrjTabType: docs
 ioResult: 
-modified: 20250203020609860
+modified: 20250222190147568
 tags: startup Projects
 title: startup
 type: text/vnd.tiddlywiki
@@ -19,9 +19,6 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 | Code in 'startup' is hard coded to always load. |
 | The code is loaded before other projects. |
-
-|tc-center tc-table-no-border|k
-|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
 {{||$:/poc2go/pocket-io/project/addtab}}
 
