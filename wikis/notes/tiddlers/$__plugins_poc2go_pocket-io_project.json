@@ -77,9 +77,9 @@
         },
         "$:/poc2go/pocket-io/project/create": {
             "created": "20250131142623424",
-            "text": "\\define submitCreate()\n<<pocket-io \"projectCreate\">>\n\\end\n\n\\define createButton()\n<$button actions=\"<<submitCreate>>\"> Create </$button>\n\\end\n\n\\define projectEditBox()\n<$edit-text field=\"ioPrjProject\"/>\n\\end\n\n\\define onWikiSelect()\n<$select field=\"ioPrjWiki\" default=\"\">\n<$list filter=\"[list[$:/temp/pocket-io/wikinames]]\">\n<option value={{!!title}} ><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n|tc-center tc-table-no-border|k\n| Wiki |<<onWikiSelect>> | New Project |<<projectEditBox>> |<<createButton>> |\n",
+            "text": "\\define submitCreate()\n<<pocket-io \"projectCreate\">>\n\\end\n\n\\define createButton()\n<$button actions=\"<<submitCreate>>\"> Create </$button>\n\\end\n\n\\define projectEditBox()\n<$edit-text field=\"ioPrjProject\"/>\n\\end\n\n\\define onWikiSelect()\n<$select field=\"ioPrjWiki\" default=\"{{$:/temp/pocket-io/wikinames}}\">\n<$list filter=\"[list[$:/temp/pocket-io/wikinames]]\">\n<option value={{!!title}} ><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n|tc-center tc-table-no-border|k\n| Wiki |<<onWikiSelect>> | New Project |<<projectEditBox>> |<<createButton>> |\n",
             "title": "$:/poc2go/pocket-io/project/create",
-            "modified": "20250131142649610",
+            "modified": "20250228112550307",
             "caption": "Create"
         },
         "$:/poc2go/pocket-io/project/delete": {

@@ -1,20 +1,21 @@
 autoLoad: yes
-caption: Pocket-io Sockets
-created: 20250129065626216
+caption: Pocket-io Topics
+created: 20250129072620849
 ioConfirmDelete: no
-ioPrjProject: socket
+ioPrjProject: topic
 ioPrjTabName: 
-ioPrjTabSelected: AALLLL
-ioPrjTabToDelete: socket-a
+ioPrjTabSelected: topic-code-testMsg
+ioPrjTabToDelete: topic-a
 ioPrjTabType: code
 ioResult: 
-modified: 20250203021314669
-tags: socket Projects
-title: socket
+ioResultUpload: 
+modified: 20250228131943344
+tags: topic Projects
+title: topic
 type: text/vnd.tiddlywiki
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-project-header Pocket-io sockets interface @@|
+|@@.poc2go-project-header Pocket-io Topics @@|
 
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
@@ -24,6 +25,6 @@ type: text/vnd.tiddlywiki
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<displayTabTypes socket>>
+<<displayTabTypes topic>>
 
 <<topButton>>

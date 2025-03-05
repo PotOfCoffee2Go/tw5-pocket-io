@@ -1,6 +1,6 @@
 # tw-talk writeup
 
-Using TiddlyWiki as a commercial grade Web Front-end Framework has been a challenge. The quality and support of the TiddlyWiki codebase is well established; and the community has a long exciting history, is engaged, with no fear of evaporating anytime soon. Is a BIG plus when a company decides to invest a portion of it's future software development on TiddlyWiki.
+Using TiddlyWiki as a Web Front-end Framework has been a challenge. The quality and support of the TiddlyWiki code base is well established; and the community has a long exciting history, is engaged, with no fear of evaporating anytime soon. Is a BIG plus when a company decides to invest a portion of it's future software development on TiddlyWiki.
 
 BTW
 
@@ -10,15 +10,17 @@ The [SQLite MWS project](https://talk.tiddlywiki.org/t/announcing-the-multiwikis
 
 ---
 
-I decided to take a different approach from the  [SQLite MWS project](https://talk.tiddlywiki.org/t/announcing-the-multiwikiserver-plugin/9033)  to store and access TW Mult Wikis. Instead, decided to use the existing TiddlyWiki codebase built up over the years. The main goal is to integrate multiple wikis into a single system which works with existing single file and 'server' edition wikis. ( 'server' edition wikis are also called ['TiddlyWiki on Nodejs'](https://tiddlywiki.com/static/TiddlyWiki%2520on%2520Node.js.html) - from now on will call ['Webserver'](https://tiddlywiki.com/static/WebServer.html)).
+I decided to take a different approach from the  [SQLite MWS project](https://talk.tiddlywiki.org/t/announcing-the-multiwikiserver-plugin/9033)  to store and access multiple TW wikis. The main goal is to integrate multiple wikis into a single system which works with existing single file and 'server' edition wikis. ( 'server' edition wikis are also called ['TiddlyWiki on Nodejs'](https://tiddlywiki.com/static/TiddlyWiki%2520on%2520Node.js.html) and ['Webserver'](https://tiddlywiki.com/static/WebServer.html)  - from now on will call use 'Webserver').
 
 Requirements of the system:
 
 1. Operating System independent 
 2. Tolerant of TiddlyWiki and external package release updates
-3. Server-side JavaScript code is developed, stored, and dynamically loaded on startup from TW wikis
+3. Server-side JavaScript code is developed, stored, and loaded from TW wikis
 4. The server is centered on a Node.js environment with access to all wikis in the network
-5. Resolve issues arising from facing the 'simple' implementation of TW Webserver with the web
+5. Webserver instances present the system to client-side users
+6. [Express]() proxy servers allow additional server functionality
+7. Secondary WebSocket connection for client-to-client and out-of-band access to server
 
 ## Operating System independent
 Due to operating system inconsistencies when  spawning processes - the system can not depend on multiple child processes to perform server side worker tasks as there are subtle differences  when spawning child processes between MS, Mac, and Linux. Thus all tasks must be performed in a single [Node.js event loop](https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick) - or [Node.js controlled worker threads](https://nodejs.org/api/worker_threads.html). Basically, let Node.js handle all tasks ([promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)) - activating threads as it deems necessary.
@@ -28,7 +30,7 @@ The objective is to use as few external packages as possible, TiddlyWiki being o
 
 ## Server-side JavaScript code stored in wikis
 The JavaScript code run on the server is stored and dynamically uploaded to the server on startup. One can view this as another 'module' loader similar to [ CJS, AMD, UMD, and ESM](https://irian.to/blogs/what-the-heck-are-cjs-amd-umd-and-esm-in-javascript)
-loaders. A TiddlyWiki based 'Project Management System' is available to assist in the building and maintaining custom applications.  It is beyond the scope of this post to get into details; suffice it to say that JavaScript code is selectively uploaded to the server to implement corporate custom applications.
+loaders. A TiddlyWiki based 'Project Management System' is available to assist in the building and maintaining custom applications.  It is beyond the scope of this post to get into details; suffice it to say that JavaScript code is selectively uploaded to the server to implement custom applications.
 
 ## Node.js environment with access to all wikis
 The server runs in a [Node.js REPL](https://nodejs.org/api/repl.html) context. This is similar to the 'window' or 'document' object in a browser - but runs on the server. A REPL context has effectively all of the common Node.js objects such as ''fs', os', 'process', 'path', 'http/s', etc... Also JavaScript objects such as 'Array', setTimeout', 'setInterval', 'decodeURI' and many more are pre-loaded. Has the disadvantage (similar to the browser 'window' object) one has to take care not to overwrite standard functions. But the advantages far outweigh the disadvantages.
@@ -44,10 +46,16 @@ console.dir(tiddlers,{depth:2});
 
 Any changes to a tiddler in 'MyWiki' wiki will be picked up by any Webserver client connected to the wiki upon the next 'server-refresh' action from the client (more on that later); 
  
-## Resolve issues arising from the 'simple' implementation of TW Webserver
+## Webserver instances present the system to client-side users
 The 'simple' implementation of Webserver is somewhat of a misnomer, as there is a lot going on under-the-hood - both client and server side. Webserver is multi-client and has a simple to use read/write access security system. The primary purpose is to keep the browser client(s) 'in sync' with the server-side data (wiki).
 
-A corporate application is not concerned about 'keeping in sync'. It wants to present the user with a template or form - which they fill out and submit to the server for processing. And yes, the users display must represent the current state of the data - but that is expected as a natural  consequence of the changes the user has requested.
+## [Express]() proxy servers allow additional server functionality
+
+
+
+
+## Secondary WebSocket connection for client-to-client and out-of-band access to server
+
 
 
 

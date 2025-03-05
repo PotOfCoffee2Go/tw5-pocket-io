@@ -59,7 +59,7 @@ function autoLoadCodeToRepl() {
 	const prevPrompt = $rt.getPrompt();
 	$rt.setPrompt('');
 
-	hog('\nREPL startup...', 156);
+	hog('REPL startup...', 156);
 	hog(`Loading minified code tiddlers from wikis to REPL:`, 149);
 	var { totalTiddlers, totalBytes, haveErrors } = replGetCodeFromWikis($rt, serverSettings);
 	hog(`\n${totalTiddlers} tiddlers loaded - ${(totalBytes/1024).toFixed(3)}K bytes.`, 149);
@@ -88,18 +88,20 @@ async function startProxyServers() {
 	for (let i=0; i<serverSettings.length; i++) {
 		await proxyListen(i);
 	}
-
-	// Remove 'codebase' for list of wikis
-//	$rt.context.$ss.splice($rt.context.$ss.findIndex(el => el.name === 'codebase'), 1);
-
 	replMOTD();
 }
 
 // Startup blurb
 hog(`${config.pkg.name} - v${config.pkg.version}`,40);
-hog(`./config.js:`,40);
-console.dir({wikisDir: config.wikisDir, webserver: config.webserver, proxy: config.proxy});
-hog(`\nStartup TiddlyWiki 'server' edition Webservers from directory ${config.wikisDir}`, 156);
+hog(`Settings summary from ./config.js:`,40);
+console.dir({
+	wikisDir: config.wikisDir,
+	webserver: config.webserver,
+	proxy: config.proxy,
+	forceCodebaseLocal: config.forceCodebaseLocal
+});
+hog(`\nStartup ${serverSettings.length} TiddlyWiki 'server' edition Webservers from directory ${config.wikisDir}`, 156);
+hog(`  and pocket-io code base wiki from directory ./network/codebase`, 156);
 console.dir(serverSettings.map(settings => settings.name));
 hog(`Webservers starting at port: ${config.webserver.basePort} :`, 156);
 

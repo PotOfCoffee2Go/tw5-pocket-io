@@ -1,5 +1,5 @@
 // Create/update '$:/pocket-io/system/projects' with list of all projects
-$tpi.topic.projectAllProjects = function (socket, msg) {
+$tpi.topic.projectNetworkTable = function (socket, msg) {
 	var sender = cpy(msg.senderTiddler);
 	sender.ioResult = '';
 
@@ -11,11 +11,11 @@ $tpi.topic.projectAllProjects = function (socket, msg) {
 		var proxyDomain = settings.proxy.domain
 		var $tw = get$tw(wikiName);
 
-		tableTemplate += `|${proxyDomain}|[[${wikiName}|${wikiLink}]] | | |\n`;
+		tableTemplate += `|${proxyDomain}|[[${wikiName}|${wikiLink}]] |<|<|\n`;
 		$tw.wiki.filterTiddlers('[tag[Projects]]').forEach(project => {
 			if (/^\$\$\$/.test(project)) { return; } // continue next forEach
 			var tiddler = JSON.parse($tw.wiki.getTiddlerAsJson(project));
-			tableTemplate += `| | |[[${project}|${wikiLink}/#${project}]] ` +
+			tableTemplate += `| |<|[[${project}|${wikiLink}/#${project}]] ` +
 			`| ${tiddler.autoLoad === 'yes' ? 'yes' : 'no'} |\n`;
 		})
 	})

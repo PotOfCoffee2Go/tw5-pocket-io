@@ -1,6 +1,7 @@
 autoLoad: yes
 caption: Shopping Cart
 created: 20250213181039774
+creator: poc2go
 ioConfirmDelete: no
 ioPrjMinify: yes
 ioPrjProject: shop
@@ -9,7 +10,8 @@ ioPrjTabSelected: shop-code-create
 ioPrjTabType: docs
 ioResult: 
 ioResultUpload: 
-modified: 20250222111224126
+modified: 20250303204108675
+modifier: poc2go
 tags: shop Projects
 title: shop
 type: text/vnd.tiddlywiki

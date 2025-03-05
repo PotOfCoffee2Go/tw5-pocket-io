@@ -1,6 +1,8 @@
 created: 20250108083629945
+creator: poc2go
 ioResult: 
-modified: 20250227083120191
+modified: 20250305202623039
+modifier: poc2go
 tags: $:/tags/pocket-io/broadcast
 title: Pocket-io System
 type: text/vnd.tiddlywiki
@@ -13,4 +15,4 @@ type: text/vnd.tiddlywiki
 {{$:/temp/pocket-io/system/projects}}
 
 |tc-center tc-table-no-border|k
-| <$button actions="<<pocket-io projectAllProjects>>"> Refresh </$button> |
+| <$button actions="<<pocket-io projectNetworkTable>>"> Refresh </$button> |

@@ -31,9 +31,9 @@
         },
         "$:/poc2go/pocket-io/project/addtab": {
             "created": "20250202173551292",
-            "text": "\\define projectSubmitTab()\n<$button class=\"tc-btn-invisible tc-tiddlylink\" actions=\"<<pocket-io 'projectUpdatetabs'>>\" >\n{{$:/core/images/new-button}}\n</$button>\n\\end\n\n\\define projectTabType()\n<$select field=\"ioPrjTabType\" default=\"docs\">\n<option>docs</option>\n<option>dashboard</option>\n<option>template</option>\n<option>code</option>\n<option>info</option>\n<option>package</option>\n</$select>\n<$edit-text field=\"ioPrjTabName\" size=10 />\n\\end\n\n|tc-center tc-table-no-border|k\n| New tab |<<projectTabType>> |<<projectSubmitTab>>|\n",
+            "text": "\\define projectSubmitTab()\n<$button class=\"tc-btn-invisible tc-tiddlylink\" actions=\"<<pocket-io 'projectUpdatetabs'>>\" >\n{{$:/core/images/new-button}}\n</$button>\n\\end\n\n\\define projectTabType()\n<$select field=\"ioPrjTabType\" default=\"docs\">\n<$list filter=\"[all[tiddlers+shadows]tag[$:/tags/pocket-io/tabtype]sort[caption]]\"><option value={{!!tabtype}} ><$view field='caption'/></option>\n</$list>\n</$select>\n<$edit-text field=\"ioPrjTabName\" size=10 />\n\\end\n\n|tc-center tc-table-no-border|k\n| New tab |<<projectTabType>> |<<projectSubmitTab>>|\n",
             "title": "$:/poc2go/pocket-io/project/addtab",
-            "modified": "20250214130016727",
+            "modified": "20250227161112757",
             "caption": "Add Tab"
         },
         "$:/poc2go/pocket-io/project/icon": {
@@ -77,9 +77,9 @@
         },
         "$:/poc2go/pocket-io/project/create": {
             "created": "20250131142623424",
-            "text": "\\define submitCreate()\n<<pocket-io \"projectCreate\">>\n\\end\n\n\\define createButton()\n<$button actions=\"<<submitCreate>>\"> Create </$button>\n\\end\n\n\\define projectEditBox()\n<$edit-text field=\"ioPrjProject\"/>\n\\end\n\n\\define onWikiSelect()\n<$select field=\"ioPrjWiki\" default=\"\">\n<$list filter=\"[list[$:/temp/pocket-io/wikinames]]\">\n<option value={{!!title}} ><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n|tc-center tc-table-no-border|k\n| Wiki |<<onWikiSelect>> | New Project |<<projectEditBox>> |<<createButton>> |\n",
+            "text": "\\define submitCreate()\n<<pocket-io \"projectCreate\">>\n\\end\n\n\\define createButton()\n<$button actions=\"<<submitCreate>>\"> Create </$button>\n\\end\n\n\\define projectEditBox()\n<$edit-text field=\"ioPrjProject\"/>\n\\end\n\n\\define onWikiSelect()\n<$select field=\"ioPrjWiki\" default=\"{{$:/temp/pocket-io/wikinames}}\">\n<$list filter=\"[list[$:/temp/pocket-io/wikinames]]\">\n<option value={{!!title}} ><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n|tc-center tc-table-no-border|k\n| Wiki |<<onWikiSelect>> | New Project |<<projectEditBox>> |<<createButton>> |\n",
             "title": "$:/poc2go/pocket-io/project/create",
-            "modified": "20250131142649610",
+            "modified": "20250228112550307",
             "caption": "Create"
         },
         "$:/poc2go/pocket-io/project/delete": {
@@ -100,37 +100,55 @@
             "created": "20250118153902216",
             "text": "\\whitespace trim\n<span class=\"tc-tag-list-item\" data-tag-title=<<currentTiddler>>>\n<$set name=\"transclusion\" value=<<currentTiddler>>>\n\t<$macrocall $name=\"tag-pill-body\"\n\t\ttag=\"Server Code\"\n\t\ticon={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerIconFilter]!is[draft]get[text]] }}}\n\t\tcolour={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerColourFilter]!is[draft]get[text]] }}}\n\t\tpalette={{$:/palette}}\n\t\telement-tag=\"$button\"\n\t\telement-attributes=\"\"\"popup=<<qualify \"$:/state/popup/tag\">> dragFilter=\"[subfilter{$:/core/config/TagPillDragFilter}]\" tag='span'\"\"\"\n\t/>\n\t<$reveal state=<<qualify \"$:/state/popup/tag\">> type=\"popup\" position=\"below\" animate=\"yes\" class=\"tc-drop-down\">\n\t\t<$set name=\"tv-show-missing-links\" value=\"yes\">\n\t\t\t<$transclude tiddler=\"$:/core/ui/ListItemTemplate\"/>\n\t\t</$set>\n\t\t<$list filter=\"[all[shadows+tiddlers]tag[$:/tags/TagDropdown]!has[draft.of]]\" variable=\"listItem\"> \n\t\t\t<$transclude tiddler=<<listItem>>/> \n\t\t</$list>\n\t\t<hr>\n\t\t<$macrocall $name=\"list-tagged-draggable\" tag=<<currentTiddler>>/>\n\t</$reveal>\n</$set>\n</span>\n",
             "title": "$:/poc2go/pocket-io/project/ui/Tagcode",
-            "modified": "20250120003159412"
+            "modified": "20250227161227377",
+            "caption": "Server Code",
+            "tabtype": "code",
+            "tags": "$:/tags/pocket-io/tabtype"
         },
         "$:/poc2go/pocket-io/project/ui/Tagdashboard": {
             "created": "20250118161108428",
             "text": "\\whitespace trim\n<span class=\"tc-tag-list-item\" data-tag-title=<<currentTiddler>>>\n<$set name=\"transclusion\" value=<<currentTiddler>>>\n\t<$macrocall $name=\"tag-pill-body\"\n\t\ttag=\"Dashboard\"\n\t\ticon={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerIconFilter]!is[draft]get[text]] }}}\n\t\tcolour={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerColourFilter]!is[draft]get[text]] }}}\n\t\tpalette={{$:/palette}}\n\t\telement-tag=\"$button\"\n\t\telement-attributes=\"\"\"popup=<<qualify \"$:/state/popup/tag\">> dragFilter=\"[subfilter{$:/core/config/TagPillDragFilter}]\" tag='span'\"\"\"\n\t/>\n\t<$reveal state=<<qualify \"$:/state/popup/tag\">> type=\"popup\" position=\"below\" animate=\"yes\" class=\"tc-drop-down\">\n\t\t<$set name=\"tv-show-missing-links\" value=\"yes\">\n\t\t\t<$transclude tiddler=\"$:/core/ui/ListItemTemplate\"/>\n\t\t</$set>\n\t\t<$list filter=\"[all[shadows+tiddlers]tag[$:/tags/TagDropdown]!has[draft.of]]\" variable=\"listItem\"> \n\t\t\t<$transclude tiddler=<<listItem>>/> \n\t\t</$list>\n\t\t<hr>\n\t\t<$macrocall $name=\"list-tagged-draggable\" tag=<<currentTiddler>>/>\n\t</$reveal>\n</$set>\n</span>\n",
             "title": "$:/poc2go/pocket-io/project/ui/Tagdashboard",
-            "modified": "20250222104123965"
+            "modified": "20250227154423015",
+            "tags": "$:/tags/pocket-io/tabtype",
+            "caption": "Dashboard",
+            "tabtype": "dashboard"
         },
         "$:/poc2go/pocket-io/project/ui/Tagdocs": {
             "created": "20250118160354338",
             "text": "\\whitespace trim\n<span class=\"tc-tag-list-item\" data-tag-title=<<currentTiddler>>>\n<$set name=\"transclusion\" value=<<currentTiddler>>>\n\t<$macrocall $name=\"tag-pill-body\"\n\t\ttag=\"Docs\"\n\t\ticon={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerIconFilter]!is[draft]get[text]] }}}\n\t\tcolour={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerColourFilter]!is[draft]get[text]] }}}\n\t\tpalette={{$:/palette}}\n\t\telement-tag=\"$button\"\n\t\telement-attributes=\"\"\"popup=<<qualify \"$:/state/popup/tag\">> dragFilter=\"[subfilter{$:/core/config/TagPillDragFilter}]\" tag='span'\"\"\"\n\t/>\n\t<$reveal state=<<qualify \"$:/state/popup/tag\">> type=\"popup\" position=\"below\" animate=\"yes\" class=\"tc-drop-down\">\n\t\t<$set name=\"tv-show-missing-links\" value=\"yes\">\n\t\t\t<$transclude tiddler=\"$:/core/ui/ListItemTemplate\"/>\n\t\t</$set>\n\t\t<$list filter=\"[all[shadows+tiddlers]tag[$:/tags/TagDropdown]!has[draft.of]]\" variable=\"listItem\"> \n\t\t\t<$transclude tiddler=<<listItem>>/> \n\t\t</$list>\n\t\t<hr>\n\t\t<$macrocall $name=\"list-tagged-draggable\" tag=<<currentTiddler>>/>\n\t</$reveal>\n</$set>\n</span>\n",
             "title": "$:/poc2go/pocket-io/project/ui/Tagdocs",
-            "modified": "20250222104157665"
+            "modified": "20250227154638951",
+            "tags": "$:/tags/pocket-io/tabtype",
+            "caption": "Docs",
+            "tabtype": "docs"
         },
         "$:/poc2go/pocket-io/project/ui/Taginfo": {
             "created": "20250118160218676",
             "text": "\\whitespace trim\n<span class=\"tc-tag-list-item\" data-tag-title=<<currentTiddler>>>\n<$set name=\"transclusion\" value=<<currentTiddler>>>\n\t<$macrocall $name=\"tag-pill-body\"\n\t\ttag=\"Plugin Info\"\n\t\ticon={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerIconFilter]!is[draft]get[text]] }}}\n\t\tcolour={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerColourFilter]!is[draft]get[text]] }}}\n\t\tpalette={{$:/palette}}\n\t\telement-tag=\"$button\"\n\t\telement-attributes=\"\"\"popup=<<qualify \"$:/state/popup/tag\">> dragFilter=\"[subfilter{$:/core/config/TagPillDragFilter}]\" tag='span'\"\"\"\n\t/>\n\t<$reveal state=<<qualify \"$:/state/popup/tag\">> type=\"popup\" position=\"below\" animate=\"yes\" class=\"tc-drop-down\">\n\t\t<$set name=\"tv-show-missing-links\" value=\"yes\">\n\t\t\t<$transclude tiddler=\"$:/core/ui/ListItemTemplate\"/>\n\t\t</$set>\n\t\t<$list filter=\"[all[shadows+tiddlers]tag[$:/tags/TagDropdown]!has[draft.of]]\" variable=\"listItem\"> \n\t\t\t<$transclude tiddler=<<listItem>>/> \n\t\t</$list>\n\t\t<hr>\n\t\t<$macrocall $name=\"list-tagged-draggable\" tag=<<currentTiddler>>/>\n\t</$reveal>\n</$set>\n</span>\n",
             "title": "$:/poc2go/pocket-io/project/ui/Taginfo",
-            "modified": "20250120003245129"
+            "modified": "20250227154829572",
+            "tags": "$:/tags/pocket-io/tabtype",
+            "caption": "Plugin Info",
+            "tabtype": "info"
         },
         "$:/poc2go/pocket-io/project/ui/Tagpackage": {
             "created": "20250122050140526",
             "text": "\\whitespace trim\n<span class=\"tc-tag-list-item\" data-tag-title=<<currentTiddler>>>\n<$set name=\"transclusion\" value=<<currentTiddler>>>\n\t<$macrocall $name=\"tag-pill-body\"\n\t\ttag=\"Packages\"\n\t\ticon={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerIconFilter]!is[draft]get[text]] }}}\n\t\tcolour={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerColourFilter]!is[draft]get[text]] }}}\n\t\tpalette={{$:/palette}}\n\t\telement-tag=\"$button\"\n\t\telement-attributes=\"\"\"popup=<<qualify \"$:/state/popup/tag\">> dragFilter=\"[subfilter{$:/core/config/TagPillDragFilter}]\" tag='span'\"\"\"\n\t/>\n\t<$reveal state=<<qualify \"$:/state/popup/tag\">> type=\"popup\" position=\"below\" animate=\"yes\" class=\"tc-drop-down\">\n\t\t<$set name=\"tv-show-missing-links\" value=\"yes\">\n\t\t\t<$transclude tiddler=\"$:/core/ui/ListItemTemplate\"/>\n\t\t</$set>\n\t\t<$list filter=\"[all[shadows+tiddlers]tag[$:/tags/TagDropdown]!has[draft.of]]\" variable=\"listItem\"> \n\t\t\t<$transclude tiddler=<<listItem>>/> \n\t\t</$list>\n\t\t<hr>\n\t\t<$macrocall $name=\"list-tagged-draggable\" tag=<<currentTiddler>>/>\n\t</$reveal>\n</$set>\n</span>\n",
             "title": "$:/poc2go/pocket-io/project/ui/Tagpackage",
-            "modified": "20250222104251063"
+            "modified": "20250227154958994",
+            "tags": "$:/tags/pocket-io/tabtype",
+            "caption": "Packages",
+            "tabtype": "package"
         },
         "$:/poc2go/pocket-io/project/ui/Tagtemplate": {
             "created": "20250118160314861",
             "text": "\\whitespace trim\n<span class=\"tc-tag-list-item\" data-tag-title=<<currentTiddler>>>\n<$set name=\"transclusion\" value=<<currentTiddler>>>\n\t<$macrocall $name=\"tag-pill-body\"\n\t\ttag=\"GUI Templates\"\n\t\ticon={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerIconFilter]!is[draft]get[text]] }}}\n\t\tcolour={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerColourFilter]!is[draft]get[text]] }}}\n\t\tpalette={{$:/palette}}\n\t\telement-tag=\"$button\"\n\t\telement-attributes=\"\"\"popup=<<qualify \"$:/state/popup/tag\">> dragFilter=\"[subfilter{$:/core/config/TagPillDragFilter}]\" tag='span'\"\"\"\n\t/>\n\t<$reveal state=<<qualify \"$:/state/popup/tag\">> type=\"popup\" position=\"below\" animate=\"yes\" class=\"tc-drop-down\">\n\t\t<$set name=\"tv-show-missing-links\" value=\"yes\">\n\t\t\t<$transclude tiddler=\"$:/core/ui/ListItemTemplate\"/>\n\t\t</$set>\n\t\t<$list filter=\"[all[shadows+tiddlers]tag[$:/tags/TagDropdown]!has[draft.of]]\" variable=\"listItem\"> \n\t\t\t<$transclude tiddler=<<listItem>>/> \n\t\t</$list>\n\t\t<hr>\n\t\t<$macrocall $name=\"list-tagged-draggable\" tag=<<currentTiddler>>/>\n\t</$reveal>\n</$set>\n</span>\n",
             "title": "$:/poc2go/pocket-io/project/ui/Tagtemplate",
-            "modified": "20250201121151830"
+            "modified": "20250227155223109",
+            "tags": "$:/tags/pocket-io/tabtype",
+            "caption": "GUI Templates",
+            "tabtype": "template"
         }
     }
 }

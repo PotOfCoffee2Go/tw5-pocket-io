@@ -15,11 +15,11 @@ $tpi.fn.io.ackConnect = function (socket, wikiName) {
 		title: '$:/temp/pocket-io/wikinames',
 		text: wikiName,
 		list: $rw.utils.stringifyList(get$wikiNames),
-		link: wikiName === 'codebase' ? '' : get$proxy(wikiName).link,
+		link: get$proxy(wikiName).link,
 		wikiLinks: $rw.utils.stringifyList(wikiLinks)
 	});
 	var fakeMsg = { senderTiddler: {}, resultTiddlers: [] };
-	var wikiDisplay = $tpi.topic.projectAllProjects(socket, fakeMsg);
+	var wikiDisplay = $tpi.topic.projectNetworkTable(socket, fakeMsg);
 	if (fakeMsg.resultTiddlers.length) {
 		wikiRequires.push(fakeMsg.resultTiddlers[0]);
 	}

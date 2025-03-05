@@ -1,0 +1,34 @@
+autoLoad: no
+caption: sendtest
+created: 20250228132459131
+ioConfirmDelete: no
+ioPrjProject: sendtest
+ioPrjTabName: 
+ioPrjTabSelected: AALLLL
+ioPrjTabType: dashboard
+ioResult: 
+modified: 20250228132605506
+tags: sendtest Projects
+title: sendtest
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header Edit this description and change caption @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+{{||$:/poc2go/pocket-io/project/addtab}}
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<<closeTabsButton "sendtest" "dashboard">>
+<<closeTabsButton "sendtest" "docs">>
+<<closeTabsButton "sendtest" "template">>
+<<projectUploadButton>>
+<<closeTabsButton "sendtest" "code">>
+<<closeTabsButton "sendtest" "info">>
+<<closeTabsButton "sendtest" "package">>
+
+<<topButton>>

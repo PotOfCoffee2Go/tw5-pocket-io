@@ -120,9 +120,10 @@ function tStamp() {
 // Update network status
 function setNetstat(txt) {
 	var site = `${location.protocol}//${location.hostname}:${location.port}`;
+	var username = $tw.wiki.getTiddlerText('$:/status/UserName');
 	$tw.wiki.setText('$:/temp/pocket-io/proxy','text', null, site);
 	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null,
-		`@@font-size:1.1em; Wiki: {{$:/temp/pocket-io/wikinames}}@@<br>` +
+		`Wiki: {{$:/temp/pocket-io/wikinames}} ${username ? ' - User: ' : ''} ${username}<br>` +
 		`{{$:/temp/pocket-io/wikinames!!link}}<br>` +
 		txt
 	);

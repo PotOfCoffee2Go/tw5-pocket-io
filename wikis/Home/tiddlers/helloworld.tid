@@ -8,7 +8,7 @@ ioPrjTabSelected: helloworld-code-helloword
 ioPrjTabType: docs
 ioResult: 
 ioResultUpload: 
-modified: 20250211202110113
+modified: 20250301070557264
 tags: helloworld Projects
 title: helloworld
 type: text/vnd.tiddlywiki
@@ -21,9 +21,12 @@ type: text/vnd.tiddlywiki
 
 {{||$:/poc2go/pocket-io/project/addtab}}
 
-<!-- Response to pocket.io requests -->
-{{!!ioResult}}
-
-<<displayTabTypes helloworld>>
+<<closeTabsButton "helloworld" "docs">>
+<<closeTabsButton "helloworld" "dashboard">>
+<<closeTabsButton "helloworld" "template">>
+<<projectUploadButton>>
+<<closeTabsButton "helloworld" "code">>
+<<closeTabsButton "helloworld" "info">>
+<<closeTabsButton "helloworld" "package">>
 
 <<topButton>>
