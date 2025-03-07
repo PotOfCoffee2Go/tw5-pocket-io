@@ -11,27 +11,30 @@ exports.config = {
 	forceCodebaseLocal: true,
 
 	// The webserver values set here will be applied to all webserver instances
-	// TW Webservers should be served on local host (127.0.0.1)
+	// Webservers should normally be served on local host (127.0.0.1)
 	//  starting on port basePort and increments by one for each server
 	// Parameters are configuration parameters supported by WebServer
 	//  see https://tiddlywiki.com/static/WebServer%2520Parameters.html`
-	//  applies to all webservers
+	//  credential parameters are automatically applied from 'credentials' (below)
+	//  Parameters are applied to all webservers
 	webserver: {
 		host: '127.0.0.1',
 		basePort: 8090,
-		authorization: [
-			'readers=(authenticated)', 'writers=(authenticated)', 'admin=poc2go'
-		],
 		parameters: []
 	},
 
-	// Express proxies to above wikis
+	// Express proxies to wiki webservers
 	//  DNS domain (or IP address) of this computer
-	//    domain is my raspberrypi computeer
-	//  proxy available on network (0.0.0.0)
+	//   note: I'm running on my local network 'raspberrypi' computeer
+	//  proxies accessable on network (0.0.0.0)
 	//  starting on port basePort
-	proxy: { domain: 'raspberrypi', host: '0.0.0.0', basePort: 3000 },
+	proxy: {
+		domain: 'raspberrypi',
+		host: '0.0.0.0',
+		basePort: 3000
+	},
 
+	// 'npm run credentials' to build credential files
 	credentials: {
 		// Users allowed access to pocket-io network
 		users: {
@@ -41,33 +44,29 @@ exports.config = {
 			'roger': { password: 'm00re' },
 		},
 
-		// Defaults applied to each wiki unless overridden below
-		// Default users
-		// Default authorization
+		// Default users and webserver authorization
+		// Defaults applied to each wiki listed in property 'wikis' (below)
 		default: {
-			users: ['poc2go'],
+			users: ['poc2go', 'jane', 'andy', 'roger'],
 			authorization: ['readers=(authenticated)', 'writers=(authenticated)', 'admin=poc2go'],
 		},
 
-		// Credentials for specific wikis
-		// 'npm run credentials' to build credential files
+		// Wikis not listed will run without credentials
+		// Only need to specify properties to override default
 		wikis: {
+			'notes': {}, // use defaults
 			'codebase': {
-				authorization: ['readers=(authenticated)', 'writers=(authenticated)', 'admin=poc2go'],
 				users: ['poc2go'],
+				authorization: ['readers=(authenticated)', 'writers=(authenticated)', 'admin=poc2go'],
 			},
 			'Home': {
 				authorization: ['readers=(anon)', 'writers=(authenticated)', 'admin=poc2go'],
-				users: ['poc2go', 'jane', 'andy', 'roger'],
-			},
-			'notes': {
-				users: ['poc2go', 'jane', 'andy', 'roger'],
 			},
 			'poc2go': {
 				users: ['poc2go'],
 			},
 			'Shop': {
-				users: ['poc2go', 'jane', 'andy', 'roger'],
+				users: ['poc2go', 'jane', 'andy'],
 			},
 			'ShopDashboard': {
 				users: ['poc2go', 'jane', 'andy', 'roger'],
