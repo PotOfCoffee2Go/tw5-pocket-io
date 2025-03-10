@@ -7,26 +7,21 @@ exports.config = {
 	defaultWiki: 'notes',
 
 	// Force pocket-io './network/codebase' wiki to be accessable
-	//  only from browsers running on localhost
+	//  only from browsers running on localhost regardless
+	//  of configuration settings
 	forceCodebaseLocal: true,
 
-	// The webserver values set here will be applied to all webserver instances
-	// Webservers should normally be served on local host (127.0.0.1)
+	// Webservers should normally be served on localhost (127.0.0.1)
 	//  starting on port basePort and increments by one for each server
-	// Parameters are configuration parameters supported by WebServer
-	//  see https://tiddlywiki.com/static/WebServer%2520Parameters.html`
-	//  credential parameters are automatically applied from 'credentials' (below)
-	//  Parameters are applied to all webservers
 	webserver: {
 		host: '127.0.0.1',
-		basePort: 8090,
-		parameters: []
+		basePort: 8090
 	},
 
-	// Express proxies to wiki webservers
-	//  DNS domain (or IP address) of this computer
-	//   note: I'm running on my local network 'raspberrypi' computeer
-	//  proxies accessable on network (0.0.0.0)
+	// Express proxies to to each webserver (above)
+	//  DNS domain (or IP address) of this computer running the program
+	//   note: I'm running on my local network 'raspberrypi' computer
+	// Proxies are normally accessable to local network (0.0.0.0)
 	//  starting on port basePort
 	proxy: {
 		domain: 'raspberrypi',
@@ -34,7 +29,23 @@ exports.config = {
 		basePort: 3000
 	},
 
-	// 'npm run credentials' to build credential files
+	// Parameters are configuration parameters supported by WebServer
+	//  see 'https://tiddlywiki.com/static/WebServer%2520Parameters.html`
+	// Users and credentials are applied from 'credentials' (see below)
+	// Defaults are applied to all wikis
+	// Parameters for each wiki listed in property 'wikis' are appended
+	//  to the default
+	parameters: {
+		default: ['debug-level=none'],
+		wikis: {
+			'Home': ['anon-username=Guest']
+		},
+	},
+
+	// Apply user/password credentials to wikis
+	//   see 'https://tiddlywiki.com/static/WebServer%2520Parameter%253A%2520credentials.html'
+	// NOTE: To rebuild webserver user info CSV files run 'npm run credentials'
+	//  and restart server 'npm start'
 	credentials: {
 		// Users allowed access to pocket-io network
 		users: {
@@ -44,17 +55,17 @@ exports.config = {
 			'roger': { password: 'm00re' },
 		},
 
-		// Default users and webserver authorization
+		// Default users and webserver authorization parameters
+		// Webserver wikis not listed below will run without credentials
 		// Defaults applied to each wiki listed in property 'wikis' (below)
 		default: {
 			users: ['poc2go', 'jane', 'andy', 'roger'],
 			authorization: ['readers=(authenticated)', 'writers=(authenticated)', 'admin=poc2go'],
 		},
 
-		// Wikis not listed will run without credentials
-		// Only need to specify properties to override default
+		// Users and authorization properties override the defaults
 		wikis: {
-			'notes': {}, // use defaults
+			'notes': {}, // Apply credentials - use use the defaults
 			'codebase': {
 				users: ['poc2go'],
 				authorization: ['readers=(authenticated)', 'writers=(authenticated)', 'admin=poc2go'],

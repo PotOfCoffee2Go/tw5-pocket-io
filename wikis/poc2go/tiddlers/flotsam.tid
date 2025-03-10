@@ -1,14 +1,20 @@
 autoLoad: no
 caption: Code Toolbox
 created: 20250129144333716
+creator: poc2go
 ioConfirmDelete: no
+ioPrjPillTitle: 
 ioPrjProject: flotsam
 ioPrjTabName: 
-ioPrjTabSelected: AALLLL
+ioPrjTabSelected: flotsam-code-updatetabset
+ioPrjTabSetName: 
+ioPrjTabSetType: test3
 ioPrjTabToDelete: flotsam-default
-ioPrjTabType: docs
+ioPrjTabType: test3
 ioResult: 
-modified: 20250207041210868
+ioResultUpload: 
+modified: 20250310035310669
+modifier: poc2go
 tags: flotsam Projects
 title: flotsam
 type: text/vnd.tiddlywiki
@@ -24,6 +30,7 @@ type: text/vnd.tiddlywiki
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<displayTabTypes flotsam>>
+{{test/tabset}}
+<!-- <displayTabTypes flotsam> -->
 
 <<topButton>>

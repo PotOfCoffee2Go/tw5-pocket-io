@@ -1,53 +1,41 @@
 # tw-talk writeup
 
-Using TiddlyWiki as a Web Front-end Framework has been a challenge. The quality and support of the TiddlyWiki code base is well established; and the community has a long exciting history, is engaged, with no fear of evaporating anytime soon. Is a BIG plus when a company decides to invest a portion of it's future software development on TiddlyWiki.
+The quality and support of the TiddlyWiki code base is well established; and the community has a long exciting history, is engaged, with no fear of evaporating anytime soon. Is a BIG plus when a company decides to invest a portion of it's future software development on TiddlyWiki.
 
-BTW
+> **Web Front-end Development** is the process of transforming data to a graphical interface through the usage of CSS, HTML, and JavaScript so that the users can observe and network with that data.
 
-> **Web Front-end Development** is the process of transforming data to a graphical interface through the usage of CSS, HTML, and JavaScript. TiddlyWiki enhances this process by adding features such as [WikiText](https://tiddlywiki.com/static/WikiText.html), [Filters](https://tiddlywiki.com/static/Filters.html]), [Operators](https://tiddlywiki.com/static/Filter%2520Operators.html), and [Templates](https://tiddlywiki.com/static/TemplateTiddlers.html);  so that the users can observe and network with that data.
+ TiddlyWiki enhances this process by adding features such as [WikiText](https://tiddlywiki.com/static/WikiText.html), [Filters](https://tiddlywiki.com/static/Filters.html]), [Operators](https://tiddlywiki.com/static/Filter%2520Operators.html), and [Templates](https://tiddlywiki.com/static/TemplateTiddlers.html); 
 
 The [SQLite MWS project](https://talk.tiddlywiki.org/t/announcing-the-multiwikiserver-plugin/9033) is an awesome solution for moving TiddlyWiki into the future,  Node.js has an [interest in SQLite](https://nodejs.org/api/sqlite.html), plus many corporations use [SQLite](https://www.sqlite.org/index.html) as an intermediary to hold transient data extracted from their main [MSSQL](https://www.microsoft.com/en-us/sql-server/sql-server-2022), [MongoDB](https://www.mongodb.com/), or the pricey [Oracle](https://en.wikipedia.org/wiki/Oracle_Database) corporate  databases (usually using some type of RESTful API).
 
 ---
 
-I decided to take a different approach from the  [SQLite MWS project](https://talk.tiddlywiki.org/t/announcing-the-multiwikiserver-plugin/9033)  to store and access multiple TW wikis. The main goal is to integrate multiple wikis into a single system which works with existing single file and 'server' edition wikis. ( 'server' edition wikis are also called ['TiddlyWiki on Nodejs'](https://tiddlywiki.com/static/TiddlyWiki%2520on%2520Node.js.html) and ['Webserver'](https://tiddlywiki.com/static/WebServer.html)  - from now on will call use 'Webserver').
+I decided to take a different approach from the [SQLite MWS project](https://talk.tiddlywiki.org/t/announcing-the-multiwikiserver-plugin/9033) to store and access multiple TW wikis. The main goal is to integrate multiple wikis into a single system which works with existing single file and 'server' edition wikis. ( 'server' edition wikis are also called ['TiddlyWiki on Nodejs'](https://tiddlywiki.com/static/TiddlyWiki%2520on%2520Node.js.html) and ['Webserver'](https://tiddlywiki.com/static/WebServer.html)  - from now on will call use 'Webserver').
 
 Requirements of the system:
 
 1. Operating System independent 
 2. Tolerant of TiddlyWiki and external package release updates
 3. Server-side JavaScript code is developed, stored, and loaded from TW wikis
-4. The server is centered on a Node.js environment with access to all wikis in the network
+4. Node.js environment with access to all wikis
 5. Webserver instances present the system to client-side users
 6. [Express]() proxy servers allow additional server functionality
-7. Secondary WebSocket connection for client-to-client and out-of-band access to server
+7. Secondary [WebSocket](https://en.wikipedia.org/wiki/WebSocket) connection for client-to-client and [out-of-band data](https://en.wikipedia.org/wiki/Out-of-band_data) access between clients and server
 
 ## Operating System independent
 Due to operating system inconsistencies when  spawning processes - the system can not depend on multiple child processes to perform server side worker tasks as there are subtle differences  when spawning child processes between MS, Mac, and Linux. Thus all tasks must be performed in a single [Node.js event loop](https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick) - or [Node.js controlled worker threads](https://nodejs.org/api/worker_threads.html). Basically, let Node.js handle all tasks ([promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)) - activating threads as it deems necessary.
 
-##  Tolerant of TiddlyWiki and external package release updates
+## Tolerant of TiddlyWiki and external package release updates
 The objective is to use as few external packages as possible, TiddlyWiki being one of them. Overriding TW `$:/core` tiddlers is not acceptable as these tiddlers can change between releases and system maintenance would become a nightmare very quickly. Also, to seamlessly integrate community plugins usually requires unmodified core tiddlers. TW maintains a high degree of  backward  compatibility with each TW release (sometimes exasperating TW Developers) .  However, this attention to back-release compatibility has been the cornerstone of TiddlyWiki's long term success.
 
 ## Server-side JavaScript code stored in wikis
 The JavaScript code run on the server is stored and dynamically uploaded to the server on startup. One can view this as another 'module' loader similar to [ CJS, AMD, UMD, and ESM](https://irian.to/blogs/what-the-heck-are-cjs-amd-umd-and-esm-in-javascript)
-loaders. A TiddlyWiki based 'Project Management System' is available to assist in the building and maintaining custom applications.  It is beyond the scope of this post to get into details; suffice it to say that JavaScript code is selectively uploaded to the server to implement custom applications.
+loaders. A TiddlyWiki based 'Project Management System' is available to assist in the building and maintaining custom applications. JavaScript code is selectively uploaded to the server to implement custom applications.
 
 ## Node.js environment with access to all wikis
-The server runs in a [Node.js REPL](https://nodejs.org/api/repl.html) context. This is similar to the 'window' or 'document' object in a browser - but runs on the server. A REPL context has effectively all of the common Node.js objects such as ''fs', os', 'process', 'path', 'http/s', etc... Also JavaScript objects such as 'Array', setTimeout', 'setInterval', 'decodeURI' and many more are pre-loaded. Has the disadvantage (similar to the browser 'window' object) one has to take care not to overwrite standard functions. But the advantages far outweigh the disadvantages.
+The server runs a [Node.js REPL](https://nodejs.org/api/repl.html) context. This is similar to the 'window' or 'document' object in a browser - but runs on the server. A REPL context has effectively all of the common Node.js objects such as ''fs', os', 'process', 'path', 'http/s',and JavaScript objects such as 'Array', setTimeout', 'setInterval', 'decodeURI' and many more are pre-loaded. Has the disadvantage (similar to the browser 'window' object) one has to take care not to overwrite standard functions. But the advantages far outweigh the disadvantages.
 
-The REPL has access to the $tw instance for each wiki in the network. Thus the complete JavaScript TW codebase is available to act upon a wiki. It is the same $tw instance that is being used by Webserver' - thus any changes 'appear' to have been done by Webserver. (eliminating a re-boot of Webserver to see the changes).
-
-As an exmple - to access all tiddlers tagged 'mytag': 
-```js
-const $tw = get$tw('MyWiki');
-const tiddlers = JSON.parse($tw.wiki.getTiddlersAsJson('[tag[mytag]]'));
-console.dir(tiddlers,{depth:2});
-```
-
-Any changes to a tiddler in 'MyWiki' wiki will be picked up by any Webserver client connected to the wiki upon the next 'server-refresh' action from the client (more on that later); 
- 
 ## Webserver instances present the system to client-side users
-The 'simple' implementation of Webserver is somewhat of a misnomer, as there is a lot going on under-the-hood - both client and server side. Webserver is multi-client and has a simple to use read/write access security system. The primary purpose is to keep the browser client(s) 'in sync' with the server-side data (wiki).
 
 ## [Express]() proxy servers allow additional server functionality
 
@@ -61,7 +49,17 @@ The 'simple' implementation of Webserver is somewhat of a misnomer, as there is 
 
 
 
+The REPL has access to the $tw instance for each TW webserver in the network. The complete JavaScript TW codebase is available to act upon a wiki. It is the same $tw instance that is being used by Webserver - thus any changes appear to have been done by Webserver. (eliminating need to re-boot Webserver to see the changes).
 
+As an example - to access all tiddlers tagged 'mytag': 
+```js
+const $tw = get$tw('MyWiki');
+const tiddlers = JSON.parse($tw.wiki.getTiddlersAsJson('[tag[mytag]]'));
+console.dir(tiddlers,{depth:2});
+```
+
+Any changes to a tiddler in 'MyWiki' wiki will be picked up by any Webserver client connected to the wiki upon the next 'server-refresh' action from the client (more on that later); 
+ 
 
 TiddlyWiki on Node.js 'server' edition Webserver ( which will call [Webserver](https://tiddlywiki.com/static/WebServer.html) ) keeps the clients connected to the server in 'sync' with the server-side wikis and with each client-side user connected to the wiki. This is a vital function which Webserver does this exceptionally well - so would like to use it as the main client interface.
 

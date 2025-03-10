@@ -1,0 +1,29 @@
+caption: Create Tab Set
+created: 20250302055406673
+creator: poc2go
+modified: 20250310030515922
+modifier: poc2go
+tags: template flotsam $:/pocket-io/flotsam/template
+title: flotsam-template-createtabset
+type: text/vnd.tiddlywiki
+
+\define projectSubmitTabSet()
+<$button class="tc-btn-invisible tc-tiddlylink" actions="<<pocket-io 'projectCreateTabSet'>>" >
+{{$:/core/images/new-button}}
+</$button>
+\end
+
+\define setTypeEditBox()
+<$edit-text field="ioPrjTabSetType" class="pio-tabset-box"/>
+\end
+
+\define pillTitleEditBox()
+<$edit-text field="ioPrjPillTitle" class="pio-tabset-box"/>
+\end
+
+<style>
+.pio-tabset-box { width: 122px; }
+</style>
+
+|tc-center tc-table-no-border|k
+| Tab Set Type |<<setTypeEditBox>> | Pill Title |<<pillTitleEditBox>> |<<projectSubmitTabSet>> |

@@ -43,15 +43,6 @@ $rt.on('reset', () => {
 	autoLoadCodeToRepl();
 })
 
-// REPL MOTD and prompt
-function replMOTD() {
-	hog(`\nGo to ${serverSettings[0].proxy.link}`,40);
-	hog(`Press {up-arrow}{enter} for more info\n`,40);
-	$rt.history.push(`cmd.run('help')`);
-	$rt.history.push(`cmd.run('project REST -i')`);
-	$rt.displayPrompt();
-}
-
 // Gets JavaScript code from wikis into REPL
 const { replGetCodeFromWikis } = require('./lib/replGetCode');
 function autoLoadCodeToRepl() {
@@ -59,12 +50,11 @@ function autoLoadCodeToRepl() {
 	const prevPrompt = $rt.getPrompt();
 	$rt.setPrompt('');
 
-	hog('REPL startup...', 156);
+	hog('Webserver startup complete\n\nREPL startup...', 156);
 	hog(`Loading minified code tiddlers from wikis to REPL:`, 149);
 	var { totalTiddlers, totalBytes, haveErrors } = replGetCodeFromWikis($rt, serverSettings);
-	hog(`\n${totalTiddlers} tiddlers loaded - ${(totalBytes/1024).toFixed(3)}K bytes.`, 149);
-
-	hog(`REPL startup complete${haveErrors ? ' - with errors.' : '.'}`, haveErrors ? 9 : 156);
+	hog(`\nTotal of ${totalTiddlers} code tiddlers loaded - ${(totalBytes/1024).toFixed(3)}K bytes.`, 149);
+	hog(`\nREPL startup complete${haveErrors ? ' - with errors.' : '.'}\n`, haveErrors ? 9 : 156);
 
 	$rt.history = prevHistory;
 	$rt.setPrompt(prevPrompt);
@@ -76,7 +66,8 @@ function proxyListen(idx) {
 		const name = serverSettings[idx].name;
 		const { server, domain, port, host, targetUrl } = serverSettings[idx].proxy;
 		server.http.listen(port, host, () => {
-			hog(`Proxy to webserver '${name}' serving on http://${domain}:${port}`,185);
+			log(hue(`Proxy to webserver `,185) + `'${name}'` +
+				hue(` serving on `,185) + `http://${domain}:${port}`);
 			resolve();
 		})
 	})
@@ -84,12 +75,24 @@ function proxyListen(idx) {
 
 // Start the proxy servers
 async function startProxyServers() {
-	hog(`\nStartup express proxy to webservers\n\nProxies starting at port: ${config.proxy.basePort}\n`, 156);
+	hog(`Startup express proxies to webservers\nProxies starting at port: ${config.proxy.basePort}`, 156);
 	for (let i=0; i<serverSettings.length; i++) {
 		await proxyListen(i);
 	}
+	hog(`Proxy startup complete\n`, 156);
 	replMOTD();
 }
+
+// REPL MOTD and prompt
+function replMOTD() {
+	hog(`Go to ${serverSettings[0].proxy.link}`,40);
+	hog(`Press {up-arrow}{enter} for more info\n`,40);
+	$rt.history.push(`cmd.run('help')`);
+	$rt.history.push(`cmd.run('project REST -i')`);
+	$rt.displayPrompt();
+}
+
+// -------------------
 
 // Startup blurb
 hog(`${config.pkg.name} - v${config.pkg.version}`,40);
@@ -102,9 +105,9 @@ console.dir({
 });
 hog(`\nStartup ${serverSettings.length} TiddlyWiki 'server' edition Webservers from directory ${config.wikisDir}`, 156);
 hog(`  including pocket-io wiki 'codebase' from directory ./network/codebase\n`, 156);
-hog(`Webserver wiki names:`, 185);
+hog(`Webserver wikis starting at port: ${config.webserver.basePort} :`, 185);
 console.dir(serverSettings.map(settings => settings.name).join(' '));
-hog(`\nWebservers starting at port: ${config.webserver.basePort} :\n`, 156);
+hog('');
 
 // Start up the TiddlyWiki Webservers and boot the REPL
 //  Once REPL $tw booted, load the code tiddlers from the wikis
