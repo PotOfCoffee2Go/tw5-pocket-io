@@ -1,0 +1,17 @@
+caption: Project
+created: 20250311151944899
+creator: poc2go
+modified: 20250311152824491
+modifier: poc2go
+tags: dashboard fetch $:/pocket-io/fetch/dashboard
+title: fetch-dashboard-fetch
+type: text/vnd.tiddlywiki
+
+{{||$:/poc2go/pocket-io/project/addtab}}
+
+<<closeTabsButton "fetch" "docs">>
+<<closeTabsButton "fetch" "template">>
+<<projectUploadButton>>
+<<closeTabsButton "fetch" "code">>
+<<closeTabsButton "fetch" "info">>
+<<closeTabsButton "fetch" "package">>

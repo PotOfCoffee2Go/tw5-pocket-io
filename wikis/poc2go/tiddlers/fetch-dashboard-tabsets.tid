@@ -1,0 +1,12 @@
+caption: Tab Sets
+created: 20250311152253225
+creator: poc2go
+modified: 20250311152900151
+modifier: poc2go
+tags: dashboard fetch $:/pocket-io/fetch/dashboard
+title: fetch-dashboard-tabsets
+type: text/vnd.tiddlywiki
+
+{{||flotsam-template-addtabset}}
+
+<<displayTabPill "fetch" "docs">> <<displayTabPill "fetch" "template">> <<displayTabPill "fetch" "code">> <<displayTabPill "fetch" "info">> <<displayTabPill "fetch" "package">>

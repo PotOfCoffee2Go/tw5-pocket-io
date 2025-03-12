@@ -1,0 +1,52 @@
+created: 20250311174400471
+creator: poc2go
+modified: 20250312074444832
+modifier: poc2go
+tags: 
+title: Pocket-io Project Plugin
+type: text/vnd.tiddlywiki
+
+---
+
+@@float:left;margin-right:1em; <$image source="$:/plugins/poc2go/pocket-io/project/icon" width="32px"/> @@ @@font-size:1.2em; [[$:/plugins/poc2go/pocket-io/project]] @@
+
+* [[$:/plugins/poc2go/pocket-io/project/icon]]
+* [[$:/plugins/poc2go/pocket-io/project/license]]
+* [[$:/plugins/poc2go/pocket-io/project/readme]]
+* [[$:/plugins/poc2go/pocket-io/project/release]]
+* [[$:/plugins/poc2go/pocket-io/project/settings]]
+* [[$:/poc2go/pocket-io/project/addcategory]]
+* [[$:/poc2go/pocket-io/project/addtab]]
+* [[$:/poc2go/pocket-io/project/icon]]
+* [[$:/poc2go/pocket-io/project/license]]
+* [[$:/poc2go/pocket-io/project/readme]]
+* [[$:/poc2go/pocket-io/project/release]]
+* [[$:/poc2go/pocket-io/project/settings]]
+* [[$:/poc2go/pocket-io/project/macros]]
+* [[$:/poc2go/pocket-io/project/create]]
+* [[$:/poc2go/pocket-io/project/delete]]
+* [[$:/poc2go/pocket-io/project/projects]]
+
+<<.codesample 0 'js' """$tw.utils.repackPlugin("$:/plugins/poc2go/pocket-io/project",
+[
+"$:/plugins/poc2go/pocket-io/project/icon",
+"$:/plugins/poc2go/pocket-io/project/license",
+"$:/plugins/poc2go/pocket-io/project/readme",
+"$:/plugins/poc2go/pocket-io/project/release",
+"$:/plugins/poc2go/pocket-io/project/settings",
+"$:/poc2go/pocket-io/project/addcategory",
+"$:/poc2go/pocket-io/project/addtab",
+"$:/poc2go/pocket-io/project/icon",
+"$:/poc2go/pocket-io/project/license",
+"$:/poc2go/pocket-io/project/readme",
+"$:/poc2go/pocket-io/project/release",
+"$:/poc2go/pocket-io/project/settings",
+"$:/poc2go/pocket-io/project/macros",
+"$:/poc2go/pocket-io/project/create",
+"$:/poc2go/pocket-io/project/delete",
+"$:/poc2go/pocket-io/project/projects",
+],[
+
+]
+);
+""">>

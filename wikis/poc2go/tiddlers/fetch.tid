@@ -1,7 +1,13 @@
 autoLoad: yes
 caption: Server fetch URL
 created: 20250129142038466
-modified: 20250206185116419
+creator: poc2go
+ioPrjProject: fetch
+ioPrjTabName: 
+ioPrjTabType: dashboard
+ioResult: 
+modified: 20250311152253225
+modifier: poc2go
 tags: fetch Projects
 title: fetch
 type: text/vnd.tiddlywiki
@@ -12,11 +18,9 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
-{{||$:/poc2go/pocket-io/project/addtab}}
-
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<displayTabTypes fetch>>
+<<closeTabsButton "fetch" "dashboard">>
 
 <<topButton>>

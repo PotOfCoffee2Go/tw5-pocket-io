@@ -1,14 +1,16 @@
 autoLoad: yes
 caption: Project Management
 created: 20250114040241341
+creator: poc2go
 ioConfirmDelete: no
 ioPrjProject: project
 ioPrjTabName: 
 ioPrjTabSelected: project-code-allprojects
-ioPrjTabType: template
+ioPrjTabType: dashboard
 ioResult: 
 ioResultUpload: 
-modified: 20250302050413834
+modified: 20250311184627504
+modifier: poc2go
 tags: project Projects
 title: project
 type: text/vnd.tiddlywiki
@@ -19,16 +21,9 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
-{{||$:/poc2go/pocket-io/project/addtab}}
-
+<!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
 <<closeTabsButton "project" "dashboard">>
-<<closeTabsButton "project" "docs">>
-<<closeTabsButton "project" "template">>
-<<projectUploadButton>>
-<<closeTabsButton "project" "code">>
-<<closeTabsButton "project" "info">>
-<<closeTabsButton "project" "package">>
 
 <<topButton>>

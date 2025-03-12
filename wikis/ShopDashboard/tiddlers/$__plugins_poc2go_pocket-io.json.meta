@@ -1,12 +1,14 @@
 created: 20250118183446794
+creator: poc2go
 dependents: 
 description: Tiddlers used by pocket-io system
 list: readme settings license
-modified: 20250221090455223
+modified: 20250311064152587
+modifier: poc2go
 name: Pocket-io base tiddlers
 plugin-type: plugin
 stability: STABILITY_1_EXPERIMENTAL
-tags: 
+tags: $:/tags/pocket-io/broadcast
 title: $:/plugins/poc2go/pocket-io
 type: application/json
-version: 0.2.33
+version: 0.2.36

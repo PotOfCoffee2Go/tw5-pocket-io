@@ -23,6 +23,13 @@
             "modified": "20250131133222681",
             "caption": "Readme"
         },
+        "$:/plugins/poc2go/pocket-io/project/release": {
+            "created": "20250310063121954",
+            "text": "{{$:/poc2go/pocket-io/project/release}}",
+            "title": "$:/plugins/poc2go/pocket-io/project/release",
+            "modified": "20250310064707377",
+            "caption": "Release Notes"
+        },
         "$:/plugins/poc2go/pocket-io/project/settings": {
             "created": "20250203124001022",
             "text": "{{$:/poc2go/pocket-io/project/settings}}",
@@ -31,9 +38,9 @@
         },
         "$:/poc2go/pocket-io/project/addtab": {
             "created": "20250202173551292",
-            "text": "\\define projectSubmitTab()\n<$button class=\"tc-btn-invisible tc-tiddlylink\" actions=\"<<pocket-io 'projectUpdatetabs'>>\" >\n{{$:/core/images/new-button}}\n</$button>\n\\end\n\n\\define projectTabType()\n<$select field=\"ioPrjTabType\" default=\"docs\">\n<option>docs</option>\n<option>dashboard</option>\n<option>template</option>\n<option>code</option>\n<option>info</option>\n<option>package</option>\n</$select>\n<$edit-text field=\"ioPrjTabName\" size=10 />\n\\end\n\n|tc-center tc-table-no-border|k\n| New tab |<<projectTabType>> |<<projectSubmitTab>>|\n",
+            "text": "\\define projectSubmitTab()\n<$button class=\"tc-btn-invisible tc-tiddlylink\" actions=\"<<pocket-io 'projectUpdatetabs'>>\" >\n{{$:/core/images/new-button}}\n</$button>\n\\end\n\n\\define projectTabType()\n<$select field=\"ioPrjTabType\" default=\"docs\">\n<$list filter=\"[all[tiddlers+shadows]tag[$:/tags/pocket-io/tabtype]sort[caption]]\"><option value={{!!tabtype}} ><$view field='caption'/></option>\n</$list>\n</$select>\n<$edit-text field=\"ioPrjTabName\" size=10 />\n\\end\n\n|tc-center tc-table-no-border|k\n| New tab |<<projectTabType>> |<<projectSubmitTab>>|\n",
             "title": "$:/poc2go/pocket-io/project/addtab",
-            "modified": "20250214130016727",
+            "modified": "20250227161112757",
             "caption": "Add Tab"
         },
         "$:/poc2go/pocket-io/project/icon": {
@@ -57,6 +64,12 @@
             "modified": "20250131133706781",
             "caption": "Readme"
         },
+        "$:/poc2go/pocket-io/project/release": {
+            "created": "20250310064355171",
+            "text": "!!! v0.2.4 - 2025-03-11\n\n* Rename tab set tiddlers - remove 'poc2go'\n\n!!! v0.2.3 - 2025-03-10\n\n* Breakout tab pill display - define ''displayTabPill''\n\n!!! v0.2.2 - 2025-03-10\n\n* Move tab sets to codebase wiki\n\n!!! v0.2.1 - 2025-03-10\n\n* Add Release Notes\n* Changes dashboard pill name to 'Dashboards'\n",
+            "title": "$:/poc2go/pocket-io/project/release",
+            "modified": "20250311060536239"
+        },
         "$:/poc2go/pocket-io/project/settings": {
             "created": "20250131133728669",
             "text": "project Settings will go here\n",
@@ -67,9 +80,9 @@
         },
         "$:/poc2go/pocket-io/project/macros": {
             "created": "20250131141513737",
-            "text": "\\define closeTabsButton(project,tab)\n<$button class=\"tc-btn-invisible tc-tiddlylink\">\n<$action-setfield $tiddler=<<qualify \"$:/state/tab/pocket-io/$project$/$tab$\">>  text=\"\"/>\n{{$:/core/images/fold-button}}\n</$button>\n{{$:/pocket-io/$project$/$tab$||$:/poc2go/pocket-io/ui/Tag$tab$}}\n<<tabs \"[all[shadows+tiddlers]tag[$:/pocket-io/$project$/$tab$]!is[draft]]\" \"\" \"$:/state/tab/pocket-io/$project$/$tab$\">>\n\\end\n\n\\define projectSubmitUpload()\n<<pocket-io \"projectUpload\">>\n\\end\n\n\\define projectUploadButton()\n{{!!ioResultUpload}}\n<div style=\"float:right; margin-right: 250px; font-size: .85em;\">\n<$button actions=\"<<projectSubmitUpload>>\"> Upload </$button>&nbsp;&nbsp;\n<$select field=\"ioPrjTabSelected\" default=\"AALLLL\"><option value=\"AALLLL\" >All</option><$list filter=\"[tag{!!title}tag[code]]\"><option value={{!!title}} ><$view field='caption'/></option></$list></$select>&nbsp;&nbsp;\n<$checkbox field=\"ioPrjMinify\" checked=\"yes\" unchecked=\"no\" default=\"yes\"> Minify code</$checkbox>\n</div>\n\\end\n\n\\define displayTabTypes(project)\n<<closeTabsButton \"$project$\" \"dashboard\">>\n<<closeTabsButton \"$project$\" \"docs\">>\n<<closeTabsButton \"$project$\" \"template\">>\n<<projectUploadButton>>\n<<closeTabsButton \"$project$\" \"code\">>\n<<closeTabsButton \"$project$\" \"info\">>\n<<closeTabsButton \"$project$\" \"package\">>\n\\end\n",
+            "text": "\\define displayTabTypes(project)\n<<closeTabsButton \"$project$\" \"dashboard\">>\n<<closeTabsButton \"$project$\" \"docs\">>\n<<closeTabsButton \"$project$\" \"template\">>\n<<projectUploadButton>>\n<<closeTabsButton \"$project$\" \"code\">>\n<<closeTabsButton \"$project$\" \"info\">>\n<<closeTabsButton \"$project$\" \"package\">>\n\\end\n\n\\define displayTabPill(project,tab)\n{{$:/pocket-io/$project$/$tab$||$:/pocket-io/project/ui/Tab$tab$}}\n\\end\n\n\\define closeTabsButton(project,tab)\n<$button class=\"tc-btn-invisible tc-tiddlylink\">\n<$action-setfield $tiddler=<<qualify \"$:/state/tab/pocket-io/$project$/$tab$\">>  text=\"\"/>\n{{$:/core/images/fold-button}}\n</$button>\n<<displayTabPill \"$project$\" \"$tab$\">>\n<<tabs \"[all[shadows+tiddlers]tag[$:/pocket-io/$project$/$tab$]!is[draft]]\" \"\" \"$:/state/tab/pocket-io/$project$/$tab$\">>\n\\end\n\n\\define closeTabsButton(project,tab)\n<$button class=\"tc-btn-invisible tc-tiddlylink\">\n<$action-setfield $tiddler=<<qualify \"$:/state/tab/pocket-io/$project$/$tab$\">>  text=\"\"/>\n{{$:/core/images/fold-button}}\n</$button>\n{{$:/pocket-io/$project$/$tab$||$:/poc2go/pocket-io/project/ui/Tag$tab$}}\n<<tabs \"[all[shadows+tiddlers]tag[$:/pocket-io/$project$/$tab$]!is[draft]]\" \"\" \"$:/state/tab/pocket-io/$project$/$tab$\">>\n\\end\n\n\\define projectSubmitUpload()\n<<pocket-io \"projectUpload\">>\n\\end\n\n\\define projectUploadButton()\n{{!!ioResultUpload}}\n<div style=\"float:right; margin-right: 250px; font-size: .85em;\">\n<$button actions=\"<<projectSubmitUpload>>\"> Upload </$button>&nbsp;&nbsp;\n<$select field=\"ioPrjTabSelected\" default=\"AALLLL\"><option value=\"AALLLL\" >All</option><$list filter=\"[tag{!!title}tag[code]]\"><option value={{!!title}} ><$view field='caption'/></option></$list></$select>&nbsp;&nbsp;\n<$checkbox field=\"ioPrjMinify\" checked=\"yes\" unchecked=\"no\" default=\"yes\"> Minify</$checkbox>\n</div>\n\\end\n",
             "title": "$:/poc2go/pocket-io/project/macros",
-            "modified": "20250214125643531",
+            "modified": "20250311060351589",
             "tags": "$:/tags/Macro",
             "type": "text/vnd.tiddlywiki",
             "revision": "0",
@@ -77,9 +90,9 @@
         },
         "$:/poc2go/pocket-io/project/create": {
             "created": "20250131142623424",
-            "text": "\\define submitCreate()\n<<pocket-io \"projectCreate\">>\n\\end\n\n\\define createButton()\n<$button actions=\"<<submitCreate>>\"> Create </$button>\n\\end\n\n\\define projectEditBox()\n<$edit-text field=\"ioPrjProject\"/>\n\\end\n\n\\define onWikiSelect()\n<$select field=\"ioPrjWiki\" default=\"\">\n<$list filter=\"[list[$:/temp/pocket-io/wikinames]]\">\n<option value={{!!title}} ><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n|tc-center tc-table-no-border|k\n| Wiki |<<onWikiSelect>> | New Project |<<projectEditBox>> |<<createButton>> |\n",
+            "text": "\\define submitCreate()\n<<pocket-io \"projectCreate\">>\n\\end\n\n\\define createButton()\n<$button actions=\"<<submitCreate>>\"> Create </$button>\n\\end\n\n\\define projectEditBox()\n<$edit-text field=\"ioPrjProject\"/>\n\\end\n\n\\define onWikiSelect()\n<$select field=\"ioPrjWiki\" default=\"{{$:/temp/pocket-io/wikinames}}\">\n<$list filter=\"[list[$:/temp/pocket-io/wikinames]]\">\n<option value={{!!title}} ><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n|tc-center tc-table-no-border|k\n| Wiki |<<onWikiSelect>> | New Project |<<projectEditBox>> |<<createButton>> |\n",
             "title": "$:/poc2go/pocket-io/project/create",
-            "modified": "20250131142649610",
+            "modified": "20250228112550307",
             "caption": "Create"
         },
         "$:/poc2go/pocket-io/project/delete": {

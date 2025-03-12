@@ -1,5 +1,5 @@
-// Create a new tab set
-$tpi.topic.projectCreateTabSet = function (socket, msg) {
+// Create a new category
+$tpi.topic.projectAddCategory = function (socket, msg) {
 	var sender = cpy(msg.senderTiddler);
 	var errorMsg = '';
 	sender.ioResult = '';
@@ -8,7 +8,7 @@ $tpi.topic.projectCreateTabSet = function (socket, msg) {
 	var project = sender.ioPrjProject;
 	var tabSetType = sender.ioPrjTabSetType;
 	var pillTitle = sender.ioPrjPillTitle;
-	var tabSetTitle = `$:/poc2go/pocket-io/project/ui/Tag${tabSetType}`;
+	var tabSetTitle = `$:/pocket-io/project/ui/Tag${tabSetType}`;
 	var tabSetText = get$twCodebase.wiki.getTiddlerText('$:/poc2go/pocket-io/project/ui/Tagdocs');
 
 	var $tw = get$tw(dstWikiName);

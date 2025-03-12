@@ -1,0 +1,31 @@
+caption: Add Category
+created: 20250311171237934
+creator: poc2go
+modified: 20250311175944978
+modifier: poc2go
+title: $:/poc2go/pocket-io/project/addcategory
+type: text/vnd.tiddlywiki
+
+\define projectSubmitCategory()
+<$button class="tc-btn-invisible tc-tiddlylink" actions="<<pocket-io 'projectAddCategory'>>" >
+{{$:/core/images/new-button}}
+</$button>
+\end
+
+\define setTypeEditBox()
+<$edit-text field="ioPrjTabSetType" class="pio-tabset-box"/>
+\end
+
+\define pillTitleEditBox()
+<$edit-text field="ioPrjPillTitle" class="pio-tabset-box"/>
+\end
+
+<style>
+.pio-tabset-box { width: 122px; }
+</style>
+
+|tc-center tc-table-no-border|k
+| Add Category |
+
+|tc-center tc-table-no-border|k
+| Category Type: |<<setTypeEditBox>> | Pill Title: |<<pillTitleEditBox>> |<<projectSubmitCategory>> |

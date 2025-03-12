@@ -1,8 +1,8 @@
-caption: newtab
+caption: Add Tab
 created: 20250114042927562
-ioPrjTabType: code
-ioPrjWiki: dashboard
-modified: 20250121002411762
+creator: poc2go
+modified: 20250311193058212
+modifier: poc2go
 tags: project $:/pocket-io/project/template template
 title: project-template-newtab
 type: text/vnd.tiddlywiki

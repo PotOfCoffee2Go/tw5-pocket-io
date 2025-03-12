@@ -1,0 +1,34 @@
+caption: Project
+created: 20250311183903761
+creator: poc2go
+modified: 20250311224359983
+modifier: poc2go
+tags: dashboard project $:/pocket-io/project/dashboard
+title: project-dashboard-project
+type: text/vnd.tiddlywiki
+
+\define pills()
+<<displayTabPill "project" "docs">> <<displayTabPill "project" "template">> <<displayTabPill "project" "code">> <<displayTabPill "project" "info">> <<displayTabPill "project" "package">>
+\end
+
+\define categoryButtons()
+<<closeTabsButton "project" "docs">>
+<<closeTabsButton "project" "template">>
+<<projectUploadButton>>
+<<closeTabsButton "project" "code">>
+<<closeTabsButton "project" "info">>
+<<closeTabsButton "project" "package">>
+\end
+
+<<details "Project Categories" src:"""---
+
+{{||$:/poc2go/pocket-io/project/addcategory}}
+
+Current: <<pills>>
+
+---
+""">>
+
+{{||$:/poc2go/pocket-io/project/addtab}}
+
+<<categoryButtons>>
