@@ -37,6 +37,9 @@ const sid = (socket) => socket.id.split('-').pop();
 
 // ------------------------
 // Network interface
+var wsScheme = "ws";
+var wsNrServerUrl, connection;
+
 var socket = null;
 
 // Attempt reconnect to server in milliseconds
@@ -64,6 +67,14 @@ const pocketIoDefines = {
 pocket.io macro
 `};
 
+const nodeRedDefines = {
+	title: '$:/temp/node-red/macros',
+	tags: '$:/tags/Macro node-red',
+	text: `\\define node-red(topic filter:"") <$macrocall $name=pocket command=nodered topic='$topic$' filter='$filter$' sender="$(currentTiddler)$" />
+
+Node-RED macro
+`};
+
 exports.name = 'pocket';
 
 exports.params = [
@@ -75,15 +86,16 @@ exports.params = [
 
 exports.run = (command, topic, filter, sender) => {
 	if (!(sender && $tw.wiki.getTiddler(sender).fields)) {
-		console.log(`pocket.io sender tiddler ${sender} required.`);
+		console.log(`pocket sender tiddler ${sender} required.`);
 		return;
 	}
-	if (command !== 'emit') {
-		console.log(`pocket.io  invalid command - ${command}.`);
+	if (!(command === 'emit' || command === 'nodered')) {
+		console.log(`pocket invalid command - ${command}.`);
 		return;
 	}
 	var msg = createMessage(command, topic, filter, sender);
-	socket.emit('msg', msg);
+	var packet = Object.assign({}, {eventName: 'topic'}, msg);
+	socket.emit('msg', packet);
 }
 
 // Network Message
@@ -98,7 +110,7 @@ function createMessage(command, topic, filter, sender) {
 	var senderFields = $tw.utils.parseJSONSafe($tw.wiki.getTiddlerAsJson(sender),{});
 
 	var senderReq = {
-		command: senderFields.ioCommand,
+		command: command,
 		topic: senderFields.ioTopic,
 		filter: senderFields.ioFilter,
 		wikiName: $tw.wiki.getTiddlerText('$:/temp/pocket-io/wikinames'),
@@ -178,6 +190,7 @@ const fieldsToWiki = (fields, tostory = false) => {
 // ------------------------
 // Pocket.io socket event handlers
 const initSocketHandlers = () => {
+//	connect();
 	socket = io();
 
 	socket.on('connect', () => {
@@ -252,12 +265,57 @@ fetch(socketLibrary).then((res) => {
 }).then(() => {
 	// Macro to access pocket.io server
 	$tw.wiki.addTiddler(new $tw.Tiddler(pocketIoDefines));
+	// Macro to access pocket.io server
+	$tw.wiki.addTiddler(new $tw.Tiddler(nodeRedDefines));
 	// Initialize the network interface
 	setNetstat('Pocket.io Initializing...');
 	initSocketHandlers();
 }).catch((err) => {
 	console.log(err);
 });
+
+function connect() {
+	// If this is an HTTPS connection, we have to use a secure WebSocket
+	// connection too, so add another "s" to the wsScheme.
+	if (document.location.protocol === "https:") {
+		wsScheme += "s";
+	}
+
+	wsNrServerUrl = wsScheme + "://" + "raspberrypi:3007/test";
+//	wsNrServerUrl = wsScheme + "://" + "localhost:1880/test";
+	connection = new WebSocket(wsNrServerUrl, "json");
+
+	connection.onopen = function(evt) {
+//		send('this is a message')
+	};
+
+	connection.onmessage = function(evt) {
+		var msg = JSON.parse(evt.data);
+
+		if (msg.eventName === 'topic') {
+			msg.resultTiddlers.forEach(tiddler => {
+				if (tiddler.title === msg.req.sender) {
+					tiddler = formatResults(tiddler);
+					fieldsToWiki(tiddler); // skip sending the sender to the story
+				} else {
+					fieldsToWiki(tiddler, msg.req.tostory);
+				}
+			})
+			if ($tw.syncer) {
+				$tw.syncer.syncFromServer();
+			}
+		}
+//        console.log("Message received: ");
+//        console.dir(msg);
+	};
+}
+
+function send(eventName, msg) {
+	var packet = Object.assign({}, {eventName}, msg);
+	connection.send(JSON.stringify(packet));
+}
+
+
 
 })();
 

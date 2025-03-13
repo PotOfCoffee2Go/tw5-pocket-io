@@ -4,5 +4,4 @@ type: text/vnd.tiddlywiki
 
 The following tiddlers were imported:
 
-# [[Pocket-io Plugin]]
-# [[Pocket-io Project Plugin]]
+# [[$:/poc2go/macro/tw5-pocket-io/network.js]]

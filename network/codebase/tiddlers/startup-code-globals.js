@@ -25,6 +25,7 @@ const get$proxy = (name) => get$settings(name).proxy ?? {};
 const get$server = (name) => get$proxy(name).server ?? {};
 const get$router = (name) => get$server(name).router ?? {};
 const get$pocketio = (name) => get$server(name).pocketio ?? {};
+const get$nrws = (name) => get$server(name).nrws ?? null;
 
 const tStamp = () => {
 	return ((new Date()).toLocaleDateString(undefined, {

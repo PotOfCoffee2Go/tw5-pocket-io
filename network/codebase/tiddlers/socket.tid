@@ -1,15 +1,17 @@
 autoLoad: yes
 caption: Pocket-io Sockets
 created: 20250129065626216
+creator: poc2go
 ioConfirmDelete: no
 ioPrjProject: socket
 ioPrjTabName: 
-ioPrjTabSelected: socket-code-ackConnect
+ioPrjTabSelected: socket-code-msg
 ioPrjTabToDelete: socket-a
 ioPrjTabType: code
 ioResult: 
 ioResultUpload: 
-modified: 20250228110653033
+modified: 20250313074933665
+modifier: poc2go
 tags: socket Projects
 title: socket
 type: text/vnd.tiddlywiki
