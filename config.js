@@ -26,9 +26,14 @@ exports.config = {
 	proxy: {
 		domain: 'raspberrypi',
 		host: '0.0.0.0',
-		basePort: 3000
+		basePort: 3000,
 	},
 
+	nodeRedTarget: {
+		wsocket: 'ws://localhost:1880/ws',
+		admin: 'http://localhost:1880/red',
+		node: 'http://localhost:1880/api',
+	},
 	// Parameters are configuration parameters supported by WebServer
 	//  see 'https://tiddlywiki.com/static/WebServer%2520Parameters.html`
 	// Users and credentials are applied from 'credentials' (see below)

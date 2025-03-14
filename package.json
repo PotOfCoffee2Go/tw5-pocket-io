@@ -12,6 +12,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "http-proxy": "^1.18.1",
+    "node-red": "^4.0.9",
     "pocket.io": "^0.1.4",
     "tiddlywiki": "^5.3.6",
     "uglify-js": "github:mishoo/UglifyJS"

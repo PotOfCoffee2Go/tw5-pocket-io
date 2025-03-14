@@ -7,7 +7,7 @@ $tpi.fn.io.msg = function msg(socket, msg) {
 		return;
 	}
 	if (msg.req.command === 'nodered') {
-		get$nrws(msg.req.wikiName).send(JSON.stringify(msg));
+		$nrInMsg.enQueue(msg);
 		return;
 	}
 

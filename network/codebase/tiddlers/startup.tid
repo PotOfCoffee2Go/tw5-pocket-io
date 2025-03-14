@@ -1,14 +1,16 @@
 autoLoad: yes
 caption: System Startup
 created: 20250129055110581
+creator: poc2go
 ioConfirmDelete: no
 ioPrjProject: startup
 ioPrjTabName: 
 ioPrjTabSelected: AALLLL
 ioPrjTabToDelete: startup-a
-ioPrjTabType: docs
+ioPrjTabType: code
 ioResult: 
-modified: 20250222190147568
+modified: 20250314044005920
+modifier: poc2go
 tags: startup Projects
 title: startup
 type: text/vnd.tiddlywiki
