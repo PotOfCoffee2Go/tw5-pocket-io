@@ -1,22 +1,26 @@
 // AsyncQueue
+// A single reader - multiple writer FIFO async queue
+//  Note! only works for a single reader
 // usage:
 /*
-
+// Reader
 var q = new $AsyncQueue;
 
 function repeatTask() {
 	q.awaitQueue()
 	.then(obj => {
-	  q.request = null;
-		console.log(obj);
-		// ...do something with object ...
+	  q.request = null; // important!
+		// ...do something with object - like ...
+		console.dir(obj);
+		 // wait for next object
 		repeatTask();
 	})
 }
-
+// Start reading from queue
 repeatTask();
 
-// add to queue
+//  ----------------------
+//  Writers - add to queue
 q.enQueue({a: 'object'});
 */
 
@@ -40,4 +44,3 @@ function $AsyncQueue() {
 }
 
 const $nrInMsg = new $AsyncQueue;
-const $nrOutMsg = new $AsyncQueue;

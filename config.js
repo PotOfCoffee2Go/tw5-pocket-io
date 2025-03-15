@@ -1,3 +1,6 @@
+const path = require('node:path');
+const os = require('node:os');
+
 exports.config = {
 	// Project's Node.js/NPM package
 	pkg: require('./package.json'),
@@ -8,7 +11,7 @@ exports.config = {
 
 	// Force pocket-io './network/codebase' wiki to be accessable
 	//  only from browsers running on localhost regardless
-	//  of configuration settings
+	//  of other configuration settings
 	forceCodebaseLocal: true,
 
 	// Webservers should normally be served on localhost (127.0.0.1)
@@ -18,7 +21,7 @@ exports.config = {
 		basePort: 8090
 	},
 
-	// Express proxies to to each webserver (above)
+	// Express proxies to each webserver (above)
 	//  DNS domain (or IP address) of this computer running the program
 	//   note: I'm running on my local network 'raspberrypi' computer
 	// Proxies are normally accessable to local network (0.0.0.0)
@@ -27,6 +30,24 @@ exports.config = {
 		domain: 'raspberrypi',
 		host: '0.0.0.0',
 		basePort: 3000,
+	},
+
+	// Node-Red setttings
+	//   Uses the default settings as much as possible
+	// Make changes in the Node-Red settings.js file as usual
+	// The properties below will override settings in Node-Red settings.js
+	nodered: {
+		// Default Node-Red settings and user directory
+		settingsFile: os.homedir() + '/.node-red/settings.js',
+		userDir: os.homedir() + '/.node-red',
+		// Use host & port from Node-Red settings file
+		// uiHost: 127.0.0.1,
+		// uiPort: 1880,
+
+		// flowFile for this instance of Node-RED
+		flowFile: path.resolve('./red/flows/tiddlywiki.json'),
+		httpAdminRoot:"/red",
+		httpNodeRoot: "/api",
 	},
 
 	nodeRedTarget: {

@@ -7,6 +7,8 @@ $tpi.fn.io.msg = function msg(socket, msg) {
 		return;
 	}
 	if (msg.req.command === 'nodered') {
+		msg.req.wikiSocketId = sid(socket);
+		msg.topic = msg.req.topic;
 		$nrInMsg.enQueue(msg);
 		return;
 	}

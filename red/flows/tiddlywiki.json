@@ -1,0 +1,460 @@
+[
+    {
+        "id": "62c6b96ab760ca78",
+        "type": "tab",
+        "label": "TiddlyWiki",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5b24d6e63acf9047",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cc2541f0a15e0490",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "name": "Requests/reply from/to TiddlyWiki",
+        "style": {
+            "label": true,
+            "label-position": "n"
+        },
+        "nodes": [
+            "c73fc4d182eaa06c",
+            "3f46abc099b4771f"
+        ],
+        "x": 48,
+        "y": 13,
+        "w": 564,
+        "h": 314
+    },
+    {
+        "id": "c73fc4d182eaa06c",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "cc2541f0a15e0490",
+        "name": "Get next request from a wiki",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "26a06ff7de7d520f",
+            "650a3ee7fb04d648",
+            "569cb8f90909f44b",
+            "f39dab4a09035c48"
+        ],
+        "x": 74,
+        "y": 39,
+        "w": 512,
+        "h": 122
+    },
+    {
+        "id": "3f46abc099b4771f",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "cc2541f0a15e0490",
+        "name": "Respond with tiddlers to wiki request",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "774b9a8d1fc33bfa",
+            "1916e79f0aa200bd",
+            "c6e0f524b5211df1"
+        ],
+        "x": 134,
+        "y": 179,
+        "w": 372,
+        "h": 122
+    },
+    {
+        "id": "1b089e0ef2eb4a3e",
+        "type": "function",
+        "z": "62c6b96ab760ca78",
+        "name": "TW Loopback",
+        "func": "var tiddler = {\n title: 'Loopback',\n text: 'This is from node red server'\n}\nmsg.req.tostory = true;\nmsg.resultTiddlers.push(tiddler);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 380,
+        "wires": [
+            [
+                "37e5c77d6e4bfdc5"
+            ]
+        ]
+    },
+    {
+        "id": "26a06ff7de7d520f",
+        "type": "function",
+        "z": "62c6b96ab760ca78",
+        "g": "c73fc4d182eaa06c",
+        "name": "From TW Webserver",
+        "func": "if (global.get('$nrInMsg').request) { \n    node.log('TiddlyWiki messages are already active');\n    return;\n}\n\nconst q = global.get('$nrInMsg');\n\nfunction repeatTask() {\n    q.awaitQueue()\n        .then(obj => {\n            q.request = null; // important!\n            node.send(obj);\n            node.done();\n            repeatTask();\n        })\n}\n\nrepeatTask();\n\nreturn;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "// Code added here will be run when the\n// node is being stopped or re-deployed.\nglobal.get('$nrInMsg').request = null;\n",
+        "libs": [],
+        "x": 280,
+        "y": 80,
+        "wires": [
+            [
+                "f39dab4a09035c48",
+                "650a3ee7fb04d648"
+            ]
+        ]
+    },
+    {
+        "id": "650a3ee7fb04d648",
+        "type": "debug",
+        "z": "62c6b96ab760ca78",
+        "g": "c73fc4d182eaa06c",
+        "name": "from wiki",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "569cb8f90909f44b",
+        "type": "inject",
+        "z": "62c6b96ab760ca78",
+        "g": "c73fc4d182eaa06c",
+        "name": "Restart msg queue on deploy",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 135,
+        "y": 80,
+        "wires": [
+            [
+                "26a06ff7de7d520f"
+            ]
+        ],
+        "l": false,
+        "info": "This inject is used to re-establish connection to\r\nthe Node-Red $nrInMsg queue when flows are deployed.\r\n"
+    },
+    {
+        "id": "f39dab4a09035c48",
+        "type": "link out",
+        "z": "62c6b96ab760ca78",
+        "g": "c73fc4d182eaa06c",
+        "name": "from wiki",
+        "mode": "link",
+        "links": [
+            "3aea7a32fcc9561f"
+        ],
+        "x": 480,
+        "y": 80,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "3aea7a32fcc9561f",
+        "type": "link in",
+        "z": "62c6b96ab760ca78",
+        "name": "from wiki",
+        "links": [
+            "f39dab4a09035c48"
+        ],
+        "x": 80,
+        "y": 380,
+        "wires": [
+            [
+                "cdcaa30c8d7b6208"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "774b9a8d1fc33bfa",
+        "type": "link in",
+        "z": "62c6b96ab760ca78",
+        "g": "3f46abc099b4771f",
+        "name": "to wiki",
+        "links": [
+            "37e5c77d6e4bfdc5"
+        ],
+        "x": 210,
+        "y": 220,
+        "wires": [
+            [
+                "1916e79f0aa200bd",
+                "c6e0f524b5211df1"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "37e5c77d6e4bfdc5",
+        "type": "link out",
+        "z": "62c6b96ab760ca78",
+        "name": "to wiki",
+        "mode": "link",
+        "links": [
+            "774b9a8d1fc33bfa"
+        ],
+        "x": 570,
+        "y": 380,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "1916e79f0aa200bd",
+        "type": "debug",
+        "z": "62c6b96ab760ca78",
+        "g": "3f46abc099b4771f",
+        "name": "to wiki",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "cdcaa30c8d7b6208",
+        "type": "switch",
+        "z": "62c6b96ab760ca78",
+        "name": "topic: loopback",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "loopback",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 240,
+        "y": 380,
+        "wires": [
+            [
+                "1b089e0ef2eb4a3e"
+            ]
+        ]
+    },
+    {
+        "id": "c6e0f524b5211df1",
+        "type": "function",
+        "z": "62c6b96ab760ca78",
+        "g": "3f46abc099b4771f",
+        "name": "To TW Webserver",
+        "func": "const $sockets = global.get('$sockets');\nconst $refreshClients = global.get('$refreshClients');\n\n// Send to a specific client\nif (msg.req.wikiSocketId) {\n    $sockets[msg.req.wikiSocketId].socket.emit('msg', msg);\n}\n// Refresh any client connect to this wiki\n$refreshClients(msg.req.wikiName);\n\nreturn;\n",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "37ee764215ea2cd1",
+        "type": "debug",
+        "z": "5b24d6e63acf9047",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "9be58c4381efebe8",
+        "type": "inject",
+        "z": "5b24d6e63acf9047",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "this is a test",
+        "payloadType": "str",
+        "x": 110,
+        "y": 60,
+        "wires": [
+            [
+                "bc5f4a5de6bd1455"
+            ]
+        ]
+    },
+    {
+        "id": "bc5f4a5de6bd1455",
+        "type": "function",
+        "z": "5b24d6e63acf9047",
+        "name": "Global",
+        "func": "const $tw = global.get('get$tw')('twtalk');\n\nmsg.tiddlers = JSON.parse($tw.wiki.getTiddlersAsJson('[[docs-docs-talk-writeup]]'));\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 60,
+        "wires": [
+            [
+                "37ee764215ea2cd1"
+            ]
+        ]
+    },
+    {
+        "id": "080a6cf49bbd8f0f",
+        "type": "debug",
+        "z": "5b24d6e63acf9047",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "6d337caf73bc932b",
+        "type": "inject",
+        "z": "5b24d6e63acf9047",
+        "name": "Wiki add tiddler",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "6ed2eb4283386c9c"
+            ]
+        ]
+    },
+    {
+        "id": "6ed2eb4283386c9c",
+        "type": "function",
+        "z": "5b24d6e63acf9047",
+        "name": "Add tiddler to wiki",
+        "func": "const $tw = global.get('get$tw')('twtalk');\nconst $refreshClients = global.get('$refreshClients');\n\n$tw.wiki.addTiddler(new $tw.Tiddler({\n    title: 'docs-docs-nodered',\n    text: 'the coolest quality and support of the TiddlyWiki code base is well established; and the community has a long exciting history, is engaged, with no fear of evaporating anytime soon. Is a BIG plus when a company decides',\n    tags: '$:/pocket-io/docs/docs docs',\n    caption: 'node-red loopback test',\n}))\n\n$refreshClients('twtalk');\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 140,
+        "wires": [
+            [
+                "080a6cf49bbd8f0f"
+            ]
+        ]
+    },
+    {
+        "id": "014708f6c0e76350",
+        "type": "debug",
+        "z": "5b24d6e63acf9047",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "0f2acf4fdfb28076",
+        "type": "inject",
+        "z": "5b24d6e63acf9047",
+        "name": "Change 'twtalk' subtitle",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 140,
+        "y": 220,
+        "wires": [
+            [
+                "8c024d2e9a985f38"
+            ]
+        ]
+    },
+    {
+        "id": "8c024d2e9a985f38",
+        "type": "function",
+        "z": "5b24d6e63acf9047",
+        "name": "twtalk subtitle",
+        "func": "const $tw = global.get('get$tw')('twtalk');\nconst $refreshClients = global.get('$refreshClients');\n\n$tw.wiki.addTiddler(new $tw.Tiddler({\n    title: '$:/SiteSubtitle',\n    text: 'TwTalk drafts',\n}))\n\n$refreshClients('twtalk');\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 220,
+        "wires": [
+            [
+                "014708f6c0e76350"
+            ]
+        ]
+    }
+]

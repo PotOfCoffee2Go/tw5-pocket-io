@@ -1,0 +1,36 @@
+autoLoad: yes
+caption: Node-Red Server
+created: 20250315134452822
+creator: poc2go
+ioConfirmDelete: no
+ioPrjProject: nodered
+ioPrjTabName: 
+ioPrjTabSelected: AALLLL
+ioPrjTabType: code
+ioResult: 
+modified: 20250315144011941
+modifier: poc2go
+tags: nodered Projects
+title: nodered
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header {{!!caption}} @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+{{||$:/poc2go/pocket-io/project/addtab}}
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<<closeTabsButton "nodered" "dashboard">>
+<<closeTabsButton "nodered" "docs">>
+<<closeTabsButton "nodered" "template">>
+<<projectUploadButton>>
+<<closeTabsButton "nodered" "code">>
+<<closeTabsButton "nodered" "info">>
+<<closeTabsButton "nodered" "package">>
+
+<<topButton>>
