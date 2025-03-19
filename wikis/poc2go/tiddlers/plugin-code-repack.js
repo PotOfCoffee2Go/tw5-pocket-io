@@ -36,6 +36,5 @@ $tpi.topic.pluginRepack = function pluginRepack(socket, msg) {
 	
 	senderTid.ioResult = `Done`;
 	msg.resultTiddlers.push(senderTid);
-	msg.req.tostory = true;
 	return msg;
 }

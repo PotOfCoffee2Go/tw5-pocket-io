@@ -85,7 +85,8 @@ async function startProxyServers() {
 
 // REPL MOTD and prompt
 function replMOTD() {
-	hog(`Go to ${serverSettings[0].proxy.link}`,40);
+	hog(`Press {enter} at any time to display the prompt`,40);
+	hog(`Home page is at ${serverSettings[0].proxy.link}`,40);
 	hog(`Press {up-arrow}{enter} to start Node-Red\n`,40);
 	$rt.history.push(`const $nr = new $NodeRed`);
 //	$rt.history.push(`cmd.run('help')`);

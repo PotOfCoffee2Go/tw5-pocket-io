@@ -28,10 +28,6 @@ $tw.wiki.addTiddler(new $tw.Tiddler(netStatus));
 const sid = (socket) => socket.id.split('-').pop();
 
 // ------------------------
-// Network interface
-var wsScheme = "ws";
-var wsNrServerUrl, connection;
-
 var socket = null;
 
 // Attempt reconnect to server in milliseconds
@@ -107,7 +103,7 @@ function createMessage(command, topic, filter, sender) {
 		filter: senderFields.ioFilter,
 		wikiName: $tw.wiki.getTiddlerText('$:/temp/pocket-io/wikinames'),
 		sender: senderFields.title,
-		tostory: senderFields.ioTostory === 'yes' ? true : false,
+		tostory: senderFields.ioToStory ?? 'no',
 	}
 	var msg = {
 		req: Object.assign({}, senderReq, macroReq),
@@ -135,7 +131,7 @@ function setNetstat(txt) {
 	var username = $tw.wiki.getTiddlerText('$:/status/UserName');
 	$tw.wiki.setText('$:/temp/pocket-io/proxy','text', null, site);
 	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null,
-		`Wiki: {{$:/temp/pocket-io/wikinames}} ${username ? ' - User: ' : ''} ${username}<br>` +
+		`Wiki: {{$:/temp/pocket-io/wikinames}} ${username ? ' - User: ' : ''} [[${username}]]<br>` +
 		`{{$:/temp/pocket-io/wikinames!!link}}<br>` +
 		txt
 	);
@@ -182,7 +178,6 @@ const fieldsToWiki = (fields, tostory = false) => {
 // ------------------------
 // Pocket.io socket event handlers
 const initSocketHandlers = () => {
-//	connect();
 	socket = io();
 
 	socket.on('connect', () => {
@@ -203,7 +198,9 @@ const initSocketHandlers = () => {
 				tiddler = formatResults(tiddler);
 				fieldsToWiki(tiddler); // skip sending the sender to the story
 			} else {
-				fieldsToWiki(tiddler, msg.req.tostory);
+				var toRiver = tiddler.ioToStory || msg.req.tostory;
+				delete tiddler.ioToStory;
+				fieldsToWiki(tiddler, toRiver === 'yes' ? true : false);
 			}
 		})
 		if ($tw.syncer) {
@@ -265,47 +262,6 @@ fetch(socketLibrary).then((res) => {
 }).catch((err) => {
 	console.log(err);
 });
-
-function connect() {
-	// If this is an HTTPS connection, we have to use a secure WebSocket
-	// connection too, so add another "s" to the wsScheme.
-	if (document.location.protocol === "https:") {
-		wsScheme += "s";
-	}
-
-	wsNrServerUrl = wsScheme + "://" + "raspberrypi:3007/test";
-//	wsNrServerUrl = wsScheme + "://" + "localhost:1880/test";
-	connection = new WebSocket(wsNrServerUrl, "json");
-
-	connection.onopen = function(evt) {
-//		send('this is a message')
-	};
-
-	connection.onmessage = function(evt) {
-		var msg = JSON.parse(evt.data);
-
-		if (msg.eventName === 'topic') {
-			msg.resultTiddlers.forEach(tiddler => {
-				if (tiddler.title === msg.req.sender) {
-					tiddler = formatResults(tiddler);
-					fieldsToWiki(tiddler); // skip sending the sender to the story
-				} else {
-					fieldsToWiki(tiddler, msg.req.tostory);
-				}
-			})
-			if ($tw.syncer) {
-				$tw.syncer.syncFromServer();
-			}
-		}
-//        console.log("Message received: ");
-//        console.dir(msg);
-	};
-}
-
-function send(eventName, msg) {
-	var packet = Object.assign({}, {eventName}, msg);
-	connection.send(JSON.stringify(packet));
-}
 
 
 

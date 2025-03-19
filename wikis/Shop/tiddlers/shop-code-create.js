@@ -23,10 +23,10 @@ $tpi.topic.shopItemCreate = function (socket, msg) {
 	var itemId = uid();
 
 	if (!itemWikiName) {
-		errorMsg = `Error: Wiki to store the shop item info is required`;		
+		errorMsg = `Error: Wiki to store the shop item info is required`;
 	}
 	else if (!dataWikiName) {
-		errorMsg = `Error: Database Wiki to store the shop item records is required`;		
+		errorMsg = `Error: Database Wiki to store the shop item records is required`;
 	}
 	else if (!itemName) {
 		errorMsg = `Error: A item name is required`;
@@ -77,7 +77,7 @@ $tpi.topic.shopItemCreate = function (socket, msg) {
 	msg.resultTiddlers.push(sender);
 
 	// Tell all clients connected to destination wiki to refresh
-	$tpi.fn.io.refreshClients(itemWikiName);
+	$refreshClients(itemWikiName);
 	return msg;
 }
 
@@ -106,10 +106,10 @@ $tpi.topic.shopUserCreate = function (socket, msg) {
 	var $tw = get$tw(userWikiName); // destination wiki
 
 	if (!userWikiName) {
-		errorMsg = `Error: Wiki to store the shop user info is required`;		
+		errorMsg = `Error: Wiki to store the shop user info is required`;
 	}
 	else if (!dataWikiName) {
-		errorMsg = `Error: Database Wiki to store the shop user records is required`;		
+		errorMsg = `Error: Database Wiki to store the shop user records is required`;
 	}
 	else if (!userName) {
 		errorMsg = `Error: A user name is required`;
@@ -182,7 +182,7 @@ $tpi.topic.shopUserCreate = function (socket, msg) {
 	msg.resultTiddlers.push(sender);
 
 	// Tell all clients connected to destination wiki to refresh
-	$tpi.fn.io.refreshClients(userWikiName);
-	$tpi.fn.io.refreshClients(dataWikiName);
+	$refreshClients(userWikiName);
+	$refreshClients(dataWikiName);
 	return msg;
 }

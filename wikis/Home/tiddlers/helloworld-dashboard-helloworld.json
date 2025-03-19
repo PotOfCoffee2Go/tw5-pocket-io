@@ -1,0 +1,14 @@
+[
+    {
+        "created": "20250310203149462",
+        "creator": "poc2go",
+        "text": "{{||$:/poc2go/pocket-io/project/addtab}}\n\n<<closeTabsButton \"helloworld\" \"docs\">>\n<<closeTabsButton \"helloworld\" \"template\">>\n<<projectUploadButton>>\n<<closeTabsButton \"helloworld\" \"code\">>\n<<closeTabsButton \"helloworld\" \"info\">>\n<<closeTabsButton \"helloworld\" \"package\">>\n",
+        "title": "helloworld-dashboard-helloworld",
+        "modified": "20250317122725083",
+        "modifier": "poc2go",
+        "tags": "dashboard helloworld $:/pocket-io/helloworld/dashboard",
+        "type": "text/vnd.tiddlywiki",
+        "caption": "PROJECT",
+        "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em; margin: 0 2em 0 2em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n03/16/2025 22:14:52 Hello tiddler '[[helloworld-dashboard-helloworld]]' !!!\n\n</div>\n"
+    }
+]

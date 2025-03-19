@@ -1,6 +1,6 @@
 created: 20240914113910483
 creator: poc2go
-modified: 20250312062755221
+modified: 20250317045927183
 modifier: poc2go
 tags: 
 title: Codebase
@@ -9,5 +9,3 @@ type: text/vnd.tiddlywiki
 {{||Pocket-io System}}
 
 !!!! Create project templates: [[$$$project$$$]]
-
-[[Pocket-io Plugins Maker]]

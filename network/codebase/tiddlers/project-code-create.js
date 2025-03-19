@@ -55,6 +55,6 @@ $tpi.topic.projectCreate = function (socket, msg) {
 	msg.resultTiddlers.push(sender);
 
 	// Tell all clients connected to destination wiki to refresh
-	$tpi.fn.io.refreshClients(dstWikiName);
+	$refreshClients(dstWikiName);
 	return msg;
 }

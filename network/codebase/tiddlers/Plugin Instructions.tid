@@ -1,0 +1,54 @@
+created: 20250316084633885
+creator: poc2go
+modified: 20250316103322633
+modifier: poc2go
+tags: plugins
+title: Plugin Instructions
+type: text/vnd.tiddlywiki
+
+\define add()
+<<details "Add a new tiddler to the plugin" src:"""
+* edit this tiddler and enter the tiddler title
+** the tiddler does not need to exist yet
+** is added in two places
+*** use an existing tiddler title as an example
+* follow instructions for 'Modify existing tiddler'
+""">>
+\end
+\define change()
+<<details "Modify existing tiddler in plugin" src:"""
+* select tiddler from list below
+** press 'OK' on TiddlyWiki ShadowTiddler warning
+** modify and test the tiddler
+* when happy with changes - come back to this tiddler
+* Press 'copy to clipboard'
+* Right-click -> Inspect to open the browser dev tools
+** select the 'console' tab
+** paste and press {enter}
+** close dev tools
+* the plugin has been updated
+** note the version number has increased by 1
+""">>
+\end
+\define remove()
+<<details "Delete a tiddler from the plugin" src:"""
+* Move the tiddler title to the bottom array
+* Remove any other reference to the title
+* Press the 'copy to clipboard' button
+* Right-click -> Inspect to open the browser dev tools
+** select the 'console' tab
+** paste and press {enter}
+** close dev tools
+* the tiddler is removed from plugin
+** note the version number has increased by 1
+* Delete the title from the second array
+""">> 
+\end
+
+|tc-center|k
+|See [[How to create plugins in the browser|https://tiddlywiki.com/dev/static/How%2520to%2520create%2520plugins%2520in%2520the%2520browser.html]] for more info.|
+
+|tc-center tc-table-no-border|k
+|<<add>> |
+|<<change>> |
+|<<remove>> |

@@ -58,6 +58,6 @@ $tpi.topic.projectAddCategory = function (socket, msg) {
 	sender.ioPrjPillTitle = '';
 	sender.ioResult = `Created tab set '${pillTitle}'`;
 	msg.resultTiddlers.push(sender);
-	$tpi.fn.io.refreshClients(dstWikiName);
+	$refreshClients(dstWikiName);
 	return msg;
 }

@@ -12,7 +12,7 @@ $shop.Cart = function(settings) {
 	var self = this;
 	$shop.settings = Object.assign({}, settings);
 	$shop.wikis = Object.assign({}, settings.wikis);
-	
+
 	this.userCache = [];
 	this.transHistory = [];
 
@@ -69,7 +69,7 @@ $shop.Cart = function(settings) {
 				$tw.wiki.getTiddlerText(`shop-user-record-${userId}`)
 			)
 		}
-		return Object.assign({},user ?? guestUser); 
+		return Object.assign({},user ?? guestUser);
 	}
 
 	// Get item
@@ -126,7 +126,7 @@ $shop.Cart = function(settings) {
 				text: JSON.stringify(transaction.user, null, 2)
 			}
 		))
-		$tpi.fn.io.refreshClients($shop.wikis.user);
+		$refreshClients($shop.wikis.user);
 		return Object.assign({}, transaction);
 	}
 
@@ -150,7 +150,7 @@ $shop.Cart = function(settings) {
 				text: JSON.stringify(transRecords, null, 2)
 			}
 		))
-		$tpi.fn.io.refreshClients($shop.wikis.trans);
+		$refreshClients($shop.wikis.trans);
 		return Object.assign({}, transaction);
 	}
 
@@ -330,7 +330,7 @@ $shop.cart = new $shop.Cart({
 		item: 'ShopDashboard',
 		database: 'ShopDb',
 		purchase: 'ppp',
-		order: 'ppp' 
+		order: 'ppp'
 	},
 	transToBeSaved: false,
 });

@@ -1,10 +1,14 @@
 created: 20250311174400471
 creator: poc2go
-modified: 20250312074444832
+modified: 20250316171633999
 modifier: poc2go
-tags: 
+tags: plugins
 title: Pocket-io Project Plugin
 type: text/vnd.tiddlywiki
+
+---
+
+<<details "Instructions" src:"Plugin Instructions">>
 
 ---
 
@@ -29,24 +33,24 @@ type: text/vnd.tiddlywiki
 
 <<.codesample 0 'js' """$tw.utils.repackPlugin("$:/plugins/poc2go/pocket-io/project",
 [
-"$:/plugins/poc2go/pocket-io/project/icon",
-"$:/plugins/poc2go/pocket-io/project/license",
-"$:/plugins/poc2go/pocket-io/project/readme",
-"$:/plugins/poc2go/pocket-io/project/release",
-"$:/plugins/poc2go/pocket-io/project/settings",
-"$:/poc2go/pocket-io/project/addcategory",
-"$:/poc2go/pocket-io/project/addtab",
-"$:/poc2go/pocket-io/project/icon",
-"$:/poc2go/pocket-io/project/license",
-"$:/poc2go/pocket-io/project/readme",
-"$:/poc2go/pocket-io/project/release",
-"$:/poc2go/pocket-io/project/settings",
-"$:/poc2go/pocket-io/project/macros",
-"$:/poc2go/pocket-io/project/create",
-"$:/poc2go/pocket-io/project/delete",
-"$:/poc2go/pocket-io/project/projects",
+	"$:/plugins/poc2go/pocket-io/project/icon",
+	"$:/plugins/poc2go/pocket-io/project/license",
+	"$:/plugins/poc2go/pocket-io/project/readme",
+	"$:/plugins/poc2go/pocket-io/project/release",
+	"$:/plugins/poc2go/pocket-io/project/settings",
+	"$:/poc2go/pocket-io/project/addcategory",
+	"$:/poc2go/pocket-io/project/addtab",
+	"$:/poc2go/pocket-io/project/icon",
+	"$:/poc2go/pocket-io/project/license",
+	"$:/poc2go/pocket-io/project/readme",
+	"$:/poc2go/pocket-io/project/release",
+	"$:/poc2go/pocket-io/project/settings",
+	"$:/poc2go/pocket-io/project/macros",
+	"$:/poc2go/pocket-io/project/create",
+	"$:/poc2go/pocket-io/project/delete",
+	"$:/poc2go/pocket-io/project/projects",
 ],[
-
+// Move titles from above and place here to delete from plugin
 ]
 );
 """>>

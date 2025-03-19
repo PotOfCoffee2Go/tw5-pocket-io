@@ -7,9 +7,17 @@ $tpi.fn.io.msg = function msg(socket, msg) {
 		return;
 	}
 	if (msg.req.command === 'nodered') {
-		msg.req.wikiSocketId = sid(socket);
-		msg.topic = msg.req.topic;
-		$nrInMsg.enQueue(msg);
+		msg.req.socketId = sid(socket);
+		$nrMsgNodes.forEach(node => {
+			node.send(Object.assign({},{
+				topic: msg.req.topic,
+				wikiname: msg.req.wikiName,
+				payload: [],
+				wiki: msg}));
+			node.status({fill: 'green', shape: 'dot',
+				text: `Wiki:  ${msg.req.wikiName} Topic: ${msg.req.topic}`});
+		})
+		//		$nrInMsg.enQueue();
 		return;
 	}
 
@@ -20,5 +28,5 @@ $tpi.fn.io.msg = function msg(socket, msg) {
 
 	var resultMsg = $tpi.topic[msg.req.topic](socket, msg);
 	socket.emit('msg', resultMsg);
-	$tpi.fn.io.refreshClients(msg.req.wikiName);
+	$refreshClients(msg.req.wikiName);
 }

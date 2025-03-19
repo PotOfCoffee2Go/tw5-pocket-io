@@ -1,0 +1,17 @@
+caption: PROJECT
+created: 20250317122049424
+creator: poc2go
+modified: 20250317124426677
+modifier: poc2go
+tags: dashboard hello-nodered $:/pocket-io/hello-nodered/dashboard
+title: hello-nodered-dashboard-project
+type: text/vnd.tiddlywiki
+
+{{||$:/poc2go/pocket-io/project/addtab}}
+
+<<closeTabsButton "hello-nodered" "docs">>
+<<closeTabsButton "hello-nodered" "template">>
+<<projectUploadButton>>
+<<closeTabsButton "hello-nodered" "code">>
+<<closeTabsButton "hello-nodered" "info">>
+<<closeTabsButton "hello-nodered" "package">>

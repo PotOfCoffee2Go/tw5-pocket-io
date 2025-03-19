@@ -53,6 +53,6 @@ $tpi.topic.projectUpdatetabs = function (socket, msg) {
 
 	sender.ioPrjTabName = '';
 	msg.resultTiddlers.push(sender);
-	$tpi.fn.io.refreshClients(dstWikiName);
+	$refreshClients(dstWikiName);
 	return msg;
 }

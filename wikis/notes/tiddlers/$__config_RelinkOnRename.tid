@@ -1,8 +1,8 @@
 created: 20241024043033291
 creator: poc2go
-modified: 20241024043033291
+modified: 20250316161231207
 modifier: poc2go
 title: $:/config/RelinkOnRename
 type: text/vnd.tiddlywiki
 
-yes
+no

@@ -23,6 +23,14 @@
             "modified": "20250122215652339",
             "caption": "Readme"
         },
+        "$:/plugins/poc2go/pocket-io/release": {
+            "created": "20250312063155493",
+            "creator": "poc2go",
+            "text": "{{$:/poc2go/pocket-io/release}}",
+            "title": "$:/plugins/poc2go/pocket-io/release",
+            "modified": "20250312063203755",
+            "modifier": "poc2go"
+        },
         "$:/plugins/poc2go/pocket-io/settings": {
             "created": "20250122212433283",
             "text": "{{$:/poc2go/pocket-io/settings}}\n\n{{$:/poc2go/pocket-io/project/settings}}\n",
@@ -50,10 +58,12 @@
         },
         "$:/poc2go/pocket-io/license": {
             "created": "20250122214905195",
-            "text": "License goes here\n",
+            "creator": "poc2go",
+            "text": "@@font-family:Monospace;\n\nMIT No Attribution\n\nCopyright 2025 Kim I. McKinley\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this\nsoftware and associated documentation files (the \"Software\"), to deal in the Software\nwithout restriction, including without limitation the rights to use, copy, modify,\nmerge, publish, distribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,\nINCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A\nPARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT\nHOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\nOF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n@@\n",
             "title": "$:/poc2go/pocket-io/license",
-            "modified": "20250122215018927",
-            "caption": "License"
+            "modified": "20250312070709510",
+            "caption": "License",
+            "modifier": "poc2go"
         },
         "$:/poc2go/pocket-io/macros": {
             "created": "20231107195051015",
@@ -71,6 +81,15 @@
             "title": "$:/poc2go/pocket-io/readme",
             "modified": "20250122214829679",
             "caption": "Readme"
+        },
+        "$:/poc2go/pocket-io/release": {
+            "created": "20250312063257143",
+            "creator": "poc2go",
+            "text": "!! Release Notes\n\n```text\nv0.2.37 - v0.2.38 * 2025-03-12\n──────────────────────────────\nAdd release notes\nAdd MIT license\n```",
+            "title": "$:/poc2go/pocket-io/release",
+            "modified": "20250312071639552",
+            "modifier": "poc2go",
+            "caption": "Release Notes"
         },
         "$:/poc2go/pocket-io/result/error-template": {
             "created": "20250116064133466",
@@ -142,11 +161,13 @@
         },
         "$:/poc2go/pocket-io/ui/system": {
             "created": "20250201144742707",
-            "text": "<style>.cols3{column-count:3}</style>\n\n<div class=\"poc2go-center\">\n<$image source=\"$:/favicon.ico\" width=\"64px\"/>\n</div>\n\n{{||$:/poc2go/pocket-io/ui/wikilinks}}\n\n{{||$:/poc2go/pocket-io/project/projects}}\n\n<div style=\"margin: 1em; padding: 1em; border: 1px solid #70b351; border-radius: 10px;\" >\n\nCreate new project in a wiki:\n\n{{||$:/poc2go/pocket-io/project/create}}\n\n</div>\n\n|tc-center tc-table-no-border|k\n| <<resetAllButton>> |\n\n{{!!ioResult}}\n\n<div style=\"margin: 1em; padding: 1em; border: 1px solid #70b351; border-radius: 10px;\" >\n\nCopy tiddlers between wikis:\n\n{{||$:/poc2go/pocket-io/ui/copy}}\n\n</div>\n\n",
+            "creator": "poc2go",
+            "text": "<style>.cols3{column-count:3}</style>\n\n<div class=\"poc2go-center\">\n<$image source=\"$:/favicon.ico\" width=\"64px\"/>\n</div>\n\n{{||$:/poc2go/pocket-io/ui/wikilinks}}\n\n{{||$:/poc2go/pocket-io/project/projects}}\n\n{{!!ioResult}}\n\n<!-- to-do: need credential checking for wiki access \n\n<div style=\"margin: 1em; padding: 1em; border: 1px solid #70b351; border-radius: 10px;\" >\n\nCreate new project in a wiki:\n\n{{||$:/poc2go/pocket-io/project/create}}\n\n</div>\n\n|tc-center tc-table-no-border|k\n| <<resetAllButton>> |\n\n<div style=\"margin: 1em; padding: 1em; border: 1px solid #70b351; border-radius: 10px;\" >\n\nCopy tiddlers between wikis:\n\n{{||$:/poc2go/pocket-io/ui/copy}}\n\n</div>\n\n-->",
             "tags": "",
             "title": "$:/poc2go/pocket-io/ui/system",
-            "modified": "20250204180546042",
-            "caption": "Pocket-io System"
+            "modified": "20250317050301982",
+            "caption": "Pocket-io System",
+            "modifier": "poc2go"
         }
     }
 }

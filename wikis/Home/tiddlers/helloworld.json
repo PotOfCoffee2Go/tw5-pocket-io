@@ -1,0 +1,21 @@
+[
+    {
+        "created": "20250205034558035",
+        "creator": "poc2go",
+        "title": "helloworld",
+        "modified": "20250317121427041",
+        "modifier": "poc2go",
+        "tags": "helloworld Projects",
+        "type": "text/vnd.tiddlywiki",
+        "text": "|tc-center tc-table-no-border|k\n|@@.poc2go-project-header Hello World! @@|\n\n|tc-center tc-table-no-border|k\n|<$checkbox field=\"autoLoad\" checked=\"yes\" unchecked=\"no\" default=\"no\"> Auto load on startup</$checkbox>|\n\n<<closeTabsButton \"helloworld\" \"dashboard\">>\n\n<<topButton>>\n",
+        "autoLoad": "yes",
+        "caption": "Hello World",
+        "ioConfirmDelete": "no",
+        "ioPrjProject": "helloworld",
+        "ioPrjTabName": "",
+        "ioPrjTabSelected": "helloworld-code-helloword",
+        "ioPrjTabType": "dashboard",
+        "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em; margin: 0 2em 0 2em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n03/17/2025 08:14:27 Topic 'test' has been called from wiki 'Home' tiddler 'helloworld'\n\n</div>\n",
+        "ioResultUpload": ""
+    }
+]

@@ -13,7 +13,7 @@ $tpi.topic.pluginBuilder = function (socket, msg) {
 	})
 
 	// Create plugin information (tabs) tiddlers
-	var pluginInfoQuery = `[tag[${sender.ioSrcProject}]tag[info]]`; 
+	var pluginInfoQuery = `[tag[${sender.ioSrcProject}]tag[info]]`;
 	var infoTiddlers = $from.utils.parseJSONSafe($from.wiki.getTiddlersAsJson(pluginInfoQuery), []);
 	var names = [], infoTitles = [];
 	infoTiddlers.forEach(tiddler => {
@@ -57,7 +57,7 @@ $tpi.topic.pluginBuilder = function (socket, msg) {
 	$to.wiki.addTiddler(new $to.Tiddler(packagedPlugin));
 	$rw.wiki.deleteTiddler(sender.ioTitle);
 
-//	$tpi.fn.io.refreshClients();
+//	$refreshClients();
 
 	var resultText = `Plugin tiddler '${packagedPlugin.title}' updated on wiki '${sender.ioDstPluginWiki}'`;
 	sender.ioResult = resultText;

@@ -1,0 +1,12 @@
+caption: Server
+created: 20250316070130841
+creator: poc2go
+modified: 20250316070454428
+modifier: poc2go
+tags: docs nodered $:/pocket-io/nodered/docs
+title: nodered-docs-server
+type: text/vnd.tiddlywiki
+
+!! Node-Red Server
+
+The Node-Red server is embedded into th Pocket-io application. Node-Red can share the functions in the system.

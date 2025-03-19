@@ -1,6 +1,7 @@
 autoLoad: no
 caption: Package Maker
 created: 20250122023832259
+creator: poc2go
 ioConfirmDelete: no
 ioPrjProject: package
 ioPrjTabName: 
@@ -9,13 +10,17 @@ ioPrjTabToDelete: package-a
 ioPrjTabType: info
 ioResult: 
 ioResultUpload: 
-modified: 20250202182315874
+modified: 20250316170958742
+modifier: poc2go
 tags: package Projects
 title: package
 type: text/vnd.tiddlywiki
 
 |tc-center tc-table-no-border|k
 |@@.poc2go-project-header Pocket-io Package Maker @@|
+
+|tc-center tc-table-no-border|k
+|@@color:aqua;.poc2go-project-header Experimental!! @@|
 
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|

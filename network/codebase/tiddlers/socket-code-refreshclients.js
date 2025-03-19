@@ -7,5 +7,3 @@ const $refreshClients = function(wikiName = '') {
 		}
 	}
 }
-
-$tpi.fn.io.refreshClients = $refreshClients;

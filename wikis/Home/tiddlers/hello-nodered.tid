@@ -1,0 +1,29 @@
+autoLoad: no
+caption: Hello Node-Red
+created: 20250316181837609
+creator: poc2go
+ioConfirmDelete: no
+ioPrjProject: hello-nodered
+ioPrjTabName: 
+ioPrjTabSelected: AALLLL
+ioPrjTabType: dashboard
+ioResult: 
+ioToStory: no
+modified: 20250317155915032
+modifier: poc2go
+tags: Projects hello-nodered
+title: hello-nodered
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header {{!!caption}} @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load code on startup</$checkbox>|
+
+<!-- Response to pocket.io requests -->
+{{!!ioResult}}
+
+<<closeTabsButton "hello-nodered" "dashboard">>
+
+<<topButton>>

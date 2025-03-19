@@ -11,6 +11,6 @@ $shop.task.saveUserRecord = function (transaction) {
 		}
 	))
 	$shop.fn.cacheTransHistory(transaction, 'saveUserRecord');
-	$tpi.fn.io.refreshClients($shop.wikis.database);
+	$refreshClients($shop.wikis.database);
 	return Object.assign({}, transaction);
 }

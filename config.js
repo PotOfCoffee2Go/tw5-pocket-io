@@ -7,7 +7,7 @@ exports.config = {
 	// Startup webservers for All 'server' edition wikis in this diectory
 	wikisDir: './wikis',
 	// Wiki that will be listed first - it must exist
-	defaultWiki: 'notes',
+	defaultWiki: 'Home',
 
 	// Force pocket-io './network/codebase' wiki to be accessable
 	//  only from browsers running on localhost regardless
@@ -40,21 +40,18 @@ exports.config = {
 		// Default Node-Red settings and user directory
 		settingsFile: os.homedir() + '/.node-red/settings.js',
 		userDir: os.homedir() + '/.node-red',
+
 		// Use host & port from Node-Red settings file
 		// uiHost: 127.0.0.1,
 		// uiPort: 1880,
 
 		// flowFile for this instance of Node-RED
+		// Paths to Node-Red flow editor and nodes
 		flowFile: path.resolve('./red/flows/tiddlywiki.json'),
 		httpAdminRoot:"/red",
 		httpNodeRoot: "/api",
 	},
 
-	nodeRedTarget: {
-		wsocket: 'ws://localhost:1880/ws',
-		admin: 'http://localhost:1880/red',
-		node: 'http://localhost:1880/api',
-	},
 	// Parameters are configuration parameters supported by WebServer
 	//  see 'https://tiddlywiki.com/static/WebServer%2520Parameters.html`
 	// Users and credentials are applied from 'credentials' (see below)
@@ -63,17 +60,14 @@ exports.config = {
 	//  to the default
 	parameters: {
 		default: ['debug-level=none'],
-		wikis: {
-			'Home': ['anon-username=Guest']
-		},
 	},
 
 	// Apply user/password credentials to wikis
 	//   see 'https://tiddlywiki.com/static/WebServer%2520Parameter%253A%2520credentials.html'
-	// NOTE: To rebuild webserver user info CSV files run 'npm run credentials'
-	//  and restart server 'npm start'
 	credentials: {
 		// Users allowed access to pocket-io network
+		// NOTE: To rebuild webserver user info CSV files run 'npm run credentials'
+		//  and restart server 'npm start'
 		users: {
 			'poc2go': { password: 'ppp' },
 			'jane': { password: 'do3' },
@@ -82,7 +76,7 @@ exports.config = {
 		},
 
 		// Default users and webserver authorization parameters
-		// Webserver wikis not listed below will run without credentials
+		// Webserver wikis not listed below will run WITHOUT credentials
 		// Defaults applied to each wiki listed in property 'wikis' (below)
 		default: {
 			users: ['poc2go', 'jane', 'andy', 'roger'],
@@ -91,13 +85,13 @@ exports.config = {
 
 		// Users and authorization properties override the defaults
 		wikis: {
+			'Home': {
+				authorization: ['anon-username=Guest', 'readers=(anon)', 'writers=(authenticated)', 'admin=poc2go'],
+			},
 			'notes': {}, // Apply credentials - use use the defaults
 			'codebase': {
 				users: ['poc2go'],
 				authorization: ['readers=(authenticated)', 'writers=(authenticated)', 'admin=poc2go'],
-			},
-			'Home': {
-				authorization: ['readers=(anon)', 'writers=(authenticated)', 'admin=poc2go'],
 			},
 			'poc2go': {
 				users: ['poc2go'],

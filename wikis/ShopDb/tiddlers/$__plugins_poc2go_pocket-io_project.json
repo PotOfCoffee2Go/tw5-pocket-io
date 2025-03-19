@@ -36,6 +36,13 @@
             "title": "$:/plugins/poc2go/pocket-io/project/settings",
             "modified": "20250203124022539"
         },
+        "$:/poc2go/pocket-io/project/addcategory": {
+            "created": "20250311171237934",
+            "text": "\\define projectSubmitTabSet()\n<$button class=\"tc-btn-invisible tc-tiddlylink\" actions=\"<<pocket-io 'projectAddTabSet'>>\" >\n{{$:/core/images/new-button}}\n</$button>\n\\end\n\n\\define setTypeEditBox()\n<$edit-text field=\"ioPrjTabSetType\" class=\"pio-tabset-box\"/>\n\\end\n\n\\define pillTitleEditBox()\n<$edit-text field=\"ioPrjPillTitle\" class=\"pio-tabset-box\"/>\n\\end\n\n<style>\n.pio-tabset-box { width: 122px; }\n</style>\n\n|tc-center tc-table-no-border|k\n| Add Category |\n\n|tc-center tc-table-no-border|k\n| Type: |<<setTypeEditBox>> | Pill Title: |<<pillTitleEditBox>> |<<projectSubmitTabSet>> |\n",
+            "title": "$:/poc2go/pocket-io/project/addcategory",
+            "modified": "20250311171256284",
+            "caption": "Add Category"
+        },
         "$:/poc2go/pocket-io/project/addtab": {
             "created": "20250202173551292",
             "text": "\\define projectSubmitTab()\n<$button class=\"tc-btn-invisible tc-tiddlylink\" actions=\"<<pocket-io 'projectUpdatetabs'>>\" >\n{{$:/core/images/new-button}}\n</$button>\n\\end\n\n\\define projectTabType()\n<$select field=\"ioPrjTabType\" default=\"docs\">\n<$list filter=\"[all[tiddlers+shadows]tag[$:/tags/pocket-io/tabtype]sort[caption]]\"><option value={{!!tabtype}} ><$view field='caption'/></option>\n</$list>\n</$select>\n<$edit-text field=\"ioPrjTabName\" size=10 />\n\\end\n\n|tc-center tc-table-no-border|k\n| New tab |<<projectTabType>> |<<projectSubmitTab>>|\n",
@@ -66,9 +73,9 @@
         },
         "$:/poc2go/pocket-io/project/release": {
             "created": "20250310064355171",
-            "text": "!!! v0.2.4 - 2025-03-11\n\n* Rename tab set tiddlers - remove 'poc2go'\n\n!!! v0.2.3 - 2025-03-10\n\n* Breakout tab pill display - define ''displayTabPill''\n\n!!! v0.2.2 - 2025-03-10\n\n* Move tab sets to codebase wiki\n\n!!! v0.2.1 - 2025-03-10\n\n* Add Release Notes\n* Changes dashboard pill name to 'Dashboards'\n",
+            "text": "!!! v0.2.6 - 2025-03-11\n\n* Implement add category\n\n!!! v0.2.5 - 2025-03-11\n\n* Remove duplicate define\n\n!!! v0.2.4 - 2025-03-11\n\n* Rename tab set tiddlers - remove 'poc2go'\n\n!!! v0.2.3 - 2025-03-10\n\n* Breakout tab pill display - define ''displayTabPill''\n\n!!! v0.2.2 - 2025-03-10\n\n* Move tab sets to codebase wiki\n\n!!! v0.2.1 - 2025-03-10\n\n* Add Release Notes\n* Changes dashboard pill name to 'Dashboards'\n",
             "title": "$:/poc2go/pocket-io/project/release",
-            "modified": "20250311060536239"
+            "modified": "20250311170752886"
         },
         "$:/poc2go/pocket-io/project/settings": {
             "created": "20250131133728669",
@@ -80,9 +87,9 @@
         },
         "$:/poc2go/pocket-io/project/macros": {
             "created": "20250131141513737",
-            "text": "\\define displayTabTypes(project)\n<<closeTabsButton \"$project$\" \"dashboard\">>\n<<closeTabsButton \"$project$\" \"docs\">>\n<<closeTabsButton \"$project$\" \"template\">>\n<<projectUploadButton>>\n<<closeTabsButton \"$project$\" \"code\">>\n<<closeTabsButton \"$project$\" \"info\">>\n<<closeTabsButton \"$project$\" \"package\">>\n\\end\n\n\\define displayTabPill(project,tab)\n{{$:/pocket-io/$project$/$tab$||$:/pocket-io/project/ui/Tab$tab$}}\n\\end\n\n\\define closeTabsButton(project,tab)\n<$button class=\"tc-btn-invisible tc-tiddlylink\">\n<$action-setfield $tiddler=<<qualify \"$:/state/tab/pocket-io/$project$/$tab$\">>  text=\"\"/>\n{{$:/core/images/fold-button}}\n</$button>\n<<displayTabPill \"$project$\" \"$tab$\">>\n<<tabs \"[all[shadows+tiddlers]tag[$:/pocket-io/$project$/$tab$]!is[draft]]\" \"\" \"$:/state/tab/pocket-io/$project$/$tab$\">>\n\\end\n\n\\define closeTabsButton(project,tab)\n<$button class=\"tc-btn-invisible tc-tiddlylink\">\n<$action-setfield $tiddler=<<qualify \"$:/state/tab/pocket-io/$project$/$tab$\">>  text=\"\"/>\n{{$:/core/images/fold-button}}\n</$button>\n{{$:/pocket-io/$project$/$tab$||$:/poc2go/pocket-io/project/ui/Tag$tab$}}\n<<tabs \"[all[shadows+tiddlers]tag[$:/pocket-io/$project$/$tab$]!is[draft]]\" \"\" \"$:/state/tab/pocket-io/$project$/$tab$\">>\n\\end\n\n\\define projectSubmitUpload()\n<<pocket-io \"projectUpload\">>\n\\end\n\n\\define projectUploadButton()\n{{!!ioResultUpload}}\n<div style=\"float:right; margin-right: 250px; font-size: .85em;\">\n<$button actions=\"<<projectSubmitUpload>>\"> Upload </$button>&nbsp;&nbsp;\n<$select field=\"ioPrjTabSelected\" default=\"AALLLL\"><option value=\"AALLLL\" >All</option><$list filter=\"[tag{!!title}tag[code]]\"><option value={{!!title}} ><$view field='caption'/></option></$list></$select>&nbsp;&nbsp;\n<$checkbox field=\"ioPrjMinify\" checked=\"yes\" unchecked=\"no\" default=\"yes\"> Minify</$checkbox>\n</div>\n\\end\n",
+            "text": "\\define displayTabTypes(project)\n<<closeTabsButton \"$project$\" \"dashboard\">>\n<<closeTabsButton \"$project$\" \"docs\">>\n<<closeTabsButton \"$project$\" \"template\">>\n<<projectUploadButton>>\n<<closeTabsButton \"$project$\" \"code\">>\n<<closeTabsButton \"$project$\" \"info\">>\n<<closeTabsButton \"$project$\" \"package\">>\n\\end\n\n\\define displayTabPill(project,tab)\n{{$:/pocket-io/$project$/$tab$||$:/pocket-io/project/ui/Tab$tab$}}\n\\end\n\n\\define closeTabsButton(project,tab)\n<$button class=\"tc-btn-invisible tc-tiddlylink\">\n<$action-setfield $tiddler=<<qualify \"$:/state/tab/pocket-io/$project$/$tab$\">>  text=\"\"/>\n{{$:/core/images/fold-button}}\n</$button>\n<<displayTabPill \"$project$\" \"$tab$\">>\n<<tabs \"[all[shadows+tiddlers]tag[$:/pocket-io/$project$/$tab$]!is[draft]]\" \"\" \"$:/state/tab/pocket-io/$project$/$tab$\">>\n\\end\n\n\\define projectSubmitUpload()\n<<pocket-io \"projectUpload\">>\n\\end\n\n\\define projectUploadButton()\n{{!!ioResultUpload}}\n<div style=\"float:right; margin-right: 250px; font-size: .85em;\">\n<$button actions=\"<<projectSubmitUpload>>\"> Upload </$button>&nbsp;&nbsp;\n<$select field=\"ioPrjTabSelected\" default=\"AALLLL\"><option value=\"AALLLL\" >All</option><$list filter=\"[tag{!!title}tag[code]]\"><option value={{!!title}} ><$view field='caption'/></option></$list></$select>&nbsp;&nbsp;\n<$checkbox field=\"ioPrjMinify\" checked=\"yes\" unchecked=\"no\" default=\"yes\"> Minify</$checkbox>\n</div>\n\\end\n",
             "title": "$:/poc2go/pocket-io/project/macros",
-            "modified": "20250311060351589",
+            "modified": "20250311074829782",
             "tags": "$:/tags/Macro",
             "type": "text/vnd.tiddlywiki",
             "revision": "0",

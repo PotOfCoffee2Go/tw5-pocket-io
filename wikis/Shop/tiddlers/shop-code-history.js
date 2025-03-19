@@ -29,6 +29,6 @@ $shop.task.saveTransactionHistory = function (transaction) {
 			text: JSON.stringify(transRecords, null, 2)
 		}
 	))
-	$tpi.fn.io.refreshClients($shop.wikis.trans);
+	$refreshClients($shop.wikis.trans);
 	return Object.assign({}, transaction);
 }

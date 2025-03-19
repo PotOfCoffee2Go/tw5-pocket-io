@@ -5,10 +5,11 @@ creator: poc2go
 ioConfirmDelete: no
 ioPrjProject: nodered
 ioPrjTabName: 
-ioPrjTabSelected: AALLLL
-ioPrjTabType: code
+ioPrjTabSelected: nodered-code-server
+ioPrjTabType: docs
 ioResult: 
-modified: 20250315144011941
+ioResultUpload: 
+modified: 20250317133455048
 modifier: poc2go
 tags: nodered Projects
 title: nodered
@@ -25,12 +26,8 @@ type: text/vnd.tiddlywiki
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<closeTabsButton "nodered" "dashboard">>
 <<closeTabsButton "nodered" "docs">>
-<<closeTabsButton "nodered" "template">>
 <<projectUploadButton>>
 <<closeTabsButton "nodered" "code">>
-<<closeTabsButton "nodered" "info">>
-<<closeTabsButton "nodered" "package">>
 
 <<topButton>>

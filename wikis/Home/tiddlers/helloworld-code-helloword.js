@@ -1,5 +1,5 @@
 // Server-side topics are passed the socket and msg
-//  from connected client 
+//  from connected client
 $tpi.topic.helloworld = function (socket, msg) {
 	// dir(msg,3) // Display pocket.io msg on server console
 
@@ -19,7 +19,7 @@ $tpi.topic.helloworld = function (socket, msg) {
 	//  client wiki with any tiddlers in msg.resultTiddlers array
 	msg.resultTiddlers.push(sender);
 	// Tell all clients connected to destination wiki to refresh
-	$tpi.fn.io.refreshClients(msg.req.wikiName);
+	$refreshClients(msg.req.wikiName);
 	return msg;
 }
 
