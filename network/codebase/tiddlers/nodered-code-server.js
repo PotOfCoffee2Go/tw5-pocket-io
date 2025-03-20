@@ -1,4 +1,5 @@
 const $nrMsgNodes = [];
+
 const $NodeRed = function () {
 	var express = require("express");
 	this.RED = require("node-red");
@@ -36,15 +37,20 @@ const $NodeRed = function () {
 	this.app.use(this.settings.httpNodeRoot,this.RED.httpNode);
 	this.app.use('/', express.static('public'));
 
-	// Start server and Node-Red runtime
-	this.server.listen(this.settings.uiPort || 1880);
+	this.RED.log.info = (t) => t ? log(hue(t, 111)) : null; 
+	this.RED.log.warn = (t) => log(hue(t, 129)); 
+	this.RED.log.error = (t) => tog(t, 9); 
 	const prevPrompt = $rt.getPrompt();
 	$rt.setPrompt('');
-	log('\x1b[38;5;149m');
+
+	// Start server and Node-Red runtime
+	this.server.listen(this.settings.uiPort || 1880);
 	this.RED.start()
 		.then(() => { // wait for it - adjust timer as needed
 			setTimeout(() => {
-				log('\x1b[0m');
+				hog(`\n===================`, 111);
+				this.RED.log.info = (t) => tog(t, 111); 
+				this.RED.log.warn = (t) => tog(t, 129); 
 				$rt.setPrompt(prevPrompt);
 				}, 1000)
 		})

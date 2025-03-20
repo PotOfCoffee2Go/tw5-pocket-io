@@ -1,18 +1,18 @@
-caption: Packages
-created: 20250122050140526
+caption: Docs
+created: 20250118160354338
 creator: poc2go
-modified: 20250317051429293
+modified: 20250319203015067
 modifier: poc2go
-tabtype: package
+tabtype: docs
 tags: $:/tags/pocket-io/tabtype $:/tags/pocket-io/broadcast
-title: $:/pocket-io/project/ui/Tabpackage
+title: $:/pocket-io/project/ui/Tabdocs
 type: text/vnd.tiddlywiki
 
 \whitespace trim
 <span class="tc-tag-list-item" data-tag-title=<<currentTiddler>>>
 <$set name="transclusion" value=<<currentTiddler>>>
  <$macrocall $name="tag-pill-body"
-  tag="Packages"
+  tag="Docs"
   icon={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerIconFilter]!is[draft]get[text]] }}}
   colour={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerColourFilter]!is[draft]get[text]] }}}
   palette={{$:/palette}}

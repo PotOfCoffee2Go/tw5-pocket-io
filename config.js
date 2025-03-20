@@ -6,13 +6,18 @@ exports.config = {
 	pkg: require('./package.json'),
 	// Startup webservers for All 'server' edition wikis in this diectory
 	wikisDir: './wikis',
-	// Wiki that will be listed first - it must exist
+	// Wiki in wikisDir that will be listed first - it must exist
 	defaultWiki: 'Home',
 
+	// Automatically startup Node-Red
+	// If not auto started, can {up-arrow} at prompt and
+	//  find (or type) 'const $nr = new $NodeRed'
+	autoStartNodeRed: true,
+
 	// Force pocket-io './network/codebase' wiki to be accessable
-	//  only from browsers running on localhost regardless
-	//  of other configuration settings
-	forceCodebaseLocal: true,
+	//  only from browsers running on localhost
+	// Overrides other configuration settings
+	forceCodebaseLocal: false,
 
 	// Webservers should normally be served on localhost (127.0.0.1)
 	//  starting on port basePort and increments by one for each server

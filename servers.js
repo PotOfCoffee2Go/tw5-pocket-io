@@ -51,10 +51,11 @@ function autoLoadCodeToRepl() {
 	$rt.setPrompt('');
 
 	hog('Webserver startup complete\n\nREPL startup...', 156);
-	hog(`Loading minified code tiddlers from wikis to REPL:`, 149);
+	hog(`Loading minified code tiddlers from wikis to REPL:`, 156);
 	var { totalTiddlers, totalBytes, haveErrors } = replGetCodeFromWikis($rt, serverSettings);
-	hog(`\nTotal of ${totalTiddlers} code tiddlers loaded - ${(totalBytes/1024).toFixed(3)}K bytes.`, 149);
-	hog(`\nREPL startup complete${haveErrors ? ' - with errors.' : '.'}\n`, haveErrors ? 9 : 156);
+	hog(`\nTotal of ${totalTiddlers} code tiddlers loaded - ${(totalBytes/1024).toFixed(3)}K bytes.`, 129);
+	hog(`\nLoading server code complete${haveErrors ? ' - with errors.' : '.'}`, haveErrors ? 9 : 156)
+	hog(`REPL startup complete\n`, 156);
 
 	$rt.history = prevHistory;
 	$rt.setPrompt(prevPrompt);
@@ -86,11 +87,17 @@ async function startProxyServers() {
 // REPL MOTD and prompt
 function replMOTD() {
 	hog(`Press {enter} at any time to display the prompt`,40);
-	hog(`Home page is at ${serverSettings[0].proxy.link}`,40);
-	hog(`Press {up-arrow}{enter} to start Node-Red\n`,40);
-	$rt.history.push(`const $nr = new $NodeRed`);
-//	$rt.history.push(`cmd.run('help')`);
-//	$rt.history.push(`cmd.run('project REST -i')`);
+	hog(`'${config.defaultWiki}' wiki is at ${serverSettings[0].proxy.link}`,40);
+	if (config.autoStartNodeRed) {
+		const { hideStdout } = require('./lib/hideStdout');
+		const showStdout = hideStdout();
+		$rt._ttyWrite('const $nr = new $NodeRed\n');
+		showStdout();
+	}
+	else {
+		hog(`Press {up-arrow}{enter} to start Node-Red`,40);
+		$rt.history.push(`const $nr = new $NodeRed`);
+	}
 	$rt.displayPrompt();
 }
 
@@ -107,7 +114,7 @@ console.dir({
 });
 hog(`\nStartup ${serverSettings.length} TiddlyWiki 'server' edition Webservers from directory ${config.wikisDir}`, 156);
 hog(`  including pocket-io wiki 'codebase' from directory ./network/codebase\n`, 156);
-hog(`Webserver wikis starting at port: ${config.webserver.basePort} :`, 185);
+hog(`Webserver wikis starting at port: ${config.webserver.basePort} :`, 156);
 console.dir(serverSettings.map(settings => settings.name).join(' '));
 hog('');
 

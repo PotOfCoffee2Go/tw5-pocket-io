@@ -1,18 +1,18 @@
-caption: Docs
-created: 20250118160354338
+caption: Plugin Info
+created: 20250118160218676
 creator: poc2go
-modified: 20250317051429293
+modified: 20250319203015068
 modifier: poc2go
-tabtype: docs
+tabtype: info
 tags: $:/tags/pocket-io/tabtype $:/tags/pocket-io/broadcast
-title: $:/pocket-io/project/ui/Tabdocs
+title: $:/pocket-io/project/ui/Tabinfo
 type: text/vnd.tiddlywiki
 
 \whitespace trim
 <span class="tc-tag-list-item" data-tag-title=<<currentTiddler>>>
 <$set name="transclusion" value=<<currentTiddler>>>
  <$macrocall $name="tag-pill-body"
-  tag="Docs"
+  tag="Plugin Info"
   icon={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerIconFilter]!is[draft]get[text]] }}}
   colour={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerColourFilter]!is[draft]get[text]] }}}
   palette={{$:/palette}}

@@ -16,11 +16,68 @@
         "env": []
     },
     {
+        "id": "8adf8de645b60e16",
+        "type": "subflow",
+        "name": "wiki in",
+        "info": "",
+        "category": "tiddlywiki",
+        "in": [],
+        "out": [
+            {
+                "x": 320,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "c423533ded980b73",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDDDDD",
+        "icon": "node-red/bridge-dash.svg",
+        "status": {
+            "x": 320,
+            "y": 140,
+            "wires": [
+                {
+                    "id": "cadd7bb71eeb7243",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "83b81066588d5f7b",
+        "type": "subflow",
+        "name": "wiki out",
+        "info": "",
+        "category": "tiddlywiki",
+        "in": [
+            {
+                "x": 80,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "4876804024f936fa"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [],
+        "meta": {},
+        "color": "#DDDDDD",
+        "icon": "node-red/bridge-dash.svg"
+    },
+    {
         "id": "0d3535cb27027846",
         "type": "subflow",
-        "name": "tiddlers",
+        "name": "parser",
         "info": "\r\nAppend tiddler or array of tiddlers in `msg.payload`\r\nto the msg being returned to the requesting wiki.\r\nThe node can be used multiple times in a single flow.\r\n\r\n## msg.payload\r\nContains JavaScript object or array of objects containing the fields of the tiddler.\r\n - **title** field is required \r\n - **text** is not required - but is very common\r\n \r\n",
-        "category": "parser",
+        "category": "tiddlywiki",
         "in": [
             {
                 "x": 100,
@@ -61,54 +118,11 @@
         }
     },
     {
-        "id": "489223c003015b3f",
-        "type": "subflow",
-        "name": "write wiki",
-        "info": "",
-        "category": "storage",
-        "in": [
-            {
-                "x": 80,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "6801d4530f3d9135"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 340,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "6801d4530f3d9135",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "meta": {},
-        "color": "#DEB887",
-        "status": {
-            "x": 340,
-            "y": 140,
-            "wires": [
-                {
-                    "id": "24783140a82cde75",
-                    "port": 0
-                }
-            ]
-        }
-    },
-    {
         "id": "295b59907f0d97d2",
         "type": "subflow",
         "name": "read wiki",
         "info": "Read tiddlers from a wiki. Normally uses the `msg.wikiname` and `msg.twfilter` fields.\r\n\r\n",
-        "category": "storage",
+        "category": "tiddlywiki",
         "in": [
             {
                 "x": 80,
@@ -207,42 +221,29 @@
         }
     },
     {
-        "id": "83b81066588d5f7b",
+        "id": "489223c003015b3f",
         "type": "subflow",
-        "name": "wiki out",
+        "name": "write wiki",
         "info": "",
-        "category": "network",
+        "category": "tiddlywiki",
         "in": [
             {
                 "x": 80,
                 "y": 80,
                 "wires": [
                     {
-                        "id": "4876804024f936fa"
+                        "id": "6801d4530f3d9135"
                     }
                 ]
             }
         ],
-        "out": [],
-        "env": [],
-        "meta": {},
-        "color": "#DDDDDD",
-        "icon": "node-red/bridge-dash.svg"
-    },
-    {
-        "id": "8adf8de645b60e16",
-        "type": "subflow",
-        "name": "wiki in",
-        "info": "",
-        "category": "network",
-        "in": [],
         "out": [
             {
-                "x": 320,
+                "x": 340,
                 "y": 80,
                 "wires": [
                     {
-                        "id": "c423533ded980b73",
+                        "id": "6801d4530f3d9135",
                         "port": 0
                     }
                 ]
@@ -250,14 +251,13 @@
         ],
         "env": [],
         "meta": {},
-        "color": "#DDDDDD",
-        "icon": "node-red/bridge-dash.svg",
+        "color": "#DEB887",
         "status": {
-            "x": 320,
+            "x": 340,
             "y": 140,
             "wires": [
                 {
-                    "id": "cadd7bb71eeb7243",
+                    "id": "24783140a82cde75",
                     "port": 0
                 }
             ]
@@ -429,6 +429,53 @@
         "h": 106
     },
     {
+        "id": "c423533ded980b73",
+        "type": "function",
+        "z": "8adf8de645b60e16",
+        "name": "From TW Webserver",
+        "func": "// see 'On Start' tab for implementation\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nconst $nrMsgNodes = global.get('$nrMsgNodes');\nconst index = $nrMsgNodes.findIndex((element) => element.id === node.id);\n\nif (index > -1) {\n    $nrMsgNodes.splice(index, 1);\n}\n\n$nrMsgNodes.push(node);\n",
+        "finalize": "",
+        "libs": [],
+        "x": 180,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cadd7bb71eeb7243",
+        "type": "status",
+        "z": "8adf8de645b60e16",
+        "name": "",
+        "scope": null,
+        "x": 140,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4876804024f936fa",
+        "type": "function",
+        "z": "83b81066588d5f7b",
+        "g": "392b55f1513f4105",
+        "name": "To TW Webserver(s)",
+        "func": "const $sockets = global.get('$sockets');\nconst $refreshClients = global.get('$refreshClients');\n\n// Send to a specific client\nif (msg.wiki && msg.wiki.req.socketId) {\n\tmsg.payload.forEach(tiddler => {\n\t\tif (tiddler.ioToStory !== undefined) {\n\t\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\t\tdelete tiddler.ioToStory;\n\t\t}\n\t\tmsg.wiki.resultTiddlers.push(tiddler);\n\t})\n   $sockets[msg.wiki.req.socketId].socket.emit('msg', msg.wiki);\n}\n// Refresh any client connect to this wiki\n$refreshClients(msg.wikiname);\n\nreturn;\n",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 80,
+        "wires": []
+    },
+    {
         "id": "1b089e0ef2eb4a3e",
         "type": "function",
         "z": "0d3535cb27027846",
@@ -450,36 +497,6 @@
         "id": "739878cd3a06c69a",
         "type": "status",
         "z": "0d3535cb27027846",
-        "name": "",
-        "scope": null,
-        "x": 200,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "6801d4530f3d9135",
-        "type": "function",
-        "z": "489223c003015b3f",
-        "name": "write tiddlers \\n to wiki",
-        "func": "//msg.wiki.resultTiddlers = msg.wiki.resultTiddlers.concat(msg.payload);\nconst $tw = global.get('get$tw')(msg.wikiname);\nmsg.payload.forEach(tid => {\n\tvar tiddler = Object.assign({},tid);\n\tif (tiddler.ioToStory !== undefined) {\n\t\tdelete tiddler.ioToStory;\n\t}\n\t$tw.wiki.addTiddler(new $tw.Tiddler(\n\t\t$tw.wiki.getCreationFields(),\n\t\ttiddler,\n\t\t$tw.wiki.getModificationFields(),\n\t))\n})\nnode.status(`${msg.payload.length} tiddlers written`);\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 210,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "24783140a82cde75",
-        "type": "status",
-        "z": "489223c003015b3f",
         "name": "",
         "scope": null,
         "x": 200,
@@ -519,47 +536,30 @@
         ]
     },
     {
-        "id": "4876804024f936fa",
+        "id": "6801d4530f3d9135",
         "type": "function",
-        "z": "83b81066588d5f7b",
-        "g": "392b55f1513f4105",
-        "name": "To TW Webserver(s)",
-        "func": "const $sockets = global.get('$sockets');\nconst $refreshClients = global.get('$refreshClients');\n\n// Send to a specific client\nif (msg.wiki && msg.wiki.req.socketId) {\n\tmsg.payload.forEach(tiddler => {\n\t\tif (tiddler.ioToStory !== undefined) {\n\t\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\t\tdelete tiddler.ioToStory;\n\t\t}\n\t\tmsg.wiki.resultTiddlers.push(tiddler);\n\t})\n   $sockets[msg.wiki.req.socketId].socket.emit('msg', msg.wiki);\n}\n// Refresh any client connect to this wiki\n$refreshClients(msg.wikiname);\n\nreturn;\n",
-        "outputs": 0,
+        "z": "489223c003015b3f",
+        "name": "write tiddlers \\n to wiki",
+        "func": "//msg.wiki.resultTiddlers = msg.wiki.resultTiddlers.concat(msg.payload);\nconst $tw = global.get('get$tw')(msg.wikiname);\nmsg.payload.forEach(tid => {\n\tvar tiddler = Object.assign({},tid);\n\tif (tiddler.ioToStory !== undefined) {\n\t\tdelete tiddler.ioToStory;\n\t}\n\t$tw.wiki.addTiddler(new $tw.Tiddler(\n\t\t$tw.wiki.getCreationFields(),\n\t\ttiddler,\n\t\t$tw.wiki.getModificationFields(),\n\t))\n})\nnode.status(`${msg.payload.length} tiddlers written`);\nreturn msg;",
+        "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 280,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "c423533ded980b73",
-        "type": "function",
-        "z": "8adf8de645b60e16",
-        "name": "From TW Webserver",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\nconst $nrMsgNodes = global.get('$nrMsgNodes');\nconst index = $nrMsgNodes.indexOf(node);\n\nif (index > -1) { // only splice array when item is found\n    $nrMsgNodes.splice(index, 1); // 2nd parameter means remove one item only\n}\n$nrMsgNodes.push(node); \n",
-        "finalize": "// Code added here will be run when the\n// node is being stopped or re-deployed.\nconst $nrMsgNodes = global.get('$nrMsgNodes');\nconst index = $nrMsgNodes.indexOf(node);\n\nif (index > -1) { // only splice array when item is found\n    $nrMsgNodes.splice(index, 1); // 2nd parameter means remove one item only\n}\n",
-        "libs": [],
-        "x": 180,
+        "x": 210,
         "y": 80,
         "wires": [
             []
         ]
     },
     {
-        "id": "cadd7bb71eeb7243",
+        "id": "24783140a82cde75",
         "type": "status",
-        "z": "8adf8de645b60e16",
+        "z": "489223c003015b3f",
         "name": "",
         "scope": null,
-        "x": 140,
+        "x": 200,
         "y": 140,
         "wires": [
             []
@@ -571,7 +571,7 @@
         "z": "62c6b96ab760ca78",
         "g": "f7464a8f5cc4e442",
         "name": "TW message in",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -650,7 +650,7 @@
         "z": "62c6b96ab760ca78",
         "g": "f7464a8f5cc4e442",
         "name": "TW message out",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1055,29 +1055,166 @@
         ]
     },
     {
-        "id": "a21d2f01461d165d",
+        "id": "25f77ae45a3b5723",
         "type": "subflow:8adf8de645b60e16",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 270,
-        "y": 360,
+        "x": 130,
+        "y": 460,
         "wires": [
-            []
+            [
+                "8b17abc06620f4dd",
+                "014708f6c0e76350",
+                "2b3ef0e25c8fbdbc"
+            ]
         ]
     },
     {
-        "id": "cb83fb854d5ee88e",
-        "type": "file",
+        "id": "e09f2f8c27050cf3",
+        "type": "subflow:83b81066588d5f7b",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "filename": "",
-        "filenameType": "str",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "false",
-        "encoding": "none",
-        "x": 520,
-        "y": 320,
+        "x": 720,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "1732ef7f92556ce7",
+        "type": "template",
+        "z": "5b24d6e63acf9047",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n    \"title\": \"test it\",\n    \"text\": \"some test!!!\"\n}",
+        "output": "str",
+        "x": 420,
+        "y": 460,
+        "wires": [
+            [
+                "db199c9b4d6dfaf8"
+            ]
+        ]
+    },
+    {
+        "id": "8b17abc06620f4dd",
+        "type": "switch",
+        "z": "5b24d6e63acf9047",
+        "name": "Topic 'test'",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "test",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 270,
+        "y": 460,
+        "wires": [
+            [
+                "1732ef7f92556ce7"
+            ]
+        ]
+    },
+    {
+        "id": "db199c9b4d6dfaf8",
+        "type": "subflow:0d3535cb27027846",
+        "z": "5b24d6e63acf9047",
+        "name": "wiki parser",
+        "x": 570,
+        "y": 460,
+        "wires": [
+            [
+                "e09f2f8c27050cf3"
+            ]
+        ]
+    },
+    {
+        "id": "e59a16e005eba7dd",
+        "type": "http request",
+        "z": "5b24d6e63acf9047",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://raspberrypi:3004/tiddlers/[[Pocket-io System]]",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 310,
+        "y": 360,
+        "wires": [
+            [
+                "69919df3eb58b68d"
+            ]
+        ]
+    },
+    {
+        "id": "ffcc7fe816cc5596",
+        "type": "inject",
+        "z": "5b24d6e63acf9047",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 360,
+        "wires": [
+            [
+                "e59a16e005eba7dd"
+            ]
+        ]
+    },
+    {
+        "id": "69919df3eb58b68d",
+        "type": "subflow:0d3535cb27027846",
+        "z": "5b24d6e63acf9047",
+        "name": "",
+        "x": 470,
+        "y": 380,
+        "wires": [
+            [
+                "014708f6c0e76350"
+            ]
+        ]
+    },
+    {
+        "id": "2b3ef0e25c8fbdbc",
+        "type": "function",
+        "z": "5b24d6e63acf9047",
+        "name": "function 1",
+        "func": "var f = {};\nf.x.y = 'dd';\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 540,
         "wires": [
             []
         ]

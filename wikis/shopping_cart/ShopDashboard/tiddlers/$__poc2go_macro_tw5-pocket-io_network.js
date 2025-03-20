@@ -109,7 +109,8 @@ function createMessage(command, topic, filter, sender) {
 		req: Object.assign({}, senderReq, macroReq),
 		senderTiddler: $tw.utils.parseJSONSafe($tw.wiki.getTiddlerAsJson(sender),{}),
 		filterTiddlers: $tw.utils.parseJSONSafe($tw.wiki.getTiddlersAsJson(filter),[]),
-		resultTiddlers: []
+		resultTiddlers: [],
+		riverTitles: []
 	}
 	return msg;
 }

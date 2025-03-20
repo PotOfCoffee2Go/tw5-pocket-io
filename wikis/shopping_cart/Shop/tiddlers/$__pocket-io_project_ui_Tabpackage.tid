@@ -1,18 +1,18 @@
-caption: GUI Templates
-created: 20250118160314861
+caption: Packages
+created: 20250122050140526
 creator: poc2go
-modified: 20250317051429293
+modified: 20250319203015068
 modifier: poc2go
-tabtype: template
+tabtype: package
 tags: $:/tags/pocket-io/tabtype $:/tags/pocket-io/broadcast
-title: $:/pocket-io/project/ui/Tabtemplate
+title: $:/pocket-io/project/ui/Tabpackage
 type: text/vnd.tiddlywiki
 
 \whitespace trim
 <span class="tc-tag-list-item" data-tag-title=<<currentTiddler>>>
 <$set name="transclusion" value=<<currentTiddler>>>
  <$macrocall $name="tag-pill-body"
-  tag="GUI Templates"
+  tag="Packages"
   icon={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerIconFilter]!is[draft]get[text]] }}}
   colour={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/TiddlerColourFilter]!is[draft]get[text]] }}}
   palette={{$:/palette}}
