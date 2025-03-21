@@ -1,3 +1,5 @@
+// List of each 'wiki in' node in workspace
+//  used to pass wiki messages to Node-Red
 const $nrMsgNodes = [];
 
 const $NodeRed = function () {
@@ -10,13 +12,13 @@ const $NodeRed = function () {
 	// Node-Red settings
 	this.nodered = Object.assign({}, $config.nodered);
 	// Using the Node-Red settings file specified in ./config.js
-	this.settings = require(this.nodered.settingsFile);
+	this.settings = require(this.nodered.userDir + '/settings.js');
 	delete this.nodered.settingsFile; // no longer needed
 
 	// Our functions to Node-Red global context
 	var globalFunctions = {
-		$rt, $rw, $nrMsgNodes, $nrInMsg,
-		$sockets, $refreshClients,	
+		$rt, $rw, $nrParser, $nrMsgNodes, $nrInMsg,
+		$sockets, $refreshClients, $broadcastClients,	
 		get$tw, get$twCodebase,
 		get$settings, get$wikiNames,
 		get$proxy, get$server,
@@ -37,8 +39,11 @@ const $NodeRed = function () {
 	this.app.use(this.settings.httpNodeRoot,this.RED.httpNode);
 	this.app.use('/', express.static('public'));
 
-	this.RED.log.info = (t) => t ? log(hue(t, 111)) : null; 
-	this.RED.log.warn = (t) => log(hue(t, 129)); 
+	// Overload Node-Red logger to display with color (no date/time)
+	//  during the Node-Red startup
+	this.RED.log.info = (t) => log(hue(t, 111)); 
+	this.RED.log.warn = (t) => log(hue(t, 129));
+	// Errors always red with date/time
 	this.RED.log.error = (t) => tog(t, 9); 
 	const prevPrompt = $rt.getPrompt();
 	$rt.setPrompt('');
@@ -46,13 +51,16 @@ const $NodeRed = function () {
 	// Start server and Node-Red runtime
 	this.server.listen(this.settings.uiPort || 1880);
 	this.RED.start()
-		.then(() => { // wait for it - adjust timer as needed
+		.then(() => { // wait for it
 			setTimeout(() => {
+				// End the startup and log info/warning with color
+				//  and date/time from now on
 				hog(`\n===================`, 111);
 				this.RED.log.info = (t) => tog(t, 111); 
 				this.RED.log.warn = (t) => tog(t, 129); 
 				$rt.setPrompt(prevPrompt);
-				}, 1000)
+				}, 1000) // adjust timer as needed
 		})
+	
 	return this;
 };

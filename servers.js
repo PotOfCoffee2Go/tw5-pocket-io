@@ -20,6 +20,10 @@ serverSettings.forEach((settings, idx) => {
 	serverSettings[idx].proxy.server = new ProxyServer(settings);
 })
 
+// Open TW databases
+const { dataTwBoot } = require('./lib/dataTwBoot');
+var $db = dataTwBoot('./network/db/connection');
+
 // REPL instance
 var $rt = require('node:repl').start({ prompt: '', ignoreUndefined: true});
 
@@ -28,6 +32,7 @@ var $rw, $sockets = {};
 function replContext() {
 	$rt.context.$rt = $rt;	// the REPL itself
 	$rt.context.$rw = $rw;	// tiddlywiki instance for REPL use
+	$rt.context.$db = $db;	// tiddlywiki instance for REPL use
 	$rt.context.$config = config;
 	$rt.context.$ss = serverSettings;
 

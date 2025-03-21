@@ -1,0 +1,17 @@
+{
+  "name": "pocket-io-icons",
+  "version": "1.0.9",
+  "main": "pocket-io-icons.js",
+  "node-red": {
+  	"nodes": {
+  		"pocket-io-icons": "pocket-io-icons.js"
+  	}
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["tiddlywiki", "icons", "pocket-io"],
+  "author": "poc2go",
+  "license": "MIT",
+  "description": "Icon set for pocket-io subflows"
+}

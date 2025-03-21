@@ -1,6 +1,8 @@
 caption: Hello
 created: 20250120125751204
-modified: 20250120125835532
+creator: poc2go
+modified: 20250321073215152
+modifier: poc2go
 tags: template helloworld $:/pocket-io/helloworld/template
 title: helloworld-template-Hello
 type: text/vnd.tiddlywiki

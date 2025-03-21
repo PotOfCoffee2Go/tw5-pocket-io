@@ -199,9 +199,7 @@ const initSocketHandlers = () => {
 				tiddler = formatResults(tiddler);
 				fieldsToWiki(tiddler); // skip sending the sender to the story
 			} else {
-				var toRiver = tiddler.ioToStory || msg.req.tostory;
-				delete tiddler.ioToStory;
-				fieldsToWiki(tiddler, toRiver === 'yes' ? true : false);
+				fieldsToWiki(tiddler, msg.riverTitles.includes(tiddler.title));
 			}
 		})
 		if ($tw.syncer) {

@@ -1,8 +1,8 @@
 created: 20190712133008077
 creator: poc2go
 initial-opacity: 0.7
-link-action: tm-navigate
-modified: 20250315223336753
+link-action: tm-edit-tiddler
+modified: 20250321070101749
 modifier: poc2go
 show-all-links: none
 show-single-link: inline-block
