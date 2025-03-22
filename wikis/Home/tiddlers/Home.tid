@@ -1,13 +1,19 @@
-created: 20250108083629945
+created: 20250322105023526
 creator: poc2go
-ioResult: 
-modified: 20250322131959091
+modified: 20250322132710831
 modifier: poc2go
-tags: $:/tags/pocket-io/broadcast
-title: Pocket-io System
+tags: 
+title: Home
 type: text/vnd.tiddlywiki
 
 {{||$:/poc2go/pocket-io/ui/system}}
+
+<div style="margin:2em;" >
+
+{{||$:/poc2go/pocket-io/project/create}}
+
+</div>
+<hr class="poc2go-hr">
 
 |tc-center tc-table-no-border|k
 | Wikis and projects in the pocket-io network |

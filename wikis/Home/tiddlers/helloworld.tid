@@ -1,0 +1,26 @@
+autoLoad: yes
+caption: Hello World
+created: 20250205034558035
+creator: poc2go
+ioConfirmDelete: no
+ioPrjProject: helloworld
+ioPrjTabName: 
+ioPrjTabSelected: helloworld-code-helloword
+ioPrjTabType: dashboard
+ioResult: 
+ioResultUpload: 
+modified: 20250322110623981
+modifier: poc2go
+tags: helloworld Projects
+title: helloworld
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-project-header Hello World! @@|
+
+|tc-center tc-table-no-border|k
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+
+<<closeTabsButton "helloworld" "dashboard">>
+
+<<topButton>>

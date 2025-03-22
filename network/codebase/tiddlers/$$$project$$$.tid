@@ -1,13 +1,15 @@
 autoLoad: no
 caption: $$$project$$$
 created: 20241120105017114
+creator: poc2go
 ioConfirmDelete: no
 ioPrjProject: $$$project$$$
 ioPrjTabName: 
 ioPrjTabSelected: AALLLL
 ioPrjTabType: docs
 ioResult: 
-modified: 20250227151153162
+modified: 20250322102924116
+modifier: poc2go
 tags: $$$project$$$ Projects
 title: $$$project$$$
 type: text/vnd.tiddlywiki
@@ -16,7 +18,7 @@ type: text/vnd.tiddlywiki
 |@@.poc2go-project-header Edit this description and change caption @@|
 
 |tc-center tc-table-no-border|k
-|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load code on startup</$checkbox>|
 
 {{||$:/poc2go/pocket-io/project/addtab}}
 

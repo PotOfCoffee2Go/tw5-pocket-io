@@ -115,7 +115,7 @@ console.dir({
 	wikisDir: config.wikisDir,
 	webserver: config.webserver,
 	proxy: config.proxy,
-	forceCodebaseLocal: config.forceCodebaseLocal
+	hideCodebase: config.hideCodebase
 });
 hog(`\nStartup ${serverSettings.length} TiddlyWiki 'server' edition Webservers from directory ${config.wikisDir}`, 156);
 hog(`  including pocket-io wiki 'codebase' from directory ./network/codebase\n`, 156);
