@@ -73,9 +73,11 @@
         },
         "$:/poc2go/pocket-io/project/release": {
             "created": "20250310064355171",
-            "text": "!!! v0.2.6 - 2025-03-11\n\n* Implement add category\n\n!!! v0.2.5 - 2025-03-11\n\n* Remove duplicate define\n\n!!! v0.2.4 - 2025-03-11\n\n* Rename tab set tiddlers - remove 'poc2go'\n\n!!! v0.2.3 - 2025-03-10\n\n* Breakout tab pill display - define ''displayTabPill''\n\n!!! v0.2.2 - 2025-03-10\n\n* Move tab sets to codebase wiki\n\n!!! v0.2.1 - 2025-03-10\n\n* Add Release Notes\n* Changes dashboard pill name to 'Dashboards'\n",
+            "creator": "poc2go",
+            "text": "!!! v0.2.7 - 2025-03-22\n\n* Add reset to create wiki GUI template\n\n!!! v0.2.6 - 2025-03-11\n\n* Implement add category\n\n!!! v0.2.5 - 2025-03-11\n\n* Remove duplicate define\n\n!!! v0.2.4 - 2025-03-11\n\n* Rename tab set tiddlers - remove 'poc2go'\n\n!!! v0.2.3 - 2025-03-10\n\n* Breakout tab pill display - define ''displayTabPill''\n\n!!! v0.2.2 - 2025-03-10\n\n* Move tab sets to codebase wiki\n\n!!! v0.2.1 - 2025-03-10\n\n* Add Release Notes\n* Changes dashboard pill name to 'Dashboards'\n",
             "title": "$:/poc2go/pocket-io/project/release",
-            "modified": "20250311170752886"
+            "modified": "20250322142709924",
+            "modifier": "poc2go"
         },
         "$:/poc2go/pocket-io/project/settings": {
             "created": "20250131133728669",
@@ -97,10 +99,12 @@
         },
         "$:/poc2go/pocket-io/project/create": {
             "created": "20250131142623424",
-            "text": "\\define submitCreate()\n<<pocket-io \"projectCreate\">>\n\\end\n\n\\define createButton()\n<$button actions=\"<<submitCreate>>\"> Create </$button>\n\\end\n\n\\define projectEditBox()\n<$edit-text field=\"ioPrjProject\"/>\n\\end\n\n\\define onWikiSelect()\n<$select field=\"ioPrjWiki\" default=\"{{$:/temp/pocket-io/wikinames}}\">\n<$list filter=\"[list[$:/temp/pocket-io/wikinames]]\">\n<option value={{!!title}} ><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n|tc-center tc-table-no-border|k\n| Wiki |<<onWikiSelect>> | New Project |<<projectEditBox>> |<<createButton>> |\n",
+            "creator": "poc2go",
+            "text": "\\define submitCreate()\n<<pocket-io \"projectCreate\">>\n\\end\n\n\\define createButton()\n<$button actions=\"<<submitCreate>>\"> Create </$button>\n\\end\n\n\\define projectEditBox()\n<$edit-text field=\"ioPrjProject\"/>\n\\end\n\n\\define onWikiSelect()\n<$select field=\"ioPrjWiki\" default=\"{{$:/temp/pocket-io/wikinames}}\">\n<$list filter=\"[list[$:/temp/pocket-io/wikinames]]\">\n<option value={{!!title}} ><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n|tc-center tc-table-no-border|k\n| Wiki |<<onWikiSelect>> | New Project |<<projectEditBox>> |<<createButton>> | <<resetAllButton>> |\n",
             "title": "$:/poc2go/pocket-io/project/create",
-            "modified": "20250228112550307",
-            "caption": "Create"
+            "modified": "20250322142340185",
+            "caption": "Create",
+            "modifier": "poc2go"
         },
         "$:/poc2go/pocket-io/project/delete": {
             "created": "20250201215225312",

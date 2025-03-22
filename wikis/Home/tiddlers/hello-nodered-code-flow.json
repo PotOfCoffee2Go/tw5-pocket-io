@@ -1,0 +1,266 @@
+[
+    {
+        "id": "83b81066588d5f7b",
+        "type": "subflow",
+        "name": "TW client out",
+        "info": "",
+        "category": "tiddlywiki",
+        "in": [
+            {
+                "x": 80,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "4876804024f936fa"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 400,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "4876804024f936fa",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#C0DEED",
+        "icon": "pocket-io-icons/networkup.svg"
+    },
+    {
+        "id": "4876804024f936fa",
+        "type": "function",
+        "z": "83b81066588d5f7b",
+        "g": "392b55f1513f4105",
+        "name": "To TW Webserver",
+        "func": "const $sockets = global.get('$sockets');\nconst $refreshClients = global.get('$refreshClients');\n\nmsg.payload = global.get('$nrParser')(msg.payload);\n\n// Send to a specific client\nif (msg.wiki && msg.wiki.req.socketId) {\n\tmsg.payload.forEach(tiddler => {\n\t\tif (tiddler.ioToStory !== undefined) {\n\t\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\t\tdelete tiddler.ioToStory;\n\t\t}\n\t\tmsg.wiki.resultTiddlers.push(tiddler);\n\t})\n   $sockets[msg.wiki.req.socketId].socket.emit('msg', msg.wiki);\n}\n// Refresh any client connect to this wiki\n$refreshClients(msg.wikiname);\n\nreturn;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "392b55f1513f4105",
+        "type": "group",
+        "z": "83b81066588d5f7b",
+        "name": "\\n Sends message response back to TiddlyWiki \\n   ",
+        "style": {
+            "label": true,
+            "label-position": "s",
+            "stroke": "none"
+        },
+        "nodes": [
+            "4876804024f936fa"
+        ],
+        "x": 114,
+        "y": 39,
+        "w": 286,
+        "h": 122
+    },
+    {
+        "id": "8adf8de645b60e16",
+        "type": "subflow",
+        "name": "TW client in",
+        "info": "",
+        "category": "tiddlywiki",
+        "in": [],
+        "out": [
+            {
+                "x": 320,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "c423533ded980b73",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#C0DEED",
+        "icon": "pocket-io-icons/networkdown.svg",
+        "status": {
+            "x": 320,
+            "y": 140,
+            "wires": [
+                {
+                    "id": "cadd7bb71eeb7243",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "c423533ded980b73",
+        "type": "function",
+        "z": "8adf8de645b60e16",
+        "name": "From TW Webserver",
+        "func": "// see 'On Start' tab for implementation\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nconst $nrMsgNodes = global.get('$nrMsgNodes');\nconst index = $nrMsgNodes.findIndex((element) => element.id === node.id);\n\nif (index > -1) {\n    $nrMsgNodes.splice(index, 1);\n}\n\n$nrMsgNodes.push(node);\n",
+        "finalize": "",
+        "libs": [],
+        "x": 180,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cadd7bb71eeb7243",
+        "type": "status",
+        "z": "8adf8de645b60e16",
+        "name": "",
+        "scope": null,
+        "x": 140,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7de5076334dee376",
+        "type": "subflow:8adf8de645b60e16",
+        "z": "5b24d6e63acf9047",
+        "name": "",
+        "x": 55,
+        "y": 620,
+        "wires": [
+            [
+                "76b07d638e1110c9"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "76b07d638e1110c9",
+        "type": "switch",
+        "z": "5b24d6e63acf9047",
+        "name": "showfile ",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "showfile",
+                "vt": "str",
+                "case": false
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 160,
+        "y": 620,
+        "wires": [
+            [
+                "6ab74c412581482f"
+            ]
+        ]
+    },
+    {
+        "id": "6ab74c412581482f",
+        "type": "file in",
+        "z": "5b24d6e63acf9047",
+        "name": "read msg.filename",
+        "filename": "wiki.senderTiddler.filename",
+        "filenameType": "msg",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 370,
+        "y": 620,
+        "wires": [
+            [
+                "1688a65dacdd55fe"
+            ]
+        ]
+    },
+    {
+        "id": "1688a65dacdd55fe",
+        "type": "change",
+        "z": "5b24d6e63acf9047",
+        "name": "payload to msg.filetext",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filetext",
+                "pt": "msg",
+                "to": "msg.payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 200,
+        "y": 700,
+        "wires": [
+            [
+                "062e70cc3789a1a1"
+            ]
+        ]
+    },
+    {
+        "id": "062e70cc3789a1a1",
+        "type": "template",
+        "z": "5b24d6e63acf9047",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "title: {{{filename}}}\ntype: {{{wiki.senderTiddler.filetype}}}\nioToStory: yes\n\n{{{filetext}}}\n",
+        "output": "str",
+        "x": 420,
+        "y": 700,
+        "wires": [
+            [
+                "38f58f1538e9684a",
+                "e6fa0e425307f929"
+            ]
+        ]
+    },
+    {
+        "id": "38f58f1538e9684a",
+        "type": "subflow:83b81066588d5f7b",
+        "z": "5b24d6e63acf9047",
+        "name": "",
+        "x": 545,
+        "y": 700,
+        "wires": [
+            []
+        ],
+        "l": false
+    },
+    {
+        "id": "465d810775f22e24",
+        "type": "comment",
+        "z": "5b24d6e63acf9047",
+        "name": "<$button actions=\"<<node-red 'show file ./package.json'>>\"> show package.json </$button>",
+        "info": "",
+        "x": 350,
+        "y": 580,
+        "wires": []
+    }
+]

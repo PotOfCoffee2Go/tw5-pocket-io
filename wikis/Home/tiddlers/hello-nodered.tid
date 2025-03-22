@@ -2,14 +2,16 @@ autoLoad: no
 caption: Hello Node-Red
 created: 20250316181837609
 creator: poc2go
+filename: ./package.json
+filetype: application/json
 ioConfirmDelete: no
 ioPrjProject: hello-nodered
 ioPrjTabName: 
 ioPrjTabSelected: AALLLL
-ioPrjTabType: dashboard
+ioPrjTabType: code
 ioResult: 
 ioToStory: no
-modified: 20250321074102723
+modified: 20250322163130561
 modifier: poc2go
 tags: Projects hello-nodered
 title: hello-nodered

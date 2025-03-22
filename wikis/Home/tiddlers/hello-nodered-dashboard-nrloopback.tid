@@ -1,7 +1,9 @@
 caption: Hello Node-Red
 created: 20250316183136904
 creator: poc2go
-modified: 20250321075801713
+filename: ./config.js
+filetype: application/javascript
+modified: 20250322153733684
 modifier: poc2go
 tags: dashboard hello-nodered $:/pocket-io/hello-nodered/dashboard
 title: hello-nodered-dashboard-nrloopback
@@ -11,4 +13,4 @@ type: text/vnd.tiddlywiki
 
 <$button actions="<<node-red 'test'>>"> Test Node-Red </$button>
 
-<$button actions="<<node-red 'demo 2'>>"> Demo Too!! </$button>
+{{||hello-nodered-template-get-file}}

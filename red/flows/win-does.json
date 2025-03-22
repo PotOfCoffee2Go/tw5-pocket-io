@@ -351,7 +351,7 @@
         ],
         "x": 54,
         "y": 67,
-        "w": 852,
+        "w": 903,
         "h": 340,
         "info": "# Example of Tiddlywiki Request\r\n\r\n"
     },
@@ -428,7 +428,7 @@
         "nodes": [
             "2a97f1fbcf6e3dfa"
         ],
-        "x": 674,
+        "x": 734,
         "y": 259,
         "w": 197,
         "h": 122
@@ -713,7 +713,7 @@
         "z": "62c6b96ab760ca78",
         "g": "122e9298ddc68975",
         "name": "tiddler parser",
-        "x": 770,
+        "x": 830,
         "y": 300,
         "wires": [
             []
@@ -844,124 +844,6 @@
                 "cdcaa30c8d7b6208",
                 "4df2c978a7ce6665"
             ]
-        ],
-        "l": false
-    },
-    {
-        "id": "387aee9414b96304",
-        "type": "subflow:8adf8de645b60e16",
-        "z": "62c6b96ab760ca78",
-        "name": "",
-        "x": 65,
-        "y": 480,
-        "wires": [
-            [
-                "dac6f5642101f3b0"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "dac6f5642101f3b0",
-        "type": "switch",
-        "z": "62c6b96ab760ca78",
-        "name": "show file",
-        "property": "topic",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "regex",
-                "v": "show file",
-                "vt": "str",
-                "case": false
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 160,
-        "y": 480,
-        "wires": [
-            [
-                "6ab74c412581482f"
-            ]
-        ]
-    },
-    {
-        "id": "6ab74c412581482f",
-        "type": "file in",
-        "z": "62c6b96ab760ca78",
-        "name": "read msg.filename",
-        "filename": "wiki.senderTiddler.filename",
-        "filenameType": "msg",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": false,
-        "x": 330,
-        "y": 480,
-        "wires": [
-            [
-                "1688a65dacdd55fe"
-            ]
-        ]
-    },
-    {
-        "id": "1688a65dacdd55fe",
-        "type": "change",
-        "z": "62c6b96ab760ca78",
-        "name": "payload to msg.filetext",
-        "rules": [
-            {
-                "t": "move",
-                "p": "payload",
-                "pt": "msg",
-                "to": "filetext",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 540,
-        "y": 480,
-        "wires": [
-            [
-                "062e70cc3789a1a1"
-            ]
-        ]
-    },
-    {
-        "id": "062e70cc3789a1a1",
-        "type": "template",
-        "z": "62c6b96ab760ca78",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "title: {{{filename}}}\ntype: {{{wiki.senderTiddler.filetype}}}\nioToStory: yes\n\n{{{filetext}}}\n",
-        "output": "str",
-        "x": 720,
-        "y": 480,
-        "wires": [
-            [
-                "38f58f1538e9684a"
-            ]
-        ]
-    },
-    {
-        "id": "38f58f1538e9684a",
-        "type": "subflow:83b81066588d5f7b",
-        "z": "62c6b96ab760ca78",
-        "name": "",
-        "x": 815,
-        "y": 480,
-        "wires": [
-            []
         ],
         "l": false
     },
@@ -1203,8 +1085,8 @@
         "type": "subflow:8adf8de645b60e16",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 35,
-        "y": 460,
+        "x": 75,
+        "y": 500,
         "wires": [
             [
                 "8b17abc06620f4dd"
@@ -1217,11 +1099,12 @@
         "type": "subflow:83b81066588d5f7b",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 620,
-        "y": 460,
+        "x": 395,
+        "y": 500,
         "wires": [
             []
-        ]
+        ],
+        "l": false
     },
     {
         "id": "1732ef7f92556ce7",
@@ -1232,13 +1115,13 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "{\n    \"title\": \"test it 2\",\n    \"text\": \"some test!!!\"\n}",
+        "template": "{\n    \"title\": \"test it 2\",\n    \"ioToStory\": \"yes\",\n    \"text\": \"some test!!!\"\n}",
         "output": "str",
         "x": 300,
-        "y": 460,
+        "y": 500,
         "wires": [
             [
-                "db199c9b4d6dfaf8"
+                "e09f2f8c27050cf3"
             ]
         ]
     },
@@ -1246,7 +1129,7 @@
         "id": "8b17abc06620f4dd",
         "type": "switch",
         "z": "5b24d6e63acf9047",
-        "name": "Topic 'test'",
+        "name": "test",
         "property": "topic",
         "propertyType": "msg",
         "rules": [
@@ -1259,24 +1142,11 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 150,
-        "y": 460,
+        "x": 170,
+        "y": 500,
         "wires": [
             [
                 "1732ef7f92556ce7"
-            ]
-        ]
-    },
-    {
-        "id": "db199c9b4d6dfaf8",
-        "type": "subflow:0d3535cb27027846",
-        "z": "5b24d6e63acf9047",
-        "name": "wiki parser",
-        "x": 450,
-        "y": 460,
-        "wires": [
-            [
-                "e09f2f8c27050cf3"
             ]
         ]
     },
@@ -1442,8 +1312,8 @@
         "type": "subflow:8adf8de645b60e16",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 65,
-        "y": 560,
+        "x": 55,
+        "y": 620,
         "wires": [
             [
                 "76b07d638e1110c9"
@@ -1452,57 +1322,29 @@
         "l": false
     },
     {
-        "id": "b6ed653b058dab34",
-        "type": "subflow:83b81066588d5f7b",
-        "z": "5b24d6e63acf9047",
-        "name": "",
-        "x": 430,
-        "y": 560,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a993d29142a7f5c7",
-        "type": "template",
-        "z": "5b24d6e63acf9047",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "title: Hi demo 2.2\n\nthis is some test tooooo!!!",
-        "output": "str",
-        "x": 280,
-        "y": 560,
-        "wires": [
-            [
-                "b6ed653b058dab34"
-            ]
-        ]
-    },
-    {
         "id": "76b07d638e1110c9",
         "type": "switch",
         "z": "5b24d6e63acf9047",
-        "name": "'demo 2'",
+        "name": "showfile ",
         "property": "topic",
         "propertyType": "msg",
         "rules": [
             {
-                "t": "eq",
-                "v": "demo 2",
-                "vt": "str"
+                "t": "regex",
+                "v": "showfile",
+                "vt": "str",
+                "case": false
             }
         ],
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 141,
-        "y": 560,
+        "x": 160,
+        "y": 620,
         "wires": [
             [
-                "a993d29142a7f5c7"
+                "6ab74c412581482f",
+                "e6fa0e425307f929"
             ]
         ]
     },
@@ -1516,6 +1358,122 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "6ab74c412581482f",
+        "type": "file in",
+        "z": "5b24d6e63acf9047",
+        "name": "read msg.filename",
+        "filename": "wiki.senderTiddler.filename",
+        "filenameType": "msg",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 370,
+        "y": 620,
+        "wires": [
+            [
+                "1688a65dacdd55fe"
+            ]
+        ]
+    },
+    {
+        "id": "1688a65dacdd55fe",
+        "type": "change",
+        "z": "5b24d6e63acf9047",
+        "name": "payload to msg.filetext",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filetext",
+                "pt": "msg",
+                "to": "msg.payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 200,
+        "y": 700,
+        "wires": [
+            [
+                "062e70cc3789a1a1"
+            ]
+        ]
+    },
+    {
+        "id": "062e70cc3789a1a1",
+        "type": "template",
+        "z": "5b24d6e63acf9047",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "title: {{{filename}}}\ntype: {{{wiki.senderTiddler.filetype}}}\nioToStory: yes\n\n{{{filetext}}}\n",
+        "output": "str",
+        "x": 420,
+        "y": 700,
+        "wires": [
+            [
+                "38f58f1538e9684a",
+                "e6fa0e425307f929"
+            ]
+        ]
+    },
+    {
+        "id": "38f58f1538e9684a",
+        "type": "subflow:83b81066588d5f7b",
+        "z": "5b24d6e63acf9047",
+        "name": "",
+        "x": 545,
+        "y": 700,
+        "wires": [
+            []
+        ],
+        "l": false
+    },
+    {
+        "id": "2ff0d9ac80fb5bbb",
+        "type": "comment",
+        "z": "5b24d6e63acf9047",
+        "name": "<$button actions=\"<<node-red 'test'>>\"> Test Node-Red </$button>",
+        "info": "",
+        "x": 260,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "465d810775f22e24",
+        "type": "comment",
+        "z": "5b24d6e63acf9047",
+        "name": "<$button actions=\"<<node-red 'show file ./package.json'>>\"> show package.json </$button>",
+        "info": "",
+        "x": 350,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "e6fa0e425307f929",
+        "type": "debug",
+        "z": "5b24d6e63acf9047",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 220,
+        "y": 780,
+        "wires": []
     },
     {
         "id": "9d8bad643f85dc56",

@@ -1,0 +1,20 @@
+caption: Get File
+created: 20250322044334945
+creator: poc2go
+modified: 20250322163001313
+modifier: poc2go
+tags: template hello-nodered $:/pocket-io/hello-nodered/template
+title: hello-nodered-template-get-file
+type: text/vnd.tiddlywiki
+
+\define typeSelect()
+<$select field="filetype" default="">
+<option value="application/javascript"> javascript </option>
+<option value="application/json"> json </option>
+<option value="text/plain"> plain text </option>
+</$select>
+\end
+
+filename: <$edit-text field="filename"/>
+filetype: <<typeSelect>>
+<$button actions="<<node-red 'show file' >>"> show file</$button>
