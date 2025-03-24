@@ -15,6 +15,16 @@
             "modified": "20250122215728125",
             "caption": "License"
         },
+        "$:/plugins/poc2go/pocket-io/maker": {
+            "created": "20250322214605606",
+            "creator": "poc2go",
+            "text": "{{$:/poc2go/pocket-io/maker}}\n",
+            "title": "$:/plugins/poc2go/pocket-io/maker",
+            "type": "",
+            "modified": "20250322214713184",
+            "caption": "Maker",
+            "modifier": "poc2go"
+        },
         "$:/plugins/poc2go/pocket-io/readme": {
             "created": "20250122215609691",
             "text": "{{$:/poc2go/pocket-io/readme}}\n",
@@ -75,6 +85,15 @@
             "revision": "0",
             "bag": "default"
         },
+        "$:/poc2go/pocket-io/maker": {
+            "created": "20250322215156233",
+            "creator": "poc2go",
+            "text": "maker goes here\n",
+            "title": "$:/poc2go/pocket-io/maker",
+            "modified": "20250322215233954",
+            "caption": "Maker",
+            "modifier": "poc2go"
+        },
         "$:/poc2go/pocket-io/readme": {
             "created": "20250122214740526",
             "text": "Readme goes here\n",
@@ -85,9 +104,9 @@
         "$:/poc2go/pocket-io/release": {
             "created": "20250312063257143",
             "creator": "poc2go",
-            "text": "!! Release Notes\n\n```text\nv0.2.37 - v0.2.38 * 2025-03-12\n──────────────────────────────\nAdd release notes\nAdd MIT license\n```",
+            "text": "!! Release Notes\n\n```text\nv0.2.40 * 2025-03-12\n──────────────────────────────\nAdd pocket-io plugin maker tab\n```\n\n```text\nv0.2.37 - v0.2.38 * 2025-03-12\n──────────────────────────────\nAdd release notes\nAdd MIT license\n```\n",
             "title": "$:/poc2go/pocket-io/release",
-            "modified": "20250312071639552",
+            "modified": "20250322220320677",
             "modifier": "poc2go",
             "caption": "Release Notes"
         },

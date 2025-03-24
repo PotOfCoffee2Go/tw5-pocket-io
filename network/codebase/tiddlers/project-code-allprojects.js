@@ -7,6 +7,7 @@ $tpi.topic.projectNetworkTable = function (socket, msg) {
 
 	$ss.forEach(settings => {
 		var wikiName = settings.name;
+		if (wikiName === 'codebase' && $config.hideCodebase) { return; }
 		var wikiLink = get$proxy(wikiName).link;
 		var proxyDomain = settings.proxy.domain
 		var $tw = get$tw(wikiName);

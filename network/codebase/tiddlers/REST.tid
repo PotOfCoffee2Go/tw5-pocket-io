@@ -7,9 +7,9 @@ ioPrjProject: REST
 ioPrjTabName: 
 ioPrjTabSelected: AALLLL
 ioPrjTabToDelete: REST-default
-ioPrjTabType: docs
+ioPrjTabType: dashboard
 ioResult: 
-modified: 20250316074219947
+modified: 20250323024704334
 modifier: poc2go
 tags: REST Projects
 title: REST

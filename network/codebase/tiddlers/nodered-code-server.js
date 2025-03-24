@@ -16,13 +16,15 @@ const $NodeRed = function () {
 	delete this.nodered.settingsFile; // no longer needed
 
 	// Our functions to Node-Red global context
+	//  see [[startup-code-globals]]
 	var globalFunctions = {
-		$rt, $rw, $nrParser, $nrMsgNodes, $nrInMsg,
+		$nrMsgNodes, $nrInMsg,
+		$rt, $rw, $nrParser,
 		$sockets, $refreshClients, $broadcastClients,	
-		get$tw, get$twCodebase,
-		get$settings, get$wikiNames,
-		get$proxy, get$server,
-		get$router, get$pocketio,
+		get$settings, get$wikiNames, get$twCodebase,
+		get$db, qry$db, ins$db,
+		get$tw, qry$tw,	ins$tw,
+		get$proxy, get$server, get$router, get$pocketio,
 	}
 	this.nodered.functionGlobalContext = Object.assign(
 		{},	this.nodered.functionGlobalContext, globalFunctions

@@ -3,13 +3,15 @@ caption: Project Management
 created: 20250114040241341
 creator: poc2go
 ioConfirmDelete: no
+ioPrjCategoryPillTitle: Node-Red Flow
+ioPrjCategoryType: 
+ioPrjPillTitle: 
 ioPrjProject: project
-ioPrjTabName: 
-ioPrjTabSelected: project-code-allprojects
+ioPrjTabSelected: project-code-addcategory
 ioPrjTabType: dashboard
 ioResult: 
 ioResultUpload: 
-modified: 20250311184627504
+modified: 20250324081840620
 modifier: poc2go
 tags: project Projects
 title: project
@@ -19,7 +21,7 @@ type: text/vnd.tiddlywiki
 |@@.poc2go-project-header Project Mangement System @@|
 
 |tc-center tc-table-no-border|k
-|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load code on startup</$checkbox>|
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}

@@ -216,7 +216,7 @@ const initSocketHandlers = () => {
 
 	socket.on('close', () => {
 		console.log('pocket.io disconnnected');
-		setNetstat('Pocket.io disconnected');
+		setNetstat('@@color:red; Pocket.io disconnected@@');
 		socket = null;
 		reConnect();
 	})

@@ -1,0 +1,11 @@
+caption: Test It
+created: 20250324021232556
+creator: poc2go
+modified: 20250324021232556
+modifier: poc2go
+tabtype: testit
+tags: $:/tags/pocket-io/tabtype
+title: $:/pocket-io/project/ui/Tabtestit
+type: text/vnd.tiddlywiki
+
+<<categoryPill 'Test It'>>

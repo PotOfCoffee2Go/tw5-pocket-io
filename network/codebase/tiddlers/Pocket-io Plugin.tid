@@ -1,6 +1,6 @@
 created: 20250118182659566
 creator: poc2go
-modified: 20250316171540784
+modified: 20250322215659313
 modifier: poc2go
 tags: plugins
 title: Pocket-io Plugin
@@ -16,6 +16,7 @@ type: text/vnd.tiddlywiki
 
 * [[$:/plugins/poc2go/pocket-io/icon]]
 * [[$:/plugins/poc2go/pocket-io/license]]
+* [[$:/plugins/poc2go/pocket-io/maker]]
 * [[$:/plugins/poc2go/pocket-io/readme]]
 * [[$:/plugins/poc2go/pocket-io/release]]
 * [[$:/plugins/poc2go/pocket-io/settings]]
@@ -23,6 +24,7 @@ type: text/vnd.tiddlywiki
 * [[$:/poc2go/pocket-io/icon]]
 * [[$:/poc2go/pocket-io/license]]
 * [[$:/poc2go/pocket-io/macros]]
+* [[$:/poc2go/pocket-io/maker]]
 * [[$:/poc2go/pocket-io/new-wiki-icon]]
 * [[$:/poc2go/pocket-io/readme]]
 * [[$:/poc2go/pocket-io/release]]
@@ -39,6 +41,7 @@ type: text/vnd.tiddlywiki
 [
 	"$:/plugins/poc2go/pocket-io/icon",
 	"$:/plugins/poc2go/pocket-io/license",
+	"$:/plugins/poc2go/pocket-io/maker",
 	"$:/plugins/poc2go/pocket-io/readme",
 	"$:/plugins/poc2go/pocket-io/release",
 	"$:/plugins/poc2go/pocket-io/settings",
@@ -46,6 +49,7 @@ type: text/vnd.tiddlywiki
 	"$:/poc2go/pocket-io/icon",
 	"$:/poc2go/pocket-io/license",
 	"$:/poc2go/pocket-io/macros",
+	"$:/poc2go/pocket-io/maker",
 	"$:/poc2go/pocket-io/readme",
 	"$:/poc2go/pocket-io/release",
 	"$:/poc2go/pocket-io/result/error-template",

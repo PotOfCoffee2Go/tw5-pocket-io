@@ -1,7 +1,7 @@
 caption: Add Category
 created: 20250302050413833
 creator: poc2go
-modified: 20250311181029683
+modified: 20250323170524055
 modifier: poc2go
 tags: template project $:/pocket-io/project/template
 title: project-template-addcategory
@@ -14,7 +14,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define setTypeEditBox()
-<$edit-text field="ioPrjTabSetType" class="pio-tabset-box"/>
+<$edit-text field="ioPrjCategoryType" class="pio-tabset-box"/>
 \end
 
 \define pillTitleEditBox()

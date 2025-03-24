@@ -8,7 +8,7 @@ ioPrjTabName:
 ioPrjTabSelected: AALLLL
 ioPrjTabType: docs
 ioResult: 
-modified: 20250322102924116
+modified: 20250324020932616
 modifier: poc2go
 tags: $$$project$$$ Projects
 title: $$$project$$$
@@ -20,12 +20,18 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load code on startup</$checkbox>|
 
+<<details "Project Categories" src:"""---
+
+{{||$:/poc2go/pocket-io/project/addcategory}}
+
+---
+""">>
+
 {{||$:/poc2go/pocket-io/project/addtab}}
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<closeTabsButton "$$$project$$$" "dashboard">>
 <<closeTabsButton "$$$project$$$" "docs">>
 <<closeTabsButton "$$$project$$$" "template">>
 <<projectUploadButton>>

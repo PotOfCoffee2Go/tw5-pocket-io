@@ -6,10 +6,10 @@ $tpi.topic.projectAddCategory = function (socket, msg) {
 
 	var dstWikiName = msg.req.wikiName;
 	var project = sender.ioPrjProject;
-	var tabSetType = sender.ioPrjTabSetType;
-	var pillTitle = sender.ioPrjPillTitle;
-	var tabSetTitle = `$:/pocket-io/project/ui/Tag${tabSetType}`;
-	var tabSetText = get$twCodebase.wiki.getTiddlerText('$:/poc2go/pocket-io/project/ui/Tagdocs');
+	var tabSetType = sender.ioPrjCategoryType;
+	var pillTitle = sender.ioPrjCategoryPillTitle;
+	var tabSetTitle = `$:/pocket-io/project/ui/Tab${tabSetType}`;
+	var tabSetText = `<<categoryPill '${pillTitle}'>>`;
 
 	var $tw = get$tw(dstWikiName);
 
@@ -17,7 +17,7 @@ $tpi.topic.projectAddCategory = function (socket, msg) {
 		errorMsg = `Error: Wiki '${dstWikiName}' is not in the Pocket-io network.`;
 	}
 	else if (!tabSetType) {
-		errorMsg = 'Error: A tab set type is required.';
+		errorMsg = 'Error: A category type is required.';
 	}
 	else if (!project) {
 		errorMsg = 'Error: A project name is required.';
@@ -27,7 +27,7 @@ $tpi.topic.projectAddCategory = function (socket, msg) {
 			`Notably spaces and special characters are not allowed.\n`;
 	}
 	else if ($tw.wiki.tiddlerExists(tabSetTitle)) {
-		errorMsg = `Error: Tab set ${tabSetTitle} already exists!`;
+		errorMsg = `Error: Category ${tabSetTitle} already exists!`;
 	}
 
 	// Return if error
@@ -36,12 +36,13 @@ $tpi.topic.projectAddCategory = function (socket, msg) {
 		msg.resultTiddlers.push(sender);
 		return msg;
 	}
-
+	var broadcast = dstWikiName === 'codebase' ? ' $:/tags/pocket-io/broadcast' : '';
+	
 	var newTabSet = {
 		title: tabSetTitle,
-		tags: '$:/tags/pocket-io/tabtype',
+		tags: '$:/tags/pocket-io/tabtype' + broadcast,
 		caption: pillTitle,
-		text: tabSetText.replace('tag="Docs"', `tag="${pillTitle}"`),
+		text: tabSetText,
 		type: 'text/vnd.tiddlywiki',
 		tabtype: tabSetType
 	};
@@ -54,9 +55,9 @@ $tpi.topic.projectAddCategory = function (socket, msg) {
 */
 	msg.resultTiddlers.push(newTabSet);
 	
-	sender.ioPrjTabSetType = '';
-	sender.ioPrjPillTitle = '';
-	sender.ioResult = `Created tab set '${pillTitle}'`;
+	sender.ioPrjCategoryType = '';
+	sender.ioPrjCategoryPillTitle = '';
+	sender.ioResult = `Created category '${pillTitle}' of type '${tabSetType}'`;
 	msg.resultTiddlers.push(sender);
 	$refreshClients(dstWikiName);
 	return msg;

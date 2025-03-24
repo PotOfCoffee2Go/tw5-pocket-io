@@ -1,7 +1,7 @@
 created: 20250129061817636
 creator: poc2go
-list: startup-code-globals startup-code-console startup-code-commands startup-code-getCode startup-code-hideStdout startup-code-asyncqueue
-modified: 20250321064544652
+list: startup-code-globals startup-code-getters startup-code-console startup-code-commands startup-code-getCode startup-code-hideStdout startup-code-asyncqueue
+modified: 20250323154558693
 modifier: poc2go
 title: $:/pocket-io/startup/code
 type: text/vnd.tiddlywiki

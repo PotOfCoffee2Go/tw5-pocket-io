@@ -1,0 +1,16 @@
+[
+    {
+        "created": "20250317122049424",
+        "creator": "poc2go",
+        "text": "<<details \"Project Categories\" src:\"\"\"---\n\n{{||$:/poc2go/pocket-io/project/addcategory}}\n\n---\n\"\"\">>\n\n{{||$:/poc2go/pocket-io/project/addtab}}\n\n<<closeTabsButton \"hello-nodered\" \"xxx\">>\n<<closeTabsButton \"hello-nodered\" \"tester1\">>\n<<closeTabsButton \"hello-nodered\" \"docs\">>\n<<closeTabsButton \"hello-nodered\" \"template\">>\n<<projectUploadButton>>\n<<closeTabsButton \"hello-nodered\" \"code\">>\n<<closeTabsButton \"hello-nodered\" \"flow\">>\n<<closeTabsButton \"hello-nodered\" \"info\">>\n<<closeTabsButton \"hello-nodered\" \"package\">>\n",
+        "title": "hello-nodered-dashboard-project",
+        "modified": "20250324015800897",
+        "modifier": "poc2go",
+        "tags": "dashboard hello-nodered $:/pocket-io/hello-nodered/dashboard",
+        "type": "text/vnd.tiddlywiki",
+        "caption": "PROJECT",
+        "ioPrjTabType": "tester1",
+        "ioPrjTabName": "ddd",
+        "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em; margin: 0 2em 0 2em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n@@color:red; 03/23/2025 21:45:46 A project name is required. @@\n\n</div>\n"
+    }
+]

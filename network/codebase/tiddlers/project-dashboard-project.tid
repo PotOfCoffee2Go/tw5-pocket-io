@@ -1,7 +1,7 @@
-caption: Project
+caption: PROJECT
 created: 20250311183903761
 creator: poc2go
-modified: 20250311224359983
+modified: 20250324083010529
 modifier: poc2go
 tags: dashboard project $:/pocket-io/project/dashboard
 title: project-dashboard-project
@@ -14,9 +14,12 @@ type: text/vnd.tiddlywiki
 \define categoryButtons()
 <<closeTabsButton "project" "docs">>
 <<closeTabsButton "project" "template">>
+<hr class="poc2go-hr" style="margin:1em;">
 <<projectUploadButton>>
 <<closeTabsButton "project" "code">>
+<hr class="poc2go-hr" style="margin:1em;">
 <<closeTabsButton "project" "info">>
+<<closeTabsButton "project" "flow">>
 <<closeTabsButton "project" "package">>
 \end
 

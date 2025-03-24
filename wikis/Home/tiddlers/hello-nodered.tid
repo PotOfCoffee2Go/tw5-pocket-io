@@ -5,13 +5,15 @@ creator: poc2go
 filename: ./package.json
 filetype: application/json
 ioConfirmDelete: no
+ioPrjCategoryPillTitle: 
+ioPrjCategoryType: 
 ioPrjProject: hello-nodered
 ioPrjTabName: 
 ioPrjTabSelected: AALLLL
-ioPrjTabType: code
+ioPrjTabType: xxx
 ioResult: 
 ioToStory: no
-modified: 20250322163130561
+modified: 20250324015833452
 modifier: poc2go
 tags: Projects hello-nodered
 title: hello-nodered

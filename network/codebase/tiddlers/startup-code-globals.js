@@ -12,21 +12,20 @@ const cpy = (obj) => JSON.parse(JSON.stringify(obj));
 const sid = (socket) => socket.id.split('-').pop();
 const uid = () => crypto.randomUUID().split('-').pop();
 
-const get$twCodebase = $ss.find(settings => settings.name === 'codebase').$tw;
+// Hack of Node-Red utilLog()
+const tStamp = function (msg) {
+	// const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	const d = new Date();
+	const time = [
+		d.getHours().toString().padStart(2, '0'),
+		d.getMinutes().toString().padStart(2, '0'),
+		d.getSeconds().toString().padStart(2, '0')
+	].join(':');
+//	return `${d.getDate()} ${months[d.getMonth()]} ${time} `;
+	return `${time} `;
+}
 
-// $ss is shorthand for 'serverSettings'
-const get$wikiNames = $ss.
-	filter(settings => settings.excludeLinks === false).
-	map(settings => settings.name);
-
-const get$settings = (name) => $ss.find(settings => settings.name === name) ?? {};
-const get$tw = (name) => get$settings(name).$tw;
-const get$proxy = (name) => get$settings(name).proxy ?? {};
-const get$server = (name) => get$proxy(name).server ?? {};
-const get$router = (name) => get$server(name).router ?? {};
-const get$pocketio = (name) => get$server(name).pocketio ?? {};
-
-const tStamp = () => {
+const ttStamp = () => {
 	return ((new Date()).toLocaleDateString(undefined, {
 		hourCycle: 'h23',
 		year: 'numeric', month: '2-digit', day: '2-digit',

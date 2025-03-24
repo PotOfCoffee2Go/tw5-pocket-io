@@ -5,7 +5,19 @@ exports.config = {
 	// Project's NPM package
 	pkg: require('./package.json'),
 
-	// Startup webservers for all 'server' edition wikis in this diectory
+	// The domain is used to create URLs, access wikis, and
+	//  other tw5-node-red resourcess
+	// On most OS's 'hostname' is used for local network access
+	// If issues arise using the hostname
+	//  set the domain to the DNS domain or IP address of this computer
+	//  ex: '192.168.1.8' is IP of this computer on my network
+	//   yours will be different - finding it varies between OS's
+	domain: os.hostname(), // local network name of this computer
+
+	// 'server' edition database wikis
+	wikidbsDir: './network/db',
+
+	// 'server' edition webservers user wikis
 	wikisDir: './wikis',
 	// Wiki in wikisDir that will be listed first - it must exist
 	defaultWiki: 'Home',
@@ -15,72 +27,67 @@ exports.config = {
 	//  console prompt (or type) 'const $nr = new $NodeRed'
 	autoStartNodeRed: true,
 
-	// Force tw5-node-red  './network/codebase' wiki to be accessable
-	//  only from browsers running on localhost
-	// Overrides other configuration settings for codebase wiki
-	hideCodebase: true,
-
-	// Express proxies to each webserver
-	// Proxies are normally accessable to network (0.0.0.0)
-	// The domain is used to create URLs (links) for users to access
-	//  other wikis on the network
-	// Change domain to the DNS domain (or IP address) of this computer
-	//   and host to 0.0.0.0 so devices on network have access.
-	// Proxies are starting on port 'basePort' and increment by one
-	//   to access each webserver (see 'webserver:' below)
-	proxy: {
-//		domain: 'localhost',
-//		host: '127.0.0.1',
-		domain: 'raspberrypi',
-		host: '0.0.0.0',
-		basePort: 3000,
-	},
+	// Hide codebase wiki from being displayed as a normal 'user' wiki
+	//  if true will also only be accessable from localhost
+	hideCodebase: false,
 
 	// Webservers are launched for each 'server' edition wiki in 'wikisDir:'
 	// Should normally be served on localhost (127.0.0.1) as access is
-	//  performed thru the proxies (see 'proxy:' above)
+	//  performed thru the proxies (see 'proxy:' below)
 	// Starting on port basePort and increments by one for each webserver
 	webserver: {
-		host: '127.0.0.1',
+		host: '127.0.0.1', // this computer has sole access
+//		host: '0.0.0.0',   // other network devices have access
 		basePort: 8090
 	},
 
 	// WebServer parameters
 	//  see 'https://tiddlywiki.com/static/WebServer%2520Parameters.html`
-	// 'default' is applied to all wikis
+	// 'default' is applied to all webservers
 	//  See 'credentials' below for assigning Webserver credentials
 	parameters: {
 		default: ['debug-level=none'],
 	},
 
+	// Express proxies to each webserver
+	// Proxies are normally accessable to network (0.0.0.0)
+	// Proxies are starting on port 'basePort' and increment by one
+	//   to access each webserver (see 'webserver:' above)
+	proxy: {
+//		host: '127.0.0.1', // this computer has sole access
+		host: '0.0.0.0',   // other network devices have access
+		basePort: 3000,
+	},
+
 	// Node-Red setttings
-	//   Uses the default settings as much as possible
+	//   Uses the default settings in Userdir settings.js file
 	// Make changes in the Node-Red settings.js file as usual
 	// The properties below will override settings in Node-Red settings.js
 	nodered: {
-		// Can override flow editor default host & port
+		// Override flow editor default host & port
 		// uiHost: 127.0.0.1,
 		// uiPort: 1880,
+
+		// Node-Red user directory
+		//  which contains the node-red 'settings.js' file
+		// '/.node-red' is default for Node-Red
+		userDir: os.homedir() + '/.node-red',
+
+		// Node-Red flowFile
+		flowFile: path.resolve('./red/flows/tiddlywiki.json'),
 
 		// URL path to Node-Red flow editor and http nodes
 		httpAdminRoot: '/red',
 		httpNodeRoot:  '/api',
 
-		// Node-Red flowFile
-		flowFile: path.resolve('./red/flows/tiddlywiki.json'),
-
-		// Point to Node-Red default user directory
-		//  which contains the node-red 'settings.js' file
-		userDir: os.homedir() + '/.node-red',
-
+		// Note:
 		// To run a unique Node-Red user for tw5-node-red
-		// An unused Node-Red user directory has been
-		//  created in the './red' subdirectory
-		//  (ie: 'node-red -u ./red' from project directory)
+		// A fresh Node-Red user directory has already been
+		//  created in the './red' tw5-node-red subdirectory
+		//  (ie: did a 'node-red -u ./red' from project directory)
 		// Make desired Node-Red setting changes in './red/settings.js'
 		// Comment out the default 'userDir' above
 		// Uncomment the 'userDir' below
-		// 'npm start' will run with a fresh Node-Red user
 
 		// userDir: path.resolve('./red'),
 	},
