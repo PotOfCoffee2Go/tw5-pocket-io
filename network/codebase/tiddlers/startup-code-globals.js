@@ -1,4 +1,4 @@
-// These are all assigned to REPL global context
+// These are all assigned to REPL context
 
 // External packages
 // Minify code
@@ -8,12 +8,12 @@ const UglifyJS = require('uglify-js');
 // Copy a JS object
 // Get last 12 digits of socket ID
 // Generate a random id
-const cpy = (obj) => JSON.parse(JSON.stringify(obj));
-const sid = (socket) => socket.id.split('-').pop();
-const uid = () => crypto.randomUUID().split('-').pop();
+$rt.context.cpy = (obj) => JSON.parse(JSON.stringify(obj));
+$rt.context.sid = (socket) => socket.id.split('-').pop();
+$rt.context.uid = () => crypto.randomUUID().split('-').pop();
 
 // Hack of Node-Red utilLog()
-const tStamp = function (msg) {
+$rt.context.tStamp = function (msg) {
 	// const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	const d = new Date();
 	const time = [
@@ -25,7 +25,7 @@ const tStamp = function (msg) {
 	return `${time} `;
 }
 
-const ttStamp = () => {
+$rt.context.ttStamp = () => {
 	return ((new Date()).toLocaleDateString(undefined, {
 		hourCycle: 'h23',
 		year: 'numeric', month: '2-digit', day: '2-digit',

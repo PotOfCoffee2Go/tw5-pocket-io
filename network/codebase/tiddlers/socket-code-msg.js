@@ -17,7 +17,6 @@ $tpi.fn.io.msg = function msg(socket, msg) {
 			node.status({fill: 'green', shape: 'dot',
 				text: `Wiki:  ${msg.req.wikiName} Topic: ${msg.req.topic}`});
 		})
-		//		$nrInMsg.enQueue();
 		return;
 	}
 

@@ -128,12 +128,15 @@ function tStamp() {
 
 // Update network status
 function setNetstat(txt) {
-	var site = `${location.protocol}//${location.hostname}:${location.port}`;
 	var username = $tw.wiki.getTiddlerText('$:/status/UserName');
+	var site = `${location.protocol}//${location.hostname}:${location.port}`;
+	var nodered = `${location.protocol}//${location.hostname}:1880/red`;
 	$tw.wiki.setText('$:/temp/pocket-io/proxy','text', null, site);
+	$tw.wiki.setText('$:/temp/pocket-io/nodered','text', null, nodered);
 	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null,
 		`Wiki: {{$:/temp/pocket-io/wikinames}} ${username ? ' - User: ' : ''} [[${username}]]<br>` +
-		`{{$:/temp/pocket-io/wikinames!!link}}<br>` +
+		`&nbsp;&nbsp;at {{$:/temp/pocket-io/wikinames!!link}}<br>` +
+		`[ext[Node-Red Flow Editor|${nodered}]]<br>` +
 		txt
 	);
 }

@@ -18,13 +18,7 @@ const $NodeRed = function () {
 	// Our functions to Node-Red global context
 	//  see [[startup-code-globals]]
 	var globalFunctions = {
-		$nrMsgNodes, $nrInMsg,
-		$rt, $rw, $nrParser,
-		$sockets, $refreshClients, $broadcastClients,	
-		get$settings, get$wikiNames, get$twCodebase,
-		get$db, qry$db, ins$db,
-		get$tw, qry$tw,	ins$tw,
-		get$proxy, get$server, get$router, get$pocketio,
+		$rt, $repl: $rt.context, $nrMsgNodes,
 	}
 	this.nodered.functionGlobalContext = Object.assign(
 		{},	this.nodered.functionGlobalContext, globalFunctions
@@ -43,10 +37,10 @@ const $NodeRed = function () {
 
 	// Overload Node-Red logger to display with color (no date/time)
 	//  during the Node-Red startup
-	this.RED.log.info = (t) => log(hue(t, 111)); 
+	this.RED.log.info = (t) => log(hue(t, 111));
 	this.RED.log.warn = (t) => log(hue(t, 129));
 	// Errors always red with date/time
-	this.RED.log.error = (t) => tog(t, 9); 
+	this.RED.log.error = (t) => tog(t, 9);
 	const prevPrompt = $rt.getPrompt();
 	$rt.setPrompt('');
 
@@ -58,11 +52,11 @@ const $NodeRed = function () {
 				// End the startup and log info/warning with color
 				//  and date/time from now on
 				hog(`\n===================`, 111);
-				this.RED.log.info = (t) => tog(t, 111); 
-				this.RED.log.warn = (t) => tog(t, 129); 
+				this.RED.log.info = (t) => tog(t, 111);
+				this.RED.log.warn = (t) => tog(t, 129);
 				$rt.setPrompt(prevPrompt);
 				}, 1000) // adjust timer as needed
 		})
-	
+
 	return this;
 };

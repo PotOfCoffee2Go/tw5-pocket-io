@@ -77,8 +77,8 @@ function autoLoadCodeToRepl() {
 	hog('REPL startup', 156);
 	hog(`Loading minified code tiddlers from wikis to REPL:`, 156);
 	var { totalTiddlers, totalBytes, haveErrors } = replGetCodeFromWikis($rt, serverSettings);
-	hog(`Total of ${totalTiddlers} code tiddlers loaded - ${(totalBytes/1024).toFixed(3)}K bytes.`, 129);
-	hog(`Loading server code complete${haveErrors ? ' - with errors.' : '.'}`, haveErrors ? 9 : 156)
+	hog(`Total of ${totalTiddlers} code tiddlers loaded - ${(totalBytes/1024).toFixed(3)}K bytes.`, 43);
+	hog(`Loading server code complete${haveErrors ? ' - with errors' : ''}`, haveErrors ? 9 : 156)
 	hog(`REPL startup complete\n`, 156);
 
 	$rt.history = prevHistory;
@@ -101,7 +101,7 @@ function proxyListen(idx) {
 		const name = serverSettings[idx].name;
 		const { server, domain, port, host, targetUrl } = serverSettings[idx].proxy;
 		server.http.listen(port, host, () => {
-			log(hue(`Proxy to webserver `,185) + `'${name}'` +
+			log(hue(` Proxy to webserver `,185) + `'${name}'` +
 				hue(` serving on `,185) + `http://${domain}:${port}`);
 			resolve();
 		})
@@ -132,7 +132,6 @@ function replMOTD() {
 hog(`${config.pkg.name} - v${config.pkg.version}`,40);
 hog(`Settings summary from ./config.js:`,40);
 console.dir({
-	domain: config.domain,
 	wikidbsDir: config.wikidbsDir,
 	wikisDir: config.wikisDir,
 	webserver: config.webserver,
@@ -153,8 +152,8 @@ hog(`Database wikis startup complete\n`, 156);
 // Start up the TiddlyWiki Webservers and boot the REPL
 //  Once REPL $tw booted, load the code tiddlers from the wikis
 //  then fire up the proxy servers
-hog(`Webserver wikis starting at port: ${config.webserver.basePort} :`, 156);
-hog(serverSettings.map(settings => settings.name).join(' ') + '\n', 40);
+hog(`Webserver wikis starting at port: ${config.webserver.basePort}`, 156);
+hog(' ' + serverSettings.map(settings => settings.name).join(' ') + '\n', 40);
 
 // Create code to startup everything in REPL context
 var nestWebservers = '';

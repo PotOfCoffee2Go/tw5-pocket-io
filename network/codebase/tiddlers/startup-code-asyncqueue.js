@@ -27,7 +27,7 @@ q.enQueue({a: 'object'});
 function $AsyncQueue() {
 	this.queue = [];
 	this.request = null;
-	
+
 	this.awaitQueue = () => {
 		return new Promise((resolve) => {
 			var msg = this.queue.shift();
@@ -42,5 +42,3 @@ function $AsyncQueue() {
 		else { this.queue.push(msg); }
 	}
 }
-
-const $nrInMsg = new $AsyncQueue;

@@ -24,6 +24,14 @@
         "env": []
     },
     {
+        "id": "966a05f4e1b8dcf0",
+        "type": "tab",
+        "label": "TPI Projects",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "8adf8de645b60e16",
         "type": "subflow",
         "name": "TW client in",
@@ -509,7 +517,7 @@
         "z": "83b81066588d5f7b",
         "g": "392b55f1513f4105",
         "name": "To TW Webserver",
-        "func": "const $sockets = global.get('$sockets');\nconst $refreshClients = global.get('$refreshClients');\n\nmsg.payload = global.get('$nrParser')(msg.payload);\n\n// Send to a specific client\nif (msg.wiki && msg.wiki.req.socketId) {\n\tmsg.payload.forEach(tiddler => {\n\t\tif (tiddler.ioToStory !== undefined) {\n\t\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\t\tdelete tiddler.ioToStory;\n\t\t}\n\t\tmsg.wiki.resultTiddlers.push(tiddler);\n\t})\n   $sockets[msg.wiki.req.socketId].socket.emit('msg', msg.wiki);\n}\n// Refresh any client connect to this wiki\n$refreshClients(msg.wikiname);\n\nreturn;\n",
+        "func": "const repl = global.get('$repl'); // REPL context\n\nmsg.payload = repl.$nrParser(msg.payload);\n\n// Send to a specific client\nif (msg.wiki && msg.wiki.req.socketId) {\n\tmsg.payload.forEach(tiddler => {\n\t\tif (tiddler.ioToStory !== undefined) {\n\t\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\t\tdelete tiddler.ioToStory;\n\t\t}\n\t\tmsg.wiki.resultTiddlers.push(tiddler);\n\t})\n   repl.$sockets[msg.wiki.req.socketId].socket.emit('msg', msg.wiki);\n}\n// Refresh any client connect to this wiki\nrepl.$refreshClients(msg.wikiname);\n\nreturn;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -804,7 +812,7 @@
         "name": ".tid formatted",
         "field": "payload",
         "fieldType": "msg",
-        "format": "json",
+        "format": "handlebars",
         "syntax": "mustache",
         "template": "\ntitle: I'm a tid formatted tiddler\ntags: node-red1\n\nThis is the text - {{wiki.req.wikiName}} of the tiddler\n+===+\n\ntags: node-red1\ntitle: another tiddler\n\nthis is another one - the +===+ line breaks\ninput into to tiddlers\n+===+\n\n",
         "output": "str",
@@ -1688,6 +1696,123 @@
             ],
             [
                 "374c4a2636af5b4e"
+            ]
+        ]
+    },
+    {
+        "id": "66ce86cab171196a",
+        "type": "subflow:8adf8de645b60e16",
+        "z": "966a05f4e1b8dcf0",
+        "name": "",
+        "x": 135,
+        "y": 120,
+        "wires": [
+            [
+                "6ce0b98cad9e43b2"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "c4720ca803554503",
+        "type": "subflow:83b81066588d5f7b",
+        "z": "966a05f4e1b8dcf0",
+        "name": "",
+        "x": 665,
+        "y": 80,
+        "wires": [
+            []
+        ],
+        "l": false
+    },
+    {
+        "id": "6ce0b98cad9e43b2",
+        "type": "switch",
+        "z": "966a05f4e1b8dcf0",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "new category",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "39971eafdfbcc28f"
+            ]
+        ]
+    },
+    {
+        "id": "39971eafdfbcc28f",
+        "type": "function",
+        "z": "966a05f4e1b8dcf0",
+        "name": "function 1",
+        "func": "const repl = global.get('$rt').context;\n\nmsg.context = repl.see$me();\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 80,
+        "wires": [
+            [
+                "1a84981a9915de90"
+            ]
+        ]
+    },
+    {
+        "id": "1a84981a9915de90",
+        "type": "debug",
+        "z": "966a05f4e1b8dcf0",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "a61d9ee1c2d18141",
+        "type": "inject",
+        "z": "966a05f4e1b8dcf0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 40,
+        "wires": [
+            [
+                "39971eafdfbcc28f"
             ]
         ]
     }
