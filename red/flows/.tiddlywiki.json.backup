@@ -16,14 +16,6 @@
         "env": []
     },
     {
-        "id": "e829a08d6353d3e6",
-        "type": "tab",
-        "label": "Credential",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "966a05f4e1b8dcf0",
         "type": "tab",
         "label": "TPI Projects",
@@ -517,7 +509,7 @@
         "z": "83b81066588d5f7b",
         "g": "392b55f1513f4105",
         "name": "To TW Webserver",
-        "func": "const repl = global.get('$repl'); // REPL context\n\nmsg.payload = repl.$nrParser(msg.payload);\n\n// Send to a specific client\nif (msg.wiki && msg.wiki.req.socketId) {\n\tmsg.payload.forEach(tiddler => {\n\t\tif (tiddler.ioToStory !== undefined) {\n\t\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\t\tdelete tiddler.ioToStory;\n\t\t}\n\t\tmsg.wiki.resultTiddlers.push(tiddler);\n\t})\n   repl.$sockets[msg.wiki.req.socketId].socket.emit('msg', msg.wiki);\n}\n// Refresh any client connect to this wiki\nrepl.$refreshClients(msg.wikiname);\n\nreturn;\n",
+        "func": "const repl = global.get('repl'); // REPL context\n\nmsg.payload = repl.$nrParser(msg.payload);\n\n// Send to a specific client\nif (msg.wiki && msg.wiki.req.socketId) {\n\tmsg.payload.forEach(tiddler => {\n\t\tif (tiddler.ioToStory !== undefined) {\n\t\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\t\tdelete tiddler.ioToStory;\n\t\t}\n\t\tmsg.wiki.resultTiddlers.push(tiddler);\n\t})\n   repl.$sockets[msg.wiki.req.socketId].socket.emit('msg', msg.wiki);\n}\n// Refresh any client connect to this wiki\nrepl.$refreshClients(msg.wikiname);\n\nreturn;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -535,7 +527,7 @@
         "type": "function",
         "z": "0d3535cb27027846",
         "name": "Parse JSON or .tid tiddlers in msg.payload  \\n into javascript array of tiddler objects",
-        "func": "\n// msg.payload transformed into a JavaScript array of tiddler field objects\n//  then appended the tiddlers to be sent back to webserver client\nconst $nrParser = global.get('$repl').$nrParser;\nmsg.payload = $nrParser(msg.payload);\n\nnode.status(`${msg.payload.length} tiddlers parsed`);\nreturn msg;\n",
+        "func": "\n// msg.payload transformed into a JavaScript array of tiddler field objects\n//  then appended the tiddlers to be sent back to webserver client\nconst repl = global.get('repl');\n\nmsg.payload = repl.$nrParser(msg.payload);\n\nnode.status(`${msg.payload.length} tiddlers parsed`);\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -595,7 +587,7 @@
         "type": "function",
         "z": "489223c003015b3f",
         "name": "write tiddlers \\n to wiki",
-        "func": "const $tw = global.get('get$tw')(msg.wikiname);\nmsg.payload = global.get('$nrParser')(msg.payload);\n\nmsg.payload.forEach(tid => {\n\t// copy so not delete ioToStory on the original\n\tvar tiddler = Object.assign({},tid); \n\tif (tiddler.ioToStory !== undefined) {\n\t\tdelete tiddler.ioToStory;\n\t}\n\t$tw.wiki.addTiddler(new $tw.Tiddler(\n\t\t$tw.wiki.getCreationFields(),\n\t\ttiddler,\n\t\t$tw.wiki.getModificationFields(),\n\t))\n})\nglobal.get('$refreshClients')(msg.wikiname);\nnode.status(`${msg.payload.length} tiddlers written`);\nreturn msg;",
+        "func": "const $repl = global.get('$repl');\n\nmsg.payload = $repl.$nrParser(msg.payload);\n\nmsg.payload.forEach(tid => {\n\t// copy so not delete ioToStory on the original\n\tvar tiddler = Object.assign({},tid); \n\tif (tiddler.ioToStory !== undefined) {\n\t\tdelete tiddler.ioToStory;\n\t}\n\n\t$repl.ins$tw(msg.wikiname, tiddler);\n})\n\n$repl.$refreshClients(msg.wikiname);\n\nnode.status(`${msg.payload.length} tiddlers written`);\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -625,7 +617,7 @@
         "type": "function",
         "z": "1d5b93e906f67840",
         "name": "Broadcast to TW Webservers",
-        "func": "const $broadcastClients = global.get('$repl').$broadcastClients;\nconst $nrParser = global.get('$repl').$nrParser;\n\nmsg.payload = $nrParser(msg.payload);\n// Required wiki fields\nmsg.wiki = {req:{sender:''},riverTitles:[],resultTiddlers:[]};\n\nmsg.payload.forEach(tid => {\n\tvar tiddler = Object.assign({}, tid);\n\tif (tiddler.ioToStory !== undefined) {\n\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\tdelete tiddler.ioToStory;\n\t}\n\tmsg.wiki.resultTiddlers.push(tiddler);\n})\n// Refresh any client connect to this wiki\n$broadcastClients(msg.wikiname, msg.wiki);\n\nreturn msg;\n",
+        "func": "const repl = global.get('repl');\n\nmsg.payload = repl.$nrParser(msg.payload);\n// Required wiki fields\nmsg.wiki = {req:{sender:''},riverTitles:[],resultTiddlers:[]};\n\nmsg.payload.forEach(tid => {\n\tvar tiddler = Object.assign({}, tid);\n\tif (tiddler.ioToStory !== undefined) {\n\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\tdelete tiddler.ioToStory;\n\t}\n\tmsg.wiki.resultTiddlers.push(tiddler);\n})\n// Refresh any client connect to this wiki\nrepl.$broadcastClients(msg.wikiname, msg.wiki);\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -974,128 +966,6 @@
         "l": false
     },
     {
-        "id": "37ee764215ea2cd1",
-        "type": "debug",
-        "z": "5b24d6e63acf9047",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 420,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "9be58c4381efebe8",
-        "type": "inject",
-        "z": "5b24d6e63acf9047",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "this is a test",
-        "payloadType": "str",
-        "x": 110,
-        "y": 100,
-        "wires": [
-            [
-                "bc5f4a5de6bd1455"
-            ]
-        ]
-    },
-    {
-        "id": "bc5f4a5de6bd1455",
-        "type": "function",
-        "z": "5b24d6e63acf9047",
-        "name": "Global",
-        "func": "const $tw = global.get('get$tw')('twtalk');\n\nmsg.tiddlers = JSON.parse($tw.wiki.getTiddlersAsJson('[[docs-docs-talk-writeup]]'));\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 270,
-        "y": 100,
-        "wires": [
-            [
-                "37ee764215ea2cd1"
-            ]
-        ]
-    },
-    {
-        "id": "080a6cf49bbd8f0f",
-        "type": "debug",
-        "z": "5b24d6e63acf9047",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 460,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "6d337caf73bc932b",
-        "type": "inject",
-        "z": "5b24d6e63acf9047",
-        "name": "Wiki add tiddler",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 100,
-        "y": 160,
-        "wires": [
-            [
-                "6ed2eb4283386c9c"
-            ]
-        ]
-    },
-    {
-        "id": "6ed2eb4283386c9c",
-        "type": "function",
-        "z": "5b24d6e63acf9047",
-        "name": "Add tiddler to wiki",
-        "func": "const $tw = global.get('get$tw')('twtalk');\nconst $refreshClients = global.get('$refreshClients');\n\n$tw.wiki.addTiddler(new $tw.Tiddler({\n    title: 'docs-docs-nodered',\n    text: 'the coolest quality and support of the TiddlyWiki code base is well established; and the community has a long exciting history, is engaged, with no fear of evaporating anytime soon. Is a BIG plus when a company decides',\n    tags: '$:/pocket-io/docs/docs docs',\n    caption: 'node-red loopback test',\n}))\n\n$refreshClients('twtalk');\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 290,
-        "y": 160,
-        "wires": [
-            [
-                "080a6cf49bbd8f0f"
-            ]
-        ]
-    },
-    {
         "id": "014708f6c0e76350",
         "type": "debug",
         "z": "5b24d6e63acf9047",
@@ -1108,103 +978,9 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 520,
-        "y": 220,
+        "x": 560,
+        "y": 80,
         "wires": []
-    },
-    {
-        "id": "0f2acf4fdfb28076",
-        "type": "inject",
-        "z": "5b24d6e63acf9047",
-        "name": "Change 'twtalk' subtitle",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 140,
-        "y": 220,
-        "wires": [
-            [
-                "8c024d2e9a985f38"
-            ]
-        ]
-    },
-    {
-        "id": "8c024d2e9a985f38",
-        "type": "function",
-        "z": "5b24d6e63acf9047",
-        "name": "twtalk subtitle",
-        "func": "const $tw = global.get('get$tw')('twtalk');\nconst $refreshClients = global.get('$refreshClients');\n\n$tw.wiki.addTiddler(new $tw.Tiddler({\n    title: '$:/SiteSubtitle',\n    text: 'TwTalk drafts',\n}))\n\n$refreshClients('twtalk');\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 340,
-        "y": 220,
-        "wires": [
-            [
-                "014708f6c0e76350"
-            ]
-        ]
-    },
-    {
-        "id": "fede01e136358d42",
-        "type": "subflow:295b59907f0d97d2",
-        "z": "5b24d6e63acf9047",
-        "name": "",
-        "env": [
-            {
-                "name": "tw_wikiname",
-                "value": "Home",
-                "type": "str"
-            },
-            {
-                "name": "tw_filter",
-                "value": "[[Pocket-io System]]",
-                "type": "str"
-            }
-        ],
-        "x": 340,
-        "y": 280,
-        "wires": [
-            [
-                "014708f6c0e76350"
-            ]
-        ]
-    },
-    {
-        "id": "365e02efd3817279",
-        "type": "inject",
-        "z": "5b24d6e63acf9047",
-        "name": "codebase package",
-        "props": [
-            {
-                "p": "wikiname",
-                "v": "codebase",
-                "vt": "str"
-            },
-            {
-                "p": "twfilter",
-                "v": "[prefix[package]]",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 150,
-        "y": 280,
-        "wires": [
-            [
-                "fede01e136358d42"
-            ]
-        ]
     },
     {
         "id": "25f77ae45a3b5723",
@@ -1212,7 +988,7 @@
         "z": "5b24d6e63acf9047",
         "name": "",
         "x": 35,
-        "y": 460,
+        "y": 200,
         "wires": [
             [
                 "8b17abc06620f4dd"
@@ -1225,11 +1001,12 @@
         "type": "subflow:83b81066588d5f7b",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 620,
-        "y": 460,
+        "x": 395,
+        "y": 200,
         "wires": [
             []
-        ]
+        ],
+        "l": false
     },
     {
         "id": "1732ef7f92556ce7",
@@ -1243,10 +1020,10 @@
         "template": "{\n    \"title\": \"test it 2\",\n    \"text\": \"some test!!!\"\n}",
         "output": "str",
         "x": 300,
-        "y": 460,
+        "y": 200,
         "wires": [
             [
-                "db199c9b4d6dfaf8"
+                "e09f2f8c27050cf3"
             ]
         ]
     },
@@ -1268,23 +1045,10 @@
         "repair": false,
         "outputs": 1,
         "x": 150,
-        "y": 460,
+        "y": 200,
         "wires": [
             [
                 "1732ef7f92556ce7"
-            ]
-        ]
-    },
-    {
-        "id": "db199c9b4d6dfaf8",
-        "type": "subflow:0d3535cb27027846",
-        "z": "5b24d6e63acf9047",
-        "name": "wiki parser",
-        "x": 450,
-        "y": 460,
-        "wires": [
-            [
-                "e09f2f8c27050cf3"
             ]
         ]
     },
@@ -1304,8 +1068,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 270,
-        "y": 360,
+        "x": 250,
+        "y": 80,
         "wires": [
             [
                 "69919df3eb58b68d"
@@ -1333,8 +1097,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 120,
-        "y": 360,
+        "x": 100,
+        "y": 80,
         "wires": [
             [
                 "e59a16e005eba7dd"
@@ -1366,7 +1130,7 @@
         "type": "function",
         "z": "5b24d6e63acf9047",
         "name": "Display REPL prompt after deploy",
-        "func": "global.get('$rt').displayPrompt();\nreturn msg;",
+        "func": "global.get('repl').$rt.displayPrompt();\nreturn msg;",
         "outputs": 0,
         "timeout": 0,
         "noerr": 0,
@@ -1382,8 +1146,8 @@
         "type": "subflow:0d3535cb27027846",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 430,
-        "y": 360,
+        "x": 410,
+        "y": 80,
         "wires": [
             [
                 "014708f6c0e76350"
@@ -1401,8 +1165,8 @@
         "syntax": "mustache",
         "template": "title: Broadcast\nioToStory: yes\n\nsome test great broadcast test\n",
         "output": "str",
-        "x": 820,
-        "y": 260,
+        "x": 280,
+        "y": 140,
         "wires": [
             [
                 "65e1ed3d1027e6b8"
@@ -1426,8 +1190,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 660,
-        "y": 260,
+        "x": 120,
+        "y": 140,
         "wires": [
             [
                 "d2a0bb33e100a072"
@@ -1435,23 +1199,12 @@
         ]
     },
     {
-        "id": "ca65f74f6b69985a",
-        "type": "subflow:489223c003015b3f",
-        "z": "5b24d6e63acf9047",
-        "name": "",
-        "x": 960,
-        "y": 200,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "7de5076334dee376",
         "type": "subflow:8adf8de645b60e16",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 65,
-        "y": 560,
+        "x": 44,
+        "y": 260,
         "wires": [
             [
                 "76b07d638e1110c9"
@@ -1464,11 +1217,12 @@
         "type": "subflow:83b81066588d5f7b",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 430,
-        "y": 560,
+        "x": 374,
+        "y": 260,
         "wires": [
             []
-        ]
+        ],
+        "l": false
     },
     {
         "id": "a993d29142a7f5c7",
@@ -1481,8 +1235,8 @@
         "syntax": "mustache",
         "template": "title: Hi demo 2.2\n\nthis is some test tooooo!!!",
         "output": "str",
-        "x": 280,
-        "y": 560,
+        "x": 279,
+        "y": 260,
         "wires": [
             [
                 "b6ed653b058dab34"
@@ -1506,8 +1260,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 141,
-        "y": 560,
+        "x": 140,
+        "y": 260,
         "wires": [
             [
                 "a993d29142a7f5c7"
@@ -1519,184 +1273,21 @@
         "type": "subflow:1d5b93e906f67840",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 980,
-        "y": 260,
+        "x": 440,
+        "y": 140,
         "wires": [
             []
         ]
     },
     {
-        "id": "9d8bad643f85dc56",
-        "type": "function",
-        "z": "e829a08d6353d3e6",
-        "name": "hash",
-        "func": "var users = global.get('users');\nif (!users) {\n  users = {};\n  global.set('users', users)\n}\n\n// add new user\nlet username = msg.username;\nlet password = msg.password;\n\nusername = username.replace(/[!@#$%^&*]/g, '');\n\nif (!username || !password) {\n  node.warn('missing username or password');\n}\n\nconst salt = crypto.randomBytes(128).toString('base64');\nconst hash = crypto.pbkdf2Sync(password, salt, 10000, 512, 'sha512');\n\nusers[username] = { salt, hash };\n\nmsg.payload = users;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "crypto",
-                "module": "crypto"
-            }
-        ],
-        "x": 370,
-        "y": 1240,
-        "wires": [
-            [
-                "21ada4d82a5221c3"
-            ]
-        ]
-    },
-    {
-        "id": "374c4a2636af5b4e",
-        "type": "function",
-        "z": "e829a08d6353d3e6",
-        "name": "verify",
-        "func": "// validating user authentication attempts\nvar users = global.get('users');\nif (!users) {\n  users = {};\n  global.set('users', users)\n}\n\nfunction unknown() {\n  msg.auth = 'unknown user'\n  return msg;\n}\n\nfunction valid() {\n  msg.auth = 'valid user'\n  return msg;\n}\n\nfunction invalid() {\n  msg.auth = 'invalid user'\n  return msg;\n}\n\nlet username = msg.username;\nlet password = msg.password;\n\nusername = username.replace(/[!@#$%^&*]/g, '');\n\nif (!username || !password || !users[username]) {\n  return unknown();\n}\n\nconst { salt, hash } = users[username];\nconst encryptHash = crypto.pbkdf2Sync(password, salt, 10000, 512, 'sha512');\n\nif (crypto.timingSafeEqual(hash, encryptHash)) {\n  return valid()\n}\n\nreturn invalid();\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "crypto",
-                "module": "crypto"
-            }
-        ],
-        "x": 370,
-        "y": 1280,
-        "wires": [
-            [
-                "21ada4d82a5221c3"
-            ]
-        ]
-    },
-    {
-        "id": "4d2255a865fe5873",
-        "type": "inject",
-        "z": "e829a08d6353d3e6",
-        "name": "",
-        "props": [
-            {
-                "p": "username",
-                "v": "poopy",
-                "vt": "str"
-            },
-            {
-                "p": "password",
-                "v": "likely",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 210,
-        "y": 1180,
-        "wires": [
-            [
-                "9d8bad643f85dc56"
-            ]
-        ]
-    },
-    {
-        "id": "21ada4d82a5221c3",
-        "type": "debug",
-        "z": "e829a08d6353d3e6",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 520,
-        "y": 1260,
-        "wires": []
-    },
-    {
-        "id": "68054694bb630a08",
-        "type": "inject",
-        "z": "e829a08d6353d3e6",
-        "name": "",
-        "props": [
-            {
-                "p": "username",
-                "v": "poopy",
-                "vt": "str"
-            },
-            {
-                "p": "password",
-                "v": "likelyd",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 190,
-        "y": 1340,
-        "wires": [
-            [
-                "374c4a2636af5b4e"
-            ]
-        ]
-    },
-    {
-        "id": "406774a0ea9b9778",
+        "id": "604c5fcbd5a58e89",
         "type": "subflow:8adf8de645b60e16",
-        "z": "e829a08d6353d3e6",
+        "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 35,
-        "y": 1260,
+        "x": 90,
+        "y": 320,
         "wires": [
-            [
-                "1b975e8d4a0bb521"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "1b975e8d4a0bb521",
-        "type": "switch",
-        "z": "e829a08d6353d3e6",
-        "name": "register \\n authenticate",
-        "property": "topic",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "register user",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "auth user",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 210,
-        "y": 1260,
-        "wires": [
-            [
-                "9d8bad643f85dc56"
-            ],
-            [
-                "374c4a2636af5b4e"
-            ]
+            []
         ]
     },
     {
