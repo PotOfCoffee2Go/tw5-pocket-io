@@ -10,7 +10,7 @@ $tpi.topic.projectCreate = function (socket, msg) {
 	var $tw = get$tw(dstWikiName); // destination wiki
 
 	if (!dstWikiName) {
-		errorMsg = `Error: Wiki name is required`;		
+		errorMsg = `Error: Wiki name is required`;
 	}
 	else if (!project) {
 		errorMsg = `Error: Project name is required`;
@@ -36,11 +36,11 @@ $tpi.topic.projectCreate = function (socket, msg) {
 
 	// Get the project template and replace occurances of $$$project$$
 	//  with the project name
-	var json = get$twCodebase.wiki.getTiddlersAsJson('[[$$$project$$$]]');
+	var json = $twCodebase.wiki.getTiddlersAsJson('[[$$$project$$$]]');
 	var text = json.replace(/\$\$\$project\$\$\$/g, project);
 	var tiddlers = $tw.wiki.deserializeTiddlers(null,text,
 		{title: 'unused'}, {deserializer: 'application/json'});
-	
+
 	// Add the project tiddler to the destination wiki
 	var tiddler = tiddlers[0];
 	$tw.wiki.addTiddler(new $tw.Tiddler(

@@ -18,7 +18,8 @@ const $NodeRed = function () {
 	// Our functions to Node-Red global context
 	//  see [[startup-code-globals]]
 	var globalFunctions = {
-		$rt, $repl: $rt.context, $nrMsgNodes,
+		$nrMsgNodes,
+		$repl: $rt.context,
 	}
 	this.nodered.functionGlobalContext = Object.assign(
 		{},	this.nodered.functionGlobalContext, globalFunctions

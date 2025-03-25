@@ -2,6 +2,7 @@
 //  into REPL, and startup proxies
 
 "use strict";
+const os = require('node:os');
 
 // Helpers
 const log = (...args) => {console.log(...args);}
@@ -42,7 +43,7 @@ function replContext() {
 	$rt.context.$tpi = { fn: { io:{} }, topic: {}, repl: {} }; // tw5-pocket-io code
 	$rt.context.$tmp = {}; // object for temporary use
 
-	$rt.setPrompt(hue(config.pkg.name + ' > ',214));
+	$rt.setPrompt(hue(os.hostname + ' ' + config.pkg.name + ' > ',214));
 }
 $rt.on('reset', () => {
 	replContext();

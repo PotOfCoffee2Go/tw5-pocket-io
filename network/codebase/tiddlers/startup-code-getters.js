@@ -1,7 +1,7 @@
-$rt.context.get$twCodebase = $ss.find(settings => settings.name === 'codebase').$tw;
+$rt.context.$twCodebase = $ss.find(settings => settings.name === 'codebase').$tw;
 
 // $ss is shorthand for 'serverSettings'
-$rt.context.get$wikiNames = $ss
+$rt.context.$wikiNames = $ss
 	.filter(settings => settings.excludeLinks === false)
 	.map(settings => settings.name);
 

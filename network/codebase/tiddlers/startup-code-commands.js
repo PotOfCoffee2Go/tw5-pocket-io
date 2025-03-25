@@ -8,7 +8,7 @@ const cmd = {
 	add: { repl: (tiddler) => $rw.wiki.addTiddler(new $rw.Tiddler(tiddler)) },
 }
 
-get$wikiNames.forEach(name => {
+$wikiNames.forEach(name => {
 	cmd.list[name] = () => get$tw(name).wiki.getTiddlers();
 	cmd.text[name] = (title) => hog(get$tw(name).wiki.getTiddlerText(title),39);
 	cmd.get[name] = (title) => cpy(get$tw(name).wiki.getTiddler(title).fields);
