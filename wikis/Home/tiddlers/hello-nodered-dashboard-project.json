@@ -2,9 +2,9 @@
     {
         "created": "20250317122049424",
         "creator": "poc2go",
-        "text": "<<details \"Project Categories\" src:\"\"\"---\n\n{{||$:/poc2go/pocket-io/project/addcategory}}\n\n---\n\"\"\">>\n\n{{||$:/poc2go/pocket-io/project/addtab}}\n\n<<closeTabsButton \"hello-nodered\" \"xxx\">>\n<<closeTabsButton \"hello-nodered\" \"tester1\">>\n<<closeTabsButton \"hello-nodered\" \"docs\">>\n<<closeTabsButton \"hello-nodered\" \"template\">>\n<<projectUploadButton>>\n<<closeTabsButton \"hello-nodered\" \"code\">>\n<<closeTabsButton \"hello-nodered\" \"flow\">>\n<<closeTabsButton \"hello-nodered\" \"info\">>\n<<closeTabsButton \"hello-nodered\" \"package\">>\n",
+        "text": "<<details \"Project Categories\" src:\"\"\"---\n\n{{||$:/poc2go/pocket-io/project/addcategory}}\n\n---\n\"\"\">>\n\n{{||$:/poc2go/pocket-io/project/addtab}}\n\n<<closeTabsButton \"hello-nodered\" \"docs\">>\n<<closeTabsButton \"hello-nodered\" \"template\">>\n<<projectUploadButton>>\n<<closeTabsButton \"hello-nodered\" \"code\">>\n<<closeTabsButton \"hello-nodered\" \"flow\">>\n<<closeTabsButton \"hello-nodered\" \"info\">>\n<<closeTabsButton \"hello-nodered\" \"package\">>\n",
         "title": "hello-nodered-dashboard-project",
-        "modified": "20250324015800897",
+        "modified": "20250325201433170",
         "modifier": "poc2go",
         "tags": "dashboard hello-nodered $:/pocket-io/hello-nodered/dashboard",
         "type": "text/vnd.tiddlywiki",

@@ -12,7 +12,7 @@ $rt.context.get$db = (name) => $db[name].$tw;
 $rt.context.qry$db = (name, filter) => JSON.parse(get$db(name).wiki.getTiddlersAsJson(filter));
 $rt.context.ins$db = (name, tiddler) => {
 	const $tw = get$db(name);
-	$tw.wiki.addTiddler($tw.Tiddler(
+	$tw.wiki.addTiddler(new $tw.Tiddler(
 		$tw.wiki.getCreationFields(),
 		tiddler,
 		$tw.wiki.getModificationFields()
@@ -24,8 +24,8 @@ $rt.context.ins$db = (name, tiddler) => {
 $rt.context.get$tw = (name) => get$settings(name).$tw;
 $rt.context.qry$tw = (name, filter) => JSON.parse(get$tw(name).wiki.getTiddlersAsJson(filter));
 $rt.context.ins$tw = (name, tiddler) => {
-	const $tw = get$db(name);
-	$tw.wiki.addTiddler($tw.Tiddler(
+	const $tw = get$tw(name);
+	$tw.wiki.addTiddler(new $tw.Tiddler(
 		$tw.wiki.getCreationFields(),
 		tiddler,
 		$tw.wiki.getModificationFields()

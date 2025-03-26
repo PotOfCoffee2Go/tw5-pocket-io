@@ -1,0 +1,17 @@
+{
+  "name": "tw5-node-red",
+  "version": "1.0.14",
+  "main": "tw5-node-red.js",
+  "node-red": {
+  	"nodes": {
+  		"pocket-io": "tw5-node-red.js"
+  	}
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["tiddlywiki", "tw5-node-red"],
+  "author": "poc2go",
+  "license": "MIT",
+  "description": "Subflow examples and icons for tw5-node-red system"
+}
