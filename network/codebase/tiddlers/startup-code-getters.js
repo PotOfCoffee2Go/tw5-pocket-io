@@ -37,3 +37,10 @@ $rt.context.get$proxy = (name) => get$settings(name).proxy ?? {};
 $rt.context.get$server = (name) => get$proxy(name).server ?? {};
 $rt.context.get$router = (name) => get$server(name).router ?? {};
 $rt.context.get$pocketio = (name) => get$server(name).pocketio ?? {};
+
+// Although the REPL handles circular references - Node-Red has
+//  some issues when accessing $rt (REPL runtime) directly due
+//  to the REPL referencing itself.
+// Currently - Node-Red only uses $rt to display the REPL prompt
+$rt.context.$displayPrompt = () => $rt.displayPrompt();
+

@@ -746,7 +746,7 @@
         "type": "function",
         "z": "295b59907f0d97d2",
         "name": "read tiddlers from wiki",
-        "func": "const repl = global.get('repl');\n\nvar wikiname = msg.wikiname || env.get('tw_wikiname');\nvar twfilter = msg.twfilter || env.get('tw_filter');\n\nif (!wikiname || !twfilter) {\n    node.error(`Need both wikiname and twfilter`);\n    node.done();\n    return;\n}\n\nconst $tw = repl.get$tw(wikiname);\nif (!$tw) {\n    node.error(`Wiki ${wikiname} is not found`);\n    node.done();\n    return;\n}\n\nmsg.payload = JSON.parse($tw.wiki.getTiddlersAsJson(twfilter));\nnode.status(`${msg.payload.length} tiddlers read`);\nreturn msg;\n",
+        "func": "const repl = global.get('repl');\n\nvar wikiname = msg.wikiname || env.get('tw_wikiname');\nvar twfilter = msg.twfilter || env.get('tw_filter');\n\nif (!wikiname || !twfilter) {\n    node.error(`Need both wikiname and twfilter`);\n    node.done();\n    return;\n}\n\nvar isDb = false;\nvar $tw = repl.get$tw(wikiname);\nif (!$tw) {\n    $tw = repl.get$db(wikiname);\n    isDb = true;\n}\n\nif (!$tw) {\n    node.error(`Wiki ${wikiname} is not found`);\n    node.done();\n    return;\n}\n\nmsg.payload = JSON.parse($tw.wiki.getTiddlersAsJson(twfilter));\nnode.status(`'${wikiname}' ${msg.payload.length} tiddlers read`);\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1460,7 +1460,7 @@
         "type": "function",
         "z": "5b24d6e63acf9047",
         "name": "Display REPL prompt after deploy",
-        "func": "global.get('repl').$rt.displayPrompt();\nreturn msg;",
+        "func": "global.get('repl').$displayPrompt();\nreturn msg;",
         "outputs": 0,
         "timeout": 0,
         "noerr": 0,
@@ -1551,6 +1551,48 @@
         "wires": [
             [
                 "a993d29142a7f5c7"
+            ]
+        ]
+    },
+    {
+        "id": "7dbc9660e316e32f",
+        "type": "inject",
+        "z": "5b24d6e63acf9047",
+        "name": "",
+        "props": [
+            {
+                "p": "wikiname",
+                "v": "users",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 280,
+        "wires": [
+            [
+                "91155920dfae832b"
+            ]
+        ]
+    },
+    {
+        "id": "91155920dfae832b",
+        "type": "subflow:295b59907f0d97d2",
+        "z": "5b24d6e63acf9047",
+        "name": "",
+        "x": 240,
+        "y": 280,
+        "wires": [
+            [
+                "014708f6c0e76350"
             ]
         ]
     },
