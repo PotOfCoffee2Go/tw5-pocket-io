@@ -1,7 +1,7 @@
 caption: Add Category
 created: 20250311171237934
 creator: poc2go
-modified: 20250311175944978
+modified: 20250327133725354
 modifier: poc2go
 title: $:/poc2go/pocket-io/project/addcategory
 type: text/vnd.tiddlywiki
@@ -29,3 +29,5 @@ type: text/vnd.tiddlywiki
 
 |tc-center tc-table-no-border|k
 | Category Type: |<<setTypeEditBox>> | Pill Title: |<<pillTitleEditBox>> |<<projectSubmitCategory>> |
+
+{{||New Tiddler 2}}

@@ -10,4 +10,4 @@ stability: STABILITY_1_EXPERIMENTAL
 tags: $:/tags/pocket-io/broadcast
 title: $:/plugins/poc2go/pocket-io/project
 type: application/json
-version: 0.2.8
+version: 0.2.10

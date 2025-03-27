@@ -1,0 +1,10 @@
+caption: categories
+created: 20250327140114258
+creator: poc2go
+modified: 20250327140236151
+modifier: poc2go
+tags: dashboard startup $:/pocket-io/startup/dashboard
+title: startup-dashboard-categories
+type: text/vnd.tiddlywiki
+
+{{||$:/poc2go/pocket-io/project/addcategory}}

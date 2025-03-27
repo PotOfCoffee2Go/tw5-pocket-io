@@ -3,7 +3,7 @@ creator: poc2go
 dependents: 
 description: Tiddlers used by pocket-io Project Management system
 list: readme settings release license
-modified: 20250326054812540
+modified: 20250327174008494
 modifier: poc2go
 name: Pocket-io Project Management
 parent-plugin: $:/plugins/poc2go/pocket-io
@@ -12,4 +12,4 @@ stability: STABILITY_1_EXPERIMENTAL
 tags: $:/tags/pocket-io/broadcast
 title: $:/plugins/poc2go/pocket-io/project
 type: application/json
-version: 0.2.8
+version: 0.2.10

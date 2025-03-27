@@ -1,0 +1,14 @@
+created: 20250327125325018
+creator: poc2go
+ioPrjProject: fetch
+modified: 20250327173054282
+modifier: poc2go
+tags: 
+title: New Tiddler 2
+type: text/vnd.tiddlywiki
+
+<$set name="project" tiddler=<<currentTiddler>> field="ioPrjProject" >
+<$list filter="[list[$:/poc2go/pocket-io/project/projects!!categories]]">
+<<displayTabPill $(project)$ "$(currentTiddler)$">>
+</$list>
+</$set>

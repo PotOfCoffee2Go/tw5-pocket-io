@@ -4,6 +4,7 @@ $tpi.topic.projectAddCategory = function (socket, msg) {
 	var errorMsg = '';
 	sender.ioResult = '';
 
+	var catListTiddler = '$:/poc2go/pocket-io/project/projects';
 	var dstWikiName = msg.req.wikiName;
 	var project = sender.ioPrjProject;
 	var tabSetType = sender.ioPrjCategoryType;
@@ -46,14 +47,13 @@ $tpi.topic.projectAddCategory = function (socket, msg) {
 		type: 'text/vnd.tiddlywiki',
 		tabtype: tabSetType
 	};
-/*
-	$tw.wiki.addTiddler(new $tw.Tiddler(
-		$tw.wiki.getCreationFields(),
-		newTabSet,
-		$tw.wiki.getModificationFields(),
-	))
-*/
+
 	msg.resultTiddlers.push(newTabSet);
+
+	var catList = $tw.wiki.getTiddlerList(catListTiddler, 'categories');
+	catList.push(tabSetType);
+	$tw.wiki.setText(catListTiddler,'categories', null, $tw.utils.stringifyList(catList));
+	msg.resultTiddlers.push($tw.wiki.getTiddler(catListTiddler).fields);
 	
 	sender.ioPrjCategoryType = '';
 	sender.ioPrjCategoryPillTitle = '';

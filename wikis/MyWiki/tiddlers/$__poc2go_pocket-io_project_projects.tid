@@ -1,0 +1,17 @@
+caption: Projects
+categories: dashboard docs code flow template yyy special
+created: 20250101000000000
+creator: poc2go
+modified: 20250327174339880
+modifier: poc2go
+title: $:/poc2go/pocket-io/project/projects
+type: text/vnd.tiddlywiki
+
+|tc-center tc-table-no-border|k
+|@@.poc2go-mono The {{Projects||$:/core/ui/TagTemplate}} in this wiki ({{$:/temp/pocket-io/wikinames}}): @@|
+
+<div style="margin-top: 0.6em; border: 1px solid #70b351; border-radius: 10px;" >
+
+<<list-links filter:"[tag[Projects]] -[[$$$project$$$]]" class:"cols3">>
+
+</div>

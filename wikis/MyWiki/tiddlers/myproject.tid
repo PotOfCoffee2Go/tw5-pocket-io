@@ -8,9 +8,10 @@ ioPrjCategoryType:
 ioPrjProject: myproject
 ioPrjTabName: 
 ioPrjTabSelected: AALLLL
-ioPrjTabType: testit
+ioPrjTabType: special
 ioResult: 
-modified: 20250324021317381
+list: special
+modified: 20250327180656538
 modifier: poc2go
 tags: myproject Projects
 title: myproject
@@ -22,12 +23,7 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load code on startup</$checkbox>|
 
-<<details "Project Categories" src:"""---
-
 {{||$:/poc2go/pocket-io/project/addcategory}}
-
----
-""">>
 
 {{||$:/poc2go/pocket-io/project/addtab}}
 
@@ -41,5 +37,6 @@ type: text/vnd.tiddlywiki
 <<closeTabsButton "myproject" "code">>
 <<closeTabsButton "myproject" "info">>
 <<closeTabsButton "myproject" "package">>
+<<closeTabsButton "myproject" "special">>
 
 <<topButton>>

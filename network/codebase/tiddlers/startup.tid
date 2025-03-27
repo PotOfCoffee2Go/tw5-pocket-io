@@ -7,9 +7,9 @@ ioPrjProject: startup
 ioPrjTabName: 
 ioPrjTabSelected: AALLLL
 ioPrjTabToDelete: startup-a
-ioPrjTabType: code
+ioPrjTabType: dashboard
 ioResult: 
-modified: 20250323154544291
+modified: 20250327140114259
 modifier: poc2go
 tags: startup Projects
 title: startup

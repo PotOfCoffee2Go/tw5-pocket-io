@@ -1,0 +1,10 @@
+caption: categories
+created: 20250327143832621
+creator: poc2go
+modified: 20250327143854666
+modifier: poc2go
+tags: dashboard project $:/pocket-io/project/dashboard
+title: project-dashboard-categories
+type: text/vnd.tiddlywiki
+
+{{||$:/poc2go/pocket-io/project/addcategory}}

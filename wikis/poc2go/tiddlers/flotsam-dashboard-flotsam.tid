@@ -2,21 +2,13 @@ caption: Project
 created: 20250310044234493
 creator: poc2go
 ioPrjTabType: package
-modified: 20250311171955538
+modified: 20250327135512836
 modifier: poc2go
 tags: dashboard flotsam $:/pocket-io/flotsam/dashboard
 title: flotsam-dashboard-flotsam
 type: text/vnd.tiddlywiki
 
-<<details "Project Categories" src:"""---
-
 {{||$:/poc2go/pocket-io/project/addcategory}}
-
-Current:
-<<displayTabPill "flotsam" "docs">> <<displayTabPill "flotsam" "template">> <<displayTabPill "flotsam" "code">> <<displayTabPill "flotsam" "info">> <<displayTabPill "flotsam" "package">>
-
----
-""">>
 
 {{||$:/poc2go/pocket-io/project/addtab}}
 
