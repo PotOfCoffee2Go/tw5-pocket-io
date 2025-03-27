@@ -39,10 +39,10 @@
         "$:/poc2go/pocket-io/project/addcategory": {
             "created": "20250311171237934",
             "creator": "poc2go",
-            "text": "\\define projectSubmitCategory()\n<$button class=\"tc-btn-invisible tc-tiddlylink\" actions=\"<<pocket-io 'projectAddCategory'>>\" >\n{{$:/core/images/new-button}}\n</$button>\n\\end\n\n\\define setTypeEditBox()\n<$edit-text field=\"ioPrjCategoryType\" class=\"pio-tabset-box\"/>\n\\end\n\n\\define pillTitleEditBox()\n<$edit-text field=\"ioPrjCategoryPillTitle\" class=\"pio-tabset-box\"/>\n\\end\n\n<style>\n.pio-tabset-box { width: 122px; }\n</style>\n\n|tc-center tc-table-no-border|k\n| Add Category |\n\n|tc-center tc-table-no-border|k\n| Category type: |<<setTypeEditBox>> | Pill title: |<<pillTitleEditBox>> |<<projectSubmitCategory>> |\n\n<$set name=\"project\" tiddler=<<currentTiddler>> field=\"ioPrjProject\" >\n<$list filter=\"[list[$:/poc2go/pocket-io/project/projects!!categories]]\">\n<<displayTabPill $(project)$ \"$(currentTiddler)$\">>\n</$list>\n</$set>\n",
+            "text": "\\define projectSubmitCategory()\n<$button class=\"tc-btn-invisible tc-tiddlylink\" actions=\"<<pocket-io 'projectAddCategory'>>\" >\n{{$:/core/images/new-button}}\n</$button>\n\\end\n\n\\define setTypeEditBox()\n<$edit-text field=\"ioPrjCategoryType\" class=\"pio-tabset-box\"/>\n\\end\n\n\\define pillTitleEditBox()\n<$edit-text field=\"ioPrjCategoryPillTitle\" class=\"pio-tabset-box\"/>\n\\end\n\n<style>\n.pio-tabset-box { width: 122px; }\n</style>\n\n|tc-center tc-table-no-border|k\n| Add Category |\n\n|tc-center tc-table-no-border|k\n| Category type: |<<setTypeEditBox>> | Pill title: |<<pillTitleEditBox>> |<<projectSubmitCategory>> |\n\n<div class=\"poc2go-center\">\n\n<$set name=\"project\" tiddler=<<currentTiddler>> field=\"ioPrjProject\" >\n<$list filter=\"[list[$:/poc2go/pocket-io/project/projects!!categories]]\">\n<<displayTabPill $(project)$ \"$(currentTiddler)$\">>\n</$list>\n</$set>\n\n</div>\n\n",
             "title": "$:/poc2go/pocket-io/project/addcategory",
             "caption": "Add Category",
-            "modified": "20250327172808899",
+            "modified": "20250327200850618",
             "modifier": "poc2go",
             "type": "text/vnd.tiddlywiki",
             "revision": "0",

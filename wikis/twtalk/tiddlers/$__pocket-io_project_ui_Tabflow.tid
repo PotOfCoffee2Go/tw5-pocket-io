@@ -1,11 +1,11 @@
-caption: Packages
-created: 20250122050140526
+caption: Node-Red Flow
+created: 20250323184851941
 creator: poc2go
 modified: 20250327211604571
 modifier: poc2go
-tabtype: package
+tabtype: flow
 tags: $:/tags/pocket-io/tabtype $:/tags/pocket-io/broadcast
-title: $:/pocket-io/project/ui/Tabpackage
+title: $:/pocket-io/project/ui/Tabflow
 type: text/vnd.tiddlywiki
 
-<<categoryPill 'Package'>>
+<<categoryPill 'Node-Red Flow'>>

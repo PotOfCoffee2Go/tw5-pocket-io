@@ -9,7 +9,8 @@ ioPrjTabSelected: AALLLL
 ioPrjTabToDelete: startup-a
 ioPrjTabType: dashboard
 ioResult: 
-modified: 20250327140114259
+list: dashboard docs template code flow
+modified: 20250327200910734
 modifier: poc2go
 tags: startup Projects
 title: startup
@@ -22,11 +23,19 @@ type: text/vnd.tiddlywiki
 | Code in 'startup' is hard coded to always load. |
 | The code is loaded before other projects. |
 
+{{||$:/poc2go/pocket-io/project/addcategory}}
+
+<<projectUploadButton>>
+
+<br>
+
 {{||$:/poc2go/pocket-io/project/addtab}}
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<displayTabTypes startup>>
+<$list filter="[list[!!list]]">
+<<closeTabsButton "startup" "$(currentTiddler)$">>
+</$list>
 
 <<topButton>>

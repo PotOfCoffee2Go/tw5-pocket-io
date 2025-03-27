@@ -77,13 +77,15 @@
         },
         "$:/poc2go/pocket-io/macros": {
             "created": "20231107195051015",
-            "text": "\\define submitResetAll()\n<<pocket-io \"resetIoFields\">>\n\\end\n\n\\define resetAllButton()\n<$button actions=\"<<submitResetAll>>\"> Reset </$button>\n\\end\n\n\\define topButton()\n<$button class=\"poc2go-tiddler-top tc-btn-invisible tc-tiddlylink\" to=<<currentTiddler>> >Top</$button>\n\\end\n\n\\define writeup()\n<<details 'Writeup' \"\"\"\n\n<$transclude $tiddler={{!!writeup}}>\n\n\"\"\" \"open\">>\n\\end\n\n\\define .codesample(n,lng,eg)\n<div class=\"doc-example\">\n\t<$macrocall $name=\"copy-to-clipboard\" style=\"\" src=\"\"\"$eg$\"\"\"/>\n\t<$codeblock language=\"$lng$\" code=\"\"\"$eg$\"\"\"/>\n</div>\n\\end\n\n\\define details(label:\"\", src:\"source\", status:\"\", labelClass:\"\", srcClass:\"\")\n<$vars  source = {{{ [<__src__>get[text]else<__src__>] }}} >\n<details style=\"text-align:left;min-width:100%;\" $status$>\n <$let tv-wikilinks=\"no\">\n <summary class=\"$labelClass$\" style=\"text-align: center;\">$label$</summary>\n </$let>\n  <div class=\"poc2go-detail $srcClass$\">\n   <$transclude tiddler=<<source>> field=title mode=block/>\n  </div>\n</details>\n</$vars>\n\\end\n\n<!-- codesample hacked from $:/editions/tw5.com/wikitext-macros -->\n<!-- details from Shiraz -->\n",
+            "creator": "poc2go",
+            "text": "\\define submitResetAll()\n<<pocket-io \"resetIoFields\">>\n\\end\n\n\\define resetAllButton()\n<$button actions=\"<<submitResetAll>>\"> Clear </$button>\n\\end\n\n\\define topButton()\n<$button class=\"poc2go-tiddler-top tc-btn-invisible tc-tiddlylink\" to=<<currentTiddler>> >Top</$button>\n\\end\n\n\\define writeup()\n<<details 'Writeup' \"\"\"\n\n<$transclude $tiddler={{!!writeup}}>\n\n\"\"\" \"open\">>\n\\end\n\n\\define .codesample(n,lng,eg)\n<div class=\"doc-example\">\n\t<$macrocall $name=\"copy-to-clipboard\" style=\"\" src=\"\"\"$eg$\"\"\"/>\n\t<$codeblock language=\"$lng$\" code=\"\"\"$eg$\"\"\"/>\n</div>\n\\end\n\n\\define details(label:\"\", src:\"source\", status:\"\", labelClass:\"\", srcClass:\"\")\n<$vars  source = {{{ [<__src__>get[text]else<__src__>] }}} >\n<details style=\"text-align:left;min-width:100%;\" $status$>\n <$let tv-wikilinks=\"no\">\n <summary class=\"$labelClass$\" style=\"text-align: center;\">$label$</summary>\n </$let>\n  <div class=\"poc2go-detail $srcClass$\">\n   <$transclude tiddler=<<source>> field=title mode=block/>\n  </div>\n</details>\n</$vars>\n\\end\n\n<!-- codesample hacked from $:/editions/tw5.com/wikitext-macros -->\n<!-- details from Shiraz -->\n",
             "title": "$:/poc2go/pocket-io/macros",
-            "modified": "20250129180751490",
+            "modified": "20250327205534221",
             "tags": "$:/tags/Macro",
             "type": "text/vnd.tiddlywiki",
             "revision": "0",
-            "bag": "default"
+            "bag": "default",
+            "modifier": "poc2go"
         },
         "$:/poc2go/pocket-io/maker": {
             "created": "20250322215156233",

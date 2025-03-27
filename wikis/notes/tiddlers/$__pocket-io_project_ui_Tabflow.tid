@@ -1,11 +1,11 @@
-caption: GUI Templates
-created: 20250118160314861
+caption: Node-Red Flow
+created: 20250323184851941
 creator: poc2go
 modified: 20250327211258400
 modifier: poc2go
-tabtype: template
+tabtype: flow
 tags: $:/tags/pocket-io/tabtype $:/tags/pocket-io/broadcast
-title: $:/pocket-io/project/ui/Tabtemplate
+title: $:/pocket-io/project/ui/Tabflow
 type: text/vnd.tiddlywiki
 
-<<categoryPill 'GUI Template'>>
+<<categoryPill 'Node-Red Flow'>>

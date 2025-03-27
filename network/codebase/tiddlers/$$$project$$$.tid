@@ -8,7 +8,8 @@ ioPrjTabName:
 ioPrjTabSelected: AALLLL
 ioPrjTabType: docs
 ioResult: 
-modified: 20250324020932616
+list: dashboard docs template code flow
+modified: 20250327200633430
 modifier: poc2go
 tags: $$$project$$$ Projects
 title: $$$project$$$
@@ -18,25 +19,21 @@ type: text/vnd.tiddlywiki
 |@@.poc2go-project-header Edit this description and change caption @@|
 
 |tc-center tc-table-no-border|k
-|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load code on startup</$checkbox>|
-
-<<details "Project Categories" src:"""---
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load code on startup</$checkbox> |
 
 {{||$:/poc2go/pocket-io/project/addcategory}}
 
----
-""">>
+<<projectUploadButton>>
+
+<br>
 
 {{||$:/poc2go/pocket-io/project/addtab}}
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<closeTabsButton "$$$project$$$" "docs">>
-<<closeTabsButton "$$$project$$$" "template">>
-<<projectUploadButton>>
-<<closeTabsButton "$$$project$$$" "code">>
-<<closeTabsButton "$$$project$$$" "info">>
-<<closeTabsButton "$$$project$$$" "package">>
+<$list filter="[list[!!list]]">
+<<closeTabsButton "$$$project$$$" "$(currentTiddler)$">>
+</$list>
 
 <<topButton>>

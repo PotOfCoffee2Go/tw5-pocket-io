@@ -1,0 +1,15 @@
+[
+    {
+        "created": "20250108083629945",
+        "creator": "poc2go",
+        "title": "Pocket-io System",
+        "modified": "20250327211734077",
+        "modifier": "poc2go",
+        "tags": "$:/tags/pocket-io/broadcast",
+        "type": "text/vnd.tiddlywiki",
+        "text": "{{||$:/poc2go/pocket-io/ui/system}}\n\n|tc-center tc-table-no-border|k\n| Wikis and projects in the pocket-io network |\n\n{{||$:/poc2go/pocket-io/project/create}}\n\n{{$:/temp/pocket-io/system/projects}}\n\n|tc-center tc-table-no-border|k\n| <$button actions=\"<<pocket-io projectNetworkTable>>\"> Refresh </$button> |\n",
+        "ioPrjWiki": "MyWiki",
+        "ioPrjProject": "Newbie",
+        "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em; margin: 0 2em 0 2em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n03/27/2025 17:17:34 Project created - http://raspberrypi:3001/#Newbie\n\n</div>\n"
+    }
+]
