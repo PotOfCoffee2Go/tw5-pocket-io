@@ -1,6 +1,8 @@
 caption: ackConnect
 created: 20250129071448804
-modified: 20250228122907188
+creator: poc2go
+modified: 20250328071733478
+modifier: poc2go
 tags: code socket $:/pocket-io/socket/code
 title: socket-code-ackConnect
 type: application/javascript

@@ -179,8 +179,8 @@ const story = new $tw.Story();
 const fieldsToWiki = (fields, tostory = false) => {
 	$tw.wiki.addTiddler(new $tw.Tiddler(
 		$tw.wiki.getCreationFields(),
-		fields,
 		$tw.wiki.getModificationFields(),
+		fields,
 	))
 	if (tostory) {
 		story.navigateTiddler(fields.title /*, fromTitle*/);
