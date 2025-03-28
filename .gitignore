@@ -9,3 +9,6 @@
 # TW MultiWikiServer database
 /public/mws/store
 /public/mws/archive
+
+# Ignore story list(s)
+\$__StoryList*
