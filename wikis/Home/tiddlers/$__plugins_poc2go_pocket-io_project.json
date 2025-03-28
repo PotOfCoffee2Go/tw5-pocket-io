@@ -37,14 +37,14 @@
             "modified": "20250203124022539"
         },
         "$:/poc2go/pocket-io/project/addcategory": {
-            "title": "$:/poc2go/pocket-io/project/addcategory",
-            "caption": "Add Category",
             "created": "20250311171237934",
             "creator": "poc2go",
-            "modified": "20250323165822381",
+            "text": "\\define projectSubmitCategory()\n<$button class=\"tc-btn-invisible tc-tiddlylink\" actions=\"<<pocket-io 'projectAddCategory'>>\" >\n{{$:/core/images/new-button}}\n</$button>\n\\end\n\n\\define setTypeEditBox()\n<$edit-text field=\"ioPrjCategoryType\" class=\"pio-tabset-box\"/>\n\\end\n\n\\define pillTitleEditBox()\n<$edit-text field=\"ioPrjCategoryPillTitle\" class=\"pio-tabset-box\"/>\n\\end\n\n<style>\n.pio-tabset-box { width: 122px; }\n</style>\n\n|tc-center tc-table-no-border|k\n| Add Category |\n\n|tc-center tc-table-no-border|k\n| Category type: |<<setTypeEditBox>> | Pill title: |<<pillTitleEditBox>> |<<projectSubmitCategory>> |\n\n<div class=\"poc2go-center\">\n\n<$set name=\"project\" tiddler=<<currentTiddler>> field=\"ioPrjProject\" >\n<$list filter=\"[list[$:/poc2go/pocket-io/project/projects!!categories]]\">\n<<displayTabPill $(project)$ \"$(currentTiddler)$\">>\n</$list>\n</$set>\n\n</div>\n\n",
+            "title": "$:/poc2go/pocket-io/project/addcategory",
+            "caption": "Add Category",
+            "modified": "20250327200850618",
             "modifier": "poc2go",
             "type": "text/vnd.tiddlywiki",
-            "text": "\\define projectSubmitCategory()\n<$button class=\"tc-btn-invisible tc-tiddlylink\" actions=\"<<pocket-io 'projectAddCategory'>>\" >\n{{$:/core/images/new-button}}\n</$button>\n\\end\n\n\\define setTypeEditBox()\n<$edit-text field=\"ioPrjCategoryType\" class=\"pio-tabset-box\"/>\n\\end\n\n\\define pillTitleEditBox()\n<$edit-text field=\"ioPrjCategoryPillTitle\" class=\"pio-tabset-box\"/>\n\\end\n\n<style>\n.pio-tabset-box { width: 122px; }\n</style>\n\n|tc-center tc-table-no-border|k\n| Add Category |\n\n|tc-center tc-table-no-border|k\n| Type: |<<setTypeEditBox>> | Pill Title: |<<pillTitleEditBox>> |<<projectSubmitCategory>> |\n",
             "revision": "0",
             "bag": "default"
         },
@@ -125,10 +125,13 @@
         },
         "$:/poc2go/pocket-io/project/projects": {
             "created": "20250131172935757",
+            "creator": "poc2go",
             "text": "|tc-center tc-table-no-border|k\n|@@.poc2go-mono The {{Projects||$:/core/ui/TagTemplate}} in this wiki ({{$:/temp/pocket-io/wikinames}}): @@|\n\n<div style=\"margin-top: 0.6em; border: 1px solid #70b351; border-radius: 10px;\" >\n\n<<list-links filter:\"[tag[Projects]] -[[$$$project$$$]]\" class:\"cols3\">>\n\n</div>\n",
             "title": "$:/poc2go/pocket-io/project/projects",
-            "modified": "20250201153427388",
-            "caption": "Projects"
+            "modified": "20250327124510389",
+            "caption": "Projects",
+            "modifier": "poc2go",
+            "categories": "dashboard docs code flow template"
         }
     }
 }
