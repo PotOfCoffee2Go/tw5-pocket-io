@@ -42,12 +42,12 @@ const $NodeRed = function () {
 
 	// Personalize Flow editor settings for TW5-Node-Red
 	this.settings.editorTheme.header = {
-		title: 'TW5-Node-Red',
-        image: path.resolve('./public/images/system/tw5-node-red-logo.png'),
+		title: 'TW5-Node-Red - Host: ' + $config.domain,
+ 		image: path.resolve('./public/images/system/tw5-node-red-logo.png'),
 	};
 	this.settings.editorTheme.page = {
 		title: 'TW5-Node-Red',
-        css: path.resolve('./public/node-red-editor.css'),
+		css: path.resolve('./public/node-red-editor.css'),
 	};
 
 	// Initialise the Node-Red runtime to this server
