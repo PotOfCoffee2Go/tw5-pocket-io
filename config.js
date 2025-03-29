@@ -23,6 +23,8 @@ exports.config = {
 	defaultWiki: 'Home',
 
 	// Automatically startup Node-Red
+	// Many server-side actions (topics) are done by Node-Red
+	//   recommend to set to 'true'
 	// If not auto started, can {up-arrow} at 'tw5-node-red > '
 	//  console prompt (or type) 'const $nr = new $NodeRed'
 	autoStartNodeRed: true,
