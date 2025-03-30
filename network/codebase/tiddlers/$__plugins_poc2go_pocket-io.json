@@ -183,10 +183,10 @@
         "$:/poc2go/pocket-io/ui/system": {
             "created": "20250201144742707",
             "creator": "poc2go",
-            "text": "<style>.cols3{column-count:3}</style>\n\n<div class=\"poc2go-center\">\n<$image source=\"$:/favicon.ico\" width=\"64px\"/>\n</div>\n\n{{||$:/poc2go/pocket-io/ui/wikilinks}}\n\n{{||$:/poc2go/pocket-io/project/projects}}\n\n{{!!ioResult}}\n\n<!-- to-do: need credential checking for wiki access \n\n<div style=\"margin: 1em; padding: 1em; border: 1px solid #70b351; border-radius: 10px;\" >\n\nCreate new project in a wiki:\n\n{{||$:/poc2go/pocket-io/project/create}}\n\n</div>\n\n|tc-center tc-table-no-border|k\n| <<resetAllButton>> |\n\n<div style=\"margin: 1em; padding: 1em; border: 1px solid #70b351; border-radius: 10px;\" >\n\nCopy tiddlers between wikis:\n\n{{||$:/poc2go/pocket-io/ui/copy}}\n\n</div>\n\n-->",
+            "text": "<style>.cols3{column-count:3}</style>\n\n<div class=\"poc2go-center\">\n\n<$image source=\"$:/favicon.ico\" width=\"64px\"/>\n\n@@font-size:1.3em; {{$:/temp/pocket-io/wikinames}}@@\n\n</div>\n\n{{||$:/poc2go/pocket-io/ui/wikilinks}}\n\n{{||$:/poc2go/pocket-io/project/projects}}\n\n{{!!ioResult}}\n\n<!-- to-do: need credential checking for wiki access \n\n<div style=\"margin: 1em; padding: 1em; border: 1px solid #70b351; border-radius: 10px;\" >\n\nCreate new project in a wiki:\n\n{{||$:/poc2go/pocket-io/project/create}}\n\n</div>\n\n|tc-center tc-table-no-border|k\n| <<resetAllButton>> |\n\n<div style=\"margin: 1em; padding: 1em; border: 1px solid #70b351; border-radius: 10px;\" >\n\nCopy tiddlers between wikis:\n\n{{||$:/poc2go/pocket-io/ui/copy}}\n\n</div>\n\n-->",
             "tags": "",
             "title": "$:/poc2go/pocket-io/ui/system",
-            "modified": "20250317050301982",
+            "modified": "20250330125844839",
             "caption": "Pocket-io System",
             "modifier": "poc2go"
         }
