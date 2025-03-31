@@ -75,12 +75,12 @@ function autoLoadCodeToRepl() {
 	const prevPrompt = $rt.getPrompt();
 	$rt.setPrompt('');
 
-	hog('REPL startup', 156);
+	hog('REPL context startup', 156);
 	hog(`Loading minified code tiddlers from wikis to REPL:`, 156);
 	var { totalTiddlers, totalBytes, haveErrors } = replGetCodeFromWikis($rt, serverSettings);
 	hog(`Total of ${totalTiddlers} code tiddlers loaded - ${(totalBytes/1024).toFixed(3)}K bytes.`, 43);
 	hog(`Loading server code complete${haveErrors ? ' - with errors' : ''}`, haveErrors ? 9 : 156)
-	hog(`REPL startup complete\n`, 156);
+	hog(`REPL context startup complete\n`, 156);
 
 	$rt.history = prevHistory;
 	$rt.setPrompt(prevPrompt);

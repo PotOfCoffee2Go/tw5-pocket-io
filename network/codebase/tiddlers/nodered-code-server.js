@@ -19,11 +19,9 @@ const $NodeRed = function () {
 	//  see [[startup-code-globals]]
 	this.repl = {
 		$displayPrompt, $rw, $db,
-		$config,  $ss,
-		$sockets, $tpi,
-		$tmp, $AsyncQueue,
-		$twCodebase, $wikiNames,
-		get$settings,
+		$config,  $ss, $sockets, $tpi,	$tmp,
+		$wikiNames, get$settings,
+		$twCodebase,
 		get$db, qry$db, ins$db,
 		get$tw, qry$tw, ins$tw,
 		get$proxy, get$server, get$router, get$pocketio,
