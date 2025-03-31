@@ -390,161 +390,29 @@
         "h": 122
     },
     {
-        "id": "14d2f76b188465c8",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "name": "\\n This flow has a GUI Template in the 'Home' wiki  'Hello Node-Red' project",
-        "style": {
-            "label": true,
-            "label-position": "n"
-        },
-        "nodes": [
-            "387aee9414b96304",
-            "38f58f1538e9684a",
-            "37dfe29593404c76",
-            "ddec69f95434e42a",
-            "694cb905ee221edc",
-            "9e9d7d5d6677e99e",
-            "dbbdc46edaf683d5",
-            "f7464a8f5cc4e442"
-        ],
-        "x": -6,
-        "y": 85,
-        "w": 922,
-        "h": 702
-    },
-    {
         "id": "f7464a8f5cc4e442",
         "type": "group",
         "z": "62c6b96ab760ca78",
-        "g": "14d2f76b188465c8",
-        "name": "\\n This flow returns a few tiddlers in response to the topic 'hello' request \\n  ",
+        "name": "\\n Returns a few tiddlers in response to the topic 'hello' \\n  A 'TW client in' will always be followed by a switch node \\n to select the flow based on msg.topic \\n  \\n In TiddlyWiki :",
         "style": {
             "label": true,
             "label-position": "n"
         },
         "nodes": [
-            "4df2c978a7ce6665",
-            "de83c426cb05bd04",
             "f851efef43d004c1",
-            "0a11219ac3279f4f",
-            "ddd1dfc131b74fd7",
-            "122e9298ddc68975",
-            "c882655e8d51597f",
-            "c8562eaca2dbbd8d",
-            "80407f300ac7033c"
+            "c95074a4d7aa6070"
         ],
-        "x": 34,
-        "y": 127,
-        "w": 852,
-        "h": 340,
+        "x": 22,
+        "y": 299,
+        "w": 956,
+        "h": 448,
         "info": "# Example of Tiddlywiki Request\r\n\r\n"
-    },
-    {
-        "id": "37dfe29593404c76",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "14d2f76b188465c8",
-        "name": "Switch node \\n msg.topic matches \\n 'show file'",
-        "style": {
-            "label": true,
-            "label-position": "s",
-            "stroke": "none",
-            "fill": "none"
-        },
-        "nodes": [
-            "dac6f5642101f3b0"
-        ],
-        "x": 54,
-        "y": 639,
-        "w": 172,
-        "h": 122
-    },
-    {
-        "id": "ddec69f95434e42a",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "14d2f76b188465c8",
-        "name": "Read the filename \\n provided by \\n sending tiddler",
-        "style": {
-            "stroke": "none",
-            "fill": "none",
-            "label": true,
-            "label-position": "s"
-        },
-        "nodes": [
-            "6ab74c412581482f"
-        ],
-        "x": 194,
-        "y": 639,
-        "w": 232,
-        "h": 122
-    },
-    {
-        "id": "694cb905ee221edc",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "14d2f76b188465c8",
-        "name": "Move file content from \\n msg.payload to msg.filetext",
-        "style": {
-            "stroke": "none",
-            "fill": "none",
-            "label": true,
-            "label-position": "s"
-        },
-        "nodes": [
-            "1688a65dacdd55fe"
-        ],
-        "x": 394,
-        "y": 639,
-        "w": 292,
-        "h": 106
-    },
-    {
-        "id": "9e9d7d5d6677e99e",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "14d2f76b188465c8",
-        "name": "Template to create \\n tiddler of file contents \\n into msg.payload",
-        "style": {
-            "stroke": "none",
-            "fill": "none",
-            "label": true,
-            "label-position": "s"
-        },
-        "nodes": [
-            "062e70cc3789a1a1"
-        ],
-        "x": 654,
-        "y": 639,
-        "w": 212,
-        "h": 122
-    },
-    {
-        "id": "dbbdc46edaf683d5",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "14d2f76b188465c8",
-        "name": "The GUI asks for the file path and file type \\n which are placed in tiddler fields \\n sent with the request to Node-Red ",
-        "style": {
-            "stroke": "none",
-            "fill": "none",
-            "label": true,
-            "label-position": "s"
-        },
-        "nodes": [
-            "9a84940484428484"
-        ],
-        "x": 274,
-        "y": 519,
-        "w": 332,
-        "h": 122
     },
     {
         "id": "0a11219ac3279f4f",
         "type": "group",
         "z": "62c6b96ab760ca78",
-        "g": "f7464a8f5cc4e442",
+        "g": "c95074a4d7aa6070",
         "name": "Switch node \\n msg.topic matches \\n 'hello'",
         "style": {
             "label": true,
@@ -556,7 +424,7 @@
             "cdcaa30c8d7b6208"
         ],
         "x": 154,
-        "y": 239,
+        "y": 519,
         "w": 152,
         "h": 122
     },
@@ -564,8 +432,8 @@
         "id": "ddd1dfc131b74fd7",
         "type": "group",
         "z": "62c6b96ab760ca78",
-        "g": "f7464a8f5cc4e442",
-        "name": "Template nodes \\n tiddlers in JSON \\n format above \\n .tid format below",
+        "g": "c95074a4d7aa6070",
+        "name": "'Template' nodes \\n Tiddlers in JSON \\n format above \\n .tid format below",
         "style": {
             "label": true,
             "label-position": "s",
@@ -575,36 +443,16 @@
         "nodes": [
             "5516b95ab068d43b"
         ],
-        "x": 314,
-        "y": 239,
-        "w": 192,
+        "x": 294,
+        "y": 519,
+        "w": 252,
         "h": 138
-    },
-    {
-        "id": "122e9298ddc68975",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "f7464a8f5cc4e442",
-        "name": "TiddlyWiki 'tiddler parser' node \\n parses text tiddlers into \\n javascript objects",
-        "style": {
-            "label": true,
-            "label-position": "s",
-            "stroke": "none",
-            "fill": "none"
-        },
-        "nodes": [
-            "2a97f1fbcf6e3dfa"
-        ],
-        "x": 654,
-        "y": 319,
-        "w": 197,
-        "h": 122
     },
     {
         "id": "c882655e8d51597f",
         "type": "group",
         "z": "62c6b96ab760ca78",
-        "g": "f7464a8f5cc4e442",
+        "g": "c95074a4d7aa6070",
         "name": "Tiddlywiki \\n 'TW  client  in' \\n Node",
         "style": {
             "label": true,
@@ -616,7 +464,7 @@
             "07f989c3cdeb14cb"
         ],
         "x": 74,
-        "y": 239,
+        "y": 519,
         "w": 86,
         "h": 122
     },
@@ -624,7 +472,7 @@
         "id": "c8562eaca2dbbd8d",
         "type": "group",
         "z": "62c6b96ab760ca78",
-        "g": "f7464a8f5cc4e442",
+        "g": "c95074a4d7aa6070",
         "name": "TiddlyWiki \\n 'TW client out' \\n node",
         "style": {
             "label": true,
@@ -635,10 +483,274 @@
         "nodes": [
             "fd667c5c3ed8286e"
         ],
-        "x": 534,
-        "y": 239,
+        "x": 574,
+        "y": 519,
         "w": 95,
         "h": 122
+    },
+    {
+        "id": "37dfe29593404c76",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "a7c5d113bcde7caa",
+        "name": "Switch node \\n msg.topic matches \\n 'show file'",
+        "style": {
+            "label": true,
+            "label-position": "s",
+            "stroke": "none",
+            "fill": "none"
+        },
+        "nodes": [
+            "dac6f5642101f3b0"
+        ],
+        "x": 84,
+        "y": 959,
+        "w": 172,
+        "h": 122
+    },
+    {
+        "id": "ddec69f95434e42a",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "a7c5d113bcde7caa",
+        "name": "Read the filename \\n provided by \\n requesting  (sender) tiddler",
+        "style": {
+            "stroke": "none",
+            "fill": "none",
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "6ab74c412581482f"
+        ],
+        "x": 224,
+        "y": 959,
+        "w": 232,
+        "h": 122
+    },
+    {
+        "id": "694cb905ee221edc",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "a7c5d113bcde7caa",
+        "name": "Move file contents from \\n msg.payload to msg.filetext \\n to free up msg.payload",
+        "style": {
+            "stroke": "none",
+            "fill": "none",
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "1688a65dacdd55fe"
+        ],
+        "x": 424,
+        "y": 959,
+        "w": 292,
+        "h": 122
+    },
+    {
+        "id": "9e9d7d5d6677e99e",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "a7c5d113bcde7caa",
+        "name": "Template to create \\n tiddler of file contents \\n into msg.payload",
+        "style": {
+            "stroke": "none",
+            "fill": "none",
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "062e70cc3789a1a1"
+        ],
+        "x": 684,
+        "y": 959,
+        "w": 212,
+        "h": 122
+    },
+    {
+        "id": "dbbdc46edaf683d5",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "a7c5d113bcde7caa",
+        "name": "This TW GUI template (in 'Home' wiki) asks for the \\n file path and file type \\n which are placed in tiddler fields \\n and sent with the request to Node-Red ",
+        "style": {
+            "stroke": "none",
+            "fill": "none",
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "9a84940484428484"
+        ],
+        "x": 304,
+        "y": 839,
+        "w": 332,
+        "h": 138
+    },
+    {
+        "id": "a7c5d113bcde7caa",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "name": "\\n Send contents of a file on the server as a tiddler",
+        "style": {
+            "label": true,
+            "label-position": "n"
+        },
+        "nodes": [
+            "387aee9414b96304",
+            "38f58f1538e9684a",
+            "37dfe29593404c76",
+            "ddec69f95434e42a",
+            "694cb905ee221edc",
+            "9e9d7d5d6677e99e",
+            "dbbdc46edaf683d5"
+        ],
+        "x": 24,
+        "y": 797,
+        "w": 922,
+        "h": 310
+    },
+    {
+        "id": "13637ad3fcc72fea",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "name": "Node-Red receives/replies to messages from  \\n TiddlyWiki clients via these two nodes \\n  \\n 'TW client out' will only work from messages \\n originating from 'TW client in'",
+        "style": {
+            "label": true,
+            "label-position": "n"
+        },
+        "nodes": [
+            "add2325b1cc1c629",
+            "21d6d79a549684ce"
+        ],
+        "x": 88,
+        "y": 29,
+        "w": 464,
+        "h": 238
+    },
+    {
+        "id": "add2325b1cc1c629",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "13637ad3fcc72fea",
+        "name": "'TW client in' has the sender \\n client wiki information in msg.wiki \\n needed to respond",
+        "style": {
+            "label": true,
+            "label-position": "s",
+            "stroke": "none",
+            "fill": "none"
+        },
+        "nodes": [
+            "4f51d7d6cece1a40"
+        ],
+        "x": 114,
+        "y": 119,
+        "w": 213,
+        "h": 122
+    },
+    {
+        "id": "21d6d79a549684ce",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "13637ad3fcc72fea",
+        "name": "'TW client out' sends tiddlers \\n in msg.payload back to \\n the client",
+        "style": {
+            "label": true,
+            "label-position": "s",
+            "stroke": "none",
+            "fill": "none"
+        },
+        "nodes": [
+            "69d8a8f64ea87d59"
+        ],
+        "x": 334,
+        "y": 119,
+        "w": 192,
+        "h": 122
+    },
+    {
+        "id": "122e9298ddc68975",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "78d42539d58ea4f6",
+        "name": "Parses text tiddlers created by \\n a Template node into Javascript objects \\n Is done automatically in most cases",
+        "style": {
+            "label": true,
+            "label-position": "s",
+            "stroke": "none",
+            "fill": "none"
+        },
+        "nodes": [
+            "2a97f1fbcf6e3dfa"
+        ],
+        "x": 594,
+        "y": 99,
+        "w": 253,
+        "h": 122
+    },
+    {
+        "id": "78d42539d58ea4f6",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "name": "\\n TiddlyWiki 'tiddler parser' node",
+        "style": {
+            "label": true,
+            "label-position": "n",
+            "stroke": "#3f3f3f"
+        },
+        "nodes": [
+            "122e9298ddc68975"
+        ],
+        "x": 568,
+        "y": 57,
+        "w": 305,
+        "h": 190
+    },
+    {
+        "id": "7c0c6a890fdeb607",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "c95074a4d7aa6070",
+        "name": "The flow continues after 'TW client out' \\n as can do more processing \\n and send more tiddlers later in the flow",
+        "style": {
+            "stroke": "none",
+            "fill": "none",
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "de83c426cb05bd04"
+        ],
+        "x": 674,
+        "y": 519,
+        "w": 252,
+        "h": 122
+    },
+    {
+        "id": "c95074a4d7aa6070",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "f7464a8f5cc4e442",
+        "name": "\\n This 'hello' flow responds to above TiddlyWiki request \\n with tiddlers in the Node-Red standard 'Template' node \\n ",
+        "style": {
+            "label": true,
+            "label-position": "n",
+            "stroke": "none",
+            "fill": "none"
+        },
+        "nodes": [
+            "80407f300ac7033c",
+            "0a11219ac3279f4f",
+            "ddd1dfc131b74fd7",
+            "c882655e8d51597f",
+            "c8562eaca2dbbd8d",
+            "7c0c6a890fdeb607"
+        ],
+        "x": 48,
+        "y": 445,
+        "w": 904,
+        "h": 276
     },
     {
         "id": "c423533ded980b73",
@@ -810,24 +922,6 @@
         ]
     },
     {
-        "id": "4df2c978a7ce6665",
-        "type": "debug",
-        "z": "62c6b96ab760ca78",
-        "g": "f7464a8f5cc4e442",
-        "name": "TW message in",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 140,
-        "y": 420,
-        "wires": []
-    },
-    {
         "id": "cdcaa30c8d7b6208",
         "type": "switch",
         "z": "62c6b96ab760ca78",
@@ -846,7 +940,7 @@
         "repair": false,
         "outputs": 1,
         "x": 230,
-        "y": 280,
+        "y": 560,
         "wires": [
             [
                 "80407f300ac7033c",
@@ -859,15 +953,15 @@
         "type": "template",
         "z": "62c6b96ab760ca78",
         "g": "ddd1dfc131b74fd7",
-        "name": "a few tiddlers",
+        "name": "a few JSON tiddlers",
         "field": "payload",
         "fieldType": "msg",
         "format": "json",
         "syntax": "mustache",
         "template": "[\n    {\n        \"title\": \"My first Node-Red tiddler\",\n        \"text\": \"Your socketId is @@color:aqua; {{wiki.req.socketId}} @@\",\n        \"ioToStory\": \"yes\",\n        \"tags\": \"node-red1\"\n    },\n    {\n        \"title\": \"My second Node-Red tiddler\",\n        \"tags\": \"node-red1\",\n        \"text\": \"Your wiki name is @@border:1px solid aqua; &nbsp;{{wiki.req.wikiName}}&nbsp; @@\"\n    }\n]\n",
         "output": "str",
-        "x": 410,
-        "y": 280,
+        "x": 420,
+        "y": 560,
         "wires": [
             [
                 "fd667c5c3ed8286e"
@@ -880,8 +974,8 @@
         "z": "62c6b96ab760ca78",
         "g": "122e9298ddc68975",
         "name": "tiddler parser",
-        "x": 750,
-        "y": 360,
+        "x": 690,
+        "y": 140,
         "wires": [
             []
         ]
@@ -890,9 +984,9 @@
         "id": "de83c426cb05bd04",
         "type": "debug",
         "z": "62c6b96ab760ca78",
-        "g": "f7464a8f5cc4e442",
+        "g": "7c0c6a890fdeb607",
         "name": "TW message out",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -900,8 +994,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 750,
-        "y": 280,
+        "x": 790,
+        "y": 560,
         "wires": []
     },
     {
@@ -911,8 +1005,8 @@
         "g": "f7464a8f5cc4e442",
         "name": "<$button actions=\"<<node-red 'hello'>>\"> Hello Node-Red </$button>",
         "info": "",
-        "x": 450,
-        "y": 200,
+        "x": 490,
+        "y": 420,
         "wires": [],
         "icon": "pocket-io-icons/tiddlywiki-dark.png"
     },
@@ -920,16 +1014,16 @@
         "id": "80407f300ac7033c",
         "type": "template",
         "z": "62c6b96ab760ca78",
-        "g": "f7464a8f5cc4e442",
-        "name": ".tid formatted",
+        "g": "c95074a4d7aa6070",
+        "name": "and .tid formatted",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
         "template": "\ntitle: I'm a tid formatted tiddler\ntags: node-red1\n\nThis is the text - {{wiki.req.wikiName}} of the tiddler\n+===+\n\ntags: node-red1\ntitle: another tiddler\n\nthis is another one - the +===+ line breaks\ninput into to tiddlers\n+===+\n\n",
         "output": "str",
-        "x": 410,
-        "y": 420,
+        "x": 430,
+        "y": 680,
         "wires": [
             [
                 "fd667c5c3ed8286e"
@@ -942,8 +1036,8 @@
         "z": "62c6b96ab760ca78",
         "g": "c8562eaca2dbbd8d",
         "name": "",
-        "x": 575,
-        "y": 280,
+        "x": 615,
+        "y": 560,
         "wires": [
             [
                 "de83c426cb05bd04"
@@ -958,11 +1052,10 @@
         "g": "c882655e8d51597f",
         "name": "",
         "x": 115,
-        "y": 280,
+        "y": 560,
         "wires": [
             [
-                "cdcaa30c8d7b6208",
-                "4df2c978a7ce6665"
+                "cdcaa30c8d7b6208"
             ]
         ],
         "l": false
@@ -971,10 +1064,10 @@
         "id": "387aee9414b96304",
         "type": "subflow:8adf8de645b60e16",
         "z": "62c6b96ab760ca78",
-        "g": "14d2f76b188465c8",
+        "g": "a7c5d113bcde7caa",
         "name": "",
-        "x": 35,
-        "y": 680,
+        "x": 65,
+        "y": 1000,
         "wires": [
             [
                 "dac6f5642101f3b0"
@@ -1001,8 +1094,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 140,
-        "y": 680,
+        "x": 170,
+        "y": 1000,
         "wires": [
             [
                 "6ab74c412581482f"
@@ -1022,8 +1115,8 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 310,
-        "y": 680,
+        "x": 340,
+        "y": 1000,
         "wires": [
             [
                 "1688a65dacdd55fe"
@@ -1050,8 +1143,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 540,
-        "y": 680,
+        "x": 570,
+        "y": 1000,
         "wires": [
             [
                 "062e70cc3789a1a1"
@@ -1070,8 +1163,8 @@
         "syntax": "mustache",
         "template": "title: {{{filename}}}\ntype: {{{wiki.senderTiddler.filetype}}}\nioToStory: yes\n\n{{{filetext}}}\n",
         "output": "str",
-        "x": 760,
-        "y": 680,
+        "x": 790,
+        "y": 1000,
         "wires": [
             [
                 "38f58f1538e9684a"
@@ -1082,10 +1175,10 @@
         "id": "38f58f1538e9684a",
         "type": "subflow:83b81066588d5f7b",
         "z": "62c6b96ab760ca78",
-        "g": "14d2f76b188465c8",
+        "g": "a7c5d113bcde7caa",
         "name": "",
-        "x": 875,
-        "y": 680,
+        "x": 905,
+        "y": 1000,
         "wires": [
             []
         ],
@@ -1098,10 +1191,34 @@
         "g": "dbbdc46edaf683d5",
         "name": "{{||hello-nodered-template-show-file}}",
         "info": "",
-        "x": 440,
-        "y": 560,
+        "x": 470,
+        "y": 880,
         "wires": [],
         "icon": "pocket-io-icons/tiddlywiki-dark.png"
+    },
+    {
+        "id": "4f51d7d6cece1a40",
+        "type": "subflow:8adf8de645b60e16",
+        "z": "62c6b96ab760ca78",
+        "g": "add2325b1cc1c629",
+        "name": "",
+        "x": 210,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "69d8a8f64ea87d59",
+        "type": "subflow:83b81066588d5f7b",
+        "z": "62c6b96ab760ca78",
+        "g": "21d6d79a549684ce",
+        "name": "",
+        "x": 430,
+        "y": 160,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "e23e7dc8a5fc4864",
@@ -1114,8 +1231,8 @@
         "once": true,
         "onceDelay": "1",
         "topic": "",
-        "x": 605,
-        "y": 40,
+        "x": 85,
+        "y": 1160,
         "wires": [
             [
                 "1873a972a27c2906"
@@ -1135,8 +1252,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 780,
-        "y": 40,
+        "x": 260,
+        "y": 1160,
         "wires": []
     },
     {
