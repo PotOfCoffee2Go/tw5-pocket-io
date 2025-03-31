@@ -1,5 +1,5 @@
-// Have client wikis refresh from server
-// If not given a wikiName - refreshes all connected wikis
+// Broadcast message to clients connected to a wikiName
+// If not given a wikiName - broadcasts to all connected wikis
 function $broadcastClients(wikiname, msg) {
 	wikiname = wikiname ?? '';
 	for (let client in $sockets) {

@@ -1,4 +1,5 @@
-// Get code from code (this!) wiki and updates REPL
+// Get code from wiki tiddlers matching filter and updates 
+//  the REPL context with the code
 // If an error - displays on the server's console
 $tpi.getCode = function (wikiName, $cw, filter, minify = true) {
 	const prevHistory = cpy($rt.history);

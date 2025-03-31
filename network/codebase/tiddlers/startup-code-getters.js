@@ -1,6 +1,6 @@
+// $ss is shorthand for 'serverSettings'
 $rt.context.$twCodebase = $ss.find(settings => settings.name === 'codebase').$tw;
 
-// $ss is shorthand for 'serverSettings'
 $rt.context.$wikiNames = $ss
 	.filter(settings => settings.excludeLinks === false)
 	.map(settings => settings.name);
@@ -18,7 +18,6 @@ $rt.context.ins$db = (name, tiddler) => {
 		$tw.wiki.getModificationFields()
 	))
 }
-
 
 // User wikis
 $rt.context.get$tw = (name) => get$settings(name).$tw;
@@ -38,9 +37,10 @@ $rt.context.get$server = (name) => get$proxy(name).server ?? {};
 $rt.context.get$router = (name) => get$server(name).router ?? {};
 $rt.context.get$pocketio = (name) => get$server(name).pocketio ?? {};
 
-// Although the REPL handles circular references - Node-Red has
+// Although the REPL ($rt) handles circular references - Node-Red has
 //  some issues when accessing $rt (REPL runtime) directly due
 //  to the REPL referencing itself.
-// Currently - Node-Red only uses $rt to display the REPL prompt
+// Currently - Node-Red only uses $rt directly to display the REPL prompt
+//  so placing $rt in a wrapper to display the console prompt 
 $rt.context.$displayPrompt = () => $rt.displayPrompt();
 

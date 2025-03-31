@@ -1,4 +1,5 @@
-// Client acknowledges connect sequence is complete
+// Client acknowledges connect sequence is complete and ready
+//  for startup tiddlers from server
 $tpi.fn.io.ackConnect = function (socket, wikiName) {
 	var wikiLinks = [];
 	$wikiNames.forEach(name => {	wikiLinks.push(`[[${name}|${get$proxy(name).link}]]`); })
@@ -24,7 +25,9 @@ $tpi.fn.io.ackConnect = function (socket, wikiName) {
 		wikiRequires.push(fakeMsg.resultTiddlers[0]);
 	}
 
+	// Add this client's socket to list of connected clients
 	$sockets[sid(socket)] = { socket, wikiName };
+	
 	socket.emit('ackConnect', wikiRequires);
 	tog(`Client wiki '${wikiName}' ${sid(socket)} connected`);
 }

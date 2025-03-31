@@ -1289,7 +1289,7 @@
         "z": "5b24d6e63acf9047",
         "name": "",
         "x": 35,
-        "y": 340,
+        "y": 360,
         "wires": [
             [
                 "8b17abc06620f4dd"
@@ -1302,8 +1302,8 @@
         "type": "subflow:83b81066588d5f7b",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 395,
-        "y": 340,
+        "x": 415,
+        "y": 380,
         "wires": [
             []
         ],
@@ -1318,10 +1318,10 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "{\n    \"title\": \"test it 2\",\n    \"text\": \"some test!!!\"\n}",
+        "template": "{\n    \"title\": \"test it 2\",\n    \"text\": \"some test!!!\",\n    \"ioToStory\": \"yes\"\n}",
         "output": "str",
         "x": 300,
-        "y": 340,
+        "y": 360,
         "wires": [
             [
                 "e09f2f8c27050cf3"
@@ -1346,7 +1346,7 @@
         "repair": false,
         "outputs": 1,
         "x": 150,
-        "y": 340,
+        "y": 360,
         "wires": [
             [
                 "1732ef7f92556ce7"
@@ -1424,24 +1424,12 @@
         "type": "subflow:8adf8de645b60e16",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 44,
+        "x": 35,
         "y": 400,
         "wires": [
             [
                 "76b07d638e1110c9"
             ]
-        ],
-        "l": false
-    },
-    {
-        "id": "b6ed653b058dab34",
-        "type": "subflow:83b81066588d5f7b",
-        "z": "5b24d6e63acf9047",
-        "name": "",
-        "x": 374,
-        "y": 400,
-        "wires": [
-            []
         ],
         "l": false
     },
@@ -1454,13 +1442,13 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "title: Hi demo 2.2\n\nthis is some test tooooo!!!",
+        "template": "title: Hi demo 2.2\nioToStory: yes\n\nthis is some test tooooo!!!",
         "output": "str",
-        "x": 279,
+        "x": 300,
         "y": 400,
         "wires": [
             [
-                "b6ed653b058dab34"
+                "e09f2f8c27050cf3"
             ]
         ]
     },
@@ -1481,7 +1469,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 140,
+        "x": 141,
         "y": 400,
         "wires": [
             [
@@ -1524,11 +1512,11 @@
         "type": "subflow:295b59907f0d97d2",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 240,
+        "x": 320,
         "y": 480,
         "wires": [
             [
-                "014708f6c0e76350"
+                "c8114f4674dcad28"
             ]
         ]
     },
@@ -1549,8 +1537,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 100,
-        "y": 200,
+        "x": 140,
+        "y": 220,
         "wires": [
             [
                 "900a8c6c9eec40f3"
@@ -1569,8 +1557,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 390,
-        "y": 200,
+        "x": 430,
+        "y": 220,
         "wires": [
             [
                 "374eafaeec7f78ad"
@@ -1588,8 +1576,8 @@
         "syntax": "mustache",
         "template": "title: I'm getting around\nioToStory: yes\n\nSome tiddlers end up everywhere!\n",
         "output": "str",
-        "x": 330,
-        "y": 80,
+        "x": 370,
+        "y": 100,
         "wires": [
             [
                 "65e1ed3d1027e6b8"
@@ -1613,8 +1601,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 100,
-        "y": 80,
+        "x": 140,
+        "y": 100,
         "wires": [
             [
                 "d2a0bb33e100a072"
@@ -1626,8 +1614,8 @@
         "type": "subflow:1d5b93e906f67840",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 540,
-        "y": 80,
+        "x": 580,
+        "y": 100,
         "wires": [
             []
         ]
@@ -1654,8 +1642,8 @@
                 "type": "str"
             }
         ],
-        "x": 200,
-        "y": 140,
+        "x": 240,
+        "y": 160,
         "wires": [
             [
                 "16c21eba33a24f3d"
@@ -1683,8 +1671,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 60,
-        "y": 140,
+        "x": 100,
+        "y": 160,
         "wires": [
             [
                 "9aabdf07c3d6afe2"
@@ -1708,8 +1696,8 @@
                 "type": "str"
             }
         ],
-        "x": 340,
-        "y": 140,
+        "x": 380,
+        "y": 160,
         "wires": [
             []
         ]
@@ -1727,8 +1715,26 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 585,
-        "y": 200,
+        "x": 625,
+        "y": 220,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "c8114f4674dcad28",
+        "type": "debug",
+        "z": "5b24d6e63acf9047",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 455,
+        "y": 480,
         "wires": [],
         "l": false
     },
