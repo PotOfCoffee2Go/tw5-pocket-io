@@ -8,6 +8,14 @@
         "env": []
     },
     {
+        "id": "bebfd65af56181fb",
+        "type": "tab",
+        "label": "Utilities",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "faf664cead0da5c0",
         "type": "tab",
         "label": "Topics",
@@ -409,84 +417,63 @@
         "info": "# Example of Tiddlywiki Request\r\n\r\n"
     },
     {
-        "id": "0a11219ac3279f4f",
+        "id": "a7c5d113bcde7caa",
         "type": "group",
         "z": "62c6b96ab760ca78",
-        "g": "c95074a4d7aa6070",
-        "name": "Switch node \\n msg.topic matches \\n 'hello'",
+        "name": "\\n Send contents of a file on the server as a tiddler",
         "style": {
             "label": true,
-            "label-position": "s",
-            "stroke": "none",
-            "fill": "none"
+            "label-position": "n"
         },
         "nodes": [
-            "cdcaa30c8d7b6208"
+            "387aee9414b96304",
+            "38f58f1538e9684a",
+            "37dfe29593404c76",
+            "ddec69f95434e42a",
+            "694cb905ee221edc",
+            "9e9d7d5d6677e99e",
+            "dbbdc46edaf683d5"
         ],
-        "x": 154,
-        "y": 519,
-        "w": 152,
-        "h": 122
+        "x": 24,
+        "y": 797,
+        "w": 922,
+        "h": 310
     },
     {
-        "id": "ddd1dfc131b74fd7",
+        "id": "13637ad3fcc72fea",
         "type": "group",
         "z": "62c6b96ab760ca78",
-        "g": "c95074a4d7aa6070",
-        "name": "'Template' nodes \\n Tiddlers in JSON \\n format above \\n .tid format below",
+        "name": "Node-Red receives/replies to messages from  \\n TiddlyWiki clients via these two nodes \\n  \\n 'TW client out' will only work from messages \\n originating from 'TW client in'",
         "style": {
             "label": true,
-            "label-position": "s",
-            "stroke": "none",
-            "fill": "none"
+            "label-position": "n"
         },
         "nodes": [
-            "5516b95ab068d43b"
+            "add2325b1cc1c629",
+            "21d6d79a549684ce"
         ],
-        "x": 294,
-        "y": 519,
-        "w": 252,
-        "h": 138
+        "x": 88,
+        "y": 29,
+        "w": 464,
+        "h": 238
     },
     {
-        "id": "c882655e8d51597f",
+        "id": "78d42539d58ea4f6",
         "type": "group",
         "z": "62c6b96ab760ca78",
-        "g": "c95074a4d7aa6070",
-        "name": "Tiddlywiki \\n 'TW  client  in' \\n Node",
+        "name": "\\n TiddlyWiki 'tiddler parser' node",
         "style": {
             "label": true,
-            "label-position": "s",
-            "stroke": "#addb7b",
-            "fill": "none"
+            "label-position": "n",
+            "stroke": "#3f3f3f"
         },
         "nodes": [
-            "07f989c3cdeb14cb"
+            "122e9298ddc68975"
         ],
-        "x": 74,
-        "y": 519,
-        "w": 86,
-        "h": 122
-    },
-    {
-        "id": "c8562eaca2dbbd8d",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "c95074a4d7aa6070",
-        "name": "TiddlyWiki \\n 'TW client out' \\n node",
-        "style": {
-            "label": true,
-            "label-position": "s",
-            "stroke": "#7fb7df",
-            "fill": "none"
-        },
-        "nodes": [
-            "fd667c5c3ed8286e"
-        ],
-        "x": 574,
-        "y": 519,
-        "w": 95,
-        "h": 122
+        "x": 568,
+        "y": 57,
+        "w": 305,
+        "h": 190
     },
     {
         "id": "37dfe29593404c76",
@@ -589,47 +576,6 @@
         "h": 138
     },
     {
-        "id": "a7c5d113bcde7caa",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "name": "\\n Send contents of a file on the server as a tiddler",
-        "style": {
-            "label": true,
-            "label-position": "n"
-        },
-        "nodes": [
-            "387aee9414b96304",
-            "38f58f1538e9684a",
-            "37dfe29593404c76",
-            "ddec69f95434e42a",
-            "694cb905ee221edc",
-            "9e9d7d5d6677e99e",
-            "dbbdc46edaf683d5"
-        ],
-        "x": 24,
-        "y": 797,
-        "w": 922,
-        "h": 310
-    },
-    {
-        "id": "13637ad3fcc72fea",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "name": "Node-Red receives/replies to messages from  \\n TiddlyWiki clients via these two nodes \\n  \\n 'TW client out' will only work from messages \\n originating from 'TW client in'",
-        "style": {
-            "label": true,
-            "label-position": "n"
-        },
-        "nodes": [
-            "add2325b1cc1c629",
-            "21d6d79a549684ce"
-        ],
-        "x": 88,
-        "y": 29,
-        "w": 464,
-        "h": 238
-    },
-    {
         "id": "add2325b1cc1c629",
         "type": "group",
         "z": "62c6b96ab760ca78",
@@ -690,44 +636,6 @@
         "h": 122
     },
     {
-        "id": "78d42539d58ea4f6",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "name": "\\n TiddlyWiki 'tiddler parser' node ",
-        "style": {
-            "label": true,
-            "label-position": "n",
-            "stroke": "#3f3f3f"
-        },
-        "nodes": [
-            "122e9298ddc68975"
-        ],
-        "x": 568,
-        "y": 57,
-        "w": 305,
-        "h": 190
-    },
-    {
-        "id": "7c0c6a890fdeb607",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "c95074a4d7aa6070",
-        "name": "The flow continues after 'TW client out' \\n as can do more processing \\n and send more tiddlers later in the flow",
-        "style": {
-            "stroke": "none",
-            "fill": "none",
-            "label": true,
-            "label-position": "s"
-        },
-        "nodes": [
-            "de83c426cb05bd04"
-        ],
-        "x": 674,
-        "y": 519,
-        "w": 252,
-        "h": 122
-    },
-    {
         "id": "c95074a4d7aa6070",
         "type": "group",
         "z": "62c6b96ab760ca78",
@@ -751,6 +659,188 @@
         "y": 445,
         "w": 904,
         "h": 276
+    },
+    {
+        "id": "0a11219ac3279f4f",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "c95074a4d7aa6070",
+        "name": "Switch node \\n msg.topic matches \\n 'hello'",
+        "style": {
+            "label": true,
+            "label-position": "s",
+            "stroke": "none",
+            "fill": "none"
+        },
+        "nodes": [
+            "cdcaa30c8d7b6208"
+        ],
+        "x": 154,
+        "y": 519,
+        "w": 152,
+        "h": 122
+    },
+    {
+        "id": "ddd1dfc131b74fd7",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "c95074a4d7aa6070",
+        "name": "'Template' nodes \\n Tiddlers in JSON \\n format above \\n .tid format below",
+        "style": {
+            "label": true,
+            "label-position": "s",
+            "stroke": "none",
+            "fill": "none"
+        },
+        "nodes": [
+            "5516b95ab068d43b"
+        ],
+        "x": 294,
+        "y": 519,
+        "w": 252,
+        "h": 138
+    },
+    {
+        "id": "c882655e8d51597f",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "c95074a4d7aa6070",
+        "name": "Tiddlywiki \\n 'TW  client  in' \\n Node",
+        "style": {
+            "label": true,
+            "label-position": "s",
+            "stroke": "#addb7b",
+            "fill": "none"
+        },
+        "nodes": [
+            "07f989c3cdeb14cb"
+        ],
+        "x": 74,
+        "y": 519,
+        "w": 86,
+        "h": 122
+    },
+    {
+        "id": "c8562eaca2dbbd8d",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "c95074a4d7aa6070",
+        "name": "TiddlyWiki \\n 'TW client out' \\n node",
+        "style": {
+            "label": true,
+            "label-position": "s",
+            "stroke": "#7fb7df",
+            "fill": "none"
+        },
+        "nodes": [
+            "fd667c5c3ed8286e"
+        ],
+        "x": 574,
+        "y": 519,
+        "w": 95,
+        "h": 122
+    },
+    {
+        "id": "7c0c6a890fdeb607",
+        "type": "group",
+        "z": "62c6b96ab760ca78",
+        "g": "c95074a4d7aa6070",
+        "name": "The flow continues after 'TW client out' \\n as can do more processing \\n and send more tiddlers later in the flow",
+        "style": {
+            "stroke": "none",
+            "fill": "none",
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "de83c426cb05bd04"
+        ],
+        "x": 674,
+        "y": 519,
+        "w": 252,
+        "h": 122
+    },
+    {
+        "id": "4a7e4defec73ba6f",
+        "type": "group",
+        "z": "bebfd65af56181fb",
+        "name": "Copy tiddlers between wikis \\n based on a TW filter",
+        "style": {
+            "label": true,
+            "label-position": "n"
+        },
+        "nodes": [
+            "993d54c6cf885765",
+            "6d2d1c8d4392ab63",
+            "dd522ad1161a9409",
+            "806c3c792358ec5d",
+            "1f7637546d8123da",
+            "fba8dd555091b6c4",
+            "1a263a9f962d3821"
+        ],
+        "x": 34,
+        "y": 417,
+        "w": 682,
+        "h": 304
+    },
+    {
+        "id": "dd522ad1161a9409",
+        "type": "group",
+        "z": "bebfd65af56181fb",
+        "g": "4a7e4defec73ba6f",
+        "name": "msg.payload contains: \\n twFromWiki, twToWiki, twFtlter \\n \\n Copies between the wikis \\n and returns tiddlers copied in msg.payload",
+        "style": {
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "0d759124e9cd878b"
+        ],
+        "x": 234,
+        "y": 459,
+        "w": 292,
+        "h": 154
+    },
+    {
+        "id": "71a36a243127bc83",
+        "type": "group",
+        "z": "bebfd65af56181fb",
+        "name": "Get tiddlers from wiki into msg.payload \\n based on a TW filter",
+        "style": {
+            "label": true,
+            "label-position": "n"
+        },
+        "nodes": [
+            "d528fcb60dc1777c",
+            "666f8d5dc621b69a",
+            "30c30623bbe8a2a5",
+            "392997baab3d83a3",
+            "f0e0ccc0654b9fac"
+        ],
+        "x": 74,
+        "y": 57,
+        "w": 642,
+        "h": 304
+    },
+    {
+        "id": "d528fcb60dc1777c",
+        "type": "group",
+        "z": "bebfd65af56181fb",
+        "g": "71a36a243127bc83",
+        "name": "Input: \\n msg.twWiki, msg.twFtlter \\n \\n Output: \\n msg.payload contains tiddlers matching twFilter",
+        "style": {
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "7aa6b82189e6e8ae",
+            "ff0849044f57f0b2",
+            "07f1b39a9e2b4e0c"
+        ],
+        "x": 204,
+        "y": 99,
+        "w": 352,
+        "h": 154
     },
     {
         "id": "c423533ded980b73",
@@ -788,7 +878,7 @@
         "z": "83b81066588d5f7b",
         "g": "392b55f1513f4105",
         "name": "To TW Webserver",
-        "func": "const repl = global.get('repl'); // REPL context\n\nmsg.payload = repl.$nrParser(msg.payload);\n\n// Send to a specific client\nif (msg.wiki && msg.wiki.req.socketId) {\n\tmsg.payload.forEach(tiddler => {\n\t\tif (tiddler.ioToStory !== undefined) {\n\t\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\t\tdelete tiddler.ioToStory;\n\t\t}\n\t\tmsg.wiki.resultTiddlers.push(tiddler);\n\t})\n   repl.$sockets[msg.wiki.req.socketId].socket.emit('msg', msg.wiki);\n}\n// Refresh any client connect to this wiki\nrepl.$refreshClients(msg.wikiname);\n\nreturn;\n",
+        "func": "const repl = global.get('repl'); // REPL context\n\nmsg.payload = repl.$nrParser(msg.payload);\n\n// Send to a specific client\nif (msg.wiki && msg.wiki.req.socketId) {\n\tmsg.payload.forEach(tiddler => {\n\t\tif (tiddler.ioToStory !== undefined) {\n\t\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\t\tdelete tiddler.ioToStory;\n\t\t}\n\t\tmsg.wiki.resultTiddlers.push(tiddler);\n\t})\n   repl.$sockets[msg.wiki.req.socketId].socket.emit('msg', msg.wiki);\n}\n// Refresh any client connect to this wiki\nrepl.$refreshClients(msg.wikiname);\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1255,6 +1345,295 @@
         "x": 260,
         "y": 1160,
         "wires": []
+    },
+    {
+        "id": "0d759124e9cd878b",
+        "type": "function",
+        "z": "bebfd65af56181fb",
+        "g": "dd522ad1161a9409",
+        "name": "copy tiddlers between wikis",
+        "func": "const repl = global.get('repl');\n\nmsg.twResult = '';\n\nvar gotError = false;\nif (!msg.twFromWiki) {\n\tmsg.twResult = `Error: Need the source wiki name (msg.payload.twFromWiki) to copy the tiddlers from.`;\n\tgotError = true;\n}\nelse if (!msg.twToWiki) {\n\tmsg.twResult = `Error: Need the destination wiki name (msg.payload.twToWiki) to copy the tiddlers to`;\n\tgotError = true;\n}\nelse if (!msg.twFilter) {\n\tmsg.twResult = `Error: A filter (msg.payload.twFilter) to select the tiddlers to copy is required`;\n\tgotError = true;\n}\nelse if (msg.twFromWiki === msg.twToWiki) {\n\tmsg.twResult = `Error: Can not copy to the same wiki.`;\n\tgotError = true;\n}\n\nif (gotError) {\n\tnode.error(msg.twResult)\n\tnode.done();\n\treturn;\n}\n\nvar $from = repl.get$tw(msg.twFromWiki);\nvar $to = repl.get$tw(msg.twToWiki);\n\nif (!$from) {\n\tmsg.twResult = `Error: From wiki '${msg.twFromWiki}' not found in network.`;\n\tnode.error(msg.twResult)\n\tnode.done();\n\treturn;\n}\nif (!$to) {\n\tmsg.twResult = `Error: To wiki '${msg.twToWiki}' not found in network.`;\n\tnode.error(msg.twResult)\n\tnode.done();\n\treturn;\n}\n\n// copy tiddlers into msg.payload\nmsg.payload = $from.utils.parseJSONSafe(\n\t$from.wiki.getTiddlersAsJson(msg.twFilter), []);\n\n// Copy tiddlers between wikis\nmsg.payload.forEach(tiddler => {\n//\t\t\t$to.wiki.addTiddler(new $to.Tiddler(tiddler));\n})\n\nmsg.twResult = `${msg.payload.length} tiddlers copied from ${msg.twFromWiki} to ${msg.twToWiki}`;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 500,
+        "wires": [
+            [
+                "6d2d1c8d4392ab63"
+            ]
+        ]
+    },
+    {
+        "id": "806c3c792358ec5d",
+        "type": "change",
+        "z": "bebfd65af56181fb",
+        "g": "4a7e4defec73ba6f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "twFromWiki",
+                "pt": "msg",
+                "to": "poc2go",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "twToWiki",
+                "pt": "msg",
+                "to": "MyWiki",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "twFilter",
+                "pt": "msg",
+                "to": "[tag[package]]",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 680,
+        "wires": [
+            [
+                "1a263a9f962d3821"
+            ]
+        ]
+    },
+    {
+        "id": "1f7637546d8123da",
+        "type": "inject",
+        "z": "bebfd65af56181fb",
+        "g": "4a7e4defec73ba6f",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 680,
+        "wires": [
+            [
+                "806c3c792358ec5d"
+            ]
+        ]
+    },
+    {
+        "id": "fba8dd555091b6c4",
+        "type": "debug",
+        "z": "bebfd65af56181fb",
+        "g": "4a7e4defec73ba6f",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 655,
+        "y": 680,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "993d54c6cf885765",
+        "type": "link in",
+        "z": "bebfd65af56181fb",
+        "g": "4a7e4defec73ba6f",
+        "name": "copy tiddlers between wikis",
+        "links": [],
+        "x": 215,
+        "y": 500,
+        "wires": [
+            [
+                "0d759124e9cd878b"
+            ]
+        ]
+    },
+    {
+        "id": "6d2d1c8d4392ab63",
+        "type": "link out",
+        "z": "bebfd65af56181fb",
+        "g": "4a7e4defec73ba6f",
+        "name": "return",
+        "mode": "return",
+        "links": [],
+        "x": 545,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "1a263a9f962d3821",
+        "type": "link call",
+        "z": "bebfd65af56181fb",
+        "g": "4a7e4defec73ba6f",
+        "name": "",
+        "links": [
+            "993d54c6cf885765"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 500,
+        "y": 680,
+        "wires": [
+            [
+                "fba8dd555091b6c4"
+            ]
+        ]
+    },
+    {
+        "id": "07f1b39a9e2b4e0c",
+        "type": "link in",
+        "z": "bebfd65af56181fb",
+        "g": "d528fcb60dc1777c",
+        "name": "get tiddlers from wiki",
+        "links": [],
+        "x": 245,
+        "y": 140,
+        "wires": [
+            [
+                "7aa6b82189e6e8ae"
+            ]
+        ]
+    },
+    {
+        "id": "ff0849044f57f0b2",
+        "type": "link out",
+        "z": "bebfd65af56181fb",
+        "g": "d528fcb60dc1777c",
+        "name": "return",
+        "mode": "return",
+        "links": [],
+        "x": 515,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "7aa6b82189e6e8ae",
+        "type": "function",
+        "z": "bebfd65af56181fb",
+        "g": "d528fcb60dc1777c",
+        "name": "get tiddlers from wiki",
+        "func": "const repl = global.get('repl');\n\nmsg.twResult = '';\n\nvar gotError = false;\nif (!msg.twWiki) {\n\tmsg.twResult = `Error: Need the source wiki name (msg.payload.twWiki) to copy the tiddlers from.`;\n\tgotError = true;\n}\nelse if (!msg.twFilter) {\n\tmsg.twResult = `Error: A filter (msg.payload.twFilter) to select the tiddlers to copy is required`;\n\tgotError = true;\n}\n\nif (gotError) {\n\tnode.error(msg.twResult)\n\tnode.done();\n\treturn;\n}\n\nvar $tw = repl.get$tw(msg.twWiki);\n\nif (!$tw) {\n\tmsg.twResult = `Error: From wiki '${msg.twWiki}' not found in network.`;\n\tnode.error(msg.twResult)\n\tnode.done();\n\treturn;\n}\n\n// copy tiddlers into msg.payload\nmsg.payload = $tw.utils.parseJSONSafe(\n\t$tw.wiki.getTiddlersAsJson(msg.twFilter), []);\n\nmsg.twResult = `${msg.payload.length} tiddlers from wiki '${msg.twWiki}'`;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 140,
+        "wires": [
+            [
+                "ff0849044f57f0b2"
+            ]
+        ]
+    },
+    {
+        "id": "666f8d5dc621b69a",
+        "type": "change",
+        "z": "bebfd65af56181fb",
+        "g": "71a36a243127bc83",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "twWiki",
+                "pt": "msg",
+                "to": "poc2go",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "twFilter",
+                "pt": "msg",
+                "to": "[tag[package]]",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 320,
+        "wires": [
+            [
+                "f0e0ccc0654b9fac"
+            ]
+        ]
+    },
+    {
+        "id": "30c30623bbe8a2a5",
+        "type": "inject",
+        "z": "bebfd65af56181fb",
+        "g": "71a36a243127bc83",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 170,
+        "y": 320,
+        "wires": [
+            [
+                "666f8d5dc621b69a"
+            ]
+        ]
+    },
+    {
+        "id": "392997baab3d83a3",
+        "type": "debug",
+        "z": "bebfd65af56181fb",
+        "g": "71a36a243127bc83",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 655,
+        "y": 320,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "f0e0ccc0654b9fac",
+        "type": "link call",
+        "z": "bebfd65af56181fb",
+        "g": "71a36a243127bc83",
+        "name": "",
+        "links": [
+            "07f1b39a9e2b4e0c"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 520,
+        "y": 320,
+        "wires": [
+            [
+                "392997baab3d83a3"
+            ]
+        ]
     },
     {
         "id": "499eef7df40ed31b",
