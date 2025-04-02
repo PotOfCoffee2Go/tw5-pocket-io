@@ -38,6 +38,6 @@ $tpi.topic.copyTiddlers = function copyTiddlers(socket, msg) {
 	}	
 
 	msg.resultTiddlers.push(sender);
-	$refreshClients(ioToWiki);
+	$refreshClients(sender.ioToWiki);
 	return msg;
 }

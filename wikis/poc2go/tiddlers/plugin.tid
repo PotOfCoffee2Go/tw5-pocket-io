@@ -20,7 +20,8 @@ ioText: {"tiddlers":{}}
 ioTitle: $:/plugins/poc2go/fetch
 ioType: application/json
 ioVersion: 0.0.0
-modified: 20250209072755545
+list: dashboard docs template code
+modified: 20250402181423590
 modifier: poc2go
 tags: plugin Projects
 title: plugin
@@ -32,10 +33,18 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
+{{||$:/poc2go/pocket-io/project/addcategory}}
+
+|tc-center tc-table-no-border|k
+| <<projectUploadButton>> |
+
 {{||$:/poc2go/pocket-io/project/addtab}}
 
+<!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<displayTabTypes plugin>>
+<$list filter="[list[!!list]]">
+<<closeTabsButton "plugin" "$(currentTiddler)$">>
+</$list>
 
 <<topButton>>
