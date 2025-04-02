@@ -9,7 +9,8 @@ ioPrjTabSelected: AALLLL
 ioPrjTabToDelete: REST-default
 ioPrjTabType: dashboard
 ioResult: 
-modified: 20250323024704334
+list: dashboard docs template code
+modified: 20250402170515276
 modifier: poc2go
 tags: REST Projects
 title: REST
@@ -26,13 +27,18 @@ Enable 'Auto load on startup' and restart server to load updated routes.
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
+{{||$:/poc2go/pocket-io/project/addcategory}}
+
+|tc-center tc-table-no-border|k
+| <<projectUploadButton>> |
+
 {{||$:/poc2go/pocket-io/project/addtab}}
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<closeTabsButton "REST" "docs">>
-<<projectUploadButton>>
-<<closeTabsButton "REST" "code">>
+<$list filter="[list[!!list]]">
+<<closeTabsButton "REST" "$(currentTiddler)$">>
+</$list>
 
 <<topButton>>

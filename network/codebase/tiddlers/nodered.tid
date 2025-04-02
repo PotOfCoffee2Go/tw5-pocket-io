@@ -9,7 +9,8 @@ ioPrjTabSelected: nodered-code-server
 ioPrjTabType: code
 ioResult: 
 ioResultUpload: 
-modified: 20250321013424281
+list: dashboard docs template code
+modified: 20250402170255847
 modifier: poc2go
 tags: nodered Projects
 title: nodered
@@ -21,13 +22,18 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
+{{||$:/poc2go/pocket-io/project/addcategory}}
+
+|tc-center tc-table-no-border|k
+| <<projectUploadButton>> |
+
 {{||$:/poc2go/pocket-io/project/addtab}}
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<closeTabsButton "nodered" "docs">>
-<<projectUploadButton>>
-<<closeTabsButton "nodered" "code">>
+<$list filter="[list[!!list]]">
+<<closeTabsButton "nodered" "$(currentTiddler)$">>
+</$list>
 
 <<topButton>>

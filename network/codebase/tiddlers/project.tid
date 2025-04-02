@@ -12,7 +12,8 @@ ioPrjTabSelected: project-code-addcategory
 ioPrjTabType: dashboard
 ioResult: 
 ioResultUpload: 
-modified: 20250327143832622
+list: dashboard docs template code
+modified: 20250402165359460
 modifier: poc2go
 tags: project Projects
 title: project
@@ -24,20 +25,18 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load code on startup</$checkbox>|
 
+{{||$:/poc2go/pocket-io/project/addcategory}}
+
+|tc-center tc-table-no-border|k
+| <<projectUploadButton>> |
+
 {{||$:/poc2go/pocket-io/project/addtab}}
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<closeTabsButton "project" "dashboard">>
-<<closeTabsButton "project" "docs">>
-<<closeTabsButton "project" "template">>
-<hr class="poc2go-hr" style="margin:1em;">
-<<projectUploadButton>>
-<<closeTabsButton "project" "code">>
-<hr class="poc2go-hr" style="margin:1em;">
-<<closeTabsButton "project" "info">>
-<<closeTabsButton "project" "flow">>
-<<closeTabsButton "project" "package">>
+<$list filter="[list[!!list]]">
+<<closeTabsButton "project" "$(currentTiddler)$">>
+</$list>
 
 <<topButton>>

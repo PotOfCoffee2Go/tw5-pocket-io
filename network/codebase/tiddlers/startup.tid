@@ -10,7 +10,7 @@ ioPrjTabToDelete: startup-a
 ioPrjTabType: dashboard
 ioResult: 
 list: dashboard docs template code flow
-modified: 20250327200910734
+modified: 20250402164116816
 modifier: poc2go
 tags: startup Projects
 title: startup
@@ -25,9 +25,8 @@ type: text/vnd.tiddlywiki
 
 {{||$:/poc2go/pocket-io/project/addcategory}}
 
-<<projectUploadButton>>
-
-<br>
+|tc-center tc-table-no-border|k
+| <<projectUploadButton>> |
 
 {{||$:/poc2go/pocket-io/project/addtab}}
 

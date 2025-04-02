@@ -10,7 +10,8 @@ ioPrjTabToDelete: package-a
 ioPrjTabType: info
 ioResult: 
 ioResultUpload: 
-modified: 20250316170958742
+list: dashboard docs template code
+modified: 20250402171702924
 modifier: poc2go
 tags: package Projects
 title: package
@@ -25,11 +26,18 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
+{{||$:/poc2go/pocket-io/project/addcategory}}
+
+|tc-center tc-table-no-border|k
+| <<projectUploadButton>> |
+
 {{||$:/poc2go/pocket-io/project/addtab}}
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<displayTabTypes package>>
+<$list filter="[list[!!list]]">
+<<closeTabsButton "package" "$(currentTiddler)$">>
+</$list>
 
 <<topButton>>

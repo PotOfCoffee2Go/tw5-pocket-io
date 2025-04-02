@@ -1,6 +1,7 @@
 autoLoad: yes
 caption: Pocket-io Topics
 created: 20250129072620849
+creator: poc2go
 ioConfirmDelete: no
 ioPrjProject: topic
 ioPrjTabName: 
@@ -9,7 +10,9 @@ ioPrjTabToDelete: topic-a
 ioPrjTabType: code
 ioResult: 
 ioResultUpload: 
-modified: 20250228131943344
+list: dashboard docs template code
+modified: 20250402164450543
+modifier: poc2go
 tags: topic Projects
 title: topic
 type: text/vnd.tiddlywiki
@@ -20,11 +23,19 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
+{{||$:/poc2go/pocket-io/project/addcategory}}
+
+|tc-center tc-table-no-border|k
+| <<projectUploadButton>> |
+
 {{||$:/poc2go/pocket-io/project/addtab}}
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<displayTabTypes topic>>
+<$list filter="[list[!!list]]">
+<<closeTabsButton "topic" "$(currentTiddler)$">>
+</$list>
+
 
 <<topButton>>

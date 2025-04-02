@@ -10,7 +10,8 @@ ioPrjTabToDelete: socket-a
 ioPrjTabType: code
 ioResult: 
 ioResultUpload: 
-modified: 20250321100557956
+list: dashboard docs template code
+modified: 20250402164518705
 modifier: poc2go
 tags: socket Projects
 title: socket
@@ -22,11 +23,18 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
+{{||$:/poc2go/pocket-io/project/addcategory}}
+
+|tc-center tc-table-no-border|k
+| <<projectUploadButton>> |
+
 {{||$:/poc2go/pocket-io/project/addtab}}
 
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<displayTabTypes socket>>
+<$list filter="[list[!!list]]">
+<<closeTabsButton "socket" "$(currentTiddler)$">>
+</$list>
 
 <<topButton>>
