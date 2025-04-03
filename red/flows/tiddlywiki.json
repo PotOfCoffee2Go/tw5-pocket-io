@@ -779,7 +779,7 @@
             "1a263a9f962d3821"
         ],
         "x": 34,
-        "y": 417,
+        "y": 517,
         "w": 682,
         "h": 304
     },
@@ -797,7 +797,7 @@
             "0d759124e9cd878b"
         ],
         "x": 234,
-        "y": 459,
+        "y": 559,
         "w": 292,
         "h": 170
     },
@@ -817,8 +817,8 @@
             "392997baab3d83a3",
             "f0e0ccc0654b9fac"
         ],
-        "x": 74,
-        "y": 57,
+        "x": 54,
+        "y": 177,
         "w": 642,
         "h": 304
     },
@@ -837,8 +837,8 @@
             "ff0849044f57f0b2",
             "07f1b39a9e2b4e0c"
         ],
-        "x": 204,
-        "y": 99,
+        "x": 184,
+        "y": 219,
         "w": 352,
         "h": 154
     },
@@ -1360,7 +1360,7 @@
         "finalize": "",
         "libs": [],
         "x": 380,
-        "y": 500,
+        "y": 600,
         "wires": [
             [
                 "6d2d1c8d4392ab63"
@@ -1402,7 +1402,7 @@
         "to": "",
         "reg": false,
         "x": 280,
-        "y": 680,
+        "y": 780,
         "wires": [
             [
                 "1a263a9f962d3821"
@@ -1422,7 +1422,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 130,
-        "y": 680,
+        "y": 780,
         "wires": [
             [
                 "806c3c792358ec5d"
@@ -1444,7 +1444,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 655,
-        "y": 680,
+        "y": 780,
         "wires": [],
         "l": false
     },
@@ -1456,7 +1456,7 @@
         "name": "copy tiddlers between wikis",
         "links": [],
         "x": 215,
-        "y": 500,
+        "y": 600,
         "wires": [
             [
                 "0d759124e9cd878b"
@@ -1472,7 +1472,7 @@
         "mode": "return",
         "links": [],
         "x": 545,
-        "y": 500,
+        "y": 600,
         "wires": []
     },
     {
@@ -1487,7 +1487,7 @@
         "linkType": "static",
         "timeout": "30",
         "x": 500,
-        "y": 680,
+        "y": 780,
         "wires": [
             [
                 "fba8dd555091b6c4"
@@ -1501,8 +1501,8 @@
         "g": "d528fcb60dc1777c",
         "name": "get tiddlers from wiki",
         "links": [],
-        "x": 245,
-        "y": 140,
+        "x": 225,
+        "y": 260,
         "wires": [
             [
                 "7aa6b82189e6e8ae"
@@ -1517,8 +1517,8 @@
         "name": "return",
         "mode": "return",
         "links": [],
-        "x": 515,
-        "y": 140,
+        "x": 495,
+        "y": 260,
         "wires": []
     },
     {
@@ -1527,15 +1527,15 @@
         "z": "bebfd65af56181fb",
         "g": "d528fcb60dc1777c",
         "name": "get tiddlers from wiki",
-        "func": "const repl = global.get('repl');\n\nmsg.twResult = '';\n\nvar gotError = false;\nif (!msg.twWiki) {\n\tmsg.twResult = `Error: Need the source wiki name (msg.payload.twWiki) to copy the tiddlers from.`;\n\tgotError = true;\n}\nelse if (!msg.twFilter) {\n\tmsg.twResult = `Error: A filter (msg.payload.twFilter) to select the tiddlers to copy is required`;\n\tgotError = true;\n}\n\nif (gotError) {\n\tnode.error(msg.twResult)\n\tnode.done();\n\treturn;\n}\n\nvar $tw = repl.get$tw(msg.twWiki);\n\nif (!$tw) {\n\tmsg.twResult = `Error: From wiki '${msg.twWiki}' not found in network.`;\n\tnode.error(msg.twResult)\n\tnode.done();\n\treturn;\n}\n\n// copy tiddlers into msg.payload\nmsg.payload = $tw.utils.parseJSONSafe(\n\t$tw.wiki.getTiddlersAsJson(msg.twFilter), []);\n\nmsg.twResult = `${msg.payload.length} tiddlers from wiki '${msg.twWiki}'`;\nreturn msg;\n",
+        "func": "const repl = global.get('repl');\n\nmsg.twResult = '';\n\nvar gotError = false;\nif (!msg.twWiki) {\n\tmsg.twResult = `Error: Need the source wiki name (msg.payload.twWiki) to copy the tiddlers from.`;\n\tgotError = true;\n}\nelse if (!msg.twFilter) {\n\tmsg.twResult = `Error: A filter (msg.payload.twFilter) to select the tiddlers to copy is required`;\n\tgotError = true;\n}\n\nif (gotError) {\n\tnode.error(msg.twResult)\n\tnode.done();\n\treturn;\n}\n\nvar $tw = repl.get$tw(msg.twWiki);\n\nif (!$tw) {\n\tmsg.twResult = `Error: From wiki '${msg.twWiki}' not found in network.`;\n\tnode.error(msg.twResult)\n\tnode.done();\n\treturn;\n}\n\n// copy tiddlers into msg.payload\nmsg.payload = repl.qry$tw(msg.twWiki, msg.twFilter);\n\nmsg.twResult = `${msg.payload.length} tiddlers from wiki '${msg.twWiki}'`;\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
-        "y": 140,
+        "x": 360,
+        "y": 260,
         "wires": [
             [
                 "ff0849044f57f0b2"
@@ -1553,14 +1553,14 @@
                 "t": "set",
                 "p": "twWiki",
                 "pt": "msg",
-                "to": "poc2go",
+                "to": "Home",
                 "tot": "str"
             },
             {
                 "t": "set",
                 "p": "twFilter",
                 "pt": "msg",
-                "to": "[tag[package]]",
+                "to": "[tag[helloworld]]",
                 "tot": "str"
             }
         ],
@@ -1569,8 +1569,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 320,
-        "y": 320,
+        "x": 300,
+        "y": 440,
         "wires": [
             [
                 "f0e0ccc0654b9fac"
@@ -1589,8 +1589,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 170,
-        "y": 320,
+        "x": 150,
+        "y": 440,
         "wires": [
             [
                 "666f8d5dc621b69a"
@@ -1611,8 +1611,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 655,
-        "y": 320,
+        "x": 635,
+        "y": 440,
         "wires": [],
         "l": false
     },
@@ -1627,13 +1627,133 @@
         ],
         "linkType": "static",
         "timeout": "30",
-        "x": 520,
-        "y": 320,
+        "x": 500,
+        "y": 440,
         "wires": [
             [
                 "392997baab3d83a3"
             ]
         ]
+    },
+    {
+        "id": "0efdbd61adad0880",
+        "type": "function",
+        "z": "bebfd65af56181fb",
+        "name": "get wiki names",
+        "func": "const repl = global.get('repl');\n\nmsg.payload = repl.$wikiNames;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 60,
+        "wires": [
+            [
+                "7b6eaef255c7a57f"
+            ]
+        ]
+    },
+    {
+        "id": "4f0fa5648d276358",
+        "type": "inject",
+        "z": "bebfd65af56181fb",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 230,
+        "y": 60,
+        "wires": [
+            [
+                "0efdbd61adad0880"
+            ]
+        ]
+    },
+    {
+        "id": "7b6eaef255c7a57f",
+        "type": "debug",
+        "z": "bebfd65af56181fb",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 535,
+        "y": 60,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "77cc0f421e9488ce",
+        "type": "function",
+        "z": "bebfd65af56181fb",
+        "name": "get settings for a wiki",
+        "func": "const repl = global.get('repl');\n\nmsg.payload = repl.get$settings(msg.twWiki);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 100,
+        "wires": [
+            [
+                "07e3f0313ba15f66"
+            ]
+        ]
+    },
+    {
+        "id": "5ac46e6b29981fdd",
+        "type": "inject",
+        "z": "bebfd65af56181fb",
+        "name": "msg.twWiki = 'Home'",
+        "props": [
+            {
+                "p": "twWiki",
+                "v": "Home",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 100,
+        "wires": [
+            [
+                "77cc0f421e9488ce"
+            ]
+        ]
+    },
+    {
+        "id": "07e3f0313ba15f66",
+        "type": "debug",
+        "z": "bebfd65af56181fb",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 535,
+        "y": 100,
+        "wires": [],
+        "l": false
     },
     {
         "id": "499eef7df40ed31b",
