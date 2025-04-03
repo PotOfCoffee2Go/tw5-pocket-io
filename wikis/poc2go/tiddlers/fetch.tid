@@ -4,9 +4,10 @@ created: 20250129142038466
 creator: poc2go
 ioPrjProject: fetch
 ioPrjTabName: 
-ioPrjTabType: dashboard
+ioPrjTabType: docs
 ioResult: 
-modified: 20250319054045537
+list: dashboard docs template code
+modified: 20250403162043143
 modifier: poc2go
 tags: fetch Projects
 title: fetch
@@ -18,9 +19,18 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load on startup</$checkbox>|
 
+{{||$:/poc2go/pocket-io/project/addcategory}}
+
+|tc-center tc-table-no-border|k
+| <<projectUploadButton>> |
+
+{{||$:/poc2go/pocket-io/project/addtab}}
+
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<<closeTabsButton "fetch" "dashboard">>
+<$list filter="[list[!!list]]">
+<<closeTabsButton "fetch" "$(currentTiddler)$">>
+</$list>
 
 <<topButton>>

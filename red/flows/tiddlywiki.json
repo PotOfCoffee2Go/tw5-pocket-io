@@ -779,7 +779,7 @@
             "1a263a9f962d3821"
         ],
         "x": 34,
-        "y": 517,
+        "y": 577,
         "w": 682,
         "h": 304
     },
@@ -797,7 +797,7 @@
             "0d759124e9cd878b"
         ],
         "x": 234,
-        "y": 559,
+        "y": 619,
         "w": 292,
         "h": 170
     },
@@ -818,7 +818,7 @@
             "f0e0ccc0654b9fac"
         ],
         "x": 54,
-        "y": 177,
+        "y": 237,
         "w": 642,
         "h": 304
     },
@@ -838,7 +838,7 @@
             "07f1b39a9e2b4e0c"
         ],
         "x": 184,
-        "y": 219,
+        "y": 279,
         "w": 352,
         "h": 154
     },
@@ -1360,7 +1360,7 @@
         "finalize": "",
         "libs": [],
         "x": 380,
-        "y": 600,
+        "y": 660,
         "wires": [
             [
                 "6d2d1c8d4392ab63"
@@ -1402,7 +1402,7 @@
         "to": "",
         "reg": false,
         "x": 280,
-        "y": 780,
+        "y": 840,
         "wires": [
             [
                 "1a263a9f962d3821"
@@ -1422,7 +1422,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 130,
-        "y": 780,
+        "y": 840,
         "wires": [
             [
                 "806c3c792358ec5d"
@@ -1444,7 +1444,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 655,
-        "y": 780,
+        "y": 840,
         "wires": [],
         "l": false
     },
@@ -1456,7 +1456,7 @@
         "name": "copy tiddlers between wikis",
         "links": [],
         "x": 215,
-        "y": 600,
+        "y": 660,
         "wires": [
             [
                 "0d759124e9cd878b"
@@ -1472,7 +1472,7 @@
         "mode": "return",
         "links": [],
         "x": 545,
-        "y": 600,
+        "y": 660,
         "wires": []
     },
     {
@@ -1487,7 +1487,7 @@
         "linkType": "static",
         "timeout": "30",
         "x": 500,
-        "y": 780,
+        "y": 840,
         "wires": [
             [
                 "fba8dd555091b6c4"
@@ -1502,7 +1502,7 @@
         "name": "get tiddlers from wiki",
         "links": [],
         "x": 225,
-        "y": 260,
+        "y": 320,
         "wires": [
             [
                 "7aa6b82189e6e8ae"
@@ -1518,7 +1518,7 @@
         "mode": "return",
         "links": [],
         "x": 495,
-        "y": 260,
+        "y": 320,
         "wires": []
     },
     {
@@ -1535,7 +1535,7 @@
         "finalize": "",
         "libs": [],
         "x": 360,
-        "y": 260,
+        "y": 320,
         "wires": [
             [
                 "ff0849044f57f0b2"
@@ -1570,7 +1570,7 @@
         "to": "",
         "reg": false,
         "x": 300,
-        "y": 440,
+        "y": 500,
         "wires": [
             [
                 "f0e0ccc0654b9fac"
@@ -1590,7 +1590,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 150,
-        "y": 440,
+        "y": 500,
         "wires": [
             [
                 "666f8d5dc621b69a"
@@ -1612,7 +1612,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 635,
-        "y": 440,
+        "y": 500,
         "wires": [],
         "l": false
     },
@@ -1628,7 +1628,7 @@
         "linkType": "static",
         "timeout": "30",
         "x": 500,
-        "y": 440,
+        "y": 500,
         "wires": [
             [
                 "392997baab3d83a3"
@@ -1705,7 +1705,7 @@
         "finalize": "",
         "libs": [],
         "x": 400,
-        "y": 100,
+        "y": 180,
         "wires": [
             [
                 "07e3f0313ba15f66"
@@ -1730,7 +1730,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 190,
-        "y": 100,
+        "y": 180,
         "wires": [
             [
                 "77cc0f421e9488ce"
@@ -1750,8 +1750,65 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 535,
-        "y": 100,
+        "x": 555,
+        "y": 180,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "8c8f6eb06dd37a59",
+        "type": "function",
+        "z": "bebfd65af56181fb",
+        "name": "get settings for all wikis",
+        "func": "const repl = global.get('repl');\n\nmsg.payload = repl.$ss;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 120,
+        "wires": [
+            [
+                "42bae9a00470ae88"
+            ]
+        ]
+    },
+    {
+        "id": "6c79f6b6bf6cc3d6",
+        "type": "inject",
+        "z": "bebfd65af56181fb",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "8c8f6eb06dd37a59"
+            ]
+        ]
+    },
+    {
+        "id": "42bae9a00470ae88",
+        "type": "debug",
+        "z": "bebfd65af56181fb",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 555,
+        "y": 120,
         "wires": [],
         "l": false
     },

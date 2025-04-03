@@ -1,8 +1,10 @@
 caption: readme
-created: 20250129142931408
-modified: 20250129142946377
-tags: info fetch $:/pocket-io/fetch/info
-title: fetch-info-readme
+created: 20250403161653791
+creator: poc2go
+modified: 20250403161723670
+modifier: poc2go
+tags: docs fetch $:/pocket-io/fetch/docs
+title: fetch-docs-readme
 type: text/vnd.tiddlywiki
 
 Project 'fetch' has the server fetch from a URL a tiddler or array of tiddlers that will be added to the TW5-pocket-io wiki performing the request.
