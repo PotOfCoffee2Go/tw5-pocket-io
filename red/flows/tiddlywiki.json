@@ -476,6 +476,50 @@
         "h": 190
     },
     {
+        "id": "4a7e4defec73ba6f",
+        "type": "group",
+        "z": "bebfd65af56181fb",
+        "name": "Copy tiddlers between wikis \\n based on a TW filter",
+        "style": {
+            "label": true,
+            "label-position": "n"
+        },
+        "nodes": [
+            "993d54c6cf885765",
+            "6d2d1c8d4392ab63",
+            "dd522ad1161a9409",
+            "806c3c792358ec5d",
+            "1f7637546d8123da",
+            "fba8dd555091b6c4",
+            "1a263a9f962d3821"
+        ],
+        "x": 34,
+        "y": 577,
+        "w": 682,
+        "h": 304
+    },
+    {
+        "id": "71a36a243127bc83",
+        "type": "group",
+        "z": "bebfd65af56181fb",
+        "name": "Get tiddlers from wiki into msg.payload \\n based on a TW filter",
+        "style": {
+            "label": true,
+            "label-position": "n"
+        },
+        "nodes": [
+            "d528fcb60dc1777c",
+            "666f8d5dc621b69a",
+            "30c30623bbe8a2a5",
+            "392997baab3d83a3",
+            "f0e0ccc0654b9fac"
+        ],
+        "x": 54,
+        "y": 237,
+        "w": 642,
+        "h": 304
+    },
+    {
         "id": "37dfe29593404c76",
         "type": "group",
         "z": "62c6b96ab760ca78",
@@ -620,7 +664,7 @@
         "type": "group",
         "z": "62c6b96ab760ca78",
         "g": "78d42539d58ea4f6",
-        "name": "Parses text tiddlers created by \\n a Template node into Javascript objects \\n Is done automatically in most cases",
+        "name": "Parses tiddlers that are in text format \\n JSON or .tid \\n into Javascript objects \\n Is done automatically in most cases",
         "style": {
             "label": true,
             "label-position": "s",
@@ -632,8 +676,8 @@
         ],
         "x": 594,
         "y": 99,
-        "w": 253,
-        "h": 122
+        "w": 237,
+        "h": 138
     },
     {
         "id": "c95074a4d7aa6070",
@@ -659,6 +703,44 @@
         "y": 445,
         "w": 904,
         "h": 276
+    },
+    {
+        "id": "dd522ad1161a9409",
+        "type": "group",
+        "z": "bebfd65af56181fb",
+        "g": "4a7e4defec73ba6f",
+        "name": "Input: \\n msg.twFromWiki, msg.twToWiki, msg.twFtlter \\n \\n Output: \\n Copies between the wikis \\n and returns tiddlers copied in msg.payload",
+        "style": {
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "0d759124e9cd878b"
+        ],
+        "x": 234,
+        "y": 619,
+        "w": 292,
+        "h": 170
+    },
+    {
+        "id": "d528fcb60dc1777c",
+        "type": "group",
+        "z": "bebfd65af56181fb",
+        "g": "71a36a243127bc83",
+        "name": "Input: \\n msg.twWiki, msg.twFtlter \\n \\n Output: \\n msg.payload contains tiddlers matching twFilter",
+        "style": {
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "7aa6b82189e6e8ae",
+            "ff0849044f57f0b2",
+            "07f1b39a9e2b4e0c"
+        ],
+        "x": 184,
+        "y": 279,
+        "w": 352,
+        "h": 154
     },
     {
         "id": "0a11219ac3279f4f",
@@ -759,88 +841,6 @@
         "y": 519,
         "w": 252,
         "h": 122
-    },
-    {
-        "id": "4a7e4defec73ba6f",
-        "type": "group",
-        "z": "bebfd65af56181fb",
-        "name": "Copy tiddlers between wikis \\n based on a TW filter",
-        "style": {
-            "label": true,
-            "label-position": "n"
-        },
-        "nodes": [
-            "993d54c6cf885765",
-            "6d2d1c8d4392ab63",
-            "dd522ad1161a9409",
-            "806c3c792358ec5d",
-            "1f7637546d8123da",
-            "fba8dd555091b6c4",
-            "1a263a9f962d3821"
-        ],
-        "x": 34,
-        "y": 577,
-        "w": 682,
-        "h": 304
-    },
-    {
-        "id": "dd522ad1161a9409",
-        "type": "group",
-        "z": "bebfd65af56181fb",
-        "g": "4a7e4defec73ba6f",
-        "name": "Input: \\n msg.twFromWiki, msg.twToWiki, msg.twFtlter \\n \\n Output: \\n Copies between the wikis \\n and returns tiddlers copied in msg.payload",
-        "style": {
-            "label": true,
-            "label-position": "s"
-        },
-        "nodes": [
-            "0d759124e9cd878b"
-        ],
-        "x": 234,
-        "y": 619,
-        "w": 292,
-        "h": 170
-    },
-    {
-        "id": "71a36a243127bc83",
-        "type": "group",
-        "z": "bebfd65af56181fb",
-        "name": "Get tiddlers from wiki into msg.payload \\n based on a TW filter",
-        "style": {
-            "label": true,
-            "label-position": "n"
-        },
-        "nodes": [
-            "d528fcb60dc1777c",
-            "666f8d5dc621b69a",
-            "30c30623bbe8a2a5",
-            "392997baab3d83a3",
-            "f0e0ccc0654b9fac"
-        ],
-        "x": 54,
-        "y": 237,
-        "w": 642,
-        "h": 304
-    },
-    {
-        "id": "d528fcb60dc1777c",
-        "type": "group",
-        "z": "bebfd65af56181fb",
-        "g": "71a36a243127bc83",
-        "name": "Input: \\n msg.twWiki, msg.twFtlter \\n \\n Output: \\n msg.payload contains tiddlers matching twFilter",
-        "style": {
-            "label": true,
-            "label-position": "s"
-        },
-        "nodes": [
-            "7aa6b82189e6e8ae",
-            "ff0849044f57f0b2",
-            "07f1b39a9e2b4e0c"
-        ],
-        "x": 184,
-        "y": 279,
-        "w": 352,
-        "h": 154
     },
     {
         "id": "c423533ded980b73",

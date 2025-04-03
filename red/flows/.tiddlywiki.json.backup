@@ -1750,7 +1750,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 535,
+        "x": 555,
         "y": 180,
         "wires": [],
         "l": false
@@ -1759,7 +1759,7 @@
         "id": "8c8f6eb06dd37a59",
         "type": "function",
         "z": "bebfd65af56181fb",
-        "name": "get all wiki settings",
+        "name": "get settings for all wikis",
         "func": "const repl = global.get('repl');\n\nmsg.payload = repl.$ss;\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -1767,7 +1767,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 390,
+        "x": 410,
         "y": 120,
         "wires": [
             [
@@ -1807,7 +1807,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 535,
+        "x": 555,
         "y": 120,
         "wires": [],
         "l": false

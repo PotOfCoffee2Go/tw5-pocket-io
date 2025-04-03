@@ -18,6 +18,9 @@ const { twServerBoot } = require('./lib/twServerBoot');
 const { ProxyServer } = require('./lib/twProxyServer');
 const { buildSettings } = require('./lib/buildSettings');
 
+// Check required directory files exist
+require('./lib/checkFiles')(config);
+
 // Build settings based on config
 const serverSettings = buildSettings(config);
 

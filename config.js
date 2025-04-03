@@ -96,16 +96,36 @@ exports.config = {
 	},
 
 	// Apply Webserver user/password credentials to individual wikis
-	//   see 'https://tiddlywiki.com/static/WebServer%2520Parameter%253A%2520credentials.html'
+	// The system uses the Basic Authentication method
+	// see https://tiddlywiki.com/static/WebServer%2520Basic%2520Authentication.html
 	credentials: {
+		// Due to the sensitive nature of the passwords, this file should
+		//  be outside of the project directory
+		// Default is in the tw5-node-red user directory '~/.tw5-node-red'
+		// JSON file that contains user/password information
+		// Is in the form of
+		/*
+		{
+			"jane":   { "password": "do3" },
+			"andy":   { "password": "smith" },
+			"roger":  { "password": "m00re" }
+		}
+		*/
+		// This path must be a full absolute path with write permissions
+		userInfoFile: os.homedir() + '/.tw5-node-red/credentials/users.json',
+
 		// Directory of password CSV files used by webservers
 		//  should be outside of the project
 		// Default is in the tw5-node-red user directory '~/.tw5-node-red'
+		// see 'https://tiddlywiki.com/static/WebServer%2520Parameter%253A%2520credentials.html'
 		// This path must be a full absolute path with write permissions
 		csvDir: os.homedir() + '/.tw5-node-red/credentials/CSV',
 
-		// Demo users - obviously the passwords are exposed in this file
-		//  These are the users used in the examples examples below
+		// Demo users - obviously the passwords are exposed here
+		// If the 'userInfoFile' above does not exist, it will
+		//  be created with these users/passwords
+		//  otherwise these demo users are ignored
+		//   as can change them in the 'userInfoFile'
 		demo: {
 			"demo":   { "password": "demo" },
 			"poc2go": { "password": "ppp" },
@@ -114,37 +134,23 @@ exports.config = {
 			"roger":  { "password": "m00re" }
 		},
 
-		// User/passwords are in a file outside of project
-		//  Will be created on startup if not present
-		// This path must be a full absolute path with write permissions
-		// users: require( os.homedir() + '/.tw5-node-red/credentials/users.json'),
-
-		// TO-DO: SELF!!! THE CREDENTIAL FILES NEED TO BE PLACED IN .tw5-node-red
-		// Implement in ./lib/credentials.js ./lib/checkFiles.js
-		users: {
-			"demo": { "password": "demo" },
-			"poc2go": { "password": "ppp" },
-			"jane": { "password": "do3" },
-			"andy": { "password": "smith" },
-			"roger": { "password": "m00re" }
-		},
-
-		// Default users and webserver authorization parameters
+		// Default credentials
+		// Users and webserver authorization parameters
+		// see https://tiddlywiki.com/static/WebServer%2520Authorization.html
 		default: {
 			users: ['demo', 'poc2go', 'jane', 'andy', 'roger'],
 			authorization: ['readers=(authenticated)', 'writers=(authenticated)', 'admin=poc2go'],
 		},
 
-		// Users and authorization properties override the defaults
 		// Webserver wikis not listed below will run WITHOUT credentials
-		//  (entry will be ignored for wikis that do not exist)
+		//  (entry will be ignored for any wikis that do not exist) in 'wikisDir'
 		wikis: {
-			'Home': {
-				authorization: ['anon-username=demo', 'readers=(anon)', 'writers=(authenticated)', 'admin=poc2go'],
-			},
 			'notes': {}, // Apply default credentials
 			'MyWiki':{},
 			'twtalk':{},
+			'Home': {
+				authorization: ['anon-username=demo', 'readers=(anon)', 'writers=(authenticated)', 'admin=poc2go'],
+			},
 			'codebase': {
 				users: ['demo', 'poc2go'],
 				authorization: ['readers=(authenticated)', 'writers=(authenticated)', 'admin=poc2go'],
