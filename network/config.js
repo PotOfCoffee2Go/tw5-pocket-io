@@ -15,8 +15,8 @@ exports.config = {
 	domain: os.hostname(), // local network name of this computer
 
 	// 'server' edition client webserver wikis
-	wikisDir: os.homedir() + '/.tw5-node-red/wikis',
-//	wikisDir: './wikis',
+//	wikisDir: os.homedir() + '/.tw5-node-red/wikis',
+	wikisDir: './wikis',
 
 	// Wiki in wikisDir that will be listed first - it must exist
 	defaultWiki: 'Home',
