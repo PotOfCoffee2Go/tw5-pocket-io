@@ -1,9 +1,10 @@
 const path = require('node:path');
 const os = require('node:os');
+const cwd = (fpath) => path.join(process.cwd(), fpath);
 
 exports.config = {
 	// Project's NPM package
-	pkg: require('./package.json'),
+	pkg: require(cwd('./package.json')),
 
 	// The domain is used to create URLs, access wikis, and
 	//  other tw5-node-red resourcess
@@ -16,13 +17,13 @@ exports.config = {
 
 	// 'server' edition client webserver wikis
 //	wikisDir: os.homedir() + '/.tw5-node-red/wikis',
-	wikisDir: './wikis',
+	wikisDir: cwd('./wikis'),
 
 	// Wiki in wikisDir that will be listed first - it must exist
 	defaultWiki: 'Home',
 
 	// 'server' edition database wikis
-	wikidbsDir: './network/db',
+	wikidbsDir: cwd('./network/db'),
 
 	// Automatically startup Node-Red
 	// Many server-side actions (topics) are done by Node-Red
@@ -79,7 +80,7 @@ exports.config = {
 		userDir: os.homedir() + '/.node-red',
 
 		// Node-Red flowFile
-		flowFile: path.resolve('./red/flows/tiddlywiki.json'),
+		flowFile: cwd('./red/flows/tiddlywiki.json'),
 
 		// URL path to Node-Red flow editor and http nodes
 		httpAdminRoot: '/red',
@@ -94,7 +95,7 @@ exports.config = {
 		// Comment out the default 'userDir' above
 		// Uncomment the 'userDir' below
 
-		// userDir: path.resolve('./red'),
+		// userDir: cwd + 'red'),
 	},
 
 	// Apply Webserver user/password credentials to individual wikis

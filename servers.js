@@ -11,15 +11,12 @@ const hog = (txt, nbr) => log(hue(txt, nbr));
 const cpy = (obj) => JSON.parse(JSON.stringify(obj));
 
 // Build settings
-const { config } = require('./config');
+const { config } = require('./lib/commander')();
 const { dataTwBoot } = require('./lib/dataTwBoot');
 const { replTwBoot } = require('./lib/replTwBoot');
 const { twServerBoot } = require('./lib/twServerBoot');
 const { ProxyServer } = require('./lib/twProxyServer');
 const { buildSettings } = require('./lib/buildSettings');
-
-// Check required directory files exist
-require('./lib/checkFiles')(config);
 
 // Build settings based on config
 const serverSettings = buildSettings(config);
