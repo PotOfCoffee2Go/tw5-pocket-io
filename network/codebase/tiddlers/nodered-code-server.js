@@ -15,11 +15,11 @@ const $NodeRed = function () {
 	this.settings = require(this.nodered.userDir + '/settings.js');
 	delete this.nodered.settingsFile; // no longer needed
 
-	// Our functions to Node-Red global context
-	//  see [[startup-code-globals]]
+	// functions to Node-Red global context
+	//  see codebase [[startup-code-globals]]
 	this.repl = {
 		$displayPrompt, $rw, $db,
-		$config,  $ss, $sockets, $tpi,	$tmp,
+		$config,  $ss, $sockets, $tpi,
 		$wikiNames, get$settings,
 		$twCodebase,
 		get$db, qry$db, ins$db,
@@ -30,7 +30,7 @@ const $NodeRed = function () {
 	}
 	var globalFunctions = {
 		$nrMsgNodes,
-    repl: this.repl,
+		repl: this.repl
 	}
 	this.nodered.functionGlobalContext = Object.assign(
 		{},	this.nodered.functionGlobalContext, globalFunctions

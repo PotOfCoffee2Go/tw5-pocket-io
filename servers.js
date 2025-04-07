@@ -11,12 +11,13 @@ const hog = (txt, nbr) => log(hue(txt, nbr));
 const cpy = (obj) => JSON.parse(JSON.stringify(obj));
 
 // Build settings
-const { config } = require('./lib/commander')();
-const { dataTwBoot } = require('./lib/dataTwBoot');
+const { config } = require('./lib/buildProject')();
+const { buildSettings } = require('./lib/buildSettings');
 const { replTwBoot } = require('./lib/replTwBoot');
 const { twServerBoot } = require('./lib/twServerBoot');
-const { ProxyServer } = require('./lib/twProxyServer');
-const { buildSettings } = require('./lib/buildSettings');
+const { ProxyServer, proxyListen } = require('./lib/twProxyServer');
+
+hog(`${config.pkg.name} - v${config.pkg.version}`,40);
 
 // Build settings based on config
 const serverSettings = buildSettings(config);
@@ -41,7 +42,6 @@ function replContext() {
 	// Application objects
 	$rt.context.$sockets = $sockets; // clients connected to server
 	$rt.context.$tpi = { fn: { io:{} }, topic: {}, repl: {} }; // tw5-pocket-io code
-	$rt.context.$tmp = {}; // object for temporary use
 
 	$rt.setPrompt(hue(os.hostname + ' ' + config.pkg.name + ' > ',214));
 }
@@ -49,22 +49,6 @@ $rt.on('reset', () => {
 	replContext();
 	autoLoadCodeToRepl();
 })
-
-// Show a few stats about database wikis
-function displayDatabaseStats() {
-	var stats = [];
-	var padName = 0, padCount = 0;
-	for (let name in $db) {
-		padName = padName < name.length ? name.length : padName;
-		var count = $db[name].$tw.wiki.filterTiddlers('[!is[system]count[]]').toString();
-		padCount = padCount < count.length ? count.length : padCount;
-		stats.push({ name: name.padEnd(padName+1, ' '), count: count.padStart(padCount,' ')});
-	}
-	stats.forEach(stat => {
-		hog(` ${stat.name}: ${stat.count} standard records/tiddlers`, 216);
-	})
-	return $db;
-}
 
 // Gets JavaScript code from wikis into REPL
 const { replGetCodeFromWikis } = require('./lib/replGetCode');
@@ -88,26 +72,15 @@ function autoLoadCodeToRepl() {
 
 // Start the proxy servers
 async function startProxyServers() {
-	hog(`Startup express proxies to webservers\nProxies starting at port: ${config.proxy.basePort}`, 156);
+	hog(`Startup express proxies to webservers\n` +
+		`Proxies starting at port: ${config.proxy.basePort}`, 156);
 	for (let i=0; i<serverSettings.length; i++) {
-		await proxyListen(i);
+		await proxyListen(config, serverSettings[i]);
 	}
 	hog(`Proxy startup complete\n`, 156);
 	replMOTD();
 }
 
-// Proxy server listen for connections
-function proxyListen(idx) {
-	return new Promise((resolve) => {
-		const name = serverSettings[idx].name;
-		const { server, domain, port, host, targetUrl } = serverSettings[idx].proxy;
-		server.http.listen(port, host, () => {
-			log(hue(` Proxy to webserver `,185) + `'${name}'` +
-				hue(` serving on `,185) + `http://${domain}:${port}`);
-			resolve();
-		})
-	})
-}
 
 // REPL MOTD and prompt
 function replMOTD() {
@@ -130,8 +103,7 @@ function replMOTD() {
 // -------------------
 
 // Startup blurb
-hog(`${config.pkg.name} - v${config.pkg.version}`,40);
-hog(`Settings summary from project config.js`,40);
+hog(`Settings summary from project '${config.projectName}' config.js`,40);
 console.dir({
 	domain: config.domain,
 	projectDir: config.projectDir,
@@ -140,9 +112,10 @@ console.dir({
 	flowFile: config.nodered.flowFile,
 });
 
+const { dataTwBoot, databaseStats } = require('./lib/dataTwBoot');
 hog(`Startup database wikis`, 156);
 const $db = dataTwBoot(config.wikidbsDir);
-displayDatabaseStats();
+databaseStats($db);
 hog(`Database wikis startup complete\n`, 156);
 
 // Start up the TiddlyWiki Webservers and boot the REPL

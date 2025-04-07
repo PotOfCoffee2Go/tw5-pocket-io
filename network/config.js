@@ -35,7 +35,7 @@ exports.config = {
 
 	// Hide codebase wiki from being displayed as a normal client wiki
 	//  if true will also only be accessable from localhost
-	hideCodebase: false,
+	hideCodebase: true,
 
 	// Webservers are launched for each 'server' editon wiki in 'wikisDir:'
 	// Should normally be served on localhost (127.0.0.1) as access is
@@ -170,9 +170,6 @@ exports.config = {
 			}
 		}
 	},
-
-	// Project directory of resouces
-	projectDir: projectDir(''),
 
 	// tw5-node-red  package
 	pkg: require(cwd('./package.json')),
