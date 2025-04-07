@@ -78,7 +78,7 @@ exports.config = {
 		// Node-Red user directory
 		//  which contains the node-red 'settings.js' file
 		// '.node-red' is default for Node-Red
-		userDir: path.join(os.homedir(), '.node-red');
+		userDir: path.join(os.homedir(), '.node-red'),
 
 		// Node-Red flowFile
 		flowFile: projectDir('flows/tiddlywiki.json'),
