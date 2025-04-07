@@ -2,15 +2,15 @@ autoLoad: yes
 caption: Plugin Manager
 created: 20250114164318852
 creator: poc2go
-ioAuthor: 
+ioAuthor:
 ioDisplayButtons: <<resetAllButton>> <<createButton>> <<builderButton>>
 ioHelp: Make any changes and 'Update'<br>Press 'Build' to create the plugin
-ioList: 
+ioList:
 ioName: fetch
 ioPluginPriority: 20
 ioPluginType: plugin
-ioPublisher: 
-ioResult: 
+ioPublisher:
+ioResult:
 ioSrcProject: fetch
 ioSrcProjectList: REST ReplCommands fetch flotsam
 ioSrcProjectWiki: poc2go
@@ -43,8 +43,8 @@ type: text/vnd.tiddlywiki
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<$list filter="[list[!!list]]">
-<<closeTabsButton "plugin" "$(currentTiddler)$">>
+<$list variable="category" filter="[list[!!list]]">
+<<closeTabsButton "plugin" "$(category)$">>
 </$list>
 
 <<topButton>>

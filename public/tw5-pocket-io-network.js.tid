@@ -81,6 +81,7 @@ exports.params = [
 ];
 
 exports.run = (command, topic, filter, sender) => {
+	console.dir(sender);
 	if (!(sender && $tw.wiki.getTiddler(sender).fields)) {
 		console.log(`pocket sender tiddler ${sender} required.`);
 		return;

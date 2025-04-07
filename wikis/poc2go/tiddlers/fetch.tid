@@ -3,9 +3,9 @@ caption: Server fetch URL
 created: 20250129142038466
 creator: poc2go
 ioPrjProject: fetch
-ioPrjTabName: 
+ioPrjTabName:
 ioPrjTabType: docs
-ioResult: 
+ioResult:
 list: dashboard docs template code
 modified: 20250403162043143
 modifier: poc2go
@@ -29,8 +29,8 @@ type: text/vnd.tiddlywiki
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<$list filter="[list[!!list]]">
-<<closeTabsButton "fetch" "$(currentTiddler)$">>
+<$list variable="category" filter="[list[!!list]]">
+<<closeTabsButton "fetch" "$(category)$">>
 </$list>
 
 <<topButton>>

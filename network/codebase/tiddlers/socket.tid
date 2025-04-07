@@ -4,12 +4,12 @@ created: 20250129065626216
 creator: poc2go
 ioConfirmDelete: no
 ioPrjProject: socket
-ioPrjTabName: 
+ioPrjTabName:
 ioPrjTabSelected: socket-code-broadcast
 ioPrjTabToDelete: socket-a
 ioPrjTabType: code
-ioResult: 
-ioResultUpload: 
+ioResult:
+ioResultUpload:
 list: dashboard docs template code
 modified: 20250402164518705
 modifier: poc2go
@@ -33,8 +33,8 @@ type: text/vnd.tiddlywiki
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<$list filter="[list[!!list]]">
-<<closeTabsButton "socket" "$(currentTiddler)$">>
+<$list variable="category" filter="[list[!!list]]">
+<<closeTabsButton "socket" "$(category)$">>
 </$list>
 
 <<topButton>>

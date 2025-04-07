@@ -4,14 +4,14 @@ created: 20250114040241341
 creator: poc2go
 ioConfirmDelete: no
 ioPrjCategoryPillTitle: Node-Red Flow
-ioPrjCategoryType: 
-ioPrjPillTitle: 
+ioPrjCategoryType:
+ioPrjPillTitle:
 ioPrjProject: project
-ioPrjTabName: 
+ioPrjTabName:
 ioPrjTabSelected: project-code-addcategory
 ioPrjTabType: dashboard
-ioResult: 
-ioResultUpload: 
+ioResult:
+ioResultUpload:
 list: dashboard docs template code
 modified: 20250402165359460
 modifier: poc2go
@@ -35,8 +35,8 @@ type: text/vnd.tiddlywiki
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<$list filter="[list[!!list]]">
-<<closeTabsButton "project" "$(currentTiddler)$">>
+<$list variable="category" filter="[list[!!list]]">
+<<closeTabsButton "project" "$(category)$">>
 </$list>
 
 <<topButton>>

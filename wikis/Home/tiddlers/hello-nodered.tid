@@ -5,14 +5,14 @@ creator: poc2go
 filename: ./config.js
 filetype: application/javascript
 ioConfirmDelete: no
-ioPrjCategoryPillTitle: 
-ioPrjCategoryType: 
+ioPrjCategoryPillTitle:
+ioPrjCategoryType:
 ioPrjProject: hello-nodered
-ioPrjTabName: 
+ioPrjTabName:
 ioPrjTabSelected: AALLLL
 ioPrjTabType: xxx
-ioResult: 
-ioResultUpload: 
+ioResult:
+ioResultUpload:
 ioToStory: no
 list: dashboard docs template code
 modified: 20250403155925740
@@ -37,8 +37,8 @@ type: text/vnd.tiddlywiki
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<$list filter="[list[!!list]]">
-<<closeTabsButton "hello-nodered" "$(currentTiddler)$">>
+<$list variable="category" filter="[list[!!list]]">
+<<closeTabsButton "hello-nodered" "$(category)$">>
 </$list>
 
 <<topButton>>

@@ -4,11 +4,11 @@ created: 20250129135444695
 creator: poc2go
 ioConfirmDelete: no
 ioPrjProject: REST
-ioPrjTabName: 
+ioPrjTabName:
 ioPrjTabSelected: AALLLL
 ioPrjTabToDelete: REST-default
 ioPrjTabType: dashboard
-ioResult: 
+ioResult:
 list: dashboard docs template code
 modified: 20250402170515276
 modifier: poc2go
@@ -37,8 +37,8 @@ Enable 'Auto load on startup' and restart server to load updated routes.
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<$list filter="[list[!!list]]">
-<<closeTabsButton "REST" "$(currentTiddler)$">>
+<$list variable="category" filter="[list[!!list]]">
+<<closeTabsButton "REST" "$(category)$">>
 </$list>
 
 <<topButton>>

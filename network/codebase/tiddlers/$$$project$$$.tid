@@ -4,10 +4,10 @@ created: 20241120105017114
 creator: poc2go
 ioConfirmDelete: no
 ioPrjProject: $$$project$$$
-ioPrjTabName: 
+ioPrjTabName:
 ioPrjTabSelected: AALLLL
 ioPrjTabType: docs
-ioResult: 
+ioResult:
 list: dashboard docs template code
 modified: 20250402171944937
 modifier: poc2go
@@ -31,8 +31,8 @@ type: text/vnd.tiddlywiki
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<$list filter="[list[!!list]]">
-<<closeTabsButton "$$$project$$$" "$(currentTiddler)$">>
+<$list variable="category" filter="[list[!!list]]">
+<<closeTabsButton "$$$project$$$" "$(category)$">>
 </$list>
 
 <<topButton>>

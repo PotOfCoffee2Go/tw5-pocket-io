@@ -4,11 +4,11 @@ created: 20250315134452822
 creator: poc2go
 ioConfirmDelete: no
 ioPrjProject: nodered
-ioPrjTabName: 
+ioPrjTabName:
 ioPrjTabSelected: nodered-code-server
 ioPrjTabType: code
-ioResult: 
-ioResultUpload: 
+ioResult:
+ioResultUpload:
 list: dashboard docs template code
 modified: 20250402170255847
 modifier: poc2go
@@ -32,8 +32,8 @@ type: text/vnd.tiddlywiki
 <!-- Response to pocket.io requests -->
 {{!!ioResult}}
 
-<$list filter="[list[!!list]]">
-<<closeTabsButton "nodered" "$(currentTiddler)$">>
+<$list variable="category" filter="[list[!!list]]">
+<<closeTabsButton "nodered" "$(category)$">>
 </$list>
 
 <<topButton>>
