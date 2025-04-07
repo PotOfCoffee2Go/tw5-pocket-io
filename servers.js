@@ -131,18 +131,14 @@ function replMOTD() {
 
 // Startup blurb
 hog(`${config.pkg.name} - v${config.pkg.version}`,40);
-hog(`Settings summary from ./config.js:`,40);
+hog(`Settings summary from project config.js`,40);
 console.dir({
+	domain: config.domain,
 	projectDir: config.projectDir,
 	wikidbsDir: config.wikidbsDir,
 	wikisDir: config.wikisDir,
 	flowFile: config.nodered.flowFile,
 });
-
-hog(`\nTW5-Node-Red host is '${config.domain}'`, 156);
-hog(`Database wikis from directory ${config.wikidbsDir}`, 156);
-hog(`Webservers from directory ${config.wikisDir}`, 156);
-hog(`'codebase' wiki from directory ./network\n`, 156);
 
 hog(`Startup database wikis`, 156);
 const $db = dataTwBoot(config.wikidbsDir);

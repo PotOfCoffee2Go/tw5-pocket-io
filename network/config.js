@@ -18,7 +18,7 @@ exports.config = {
 	domain: os.hostname(), // local network name of this computer
 
 	// 'server' edition client webserver wikis
-	wikisDir: projectDir('./wikis'),
+	wikisDir: projectDir('wikis'),
 
 	// Wiki in wikisDir that will be listed first - it must exist
 	defaultWiki: 'Home',
@@ -77,8 +77,8 @@ exports.config = {
 
 		// Node-Red user directory
 		//  which contains the node-red 'settings.js' file
-		// '/.node-red' is default for Node-Red
-		userDir: os.homedir() + '/.node-red',
+		// '.node-red' is default for Node-Red
+		userDir: path.join(os.homedir(), '.node-red');
 
 		// Node-Red flowFile
 		flowFile: projectDir('flows/tiddlywiki.json'),
