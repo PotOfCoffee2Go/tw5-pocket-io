@@ -104,13 +104,11 @@ function replMOTD() {
 
 // Startup blurb
 hog(`Settings summary from project '${config.projectName}' config.js`,40);
-console.dir({
-	domain: config.domain,
-	projectDir: config.projectDir,
-	wikidbsDir: config.wikidbsDir,
-	wikisDir: config.wikisDir,
-	flowFile: config.nodered.flowFile,
-});
+hog(` domain\t: ${config.domain}\n` +
+	` projectDir\t: ${config.projectDir}\n` +
+	` wikidbsDir\t: ${config.wikidbsDir}\n` +
+	` wikisDir\t: ${config.wikisDir}\n` +
+	` flowFile\t: ${config.nodered.flowFile}\n`, 40);
 
 const { dataTwBoot, databaseStats } = require('./lib/dataTwBoot');
 hog(`Startup database wikis`, 156);
