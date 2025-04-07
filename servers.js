@@ -133,11 +133,10 @@ function replMOTD() {
 hog(`${config.pkg.name} - v${config.pkg.version}`,40);
 hog(`Settings summary from ./config.js:`,40);
 console.dir({
+	projectDir: config.projectDir,
 	wikidbsDir: config.wikidbsDir,
 	wikisDir: config.wikisDir,
-	webserver: config.webserver,
-	proxy: config.proxy,
-	hideCodebase: config.hideCodebase
+	flowFile: config.nodered.flowFile,
 });
 
 hog(`\nTW5-Node-Red host is '${config.domain}'`, 156);

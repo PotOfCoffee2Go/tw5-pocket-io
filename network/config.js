@@ -1,11 +1,13 @@
 const path = require('node:path');
 const os = require('node:os');
+
+// Full filepath using the startup directory
 const cwd = (fpath) => path.join(process.cwd(), fpath);
 
-exports.config = {
-	// Project's NPM package
-	pkg: require(cwd('./package.json')),
+// This module is in the user's project directory
+const projectDir = (fpath) => path.join(__dirname, fpath);
 
+exports.config = {
 	// The domain is used to create URLs, access wikis, and
 	//  other tw5-node-red resourcess
 	// On most OS's 'hostname' is used for local network access
@@ -16,14 +18,13 @@ exports.config = {
 	domain: os.hostname(), // local network name of this computer
 
 	// 'server' edition client webserver wikis
-//	wikisDir: os.homedir() + '/.tw5-node-red/wikis',
-	wikisDir: cwd('./wikis'),
+	wikisDir: projectDir('./wikis'),
 
 	// Wiki in wikisDir that will be listed first - it must exist
 	defaultWiki: 'Home',
 
 	// 'server' edition database wikis
-	wikidbsDir: cwd('./network/db'),
+	wikidbsDir: projectDir('dbs'),
 
 	// Automatically startup Node-Red
 	// Many server-side actions (topics) are done by Node-Red
@@ -80,7 +81,7 @@ exports.config = {
 		userDir: os.homedir() + '/.node-red',
 
 		// Node-Red flowFile
-		flowFile: cwd('./red/flows/tiddlywiki.json'),
+		flowFile: projectDir('flows/tiddlywiki.json'),
 
 		// URL path to Node-Red flow editor and http nodes
 		httpAdminRoot: '/red',
@@ -115,14 +116,14 @@ exports.config = {
 		}
 		*/
 		// This path must be a full absolute path with write permissions
-		userInfoFile: os.homedir() + '/.tw5-node-red/credentials/users.json',
+		userInfoFile: projectDir('credentials/users.json'),
 
 		// Directory of password CSV files used by webservers
 		//  should be outside of the project
 		// Default is in the tw5-node-red user directory '~/.tw5-node-red'
 		// see 'https://tiddlywiki.com/static/WebServer%2520Parameter%253A%2520credentials.html'
 		// This path must be a full absolute path with write permissions
-		csvDir: os.homedir() + '/.tw5-node-red/credentials/CSV',
+		csvDir: projectDir('credentials/CSV'),
 
 		// Demo users - obviously the passwords are exposed here
 		// If the 'userInfoFile' above does not exist, it will
@@ -168,5 +169,11 @@ exports.config = {
 				users: ['poc2go', 'jane', 'andy', 'roger'],
 			}
 		}
-	}
+	},
+
+	// Project directory of resouces
+	projectDir: projectDir(''),
+
+	// tw5-node-red  package
+	pkg: require(cwd('./package.json')),
 }
