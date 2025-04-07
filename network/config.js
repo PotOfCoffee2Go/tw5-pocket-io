@@ -123,7 +123,7 @@ exports.config = {
 		// Default is in the tw5-node-red user directory '~/.tw5-node-red'
 		// see 'https://tiddlywiki.com/static/WebServer%2520Parameter%253A%2520credentials.html'
 		// This path must be a full absolute path with write permissions
-		csvDir: projectDir('credentials/CSV'),
+		csvDir: projectDir('credentials/csv'),
 
 		// Demo users - obviously the passwords are exposed here
 		// If the 'userInfoFile' above does not exist, it will
