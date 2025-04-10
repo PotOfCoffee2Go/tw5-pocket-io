@@ -2,20 +2,18 @@ autoLoad: no
 caption: Hello Node-Red
 created: 20250316181837609
 creator: poc2go
-filename: ./config.js
-filetype: application/javascript
 ioConfirmDelete: no
-ioPrjCategoryPillTitle:
-ioPrjCategoryType:
+ioPrjCategoryPillTitle: 
+ioPrjCategoryType: 
 ioPrjProject: hello-nodered
-ioPrjTabName:
+ioPrjTabName: 
 ioPrjTabSelected: AALLLL
-ioPrjTabType: xxx
-ioResult:
-ioResultUpload:
+ioPrjTabType: dashboard
+ioResult: 
+ioResultUpload: 
 ioToStory: no
 list: dashboard docs template code
-modified: 20250403155925740
+modified: 20250410202755013
 modifier: poc2go
 tags: Projects hello-nodered
 title: hello-nodered

@@ -1,10 +1,12 @@
 const path = require('node:path');
 const os = require('node:os');
 
-// Full filepath using the startup directory
-const cwd = (fpath) => path.join(process.cwd(), fpath);
+// Full filepath using the tw5-node-red directory
+//  Is the current directory on of tw5-node-red startup
+const programDir = (fpath) => path.join(process.cwd(), fpath);
 
-// This module is in the user's project directory
+// User's project directory containing this config file
+//  '-p' option on tw5-node-red startup
 const projectDir = (fpath) => path.join(__dirname, fpath);
 
 exports.config = {
@@ -103,18 +105,6 @@ exports.config = {
 	// The system uses the Basic Authentication method
 	// see https://tiddlywiki.com/static/WebServer%2520Basic%2520Authentication.html
 	credentials: {
-		// Due to the sensitive nature of the passwords, this file should
-		//  be outside of the project directory
-		// Default is in the tw5-node-red user directory '~/.tw5-node-red'
-		// JSON file that contains user/password information
-		// Is in the form of
-		/*
-		{
-			"jane":   { "password": "do3" },
-			"andy":   { "password": "smith" },
-			"roger":  { "password": "m00re" }
-		}
-		*/
 		// This path must be a full absolute path with write permissions
 		userInfoFile: projectDir('credentials/users.json'),
 
@@ -125,52 +115,8 @@ exports.config = {
 		// This path must be a full absolute path with write permissions
 		csvDir: projectDir('credentials/csv'),
 
-		// Demo users - obviously the passwords are exposed here
-		// If the 'userInfoFile' above does not exist, it will
-		//  be created with these users/passwords
-		//  otherwise these demo users are ignored
-		//   as can change them in the 'userInfoFile'
-		demo: {
-			"demo":   { "password": "demo" },
-			"poc2go": { "password": "ppp" },
-			"jane":   { "password": "do3" },
-			"andy":   { "password": "smith" },
-			"roger":  { "password": "m00re" }
-		},
-
-		// Default credentials
-		// Users and webserver authorization parameters
-		// see https://tiddlywiki.com/static/WebServer%2520Authorization.html
-		default: {
-			users: ['demo', 'poc2go', 'jane', 'andy', 'roger'],
-			authorization: ['readers=(authenticated)', 'writers=(authenticated)', 'admin=poc2go'],
-		},
-
-		// Webserver wikis not listed below will run WITHOUT credentials
-		//  (entry will be ignored for any wikis that do not exist) in 'wikisDir'
-		wikis: {
-			'notes': {}, // Apply default credentials
-			'MyWiki':{},
-			'twtalk':{},
-			'Home': {
-				authorization: ['anon-username=demo', 'readers=(anon)', 'writers=(authenticated)', 'admin=poc2go'],
-			},
-			'codebase': {
-				users: ['demo', 'poc2go'],
-				authorization: ['readers=(authenticated)', 'writers=(authenticated)', 'admin=poc2go'],
-			},
-			'poc2go': {
-				users: ['demo', 'poc2go'],
-			},
-			'Shop': {
-				users: ['demo', 'poc2go', 'jane', 'andy'],
-			},
-			'ShopDashboard': {
-				users: ['poc2go', 'jane', 'andy', 'roger'],
-			}
-		}
 	},
 
 	// tw5-node-red  package
-	pkg: require(cwd('./package.json')),
+	pkg: require(programDir('./package.json')),
 }
