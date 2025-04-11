@@ -6,11 +6,14 @@ const os = require('node:os');
 const programDir = (fpath) => path.join(process.cwd(), fpath);
 
 // User's NPM package directory containing this config file
+// The NPM package can be created/specified using the
 //  tw5-node-red '-p' option
 const packageDir = (fpath) => path.join(__dirname, fpath);
 
 exports.config = {
-	// Wiki in wikisDir that will be listed first - it must exist
+	// Wiki in wikisDir that will be listed first
+	//  if does not exist then the first wiki read
+	//  from disk becomes the default wiki
 	defaultWiki: 'Home',
 
 	// The domain is used to create URLs, access wikis, and
@@ -31,7 +34,7 @@ exports.config = {
 	// Automatically startup Node-Red
 	// Many server-side actions (topics) are done by Node-Red
 	//   recommend to set to 'true'
-	// If not auto started, can {up-arrow} at 'tw5-node-red > '
+	// If not auto started, can {up-arrow} at tw5-node-red
 	//  console prompt (or type) 'const $nr = new $NodeRed'
 	autoStartNodeRed: true,
 
@@ -74,6 +77,8 @@ exports.config = {
 	// The properties below will override settings in Node-Red settings.js
 	nodered: {
 		// Override flow editor default host & port
+		// Set uiHost to 127.0.0.1 to allow only the localhost to access
+		//  the flow editor
 		// uiHost: 0.0.0.0,
 		// uiPort: 1880,
 
@@ -90,18 +95,20 @@ exports.config = {
 		httpNodeRoot:  '/api',
 
 		// Allow 'global' variables to be displayed in flow editor
+		//  the default is false
 		exportGlobalContextKeys: true,
 	},
 
-	// Apply Webserver user/password credentials to individual wikis
+	// TiddlyWiki Webserver user/password credentials
 	// The system uses the Basic Authentication method
 	// see https://tiddlywiki.com/static/WebServer%2520Basic%2520Authentication.html
+	// packageDir('credentials') directory is ignored in .gitignore
+	// The 'configCred.js' file contains the TiddlyWiki auth settings
 	credentials: {
-		// This path must be a full absolute path with write permissions
+		// This file contains the User/Passwords
 		userInfoFile: packageDir('credentials/users.json'),
 
 		// Directory of password CSV files used by webservers
-		//  should be outside of the project
 		// Default is in the tw5-node-red user directory '~/.tw5-node-red'
 		// see 'https://tiddlywiki.com/static/WebServer%2520Parameter%253A%2520credentials.html'
 		// This path must be a full absolute path with write permissions
@@ -109,6 +116,6 @@ exports.config = {
 
 	},
 
-	// tw5-node-red  package
-	pkg: require(programDir('./package.json')),
+	// tw5-node-red NPM package
+	pkg: require(programDir('package.json')),
 }
