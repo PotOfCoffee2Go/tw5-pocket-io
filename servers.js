@@ -11,7 +11,7 @@ const hog = (txt, nbr) => log(hue(txt, nbr));
 const cpy = (obj) => JSON.parse(JSON.stringify(obj));
 
 // Build settings
-const { config } = require('./lib/buildProject')();
+const { config } = require('./lib/buildPackage')();
 const { buildSettings } = require('./lib/buildSettings');
 const { replTwBoot } = require('./lib/replTwBoot');
 const { twServerBoot } = require('./lib/twServerBoot');

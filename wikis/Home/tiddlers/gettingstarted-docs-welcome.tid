@@ -1,10 +1,13 @@
 caption: Welcome
 created: 20250410210552898
 creator: poc2go
-modified: 20250410210700540
+modified: 20250411082117555
 modifier: poc2go
 tags: docs gettingstarted $:/pocket-io/gettingstarted/docs
 title: gettingstarted-docs-welcome
 type: text/vnd.tiddlywiki
 
 ! Welcome to TW5-Node-Red
+
+This system interfaces [[TiddlyWiki|https://tiddlywiki.com/]] to [[Node-Red|https://nodered.org/]].
+

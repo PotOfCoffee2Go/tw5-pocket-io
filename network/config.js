@@ -5,9 +5,9 @@ const os = require('node:os');
 //  Is the current directory on of tw5-node-red startup
 const programDir = (fpath) => path.join(process.cwd(), fpath);
 
-// User's project directory containing this config file
+// User's NPM package directory containing this config file
 //  '-p' option on tw5-node-red startup
-const projectDir = (fpath) => path.join(__dirname, fpath);
+const packageDir = (fpath) => path.join(__dirname, fpath);
 
 exports.config = {
 	// The domain is used to create URLs, access wikis, and
@@ -20,13 +20,13 @@ exports.config = {
 	domain: os.hostname(), // local network name of this computer
 
 	// 'server' edition client webserver wikis
-	wikisDir: projectDir('wikis'),
+	wikisDir: packageDir('wikis'),
 
 	// Wiki in wikisDir that will be listed first - it must exist
 	defaultWiki: 'Home',
 
 	// 'server' edition database wikis
-	wikidbsDir: projectDir('dbs'),
+	wikidbsDir: packageDir('dbs'),
 
 	// Automatically startup Node-Red
 	// Many server-side actions (topics) are done by Node-Red
@@ -83,22 +83,14 @@ exports.config = {
 		userDir: path.join(os.homedir(), '.node-red'),
 
 		// Node-Red flowFile
-		flowFile: projectDir('flows/tiddlywiki.json'),
+		flowFile: packageDir('flows/tiddlywiki.json'),
 
 		// URL path to Node-Red flow editor and http nodes
 		httpAdminRoot: '/red',
 		httpNodeRoot:  '/api',
 
-		// Note:
-		// To run a unique Node-Red user for tw5-node-red
-		// A fresh Node-Red user directory has already been
-		//  created in the './red' tw5-node-red subdirectory
-		//  (ie: did a 'node-red -u ./red' from project directory)
-		// Make desired Node-Red setting changes in './red/settings.js'
-		// Comment out the default 'userDir' above
-		// Uncomment the 'userDir' below
-
-		// userDir: cwd + 'red'),
+		// Allow 'global' variables to be displayed in flow editor
+		exportGlobalContextKeys: true,
 	},
 
 	// Apply Webserver user/password credentials to individual wikis
@@ -106,14 +98,14 @@ exports.config = {
 	// see https://tiddlywiki.com/static/WebServer%2520Basic%2520Authentication.html
 	credentials: {
 		// This path must be a full absolute path with write permissions
-		userInfoFile: projectDir('credentials/users.json'),
+		userInfoFile: packageDir('credentials/users.json'),
 
 		// Directory of password CSV files used by webservers
 		//  should be outside of the project
 		// Default is in the tw5-node-red user directory '~/.tw5-node-red'
 		// see 'https://tiddlywiki.com/static/WebServer%2520Parameter%253A%2520credentials.html'
 		// This path must be a full absolute path with write permissions
-		csvDir: projectDir('credentials/csv'),
+		csvDir: packageDir('credentials/csv'),
 
 	},
 

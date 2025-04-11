@@ -1,10 +1,10 @@
 created: 20250131131229414
-creator: poc2go
+creator: demo
 dependents: 
 description: Tiddlers used by pocket-io Project Management system
 list: readme settings release license
 modified: 20250310070254683
-modifier: poc2go
+modifier: demo
 name: Pocket-io Project Management
 parent-plugin: $:/plugins/poc2go/pocket-io
 plugin-type: plugin
