@@ -136,7 +136,6 @@ function setNetstat(txt) {
 	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null,
 		`Wiki: {{$:/temp/pocket-io/wikinames}} ${username ? ' - User: ' : ''} [[${username}]]<br>` +
 		`&nbsp;&nbsp;at {{$:/temp/pocket-io/wikinames!!link}}<br>` +
-		`[ext[Node-Red Flow Editor|${nodered}]]<br>` +
 		txt
 	);
 }

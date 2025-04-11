@@ -10,8 +10,9 @@
 /public/mws/store
 /public/mws/archive
 
-# Ignore TiddlyWiki story list(s)
+# Ignore TiddlyWiki story list(s) and import tiddlers
 \$__StoryList*
+\$__Import.tid
 
 # Ignore Node-Red backups
 *.json.backup

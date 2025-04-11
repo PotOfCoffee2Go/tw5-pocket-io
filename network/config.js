@@ -2,14 +2,17 @@ const path = require('node:path');
 const os = require('node:os');
 
 // Full filepath using the tw5-node-red directory
-//  Is the current directory on of tw5-node-red startup
+//  Is the current directory on tw5-node-red startup
 const programDir = (fpath) => path.join(process.cwd(), fpath);
 
 // User's NPM package directory containing this config file
-//  '-p' option on tw5-node-red startup
+//  tw5-node-red '-p' option
 const packageDir = (fpath) => path.join(__dirname, fpath);
 
 exports.config = {
+	// Wiki in wikisDir that will be listed first - it must exist
+	defaultWiki: 'Home',
+
 	// The domain is used to create URLs, access wikis, and
 	//  other tw5-node-red resourcess
 	// On most OS's 'hostname' is used for local network access
@@ -21,9 +24,6 @@ exports.config = {
 
 	// 'server' edition client webserver wikis
 	wikisDir: packageDir('wikis'),
-
-	// Wiki in wikisDir that will be listed first - it must exist
-	defaultWiki: 'Home',
 
 	// 'server' edition database wikis
 	wikidbsDir: packageDir('dbs'),

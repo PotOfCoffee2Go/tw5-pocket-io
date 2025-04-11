@@ -43,7 +43,7 @@ function replContext() {
 	$rt.context.$sockets = $sockets; // clients connected to server
 	$rt.context.$tpi = { fn: { io:{} }, topic: {}, repl: {} }; // tw5-pocket-io code
 
-	$rt.setPrompt(hue(os.hostname + ' ' + config.pkg.name + ' > ',214));
+	$rt.setPrompt(hue(os.hostname + ' ' + config.packageName + ' > ',214));
 }
 $rt.on('reset', () => {
 	replContext();
@@ -105,7 +105,7 @@ function replMOTD() {
 // Startup blurb
 hog(`Settings summary from project '${config.projectName}' config.js`,40);
 hog(` domain\t: ${config.domain}\n` +
-	` projectDir\t: ${config.projectDir}\n` +
+	` packageDir\t: ${config.packageDir}\n` +
 	` wikidbsDir\t: ${config.wikidbsDir}\n` +
 	` wikisDir\t: ${config.wikisDir}\n` +
 	` flowFile\t: ${config.nodered.flowFile}\n`, 40);
