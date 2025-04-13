@@ -16,6 +16,8 @@ const { buildSettings } = require('./lib/buildSettings');
 const { replTwBoot } = require('./lib/replTwBoot');
 const { twServerBoot } = require('./lib/twServerBoot');
 const { ProxyServer, proxyListen } = require('./lib/twProxyServer');
+const { replGetCodeFromWikis } = require('./lib/replGetCode');
+const { dataTwBoot, databaseStats } = require('./lib/dataTwBoot');
 
 hog(`${config.pkg.name} - v${config.pkg.version}`,40);
 
@@ -51,7 +53,6 @@ $rt.on('reset', () => {
 })
 
 // Gets JavaScript code from wikis into REPL
-const { replGetCodeFromWikis } = require('./lib/replGetCode');
 function autoLoadCodeToRepl() {
 	hog('Webserver startup complete\n', 156);
 
@@ -103,14 +104,13 @@ function replMOTD() {
 // -------------------
 
 // Startup blurb
-hog(`Settings summary from project '${config.projectName}' config.js`,40);
+hog(`Settings summary from package '${config.packageName}' config.js`, 156);
 hog(` domain\t: ${config.domain}\n` +
 	` packageDir\t: ${config.packageDir}\n` +
 	` wikidbsDir\t: ${config.wikidbsDir}\n` +
 	` wikisDir\t: ${config.wikisDir}\n` +
 	` flowFile\t: ${config.nodered.flowFile}\n`, 40);
 
-const { dataTwBoot, databaseStats } = require('./lib/dataTwBoot');
 hog(`Startup database wikis`, 156);
 const $db = dataTwBoot(config.wikidbsDir);
 databaseStats($db);
