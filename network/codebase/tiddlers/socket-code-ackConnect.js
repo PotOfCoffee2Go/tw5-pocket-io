@@ -2,7 +2,7 @@
 //  for startup tiddlers from server
 $tpi.fn.io.ackConnect = function (socket, wikiName) {
 	var wikiLinks = [];
-	$wikiNames.forEach(name => {	wikiLinks.push(`[[${name}|${get$proxy(name).link}]]`); })
+	$wikiNames.forEach(name => { wikiLinks.push(`[[${name}|${get$proxy(name).link}]]`); })
 
 	const sendOnConnect = [
 		'[tag[$:/tags/pocket-io/broadcast]]',
@@ -27,7 +27,7 @@ $tpi.fn.io.ackConnect = function (socket, wikiName) {
 
 	// Add this client's socket to list of connected clients
 	$sockets[sid(socket)] = { socket, wikiName };
-	
+
 	socket.emit('ackConnect', wikiRequires);
 	tog(`Client wiki '${wikiName}' ${sid(socket)} connected`);
 }

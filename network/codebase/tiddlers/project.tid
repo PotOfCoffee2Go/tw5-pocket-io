@@ -3,17 +3,16 @@ caption: Project Management
 created: 20250114040241341
 creator: poc2go
 ioConfirmDelete: no
-ioPrjCategoryPillTitle: Node-Red Flow
-ioPrjCategoryType:
-ioPrjPillTitle:
+ioPrjCategoryType: 
+ioPrjPillTitle: 
 ioPrjProject: project
-ioPrjTabName:
+ioPrjTabName: 
 ioPrjTabSelected: project-code-addcategory
-ioPrjTabType: dashboard
-ioResult:
-ioResultUpload:
+ioPrjTabType: flow
+ioResult: 
+ioResultUpload: 
 list: dashboard docs template code
-modified: 20250402165359460
+modified: 20250413160246660
 modifier: poc2go
 tags: project Projects
 title: project

@@ -194,7 +194,7 @@ const initSocketHandlers = () => {
 	socket.on('connect', () => {
 		console.log(`pocket.io id: ${sid(socket)} connecting`);
 		setNetstat('Pocket.io connecting...');
-		socket.emit('ackConnect')
+		socket.emit('ackConnect');
 	})
 
 	socket.on('ackConnect', wikiRequires => {

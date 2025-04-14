@@ -5,9 +5,10 @@ const os = require('node:os');
 //  Is the current directory on tw5-node-red startup
 const programDir = (fpath) => path.join(process.cwd(), fpath);
 
-// User's NPM package directory containing this config file
+// User NPM package directory containing this config file
 // The NPM package can be created/specified using the
 //  tw5-node-red '-p' option
+// The default directory is in user home directory '.tw5-node-red'
 const packageDir = (fpath) => path.join(__dirname, fpath);
 
 exports.config = {
@@ -34,7 +35,7 @@ exports.config = {
 	// Automatically startup Node-Red
 	// Many server-side actions (topics) are done by Node-Red
 	//   recommend to set to 'true'
-	// If not auto started, can {up-arrow} at tw5-node-red
+	// If Node-Red is not auto started, can {up-arrow} at tw5-node-red
 	//  console prompt (or type) 'const $nr = new $NodeRed'
 	autoStartNodeRed: true,
 
@@ -73,7 +74,6 @@ exports.config = {
 	// Node-Red setttings
 	//   Uses the default settings in Userdir settings.js file
 	// Make changes in the Node-Red settings.js file as usual
-	//  or keep the settings you already use
 	// The properties below will override settings in Node-Red settings.js
 	nodered: {
 		// Override flow editor default host & port
@@ -111,9 +111,7 @@ exports.config = {
 		// Directory of password CSV files used by webservers
 		// Default is in the tw5-node-red user directory '~/.tw5-node-red'
 		// see 'https://tiddlywiki.com/static/WebServer%2520Parameter%253A%2520credentials.html'
-		// This path must be a full absolute path with write permissions
 		csvDir: packageDir('credentials/csv'),
-
 	},
 
 	// tw5-node-red NPM package

@@ -25,6 +25,7 @@ $rt.context.tStamp = function (msg) {
 //	return `${time} `;
 }
 
+/*
 $rt.context.ttStamp = () => {
 	return ((new Date()).toLocaleDateString(undefined, {
 		hourCycle: 'h23',
@@ -32,3 +33,4 @@ $rt.context.ttStamp = () => {
 		hour: '2-digit', minute: '2-digit', second: '2-digit'
 		})).replace(',', '') + ' ';
 }
+*/

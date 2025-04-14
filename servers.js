@@ -91,7 +91,7 @@ function replMOTD() {
 		hog(`\nStartup Node-RED`, 156);
 		const { hideStdout } = require('./lib/hideStdout');
 		const showStdout = hideStdout();
-		$rt._ttyWrite('const $nr = new $NodeRed\n');
+		$rt.write('const $nr = new $NodeRed\n');
 		showStdout();
 	}
 	else {

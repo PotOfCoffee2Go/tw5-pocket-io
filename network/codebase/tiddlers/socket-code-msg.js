@@ -11,6 +11,19 @@ $tpi.fn.io.msg = function msg(socket, msg) {
 	// '$nrMsgNodes' is array of all 'TW client in' nodes in
 	//  the Node-Red workspace
 	if (msg.req.command === 'nodered') {
+		if (typeof $nr === 'undefined') {
+			msg.senderTiddler.ioResult = 'Error: Node-Red is not running';
+			msg.resultTiddlers.push(msg.senderTiddler);
+			socket.emit('msg', msg);
+			return;			
+		}
+		if (typeof $nr.isRunning === 'undefined') {
+			msg.senderTiddler.ioResult = 'Error: Node-Red is just starting';
+			msg.resultTiddlers.push(msg.senderTiddler);
+			socket.emit('msg', msg);
+			return;			
+		}
+
 		// add client socket Id to message so Node-Red can respond
 		msg.req.socketId = sid(socket);
 		// 'node' is the Node-Red node

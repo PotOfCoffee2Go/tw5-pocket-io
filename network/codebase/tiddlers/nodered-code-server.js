@@ -13,8 +13,14 @@ const $NodeRed = function () {
 	this.nodered = Object.assign({}, $config.nodered);
 	// Using the Node-Red settings file specified in ./config.js
 	this.settings = require(this.nodered.userDir + '/settings.js');
-	delete this.nodered.settingsFile; // no longer needed
 
+	this.nodered.link = {
+		admin: `http://${$config.domain}:${this.settings.uiPort || 1880}` +
+		`${this.nodered.httpAdminRoot}`,
+		node: `http://${$config.domain}:${this.settings.uiPort || 1880}` +
+		`${this.nodered.httpNodeRoot}`
+	}
+	
 	// functions to Node-Red global context
 	//  see codebase [[startup-code-globals]]
 	this.repl = {
@@ -28,13 +34,11 @@ const $NodeRed = function () {
 		$refreshClients, $broadcastClients,
 		$nrParser
 	}
-	var globalFunctions = {
-		$nrMsgNodes,
-		repl: this.repl
-	}
+	var globalFunctions = { $nrMsgNodes, repl: this.repl };
 	this.nodered.functionGlobalContext = Object.assign(
 		{},	this.nodered.functionGlobalContext, globalFunctions
 	)
+	
 	// Merge Node-Red settings
 	this.settings = Object.assign({}, this.settings, this.nodered)
 
@@ -57,7 +61,7 @@ const $NodeRed = function () {
 	this.app.use(this.settings.httpNodeRoot,this.RED.httpNode);
 	this.app.use('/', express.static('public'));
 
-	// Overload Node-Red logger to display with color (no date/time)
+	// Overload Node-Red logger to display with color
 	//  during the Node-Red startup
 	this.RED.log.info = (t) => log(hue(t, 111));
 	this.RED.log.warn = (t) => log(hue(t, 129));
@@ -77,6 +81,7 @@ const $NodeRed = function () {
 				this.RED.log.info = (t) => tog(t, 111);
 				this.RED.log.warn = (t) => tog(t, 129);
 				$rt.setPrompt(prevPrompt);
+				this.isRunning = true;
 				}, 1000) // adjust timer as needed
 		})
 
