@@ -1,6 +1,5 @@
 const $AdminApi = function () {
 	var self = this;
-
 	this.url = $nr.settings.link.admin;
 
 	this.getHeaders = {
@@ -8,14 +7,14 @@ const $AdminApi = function () {
 		'Node-RED-API-Version' : 'v2',
 		'Accept': 'application/json',
 	}
-
-	this.updateHeaders = {
+	this.postHeaders = {
 		'User-Agent': 'tw5-node-red',
 		'Content-Type': 'application/json',
 		'Node-RED-API-Version' : 'v2',
 		'Accept': 'application/json',
 	}
 
+	// GET & DELETE methods
 	const adminGet = function (endpoint, method = 'GET') {
 		if (endpoint[0] !== '/') { endpoint = '/' + endpoint; }
 		return new Promise((resolve, reject) => {
@@ -34,12 +33,13 @@ const $AdminApi = function () {
 		})
 	}
 
+	// POST & PUT methods
 	const adminPost = function (endpoint, body, method = 'POST') {
 		if (endpoint[0] !== '/') { endpoint = '/' + endpoint; }
 		return new Promise((resolve, reject) => {
 			fetch(self.url + endpoint, {
 				method: method,
-				headers: self.updateHeaders,
+				headers: self.postHeaders,
 				body: JSON.stringify(body),
 			})
 			.then((res) => {
@@ -53,7 +53,7 @@ const $AdminApi = function () {
 		})
 	}
 
-	// Lower-level access
+	// Lower-level fetches
 	this.get = function (endpoint) {
 		return adminGet(endpoint, 'GET');
 	}
@@ -67,7 +67,7 @@ const $AdminApi = function () {
 		return adminGet(endpoint, 'DELETE');
 	}
 
-	// Get access token and add to headers
+	// Fetch access token and add to headers
 	this.getToken = function (username, password, scope = '*') {
 		return new Promise((resolve, reject) => {
 			adminPost('/auth/token', {
@@ -80,7 +80,7 @@ const $AdminApi = function () {
 			.then(tokenInfo => {
 				if (Object.keys(tokenInfo).length > 0) {
 					this.getHeaders['Authorization'] = `${tokenInfo.token_type} ${tokenInfo.access_token}`;
-					this.updateHeaders['Authorization'] = `${tokenInfo.token_type} ${tokenInfo.access_token}`;
+					this.postHeaders['Authorization'] = `${tokenInfo.token_type} ${tokenInfo.access_token}`;
 				}
 				resolve(tokenInfo);
 			})

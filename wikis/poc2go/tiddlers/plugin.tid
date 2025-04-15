@@ -1,16 +1,16 @@
-autoLoad: yes
+autoLoad: no
 caption: Plugin Manager
 created: 20250114164318852
 creator: poc2go
-ioAuthor:
+ioAuthor: 
 ioDisplayButtons: <<resetAllButton>> <<createButton>> <<builderButton>>
 ioHelp: Make any changes and 'Update'<br>Press 'Build' to create the plugin
-ioList:
+ioList: 
 ioName: fetch
 ioPluginPriority: 20
 ioPluginType: plugin
-ioPublisher:
-ioResult:
+ioPublisher: 
+ioResult: 
 ioSrcProject: fetch
 ioSrcProjectList: REST ReplCommands fetch flotsam
 ioSrcProjectWiki: poc2go
@@ -21,7 +21,7 @@ ioTitle: $:/plugins/poc2go/fetch
 ioType: application/json
 ioVersion: 0.0.0
 list: dashboard docs template code
-modified: 20250402181423590
+modified: 20250415222848273
 modifier: poc2go
 tags: plugin Projects
 title: plugin

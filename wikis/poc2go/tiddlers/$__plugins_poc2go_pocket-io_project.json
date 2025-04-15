@@ -39,21 +39,26 @@
         "$:/poc2go/pocket-io/project/addcategory": {
             "created": "20250311171237934",
             "creator": "poc2go",
-            "text": "\\define projectSubmitCategory()\n<$button class=\"tc-btn-invisible tc-tiddlylink\" actions=\"<<pocket-io 'projectAddCategory'>>\" >\n{{$:/core/images/new-button}}\n</$button>\n\\end\n\n\\define setTypeEditBox()\n<$edit-text field=\"ioPrjCategoryType\" class=\"pio-tabset-box\"/>\n\\end\n\n\\define pillTitleEditBox()\n<$edit-text field=\"ioPrjCategoryPillTitle\" class=\"pio-tabset-box\"/>\n\\end\n\n<style>\n.pio-tabset-box { width: 122px; }\n</style>\n\n|tc-center tc-table-no-border|k\n| Add Category |\n\n|tc-center tc-table-no-border|k\n| Category type: |<<setTypeEditBox>> | Pill title: |<<pillTitleEditBox>> |<<projectSubmitCategory>> |\n\n<div class=\"poc2go-center\">\n\n<$set name=\"project\" tiddler=<<currentTiddler>> field=\"ioPrjProject\" >\n<$list filter=\"[list[$:/poc2go/pocket-io/project/projects!!categories]]\">\n<<displayTabPill $(project)$ \"$(currentTiddler)$\">>\n</$list>\n</$set>\n\n</div>\n\n",
+            "text": "\\define projectSubmitCategory()\n<$button class=\"tc-btn-invisible tc-tiddlylink\" actions=\"<<node-red 'project add category'>>\" >\n{{$:/core/images/new-button}}\n</$button>\n\\end\n\n\\define setTypeEditBox()\n<$edit-text field=\"ioPrjCategoryType\" class=\"pio-tabset-box\"/>\n\\end\n\n\\define pillTitleEditBox()\n<$edit-text field=\"ioPrjCategoryPillTitle\" class=\"pio-tabset-box\"/>\n\\end\n\n<style>\n.pio-tabset-box { width: 122px; }\n</style>\n\n|tc-center tc-table-no-border|k\n| Add Category |\n\n|tc-center tc-table-no-border|k\n| Category type: |<<setTypeEditBox>> | Pill title: |<<pillTitleEditBox>> |<<projectSubmitCategory>> |\n\n<div class=\"poc2go-center\">\n\n<$set name=\"project\" tiddler=<<currentTiddler>> field=\"ioPrjProject\" >\n<$list variable=\"category\" filter=\"[list[$:/poc2go/pocket-io/project/projects!!categories]]\">\n<<displayTabPill \"$(project)$\" \"$(category)$\">>\n</$list>\n</$set>\n\n</div>\n\n",
             "title": "$:/poc2go/pocket-io/project/addcategory",
-            "caption": "Add Category",
-            "modified": "20250327200850618",
+            "modified": "20250413051250366",
             "modifier": "poc2go",
             "type": "text/vnd.tiddlywiki",
-            "revision": "0",
-            "bag": "default"
+            "bag": "default",
+            "caption": "Add Category",
+            "revision": "1"
         },
         "$:/poc2go/pocket-io/project/addtab": {
             "created": "20250202173551292",
-            "text": "\\define projectSubmitTab()\n<$button class=\"tc-btn-invisible tc-tiddlylink\" actions=\"<<pocket-io 'projectUpdatetabs'>>\" >\n{{$:/core/images/new-button}}\n</$button>\n\\end\n\n\\define projectTabType()\n<$select field=\"ioPrjTabType\" default=\"docs\">\n<$list filter=\"[all[tiddlers+shadows]tag[$:/tags/pocket-io/tabtype]sort[caption]]\"><option value={{!!tabtype}} ><$view field='caption'/></option>\n</$list>\n</$select>\n<$edit-text field=\"ioPrjTabName\" size=10 />\n\\end\n\n|tc-center tc-table-no-border|k\n| New tab |<<projectTabType>> |<<projectSubmitTab>>|\n",
+            "creator": "poc2go",
+            "text": "\\define projectSubmitTab()\n<$button class=\"tc-btn-invisible tc-tiddlylink\" actions=\"<<node-red 'project add tab'>>\" >\n{{$:/core/images/new-button}}\n</$button>\n\\end\n\n\\define projectTabType()\n<$select field=\"ioPrjTabType\" default=\"docs\">\n<$list filter=\"[all[tiddlers+shadows]tag[$:/tags/pocket-io/tabtype]sort[caption]]\"><option value={{!!tabtype}} ><$view field='caption'/></option>\n</$list>\n</$select>\n<$edit-text field=\"ioPrjTabName\" size=10 />\n\\end\n\n|tc-center tc-table-no-border|k\n| New tab |<<projectTabType>> |<<projectSubmitTab>>|\n",
             "title": "$:/poc2go/pocket-io/project/addtab",
-            "modified": "20250227161112757",
-            "caption": "Add Tab"
+            "modified": "20250413050922987",
+            "modifier": "poc2go",
+            "type": "text/vnd.tiddlywiki",
+            "caption": "Add Tab",
+            "revision": "1",
+            "bag": "default"
         },
         "$:/poc2go/pocket-io/project/icon": {
             "created": "20250201131348235",
@@ -79,13 +84,13 @@
         "$:/poc2go/pocket-io/project/release": {
             "created": "20250310064355171",
             "creator": "poc2go",
-            "text": "!!! v0.2.9 - v0.2.13 - 2025-04-02\n\n* Remove formatting of code upload macro\n\n!!! v0.2.8 - 2025-03-22\n\n* Add categoryPill global define\n* Change field names used to add categories\n\n!!! v0.2.7 - 2025-03-22\n\n* Add reset to create wiki GUI template\n\n!!! v0.2.6 - 2025-03-11\n\n* Implement add category\n\n!!! v0.2.5 - 2025-03-11\n\n* Remove duplicate define\n\n!!! v0.2.4 - 2025-03-11\n\n* Rename tab set tiddlers - remove 'poc2go'\n\n!!! v0.2.3 - 2025-03-10\n\n* Breakout tab pill display - define ''displayTabPill''\n\n!!! v0.2.2 - 2025-03-10\n\n* Move tab sets to codebase wiki\n\n!!! v0.2.1 - 2025-03-10\n\n* Add Release Notes\n* Changes dashboard pill name to 'Dashboards'\n",
+            "text": "!!! v0.2.15 - 2025-04-13\n\n* Switch Project Management to Node-Red\n\n!!! v0.2.14 - 2025-04-11\n\n* Add variable to categoryPill $list\n\n!!! v0.2.9 - v0.2.13 - 2025-04-02\n\n* Remove formatting of code upload macro\n\n!!! v0.2.8 - 2025-03-22\n\n* Add categoryPill global define\n* Change field names used to add categories\n\n!!! v0.2.7 - 2025-03-22\n\n* Add reset to create wiki GUI template\n\n!!! v0.2.6 - 2025-03-11\n\n* Implement add category\n\n!!! v0.2.5 - 2025-03-11\n\n* Remove duplicate define\n\n!!! v0.2.4 - 2025-03-11\n\n* Rename tab set tiddlers - remove 'poc2go'\n\n!!! v0.2.3 - 2025-03-10\n\n* Breakout tab pill display - define ''displayTabPill''\n\n!!! v0.2.2 - 2025-03-10\n\n* Move tab sets to codebase wiki\n\n!!! v0.2.1 - 2025-03-10\n\n* Add Release Notes\n* Changes dashboard pill name to 'Dashboards'\n",
             "title": "$:/poc2go/pocket-io/project/release",
-            "modified": "20250402164942911",
+            "modified": "20250413051831359",
             "modifier": "poc2go",
             "type": "text/vnd.tiddlywiki",
-            "revision": "0",
-            "bag": "default"
+            "bag": "default",
+            "revision": "2"
         },
         "$:/poc2go/pocket-io/project/settings": {
             "created": "20250131133728669",
@@ -110,11 +115,14 @@
         "$:/poc2go/pocket-io/project/create": {
             "created": "20250131142623424",
             "creator": "poc2go",
-            "text": "\\define submitCreate()\n<<pocket-io \"projectCreate\">>\n\\end\n\n\\define createButton()\n<$button actions=\"<<submitCreate>>\"> Create </$button>\n\\end\n\n\\define projectEditBox()\n<$edit-text field=\"ioPrjProject\"/>\n\\end\n\n\\define onWikiSelect()\n<$select field=\"ioPrjWiki\" default=\"{{$:/temp/pocket-io/wikinames}}\">\n<$list filter=\"[list[$:/temp/pocket-io/wikinames]]\">\n<option value={{!!title}} ><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n|tc-center tc-table-no-border|k\n| Wiki |<<onWikiSelect>> | New Project |<<projectEditBox>> |<<createButton>> | <<resetAllButton>> |\n",
+            "text": "\\define submitCreate()\n<<node-red \"project create\">>\n\\end\n\n\\define createButton()\n<$button actions=\"<<submitCreate>>\"> Create </$button>\n\\end\n\n\\define projectEditBox()\n<$edit-text field=\"ioPrjProject\"/>\n\\end\n\n\\define onWikiSelect()\n<$select field=\"ioPrjWiki\" default=\"{{$:/temp/pocket-io/wikinames}}\">\n<$list filter=\"[list[$:/temp/pocket-io/wikinames]]\">\n<option value={{!!title}} ><$view field='title'/></option>\n</$list>\n</$select>\n\\end\n\n|tc-center tc-table-no-border|k\n| Wiki |<<onWikiSelect>> | New Project |<<projectEditBox>> |<<createButton>> | <<resetAllButton>> |\n",
             "title": "$:/poc2go/pocket-io/project/create",
-            "modified": "20250322142340185",
+            "modified": "20250413050721228",
+            "modifier": "poc2go",
+            "type": "text/vnd.tiddlywiki",
             "caption": "Create",
-            "modifier": "poc2go"
+            "revision": "1",
+            "bag": "default"
         },
         "$:/poc2go/pocket-io/project/delete": {
             "created": "20250201215225312",
