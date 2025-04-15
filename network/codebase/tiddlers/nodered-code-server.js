@@ -51,6 +51,9 @@ const $NodeRed = function () {
 		title: 'TW5-Node-Red',
 		css: path.resolve('./public/node-red-editor.css'),
 	};
+	this.settings.editorTheme.login = {
+		image: path.resolve('./public/images/system/tw5-node-red-login.png')
+	};
 
 	// Initialise the Node-Red runtime to this server
 	// Serve the Node-Red editor UI
