@@ -20,7 +20,7 @@ const $NodeRed = function () {
 		node: `http://${$config.domain}:${this.settings.uiPort || 1880}` +
 		`${this.nodered.httpNodeRoot}`
 	}
-	
+
 	// functions to Node-Red global context
 	//  see codebase [[startup-code-globals]]
 	this.repl = {
@@ -38,7 +38,7 @@ const $NodeRed = function () {
 	this.nodered.functionGlobalContext = Object.assign(
 		{},	this.nodered.functionGlobalContext, globalFunctions
 	)
-	
+
 	// Merge Node-Red settings
 	this.settings = Object.assign({}, this.settings, this.nodered)
 
@@ -77,7 +77,8 @@ const $NodeRed = function () {
 			setTimeout(() => {
 				// End the startup and log info/warning with color
 				//  and date/time from now on
-				hog(`\n===================`, 111);
+				hog(`\n===================\n`, 111);
+				hog(`Node-Red startup complete\n`, 156);
 				this.RED.log.info = (t) => tog(t, 111);
 				this.RED.log.warn = (t) => tog(t, 129);
 				$rt.setPrompt(prevPrompt);

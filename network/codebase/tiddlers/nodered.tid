@@ -4,13 +4,13 @@ created: 20250315134452822
 creator: poc2go
 ioConfirmDelete: no
 ioPrjProject: nodered
-ioPrjTabName:
+ioPrjTabName: 
 ioPrjTabSelected: nodered-code-server
 ioPrjTabType: code
-ioResult:
-ioResultUpload:
+ioResult: 
+ioResultUpload: 
 list: dashboard docs template code
-modified: 20250402170255847
+modified: 20250415114640735
 modifier: poc2go
 tags: nodered Projects
 title: nodered
