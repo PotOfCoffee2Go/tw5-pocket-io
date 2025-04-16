@@ -1,9 +1,0 @@
-created: 20241013203831738
-modified: 20241022215212082
-tags: 
-title: ssh commands
-type: text/vnd.tiddlywiki
-
-sudo scp -r /media/poc2gopi/rootfs/home/wikipi/wikis wikipi@192.168.1.206:/home/wikipi/wikis
-
-vcgencmd measure_temp

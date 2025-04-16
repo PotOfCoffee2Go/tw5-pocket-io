@@ -1,9 +1,0 @@
-created: 20250208181451534
-modified: 20250218034843987
-tags: $:/tags/TopLeftBar
-title: $:/poc2go/pocket-io/topbarleft/menu
-type: text/vnd.tiddlywiki
-
-<div style="font-size: 1.19em;margin-top:-0.2em;margin-left:-0.7em;">
-<$transclude $tiddler="$:/core/ui/Buttons/home"/>
-</div>
