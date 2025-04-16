@@ -16,6 +16,14 @@
         "env": []
     },
     {
+        "id": "a10937a730662247",
+        "type": "tab",
+        "label": "Project Managment",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "faf664cead0da5c0",
         "type": "tab",
         "label": "Topics",
@@ -520,6 +528,49 @@
         "h": 304
     },
     {
+        "id": "7cf576bc81702e1e",
+        "type": "group",
+        "z": "a10937a730662247",
+        "style": {
+            "stroke": "#2b2b2b",
+            "stroke-opacity": "1",
+            "fill": "#181818",
+            "fill-opacity": "0.5",
+            "label": true,
+            "label-position": "nw",
+            "color": "#cccccc"
+        },
+        "nodes": [
+            "ccca438d7f47e763",
+            "7c793d490c8c1208",
+            "f7f87f739520cf6c",
+            "612dd97f9803d988",
+            "d7e3072a8dfa19ac",
+            "784f277fe4392287"
+        ],
+        "x": 44,
+        "y": 221,
+        "w": 992,
+        "h": 326
+    },
+    {
+        "id": "d2dcbc414bb67695",
+        "type": "group",
+        "z": "a10937a730662247",
+        "name": " The sender tiddler must set fields required to execute the command \\n See 'check fields' for the fields needed \\n ",
+        "style": {
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "7c6203be90f13919"
+        ],
+        "x": 268,
+        "y": 13,
+        "w": 644,
+        "h": 174
+    },
+    {
         "id": "37dfe29593404c76",
         "type": "group",
         "z": "62c6b96ab760ca78",
@@ -743,6 +794,51 @@
         "h": 154
     },
     {
+        "id": "784f277fe4392287",
+        "type": "group",
+        "z": "a10937a730662247",
+        "g": "7cf576bc81702e1e",
+        "name": " \\n TW5-Node-Red Project Management System \\n ",
+        "style": {
+            "label": true,
+            "label-position": "n"
+        },
+        "nodes": [
+            "19ad86b066a70edc",
+            "6dda66692ff5c3fb",
+            "701ef502cfd121a2",
+            "676a0785af94780e",
+            "7ee4cd62e0d95120",
+            "7b854fee13756d08",
+            "82d2aec44264c495",
+            "ab2baa4b923132cd",
+            "9e52e93a1ed17808",
+            "c43c8bcd90096b2d"
+        ],
+        "x": 494,
+        "y": 247,
+        "w": 352,
+        "h": 274
+    },
+    {
+        "id": "7c6203be90f13919",
+        "type": "group",
+        "z": "a10937a730662247",
+        "g": "d2dcbc414bb67695",
+        "name": "TiddlyWiki usage example",
+        "style": {
+            "label": true,
+            "label-position": "n"
+        },
+        "nodes": [
+            "310c2cb187bdf5a9"
+        ],
+        "x": 294,
+        "y": 39,
+        "w": 592,
+        "h": 82
+    },
+    {
         "id": "0a11219ac3279f4f",
         "type": "group",
         "z": "62c6b96ab760ca78",
@@ -841,6 +937,19 @@
         "y": 519,
         "w": 252,
         "h": 122
+    },
+    {
+        "id": "c43c8bcd90096b2d",
+        "type": "junction",
+        "z": "a10937a730662247",
+        "g": "784f277fe4392287",
+        "x": 520,
+        "y": 440,
+        "wires": [
+            [
+                "9e52e93a1ed17808"
+            ]
+        ]
     },
     {
         "id": "c423533ded980b73",
@@ -1811,6 +1920,331 @@
         "y": 120,
         "wires": [],
         "l": false
+    },
+    {
+        "id": "ccca438d7f47e763",
+        "type": "subflow:8adf8de645b60e16",
+        "z": "a10937a730662247",
+        "g": "7cf576bc81702e1e",
+        "name": "",
+        "x": 85,
+        "y": 380,
+        "wires": [
+            [
+                "f7f87f739520cf6c"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "7c793d490c8c1208",
+        "type": "subflow:83b81066588d5f7b",
+        "z": "a10937a730662247",
+        "g": "7cf576bc81702e1e",
+        "name": "",
+        "x": 925,
+        "y": 400,
+        "wires": [
+            [
+                "d7e3072a8dfa19ac"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "f7f87f739520cf6c",
+        "type": "switch",
+        "z": "a10937a730662247",
+        "g": "7cf576bc81702e1e",
+        "name": "^project.*$",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "^project.*$",
+                "vt": "str",
+                "case": false
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 190,
+        "y": 380,
+        "wires": [
+            [
+                "612dd97f9803d988"
+            ]
+        ]
+    },
+    {
+        "id": "612dd97f9803d988",
+        "type": "switch",
+        "z": "a10937a730662247",
+        "g": "7cf576bc81702e1e",
+        "name": " create \\n add tab \\n add category \\n display network",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "project create",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "project add tab",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "project add category",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "project display network",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 360,
+        "y": 380,
+        "wires": [
+            [
+                "676a0785af94780e"
+            ],
+            [
+                "7ee4cd62e0d95120"
+            ],
+            [
+                "ab2baa4b923132cd"
+            ],
+            [
+                "c43c8bcd90096b2d"
+            ]
+        ]
+    },
+    {
+        "id": "19ad86b066a70edc",
+        "type": "function",
+        "z": "a10937a730662247",
+        "g": "784f277fe4392287",
+        "name": "create",
+        "func": "// Create a project\n// Verify input and build project from $$$project$$$ template\nconst repl = global.get('repl');\n\nvar sender = Object.assign({}, msg.wiki.senderTiddler);\nsender.ioResult = '';\n\nvar dstWikiName = sender.ioPrjWiki;\nvar project = sender.ioPrjProject;\nvar $tw = repl.get$tw(dstWikiName); // destination wiki\n\n// Get the project template and replace occurances of $$$project$$\n//  with the project name\nvar json = repl.$twCodebase.wiki.getTiddlersAsJson('[[$$$project$$$]]');\nvar text = json.replace(/\\$\\$\\$project\\$\\$\\$/g, project);\nvar tiddlers = $tw.wiki.deserializeTiddlers(null,text,\n\t{title: 'unused'}, {deserializer: 'application/json'});\n\n// Add the project tiddler to the destination wiki\nvar tiddler = tiddlers[0];\n$tw.wiki.addTiddler(new $tw.Tiddler(\n\ttiddler,\n\t$tw.wiki.getCreationFields(),\n\t$tw.wiki.getModificationFields()\n))\n\n// Return successful\nvar link = repl.get$proxy(dstWikiName).link;\nsender.ioResult = `Project created - ${link}/#${project}`;\nmsg.payload = sender;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 320,
+        "wires": [
+            [
+                "7c793d490c8c1208"
+            ]
+        ]
+    },
+    {
+        "id": "d7e3072a8dfa19ac",
+        "type": "debug",
+        "z": "a10937a730662247",
+        "g": "7cf576bc81702e1e",
+        "name": "debug project",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 975,
+        "y": 400,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "6dda66692ff5c3fb",
+        "type": "catch",
+        "z": "a10937a730662247",
+        "g": "784f277fe4392287",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 580,
+        "y": 480,
+        "wires": [
+            [
+                "701ef502cfd121a2"
+            ]
+        ]
+    },
+    {
+        "id": "701ef502cfd121a2",
+        "type": "function",
+        "z": "a10937a730662247",
+        "g": "784f277fe4392287",
+        "name": "error to ioResult",
+        "func": "var sender = Object.assign({}, msg.wiki.senderTiddler);\n\nsender.ioResult = msg.error.message;\nmsg.payload = sender;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 480,
+        "wires": [
+            [
+                "7c793d490c8c1208"
+            ]
+        ]
+    },
+    {
+        "id": "676a0785af94780e",
+        "type": "function",
+        "z": "a10937a730662247",
+        "g": "784f277fe4392287",
+        "name": "check fields",
+        "func": "const repl = global.get('repl');\n\nvar sender = Object.assign({}, msg.wiki.senderTiddler);\nvar errorMsg = '';\nsender.ioResult = '';\n\nvar dstWikiName = sender.ioPrjWiki;\nvar project = sender.ioPrjProject;\nvar $tw = repl.get$tw(dstWikiName); // destination wiki\n\nif (!dstWikiName) {\n\terrorMsg = `Error: Wiki name is required`;\n}\nelse if (!project) {\n\terrorMsg = `Error: Project name is required`;\n}\nelse if (!$tw) {\n\terrorMsg = `Error: Wiki '${dstWikiName}' is not in the Pocket-io network.`;\n}\nelse if (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(project)) {\n\terrorMsg = `Error: Project name may only contain letters, numbers, dollar-sign, underbars, and dashes\\n\\n` +\n\t\t`Notably spaces and special characters are not allowed.\\n\\n` +\n\t\t`Once created can change the 'caption' field to display as desired.`;\n}\nelse if ($tw.wiki.tiddlerExists(project)) {\n\terrorMsg = `Error: Project '${project}' already exists in wiki '${dstWikiName}'!`;\n}\n\n// Return error\nif (errorMsg) {\n    throw new Error(errorMsg);\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 320,
+        "wires": [
+            [
+                "19ad86b066a70edc"
+            ]
+        ],
+        "icon": "font-awesome/fa-check-square-o"
+    },
+    {
+        "id": "7ee4cd62e0d95120",
+        "type": "function",
+        "z": "a10937a730662247",
+        "g": "784f277fe4392287",
+        "name": "check fields",
+        "func": "// Create a new tab for an existing project\n//  If the tab already exists - exits with no action\n//  If project already exists will create a new tab\nconst repl = global.get('repl');\n\nvar sender = Object.assign({}, msg.wiki.senderTiddler);\nvar errorMsg = '';\nsender.ioResult = '';\n\nvar dstWikiName = sender.ioPrjWiki ?? msg.wiki.req.wikiName;\nvar project = sender.ioPrjProject;\nvar tabName = sender.ioPrjTabName;\nvar tabType = sender.ioPrjTabType;\n\nvar $tw = repl.get$tw(dstWikiName);\n\nif (!$tw) {\n\terrorMsg = `Error: Wiki '${dstWikiName}' is not in the Pocket-io network.`;\n}\nelse if (!tabName) {\n\terrorMsg = 'Error: A tab name is required.';\n}\nelse if (!tabType) {\n\terrorMsg = 'Error: A tab type is required.';\n}\nelse if (!project) {\n\terrorMsg = 'Error: A project name is required.';\n}\nelse if (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(tabName)) {\n\terrorMsg = `Error: Tab name may only contain letters, numbers, dollar-sign, underbars, and dashes\\n\\n` +\n\t\t`Notably spaces and special characters are not allowed.\\n\\n` +\n\t\t`Once created can change the 'caption' field to display as desired.`;\n}\nelse if ($tw.wiki.tiddlerExists(`${project}-${tabType}-${tabName}`)) {\n\terrorMsg = `Error: Tab '[[${project}-${tabType}-${tabName}]]' already exists!`;\n}\n\n// Return if error\nif (errorMsg) {\n\tthrow new Error(errorMsg);\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 360,
+        "wires": [
+            [
+                "7b854fee13756d08"
+            ]
+        ],
+        "icon": "font-awesome/fa-check-square-o"
+    },
+    {
+        "id": "7b854fee13756d08",
+        "type": "function",
+        "z": "a10937a730662247",
+        "g": "784f277fe4392287",
+        "name": "add tab",
+        "func": "// Create a new tab for an existing project\n//  If the tab already exists - exits with no action\n//  If project already exists will create a new tab\nconst repl = global.get('repl');\n\nvar sender = Object.assign({}, msg.wiki.senderTiddler);\nsender.ioResult = '';\n\nvar dstWikiName = sender.ioPrjWiki ?? msg.wiki.req.wikiName;\nvar project = sender.ioPrjProject;\nvar tabName = sender.ioPrjTabName;\nvar tabType = sender.ioPrjTabType;\n\nvar $tw = repl.get$tw(dstWikiName);\n\nvar newTab = {\n\ttitle: `${project}-${tabType}-${tabName}`,\n\ttags: $tw.utils.stringifyList([tabType, project, `$:/pocket-io/${project}/${tabType}`]),\n\tcaption: tabName,\n\ttext: tabType === 'code' ? '// code goes here' : `${tabType} goes here`,\n\ttype: tabType === 'code' ? 'application/javascript' : 'text/vnd.tiddlywiki'\n}\n// Return the new tab\nmsg.payload = [newTab];\n\nsender.ioPrjTabName = '';\nmsg.payload.push(sender);\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 360,
+        "wires": [
+            [
+                "7c793d490c8c1208"
+            ]
+        ]
+    },
+    {
+        "id": "82d2aec44264c495",
+        "type": "function",
+        "z": "a10937a730662247",
+        "g": "784f277fe4392287",
+        "name": "add category",
+        "func": "const repl = global.get('repl');\n\nvar sender = Object.assign({}, msg.wiki.senderTiddler);\nvar errorMsg = '';\nsender.ioResult = '';\n\nvar catListTiddler = '$:/poc2go/pocket-io/project/projects';\nvar dstWikiName = msg.wiki.req.wikiName;\nvar project = sender.ioPrjProject;\nvar pillTitle = sender.ioPrjCategoryPillTitle;\nvar categoryType = sender.ioPrjCategoryType;\nvar categoryTitle = `$:/pocket-io/project/ui/Tab${categoryType}`;\nvar categoryText = `<<categoryPill '${pillTitle}'>>`;\n\nvar $tw = repl.get$tw(dstWikiName);\n\nvar broadcast = dstWikiName === 'codebase' ? ' $:/tags/pocket-io/broadcast' : '';\n\nvar  newCategory = {\n    title: categoryTitle,\n    tags: '$:/tags/pocket-io/tabtype' + broadcast,\n    caption: pillTitle,\n    text: categoryText,\n    type: 'text/vnd.tiddlywiki',\n    tabtype: categoryType\n};\n\nmsg.payload = [ newCategory ];\n\nvar catList = $tw.wiki.getTiddlerList(catListTiddler, 'categories');\ncatList.push(categoryType);\n$tw.wiki.setText(catListTiddler,'categories', null, $tw.utils.stringifyList(catList));\nmsg.payload.push($tw.wiki.getTiddler(catListTiddler).fields);\n\nsender.ioPrjCategoryType = '';\nsender.ioPrjCategoryPillTitle = '';\nsender.ioResult = `Created category '${pillTitle}' of type '${categoryType}'`;\n\nmsg.payload.push(sender);\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 400,
+        "wires": [
+            [
+                "7c793d490c8c1208"
+            ]
+        ]
+    },
+    {
+        "id": "ab2baa4b923132cd",
+        "type": "function",
+        "z": "a10937a730662247",
+        "g": "784f277fe4392287",
+        "name": "check fields",
+        "func": "const repl = global.get('repl');\n\nvar sender = Object.assign({}, msg.wiki.senderTiddler);\nvar errorMsg = '';\nsender.ioResult = '';\n\nvar catListTiddler = '$:/poc2go/pocket-io/project/projects';\nvar dstWikiName = msg.wiki.req.wikiName;\nvar project = sender.ioPrjProject;\nvar pillTitle = sender.ioPrjCategoryPillTitle;\nvar categoryType = sender.ioPrjCategoryType;\nvar categoryTitle = `$:/pocket-io/project/ui/Tab${categoryType}`;\nvar categoryText = `<<categoryPill '${pillTitle}'>>`;\n\nvar $tw = repl.get$tw(dstWikiName);\n\nif (!$tw) {\n\terrorMsg = `Error: Wiki '${dstWikiName}' is not in the Pocket-io network.`;\n}\nelse if (!categoryType) {\n\terrorMsg = 'Error: A category type is required.';\n}\nelse if (!project) {\n\terrorMsg = 'Error: A project name is required.';\n}\nelse if (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(categoryType)) {\n\terrorMsg = `Error: Tab type may only contain letters, numbers, dollar-sign, underbars, and dashes\\n\\n` +\n\t\t`Notably spaces and special characters are not allowed.\\n`;\n}\nelse if ($tw.wiki.tiddlerExists(categoryTitle)) {\n\terrorMsg = `Error: Category ${categoryTitle} already exists!`;\n}\n\n// Return if error\nif (errorMsg) {\n\tthrow new Error(errorMsg);\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 400,
+        "wires": [
+            [
+                "82d2aec44264c495"
+            ]
+        ],
+        "icon": "font-awesome/fa-check-square-o"
+    },
+    {
+        "id": "9e52e93a1ed17808",
+        "type": "function",
+        "z": "a10937a730662247",
+        "g": "784f277fe4392287",
+        "name": "display network",
+        "func": "const repl = global.get('repl');\n\nvar sender = Object.assign({}, msg.wiki.senderTiddler);\nsender.ioResult = '';\n\nvar tableTemplate = '|tc-center|k\\n| Domain | Wiki | Project | AutoLoad <br> Code |h\\n';\n\nrepl.$ss.forEach(settings => {\n    var wikiName = settings.name;\n    if (wikiName === 'codebase' && repl.$config.hideCodebase) { return; }\n    var wikiLink = repl.get$proxy(wikiName).link;\n    var proxyDomain = settings.proxy.domain\n    var $tw = repl.get$tw(wikiName);\n\n    tableTemplate += `|${proxyDomain}|[[${wikiName}|${wikiLink}]] |<|<|\\n`;\n    $tw.wiki.filterTiddlers('[tag[Projects]]').forEach(project => {\n        if (/^\\$\\$\\$/.test(project)) { return; } // continue next forEach\n        var tiddler = JSON.parse($tw.wiki.getTiddlerAsJson(project));\n        tableTemplate += `| |<|[[${project}|${wikiLink}/#${project}]] ` +\n            `| ${tiddler.autoLoad === 'yes' ? 'yes' : 'no'} |\\n`;\n    })\n})\n\nmsg.payload = {\n    title: '$:/temp/pocket-io/system/projects',\n    text: tableTemplate,\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 440,
+        "wires": [
+            [
+                "7c793d490c8c1208"
+            ]
+        ]
+    },
+    {
+        "id": "310c2cb187bdf5a9",
+        "type": "comment",
+        "z": "a10937a730662247",
+        "g": "7c6203be90f13919",
+        "name": "<$button actions=\"<<node-red 'project create'>>\"> Create Project </$button>",
+        "info": "",
+        "x": 590,
+        "y": 80,
+        "wires": [],
+        "icon": "pocket-io-icons/tiddlywiki-dark.png"
     },
     {
         "id": "499eef7df40ed31b",
