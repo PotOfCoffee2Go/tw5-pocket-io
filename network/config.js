@@ -1,5 +1,5 @@
-const path = require('node:path');
 const os = require('node:os');
+const path = require('node:path');
 
 // Full filepath using the tw5-node-red directory
 //  Is the current directory on tw5-node-red startup
