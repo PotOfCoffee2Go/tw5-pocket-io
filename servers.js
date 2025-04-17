@@ -10,9 +10,6 @@ const hue = (txt, nbr=214) => `\x1b[38;5;${nbr}m${txt}\x1b[0m`;
 const hog = (txt, nbr) => log(hue(txt, nbr));
 const cpy = (obj) => JSON.parse(JSON.stringify(obj));
 
-// Change working directory - needed when globally installed
-process.cwd(__dirname);
-
 // Build settings
 const { config } = require('./lib/buildPackage')();
 const { buildSettings } = require('./lib/buildSettings');

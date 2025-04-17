@@ -3,10 +3,6 @@
   "version": "0.13.0",
   "description": "Pocket.io interface for single file wikis to a code and database wiki. ",
   "main": "./bin/tw5-node-red.js",
-  "bin": {
-    "tw5-node-red": "./bin/tw5-node-red.js"
-  },
-  "preferGlobal": true,
   "scripts": {
     "start": "./bin/tw5-node-red.js",
     "test": "echo \"Error: no test specified\" && exit 1"
