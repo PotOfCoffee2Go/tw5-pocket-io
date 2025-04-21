@@ -1,10 +1,6 @@
 const os = require('node:os');
 const path = require('node:path');
 
-// Full filepath using the tw5-node-red directory
-//  Is the current directory on tw5-node-red startup
-const programDir = (fpath) => path.join(process.cwd(), fpath);
-
 // User NPM package directory containing this config file
 // The NPM package can be created/specified using the
 //  tw5-node-red '-p' option
@@ -115,5 +111,5 @@ exports.config = {
 	},
 
 	// tw5-node-red NPM package
-	pkg: require(programDir('package.json')),
+	pkg: require(packageDir('package.json')),
 }
