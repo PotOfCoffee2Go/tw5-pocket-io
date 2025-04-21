@@ -952,6 +952,37 @@
         ]
     },
     {
+        "id": "590a6e25b544a6f4",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "pocket-io",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
         "id": "c423533ded980b73",
         "type": "function",
         "z": "8adf8de645b60e16",
@@ -2111,7 +2142,7 @@
         "z": "a10937a730662247",
         "g": "784f277fe4392287",
         "name": "check fields",
-        "func": "const repl = global.get('repl');\n\nvar sender = Object.assign({}, msg.wiki.senderTiddler);\nvar errorMsg = '';\nsender.ioResult = '';\n\nvar dstWikiName = sender.ioPrjWiki;\nvar project = sender.ioPrjProject;\nvar $tw = repl.get$tw(dstWikiName); // destination wiki\n\nif (!dstWikiName) {\n\terrorMsg = `Error: Wiki name is required`;\n}\nelse if (!project) {\n\terrorMsg = `Error: Project name is required`;\n}\nelse if (!$tw) {\n\terrorMsg = `Error: Wiki '${dstWikiName}' is not in the Pocket-io network.`;\n}\nelse if (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(project)) {\n\terrorMsg = `Error: Project name may only contain letters, numbers, dollar-sign, underbars, and dashes\\n\\n` +\n\t\t`Notably spaces and special characters are not allowed.\\n\\n` +\n\t\t`Once created can change the 'caption' field to display as desired.`;\n}\nelse if ($tw.wiki.tiddlerExists(project)) {\n\terrorMsg = `Error: Project '${project}' already exists in wiki '${dstWikiName}'!`;\n}\n\n// Return error\nif (errorMsg) {\n    throw new Error(errorMsg);\n}\n\nreturn msg;",
+        "func": "const repl = global.get('repl');\n\nvar sender = Object.assign({}, msg.wiki.senderTiddler);\nvar errorMsg = '';\nsender.ioResult = '';\n\nvar dstWikiName = sender.ioPrjWiki;\nvar project = sender.ioPrjProject;\nvar $tw = repl.get$tw(dstWikiName); // destination wiki\n\nif (!dstWikiName) {\n\terrorMsg = `Error: Wiki name is required`;\n}\nelse if (!project) {\n\terrorMsg = `Error: Project name is required`;\n}\nelse if (!$tw) {\n\terrorMsg = `Error: Wiki '${dstWikiName}' is not in the Pocket-io network.`;\n}\nelse if (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(project)) {\n\terrorMsg = `Error: Project name may only contain letters, numbers, dollar-sign, underbars, and dashes\\n\\n` +\n\t\t`Notably spaces and special characters are not allowed.\\n\\n` +\n\t\t`Once created can change the 'caption' field to display as desired.`;\n}\nelse if ($tw.wiki.tiddlerExists(project)) {\n\terrorMsg = `Error: Project '${project}' already exists in wiki '${dstWikiName}'!`;\n}\n\n// Return error\nif (errorMsg) {\n    node.error(errorMsg, msg);\n\treturn;\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2133,7 +2164,7 @@
         "z": "a10937a730662247",
         "g": "784f277fe4392287",
         "name": "check fields",
-        "func": "// Create a new tab for an existing project\n//  If the tab already exists - exits with no action\n//  If project already exists will create a new tab\nconst repl = global.get('repl');\n\nvar sender = Object.assign({}, msg.wiki.senderTiddler);\nvar errorMsg = '';\nsender.ioResult = '';\n\nvar dstWikiName = sender.ioPrjWiki ?? msg.wiki.req.wikiName;\nvar project = sender.ioPrjProject;\nvar tabName = sender.ioPrjTabName;\nvar tabType = sender.ioPrjTabType;\n\nvar $tw = repl.get$tw(dstWikiName);\n\nif (!$tw) {\n\terrorMsg = `Error: Wiki '${dstWikiName}' is not in the Pocket-io network.`;\n}\nelse if (!tabName) {\n\terrorMsg = 'Error: A tab name is required.';\n}\nelse if (!tabType) {\n\terrorMsg = 'Error: A tab type is required.';\n}\nelse if (!project) {\n\terrorMsg = 'Error: A project name is required.';\n}\nelse if (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(tabName)) {\n\terrorMsg = `Error: Tab name may only contain letters, numbers, dollar-sign, underbars, and dashes\\n\\n` +\n\t\t`Notably spaces and special characters are not allowed.\\n\\n` +\n\t\t`Once created can change the 'caption' field to display as desired.`;\n}\nelse if ($tw.wiki.tiddlerExists(`${project}-${tabType}-${tabName}`)) {\n\terrorMsg = `Error: Tab '[[${project}-${tabType}-${tabName}]]' already exists!`;\n}\n\n// Return if error\nif (errorMsg) {\n\tthrow new Error(errorMsg);\n}\n\nreturn msg;\n",
+        "func": "// Create a new tab for an existing project\n//  If the tab already exists - exits with no action\n//  If project already exists will create a new tab\nconst repl = global.get('repl');\n\nvar sender = Object.assign({}, msg.wiki.senderTiddler);\nvar errorMsg = '';\nsender.ioResult = '';\n\nvar dstWikiName = sender.ioPrjWiki ?? msg.wiki.req.wikiName;\nvar project = sender.ioPrjProject;\nvar tabName = sender.ioPrjTabName;\nvar tabType = sender.ioPrjTabType;\n\nvar $tw = repl.get$tw(dstWikiName);\n\nif (!$tw) {\n\terrorMsg = `Error: Wiki '${dstWikiName}' is not in the Pocket-io network.`;\n}\nelse if (!tabName) {\n\terrorMsg = 'Error: A tab name is required.';\n}\nelse if (!tabType) {\n\terrorMsg = 'Error: A tab type is required.';\n}\nelse if (!project) {\n\terrorMsg = 'Error: A project name is required.';\n}\nelse if (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(tabName)) {\n\terrorMsg = `Error: Tab name may only contain letters, numbers, dollar-sign, underbars, and dashes\\n\\n` +\n\t\t`Notably spaces and special characters are not allowed.\\n\\n` +\n\t\t`Once created can change the 'caption' field to display as desired.`;\n}\nelse if ($tw.wiki.tiddlerExists(`${project}-${tabType}-${tabName}`)) {\n\terrorMsg = `Error: Tab '[[${project}-${tabType}-${tabName}]]' already exists!`;\n}\n\n// Return if error\nif (errorMsg) {\n\tnode.error(errorMsg, msg);\n\treturn;\n\n}\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2197,7 +2228,7 @@
         "z": "a10937a730662247",
         "g": "784f277fe4392287",
         "name": "check fields",
-        "func": "const repl = global.get('repl');\n\nvar sender = Object.assign({}, msg.wiki.senderTiddler);\nvar errorMsg = '';\nsender.ioResult = '';\n\nvar catListTiddler = '$:/poc2go/pocket-io/project/projects';\nvar dstWikiName = msg.wiki.req.wikiName;\nvar project = sender.ioPrjProject;\nvar pillTitle = sender.ioPrjCategoryPillTitle;\nvar categoryType = sender.ioPrjCategoryType;\nvar categoryTitle = `$:/pocket-io/project/ui/Tab${categoryType}`;\nvar categoryText = `<<categoryPill '${pillTitle}'>>`;\n\nvar $tw = repl.get$tw(dstWikiName);\n\nif (!$tw) {\n\terrorMsg = `Error: Wiki '${dstWikiName}' is not in the Pocket-io network.`;\n}\nelse if (!categoryType) {\n\terrorMsg = 'Error: A category type is required.';\n}\nelse if (!project) {\n\terrorMsg = 'Error: A project name is required.';\n}\nelse if (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(categoryType)) {\n\terrorMsg = `Error: Tab type may only contain letters, numbers, dollar-sign, underbars, and dashes\\n\\n` +\n\t\t`Notably spaces and special characters are not allowed.\\n`;\n}\nelse if ($tw.wiki.tiddlerExists(categoryTitle)) {\n\terrorMsg = `Error: Category ${categoryTitle} already exists!`;\n}\n\n// Return if error\nif (errorMsg) {\n\tthrow new Error(errorMsg);\n}\nreturn msg;\n",
+        "func": "const repl = global.get('repl');\n\nvar sender = Object.assign({}, msg.wiki.senderTiddler);\nvar errorMsg = '';\nsender.ioResult = '';\n\nvar catListTiddler = '$:/poc2go/pocket-io/project/projects';\nvar dstWikiName = msg.wiki.req.wikiName;\nvar project = sender.ioPrjProject;\nvar pillTitle = sender.ioPrjCategoryPillTitle;\nvar categoryType = sender.ioPrjCategoryType;\nvar categoryTitle = `$:/pocket-io/project/ui/Tab${categoryType}`;\nvar categoryText = `<<categoryPill '${pillTitle}'>>`;\n\nvar $tw = repl.get$tw(dstWikiName);\n\nif (!$tw) {\n\terrorMsg = `Error: Wiki '${dstWikiName}' is not in the Pocket-io network.`;\n}\nelse if (!categoryType) {\n\terrorMsg = 'Error: A category type is required.';\n}\nelse if (!project) {\n\terrorMsg = 'Error: A project name is required.';\n}\nelse if (!/^[$A-Z_][0-9A-Z_$-]*$/i.test(categoryType)) {\n\terrorMsg = `Error: Tab type may only contain letters, numbers, dollar-sign, underbars, and dashes\\n\\n` +\n\t\t`Notably spaces and special characters are not allowed.\\n`;\n}\nelse if ($tw.wiki.tiddlerExists(categoryTitle)) {\n\terrorMsg = `Error: Category ${categoryTitle} already exists!`;\n}\n\n// Return if error\nif (errorMsg) {\n    node.error(errorMsg, msg);\n\treturn;\n}\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2395,11 +2426,12 @@
         "type": "subflow:8adf8de645b60e16",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 35,
-        "y": 360,
+        "x": 45,
+        "y": 380,
         "wires": [
             [
-                "8b17abc06620f4dd"
+                "8b17abc06620f4dd",
+                "76b07d638e1110c9"
             ]
         ],
         "l": false
@@ -2409,10 +2441,12 @@
         "type": "subflow:83b81066588d5f7b",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 415,
+        "x": 435,
         "y": 380,
         "wires": [
-            []
+            [
+                "014708f6c0e76350"
+            ]
         ],
         "l": false
     },
@@ -2427,7 +2461,7 @@
         "syntax": "mustache",
         "template": "{\n    \"title\": \"test it 2\",\n    \"text\": \"some test!!!\",\n    \"ioToStory\": \"yes\"\n}",
         "output": "str",
-        "x": 300,
+        "x": 320,
         "y": 360,
         "wires": [
             [
@@ -2452,7 +2486,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 150,
+        "x": 170,
         "y": 360,
         "wires": [
             [
@@ -2531,12 +2565,10 @@
         "type": "subflow:8adf8de645b60e16",
         "z": "5b24d6e63acf9047",
         "name": "",
-        "x": 35,
-        "y": 400,
+        "x": 135,
+        "y": 640,
         "wires": [
-            [
-                "76b07d638e1110c9"
-            ]
+            []
         ],
         "l": false
     },
@@ -2551,7 +2583,7 @@
         "syntax": "mustache",
         "template": "title: Hi demo 2.2\nioToStory: yes\n\nthis is some test tooooo!!!",
         "output": "str",
-        "x": 300,
+        "x": 320,
         "y": 400,
         "wires": [
             [
@@ -2576,7 +2608,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 141,
+        "x": 161,
         "y": 400,
         "wires": [
             [
@@ -2844,6 +2876,62 @@
         "y": 480,
         "wires": [],
         "l": false
+    },
+    {
+        "id": "6576d4c34914df3d",
+        "type": "mqtt in",
+        "z": "5b24d6e63acf9047",
+        "name": "",
+        "topic": "testTopic",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "590a6e25b544a6f4",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 560,
+        "wires": [
+            [
+                "8f0adec866101709"
+            ]
+        ]
+    },
+    {
+        "id": "8f0adec866101709",
+        "type": "debug",
+        "z": "5b24d6e63acf9047",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "2515a7da9646a058",
+        "type": "function",
+        "z": "5b24d6e63acf9047",
+        "name": "register for MQTT message",
+        "func": "const repl = global.get('repl');\n\nvar mqttSockets = flow.get('mqttSockets');\nif (!Array.isArray(mqttSockets)) {\n    flow.set('mqttSockets', []);\n    mqttSockets = [];\n}\n\n// Request from a wiki\nif (msg.wiki) {\n    if (!mqttSockets.includes(msg.wiki.req.socketId)) {\n        mqttSockets.push(msg.wiki.req.socketId);\n    }\n    flow.set('mqttSockets', mqttSockets);\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 640,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "66ce86cab171196a",
