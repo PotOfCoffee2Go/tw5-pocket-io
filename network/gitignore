@@ -1,0 +1,11 @@
+# Ignore npm modules directory
+/node_modules
+
+# Ignore webserver credentials
+/credentials
+
+# Ignore TiddlyWiki wiki story list(s)
+$__StoryList*
+
+# Ignore Node-Red backups
+*.json.backup

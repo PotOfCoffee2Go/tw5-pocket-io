@@ -1,0 +1,17 @@
+{
+  "name": "tw5-node-red project",
+  "version": "0.1.0",
+  "description": "Wikis, flows, and tw5-node-red configuration",
+  "main": "tw5-node-red.js",
+  "scripts": {
+    "start": "node_modules/tw5-pocket-io/bin/tw5-node-red.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "tw5-pocket-io": "github:PotOfCoffee2Go/tw5-pocket-io"
+  }
+}
