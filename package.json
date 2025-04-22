@@ -2,12 +2,9 @@
   "name": "tw5-pocket-io",
   "version": "0.13.0",
   "description": "Pocket.io interface for single file wikis to a code and database wiki. ",
-  "main": "./bin/tw5-node-red.js",
-  "bin": {
-    "tw5-node-red": "./bin/tw5-node-red.js"
-  },
+  "main": "tw5-node-red.js",
   "scripts": {
-    "start": "./bin/tw5-node-red.js",
+    "start": "node ./tw5-node-red.js -p tw5-dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -27,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "xxx"
+    "url": "https://github.com/PotOfCoffee2Go/tw5-pocket-io"
   },
   "keywords": [
     "tiddlywiki",

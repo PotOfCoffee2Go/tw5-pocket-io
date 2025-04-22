@@ -1,0 +1,131 @@
+[
+    {
+        "id": "1d5b93e906f67840",
+        "type": "subflow",
+        "name": "TW broadcast",
+        "info": "",
+        "category": "tiddlywiki",
+        "in": [
+            {
+                "x": 80,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "5a302b26a3767cb1"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 420,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "5a302b26a3767cb1",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#C0DEED",
+        "icon": "tw5-node-red/broadcast.png",
+        "status": {
+            "x": 420,
+            "y": 140,
+            "wires": [
+                {
+                    "id": "edb1d8695ef972b8",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "5a302b26a3767cb1",
+        "type": "function",
+        "z": "1d5b93e906f67840",
+        "name": "Broadcast to TW Webservers",
+        "func": "const repl = global.get('repl');\n\nmsg.payload = repl.$nrParser(msg.payload);\n// Required wiki fields\nmsg.wiki = {req:{sender:''},riverTitles:[],resultTiddlers:[]};\n\nmsg.payload.forEach(tid => {\n\tvar tiddler = Object.assign({}, tid);\n\tif (tiddler.ioToStory !== undefined) {\n\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\tdelete tiddler.ioToStory;\n\t}\n\tmsg.wiki.resultTiddlers.push(tiddler);\n})\n// Refresh any client connect to this wiki\nrepl.$broadcastClients(msg.wikiname, msg.wiki);\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "edb1d8695ef972b8",
+        "type": "status",
+        "z": "1d5b93e906f67840",
+        "name": "",
+        "scope": null,
+        "x": 120,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d2a0bb33e100a072",
+        "type": "template",
+        "z": "5b24d6e63acf9047",
+        "name": "Tiddler to broadcast",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "title: I'm getting around\nioToStory: yes\n\nSome tiddlers end up everywhere!\n",
+        "output": "str",
+        "x": 370,
+        "y": 100,
+        "wires": [
+            [
+                "65e1ed3d1027e6b8"
+            ]
+        ]
+    },
+    {
+        "id": "f41d2f96fc126522",
+        "type": "inject",
+        "z": "5b24d6e63acf9047",
+        "name": "msg.wikiname: Home",
+        "props": [
+            {
+                "p": "wikiname",
+                "v": "Home",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 140,
+        "y": 100,
+        "wires": [
+            [
+                "d2a0bb33e100a072"
+            ]
+        ]
+    },
+    {
+        "id": "65e1ed3d1027e6b8",
+        "type": "subflow:1d5b93e906f67840",
+        "z": "5b24d6e63acf9047",
+        "name": "",
+        "x": 580,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    }
+]
