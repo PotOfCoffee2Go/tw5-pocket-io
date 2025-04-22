@@ -9,6 +9,9 @@ const $NodeRed = function () {
 	this.app = express();
 	this.server = http.createServer(this.app);
 
+	// tw5-node-red directory inside ./node_modules
+	this.programDir = $config.programDir;
+	
 	// Node-Red settings
 	this.nodered = Object.assign({}, $config.nodered);
 	// Using the Node-Red settings file specified in ./config.js
@@ -45,14 +48,14 @@ const $NodeRed = function () {
 	// Personalize Flow editor settings for TW5-Node-Red
 	this.settings.editorTheme.header = {
 		title: `TW5-Node-Red Host: <b>${$config.domain}</b> Package: <b>${$config.packageName}</b>`,
- 		image: path.resolve('./public/images/system/tw5-node-red-logo.png'),
+ 		image: path.resolve(this.programDir, 'public/images/system/tw5-node-red-logo.png'),
 	};
 	this.settings.editorTheme.page = {
 		title: 'TW5-Node-Red',
-		css: path.resolve('./public/node-red-editor.css'),
+		css: path.resolve(this.programDir, 'public/node-red-editor.css'),
 	};
 	this.settings.editorTheme.login = {
-		image: path.resolve('./public/images/system/tw5-node-red-login.png')
+		image: path.resolve(this.programDir, 'public/images/system/tw5-node-red-login.png')
 	};
 
 	// Initialise the Node-Red runtime to this server
