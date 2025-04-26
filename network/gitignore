@@ -4,8 +4,9 @@
 # Ignore webserver credentials
 /credentials
 
-# Ignore TiddlyWiki wiki story list(s)
-$__StoryList*
+# Ignore TiddlyWiki story list(s) and import tiddlers
+\$__StoryList*
+\$__Import.tid
 
 # Ignore Node-Red backups
 *.json.backup
