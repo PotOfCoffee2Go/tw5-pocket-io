@@ -1,11 +1,16 @@
-caption: LICENSE
+caption: @@color:#aae3bc;LICENSE@@
 created: 20250427044953998
 creator: poc2go
-modified: 20250427050148100
+modified: 20250427172308921
 modifier: poc2go
 tags: 
 title: gettingstarted-docs-pkg-tab03
 type: text/vnd.tiddlywiki
 
-!!! LICENSE
-The default licence
+!! @@color:#aae3bc;LICENSE@@
+
+On system install the default licence is set to 'MIT'. If another license is preferred then edit this file replacing the MIT license with the one you prefer.
+
+<br>
+
+> Should also change the 'license' property in [[package.json|gettingstarted-docs-pkg-tab04]].

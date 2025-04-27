@@ -1,0 +1,20 @@
+caption: dbs
+created: 20250427045942510
+creator: poc2go
+modified: 20250427081222752
+modifier: poc2go
+tags: 
+title: gettingstarted-docs-pkg-tab07
+type: text/vnd.tiddlywiki
+
+!!! dbs
+The 'dbs' directory can hold TiddlyWikis that are used as databases. The users of your application do not normally see these wikis. [[TiddlyWiki filters|https://tiddlywiki.com/static/Filters.html]] are used as a query language to access records (tiddlers) in the database.
+
+Similar the the 'wikis' directory, the 'dbs' directory contains 'server' edition wikis. 
+
+On initial install the directory is empty. To create a database use the TiddlyWiki command
+
+```
+tiddlywiki ./dbs/MyDatabase --init server
+```
+from a terminal window.

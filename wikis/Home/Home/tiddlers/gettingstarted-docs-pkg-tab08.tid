@@ -1,0 +1,14 @@
+caption: flows
+created: 20250427050301609
+creator: poc2go
+modified: 20250427081712241
+modifier: poc2go
+tags: 
+title: gettingstarted-docs-pkg-tab08
+type: text/vnd.tiddlywiki
+
+!!! flows
+
+This directory holds Node-RED flow files. On initial install a default flow 'tiddlywiki.json' resides in this directory.
+
+To change the flow file being used by Node-RED, edit the 'node-red.flowFile' property in './config.js'.

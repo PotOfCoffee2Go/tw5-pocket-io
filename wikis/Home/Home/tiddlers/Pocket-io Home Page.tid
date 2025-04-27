@@ -1,0 +1,23 @@
+created: 20250316004936378
+creator: poc2go
+ioResult: 
+modified: 20250316012805969
+modifier: poc2go
+tags: $:/tags/pocket-io/broadcast
+title: Pocket-io Home Page
+type: text/vnd.tiddlywiki
+
+<style>.cols3{column-count:3}</style>
+
+<div class="poc2go-center">
+<$image source="$:/favicon.ico" width="64px"/>
+</div>
+
+{{||$:/poc2go/pocket-io/ui/wikilinks}}
+|tc-center tc-table-no-border|k
+| Wikis and projects in this pocket-io network |
+
+{{$:/temp/pocket-io/system/projects}}
+
+|tc-center tc-table-no-border|k
+| <$button actions="<<pocket-io projectNetworkTable>>"> Refresh </$button> |

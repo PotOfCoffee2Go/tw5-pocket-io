@@ -1,0 +1,17 @@
+caption: Welcome
+created: 20250410210552898
+creator: poc2go
+modified: 20250426201836958
+modifier: poc2go
+tags: docs gettingstarted $:/pocket-io/gettingstarted/docs
+title: gettingstarted-docs-welcome
+type: text/vnd.tiddlywiki
+
+! Welcome to TW5-Node-Red
+
+This system interfaces [[TiddlyWikis|https://tiddlywiki.com/]] to [[Node-Red|https://nodered.org/]].
+
+On an initial install will probably want to:
+
+* [[Create and add|gettingstarted-docs-addwiki]] a new TiddlyWiki to the system
+* Change login [[credentials|gettingstarted-docs-credentials]]

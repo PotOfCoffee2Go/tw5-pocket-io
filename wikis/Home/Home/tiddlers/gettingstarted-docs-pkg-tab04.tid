@@ -1,0 +1,36 @@
+caption: package.json
+created: 20250427045241303
+creator: poc2go
+modified: 20250427074626678
+modifier: poc2go
+tags: 
+title: gettingstarted-docs-pkg-tab04
+type: text/vnd.tiddlywiki
+
+!!! package.json - package-lock.json
+NPM package definition. In this file can change the name and description of the TW5-Noode-Red package you are building.
+
+Any third party dependencies required of your application can be added here.
+
+package-lock.json is created by NPM automatically when a package is 'npm install'ed.
+
+See NPM Docs [[package.json|https://docs.npmjs.com/cli/v10/configuring-npm/package-json]] for details.
+
+```json
+{
+  "name": "tw5-node-red project",
+  "version": "0.1.0",
+  "description": "My wikis, flows, and tw5-node-red configuration",
+  "main": "tw5-node-red.js",
+  "scripts": {
+    "start": "node ./node_modules/tw5-pocket-io/tw5-node-red.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "tw5-pocket-io": "github:PotOfCoffee2Go/tw5-pocket-io"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
+```

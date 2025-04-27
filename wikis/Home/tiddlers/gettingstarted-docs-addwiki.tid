@@ -1,22 +1,23 @@
 caption: Add a wiki
 created: 20250426181312239
 creator: poc2go
-modified: 20250426201526712
+modified: 20250427165643107
 modifier: poc2go
 tags: docs gettingstarted $:/pocket-io/gettingstarted/docs
 title: gettingstarted-docs-addwiki
 type: text/vnd.tiddlywiki
 
-In the project directory is a sub-directory 'wikis'. This directory contains all of the 'server' edition ([[WebServer|https://tiddlywiki.com/static/WebServer.html]]) wikis in the network.
+In the package directory is a sub-directory 'wikis'. This directory contains all of the 'server' edition ([[WebServer|https://tiddlywiki.com/static/WebServer.html]]) wikis in the network.
 
-To add a new wiki, in a terminal window from the 'tw5-node-red' directory use the TiddlyWiki command to create a 'server' edition wiki
+To add a new wiki, in a terminal window from the 'tw5-node-red' (package) directory use the TiddlyWiki command to create a 'server' edition wiki
 
 ```
 tiddlywiki ./wikis/MyWiki --init server
 ```
 
 > Note!!
-> The wiki name is used throughout the system. Must not contain any spaces. This is by design since spaces complicates the crap out of getting the wiki name - double-quotes, single quotes, back-ticks, surrounded by triple quotes (depending on the Operating System) - grrr...
+> The wiki name is used throughout the system. @@color:red;Must not contain any spaces@@. This is by design since spaces complicates the crap out of getting the wiki name which is used throughout the system.
+> 
 > So spaces are not allowed - underbars and dashes are fine.
 
 You can copy an existing 'server' edition wiki into the 'wikis' sub-directory. Rename the wiki removing any spaces if necessary.

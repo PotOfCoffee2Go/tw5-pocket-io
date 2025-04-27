@@ -1,0 +1,11 @@
+caption: config.js
+created: 20250427044904748
+creator: poc2go
+modified: 20250427073547268
+modifier: poc2go
+tags: 
+title: gettingstarted-docs-pkg-tab02
+type: text/vnd.tiddlywiki
+
+!!! config.js
+Contains a few options and directory paths to wikis, databases, flows, etc. The paths defined match this current structure. Let's say the 'flows' directory is renamed - would have also have change `./config.js` to point to the renamed directory.
