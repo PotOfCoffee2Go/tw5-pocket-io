@@ -1,0 +1,33 @@
+caption: Package
+created: 20250427013108778
+creator: poc2go
+modified: 20250427053607311
+modifier: poc2go
+tags: docs gettingstarted $:/pocket-io/gettingstarted/docs
+title: gettingstarted-docs-package
+type: text/vnd.tiddlywiki
+
+! Your TW5-Node-Red Package
+
+After `npm install` and `npm start` the 'tw5-node-red' directory (package) will have the following directory structure. The package contains normal NPM files (README.md, package.json, LICENSE) which normally you edit to describe your system.
+The configuration and directories contain system options and server-side resources.
+
+<pre style="float:right;line-height:1em;">
+
+├── configCred.js
+├── config.js
+├── LICENSE
+├── package.json
+├── package-lock.json
+├── README.md
+├── @@color:aqua;credentials@@
+├── @@color:aqua;dbs@@
+├── @@color:aqua;flows@@
+├── @@color:aqua;node_modules@@
+├── @@color:aqua;public@@
+└── @@color:aqua;wikis@@
+
+</pre>
+
+<<tabs "[prefix[gettingstarted-docs-pkg-tab]]" "gettingstarted-docs-pkg-tab​1" "$:/state/tab/docs-pkg-tabs">>
+

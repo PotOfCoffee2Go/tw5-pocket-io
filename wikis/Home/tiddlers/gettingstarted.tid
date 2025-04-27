@@ -9,16 +9,25 @@ ioPrjTabSelected: AALLLL
 ioPrjTabType: docs
 ioResult: 
 list: docs
-modified: 20250426181308766
+modified: 20250427051742076
 modifier: poc2go
 tags: gettingstarted Projects
 title: gettingstarted
 type: text/vnd.tiddlywiki
 
+\define tabsButton(project,tab,default)
+<$button class="tc-btn-invisible tc-tiddlylink">
+<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/$project$/$tab$">>  text=""/>
+{{$:/core/images/fold-button}}
+</$button>
+<<displayTabPill "$project$" "$tab$">>
+<<tabs "[all[shadows+tiddlers]tag[$:/pocket-io/$project$/$tab$]!is[draft]]" "$default$" "$:/state/tab/pocket-io/$project$/$tab$">>
+\end
+
 |tc-center tc-table-no-border|k
 |@@.poc2go-project-header Getting Started @@|
 
-<!--
+<!-- AutoLoad and adding category not needed
 
 |tc-center tc-table-no-border|k
 |<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load code on startup</$checkbox> |
@@ -28,7 +37,7 @@ type: text/vnd.tiddlywiki
 |tc-center tc-table-no-border|k
 | <<projectUploadButton>> |
 
--->
+End of autoLoad add add category -->
 
 {{||$:/poc2go/pocket-io/project/addtab}}
 
@@ -36,7 +45,6 @@ type: text/vnd.tiddlywiki
 {{!!ioResult}}
 
 <$list variable="category" filter="[list[!!list]]">
-<<closeTabsButton "gettingstarted" "$(category)$">>
+<<tabsButton "gettingstarted" "$(category)$" "gettingstarted-docs-welcome">>
 </$list>
 
-<<topButton>>
