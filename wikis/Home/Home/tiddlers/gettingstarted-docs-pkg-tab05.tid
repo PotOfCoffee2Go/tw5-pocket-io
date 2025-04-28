@@ -1,13 +1,14 @@
-caption: README.md
+caption: @@color:#aae3bc;README.md@@
 created: 20250427045518352
 creator: poc2go
-modified: 20250427075045227
+modified: 20250427172252184
 modifier: poc2go
 tags: 
 title: gettingstarted-docs-pkg-tab05
 type: text/vnd.tiddlywiki
 
-!!! README.md
+!! @@color:#aae3bc;README.md@@
+
 This is where you describe your application.
 
 This file is displayed by cloud based project systems like [[GitHub|https://github.com]] when someone views your application.

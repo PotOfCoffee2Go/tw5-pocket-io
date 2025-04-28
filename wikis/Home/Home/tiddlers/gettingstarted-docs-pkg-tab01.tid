@@ -1,14 +1,15 @@
-caption: configCred.js
+caption: @@color:#aae3bc;configCred.js@@
 created: 20250427043952203
 creator: poc2go
-modified: 20250427072749475
+modified: 20250428030115907
 modifier: poc2go
 tags: 
 title: gettingstarted-docs-pkg-tab01
 type: text/vnd.tiddlywiki
 
-!!! configCred.js
-This file contains the TiddlyWiki authentication settings for each wiki in the network. [[Wikis added|gettingstarted-docs-addwiki]] to the system do not have TiddlyWiki credentials assigned, by default anyone can access the wiki.
+!! @@color:#aae3bc;configCred.js@@
 
-Wiki user authentication settings are defined in this file. See [[credentials|gettingstarted-docs-credentials]].
+This file contains the TiddlyWiki authentication settings for each wiki in the network. [[Wikis added|gettingstarted-docs-addwiki]] to the system do not have TiddlyWiki credentials assigned. By default the system does not prompt for a password and everyone has write access to the wiki.
+
+To have users login requires setting up credentials for the wiki. User authentication settings are defined in this file. See [[credentials|gettingstarted-docs-credentials]].
 

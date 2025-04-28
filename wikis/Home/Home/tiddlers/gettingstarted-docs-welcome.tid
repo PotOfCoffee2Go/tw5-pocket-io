@@ -1,7 +1,7 @@
 caption: Welcome
 created: 20250410210552898
 creator: poc2go
-modified: 20250426201836958
+modified: 20250428014931873
 modifier: poc2go
 tags: docs gettingstarted $:/pocket-io/gettingstarted/docs
 title: gettingstarted-docs-welcome
@@ -9,9 +9,7 @@ type: text/vnd.tiddlywiki
 
 ! Welcome to TW5-Node-Red
 
-This system interfaces [[TiddlyWikis|https://tiddlywiki.com/]] to [[Node-Red|https://nodered.org/]].
+TW5-Node-Red is a development system which interfaces multiple [[TiddlyWikis|https://tiddlywiki.com/]] to each other and [[Node-Red|https://nodered.org/]] flows.
 
-On an initial install will probably want to:
+After `npm install` and the first `npm start` the 'tw5-node-red' directory (from now on will call it the 'package' directory) will have a default structure and a few resources to help in getting your application started.
 
-* [[Create and add|gettingstarted-docs-addwiki]] a new TiddlyWiki to the system
-* Change login [[credentials|gettingstarted-docs-credentials]]

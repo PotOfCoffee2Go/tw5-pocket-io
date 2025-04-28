@@ -1,13 +1,13 @@
-caption: public
+caption: @@color:aqua;public@@
 created: 20250427050520433
 creator: poc2go
-modified: 20250427083504085
+modified: 20250427172118851
 modifier: poc2go
 tags: 
 title: gettingstarted-docs-pkg-tab10
 type: text/vnd.tiddlywiki
 
-!!! public
+!! @@color:aqua;public@@
 
 The 'public' directory is used to hold resources that can be accessed by any wiki in the network. The directory is empty on initial install.
 

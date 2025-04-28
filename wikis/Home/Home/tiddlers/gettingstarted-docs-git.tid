@@ -1,10 +1,34 @@
 caption: Git
 created: 20250427080218627
 creator: poc2go
-modified: 20250427080251737
+modified: 20250428032937443
 modifier: poc2go
 tags: docs gettingstarted $:/pocket-io/gettingstarted/docs
 title: gettingstarted-docs-git
 type: text/vnd.tiddlywiki
 
-git docs goes here
+! Git - version control
+
+The system is designed to use [[git|https://git-scm.com/]] as a backup and distribution system. Many changes are dynamc and permanent. For example - changing a tiddler in a wiki will automatically update the tiddler on the server. The previous contents of the tiddler are overwritten and lost. Node-Red is similar, when flows are deployed it makes a backup - but is only one deploy deep (ie: backup is overwritten every time flows are deployed). 
+
+> There is a default @@color:#aae3bc; .gitignore@@ file in the package directory provided on initial install. Is setup to ignore @@color:aqua;node_modules@@ and the sensitive @@color:aqua;credentials@@ directories. Edit as appropriate for your application. 
+
+So, it is highly recommended to setup git to save the current state of the files in your TW5-Node-Red package. From a terminal window in the package directory :
+
+
+```
+git init
+git add .
+git commit -m "Initial install"
+```
+
+This will set up git and store the current content of your files in a git 'commit' on your local machine. Any time you wish to backup the current files - do :
+
+```
+git add .
+git commit -m "Describe changes"
+```
+
+Git can revert files back to a previous 'commit'.
+
+Is not in the scope of this doc to explain the features of git. [[Git doc|https://git-scm.com/doc]] is the diffinitive manual. Suffice to say that commits can be uploaded (upstream) to cloud based places - like  [[GitHub|https://github.com]], [[BitBucket|https://bitbucket.org/]], etc for remote storage, retrieval, and sharing.

@@ -1,7 +1,7 @@
 caption: Package
 created: 20250427013108778
 creator: poc2go
-modified: 20250427072912299
+modified: 20250428030615722
 modifier: poc2go
 tags: docs gettingstarted $:/pocket-io/gettingstarted/docs
 title: gettingstarted-docs-package
@@ -9,26 +9,33 @@ type: text/vnd.tiddlywiki
 
 ! Your TW5-Node-Red Package
 
-After `npm install` and first `npm start` the 'tw5-node-red' directory (package) will have the following directory structure. The package contains normal NPM files (package.json, README.md, LICENSE) which normally you edit to describe your system.
-
-The configuration and directories contain system options and server-side resources. The initial install has a single 'server' edition wiki 'Home' (which you are reading right now).
-
-<pre style="float:right;line-height:1em;margin-left:1em;">
-
-├── configCred.js
-├── config.js
-├── LICENSE
-├── package.json
-├── package-lock.json
-├── README.md
+<pre style="float:right;line-height:1em;margin-left:1em;background:black;">
+├──@@color:#aae3bc; .gitignore@@
+├── @@color:#aae3bc;configCred.js@@
+├── @@color:#aae3bc;config.js@@
+├── @@color:#aae3bc;LICENSE@@
+├── @@color:#aae3bc;package.json@@
+├── @@color:#aae3bc;README.md@@
 ├── @@color:aqua;credentials@@
+│   ├── @@color:aqua;csv@@
+│   └── @@color:#aae3bc;users.json@@
 ├── @@color:aqua;dbs@@
 ├── @@color:aqua;flows@@
+│   └── @@color:#aae3bc;tiddlywiki.json@@
 ├── @@color:aqua;node_modules@@
 ├── @@color:aqua;public@@
 └── @@color:aqua;wikis@@
+    └── @@color:aqua;Home@@
 
 </pre>
+
+The package contains standard NPM files (@@color:#aae3bc;package.json@@, @@color:#aae3bc;README.md@@, @@color:#aae3bc;LICENSE@@) which you edit to describe and personalize your application.
+
+The configuration files; @@color:#aae3bc;config.js@@  and @@color:#aae3bc;configCred.js@@ contain options, paths to system resources, and TiddlyWiki user credentials configuration.
+
+The directories contain the system resources; TiddlyWikis @@color:aqua;wikis@@, Node-Red flow files @@color:aqua;flows@@, server static content @@color:aqua;public@@, TW as databases @@color:aqua;dbs@@, TW credential files @@color:aqua;credentials@@, and the installed node.js modules @@color:aqua;node_modules@@.
+
+<hr class="poc2go-hr">
 
 <<tabs "[prefix[gettingstarted-docs-pkg-tab]]" "gettingstarted-docs-pkg-tab04" "$:/state/tab/docs-pkg-tabs">>
 
