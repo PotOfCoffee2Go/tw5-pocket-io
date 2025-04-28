@@ -1,7 +1,7 @@
 caption: Add a wiki
 created: 20250426181312239
 creator: poc2go
-modified: 20250428014239019
+modified: 20250428132155326
 modifier: poc2go
 tags: docs gettingstarted $:/pocket-io/gettingstarted/docs
 title: gettingstarted-docs-addwiki
@@ -18,9 +18,9 @@ tiddlywiki ./wikis/MyWiki --init server
 The wiki name (in this case @@color:aqua;MyWiki@@) is determined by extracting the name from the directory path. The name is used throughout the system. Is displayed to users and also used in JavaScript objects to reference the wiki.
 
 > Note!!
-> The name @@color:red;can not contain any spaces@@. This is by design. Spaces complicate the crap out of getting the wiki name from the directory path - can require quotes, double-quotes, double-quoted quotes, or quoted double-quotes to accept the spaces. Depending on the OS, command shell - is just a mess.
+> The name @@color:#cb4154;can not contain any spaces@@. This is by design. Spaces will be replaced with dash(es) '-'.
 > 
-> So spaces are not allowed - underbars and dashes are fine.
+> Underbars and dashes are fine.
 
 You can copy an existing 'server' edition wiki into the 'wikis' sub-directory. Rename the wiki removing any spaces if necessary.
 
