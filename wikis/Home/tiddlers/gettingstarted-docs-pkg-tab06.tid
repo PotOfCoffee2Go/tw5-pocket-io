@@ -1,7 +1,7 @@
 caption: @@color:aqua;credentials@@
 created: 20250427045736470
 creator: poc2go
-modified: 20250427172242216
+modified: 20250428010246824
 modifier: poc2go
 tags: 
 title: gettingstarted-docs-pkg-tab06
@@ -9,8 +9,8 @@ type: text/vnd.tiddlywiki
 
 !! @@color:aqua;credentials@@
 
-Wikis added to the system are accessed without credentials allowing access by anyone. The credentials directory contains a `user.json` file containing user names and their passwords.
+Wikis added to the system are accessed without credentials allowing access by anyone. The @@color:aqua;credentials@@ directory contains a @@color:#aae3bc;user.json@@ file with user names and their passwords.
 
-A 'csv' sub-directory within the 'credentials' directory contains the CSV files required by TiddlyWiki to enable user logins.
+A @@color:aqua; ./credentials/csv@@ sub-directory contains the CSV files required by TiddlyWiki to enable user logins.
 
-> If you change 'users.json' or 'configCred.js' remove the './credentials/csv' directory. It will be automatically rebuilt reflecting the new credentials on the next 'npm start'.
+> If you change @@color:#aae3bc;users.json@@ or @@color:#aae3bc;configCred.js@@ remove the @@color:#aae3bc; ./credentials/csv@@ directory. It will be automatically rebuilt reflecting the new credentials on the next 'npm start'.

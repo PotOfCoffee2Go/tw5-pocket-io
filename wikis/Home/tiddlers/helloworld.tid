@@ -4,13 +4,13 @@ created: 20250205034558035
 creator: poc2go
 ioConfirmDelete: no
 ioPrjProject: helloworld
-ioPrjTabName:
+ioPrjTabName: 
 ioPrjTabSelected: helloworld-code-helloword
 ioPrjTabType: dashboard
-ioResult:
-ioResultUpload:
+ioResult: 
+ioResultUpload: 
 list: dashboard docs template code
-modified: 20250403160427433
+modified: 20250428003733768
 modifier: poc2go
 tags: helloworld Projects
 title: helloworld
