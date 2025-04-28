@@ -1,13 +1,15 @@
 caption: Add a wiki
 created: 20250426181312239
 creator: poc2go
-modified: 20250428132155326
+modified: 20250428214943684
 modifier: poc2go
 tags: docs gettingstarted $:/pocket-io/gettingstarted/docs
 title: gettingstarted-docs-addwiki
 type: text/vnd.tiddlywiki
 
-The @@color:aqua;wikis@@ directory contains all of the 'server' edition ([[WebServer|https://tiddlywiki.com/static/WebServer.html]]) wikis in the network.
+! Add a wiki to the network
+
+The @@color:aqua;wikis@@ directory contains all of the client 'server' edition ([[WebServer|https://tiddlywiki.com/static/WebServer.html]]) wikis in the network.
 
 To add a new wiki, in a terminal window from the package directory use the TiddlyWiki command that creates a 'server' edition wiki:
 
@@ -15,16 +17,12 @@ To add a new wiki, in a terminal window from the package directory use the Tiddl
 tiddlywiki ./wikis/MyWiki --init server
 ```
 
-The wiki name (in this case @@color:aqua;MyWiki@@) is determined by extracting the name from the directory path. The name is used throughout the system. Is displayed to users and also used in JavaScript objects to reference the wiki.
+The wiki name (in this case @@color:aqua;MyWiki@@) is determined by extracting the name from the directory path. The name is used throughout the system. Is displayed to users and also used in JavaScript objects to reference the wiki. You can rename a wiki by renaming it in the @@color:aqua;wikis@@ directory and restarting the system. Credentials, if implemented for the wiki, would also require the name to be changed in the @@color:#aae3bc;configCred.js@@ file.
 
-> Note!!
-> The name @@color:#cb4154;can not contain any spaces@@. This is by design. Spaces will be replaced with dash(es) '-'.
-> 
-> Underbars and dashes are fine.
+> Note!!! The name @@color:#cb4154;can not contain any spaces@@. This is by design. Spaces are replaced with dashes '-'. Underbars and dashes are fine.
 
-You can copy an existing 'server' edition wiki into the 'wikis' sub-directory. Rename the wiki removing any spaces if necessary.
+You can copy an existing 'server' edition wiki into the 'wikis' sub-directory. TW5-Node-Red will automatically add some tiddlers (a marco and plugins) needed to interface to the system. By default the new wiki will run without credentails. To implement credentials see [[Credentals|gettingstarted-docs-credentials]].
 
 Restart TW5-Node-Red 'npm start' and the wiki will be added to the network.
 
-TW5-Node-Red will automatically add some tiddlers (a marco and plugins) needed to interface to the system. By default the new wiki will run without credentails. To implement credentials see [[Credentals|gettingstarted-docs-credentials]].
 

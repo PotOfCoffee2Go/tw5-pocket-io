@@ -1,7 +1,7 @@
 caption: Welcome
 created: 20250410210552898
 creator: poc2go
-modified: 20250428014931873
+modified: 20250428211726213
 modifier: poc2go
 tags: docs gettingstarted $:/pocket-io/gettingstarted/docs
 title: gettingstarted-docs-welcome
@@ -9,7 +9,23 @@ type: text/vnd.tiddlywiki
 
 ! Welcome to TW5-Node-Red
 
-TW5-Node-Red is a development system which interfaces multiple [[TiddlyWikis|https://tiddlywiki.com/]] to each other and [[Node-Red|https://nodered.org/]] flows.
+TW5-Node-Red is a development system which interfaces multiple 'server' edition [[TiddlyWikis|https://tiddlywiki.com/]] to each other and [[Node-Red|https://nodered.org/]] server-side flows.
 
-After `npm install` and the first `npm start` the 'tw5-node-red' directory (from now on will call it the 'package' directory) will have a default structure and a few resources to help in getting your application started.
+From a TiddlyWiki user's perspective - Node-Red adds the ability to build customized server-side applications which multiple wikis servicing multple clients can access each other and the server. From a Node-Red user's perspective, TiddlyWiki provides Node-Red with highly flexible and customizable (what they call) 'dashboards'.  
+
+Node-Red needs to be brought up once (before TW5-Node-Red is started) so it can build it's default settings (in the user home directory @@color:aqua; .node-red@@ folder). These settings are used to bring up Node-Red. Is a good idea to run it anyways, just to make sure the Node-Red install worked!
+
+TW5-Node-Red has the same scenerio. After install it must be started 'npm start' for it to build your default NPM package of resources you will be using in developing your TW5-Node-Red application. 
+
+After `npm install` and the first `npm start` the 'tw5-node-red' directory (from now on will call it the 'package' directory in case you rename it) will have a default structure and a few resources to help in getting your application started.
+
+If you are unfamilar with Node-Red, it is recommended to play around with it independently of TW5-Node-Red. Should know the [[node palette|https://nodered.org/docs/user-guide/editor/palette/]], [[workspace|https://nodered.org/docs/user-guide/editor/workspace/]], [[sidebar panels|https://nodered.org/docs/user-guide/editor/sidebar/]] (info, debug, etc), [[flows|https://nodered.org/docs/user-guide/editor/workspace/flows], [[nodes|https://nodered.org/docs/user-guide/nodes]], [[import/export flows|https://nodered.org/docs/user-guide/editor/workspace/import-export]], where your [[settings|https://nodered.org/docs/user-guide/runtime/settings-file]] are stored - basic stuff. Build a few flows, kick the tires. I assume you'll know how to 'add an inject node' or 'look in the debug panel' without detailed instructions on how to do it. See [[Node-RED docs|https://nodered.org/]] at the offical site - and there are plenty of tutorials online.
+
+The same is true of TiddlyWiki. The system uses [[TiddlyWiki on Node.js|https://tiddlywiki.com/static/TiddlyWiki%2520on%2520Node.js.html]], sometimes called 'server' edition, other times [[WebServer|https://tiddlywiki.com/static/WebServer.html]]. Should know how to navigate around and basic knowledge of [[TiddlyText|https://tiddlywiki.com/static/WikiText.html]], [[tagging|https://tiddlywiki.com/static/Tagging.html]], [[tiddler fields|https://tiddlywiki.com/static/TiddlerFields.html]],
+ difference between standard, [[system|https://tiddlywiki.com/static/SystemTiddlers.html]], and [[shadow|https://tiddlywiki.com/static/ShadowTiddlers.html]] tiddlers. How to call [[marcos|https://tiddlywiki.com/static/Macros.html]] and [[procedures|https://tiddlywiki.com/static/Procedures.html]] and use [[templates|https://tiddlywiki.com/static/TemplateTiddlers.html]]. Along with basic [[filter|https://tiddlywiki.com/static/Filters.html]] usage.
+
+It seems like a lot - and it is. Both TiddlyWiki and Node-Red have been around for quite a while and both have great community support. They do require patience and study to utilize them to build front and back end applications for end users.
+
+> No TiddlyWiki or Node-Red code was harmed in the making of this product. They are strictly out-of-the-box - warts and all.
+
 
