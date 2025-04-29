@@ -12,6 +12,16 @@ $tpi.fn.io.ackConnect = function (socket, wikiName) {
 	var wikiRequires = JSON.parse($twCodebase.wiki.getTiddlersAsJson(sendOnConnect));
 	// codebase already has required tiddlers
 	wikiRequires = wikiName === 'codebase' ? [] : wikiRequires;
+
+	// Set modification date/time of 'Pocket-io System' tiddler
+	//  to when the client connected
+	for (let i = 0; i < wikiRequires.length; i++) {
+		if (wikiRequires[i].title === 'Pocket-io System') {
+			wikiRequires[i].modified = $rw.utils.stringifyDate(new Date());;
+			break;
+		}
+	}
+
 	wikiRequires.push({
 		title: '$:/temp/pocket-io/wikinames',
 		text: wikiName,
@@ -19,6 +29,9 @@ $tpi.fn.io.ackConnect = function (socket, wikiName) {
 		link: get$proxy(wikiName).link,
 		wikiLinks: $rw.utils.stringifyList(wikiLinks)
 	});
+	
+	// projectNetworkTable second parameter is a Message
+	// so create a fake one
 	var fakeMsg = { senderTiddler: {}, resultTiddlers: [] };
 	var wikiDisplay = $tpi.topic.projectNetworkTable(socket, fakeMsg);
 	if (fakeMsg.resultTiddlers.length) {
