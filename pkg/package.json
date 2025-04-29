@@ -1,5 +1,5 @@
 {
-  "name": "tw5-node-red project",
+  "name": "My tw5-node-red project",
   "version": "0.1.0",
   "description": "My wikis, flows, and tw5-node-red configuration",
   "main": "tw5-node-red.js",
