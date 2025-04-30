@@ -2,17 +2,12 @@ const os = require('node:os');
 const path = require('node:path');
 
 // User NPM package directory containing this config file
-// The NPM package can be created/specified using the
-//  tw5-node-red '-p' option
+// The NPM package can be specified using the
+//  'npm start -- -p <path/to/package>' option
 // The default directory is in user home directory '.tw5-node-red'
 const packageDir = (fpath) => path.join(__dirname, fpath);
 
 exports.config = {
-	// Wiki in wikisDir that will be listed first
-	//  if does not exist then the first wiki read
-	//  from disk becomes the default wiki
-	defaultWiki: 'Home',
-
 	// The domain is used to create URLs, access wikis, and
 	//  other tw5-node-red resourcess
 	// On most OS's 'hostname' is used for local network access
@@ -20,7 +15,15 @@ exports.config = {
 	//  set the domain to the DNS domain or IP address of this computer
 	//  ex: '192.168.1.8' is IP of this computer on my network
 	//   yours will be different - finding it varies between OS's
-	domain: os.hostname(), // local network name of this computer
+	
+	// Local network name of this computer
+	domain: os.hostname(),
+
+	// Wiki in wikisDir that will be listed first
+	//  if wiki does not exist in 'wikisDir' folder then the first wiki
+	//  read from disk becomes the default wiki
+	defaultWiki: 'Home',
+
 
 	// 'server' edition client webserver wikis
 	wikisDir: packageDir('wikis'),
@@ -35,39 +38,52 @@ exports.config = {
 	//  console prompt (or type) 'const $nr = new $NodeRed'
 	autoStartNodeRed: true,
 
-	// Hide codebase wiki from being displayed as a normal client wiki
-	//  if true will also only be accessable from localhost
-	hideCodebase: true,
-
 	// Webservers are launched for each 'server' editon wiki in 'wikisDir:'
-	// Should normally be served on localhost (127.0.0.1) as access is
-	//  performed thru the proxies (see 'proxy:' below)
+	// Access is performed thru the proxies (see 'proxy:' below)
 	// Starting on port basePort and increments by one for each webserver
 	webserver: {
-		host: '127.0.0.1', // this computer has sole access
-//		host: '0.0.0.0',   // other network devices have access
-		basePort: 8090
+		basePort: 8090,
+
+		// WebServer parameters
+		//  see 'https://tiddlywiki.com/static/WebServer%2520Parameters.html`
+		// 'default' is applied to all webservers
+		//  See 'credentials' below for assigning Webserver credentials
+		parameters: {
+			default: ['debug-level=none']
+		},
 	},
 
-	// WebServer parameters
-	//  see 'https://tiddlywiki.com/static/WebServer%2520Parameters.html`
-	// 'default' is applied to all webservers
-	//  See 'credentials' below for assigning Webserver credentials
-	parameters: {
-		default: ['debug-level=none'],
+	// Hide private wiki's (see below) from being displayed
+	hidePrivateWikis: true,
+
+	// Reverse proxies to each webserver
+	proxy: { 
+		// Default if wiki is not listed  as 'public' or 'private'
+		default: 'public',
+		// The 'public' proxy allows network devices to access wikis
+		public: {
+			// public proxy port
+			port: 3000,
+			// wikis that are always public
+			wikis: [ 
+				'Home',
+				'Test'
+			],
+		},
+
+		// The 'private' proxy allows only localhost access to wikis
+		private: {
+			 // private proxy port
+			port: 3001,
+			// wikis that are always private
+			wikis: [
+				'codebase',
+				'xxx'
+			],
+		},
 	},
 
-	// Express proxies to each webserver
-	// Proxies are normally accessable to network (0.0.0.0)
-	// Proxies are starting on port 'basePort' and increment by one
-	//   to access each webserver (see 'webserver:' above)
-	proxy: {
-//		host: '127.0.0.1', // this computer has sole access
-		host: '0.0.0.0',   // other network devices have access
-		basePort: 3000,
-	},
-
-	// Node-Red setttings
+	// Node-Red settings
 	//   Uses the default settings in Userdir settings.js file
 	// Make changes in the Node-Red settings.js file as usual
 	// The properties below will override settings in Node-Red settings.js

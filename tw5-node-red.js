@@ -15,19 +15,27 @@ const { config } = require('./lib/buildPackage')();
 const { buildSettings } = require('./lib/buildSettings');
 const { replTwBoot } = require('./lib/replTwBoot');
 const { twServerBoot } = require('./lib/twServerBoot');
-const { ProxyServer, addTarget, proxyListen } = require('./lib/twProxyServer');
+const { PocketIoServer } = require('./lib/pocketIoServer');
 const { replGetCodeFromWikis } = require('./lib/replGetCode');
 const { dataTwBoot, databaseStats } = require('./lib/dataTwBoot');
 
-hog(`${config.pkg.name} - v${config.pkg.version}`,40);
+hog(`${config.pkg.name} - v${config.pkg.version}\n`,40);
 
 // Build settings based on config
 const serverSettings = buildSettings(config);
 
-const proxyServer = new ProxyServer();
-// Create Proxy server tagets to WebServers
+// Create reverse proxy servers  - last param 'true' is public
+const publicServer = new PocketIoServer(config, serverSettings, true);
+const privateServer = new PocketIoServer(config, serverSettings, false);
+
+// Add reference to appropriate proxy for each WebServer target
 serverSettings.forEach((settings, idx) => {
-	serverSettings[idx].proxy.server = proxyServer.addTarget(settings);
+	serverSettings[idx].proxy.server = publicServer.addTarget(config, settings);
+	serverSettings[idx].proxy.server = privateServer.addTarget(config, settings);
+	if (!serverSettings[idx].proxy.server) {
+		hog(`Unable to assign proxy for WebServer '${serverSettings[idx].name}'`, 9); 
+		process.exit(10);
+	}
 })
 
 // REPL instance
@@ -73,13 +81,14 @@ function autoLoadCodeToRepl() {
 }
 
 // Start the proxy servers
-async function startProxyServers() {
-	hog(`Startup express proxies to webservers\n` +
-		`Proxies starting at port: ${config.proxy.basePort}`, 156);
-//	for (let i=0; i<serverSettings.length; i++) {
-//		await proxyListen(config, serverSettings[i]);
-//	}
-	await proxyServer.proxyListen(serverSettings, $rt.context.$tpi);
+async function startProxyServer() {
+	hog(`Startup reverse proxies to webservers`, 156);
+	await publicServer.proxyListen(serverSettings, $rt.context.$tpi);
+	hog(`Public proxy to webservers:`,185);
+	log(publicServer.links.map(link => '  ' + link).join('\n'));
+	await privateServer.proxyListen(serverSettings, $rt.context.$tpi);
+	hog(`Private proxy to webservers:`,185);
+	log(privateServer.links.map(link => '  ' + link).join('\n'));
 	hog(`Proxy startup complete\n`, 156);
 	replMOTD();
 }
@@ -131,7 +140,7 @@ replTwBoot().then(tw => {
 $rw = tw;
 replContext();
 autoLoadCodeToRepl();
-startProxyServers();
+startProxyServer();
 })
 `;
 
