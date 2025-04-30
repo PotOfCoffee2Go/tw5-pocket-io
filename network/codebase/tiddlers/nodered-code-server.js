@@ -87,6 +87,11 @@ const $NodeRed = function () {
 				hog(`Node-Red startup complete\n`, 156);
 				this.RED.log.info = (t) => tog(t, 111);
 				this.RED.log.warn = (t) => tog(t, 129);
+				this.nrLogger = this.RED.runtime._.log.log;
+				this.RED.runtime._.log.log = (...args) => {
+					this.nrLogger(...args);
+					$rt.displayPrompt();
+				}
 				$rt.setPrompt(prevPrompt);
 				this.isRunning = true;
 				}, 1000) // adjust timer as needed
