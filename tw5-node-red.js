@@ -15,7 +15,7 @@ const { config } = require('./lib/buildPackage')();
 const { buildSettings } = require('./lib/buildSettings');
 const { replTwBoot } = require('./lib/replTwBoot');
 const { twServerBoot } = require('./lib/twServerBoot');
-const { ProxyServer, proxyListen } = require('./lib/twProxyServer');
+const { ProxyServer, addTarget, proxyListen } = require('./lib/twProxyServer');
 const { replGetCodeFromWikis } = require('./lib/replGetCode');
 const { dataTwBoot, databaseStats } = require('./lib/dataTwBoot');
 
@@ -24,9 +24,10 @@ hog(`${config.pkg.name} - v${config.pkg.version}`,40);
 // Build settings based on config
 const serverSettings = buildSettings(config);
 
-// Create Proxy server instances
+const proxyServer = new ProxyServer();
+// Create Proxy server tagets to WebServers
 serverSettings.forEach((settings, idx) => {
-	serverSettings[idx].proxy.server = new ProxyServer(settings);
+	serverSettings[idx].proxy.server = proxyServer.addTarget(settings);
 })
 
 // REPL instance
@@ -75,9 +76,10 @@ function autoLoadCodeToRepl() {
 async function startProxyServers() {
 	hog(`Startup express proxies to webservers\n` +
 		`Proxies starting at port: ${config.proxy.basePort}`, 156);
-	for (let i=0; i<serverSettings.length; i++) {
-		await proxyListen(config, serverSettings[i]);
-	}
+//	for (let i=0; i<serverSettings.length; i++) {
+//		await proxyListen(config, serverSettings[i]);
+//	}
+	await proxyServer.proxyListen(serverSettings, $rt.context.$tpi);
 	hog(`Proxy startup complete\n`, 156);
 	replMOTD();
 }

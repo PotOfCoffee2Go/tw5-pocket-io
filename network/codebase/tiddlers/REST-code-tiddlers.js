@@ -1,7 +1,7 @@
 // Get tiddlers based on TiddlyWiki filter
 // ex: '/tiddlers/[tag[About]]
 $wikiNames.forEach(name => {
-	get$router(name).get('/tiddlers/:filter', (req, res) => {
+	get$router(name).get(`/${name}/tiddlers/:filter`, (req, res) => {
 		const $tw = get$tw(name);
 		var { filter } = req.params;
 		var tiddlers = JSON.parse($tw.wiki.getTiddlersAsJson(filter));

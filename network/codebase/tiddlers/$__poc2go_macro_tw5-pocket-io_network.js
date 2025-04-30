@@ -186,7 +186,8 @@ const initSocketHandlers = () => {
 	socket.on('connect', () => {
 		console.log(`pocket.io id: ${sid(socket)} connecting`);
 		setNetstat('Pocket.io connecting...');
-		socket.emit('ackConnect');
+		socket.emit('ackConnect',
+			$tw.wiki.getTiddlerText('$:/info/url/pathname').replace(/\//g, ''));
 	})
 
 	socket.on('ackConnect', wikiRequires => {
