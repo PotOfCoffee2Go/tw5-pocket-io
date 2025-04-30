@@ -41,7 +41,7 @@ var socket = null;
 // Attempt reconnect to server in milliseconds
 const reconnectMs = 10000;
 
-// If socket not initially assigned with in 10 seconds then display pocket-io as unavailable
+// If socket not initially assigned within 10 seconds then display pocket-io as unavailable
 setTimeout(() => {
 	if (!socket) {
 		$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null, 'Pocket.io unavailable');
@@ -231,12 +231,23 @@ const initSocketHandlers = () => {
 		reConnect();
 	})
 
+	socket.on('shutdown', () => {
+		shutdown = true;
+		socket.close();
+		setTimeout(() => {
+			console.log('pocket.io server shutdown');
+			setNetstat('@@color:red; Pocket.io server shutdown@@');
+			alert('Server has been shutdown.');
+		}, 250);
+	})
+
 	console.log(`pocket.io initialized`);
 }
 
 // Attempt re-connect
+var shutdown = false;
 function reConnect() {
-	if (!socket) {
+	if (!socket && !shutdown) {
 		setTimeout(() => { initSocketHandlers(); }, reconnectMs);
 	}
 }
@@ -255,12 +266,14 @@ fetch(socketLibrary).then((res) => {
 		throw new Error(`Unable to fetch pocket.io - HTTP status: ${res.status}`);
 	}
 	return res.text();
-}).then((text) => {
+})
+.then((text) => {
 	// Load socket library into browser
 	let elem = document.createElement("script");
 	elem.innerHTML = text;
 	document.head.appendChild(elem);
-}).then(() => {
+})
+.then(() => {
 	// Macro to access pocket.io server
 	$tw.wiki.addTiddler(new $tw.Tiddler(pocketIoDefines));
 	// Macro to access pocket.io server
@@ -268,7 +281,8 @@ fetch(socketLibrary).then((res) => {
 	// Initialize the network interface
 	setNetstat('Pocket.io Initializing...');
 	initSocketHandlers();
-}).catch((err) => {
+})
+.catch((err) => {
 	console.log(err);
 });
 

@@ -35,7 +35,8 @@ const $NodeRed = function () {
 		get$tw, qry$tw, ins$tw,
 		get$proxy, get$server, get$router, get$pocketio,
 		$refreshClients, $broadcastClients,
-		$nrParser
+		$nrParser,
+		$shutdown
 	}
 	var globalFunctions = { $nrMsgNodes, repl: this.repl };
 	this.nodered.functionGlobalContext = Object.assign(
