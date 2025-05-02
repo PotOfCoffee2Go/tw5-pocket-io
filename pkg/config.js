@@ -56,7 +56,12 @@ exports.config = {
 	// Hide private wiki's (see below) from being displayed
 	hidePrivateWikis: true,
 
-	// Reverse proxies to each webserver
+	// Reverse proxies to each webserver and Node-Red
+	// The 'public' proxy can be accessed by devices on the local network
+	// The 'private' proxy can only be accessed by localhost
+	// Both proxies are identical except
+	//   'public'  listens on host '0.0.0.0'   - access via domain
+	//   'private' listens on host '127.0.0.1' - access via 'localhost'
 	proxy: { 
 		// Default if wiki is not listed  as 'public' or 'private'
 		default: 'public',
@@ -69,6 +74,9 @@ exports.config = {
 				'Home',
 				'Test'
 			],
+			// allow public access to Node-Red flow editor and HTTP nodes
+			allowNodeRedAdmin: false,
+			allowNodeRedNode: false,
 		},
 
 		// The 'private' proxy allows only localhost access to wikis
@@ -78,8 +86,11 @@ exports.config = {
 			// wikis that are always private
 			wikis: [
 				'codebase',
-				'xxx'
+				'xx'
 			],
+			// allow private access to Node-Red flow editor and HTTP nodes
+			allowNodeRedAdmin: true,
+			allowNodeRedNode: true,
 		},
 	},
 
@@ -102,13 +113,13 @@ exports.config = {
 		// Node-Red flowFile
 		flowFile: packageDir('flows/tiddlywiki.json'),
 
-		// URL path to Node-Red flow editor and http nodes
-		httpAdminRoot: '/red',
-		httpNodeRoot:  '/api',
-
 		// Allow 'global' variables to be displayed in flow editor
 		//  the default is false
 		exportGlobalContextKeys: true,
+
+		// URL path to Node-Red flow editor and http nodes
+		httpAdminRoot: '/red',
+		httpNodeRoot:  '/api',
 	},
 
 	// TiddlyWiki Webserver user/password credentials

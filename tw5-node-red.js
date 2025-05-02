@@ -9,26 +9,27 @@ const log = (...args) => {console.log(...args);}
 const hue = (txt, nbr=214) => `\x1b[38;5;${nbr}m${txt}\x1b[0m`;
 const hog = (txt, nbr) => log(hue(txt, nbr));
 const cpy = (obj) => JSON.parse(JSON.stringify(obj));
+const col = (nbr=40) => `\x1b[${nbr}G`;
 
-// Build settings
 const { config } = require('./lib/buildPackage')();
-const { buildSettings } = require('./lib/buildSettings');
+const { wikiSettings } = require('./lib/wikiSettings');
+const { PocketIoServer } = require('./lib/pocketIoServer');
 const { replTwBoot } = require('./lib/replTwBoot');
 const { twServerBoot } = require('./lib/twServerBoot');
-const { PocketIoServer } = require('./lib/pocketIoServer');
 const { replGetCodeFromWikis } = require('./lib/replGetCode');
-const { dataTwBoot, databaseStats } = require('./lib/dataTwBoot');
+const { dataTwBoot, databaseStats } = require('./lib/twDbsBoot');
 
 hog(`${config.pkg.name} - v${config.pkg.version}\n`,40);
 
-// Build settings based on config
-const serverSettings = buildSettings(config);
+// ---- Config ----
+// Build WebServer config
+const serverSettings = wikiSettings(config);
 
-// Create reverse proxy servers  - last param 'true' is public
+// Create proxies
 const publicServer = new PocketIoServer(config, serverSettings, true);
 const privateServer = new PocketIoServer(config, serverSettings, false);
 
-// Add reference to appropriate proxy for each WebServer target
+// Add proxy settings to config
 serverSettings.forEach((settings, idx) => {
 	serverSettings[idx].proxy.server = publicServer.addTarget(config, settings);
 	serverSettings[idx].proxy.server = privateServer.addTarget(config, settings);
@@ -38,10 +39,10 @@ serverSettings.forEach((settings, idx) => {
 	}
 })
 
-// REPL instance
+// ---- REPL ----
 var $rt = require('node:repl').start({ prompt: '', ignoreUndefined: true});
 
-// REPL context
+// context
 var $rw, $sockets = {};
 function replContext() {
 	$rt.context.$rt = $rt;	// the REPL itself
@@ -61,7 +62,7 @@ $rt.on('reset', () => {
 	autoLoadCodeToRepl();
 })
 
-// Gets JavaScript code from wikis into REPL
+// ---- Server code ----
 function autoLoadCodeToRepl() {
 	hog('Webserver startup complete\n', 156);
 
@@ -80,26 +81,24 @@ function autoLoadCodeToRepl() {
 	$rt.setPrompt(prevPrompt);
 }
 
-// Start the proxy servers
+// Poxy servers startup
 async function startProxyServer() {
-	hog(`Startup reverse proxies to webservers`, 156);
+	hog(`Startup proxies to webservers`, 156);
+	hog(` Public proxy '${publicServer.domain}:${publicServer.port}' listening for requests:`,185);
 	await publicServer.proxyListen(serverSettings, $rt.context.$tpi);
-	hog(`Public proxy to webservers:`,185);
-	log(publicServer.links.map(link => '  ' + link).join('\n'));
+	hog(` Private proxy '${privateServer.domain}:${privateServer.port}' listening for requests:`,185);
 	await privateServer.proxyListen(serverSettings, $rt.context.$tpi);
-	hog(`Private proxy to webservers:`,185);
-	log(privateServer.links.map(link => '  ' + link).join('\n'));
 	hog(`Proxy startup complete\n`, 156);
 	replMOTD();
 }
 
 
-// REPL MOTD and prompt
+// REPL MOTD and prompt startup
 function replMOTD() {
 	hog(`Press {enter} at any time to display the prompt`,40);
 	hog(`'${config.defaultWiki}' wiki is at ${serverSettings[0].proxy.link}`,40);
 	if (config.autoStartNodeRed) {
-		hog(`\nStartup Node-RED`, 156);
+		hog(`\nStartup Node-RED with access to wikis`, 156);
 		const { hideStdout } = require('./lib/hideStdout');
 		const showStdout = hideStdout();
 		$rt.write('const $nr = new $NodeRed\n');
@@ -112,15 +111,15 @@ function replMOTD() {
 	$rt.displayPrompt();
 }
 
-// -------------------
-
-// Startup blurb
-hog(`Settings summary from package '${config.packageName}' config.js`, 156);
-hog(` domain\t: ${config.domain}\n` +
-	` packageDir\t: ${config.packageDir}\n` +
-	` wikidbsDir\t: ${config.wikidbsDir}\n` +
-	` wikisDir\t: ${config.wikisDir}\n` +
-	` flowFile\t: ${config.nodered.flowFile}\n`, 40);
+// ---- Startup ----
+//Startup blurb
+hog(`Configuration summary`, 156);
+hog(` package ${col(13)}: ${config.pkg.name}\n` +
+	` domain ${col(13)}: ${config.domain}\n` +
+	` packageDir ${col(13)}: ${config.packageDir}\n` +
+	` wikidbsDir ${col(13)}: ${config.wikidbsDir}\n` +
+	` wikisDir ${col(13)}: ${config.wikisDir}\n` +
+	` flowFile ${col(13)}: ${config.nodered.flowFile}\n`, 40);
 
 hog(`Startup database wikis`, 156);
 const $db = dataTwBoot(config.wikidbsDir);
@@ -130,8 +129,8 @@ hog(`Database wikis startup complete\n`, 156);
 // Start up the TiddlyWiki Webservers and boot the REPL
 //  Once REPL $tw booted, load the code tiddlers from the wikis
 //  then fire up the proxy servers
-hog(`Webserver wikis starting at port: ${config.webserver.basePort}`, 156);
-hog(' ' + serverSettings.map(settings => settings.name).join(' ') + '\n', 40);
+hog(`Webserver wikis starting on port: ${config.webserver.basePort}`, 156);
+//hog(' ' + serverSettings.map(settings => settings.name).join(' ') + '\n', 40);
 
 // Create code to startup everything in REPL context
 var nestWebservers = '';
@@ -145,8 +144,9 @@ startProxyServer();
 `;
 
 // Since can have any number of webservers
-//  (each webserver runs in the context of the previous one
-//    thus do not need spawn child processes to run the servers)
+//  need to construct code to start them all
+//    each webserver runs in the context of the previous one
+//    thus do not need spawn child processes to run WebServers
 // Generate code to startup the system
 for (let i=0; i<serverSettings.length; i++) {
 	nestWebservers += `
