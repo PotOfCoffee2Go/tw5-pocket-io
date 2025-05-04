@@ -83,10 +83,10 @@ function autoLoadCodeToRepl() {
 
 // Poxy servers startup
 async function startProxyServer() {
-	hog(`Startup proxies to webservers`, 156);
-	hog(` Public proxy '${publicServer.domain}:${publicServer.port}' listening for requests:`,185);
+	hog(`Startup proxies to webservers and Node-Red`, 156);
+	hog(` Public proxy '${publicServer.domainName}' listening for requests:`,185);
 	await publicServer.proxyListen(serverSettings, $rt.context.$tpi);
-	hog(` Private proxy '${privateServer.domain}:${privateServer.port}' listening for requests:`,185);
+	hog(` Private proxy '${privateServer.domainName}' listening for requests:`,185);
 	await privateServer.proxyListen(serverSettings, $rt.context.$tpi);
 	hog(`Proxy startup complete\n`, 156);
 	replMOTD();
@@ -95,8 +95,6 @@ async function startProxyServer() {
 
 // REPL MOTD and prompt startup
 function replMOTD() {
-	hog(`Press {enter} at any time to display the prompt`,40);
-	hog(`'${config.defaultWiki}' wiki is at ${serverSettings[0].proxy.link}`,40);
 	if (config.autoStartNodeRed) {
 		hog(`\nStartup Node-RED with access to wikis`, 156);
 		const { hideStdout } = require('./lib/hideStdout');
@@ -146,7 +144,7 @@ startProxyServer();
 // Since can have any number of webservers
 //  need to construct code to start them all
 //    each webserver runs in the context of the previous one
-//    thus do not need spawn child processes to run WebServers
+//    thus do not need to spawn child processes to run WebServers
 // Generate code to startup the system
 for (let i=0; i<serverSettings.length; i++) {
 	nestWebservers += `

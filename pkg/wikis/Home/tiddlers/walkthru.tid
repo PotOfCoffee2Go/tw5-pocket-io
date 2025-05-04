@@ -1,34 +1,36 @@
 autoLoad: no
-caption: Hello Node-Red
-created: 20250316181837609
+caption: Walk Thru
+created: 20250430040628668
 creator: poc2go
 ioConfirmDelete: no
-ioPrjCategoryPillTitle: 
-ioPrjCategoryType: 
-ioPrjProject: hello-nodered
+ioPrjProject: walkthru
 ioPrjTabName: 
 ioPrjTabSelected: AALLLL
-ioPrjTabType: dashboard
+ioPrjTabType: docs
 ioResult: 
-ioResultUpload: 
-ioToStory: no
-list: dashboard docs template code
-modified: 20250430040051006
+list: docs
+modified: 20250504142820035
 modifier: poc2go
-tags: hello-nodered
-title: hello-nodered
+tags: walkthru Projects
+title: walkthru
 type: text/vnd.tiddlywiki
 
 |tc-center tc-table-no-border|k
-|@@.poc2go-project-header {{!!caption}} @@|
+|@@.poc2go-project-header Edit this description and change caption @@|
+
+<!--
+Hiding project templates not being used
 
 |tc-center tc-table-no-border|k
-|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load code on startup</$checkbox>|
+|<$checkbox field="autoLoad" checked="yes" unchecked="no" default="no"> Auto load code on startup</$checkbox> |
 
 {{||$:/poc2go/pocket-io/project/addcategory}}
 
 |tc-center tc-table-no-border|k
 | <<projectUploadButton>> |
+
+End of Hiding
+-->
 
 {{||$:/poc2go/pocket-io/project/addtab}}
 
@@ -36,7 +38,7 @@ type: text/vnd.tiddlywiki
 {{!!ioResult}}
 
 <$list variable="category" filter="[list[!!list]]">
-<<closeTabsButton "hello-nodered" "$(category)$">>
+<<closeTabsButton "walkthru" "$(category)$" "walkthru-docs-install">>
 </$list>
 
 <<topButton>>

@@ -159,7 +159,7 @@
         },
         "$:/poc2go/pocket-io/ui/wikilinks": {
             "created": "20250131165633262",
-            "text": "\\define extlink()\n[[$(currentTiddler)$]]\n\\end\n\n@@.poc2go-center\nWikis in the Pocket-io network:\n@@\n@@.poc2go-mono \n<$list filter=\"[list[$:/temp/pocket-io/wikinames!!wikiLinks]addsuffix[/#Pocket-io%20System]]\">\n&nbsp;<<extlink>>&nbsp;\n</$list>\n@@\n",
+            "text": "\\define extlink()\n[[$(currentTiddler)$]]\n\\end\n\n@@.poc2go-center\nWikis in the Pocket-io network:\n@@\n@@.poc2go-mono \n<$list filter=\"[list[$:/temp/pocket-io/wikinames!!wikiLinks]]\">\n&nbsp;<<extlink>>&nbsp;\n</$list>\n@@\n",
             "tags": "",
             "title": "$:/poc2go/pocket-io/ui/wikilinks",
             "modified": "20250202161840474",

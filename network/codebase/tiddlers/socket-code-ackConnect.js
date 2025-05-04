@@ -3,6 +3,7 @@
 $tpi.fn.io.ackConnect = function (socket, wikiName) {
 	var wikiLinks = [];
 	$wikiNames.forEach(name => { wikiLinks.push(`[[${name}|${get$proxy(name).link}]]`); })
+	var nodeRedAdminLink = `[[Node-Red Editor|${get$server(wikiName).nodeRedLink}]]`;
 
 	const sendOnConnect = [
 		'[tag[$:/tags/pocket-io/broadcast]]',
@@ -27,7 +28,8 @@ $tpi.fn.io.ackConnect = function (socket, wikiName) {
 		text: wikiName,
 		list: $rw.utils.stringifyList($wikiNames),
 		link: get$proxy(wikiName).link,
-		wikiLinks: $rw.utils.stringifyList(wikiLinks)
+		wikiLinks: $rw.utils.stringifyList(wikiLinks),
+		nodeRedAdminLink: nodeRedAdminLink
 	});
 	
 	// projectNetworkTable second parameter is a Message

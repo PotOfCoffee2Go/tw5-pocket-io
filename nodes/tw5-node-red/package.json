@@ -1,10 +1,10 @@
 {
-  "name": "tw5-node-red",
+  "name": "tw5-nodes",
   "version": "1.0.14",
-  "main": "tw5-node-red.js",
+  "main": "tw5-nodes.js",
   "node-red": {
   	"nodes": {
-  		"pocket-io": "tw5-node-red.js"
+  		"pocket-io": "tw5-nodes.js"
   	}
   },
   "scripts": {

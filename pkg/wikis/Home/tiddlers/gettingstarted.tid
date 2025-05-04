@@ -9,20 +9,11 @@ ioPrjTabSelected: AALLLL
 ioPrjTabType: docs
 ioResult: 
 list: docs
-modified: 20250428135532932
+modified: 20250504142006102
 modifier: poc2go
 tags: gettingstarted Projects
 title: gettingstarted
 type: text/vnd.tiddlywiki
-
-\define tabsButton(project,tab,default)
-<$button class="tc-btn-invisible tc-tiddlylink">
-<$action-setfield $tiddler=<<qualify "$:/state/tab/pocket-io/$project$/$tab$">>  text=""/>
-{{$:/core/images/fold-button}}
-</$button>
-<<displayTabPill "$project$" "$tab$">>
-<<tabs "[all[shadows+tiddlers]tag[$:/pocket-io/$project$/$tab$]!is[draft]]" "$default$" "$:/state/tab/pocket-io/$project$/$tab$">>
-\end
 
 |tc-center tc-table-no-border|k
 | @@.poc2go-project-header Getting Started@@ |
@@ -49,6 +40,6 @@ type: text/vnd.tiddlywiki
 {{!!ioResult}}
 
 <$list variable="category" filter="[list[!!list]]">
-<<tabsButton "gettingstarted" "$(category)$" "gettingstarted-docs-welcome">>
+<<closeTabsButton "gettingstarted" "$(category)$" "gettingstarted-docs-welcome">>
 </$list>
 

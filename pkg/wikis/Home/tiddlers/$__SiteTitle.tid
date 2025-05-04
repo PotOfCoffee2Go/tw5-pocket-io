@@ -1,8 +1,8 @@
 created: 20250120133716890
 creator: poc2go
-modified: 20250428004451775
+modified: 20250505100733586
 modifier: poc2go
 title: $:/SiteTitle
 type: text/vnd.tiddlywiki
 
-@@color:#4b94b6;Home@@
+<$image source="tw5-node-red-logo.png" width="24px"/> @@color:#4b94b6;Home@@

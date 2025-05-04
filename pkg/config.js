@@ -49,7 +49,7 @@ exports.config = {
 		// 'default' is applied to all webservers
 		//  See 'credentials' below for assigning Webserver credentials
 		parameters: {
-			default: ['debug-level=none']
+			default: []
 		},
 	},
 
@@ -76,13 +76,13 @@ exports.config = {
 			],
 			// allow public access to Node-Red flow editor and HTTP nodes
 			allowNodeRedAdmin: false,
-			allowNodeRedNode: false,
+			allowNodeRedNode: true,
 		},
 
 		// The 'private' proxy allows only localhost access to wikis
 		private: {
 			 // private proxy port
-			port: 3001,
+			port: 4000,
 			// wikis that are always private
 			wikis: [
 				'codebase',
@@ -90,7 +90,7 @@ exports.config = {
 			],
 			// allow private access to Node-Red flow editor and HTTP nodes
 			allowNodeRedAdmin: true,
-			allowNodeRedNode: true,
+			allowNodeRedNode: false,
 		},
 	},
 

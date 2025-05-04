@@ -9,7 +9,7 @@ const UglifyJS = require('uglify-js');
 // Get last 12 digits of socket ID
 // Generate a random id
 $rt.context.cpy = (obj) => JSON.parse(JSON.stringify(obj));
-$rt.context.sid = (socket) => socket.id.split('-').pop();
+$rt.context.sid = (socket) => socket.id ? socket.id.split('-').pop() : 'unknown';
 $rt.context.uid = () => crypto.randomUUID().split('-').pop();
 
 // Hack of Node-Red utilLog()

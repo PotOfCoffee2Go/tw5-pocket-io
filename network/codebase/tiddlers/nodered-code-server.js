@@ -27,6 +27,7 @@ const $NodeRed = function () {
 	// functions to Node-Red global context
 	//  see codebase [[startup-code-globals]]
 	this.repl = {
+		log, hue, hog, tog,
 		$displayPrompt, $rw, $db,
 		$config,  $ss, $sockets, $tpi,
 		$wikiNames, get$settings,
@@ -95,6 +96,7 @@ const $NodeRed = function () {
 				}
 				$rt.setPrompt(prevPrompt);
 				this.isRunning = true;
+				$rt.displayPrompt();
 				}, 1000) // adjust timer as needed
 		})
 
