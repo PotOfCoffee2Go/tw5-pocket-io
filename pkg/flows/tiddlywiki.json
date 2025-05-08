@@ -1245,6 +1245,7 @@
         "id": "80407f300ac7033c",
         "type": "template",
         "z": "62c6b96ab760ca78",
+        "d": true,
         "g": "c95074a4d7aa6070",
         "name": "and .tid formatted",
         "field": "payload",
@@ -1473,7 +1474,7 @@
         "z": "62c6b96ab760ca78",
         "g": "c95074a4d7aa6070",
         "name": "text to console",
-        "func": "const repl = global.get('repl');\nrepl.tog(`'hello' topic processed`, 229);\nreturn msg;",
+        "func": "const repl = global.get('repl');\nrepl.tog(`'hello' topic from wiki '${msg.wikiname}' processed`, 181);\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1959,13 +1960,19 @@
         "type": "inject",
         "z": "bebfd65af56181fb",
         "name": "",
-        "props": [],
+        "props": [
+            {
+                "p": "ff",
+                "v": "fff",
+                "vt": "str"
+            }
+        ],
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 210,
+        "x": 230,
         "y": 80,
         "wires": [
             [
@@ -1985,11 +1992,53 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
+        "x": 360,
         "y": 80,
         "wires": [
             []
         ]
+    },
+    {
+        "id": "73cc510bee68600f",
+        "type": "inject",
+        "z": "bebfd65af56181fb",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 230,
+        "y": 20,
+        "wires": [
+            [
+                "7f83bf24bdf7bc68"
+            ]
+        ]
+    },
+    {
+        "id": "7f83bf24bdf7bc68",
+        "type": "debug",
+        "z": "bebfd65af56181fb",
+        "name": "Output once",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 410,
+        "y": 20,
+        "wires": []
     },
     {
         "id": "ccca438d7f47e763",
@@ -2289,7 +2338,7 @@
         "z": "a10937a730662247",
         "g": "784f277fe4392287",
         "name": "display network",
-        "func": "const repl = global.get('repl');\n\nvar sender = Object.assign({}, msg.wiki.senderTiddler);\nsender.ioResult = '';\n\nvar tableTemplate = '|tc-center|k\\n| Domain | Wiki | Project | AutoLoad <br> Code |h\\n';\n\nrepl.$ss.forEach(settings => {\n    var wikiName = settings.name;\n    if (wikiName === 'codebase' && repl.$config.hideCodebase) { return; }\n    var wikiLink = repl.get$proxy(wikiName).link;\n    var proxyDomain = settings.proxy.domain\n    var $tw = repl.get$tw(wikiName);\n\n    tableTemplate += `|${proxyDomain}|[[${wikiName}|${wikiLink}]] |<|<|\\n`;\n    $tw.wiki.filterTiddlers('[tag[Projects]]').forEach(project => {\n        if (/^\\$\\$\\$/.test(project)) { return; } // continue next forEach\n        var tiddler = JSON.parse($tw.wiki.getTiddlerAsJson(project));\n        tableTemplate += `| |<|[[${project}|${wikiLink}/#${project}]] ` +\n            `| ${tiddler.autoLoad === 'yes' ? 'yes' : 'no'} |\\n`;\n    })\n})\n\nmsg.payload = {\n    title: '$:/temp/pocket-io/system/projects',\n    text: tableTemplate,\n}\n\nreturn msg;\n",
+        "func": "const repl = global.get('repl');\n\nvar sender = Object.assign({}, msg.wiki.senderTiddler);\nsender.ioResult = '';\n\nvar tableTemplate = '|tc-center|k\\n| Domain | Wiki | Project | AutoLoad <br> Code |h\\n';\nvar origin = msg.wiki.req.info['$:/info/url/origin'].text;\nrepl.$ss.forEach(settings => {\n    var wikiName = settings.name;\n    if (repl.get$server(wikiName).isPublic === false && repl.$config.hidePrivateWikis) { return; }\n    var originName = origin === repl.get$server(wikiName).localName\n        ? repl.get$server(wikiName).localName\n        : 'Internet';\n    var wikiLink = `${origin}/${wikiName}`;\n    var $tw = repl.get$tw(wikiName);\n\n    tableTemplate += `|[[${originName}|${origin}/${wikiName}]]|[[${wikiName}|${wikiLink}]] |<|<|\\n`;\n    $tw.wiki.filterTiddlers('[tag[Projects]]').forEach(project => {\n        if (/^\\$\\$\\$/.test(project)) { return; } // continue next forEach\n        var tiddler = JSON.parse($tw.wiki.getTiddlerAsJson(project));\n        tableTemplate += `| |<|[[${project}|${wikiLink}/#${project}]] ` +\n            `| ${tiddler.autoLoad === 'yes' ? 'yes' : 'no'} |\\n`;\n    })\n})\n\nmsg.payload = {\n    title: '$:/temp/pocket-io/system/projects',\n    text: tableTemplate,\n}\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,

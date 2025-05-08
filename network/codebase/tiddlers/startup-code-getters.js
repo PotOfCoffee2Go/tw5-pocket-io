@@ -31,6 +31,9 @@ $rt.context.ins$tw = (name, tiddler) => {
 	))
 }
 
+// TW WebServer
+$rt.context.get$webserver = (name) => get$settings(name).webserver ?? {};
+
 // Proxy server
 $rt.context.get$proxy = (name) => get$settings(name).proxy ?? {};
 $rt.context.get$server = (name) => get$proxy(name).server ?? {};

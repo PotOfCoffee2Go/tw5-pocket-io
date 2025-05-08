@@ -84,9 +84,9 @@ function autoLoadCodeToRepl() {
 // Poxy servers startup
 async function startProxyServer() {
 	hog(`Startup proxies to webservers and Node-Red`, 156);
-	hog(` Public proxy '${publicServer.domainName}' listening for requests:`,185);
+	hog(` Public proxy '${publicServer.localName}' listening for requests:`,185);
 	await publicServer.proxyListen(serverSettings, $rt.context.$tpi);
-	hog(` Private proxy '${privateServer.domainName}' listening for requests:`,185);
+	hog(` Private proxy '${privateServer.localName}' listening for requests:`,185);
 	await privateServer.proxyListen(serverSettings, $rt.context.$tpi);
 	hog(`Proxy startup complete\n`, 156);
 	replMOTD();

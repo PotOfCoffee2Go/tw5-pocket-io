@@ -1,13 +1,13 @@
 caption: Welcome
 created: 20250410210552898
 creator: poc2go
-modified: 20250428211726213
+modified: 20250507145004837
 modifier: poc2go
 tags: docs gettingstarted $:/pocket-io/gettingstarted/docs
 title: gettingstarted-docs-welcome
 type: text/vnd.tiddlywiki
 
-! Welcome to TW5-Node-Red
+! Welcome to TW5-Node-Red!
 
 TW5-Node-Red is a development system which interfaces multiple 'server' edition [[TiddlyWikis|https://tiddlywiki.com/]] to each other and [[Node-Red|https://nodered.org/]] server-side flows.
 

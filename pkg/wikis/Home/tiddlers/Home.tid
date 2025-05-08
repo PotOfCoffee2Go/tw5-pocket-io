@@ -1,6 +1,7 @@
 created: 20250322105023526
 creator: poc2go
-modified: 20250501201209872
+ioResult: 
+modified: 20250508220020094
 modifier: poc2go
 tags: 
 title: Home
@@ -21,4 +22,4 @@ type: text/vnd.tiddlywiki
 {{$:/temp/pocket-io/system/projects}}
 
 |tc-center tc-table-no-border|k
-| <$button actions="<<pocket-io projectNetworkTable>>"> Refresh </$button> |
+| <$button actions="<<node-red 'project display network'>>"> Refresh </$button> |

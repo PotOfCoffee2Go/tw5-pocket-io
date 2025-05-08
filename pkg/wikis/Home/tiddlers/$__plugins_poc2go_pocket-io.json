@@ -106,9 +106,9 @@
         "$:/poc2go/pocket-io/release": {
             "created": "20250312063257143",
             "creator": "poc2go",
-            "text": "!! Release Notes\n\n```text\nv0.2.40 * 2025-03-12\n──────────────────────────────\nAdd pocket-io plugin maker tab\n```\n\n```text\nv0.2.37 - v0.2.38 * 2025-03-12\n──────────────────────────────\nAdd release notes\nAdd MIT license\n```\n",
+            "text": "!! Release Notes\n\n```text\nv0.2.43 * 2025-05-08\n──────────────────────────────\nGenerate wikilinks locally using $:/info/url/full tiddler\n```\n\n```text\nv0.2.40 * 2025-03-12\n──────────────────────────────\nAdd pocket-io plugin maker tab\n```\n\n```text\nv0.2.37 - v0.2.38 * 2025-03-12\n──────────────────────────────\nAdd release notes\nAdd MIT license\n```\n",
             "title": "$:/poc2go/pocket-io/release",
-            "modified": "20250322220320677",
+            "modified": "20250508202318033",
             "modifier": "poc2go",
             "caption": "Release Notes"
         },
@@ -159,11 +159,13 @@
         },
         "$:/poc2go/pocket-io/ui/wikilinks": {
             "created": "20250131165633262",
-            "text": "\\define extlink()\n[[$(currentTiddler)$]]\n\\end\n\n@@.poc2go-center\nWikis in the Pocket-io network:\n@@\n@@.poc2go-mono \n<$list filter=\"[list[$:/temp/pocket-io/wikinames!!wikiLinks]]\">\n&nbsp;<<extlink>>&nbsp;\n</$list>\n@@\n",
+            "creator": "poc2go",
+            "text": "\\define extlink()\n[[$(wname)$|$(wUrl)$/$(wname)$]]\n\\end\n\n@@.poc2go-center\nWikis in the Pocket-io network:\n@@\n@@.poc2go-mono \n<$set name=\"wUrl\" tiddler=\"$:/info/url/origin\" field=\"text\">\n<$list variable=\"wname\" filter=\"[list[$:/temp/pocket-io/wikinames!!list]]\">\n&nbsp;<<extlink>>&nbsp;\n</$list>\n</$set>\n@@\n",
             "tags": "",
             "title": "$:/poc2go/pocket-io/ui/wikilinks",
-            "modified": "20250202161840474",
-            "caption": "Active wikis"
+            "modified": "20250508201928591",
+            "caption": "Active wikis",
+            "modifier": "poc2go"
         },
         "$:/poc2go/pocket-io/new-wiki-icon": {
             "created": "20250201165209881",

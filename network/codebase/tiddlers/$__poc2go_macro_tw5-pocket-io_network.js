@@ -103,6 +103,7 @@ function createMessage(command, topic, filter, sender) {
 		filter: senderFields.ioFilter,
 		wikiName: $tw.wiki.getTiddlerText('$:/temp/pocket-io/wikinames'),
 		sender: senderFields.title,
+		info: $tw.utils.parseJSONSafe($tw.wiki.getTiddler('$:/temp/info-plugin').fields.text).tiddlers,
 		tostory: senderFields.ioToStory ?? 'no',
 	}
 	var msg = {
@@ -190,7 +191,7 @@ const initSocketHandlers = () => {
 		console.log(`pocket.io id: ${sid(socket)} connecting`);
 		setNetstat('Pocket.io connecting...');
 		socket.emit('ackConnect',
-			$tw.wiki.getTiddlerText('$:/info/url/pathname').replace(/\//g, ''));
+			$tw.utils.parseJSONSafe($tw.wiki.getTiddler('$:/temp/info-plugin').fields.text));
 		pingInterval = setInterval(() => socket.emit('ping', 'Hi there!'), 30000);
 	})
 

@@ -4,15 +4,15 @@ $tpi.topic.projectNetworkTable = function (socket, msg) {
 	sender.ioResult = '';
 
 	var tableTemplate = '|tc-center|k\n| Domain | Wiki | Project | AutoLoad <br> Code |h\n';
-
+	var origin = msg.req.info['$:/info/url/origin'].text;
 	$ss.forEach(settings => {
 		var wikiName = settings.name;
-		if (settings.proxy.server.isPublic === false && $config.hidePrivateWikis) { return; }
-		var wikiLink = get$proxy(wikiName).link;
-		var proxyDomain = settings.proxy.domain
+		if (get$server(wikiName).isPublic === false && $config.hidePrivateWikis) { return; }
+		var originName = origin === get$server(wikiName).localName ? get$server(wikiName).localName : 'Internet';
+		var wikiLink = `${origin}/${wikiName}`;
 		var $tw = get$tw(wikiName);
 
-		tableTemplate += `|${proxyDomain}|[[${wikiName}|${wikiLink}]] |<|<|\n`;
+		tableTemplate += `|${originName}|[[${wikiName}|${wikiLink}]] |<|<|\n`;
 		$tw.wiki.filterTiddlers('[tag[Projects]]').forEach(project => {
 			if (/^\$\$\$/.test(project)) { return; } // continue next forEach
 			var tiddler = JSON.parse($tw.wiki.getTiddlerAsJson(project));

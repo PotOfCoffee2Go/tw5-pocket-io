@@ -7,6 +7,7 @@ $tpi.fn.io.msg = function msg(socket, msg) {
 		$rt.displayPrompt();
 		return;
 	}
+
 	// Message is for Node-Red runtime
 	// '$nrMsgNodes' is array of all 'TW client in' nodes in
 	//  the Node-Red workspace

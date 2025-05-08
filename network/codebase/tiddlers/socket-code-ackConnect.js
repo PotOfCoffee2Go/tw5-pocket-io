@@ -1,15 +1,15 @@
 // Client acknowledges connect sequence is complete and ready
 //  for startup tiddlers from server
-$tpi.fn.io.ackConnect = function (socket, wikiName) {
-	var wikiLinks = [];
-	$wikiNames.forEach(name => { wikiLinks.push(`[[${name}|${get$proxy(name).link}]]`); })
-	var nodeRedAdminLink = `[[Node-Red Editor|${get$server(wikiName).nodeRedLink}]]`;
+$rw.utils.parseJSONSafe($rw.wiki.getTiddler('$:/temp/info-plugin').fields.text)
+$tpi.fn.io.ackConnect = function (socket, info) {
+	const getInfo = (infoTitle) => info.tiddlers[infoTitle].text; 
 
 	const sendOnConnect = [
 		'[tag[$:/tags/pocket-io/broadcast]]',
 		'[[$:/themes/tiddlywiki/vanilla/options/sidebarlayout]]'
 	].join(' ');
 
+	var wikiName = getInfo('$:/info/url/pathname').replace('/','');
 	var wikiRequires = JSON.parse($twCodebase.wiki.getTiddlersAsJson(sendOnConnect));
 	// codebase already has required tiddlers
 	wikiRequires = wikiName === 'codebase' ? [] : wikiRequires;
@@ -27,19 +27,18 @@ $tpi.fn.io.ackConnect = function (socket, wikiName) {
 		title: '$:/temp/pocket-io/wikinames',
 		text: wikiName,
 		list: $rw.utils.stringifyList($wikiNames),
-		link: get$proxy(wikiName).link,
-		wikiLinks: $rw.utils.stringifyList(wikiLinks),
-		nodeRedAdminLink: nodeRedAdminLink
+		link: getInfo('$:/info/url/full'),
 	});
 	
 	// projectNetworkTable second parameter is a Message
 	// so create a fake one
+/*
 	var fakeMsg = { senderTiddler: {}, resultTiddlers: [] };
 	var wikiDisplay = $tpi.topic.projectNetworkTable(socket, fakeMsg);
 	if (fakeMsg.resultTiddlers.length) {
 		wikiRequires.push(fakeMsg.resultTiddlers[0]);
 	}
-
+*/
 	// Add this client's socket to list of connected clients
 	$sockets[sid(socket)] = { socket, wikiName };
 

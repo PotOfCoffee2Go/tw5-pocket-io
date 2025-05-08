@@ -103,6 +103,7 @@ function createMessage(command, topic, filter, sender) {
 		filter: senderFields.ioFilter,
 		wikiName: $tw.wiki.getTiddlerText('$:/temp/pocket-io/wikinames'),
 		sender: senderFields.title,
+		info: $tw.utils.parseJSONSafe($tw.wiki.getTiddler('$:/temp/info-plugin').fields.text).tiddlers,
 		tostory: senderFields.ioToStory ?? 'no',
 	}
 	var msg = {
@@ -180,15 +181,22 @@ const fieldsToWiki = (fields, tostory = false) => {
 
 // ------------------------
 // Pocket.io socket event handlers
+var pingInterval;
 const initSocketHandlers = () => {
 	socket = io();
+
+	clearInterval(pingInterval);
 
 	socket.on('connect', () => {
 		console.log(`pocket.io id: ${sid(socket)} connecting`);
 		setNetstat('Pocket.io connecting...');
 		socket.emit('ackConnect',
-			$tw.wiki.getTiddlerText('$:/info/url/pathname').replace(/\//g, ''));
+			$tw.utils.parseJSONSafe($tw.wiki.getTiddler('$:/temp/info-plugin').fields.text));
+		pingInterval = setInterval(() => socket.emit('ping', 'Hi there!'), 30000);
 	})
+
+	socket.on('ping', data => { socket.emit('pong', data); });
+	socket.on('pong', data => {});
 
 	socket.on('ackConnect', wikiRequires => {
 		console.log(`pocket.io id: ${sid(socket)} connected`);
@@ -220,6 +228,7 @@ const initSocketHandlers = () => {
 	socket.on('close', () => {
 		console.log('pocket.io disconnnected');
 		setNetstat('@@color:red; Pocket.io disconnected@@');
+		clearInterval(pingInterval);
 		socket = null;
 		reConnect();
 	})
