@@ -135,9 +135,8 @@ function setNetstat(txt) {
 	$tw.wiki.setText('$:/temp/pocket-io/proxy','text', null, site);
 	$tw.wiki.setText('$:/temp/pocket-io/nodered','text', null, nodered);
 	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null,
-		`Wiki: {{$:/temp/pocket-io/wikinames}} ${username ? ' - User: ' : ''} [[${username}]]<br>` +
-		`&nbsp;&nbsp;at {{$:/temp/pocket-io/wikinames!!link}}<br>` +
-		txt
+		`Wiki: <a href="" target="_blank">{{$:/temp/pocket-io/wikinames}}</a> ` +
+		`${username ? ' - User: ' : ''} [[${username}]]<br>` + txt
 	);
 }
 
@@ -200,7 +199,7 @@ const initSocketHandlers = () => {
 
 	socket.on('ackConnect', wikiRequires => {
 		console.log(`pocket.io id: ${sid(socket)} connected`);
-		setNetstat(`Pocket.io connected ${sid(socket)}`);
+		setNetstat(`Pocket.io connected: ${sid(socket)}`);
 		wikiRequires.forEach(tiddler => fieldsToWiki(tiddler));
 	})
 

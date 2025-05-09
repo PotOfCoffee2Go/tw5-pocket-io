@@ -23,10 +23,21 @@ $tpi.fn.io.ackConnect = function (socket, info) {
 		}
 	}
 
+	// only show allowed wikis
+	var nameList = [];
+	$wikiNames.forEach(wName => {
+		if (get$server(wName).isPublic === false &&
+			$config.hidePrivateWikis) {
+				return;
+		}
+		nameList.push(wName);
+	})
+
+
 	wikiRequires.push({
 		title: '$:/temp/pocket-io/wikinames',
 		text: wikiName,
-		list: $rw.utils.stringifyList($wikiNames),
+		list: $rw.utils.stringifyList(nameList),
 		link: getInfo('$:/info/url/full'),
 	});
 	

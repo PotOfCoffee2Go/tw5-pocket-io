@@ -49,7 +49,7 @@ const $NodeRed = function () {
 
 	// Personalize Flow editor settings for TW5-Node-Red
 	this.settings.editorTheme.header = {
-		title: `TW5-Node-Red Host: <b>${$config.domainName}</b> Package: <b>${$config.pkg.name}</b>`,
+		title: `TW5-Node-Red Host: <b>${$config.publicName}</b> Package: <b>${$config.pkg.name}</b>`,
  		image: path.resolve(this.programDir, 'public/images/system/tw5-node-red-logo.png'),
 	};
 	this.settings.editorTheme.page = {
