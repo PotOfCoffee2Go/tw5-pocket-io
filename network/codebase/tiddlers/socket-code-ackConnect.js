@@ -1,6 +1,5 @@
 // Client acknowledges connect sequence is complete and ready
 //  for startup tiddlers from server
-$rw.utils.parseJSONSafe($rw.wiki.getTiddler('$:/temp/info-plugin').fields.text)
 $tpi.fn.io.ackConnect = function (socket, info) {
 	const getInfo = (infoTitle) => info.tiddlers[infoTitle].text; 
 
@@ -25,9 +24,9 @@ $tpi.fn.io.ackConnect = function (socket, info) {
 
 	// only show allowed wikis
 	var nameList = [];
+	var sameProxy = get$server(wikiName).isPublic;
 	$wikiNames.forEach(wName => {
-		if (get$server(wName).isPublic === false &&
-			$config.hidePrivateWikis) {
+		if (get$server(wName).isPublic !== sameProxy) {
 				return;
 		}
 		nameList.push(wName);

@@ -1,0 +1,21 @@
+created: 20250508185230112
+creator: poc2go
+modified: 20250508201954538
+modifier: poc2go
+tags: 
+title: New Tiddler
+type: text/vnd.tiddlywiki
+
+\define extlink()
+[[$(wname)$|$(wUrl)$/$(wname)$]]
+\end
+
+<$button actions="<<node-red test>>"> ccc </$button>
+
+[[$(currentTiddler)$|{{$:/info/url/origin}}/$(currentTiddler)$]]
+
+<$set name="wUrl" tiddler="$:/info/url/origin" field="text">
+<$list variable="wname" filter="[list[$:/temp/pocket-io/wikinames!!list]]">
+<<extlink>>
+</$list>
+</$set>

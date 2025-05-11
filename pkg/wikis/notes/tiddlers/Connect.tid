@@ -1,0 +1,12 @@
+caption: Connect
+created: 20241024220328376
+creator: poc2go
+modified: 20241024220449689
+modifier: poc2go
+tags: cmd
+title: Connect
+type: text/vnd.tiddlywiki
+
+```
+ssh tiddlywiki@rpiwikis.local
+```

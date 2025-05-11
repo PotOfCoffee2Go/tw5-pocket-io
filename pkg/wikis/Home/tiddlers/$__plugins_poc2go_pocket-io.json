@@ -106,9 +106,9 @@
         "$:/poc2go/pocket-io/release": {
             "created": "20250312063257143",
             "creator": "poc2go",
-            "text": "!! Release Notes\n\n```text\nv0.2.43 * 2025-05-08\n──────────────────────────────\nGenerate wikilinks locally using $:/info/url/full tiddler\n```\n\n```text\nv0.2.40 * 2025-03-12\n──────────────────────────────\nAdd pocket-io plugin maker tab\n```\n\n```text\nv0.2.37 - v0.2.38 * 2025-03-12\n──────────────────────────────\nAdd release notes\nAdd MIT license\n```\n",
+            "text": "!! Release Notes\n\n```text\nv0.2.44 - v0.2. * 2025-05-08\n──────────────────────────────\nAdd pocket-io plugin settings\n```\n\n```text\nv0.2.43 * 2025-05-08\n──────────────────────────────\nGenerate wikilinks locally using $:/info/url/full tiddler\n```\n\n```text\nv0.2.40 * 2025-03-12\n──────────────────────────────\nAdd pocket-io plugin maker tab\n```\n\n```text\nv0.2.37 - v0.2.38 * 2025-03-12\n──────────────────────────────\nAdd release notes\nAdd MIT license\n```\n",
             "title": "$:/poc2go/pocket-io/release",
-            "modified": "20250508202318033",
+            "modified": "20250510003224118",
             "modifier": "poc2go",
             "caption": "Release Notes"
         },
@@ -144,11 +144,13 @@
         },
         "$:/poc2go/pocket-io/settings": {
             "created": "20250122203757008",
-            "text": "Settings will go here\n",
+            "creator": "poc2go",
+            "text": "\\define submitSettings()\n<<pocket-io \"updateSettings\">>\n\\end\n\n\\define submitButton()\n<$button actions=\"<<submitSettings>>\"> Submit </$button>\n\\end\n\n\n<$checkbox listField=\"pocket-io-settings\" checked=\"add-project-to-new\" default=\"\"> Add pocket-io project management plugin to new wikis?</$checkbox><br />\n\n<$checkbox listField=\"pocket-io-settings\" checked=\"add-project-to-all\" default=\"\"> Add pocket-io project management plugin to all wikis?</$checkbox><br />\n\n<$checkbox listField=\"pocket-io-settings\" checked=\"add-project-to-wiki\" default=\"\"> Add pocket-io project management plugin to this wiki?</$checkbox><br />\n\n<<submitButton>>\n\n\n''settings:'' {{!!pocket-io-settings}}\n",
             "tags": "$:/tags/ControlPanel/SettingsTab",
             "title": "$:/poc2go/pocket-io/settings",
-            "modified": "20250201134625037",
-            "caption": "Pocket-io System"
+            "modified": "20250509230746916",
+            "caption": "Pocket-io System",
+            "modifier": "poc2go"
         },
         "$:/poc2go/pocket-io/topbarleft/menu": {
             "created": "20250208181451534",

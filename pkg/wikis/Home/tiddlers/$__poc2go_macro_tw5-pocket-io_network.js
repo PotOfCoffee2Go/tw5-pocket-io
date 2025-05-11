@@ -118,8 +118,21 @@ function createMessage(command, topic, filter, sender) {
 
 // ------------------------
 // Utilities
-// Timestamp resolves to the second
+// Hack of Node-Red utilLog()
 function tStamp() {
+	const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	const d = new Date();
+	const time = [
+		d.getHours().toString().padStart(2, '0'),
+		d.getMinutes().toString().padStart(2, '0'),
+		d.getSeconds().toString().padStart(2, '0')
+	].join(':');
+	return `${d.getDate()} ${months[d.getMonth()]} ${time} `;
+//	return `${time} `;
+}
+
+// Timestamp resolves to the second
+function ttStamp() {
 	return ((new Date()).toLocaleDateString(undefined, {
 		hourCycle: 'h23',
 		year: 'numeric', month: '2-digit', day: '2-digit',
@@ -135,9 +148,8 @@ function setNetstat(txt) {
 	$tw.wiki.setText('$:/temp/pocket-io/proxy','text', null, site);
 	$tw.wiki.setText('$:/temp/pocket-io/nodered','text', null, nodered);
 	$tw.wiki.setText('$:/temp/pocket-io/netstat','text', null,
-		`Wiki: {{$:/temp/pocket-io/wikinames}} ${username ? ' - User: ' : ''} [[${username}]]<br>` +
-		`&nbsp;&nbsp;at {{$:/temp/pocket-io/wikinames!!link}}<br>` +
-		txt
+		`Wiki: <a href="" target="_blank">{{$:/temp/pocket-io/wikinames}}</a> ` +
+		`${username ? ' - User: ' : ''} [[${username}]]<br>` + txt
 	);
 }
 
@@ -200,7 +212,7 @@ const initSocketHandlers = () => {
 
 	socket.on('ackConnect', wikiRequires => {
 		console.log(`pocket.io id: ${sid(socket)} connected`);
-		setNetstat(`Pocket.io connected ${sid(socket)}`);
+		setNetstat(`Pocket.io connected: ${sid(socket)}`);
 		wikiRequires.forEach(tiddler => fieldsToWiki(tiddler));
 	})
 

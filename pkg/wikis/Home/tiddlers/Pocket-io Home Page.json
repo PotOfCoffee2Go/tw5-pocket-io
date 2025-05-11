@@ -1,0 +1,13 @@
+[
+    {
+        "created": "20250316004936378",
+        "creator": "poc2go",
+        "text": "<style>.cols3{column-count:3}</style>\n\n<div class=\"poc2go-center\">\n<$image source=\"$:/favicon.ico\" width=\"64px\"/>\n</div>\n\n{{||$:/poc2go/pocket-io/ui/wikilinks}}\n|tc-center tc-table-no-border|k\n| Wikis and projects in this pocket-io network |\n\n{{$:/temp/pocket-io/system/projects}}\n\n|tc-center tc-table-no-border|k\n| <$button actions=\"<<pocket-io projectNetworkTable>>\"> Refresh </$button> |\n",
+        "modified": "20250509015442820",
+        "modifier": "poc2go",
+        "title": "Pocket-io Home Page",
+        "tags": "$:/tags/pocket-io/broadcast",
+        "type": "text/vnd.tiddlywiki",
+        "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em; margin: 0 2em 0 2em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n@@color:red; 05/08/2025 21:54:10 Invalid topic: projectNetworkTable @@\n\n</div>\n"
+    }
+]

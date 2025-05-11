@@ -8,27 +8,36 @@ const path = require('node:path');
 const packageDir = (fpath) => path.join(__dirname, fpath);
 
 exports.config = {
-	// The domain is used to create URLs, access wikis, and
-	//  other tw5-node-red resourcess
-	// On most OS's 'hostname' is used for local network access
-	// If issues arise using the hostname
-	//  set the domain to the DNS domain or IP address of this computer
-	//  ex: '192.168.1.8' is IP of this computer on my network
+	// Public and private proxies are used to create URLs
+	//  to access wikis, and other tw5-node-red resources
+	//  The public proxy can be seen by devices on you local network
+	//  The private proxy is accessable by the machine running
+	//   tw5-node-red application. ie: this machine only
+	//
+	// If issues arise using the publicName, replace 'os.hostname()'
+	//  with IP address of this computer.
+	//  ex: 'http://192.168.1.8' is IP address of this computer on my network
 	//   yours will be different - finding it varies between OS's
-	
-	// Local network name of this computer
-	domain: os.hostname(),
+	publicName: 'http://' + os.hostname(), // Local network computer name
 
-	// Wiki in wikisDir that will be listed first
+	// The private proxy should always be 'http://localhost' or
+	//  'http://127.0.0.1' - both are effectively the same
+	privateName:'http://localhost', // this machine only
+
+	// Wikis in 'wikisDir' folder that will be listed first
+	//  as well as the wiki displayed if no wiki name is
+	//  given in the browser URL address.
 	//  if wiki does not exist in 'wikisDir' folder then the first wiki
 	//  read from disk becomes the default wiki
 	defaultWiki: 'Home',
 
-
-	// 'server' edition client webserver wikis
+	// Directory that contain all the 'server' edition
+	//  wikis in the network
 	wikisDir: packageDir('wikis'),
 
-	// 'server' edition database wikis
+	// Location of 'server' edition database wikis that 
+	//  can be used as TiddlyWiki databases where tiddlers
+	//  are 'records' that are accessed using TW filters
 	wikidbsDir: packageDir('dbs'),
 
 	// Automatically startup Node-Red
@@ -42,28 +51,24 @@ exports.config = {
 	// Access is performed thru the proxies (see 'proxy:' below)
 	// Starting on port basePort and increments by one for each webserver
 	webserver: {
-		basePort: 8090,
+		basePort: 9000,
 
 		// WebServer parameters
 		//  see 'https://tiddlywiki.com/static/WebServer%2520Parameters.html`
 		// 'default' is applied to all webservers
-		//  See 'credentials' below for assigning Webserver credentials
+		//  See 'credentials:' below for assigning Webserver credentials
 		parameters: {
-			default: []
+			default: ['debug-level=none']
 		},
 	},
 
-	// Hide private wiki's (see below) from being displayed
-	hidePrivateWikis: true,
-
-	// Reverse proxies to each webserver and Node-Red
 	// The 'public' proxy can be accessed by devices on the local network
 	// The 'private' proxy can only be accessed by localhost
 	// Both proxies are identical except
-	//   'public'  listens on host '0.0.0.0'   - access via domain
+	//   'public'  listens on host '0.0.0.0'   - access via machine hostname
 	//   'private' listens on host '127.0.0.1' - access via 'localhost'
 	proxy: { 
-		// Default if wiki is not listed  as 'public' or 'private'
+		// Default if a wiki is not listed  as 'public' or 'private'
 		default: 'public',
 		// The 'public' proxy allows network devices to access wikis
 		public: {
@@ -72,11 +77,8 @@ exports.config = {
 			// wikis that are always public
 			wikis: [ 
 				'Home',
-				'Test'
+				'notes'
 			],
-			// allow public access to Node-Red flow editor and HTTP nodes
-			allowNodeRedAdmin: false,
-			allowNodeRedNode: true,
 		},
 
 		// The 'private' proxy allows only localhost access to wikis
@@ -86,11 +88,7 @@ exports.config = {
 			// wikis that are always private
 			wikis: [
 				'codebase',
-				'xx'
 			],
-			// allow private access to Node-Red flow editor and HTTP nodes
-			allowNodeRedAdmin: true,
-			allowNodeRedNode: false,
 		},
 	},
 
@@ -100,10 +98,10 @@ exports.config = {
 	// The properties below will override settings in Node-Red settings.js
 	nodered: {
 		// Override flow editor default host & port
-		// Set uiHost to 127.0.0.1 to allow only the localhost to access
+		// Set uiHost to '127.0.0.1' to allow only the localhost to access
 		//  the flow editor
-		// uiHost: 0.0.0.0,
-		// uiPort: 1880,
+		// uiHost: '0.0.0.0',
+		// uiPort: 1889,
 
 		// Node-Red user directory
 		//  which contains the node-red 'settings.js' file
@@ -114,7 +112,8 @@ exports.config = {
 		flowFile: packageDir('flows/tiddlywiki.json'),
 
 		// Allow 'global' variables to be displayed in flow editor
-		//  the default is false
+		//  the default is false - handy to see JavaScript functions
+		//  and objects shared between tw5-node-red and Node-Red
 		exportGlobalContextKeys: true,
 
 		// URL path to Node-Red flow editor and http nodes
@@ -126,7 +125,9 @@ exports.config = {
 	// The system uses the Basic Authentication method
 	// see https://tiddlywiki.com/static/WebServer%2520Basic%2520Authentication.html
 	// packageDir('credentials') directory is ignored in .gitignore
-	// The 'configCred.js' file contains the TiddlyWiki auth settings
+	//  so will not be commited if using Git for version control
+	// The 'configCred.js' file in the package directory contains the
+	//  TiddlyWiki auth settings (which are OK to be commited)
 	credentials: {
 		// This file contains the User/Passwords
 		userInfoFile: packageDir('credentials/users.json'),
@@ -137,6 +138,6 @@ exports.config = {
 		csvDir: packageDir('credentials/csv'),
 	},
 
-	// tw5-node-red NPM package
+	// Your tw5-node-red NPM package
 	pkg: require(packageDir('package.json')),
 }
