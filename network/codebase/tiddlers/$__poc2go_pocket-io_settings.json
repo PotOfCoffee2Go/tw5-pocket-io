@@ -1,0 +1,15 @@
+[
+    {
+        "created": "20250122203757008",
+        "creator": "poc2go",
+        "modified": "20250510170204876",
+        "modifier": "poc2go",
+        "text": "\\define applySettings()\n<<pocket-io \"applySettings\">>\n\\end\n\n\\define applySettingsButton()\n<$button actions=\"<<applySettings>>\"> Submit </$button>\n\\end\n\n\n<$checkbox listField=\"pocketIoSettings\" checked=\"addProjectToNew\" default=\"\"> Add pocket-io project management plugin to new wikis?</$checkbox><br />\n\n<$checkbox listField=\"pocketIoSettings\" checked=\"addProjectToAll\" default=\"\"> Add pocket-io project management plugin to all wikis?</$checkbox><br />\n\n<$checkbox listField=\"pocketIoSettings\" checked=\"addProjectToWiki\" default=\"\"> Add pocket-io project management plugin to this wiki?</$checkbox><br />\n\n<<applySettingsButton>>\n\n{{!!ioResult}}\n\n''settings:'' {{!!pocketIoSettings}}\n",
+        "tags": "$:/tags/ControlPanel/SettingsTab",
+        "title": "$:/poc2go/pocket-io/settings",
+        "type": "text/vnd.tiddlywiki",
+        "caption": "Pocket-io Settings",
+        "pocketIoSettings": "addProjectToAll addProjectToNew",
+        "ioResult": "<div style=\"border: 1px solid aqua;border-radius: 10px; padding-left: 1em; margin: 0 2em 0 2em;\">\n\n<$button actions='<$action-setfield $field=\"ioResult\" $value=\"\" />' style=\"float:right;margin-right:1em;\"> close </$button>\n10 May 13:02:06 Received 2 settings\n\n</div>\n"
+    }
+]
