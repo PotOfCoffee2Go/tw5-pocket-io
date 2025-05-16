@@ -1,7 +1,7 @@
 caption: Package
 created: 20250427013108778
 creator: poc2go
-modified: 20250428030615722
+modified: 20250516122041767
 modifier: poc2go
 tags: docs gettingstarted $:/pocket-io/gettingstarted/docs
 title: gettingstarted-docs-package
@@ -11,11 +11,11 @@ type: text/vnd.tiddlywiki
 
 <pre style="float:right;line-height:1em;margin-left:1em;background:black;">
 ├──@@color:#aae3bc; .gitignore@@
-├── @@color:#aae3bc;configCred.js@@
 ├── @@color:#aae3bc;config.js@@
 ├── @@color:#aae3bc;LICENSE@@
 ├── @@color:#aae3bc;package.json@@
 ├── @@color:#aae3bc;README.md@@
+├── @@color:#aae3bc;security.js@@
 ├── @@color:aqua;credentials@@
 │   ├── @@color:aqua;csv@@
 │   └── @@color:#aae3bc;users.json@@
@@ -31,7 +31,7 @@ type: text/vnd.tiddlywiki
 
 The package contains standard NPM files (@@color:#aae3bc;package.json@@, @@color:#aae3bc;README.md@@, @@color:#aae3bc;LICENSE@@) which you edit to describe and personalize your application.
 
-The configuration files; @@color:#aae3bc;config.js@@  and @@color:#aae3bc;configCred.js@@ contain options, paths to system resources, and TiddlyWiki user credentials configuration.
+The configuration files; @@color:#aae3bc;config.js@@  and @@color:#aae3bc;security.js@@ contain options, paths to system resources, and TiddlyWiki user credentials configuration.
 
 The directories contain the system resources; TiddlyWikis @@color:aqua;wikis@@, Node-Red flow files @@color:aqua;flows@@, server static content @@color:aqua;public@@, TW as databases @@color:aqua;dbs@@, TW credential files @@color:aqua;credentials@@, and the installed node.js modules @@color:aqua;node_modules@@.
 

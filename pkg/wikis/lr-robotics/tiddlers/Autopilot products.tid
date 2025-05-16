@@ -1,0 +1,24 @@
+caption: Autopilot
+created: 20241001013130721
+modified: 20241001013449224
+tags: products
+title: Autopilot products
+type: text/vnd.tiddlywiki
+
+!! Autopilot
+Tasks for the drone swarm are pre-programmed without the requirement of a human operator (although is possible for a human operator to manage flight and tasks real-time).
+
+The autopilot interfaces to drone components which controls the flight path based on altitude and GPS coordinates.
+
+<<image-basic "Pixhawk-6C.png" width:"" align:"left" caption:"" tooltip:"" alt:"">>
+
+[[Hardware|https://holybro.com/products/pixhawk-6c?variant=43018722541757]]
+
+The Pixhawk® 6C is the latest update to the successful family of Pixhawk® flight controllers, based on the Pixhawk® FMUv6C Open Standard and Connector Standard. It comes with PX4 Autopilot® pre-installed. Inside the Pixhawk® 6C, you can find an STMicroelectronics® based STM32H743, paired with sensor technology from Bosch® & InvenSense®, giving you flexibility and reliability for controlling any autonomous vehicle, suitable for both academic and commercial applications.
+
+---
+
+[[PX4 Autopilot software|https://github.com/PX4/PX4-Autopilot]]
+
+This repository holds the PX4 flight control solution for drones, with the main applications located in the src/modules directory. It also contains the PX4 Drone Middleware Platform, which provides drivers and middleware to run drones.
+

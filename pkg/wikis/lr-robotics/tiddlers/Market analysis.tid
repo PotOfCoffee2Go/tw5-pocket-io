@@ -1,0 +1,11 @@
+created: 20240929125820292
+modified: 20241005081656380
+tags: plan
+title: Market analysis
+type: text/vnd.tiddlywiki
+
+!! Market analysis
+
+Industry technology, outlook, and target markets. Competitive businesses research, strengths, and disadvantages. What successful competitors do and why it works.
+
+<<tabs "[tag[analysis]]" "" "$:/state/tabs/analysis" "tc-horizontal">>

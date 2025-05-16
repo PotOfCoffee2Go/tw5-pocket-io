@@ -1,0 +1,11 @@
+created: 20250515030922359
+creator: poc2go
+modified: 20250515061143164
+modifier: poc2go
+tags: 
+title: New Tiddler
+type: text/vnd.tiddlywiki
+
+<$button actions="<<node-red 'hello'>>"> Hello node-red</$button>
+
+<$button actions="<<node-red 'deleteTiddlers' '[tag[node-red1]]'>>"> Delete tiddlers from hello </$button>

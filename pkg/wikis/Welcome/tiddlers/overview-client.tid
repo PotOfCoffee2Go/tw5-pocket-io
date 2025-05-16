@@ -1,0 +1,14 @@
+caption: Client
+created: 20250520090956456
+creator: poc2go
+modified: 20250522012203035
+modifier: poc2go
+title: overview-client
+type: text/vnd.tiddlywiki
+
+The client running in the browser is a normal TiddlyWiki 'server' edition WebServer. A few tiddlers are automatically added/updated to each  client wiki:
+
+* Macro which implements the Websocket interface
+* 'Pocket-io System' tiddler that displays links to the public wikis in the network
+* Plugin that provides settings and basic TW5-Node-Red tools
+* ''$:/config/tiddlyweb/host'' that sets each WebServer web address prefix

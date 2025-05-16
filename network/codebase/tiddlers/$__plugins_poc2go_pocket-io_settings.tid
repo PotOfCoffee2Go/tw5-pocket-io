@@ -1,9 +1,0 @@
-caption: settings
-created: 20250122212433283
-creator: poc2go
-modified: 20250510170356706
-modifier: poc2go
-title: $:/plugins/poc2go/pocket-io/settings
-type: text/vnd.tiddlywiki
-
-{{$:/poc2go/pocket-io/settings}}

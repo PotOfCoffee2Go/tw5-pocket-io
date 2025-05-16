@@ -1,0 +1,31 @@
+caption: Pocket-io Settings
+created: 20250122203757008
+creator: poc2go
+ioResult: 
+modified: 20250514044025629
+modifier: poc2go
+pocketIoSettings: addProjectToAll addProjectToNew
+tags: $:/tags/ControlPanel/SettingsTab
+title: $:/poc2go/pocket-io/settings
+type: text/vnd.tiddlywiki
+
+\define applySettings()
+<<pocket-io "applySettings">>
+\end
+
+\define applySettingsButton()
+<$button actions="<<applySettings>>"> Submit </$button>
+\end
+
+
+<$checkbox listField="pocketIoSettings" checked="addProjectToNew" default=""> Add pocket-io project management plugin to new wikis?</$checkbox><br />
+
+<$checkbox listField="pocketIoSettings" checked="addProjectToAll" default=""> Add pocket-io project management plugin to all wikis?</$checkbox><br />
+
+<$checkbox listField="pocketIoSettings" checked="addProjectToWiki" default=""> Add pocket-io project management plugin to this wiki?</$checkbox><br />
+
+<<applySettingsButton>>
+
+{{!!ioResult}}
+
+''settings:'' {{!!pocketIoSettings}}

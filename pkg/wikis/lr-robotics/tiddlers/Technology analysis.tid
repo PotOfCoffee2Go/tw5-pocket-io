@@ -1,0 +1,10 @@
+caption: Technology
+created: 20241003005959558
+modified: 20241009095536118
+tags: analysis
+title: Technology analysis
+type: text/vnd.tiddlywiki
+
+!! Technology
+
+<<tabs "[tag[analysis/tech]]" "" "$:/state/tabs/analysis/tech" "tc-horizontal">>

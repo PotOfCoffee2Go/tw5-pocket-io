@@ -1,0 +1,13 @@
+caption: Installation
+created: 20241023101225007
+creator: poc2go
+modified: 20250514022404880
+modifier: poc2go
+tags: 
+title: Installation Docs
+type: text/vnd.tiddlywiki
+
+{{$:/poc2go/pocket-io/ui/system}}
+{{$:/temp/pocket-io/system/projects}}
+
+<<tabs "[tag[docs]]" "Welcome Docs" "$:/state/tabs/docs" "tc-horizontal">>

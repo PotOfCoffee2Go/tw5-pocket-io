@@ -1,0 +1,24 @@
+caption: Swarms
+created: 20240930203357546
+modified: 20241009105634098
+tags: analysis/tech
+title: Swarms analysis tech
+type: text/vnd.tiddlywiki
+
+!! Swarms
+
+At the risk of over simplification ;
+
+Swarm behavior arises naturally by individuals mutually following three simple rules - called the Basic Behavior Model.
+
+ * separation: steer to avoid crowding local flockmates
+ * alignment: steer towards the average heading of local flockmates
+ * cohesion: steer to move toward the average position ('center of mass') of local flockmates
+
+> see [[WikipediA|https://en.wikipedia.org/wiki/Swarm_intelligence]] for more details.
+
+Values (biases) are applied to the rules which influence each individual's behavior. Attributes of the individual; such as accuracy, vision, minimum / maximum speed, etc. Environmental conditions also influence the results; such as temperature, drag, and noise.   
+
+
+
+<<tabs "[tag[analysis/tech/swarms]]" "" "$:/state/tabs/analysis/tech/swarms" "tc-horizontal">>

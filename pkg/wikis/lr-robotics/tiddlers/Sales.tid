@@ -1,0 +1,11 @@
+created: 20240930012109166
+modified: 20241001043039756
+tags: plan
+title: Sales
+type: text/vnd.tiddlywiki
+
+!! Sales
+
+How sales of hardware and services will actually happen and how they relate to financial projections.
+
+<<tabs "[tag[marketing]]" "" "$:/state/tabs/marketing" "tc-horizontal">>

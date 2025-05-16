@@ -1,0 +1,23 @@
+caption: Mission statement
+created: 20240929134332324
+modified: 20241008130338990
+tags: summary
+title: Mission statement summary
+type: text/vnd.tiddlywiki
+
+!! Mission statement
+
+LR Robotics is a service orientated company which provides hardware and software support based on customer requirements ranging from complete out-of-the-box systems to add on modules for customers existing data collection, robotics, and drones.
+
+The company can assemble and program academic, industrial, and military drones which autonomously interact real-time with each other to accomplish a pre-programmed task as a group. The company adds value to existing prefabricated components which can be assembled and tested by LR Robotics employees or the customer.
+
+The drone itself can be multi-rotor, fixed wing, boat, rover, submarine, etc. The drone must follow standards that allow control by the [[Pixhawk|https://holybro.com/products/pixhawk-6c?variant=43018722541757]] open-source autopilot module.
+
+The underlying communications systems can be used without the drone technologies allowing solutions to be implemented into stationary systems. This opens markets not interested in drone technologies. 
+
+All hardware and software is open source and available to customers upon request.
+
+Although is a family based startup, it is expected that the company will some day go public or be sold to an interested party.
+
+''LR Robotics adheres to a 'do no evil' policy.''
+

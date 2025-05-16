@@ -1,0 +1,12 @@
+caption: Products
+created: 20240929132918854
+modified: 20241001014646473
+tags: plan
+title: Product line
+type: text/vnd.tiddlywiki
+
+!! Product line
+
+Describes hardware that LR Robotics sells. Benefits to  customers and what the product lifecycle looks like. Plans for intellectual property, copyright, and patent filings. Research and development of future products.
+
+<<tabs "[tag[products]]" "" "$:/state/tabs/products" "tc-horizontal">>

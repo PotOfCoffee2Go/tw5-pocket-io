@@ -29,7 +29,7 @@ exports.config = {
 	//  given in the browser URL address.
 	//  if wiki does not exist in 'wikisDir' folder then the first wiki
 	//  read from disk becomes the default wiki
-	defaultWiki: 'Home',
+	defaultWiki: 'Welcome',
 
 	// Directory that contain all the 'server' edition
 	//  wikis in the network
@@ -75,20 +75,15 @@ exports.config = {
 			// public proxy port
 			port: 3000,
 			// wikis that are always public
-			wikis: [ 
-				'Home',
-				'notes'
-			],
+			wikis: [ 'Home', 'Welcome' ],
 		},
 
 		// The 'private' proxy allows only localhost access to wikis
 		private: {
-			 // private proxy port
+			// private proxy port
 			port: 4000,
 			// wikis that are always private
-			wikis: [
-				'codebase',
-			],
+			wikis: ['codebase'],
 		},
 	},
 
@@ -97,6 +92,12 @@ exports.config = {
 	// Make changes in the Node-Red settings.js file as usual
 	// The properties below will override settings in Node-Red settings.js
 	nodered: {
+		// Start up the Node-Red interface
+		// If false Node-Red will not be started
+		//   the wiki <<nodered 'topic' 'filter'>> macro 
+		//   will perform no actions
+		isEnabled: true,
+		
 		// Override flow editor default host & port
 		// Set uiHost to '127.0.0.1' to allow only the localhost to access
 		//  the flow editor
@@ -126,11 +127,11 @@ exports.config = {
 	// see https://tiddlywiki.com/static/WebServer%2520Basic%2520Authentication.html
 	// packageDir('credentials') directory is ignored in .gitignore
 	//  so will not be commited if using Git for version control
-	// The 'configCred.js' file in the package directory contains the
+	// The 'security.js' file in the package directory contains the
 	//  TiddlyWiki auth settings (which are OK to be commited)
 	credentials: {
 		// This file contains the User/Passwords
-		userInfoFile: packageDir('credentials/users.json'),
+		userPasswordFile: packageDir('credentials/users.json'),
 
 		// Directory of password CSV files used by webservers
 		// Default is in the tw5-node-red user directory '~/.tw5-node-red'

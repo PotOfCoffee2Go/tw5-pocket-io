@@ -1,27 +1,34 @@
 // Client acknowledges connect sequence is complete and ready
 //  for startup tiddlers from server
+//
+// Only send '$:/temp/' tiddlers or anonymous user will not work right!
 $tpi.fn.io.ackConnect = function (socket, info) {
 	const getInfo = (infoTitle) => info.tiddlers[infoTitle].text; 
 
 	const sendOnConnect = [
-		'[tag[$:/tags/pocket-io/broadcast]]',
-		'[[$:/themes/tiddlywiki/vanilla/options/sidebarlayout]]'
+//		'[tag[$:/tags/pocket-io/broadcast]]',
+//		'[[$:/themes/tiddlywiki/vanilla/options/sidebarlayout]]'
 	].join(' ');
 
 	var wikiName = getInfo('$:/info/url/pathname').replace('/','');
-	var wikiRequires = JSON.parse($twCodebase.wiki.getTiddlersAsJson(sendOnConnect));
+	// Remove trailing '/' - happens if empty hash ie: '/path/#'
+	if (wikiName[wikiName.length-1] === '/') {
+		wikiName = wikiName.substring(0, wikiName.length-1);
+	} 
+//	var wikiRequires = JSON.parse($twCodebase.wiki.getTiddlersAsJson(sendOnConnect));
 	// codebase already has required tiddlers
-	wikiRequires = wikiName === 'codebase' ? [] : wikiRequires;
+	var wikiRequires = wikiName === 'codebase' ? [] : [];
 
 	// Set modification date/time of 'Pocket-io System' tiddler
 	//  to when the client connected
+/*
 	for (let i = 0; i < wikiRequires.length; i++) {
 		if (wikiRequires[i].title === 'Pocket-io System') {
 			wikiRequires[i].modified = $rw.utils.stringifyDate(new Date());;
 			break;
 		}
 	}
-
+*/
 	// only show allowed wikis
 	var nameList = [];
 	var sameProxy = get$server(wikiName).isPublic;

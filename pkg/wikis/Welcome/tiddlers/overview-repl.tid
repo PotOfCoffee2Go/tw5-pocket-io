@@ -1,0 +1,17 @@
+caption: REPL Context
+created: 20250520084528272
+creator: poc2go
+modified: 20250520192535768
+modifier: poc2go
+title: overview-repl
+type: text/vnd.tiddlywiki
+
+All Websocket messages are sent to a ''REPL Context'' which holds all objects (WebServer $tw instances, config, settings, node-red instance, state, and status objects). 
+
+A REPL context is analogous to the 'window' or 'document' object in a browser, but is for Node.js. It contains a majority of Node.js modules and JavaScript functions (os, process, fs, path, etc) are already loaded.
+
+<$image source="overview-repl.png" />
+
+The TiddlyWiki ''$tw'' functions for each WebServer are added to the context.
+
+This allows server-side JavaScript code and Node-Red 'Function' node access to all components of the system. For example can copy tiddlers from the ''Home'' wiki to the ''Swarms'' wiki using $tw functions.

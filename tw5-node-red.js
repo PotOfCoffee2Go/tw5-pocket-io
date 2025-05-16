@@ -55,7 +55,7 @@ function replContext() {
 	$rt.context.$sockets = $sockets; // clients connected to server
 	$rt.context.$tpi = { fn: { io:{} }, topic: {}, repl: {} }; // tw5-pocket-io code
 
-	$rt.setPrompt(hue(os.hostname + ' ' + config.packageName + ' > ',214));
+	$rt.setPrompt(hue(config.packageName,111) + hue('@',109) + hue(os.hostname,111) + hue('> ',109));
 }
 $rt.on('reset', () => {
 	replContext();
@@ -83,10 +83,10 @@ function autoLoadCodeToRepl() {
 
 // Poxy servers startup
 async function startProxyServer() {
-	hog(`Startup proxies to webservers and Node-Red`, 156);
-	hog(` Public proxy '${publicServer.localName}' listening for requests:`,185);
+	hog(`Startup proxies to webservers`, 156);
+	hog(` Public proxy listening for requests:`,185);
 	await publicServer.proxyListen(serverSettings, $rt.context.$tpi);
-	hog(` Private proxy '${privateServer.localName}' listening for requests:`,185);
+	hog(` Private proxy listening for requests:`,185);
 	await privateServer.proxyListen(serverSettings, $rt.context.$tpi);
 	hog(`Proxy startup complete\n`, 156);
 	replMOTD();
@@ -112,14 +112,13 @@ function replMOTD() {
 // ---- Startup ----
 //Startup blurb
 hog(`Configuration summary`, 156);
-hog(` package ${col(13)}: ${config.pkg.name}\n` +
-	` domain ${col(13)}: ${config.domain}\n` +
-	` packageDir ${col(13)}: ${config.packageDir}\n` +
-	` wikidbsDir ${col(13)}: ${config.wikidbsDir}\n` +
-	` wikisDir ${col(13)}: ${config.wikisDir}\n` +
-	` flowFile ${col(13)}: ${config.nodered.flowFile}\n`, 40);
+hog(` package ${col(13)}: ${config.pkg.name}`,40);
+log(hue(` packageDir ${col(13)}: `,40) + config.packageDir);
+log(hue(` wikidbsDir ${col(13)}: `,40) + config.wikidbsDir);
+log(hue(` wikisDir ${col(13)}: `,40) + config.wikisDir);
+log(hue(` flowFile ${col(13)}: `,40) + config.nodered.flowFile);
 
-hog(`Startup database wikis`, 156);
+hog(`\nStartup database wikis`, 156);
 const $db = dataTwBoot(config.wikidbsDir);
 databaseStats($db);
 hog(`Database wikis startup complete\n`, 156);

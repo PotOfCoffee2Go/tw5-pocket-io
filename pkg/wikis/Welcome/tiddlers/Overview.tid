@@ -1,0 +1,18 @@
+closer: walkthru-close
+created: 20250520065537206
+creator: poc2go
+list: overview-client overview-http overview-websockets overview-repl overview-commands overview-codebase overview-nodered overview-tunnel overview-host
+modified: 20250521130003569
+modifier: poc2go
+title: Overview
+type: text/vnd.tiddlywiki
+
+See [[Welcome]] for brief instructions of system management.
+
+<<tabs "[list[!!closer]]" "" "$:/state/tab/overview-tabs">>
+
+<<tabs "[list[!!list]]" "overview-client" "$:/state/tab/overview-tabs">>
+
+<<tabs "[list[!!package]]" "" "$:/state/tab/overview-tabs">>
+
+@@color:aqua;border:1px solid aqua;border-radius:6px;font-size:.9em; &nbsp;  [[Top|Overview]] &nbsp; @@

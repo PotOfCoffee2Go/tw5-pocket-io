@@ -1,0 +1,25 @@
+caption: Single-board computer
+created: 20241003060119804
+modified: 20241009110511766
+tags: analysis/tech
+title: Microcomputers analysis tech
+type: text/vnd.tiddlywiki
+
+!! Single-board computer
+
+"A single-board computer (SBC) is a complete computer built on a single circuit board, with microprocessor(s), memory, input/output (I/O) and other features required of a functional computer. Single-board computers are commonly made as demonstration or development systems, for educational systems, or for use as embedded computer controllers. Many types of home computers or portable computers integrate all their functions onto a single printed circuit board." - [[single-board computer|https://en.wikipedia.org/wiki/Single-board_computer]]
+
+!! Benefits of microcomputers
+
+ * Affordability: Compared to larger systems like mainframes, microcomputers are far more affordable, making them accessible to a wider audience.
+ * Portability: Due to their compact size, microcomputers are easy to transport, allowing for mobile computing.
+ * User-friendliness: Microcomputers are designed with the end-user in mind, making them easy to use even for those with limited technical knowledge.
+ * Versatility: Microcomputers can perform a wide range of tasks, from word processing and internet browsing to complex mathematical calculations.
+
+!! Challenges of microcomputers
+
+ * Limited performance: While microcomputers are sufficient for individual use, they may not have the processing power to handle large-scale, complex computations.
+ * Limited durability: Due to their compact size and intricate design, microcomputers are often more susceptible to damage.
+ * Obsolescence: Technology is rapidly evolving, and microcomputers can quickly become outdated, requiring frequent upgrades or replacements.
+
+See [[ninjaone|https://www.ninjaone.com/it-hub/endpoint-management/what-is-a-microcomputer/]]

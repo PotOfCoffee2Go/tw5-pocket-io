@@ -1,0 +1,12 @@
+caption: Projections
+created: 20240929130535801
+modified: 20241001161156730
+tags: plan
+title: Projections
+type: text/vnd.tiddlywiki
+
+!! Projections
+
+Provides a prospective financial outlook for the next three years.
+
+<<tabs "[tag[projections]]" "" "$:/state/tabs/projections" "tc-horizontal">>

@@ -1,0 +1,46 @@
+caption: Change comm ports
+created: 20250521113452550
+creator: poc2go
+modified: 20250521120820405
+modifier: poc2go
+title: walkthru-ports
+type: text/vnd.tiddlywiki
+
+!!! Change communications ports
+
+By default:
+
+* wikis start on port 9000 and increment by one for each wiki
+* Public proxy is on port 3000
+* Private proxy is on port 4000
+
+The ports are set in the package ''config.js'' file. Look for the following properties (only showing the port entries) :
+
+The wiki (WebServer) starting port is at:
+
+```js
+	webserver: {
+		basePort: 9000,
+
+```
+
+The proxy server ports are at:
+
+```js
+	proxy: { 
+		public: {
+			// public proxy port
+			port: 3000,
+		},
+
+		private: {
+			// private proxy port
+			port: 4000,
+		},
+	},
+```
+
+Restart the system and the changed ports will take effect.
+
+> When 'facing the web' the public proxy port is used by internet tunnelling services. Would have to change the port there as well.
+

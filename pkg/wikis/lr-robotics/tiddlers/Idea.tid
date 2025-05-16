@@ -1,0 +1,24 @@
+created: 20240928161039984
+modified: 20241009105526928
+tags: $:/tabs/main
+title: Idea
+type: text/vnd.tiddlywiki
+
+!!! Gotta start on a shoe-string.
+
+The idea is to establish a company which can produce acedemic, industrial, and military drones which can autonomously interact real-time with each other to accomplish a pre-programmed task as a group. The company will purchase existing prefabricated components which can be easily assembled by LRUnit or the customer.
+
+The drone itself can be a multi-rotor, fixed wing, boat, rover, submarine, etc. The drone must follow standards that allow control by a PX4 open-source autopilot module. 
+
+!!! Service orientated
+
+Some profits will be realized by marking up the hardware. A majority of the profits will be by providing a ''Programming Service'' which custom tailors the drones to perform the task required by the customer.
+
+All software will be open-source - thus not 'locking' the customer into LRUnit for programming services. They can hire their own developers which have open-source access to the complete code base used by LRUnit.
+
+
+!!! Startup
+The startup concept is to expend as little as possible and be able to forfill orders by assembling the hardware in a 'garage' atmosphere. The hardware does not need to be purchased until the customer has committed to an order - keeping inventory to a minimum.
+
+The system is modular - customer orders a system; LRUnit then orders the hardware from manufacturers and assembles the system  which is delivered to the customer. The customer can realize labor cost savings if they assemble the systems themselves.
+

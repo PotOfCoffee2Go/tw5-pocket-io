@@ -1,0 +1,22 @@
+caption: Add Existing Wiki
+created: 20250519053324023
+creator: poc2go
+modified: 20250519102504205
+modifier: poc2go
+tags: 
+title: walkthru-existingwiki
+type: text/vnd.tiddlywiki
+
+!!! Add Existing Wiki
+
+To add an existing 'server' edition wiki to the network - copy the wiki folder (contains the 'tiddlywiki.info' file) into the package folder's 'wikis' sub-directory.
+
+Wiki directory names can not contain spaces - dashes and under-bars are fine. Spaces will be replaced with dashes.
+
+```
+npm start -- -c
+```
+
+The `-c` option will create the default credentials for the wiki.
+
+Browse to `http://localhost:3000/<copied-wiki-name>` to open the wiki.

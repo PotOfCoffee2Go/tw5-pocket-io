@@ -1,0 +1,18 @@
+caption: Behavior Model
+created: 20241004065209148
+modified: 20241005081158054
+tags: analysis/tech/swarms
+title: Behavior analysis tech swarms
+type: text/vnd.tiddlywiki
+
+!! Behavior Model
+
+All individuals react similarly to the Basic Behavior Model.
+
+Artificial individuals have been coined as bird androids - 'boids'. A flock or swarm occurs naturally when individuals react to the basic rules of separation, alignment, and cohesion. Artificial flocks are controlled by tweaking values of these rules and propagating to each boid in the flock.
+
+A single individual would fly aimlessly as the rules are only applicable when three or more individuals are in range of each other (a value normally called 'vision'). Individuals have no concept of a flock or swarm, that is a perception of an observer of the individuals as a group.
+
+As values change, they are transmitted to nearby individuals which in-turn broadcast a copy of the values to their nearby flockmates causing a 'ripple' effect through out the flock until all individuals have the updated values.
+
+In this manner the behavior of the swarm is modified to react in a certain way - changing the dynamics of the flock. 

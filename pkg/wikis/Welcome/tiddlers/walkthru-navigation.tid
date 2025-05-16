@@ -1,0 +1,21 @@
+caption: Navigation
+created: 20250518152824357
+creator: jane
+modified: 20250521105419127
+modifier: poc2go
+title: walkthru-navigation
+type: text/vnd.tiddlywiki
+
+!!! Navigation
+
+In a browser go to `http://localhost:3000/Welcome` which will bring up this wiki in the browser. The wiki is in the package 'wikis' sub-directory. Thus `http://localhost:3000/Swarms` is the 'Swarms' wiki in the 'wikis' sub-directory. (Names are case sensitive.)
+
+<$image source="navigate.png" width="90%"/>
+
+ # Home - Close current tiddlers and open the default tiddlers
+ # Hide/Show sidebar
+ # Wiki - link to this wiki
+ # Pocket-io - open 'Pocket-io System' tiddler with list of public wikis
+ # User - either a 'Login' link or logged in user name
+
+In the sidebar can click on #4 [[Pocket-io|Pocket-io System]] to see list of other wikis in the network.

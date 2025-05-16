@@ -1,0 +1,19 @@
+created: 20240929124456320
+modified: 20241001114351204
+tags: plan
+title: Executive summary
+type: text/vnd.tiddlywiki
+
+!! Executive summary
+
+<<image-basic "$:/favicon.ico" width:"20%" align:"left" caption:"" tooltip:"" alt:"">>
+
+This executive summary briefly describes LR Robotics, LLC and why it will be successful. 
+
+The summary contains the mission statement and is an overview of the company structure, leadership, and services it provides.
+
+The projected growth potential in providing robotic and swarm technologies for academic, commercial, and military industries is summarized.
+
+<p style="clear: both;"></p>
+
+<<tabs "[tag[summary]]" "" "$:/state/tabs/summary" "tc-horizontal">>

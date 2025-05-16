@@ -1,0 +1,11 @@
+created: 20240929130638946
+modified: 20240930002953153
+tags: plan
+title: Appendix
+type: text/vnd.tiddlywiki
+
+!! Appendix
+
+Supporting documents and materials. Licenses, permits, patents, legal documents.
+
+<<tabs "[tag[appendix]]" "" "$:/state/tabs/appendix" "tc-horizontal">>

@@ -1,0 +1,31 @@
+caption: Swarm controller
+created: 20240929134459903
+modified: 20241001013125072
+tags: products
+title: Swarm controller products
+type: text/vnd.tiddlywiki
+
+!! Swarm controller
+Real-time communications between drones is based on [[Raspberry Pi|https://www.raspberrypi.com/products/]] open source hardware.
+
+The Raspberry Pi micro controller model depends on customer requirements; physical size, weight, power consumption, operating temperature range, availability, software feature set, and cost are but a few factors to be considered.
+
+The hardware can range from the small [[Pico model line|https://www.raspberrypi.com/products/raspberry-pi-pico-2/]] to the full scale [[Raspberry Pi 5 mini computer|https://www.raspberrypi.com/products/raspberry-pi-5/]]. It would not be unusual for some drones to be using the Pi 5 as the brains of the outfit while the minion drones have Pico processors to perform the tasks.
+
+!!! Example
+<<image-basic "pico.png" width:"" align:"left" caption:"" tooltip:"" alt:"">>
+
+[[PICO Javascript software|https://github.com/kaluma-project/kaluma]] 
+
+[[Buy - Raspberry Pi Pico W - $6.00|https://www.canakit.com/raspberry-pi-pico-w.html?cid=usd&src=raspberrypi]]
+
+[[Pico WH|https://www.raspberrypi.com/products/raspberry-pi-pico/]]
+
+With a large on-chip memory, symmetric dual-core processor complex, deterministic
+bus fabric, and rich peripheral set augmented with a unique Programmable I/O (PIO)
+subsystem, RP2040 or RP2350 provides professional users with unrivalled power and flexibility.
+
+Offering detailed documentation and a UF2 bootloader in ROM. Pico is manufactured on a modern 40nm process node, delivering high performance, low dynamic power consumption, and low leakage, with a variety of low-power modes to support extended-duration operation on battery power.
+
+Raspberry Pi Pico W offers 2.4GHz 802.11 b/g/n wireless LAN support and Bluetooth
+5.2, with an on-board antenna, and modular compliance certification.

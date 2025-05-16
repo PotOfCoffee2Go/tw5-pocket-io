@@ -1,0 +1,28 @@
+caption: Simulation
+created: 20241001081509569
+modified: 20241005081517857
+tags: analysis/tech/swarms
+title: Simulation analysis tech swarms
+type: text/vnd.tiddlywiki
+
+!! Simulation
+
+> Thank you @cubedhuang (Daniel Huang) and @bernikr (Bernie) for sharing the simulation [[code|https://github.com/cubedhuang/boids/tree/main]].
+
+Scroll down the menu and can set the separation, alignment, and cohesion variables described above. Can also set other common variables which change the structure of the flocks.
+
+Holding down the left or right mouse button changes the 'center of mass' for all the flocks. The left button attracts the flocks while the right button repels.
+
+Click [[Boid Simulation|https://boids.cubedhuang.com/]] to play around with swarms in it's own browser tab.
+
+<$list filter="[[$:/state/sidebar]get[text]] +[else[yes]!match[no]]" variable="ignore">
+<$button set="$:/state/sidebar" setTo="no" tooltip={{$:/language/Buttons/HideSideBar/Hint}} aria-label={{$:/language/Buttons/HideSideBar/Caption}} class="tc-btn-invisible tc-hide-sidebar-btn">{{$:/core/images/chevron-right}}
+&nbsp; Expand
+</$button>
+</$list>
+<$list filter="[[$:/state/sidebar]get[text]] +[else[yes]match[no]]" variable="ignore">
+<$button set="$:/state/sidebar" setTo="yes" tooltip={{$:/language/Buttons/ShowSideBar/Hint}} aria-label={{$:/language/Buttons/ShowSideBar/Caption}} class="tc-btn-invisible tc-show-sidebar-btn">{{$:/core/images/chevron-left}}&nbsp; Show sidebar
+</$button>
+</$list>
+
+<iframe src="https://boids.cubedhuang.com/" style="width: 95%; height: 600px" />

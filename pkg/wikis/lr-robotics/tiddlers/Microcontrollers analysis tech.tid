@@ -1,0 +1,28 @@
+caption: Microcontrollers
+created: 20241003055409863
+modified: 20241008012208852
+tags: analysis/tech
+title: Microcontrollers analysis tech
+type: text/vnd.tiddlywiki
+
+!! Microcontrollers
+
+There are many microcontrollers on the market designed to meet differing application requirements.
+
+Safety-critical circuits, industrial control systems, SMPS and power regulation systems, and analog signal analysis.
+
+Networked and internet connected devices, prototype IoT devices, low power circuits, and systems  requiring interfaces with WiFi and Bluetooth.
+
+Automobiles, medical devices, consumer appliances, communication systems, robotics, industrial control systems, radio and networking equipment, and
+remote sensing.
+
+Industrial automation, home automation, infrastructure metering networks, portable test equipment, health and medical electronics, and consumer electronics
+
+Motor control, small electronics, drones, remote controlled vehicles, robots, and sensor networks.
+
+Industrial PLC controllers, printers and scanners, security systems, video surveillance systems, HVAC systems, power meters, motor drivers, and PC peripherals.
+
+Low power devices, IoT, and security systems
+
+[[circuitbasics|https://www.circuitbasics.com/introduction-to-microcontrolleres/]]
+

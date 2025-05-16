@@ -1,0 +1,11 @@
+created: 20240929130414273
+modified: 20240930011749378
+tags: plan
+title: Funding
+type: text/vnd.tiddlywiki
+
+!! Funding
+
+Outline of funding requirements over the next three years and what funds will be used for.
+
+<<tabs "[tag[funding]]" "" "$:/state/tabs/funding" "tc-horizontal">>

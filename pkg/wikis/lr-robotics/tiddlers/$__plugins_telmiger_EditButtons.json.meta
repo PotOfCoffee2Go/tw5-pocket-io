@@ -1,0 +1,14 @@
+author: Thomas Elmiger
+core-version: >=5.1.22
+created: 20170915193325438
+dependents: 
+description: Save & close / Cancel & close / Save & keep open
+list: readme settings history license support
+modified: 20231227225152456
+name: Edit Buttons
+packaged-by: Gatha on 28th December 2023, 00:11:13
+plugin-type: plugin
+source: https://tid.li/tw5/plugins.html
+title: $:/plugins/telmiger/EditButtons
+type: application/json
+version: 1.1.0

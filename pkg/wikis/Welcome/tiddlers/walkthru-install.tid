@@ -1,0 +1,28 @@
+caption: Install
+created: 20250518140751599
+creator: jane
+modified: 20250521112509614
+modifier: poc2go
+tags: 
+title: walkthru-install
+type: text/vnd.tiddlywiki
+
+!!! Install
+
+Install tw5-node-red into directory 'my-wikis' or any name you wish (without spaces). This directory is called the '''package''' directory in the documentation.
+
+```
+git clone git@github.com:PotOfCoffee2Go/tw5-node-red.git my-wikis
+cd my-wikis
+npm install
+```
+
+The initial 'npm start' will create a NPM package in 'my-wikis' folder. 
+
+```
+npm start
+```
+
+The folder will contain default package.json, configuration, credentials, Node-Red flow file, and sample wikis.
+
+> Ports 9000-9005, 3000, and 4000 are used by the system. If ports are already in use will get an error. See [[config.js|walkthru-config]] to change ports used.

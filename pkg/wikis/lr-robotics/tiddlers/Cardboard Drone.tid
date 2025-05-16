@@ -1,0 +1,20 @@
+caption: Drone
+created: 20240928131140170
+modified: 20240928171549903
+tags: $:/tabs/main
+title: Cardboard Drone
+type: text/vnd.tiddlywiki
+
+<<image-basic "drone.png" width:"" align:"left" caption:"" tooltip:"" alt:"">>
+
+!!! Initial Target Application
+
+Made in Australia, customers include militaries, government agencies, research institutions and private organisations, all of whom wish to evaluate, test and train against the drone threat. 
+
+“We have reached the stage where drones have quickly evolved to become one of the nastiest threats on the battlefield,” said Dr Alexander Hall, aeronautical engineer and Chief Technology Officer of Boresight. “This applies to drones by themselves and in ''swarms'', for surveillance and reconnaissance, and for payload delivery. 
+
+> quoted from [[“cardboard drones” autonomous systems|https://createdigital.org.au/cardboard-drones-future-autonomous-systems/]]
+
+Each drone arrives in size of a pizza delivery box. A 20 drone package includes a cheap android tablet used to program the drones with the height and GPS flight path.
+
+A drone with only motor, sensors, and wiring is $700.00 (unconfirmed) - not sure if includes battery.

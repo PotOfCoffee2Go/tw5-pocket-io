@@ -1,0 +1,12 @@
+caption: Specialization
+created: 20241004084706122
+modified: 20241004084816465
+tags: analysis/tech/swarms
+title: Specialization analysis tech swarms
+type: text/vnd.tiddlywiki
+
+!! Specialization
+
+Added to the basic behavior model are rules for certain individuals to perform specific tasks. As an example : Let's say there are red, blue, and green individuals. The red ones determine the flight path using GPS (broadcast variables that change the flock 'center of mass'), the blue ones carry the payloads to be delivered, while the green ones perform surveillance with cameras to have a record of events as they unfold.
+
+Thus individuals are outfitted with the sensors and payloads required to perform specific tasks for the flock to complete the desired goals.

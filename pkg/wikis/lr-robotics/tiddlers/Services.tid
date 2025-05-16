@@ -1,0 +1,11 @@
+created: 20240929130129967
+modified: 20241001032501034
+tags: plan
+title: Services
+type: text/vnd.tiddlywiki
+
+!! Services
+
+LR Robotics is a service oriented organization and expects to provide customers with expertise in micro-controller and swarm drone technologies.
+
+<<tabs "[tag[services]]" "" "$:/state/tabs/services" "tc-horizontal">>

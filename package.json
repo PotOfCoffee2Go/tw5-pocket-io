@@ -13,7 +13,6 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "http-proxy": "github:PotOfCoffee2Go/node-http-proxy",
-    "jsonwebtoken": "^9.0.2",
     "node-red": "^4.0.9",
     "pocket.io": "github:PotOfCoffee2Go/pocket.io",
     "tiddlywiki": "^5.3.6",

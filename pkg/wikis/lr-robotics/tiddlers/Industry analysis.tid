@@ -1,0 +1,20 @@
+caption: Industry
+created: 20240929152441857
+modified: 20241010060118047
+tags: analysis
+title: Industry analysis
+type: text/vnd.tiddlywiki
+
+!! Industry
+
+Drone swarms are relatively new technologies. Recent progress in AI research, global communications networks,  low power micro-controllers, Internet of Things (IOT), 3D printing, enhanced sensor capabilities all lead to making autonomous systems a cost effective reality.
+
+!!! U.S. Microcontroller Market Size & Trends
+
+"The U.S. microcontroller market size was estimated at USD 4.508.6 million in 2023 and is projected to grow at a [[CAGR|https://www.investopedia.com/terms/c/cagr.asp]] of 10.6% from 2024 to 2030. The increasing adoption of microcontroller units (MCUs) in smart meters and the growing demand for MCUs in automotive and medical applications are some of the key factors driving the growth of the market. Microcontrollers find numerous applications in automotive, industrial electronics, telecommunications, healthcare, and consumer electronics, among other industries and industry verticals thereby fueling market growth.
+" - [[grandviewresearch|https://www.grandviewresearch.com/industry-analysis/us-microcontroller-market-report]] (highly recommend)
+
+<<image-basic "controller-market.png" width:"100%" align:"left" caption:"" tooltip:"" alt:"">>
+
+<<tabs "[tag[analysis-industry]]" "" "$:/state/tabs/analysis/industry" "tc-horizontal">>
+
