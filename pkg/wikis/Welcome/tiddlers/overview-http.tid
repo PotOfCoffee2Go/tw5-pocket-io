@@ -1,23 +1,23 @@
 caption: HTTP Access
 created: 20250520071712183
 creator: poc2go
-modified: 20250520082435740
+modified: 20250523111128527
 modifier: poc2go
 title: overview-http
 type: text/vnd.tiddlywiki
 
 The system allows :
 
-* Access to multiple TW Webservers via a single port
+* Access to multiple TW Webservers via a single comm port
 
 <$image source="overview-http.png" />
 
-The public proxy allows devices on the local network to access multiple TW WebServers. The browser address to the 'Home' wiki is `http://hostname:3000/Home`. While access to the 'Swarms' wiki is `http://hostname:3000/Swarms`
+The public proxy allows devices on the local network to access multiple TW WebServers using the same port. The browser address to the 'Home' wiki is `http://hostname:3000/Home` while access to the 'Swarms' wiki is `http://hostname:3000/Swarms`. The name of the wiki is the only difference.
 
 * 'hostname' is the name of the machine running the system
 
-The private proxy can only be accessed by 'localhost'. In the diagram there is only a single wiki `http://localhost:4000/codebase` is on the private proxy.
+The private proxy can only be accessed by 'localhost'. In the diagram there is only a single wiki `http://localhost:4000/codebase` on the private proxy.
 
-Although only showing three public wikis and a single private wiki, you can configure as many wikis as desired in your network.
+Although only showing three public wikis and a single private wiki, you can configure as many public/private wikis as desired in your network.
 
 

@@ -1,0 +1,74 @@
+{
+	"id": "8adf8de645b60e16",
+	"type": "subflow",
+	"name": "TW client in",
+	"info": "",
+	"category": "tiddlywiki",
+	"in": [],
+	"out": [
+		{
+			"x": 320,
+			"y": 80,
+			"wires": [
+				{
+					"id": "c423533ded980b73",
+					"port": 0
+				}
+			]
+		}
+	],
+	"env": [],
+	"meta": {
+		"module": "tw5-client-in",
+		"type": "twiki-in",
+		"version": "1.0.0",
+		"author": "PotOfCoffee2Go",
+		"desc": "Inbound messages from TiddlyWiki",
+		"keywords": "TiddlyWiki,Node-Red",
+		"license": "MIT"
+	},
+	"color": "#C0DEED",
+	"icon": "tw5-nodes/networkdown.svg",
+	"status": {
+		"x": 320,
+		"y": 140,
+		"wires": [
+			{
+				"id": "cadd7bb71eeb7243",
+				"port": 0
+			}
+		]
+	},
+	"flow": [
+		{
+			"id": "c423533ded980b73",
+			"type": "function",
+			"z": "8adf8de645b60e16",
+			"name": "From TW Webserver",
+			"func": "// see 'On Start' tab for implementation\nreturn msg;",
+			"outputs": 1,
+			"timeout": 0,
+			"noerr": 0,
+			"initialize": "// Code added here will be run once\n// whenever the node is started.\nconst $nrMsgNodes = global.get('$nrMsgNodes');\nconst index = $nrMsgNodes.findIndex((element) => element.id === node.id);\n\nif (index > -1) {\n    $nrMsgNodes.splice(index, 1);\n}\n\n$nrMsgNodes.push(node);\n",
+			"finalize": "",
+			"libs": [],
+			"x": 180,
+			"y": 80,
+			"wires": [
+				[]
+			]
+		},
+		{
+			"id": "cadd7bb71eeb7243",
+			"type": "status",
+			"z": "8adf8de645b60e16",
+			"name": "",
+			"scope": null,
+			"x": 140,
+			"y": 140,
+			"wires": [
+				[]
+			]
+		}
+	]
+}

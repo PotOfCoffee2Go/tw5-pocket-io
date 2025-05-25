@@ -1,0 +1,143 @@
+{
+	"id": "295b59907f0d97d2",
+	"type": "subflow",
+	"name": "read wiki",
+	"info": "Read tiddlers from a wiki. Normally uses the `msg.wikiname` and `msg.twfilter` fields.\r\n\r\n",
+	"category": "tiddlywiki",
+	"in": [
+		{
+			"x": 80,
+			"y": 80,
+			"wires": [
+				{
+					"id": "b7e1909b4d67f4cf"
+				}
+			]
+		}
+	],
+	"out": [
+		{
+			"x": 400,
+			"y": 80,
+			"wires": [
+				{
+					"id": "b7e1909b4d67f4cf",
+					"port": 0
+				}
+			]
+		}
+	],
+	"env": [
+		{
+			"name": "tw_msg_overrides",
+			"type": "bool",
+			"value": "true",
+			"ui": {
+				"label": {
+					"en-US": "Use msg.wikiname / msg.twfilter"
+				},
+				"type": "checkbox"
+			}
+		},
+		{
+			"name": "tw_wikiname",
+			"type": "str",
+			"value": "",
+			"ui": {
+				"icon": "font-awesome/fa-bookmark-o",
+				"label": {
+					"en-US": "Default wiki"
+				},
+				"type": "input",
+				"opts": {
+					"types": [
+						"str",
+						"num",
+						"bool",
+						"json",
+						"bin",
+						"env",
+						"conf-types"
+					]
+				}
+			}
+		},
+		{
+			"name": "tw_filter",
+			"type": "str",
+			"value": "",
+			"ui": {
+				"icon": "font-awesome/fa-filter",
+				"label": {
+					"en-US": "Default filter"
+				},
+				"type": "input",
+				"opts": {
+					"types": [
+						"str",
+						"num",
+						"bool",
+						"json",
+						"bin",
+						"env",
+						"conf-types"
+					]
+				}
+			}
+		}
+	],
+	"meta": {
+		"module": "tw5-wiki-read",
+		"type": "twiki-read",
+		"version": "1.0.0",
+		"author": "PotOfCoffee2Go",
+		"desc": "Read tiddlers from a TiddlyWiki",
+		"keywords": "TiddlyWiki,Node-Red",
+		"license": "MIT"
+	},
+	"color": "#A6BBCF",
+	"icon": "tw5-nodes/read-wiki.png",
+	"status": {
+		"x": 400,
+		"y": 140,
+		"wires": [
+			{
+				"id": "e81be91656e745fa",
+				"port": 0
+			}
+		]
+	},
+	"flows": [
+		{
+			"id": "b7e1909b4d67f4cf",
+			"type": "function",
+			"z": "295b59907f0d97d2",
+			"name": "read tiddlers from wiki",
+			"func": "const repl = global.get('repl');\n\nvar wikiname = msg.wikiname || env.get('tw_wikiname');\nvar twfilter = msg.twfilter || env.get('tw_filter');\n\nif (!wikiname || !twfilter) {\n    node.error(`Need both wikiname and twfilter`);\n    node.done();\n    return;\n}\n\nvar isDb = false;\nvar $tw = repl.get$tw(wikiname);\nif (!$tw) {\n    $tw = repl.get$db(wikiname);\n    isDb = true;\n}\n\nif (!$tw) {\n    node.error(`Wiki ${wikiname} is not found`);\n    node.done();\n    return;\n}\n\nmsg.payload = JSON.parse($tw.wiki.getTiddlersAsJson(twfilter));\nnode.status(`'${wikiname}' ${msg.payload.length} tiddlers read`);\nreturn msg;\n",
+			"outputs": 1,
+			"timeout": 0,
+			"noerr": 0,
+			"initialize": "",
+			"finalize": "",
+			"libs": [],
+			"x": 240,
+			"y": 80,
+			"wires": [
+				[]
+			]
+		},
+		{
+			"id": "e81be91656e745fa",
+			"type": "status",
+			"z": "295b59907f0d97d2",
+			"name": "",
+			"scope": null,
+			"x": 120,
+			"y": 140,
+			"wires": [
+				[]
+			]
+		}
+	]
+}
+

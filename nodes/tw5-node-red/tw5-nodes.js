@@ -1,3 +1,1 @@
-module.exports = function(RED) {
-// stub needed to install
-}
+module.exports = function(RED) {}

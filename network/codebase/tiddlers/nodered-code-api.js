@@ -1,7 +1,7 @@
 const $AdminApi = function () {
 	var self = this;
 	this.url = $nr.settings.link.admin;
-
+	
 	this.getHeaders = {
 		'User-Agent': 'tw5-node-red',
 		'Node-RED-API-Version' : 'v2',
@@ -65,6 +65,23 @@ const $AdminApi = function () {
 	}
 	this.delete = function (endpoint) {
 		return adminGet(endpoint, 'DELETE');
+	}
+
+	this.login = function (username, password) {
+		return new Promise((resolve, reject) => {
+			adminGet('/auth/login')
+			.then(data => {
+				if (Object.keys(data).length === 0) {
+					resolve(data);
+				} else {
+					this.getToken(username, password)
+					.then(tokenInfo => {
+						resolve(tokenInfo);
+					})
+				}
+			})
+			.catch(err => { reject(err) });
+		})
 	}
 
 	// Fetch access token and add to headers

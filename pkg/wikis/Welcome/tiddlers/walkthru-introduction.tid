@@ -1,0 +1,128 @@
+caption: Introduction
+created: 20250523231441639
+creator: poc2go
+modified: 20250524202428721
+modifier: poc2go
+title: walkthru-introduction
+type: text/vnd.tiddlywiki
+
+!!! Introduction
+
+The TW5-Node-Red system provides:
+
+* Client interface is Tiddlywiki 'server' edition WebServer
+** Keeps server-side wiki and client-side in sync
+** Extensive and mature framework to build custom web applications
+
+* Host multiple TiddlyWiki Webservers through a single communications port.
+** Hosting multiple wikis is fundamental to the system
+** Local network devices can access public wikis
+
+* Public and Private wikis
+** Public wikis can be accessed by devices on the local network
+** Private wikis are only accessible by 'localhost'
+
+* Adding public wikis to the network
+** No JavaScript experience required to add a wiki
+** Just copy your 'server' edition wiki into the 'wikis' sub-directory
+** or create a wiki the old fashion way
+** `tiddlywiki wikis/my-wiki --init server`
+** Restart the server
+
+* Security
+** TiddlyWiki user/permission credentials automatically implemented for all wikis
+** Security settings are configurable
+*** Default for new wikis added to network
+*** Specific permissions by wiki - readers/writers/admin
+*** Allow anonymous or require user login
+
+* Face the web
+** Expand public wiki access to include the internet
+** No requirement to change internet router or firewall settings
+*** //Disclaimer: Windows OS local firewall may require a change// 
+** Successfully tested using internet tunnel providers
+*** [[Ngrok|https://ngrok.com/]], [[pinggy|https://pinggy.io/]], [[localxpose|https://localxpose.io/]], [[localtunnel|https://theboroer.github.io/localtunnel-www/]] to name a few
+** IMPORTANT TIP!
+*** The internet is an untrusted, dangerous place
+*** Many guard dogs are protecting your connection
+*** However, new and exciting vulnerabilities occur quite often
+*** Keep the software current and up-to-date!
+
+* Node-Red is an optional add-on
+** No need to install Node-Red unless being used
+** A configuration setting can disable the Node-Red interface
+
+* NPM package built on initial startup
+** Contains all resources
+*** Wikis, config, JavaScript, Node-Red flows, static content, credentials
+** Edit ''package.json'' to personalise your system
+** `git init` to enable version control
+*** A template .gitignore already provided
+** Add any dependencies you require for custom JavaScript
+** Upstream to GitHub, BitBucket, etc
+** Can share using a public repository or by publishing the NPM package
+
+* Building of server-side applications
+** Native JavaScript
+*** Stored in wikis as JavaScript tiddlers
+*** Code is minified and uploaded to server on startup
+*** Edit code using TiddlyWiki and/or an IDE/editor
+** Node-Red flows
+*** Use Node-Red 'low code' programming paradigm
+*** Stored in Node-Red flow files
+*** Editing is through the Node-Red Flow Editor
+
+* JavaScript and Node-Red ''function'' nodes have full access
+** `$tw` instances of each wiki in network
+*** Allows use of tiddlywiki $tw, $tw.wiki, $tw.utils, etc
+** Built-in functions provide access to all system objects
+*** Config, settings, wikis, proxies, routes, connected clients, etc.
+** Most Node.js modules (os, process, fs, path, etc) already loaded
+
+* Command prompt
+** Dynamically access all system functions and objects
+** Invaluable debugging tool
+** Includes an in-memory TiddlyWiki as a workspace
+
+* TiddlyWiki Databases
+** Wikis with the specific purpose of storing tiddlers as records
+** Implement database structure using TiddlyWiki tags
+** Query language is TiddlyWiki filters
+** Can only be accessed using JavaScript or Node-Red
+*** That being said, it is a TiddlyWiki - so can manually
+*** `tiddlywiki MyDatabase --listen` to access the wiki with browser
+
+* Tolerant of system re-starts (bouncing)
+** Clients temporarily disconnect
+*** Reconnect seamlessly
+*** Any wiki updates will be applied when system recovers
+** Can force a hard shutdown from the command prompt
+*** Disconnects all clients - displaying a shutdown alert
+*** Clients will need to reload page (wiki) when system recovers
+*** Any changes after the alert will be lost
+**** All sorts of WebServer errors will popup - very noticeable
+
+* Lightweight and portable hosting
+** Is surprisingly lightweight
+** Tested on Raspberry Pi Zero, 4B+, RPI 5
+*** The RPI Zero is about the the size of a stick drive
+** Windows 10/11 and various Linux systems (Ubuntu, Mint, Debian)
+** Android using Termux - my favorite
+** I don't have a Mac ;( - but it should work
+
+* No TiddlyWiki or Node-Red code was harmed in making of TW5-Node-Red
+** Expressjs, TiddlyWiki, and Node-Red are used out-of-box
+** Release and upgrade tolerant
+** For some older modules being used, I fixed vulnerabilities
+*** Goal is to maintain zero vulnerabilities on install
+
+<hr class="poc2go-hr">
+
+<p style="margin-left:145px;">
+
+<$image source="overview-tunnel.png" />
+
+</p>
+
+<$image source="overview-http.png" />
+

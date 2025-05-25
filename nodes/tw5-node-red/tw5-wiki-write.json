@@ -1,0 +1,118 @@
+{
+	"id": "489223c003015b3f",
+	"type": "subflow",
+	"name": "write wiki",
+	"info": "",
+	"category": "tiddlywiki",
+	"in": [
+		{
+			"x": 80,
+			"y": 80,
+			"wires": [
+				{
+					"id": "6801d4530f3d9135"
+				}
+			]
+		}
+	],
+	"out": [
+		{
+			"x": 380,
+			"y": 80,
+			"wires": [
+				{
+					"id": "6801d4530f3d9135",
+					"port": 0
+				}
+			]
+		}
+	],
+	"env": [
+		{
+			"name": "tw_msg_overrides",
+			"type": "bool",
+			"value": "true",
+			"ui": {
+				"label": {
+					"en-US": "Use msg.wikiname"
+				},
+				"type": "checkbox"
+			}
+		},
+		{
+			"name": "tw_wikiname",
+			"type": "str",
+			"value": "",
+			"ui": {
+				"label": {
+					"en-US": "Default wikiname"
+				},
+				"type": "input",
+				"opts": {
+					"types": [
+						"str",
+						"num",
+						"bool",
+						"json",
+						"bin",
+						"env",
+						"conf-types"
+					]
+				}
+			}
+		}
+	],
+	"meta": {
+		"module": "tw5-wiki-write",
+		"type": "twiki-write",
+		"version": "1.0.0",
+		"author": "PotOfCoffee2Go",
+		"desc": "Write tiddlers to a TiddlyWiki",
+		"keywords": "TiddlyWiki,Node-Red",
+		"license": "MIT"
+	},
+	"color": "#A6BBCF",
+	"icon": "tw5-nodes/write-wiki.png",
+	"status": {
+		"x": 380,
+		"y": 140,
+		"wires": [
+			{
+				"id": "24783140a82cde75",
+				"port": 0
+			}
+		]
+	},
+	"flow": [
+		{
+			"id": "6801d4530f3d9135",
+			"type": "function",
+			"z": "489223c003015b3f",
+			"name": "write tiddlers to wiki",
+			"func": "const repl = global.get('repl');\n\nvar wikiname = msg.wikiname || env.get('tw_wikiname');\n\nif (!wikiname) {\n\tnode.error(`Need wikiname to write`);\n\tnode.done();\n\treturn;\n}\n\nconst $tw = repl.get$tw(wikiname);\nif (!$tw) {\n    node.error(`Wiki ${wikiname} is not found`);\n    node.done();\n    return;\n}\n\nmsg.payload = repl.$nrParser(msg.payload);\n\nmsg.payload.forEach(tid => {\n\t// copy so not delete ioToStory on the original\n\tvar tiddler = Object.assign({},tid); \n\tdelete tiddler.ioToStory;\n\trepl.ins$tw(wikiname, tiddler);\n})\n\nrepl.$refreshClients(wikiname);\n\nnode.status(`${msg.payload.length} tiddlers written`);\nreturn msg;\n",
+			"outputs": 1,
+			"timeout": 0,
+			"noerr": 0,
+			"initialize": "",
+			"finalize": "",
+			"libs": [],
+			"x": 230,
+			"y": 80,
+			"wires": [
+				[]
+			]
+		},
+		{
+			"id": "24783140a82cde75",
+			"type": "status",
+			"z": "489223c003015b3f",
+			"name": "",
+			"scope": null,
+			"x": 120,
+			"y": 140,
+			"wires": [
+				[]
+			]
+		}
+	]
+}

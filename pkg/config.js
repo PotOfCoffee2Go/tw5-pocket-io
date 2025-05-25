@@ -40,13 +40,6 @@ exports.config = {
 	//  are 'records' that are accessed using TW filters
 	wikidbsDir: packageDir('dbs'),
 
-	// Automatically startup Node-Red
-	// Many server-side actions (topics) are done by Node-Red
-	//   recommend to set to 'true'
-	// If Node-Red is not auto started, can {up-arrow} at tw5-node-red
-	//  console prompt (or type) 'const $nr = new $NodeRed'
-	autoStartNodeRed: true,
-
 	// Webservers are launched for each 'server' editon wiki in 'wikisDir:'
 	// Access is performed thru the proxies (see 'proxy:' below)
 	// Starting on port basePort and increments by one for each webserver
@@ -97,20 +90,14 @@ exports.config = {
 		//   the wiki <<nodered 'topic' 'filter'>> macro 
 		//   will perform no actions
 		isEnabled: true,
-		
-		// Override flow editor default host & port
-		// Set uiHost to '127.0.0.1' to allow only the localhost to access
-		//  the flow editor
-		// uiHost: '0.0.0.0',
-		// uiPort: 1889,
 
+		// Node-Red flowFile
+		flowFile: packageDir('flows/tiddlywiki.json'),
+		
 		// Node-Red user directory
 		//  which contains the node-red 'settings.js' file
 		// '.node-red' is default for Node-Red
 		userDir: path.join(os.homedir(), '.node-red'),
-
-		// Node-Red flowFile
-		flowFile: packageDir('flows/tiddlywiki.json'),
 
 		// Allow 'global' variables to be displayed in flow editor
 		//  the default is false - handy to see JavaScript functions
@@ -120,6 +107,10 @@ exports.config = {
 		// URL path to Node-Red flow editor and http nodes
 		httpAdminRoot: '/red',
 		httpNodeRoot:  '/api',
+
+		// Override flow editor default host & port
+		// uiHost: '0.0.0.0',
+		// uiPort: 1880,
 	},
 
 	// TiddlyWiki Webserver user/password credentials

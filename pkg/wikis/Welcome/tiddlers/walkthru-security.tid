@@ -2,7 +2,7 @@ caption: Users & Security
 created: 20250519061316216
 creator: poc2go
 list: walkthru-users walkthru-credentials
-modified: 20250519102606816
+modified: 20250523011017342
 modifier: poc2go
 tags: 
 title: walkthru-security
@@ -10,5 +10,9 @@ type: text/vnd.tiddlywiki
 
 !!! Users & Security
 
-<<tabs "[list[walkthru-security!!list]]" "walkthru-users" "$:/state/tab/walkthru-security-tabs">>
+TW5-Node-Red applies TiddlyWiki credentials for every wiki in the network. On initial install a user 'owner' with password 'pwned' has admin access to all wikis. 
+
+> You should change all occurances of 'owner' to a login that is your preference in both ''users.json'' and ''security.js'' and remove the demo users.
+
+<<tabs "[list[walkthru-security!!list]]" "" "$:/state/tab/walkthru-security-tabs">>
 

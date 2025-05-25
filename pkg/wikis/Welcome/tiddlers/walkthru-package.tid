@@ -1,7 +1,7 @@
 caption: Package
 created: 20250519101515376
 creator: poc2go
-modified: 20250521112016438
+modified: 20250522231724706
 modifier: poc2go
 title: walkthru-package
 type: text/vnd.tiddlywiki
@@ -10,9 +10,7 @@ type: text/vnd.tiddlywiki
 
 The first 'npm start' after an initial install will build a NPM package in the directory the system was installed. This directory is called the '''package''' directory in the documentation.
 
-All of your server resources; TiddlyWikis, Node-Red flow files, static content, node_modules, and such will be in this ''package'' directory and it's sub-directories.   
-
-There will be a default ''config.js'' and ''security.js'' which contain the system configuration and wiki credentials.
+All of your server resources; TiddlyWikis, Node-Red flow files, static content, user login/permissions, node_modules, and such will be in this ''package'' directory and it's sub-directories. When performing terminal window commands will want change directory ('cd') to the package directory.
 
 A template ''package.json'' file is ready for you to edit describing your system. Edit this file at your convenience. 
 

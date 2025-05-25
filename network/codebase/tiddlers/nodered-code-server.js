@@ -18,9 +18,9 @@ const $NodeRed = function () {
 	this.settings = require(this.nodered.userDir + '/settings.js');
 
 	this.nodered.link = {
-		admin: `http://${$config.domain}:${this.settings.uiPort || 1880}` +
+		admin: `${$config.privateName}:${this.settings.uiPort || 1880}` +
 		`${this.nodered.httpAdminRoot}`,
-		node: `http://${$config.domain}:${this.settings.uiPort || 1880}` +
+		node: `${$config.privateName}:${this.settings.uiPort || 1880}` +
 		`${this.nodered.httpNodeRoot}`
 	}
 
@@ -59,6 +59,25 @@ const $NodeRed = function () {
 	this.settings.editorTheme.login = {
 		image: path.resolve(this.programDir, 'public/images/system/tw5-node-red-login.png')
 	};
+	
+	this.settings.editorTheme.theme = this.settings.editorTheme.theme || 'dark';
+	
+	this.settings.editorTheme.palette = this.settings.editorTheme.palette || {};
+	this.settings.editorTheme.palette.categories = this.settings.editorTheme.palette.categories || ['subflows', 'common', 'function', 'tiddlywiki'];
+
+	this.settings.editorTheme.codeEditor = this.settings.editorTheme.codeEditor || {};
+	this.settings.editorTheme.codeEditor.options = this.settings.editorTheme.codeEditor.options || {};
+	this.settings.editorTheme.codeEditor.options.theme = this.settings.editorTheme.codeEditor.options.theme || 'dracula';
+
+	this.settings.editorTheme.library = this.settings.editorTheme.library || {};
+	this.settings.editorTheme.library.sources = this.settings.editorTheme.library.sources || [];
+	this.settings.editorTheme.library.sources.push({
+		id: "tw5-node-red-library",
+		type: "node-red-library-file-store",
+		path: `${$config.flowsDir}/library/`,
+		label: "TW5-Node-Red Library",
+		icon: "font-awesome/fa-users"
+	});
 
 	// Initialise the Node-Red runtime to this server
 	// Serve the Node-Red editor UI

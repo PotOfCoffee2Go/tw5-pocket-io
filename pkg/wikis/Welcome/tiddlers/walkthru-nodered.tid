@@ -1,16 +1,16 @@
 caption: Node-Red
 created: 20250520042224438
 creator: poc2go
-modified: 20250521111805036
+modified: 20250523230648548
 modifier: poc2go
 title: walkthru-nodered
 type: text/vnd.tiddlywiki
 
 !!! Node-Red
 
-Node-Red is an add-on to the system and is not required if using tw5-node-red to just host TiddlyWikis. Node-Red allows you to build server-side 'low-code' applications which can be utilised by your client TiddlyWikis. In the package directory ''config.js'' file:
+Node-Red is an add-on to the system and is not required if using tw5-node-red to only host TiddlyWikis. Node-Red allows you to build server-side 'low-code' applications which can be utilised by your client TiddlyWikis. In the package directory ''config.js'' file:
 
-```
+```js
 	nodered: {
 		// Start up the Node-Red interface
 		// If false Node-Red will not be started
@@ -19,8 +19,10 @@ Node-Red is an add-on to the system and is not required if using tw5-node-red to
 		isEnabled: true,
 ```
 
-Set to ''false'' if not using Node-Red. Of course, Node-Red would not need to be installed.
+Set to ''false'' if not using Node-Red. Node-Red would not need to be installed.
 
+<hr class="poc2go-hr">
+&nbsp;
 <hr class="poc2go-hr">
 
 TW5-Node-Red uses the installed Node-Red settings. To install Node-Red follow the directions at https://nodered.org/docs/getting-started/local. Node-Red needs to have been started up once in order for it to build it's configuration files and ensures Node-Red installed properly.
@@ -29,7 +31,7 @@ It is highly recommended that you familiarise yourself with Node-Red, kick the t
 
 When TW5-Node-Red is started it will launch and interface to a Node-Red instance. TW5-Node-Red uses the default Node-Red ''settings.js'' file in the Node-Red User Directory '.node-red'. Can change the Node-Red User Directory that will be used.
 
-In the package 'config.js' file:
+In the package ''config.js'' file:
 
 ```js
 		// Node-Red user directory

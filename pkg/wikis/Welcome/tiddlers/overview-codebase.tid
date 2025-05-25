@@ -1,16 +1,18 @@
 caption: Codebase
 created: 20250521130016911
 creator: poc2go
-modified: 20250521223553766
+modified: 20250523120933298
 modifier: poc2go
 title: overview-codebase
 type: text/vnd.tiddlywiki
 
 !!! Codebase
 
-A wiki named '''codebase''' contains JavaScript tiddlers that are loaded into the server-side REPL Context mentioned earlier. These tiddlers have the basic functions and objects which run server-side.
+A wiki named '''codebase''' contain tiddlers that are distributed to networked wikis as well as JavaScript tiddlers loaded to the REPL Context.
 
-> Node-Red is just an extension of this concept - instead of native JavaScript it uses it's 'low code' programming paradigm instead.
+* JavaScript code for the server comes from tiddlers stored in wikis
+
+Node-Red is just an extension of this concept - the system implements server-side code written using Node-Red's ''low code'' programming paradigm.
 
 Any wiki can load JavaScript code into the REPL context by tagging the tiddlers to be loaded. These wikis should be tucked away under the private proxy or be setup as a Database wiki.
 
@@ -30,6 +32,6 @@ $wikiNames.forEach(name => {
 })
 ```
 
-The tiddler 'REST-code-tiddlers' in the ''codebase'' wiki is loaded to the server. It adds an express route for each wiki. Returns tiddlers from the requested wiki of the tiddlers matching the given TW filter.
+This tiddler ('REST-code-tiddlers' in the ''codebase'' wiki) is tagged to be loaded to the server. It adds an [[express route|https://expressjs.com/en/starter/basic-routing.html]] to each wiki. The route responds with tiddlers from the requested wiki matching the given TW filter.
 
-Enter in a browser: `https://wikis.poc2go.net/Welcome/tiddlers/[[Pocket-io System]]` to see the [[Pocket-io System]] tiddler in ths wiki.
+Enter in a browser: `https://wikis.poc2go.net/Welcome/tiddlers/[[overview-codebase]]` to see the tiddler you are currently reading.

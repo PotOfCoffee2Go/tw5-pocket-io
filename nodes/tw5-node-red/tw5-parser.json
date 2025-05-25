@@ -1,0 +1,84 @@
+{
+	"id": "0d3535cb27027846",
+	"type": "subflow",
+	"name": "tiddler parser",
+	"info": "\r\nAppend tiddler or array of tiddlers in `msg.payload`\r\nto the msg being returned to the requesting wiki.\r\nThe node can be used multiple times in a single flow.\r\n\r\n## msg.payload\r\nContains JavaScript object or array of objects containing the fields of the tiddler.\r\n - **title** field is required \r\n - **text** is not required - but is very common\r\n \r\n",
+	"category": "tiddlywiki",
+	"in": [
+		{
+			"x": 100,
+			"y": 80,
+			"wires": [
+				{
+					"id": "1b089e0ef2eb4a3e"
+				}
+			]
+		}
+	],
+	"out": [
+		{
+			"x": 520,
+			"y": 80,
+			"wires": [
+				{
+					"id": "1b089e0ef2eb4a3e",
+					"port": 0
+				}
+			]
+		}
+	],
+	"env": [],
+	"meta": {
+		"module": "tw5-parser",
+		"type": "twiki-parser",
+		"version": "1.0.0",
+		"author": "PotOfCoffee2Go",
+		"desc": "Outbound message to TiddlyWiki client",
+		"keywords": "TiddlyWiki,Node-Red",
+		"license": "MIT"
+	},
+	"color": "#A6BBCF",
+	"icon": "tw5-nodes/tiddlywiki-dark.png",
+	"status": {
+		"x": 520,
+		"y": 140,
+		"wires": [
+			{
+				"id": "739878cd3a06c69a",
+				"port": 0
+			}
+		]
+	},
+	"flow": [
+		{
+			"id": "1b089e0ef2eb4a3e",
+			"type": "function",
+			"z": "0d3535cb27027846",
+			"name": "Parse JSON or .tid tiddlers in msg.payload  \\n into javascript array of tiddler objects",
+			"func": "\n// msg.payload transformed into a JavaScript array of tiddler field objects\n//  then appended the tiddlers to be sent back to webserver client\nconst repl = global.get('repl');\n\nmsg.payload = repl.$nrParser(msg.payload);\n\nnode.status(`${msg.payload.length} tiddlers parsed`);\nreturn msg;\n",
+			"outputs": 1,
+			"timeout": 0,
+			"noerr": 0,
+			"initialize": "",
+			"finalize": "",
+			"libs": [],
+			"x": 310,
+			"y": 80,
+			"wires": [
+				[]
+			]
+		},
+		{
+			"id": "739878cd3a06c69a",
+			"type": "status",
+			"z": "0d3535cb27027846",
+			"name": "",
+			"scope": null,
+			"x": 200,
+			"y": 140,
+			"wires": [
+				[]
+			]
+		}
+	]
+}

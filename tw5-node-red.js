@@ -95,7 +95,7 @@ async function startProxyServer() {
 
 // REPL MOTD and prompt startup
 function replMOTD() {
-	if (config.autoStartNodeRed) {
+	if (config.nodered.isEnabled) {
 		hog(`\nStartup Node-RED with access to wikis`, 156);
 		const { hideStdout } = require('./lib/hideStdout');
 		const showStdout = hideStdout();

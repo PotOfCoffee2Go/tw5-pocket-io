@@ -1,0 +1,17 @@
+caption: Database Wikis
+created: 20250523121616472
+creator: poc2go
+modified: 20250523124133640
+modifier: poc2go
+title: overview-database
+type: text/vnd.tiddlywiki
+
+!!! Database wikis
+
+Database wikis allow using TiddlyWikis as a database of records (tiddlers). Tags are normally used to organise tiddlers into a database structure. Tiddlers are accessed using TW filters.
+
+* A WebServer is not started for Database wikis
+
+Database wikis are only accessed server-side using $tw functions. They are normally updated as part of processing a client request to retrieve or update information.
+
+For example; a database wiki might be used to store message history for rooms in a chat application.

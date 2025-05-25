@@ -1,0 +1,85 @@
+{
+	"id": "1d5b93e906f67840",
+	"type": "subflow",
+	"name": "TW broadcast",
+	"info": "",
+	"category": "tiddlywiki",
+	"in": [
+		{
+			"x": 80,
+			"y": 80,
+			"wires": [
+				{
+					"id": "5a302b26a3767cb1"
+				}
+			]
+		}
+	],
+	"out": [
+		{
+			"x": 420,
+			"y": 80,
+			"wires": [
+				{
+					"id": "5a302b26a3767cb1",
+					"port": 0
+				}
+			]
+		}
+	],
+	"env": [],
+	"meta": {
+		"module": "tw5-client-broadcast",
+		"type": "twiki-broadcast",
+		"version": "1.0.0",
+		"author": "PotOfCoffee2Go",
+		"desc": "Broadcast messages to TiddlyWiki clients",
+		"keywords": "TiddlyWiki,Node-Red",
+		"license": "MIT"
+	},
+	"color": "#C0DEED",
+	"icon": "tw5-nodes/broadcast.png",
+	"status": {
+		"x": 420,
+		"y": 140,
+		"wires": [
+			{
+				"id": "edb1d8695ef972b8",
+				"port": 0
+			}
+		]
+	},
+	"flow": [
+		{
+			"id": "5a302b26a3767cb1",
+			"type": "function",
+			"z": "1d5b93e906f67840",
+			"name": "Broadcast to TW Webservers",
+			"func": "const repl = global.get('repl');\n\nmsg.payload = repl.$nrParser(msg.payload);\n// Required wiki fields\nmsg.wiki = {req:{sender:''},riverTitles:[],resultTiddlers:[]};\n\nmsg.payload.forEach(tid => {\n\tvar tiddler = Object.assign({}, tid);\n\tif (tiddler.ioToStory !== undefined) {\n\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\tdelete tiddler.ioToStory;\n\t}\n\tmsg.wiki.resultTiddlers.push(tiddler);\n})\n// Refresh any client connect to this wiki\nrepl.$broadcastClients(msg.wikiname, msg.wiki);\n\nreturn msg;\n",
+			"outputs": 1,
+			"timeout": 0,
+			"noerr": 0,
+			"initialize": "",
+			"finalize": "",
+			"libs": [],
+			"x": 260,
+			"y": 80,
+			"wires": [
+				[]
+			]
+		},
+		{
+			"id": "edb1d8695ef972b8",
+			"type": "status",
+			"z": "1d5b93e906f67840",
+			"name": "",
+			"scope": null,
+			"x": 120,
+			"y": 140,
+			"wires": [
+				[]
+			]
+		}
+	]
+}
+

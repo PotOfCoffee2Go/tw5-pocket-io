@@ -1,16 +1,16 @@
 caption: Users
 created: 20250519072744095
 creator: poc2go
-modified: 20250521121210934
+modified: 20250522230448765
 modifier: poc2go
 title: walkthru-users
 type: text/vnd.tiddlywiki
 
-In the package  'credentials' sub-directory is a file ''users.json'' which contains user names and their passwords. On initial install the file contains some demo users. Update this file with the users of your system.
+In the package  'credentials' sub-directory is a file ''users.json'' which contains user names and their passwords. On initial install the file contains the admin 'owner' user and some demo users. Update this file with the users of your system.
 
 {{walkthru-users.json}}
 
-After updating the users, the credentials will need to be changed to assign the users to your wikis.
+After updating the users, the credentials in package ''security.js'' will need to be changed to reflect the new users access to your wikis.
 
-When users and/or credentials are updated, re-start the system with 'npm start -- -c' to rebuild the TW user/credential files.
+When users and/or credentials are updated, re-start the system with `npm start -- -c` to rebuild the TW user/credential files.
  

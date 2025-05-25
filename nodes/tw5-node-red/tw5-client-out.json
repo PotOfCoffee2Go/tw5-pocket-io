@@ -1,0 +1,63 @@
+{
+	"id": "83b81066588d5f7b",
+	"type": "subflow",
+	"name": "TW client out",
+	"info": "",
+	"category": "tiddlywiki",
+	"in": [
+		{
+			"x": 80,
+			"y": 80,
+			"wires": [
+				{
+					"id": "4876804024f936fa"
+				}
+			]
+		}
+	],
+	"out": [
+		{
+			"x": 400,
+			"y": 80,
+			"wires": [
+				{
+					"id": "4876804024f936fa",
+					"port": 0
+				}
+			]
+		}
+	],
+	"env": [],
+	"meta": {
+		"module": "tw5-client-out",
+		"type": "twiki-out",
+		"version": "1.0.0",
+		"author": "PotOfCoffee2Go",
+		"desc": "Outbound message to TiddlyWiki client",
+		"keywords": "TiddlyWiki,Node-Red",
+		"license": "MIT"
+	},
+	"color": "#C0DEED",
+	"icon": "tw5-nodes/networkup.svg",
+	"flow": [
+		{
+			"id": "4876804024f936fa",
+			"type": "function",
+			"z": "83b81066588d5f7b",
+			"g": "392b55f1513f4105",
+			"name": "To TW Webserver",
+			"func": "const repl = global.get('repl'); // REPL context\n\nmsg.payload = repl.$nrParser(msg.payload);\n\n// Send to a specific client\nif (msg.wiki && msg.wiki.req.socketId) {\n\tmsg.payload.forEach(tiddler => {\n\t\tif (tiddler.ioToStory !== undefined) {\n\t\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\t\tdelete tiddler.ioToStory;\n\t\t}\n\t\tmsg.wiki.resultTiddlers.push(tiddler);\n\t})\n   repl.$sockets[msg.wiki.req.socketId].socket.emit('msg', msg.wiki);\n}\n// Refresh any client connect to this wiki\nrepl.$refreshClients(msg.wikiname);\n\nreturn msg;\n",
+			"outputs": 1,
+			"timeout": 0,
+			"noerr": 0,
+			"initialize": "",
+			"finalize": "",
+			"libs": [],
+			"x": 230,
+			"y": 80,
+			"wires": [
+				[]
+			]
+		}
+	]
+}

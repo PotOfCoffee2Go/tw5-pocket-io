@@ -1,22 +1,20 @@
 caption: REPL Prompt
 created: 20250520185822496
 creator: poc2go
-modified: 20250521123723559
+modified: 20250523113613685
 modifier: poc2go
 title: overview-commands
 type: text/vnd.tiddlywiki
 
-When the system is 'npm start' it displays a bunch of giberish of the components being started followed by a command prompt.
+The REPL context has a built-in command prompt.
 
-The command prompt gives you access to all the functions and objects in the ''REPL Context''. Most commands contain a '$" so-as not to interfere with Node.js modules already loaded into the context.
+* The command prompt gives you access to all the functions and objects in the ''REPL Context''.
 
-For example, the Node.js 'path' module is loaded in the context. If a function was created named 'path' - it would overwrite the existing 'path' function. No modules contain a '$' - so that ensures not walking over functions already in the context.
+On startup the system displays a bunch of gibberish of the components being loaded into the REPL context followed by a command prompt. From the command prompt can access all functions and objects in the REPL context.
 
-> That being said - there are a few 'special' functions without the '$'.
+To see the current configuration object type `$config`. The object displayed are the properties in the 'config.js' file which where loaded into the context on startup.
 
-To see the current configuration object type `$config`. The object displayed are the properties in the 'config.js' file.
-
-Any JavaScript function or the Node-Red 'Function' node can access the $config object or all of the numerous functions and objects in the REPL Context.
+Similar to the prompt, any JavaScript function or the Node-Red 'Function' node can access the $config object or all of the numerous functions and objects in the REPL Context.
 
 The command prompt is a great debugging tool - as can run any function or display the current state of any object in the ''REPL Context'' (which is the complete system as ''everything'' is running in the REPL context).
 

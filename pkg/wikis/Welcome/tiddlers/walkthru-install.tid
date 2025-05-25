@@ -1,7 +1,7 @@
 caption: Install
 created: 20250518140751599
 creator: jane
-modified: 20250521112509614
+modified: 20250522232744678
 modifier: poc2go
 tags: 
 title: walkthru-install
@@ -25,4 +25,4 @@ npm start
 
 The folder will contain default package.json, configuration, credentials, Node-Red flow file, and sample wikis.
 
-> Ports 9000-9005, 3000, and 4000 are used by the system. If ports are already in use will get an error. See [[config.js|walkthru-config]] to change ports used.
+> Ports 9000-9005, 3000, and 4000 are used by the system. If those comm ports are already in use will get an error. See [[config.js|walkthru-config]] to change ports used.

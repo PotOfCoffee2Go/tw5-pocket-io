@@ -1,7 +1,7 @@
 caption: Facing the Web
 created: 20250520162351561
 creator: poc2go
-modified: 20250522013947855
+modified: 20250524032205993
 modifier: poc2go
 title: overview-tunnel
 type: text/vnd.tiddlywiki
@@ -26,6 +26,6 @@ There are many companies that have reverse proxies (tunnels) which can provide a
 
 <$image source="overview-http.png" />
 
-Each provider has various security and authorisation options. Most has a 'free' account - but the internet address changes each time it is brought up. A paid account can have a fixed internet address. Most paid accounts allow a 'custom domain' option which allows you to setup your domain to point to the reverse proxy.
+Each provider has various security and authorisation options. Most have a 'free' account - but the internet address changes each time it is brought up. A paid account can have a fixed internet address. Most paid accounts allow a 'custom domain' option which allows you to setup your domain to point to the reverse proxy.
 
 > Notice on your address bar - 'wikis.poc2go.net'. It points to the pinggy reverse proxy which in turn points to my public proxy.

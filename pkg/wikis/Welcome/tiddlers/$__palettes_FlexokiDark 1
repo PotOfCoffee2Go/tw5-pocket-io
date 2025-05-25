@@ -148,7 +148,7 @@ tab-background: <<colour flexoki-bg-2>>
 tab-border-selected: <<colour flexoki-ui-3>>
 tab-border: <<colour flexoki-ui>>
 tab-divider: <<colour flexoki-ui-2>>
-tab-foreground-selected: #fae5d3
+tab-foreground-selected: aqua
 tab-foreground: #edbb99
 table-border: <<colour flexoki-ui-2>>
 table-footer-background: <<colour flexoki-ui>>
