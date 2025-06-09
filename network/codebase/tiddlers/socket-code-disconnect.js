@@ -2,7 +2,6 @@
 $tpi.fn.io.disconnect = function disconnect(socket, wiki) {
 	const socketLookup = $sockets[sid(socket)];
 	if (!socketLookup) {
-		// probably is node-red editor
 		return;
 	}
 	const wikiName = $sockets[sid(socket)].wikiName;

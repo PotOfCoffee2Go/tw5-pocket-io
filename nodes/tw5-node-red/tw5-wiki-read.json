@@ -107,14 +107,14 @@
 			}
 		]
 	},
-	"flows": [
+	"flow": [
 		{
 			"id": "b7e1909b4d67f4cf",
 			"type": "function",
 			"z": "295b59907f0d97d2",
 			"name": "read tiddlers from wiki",
 			"func": "const repl = global.get('repl');\n\nvar wikiname = msg.wikiname || env.get('tw_wikiname');\nvar twfilter = msg.twfilter || env.get('tw_filter');\n\nif (!wikiname || !twfilter) {\n    node.error(`Need both wikiname and twfilter`);\n    node.done();\n    return;\n}\n\nvar isDb = false;\nvar $tw = repl.get$tw(wikiname);\nif (!$tw) {\n    $tw = repl.get$db(wikiname);\n    isDb = true;\n}\n\nif (!$tw) {\n    node.error(`Wiki ${wikiname} is not found`);\n    node.done();\n    return;\n}\n\nmsg.payload = JSON.parse($tw.wiki.getTiddlersAsJson(twfilter));\nnode.status(`'${wikiname}' ${msg.payload.length} tiddlers read`);\nreturn msg;\n",
-			"outputs": 1,
+ 			"outputs": 1,
 			"timeout": 0,
 			"noerr": 0,
 			"initialize": "",

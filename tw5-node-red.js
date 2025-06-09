@@ -42,7 +42,7 @@ serverSettings.forEach((settings, idx) => {
 // ---- REPL ----
 var $rt = require('node:repl').start({ prompt: '', ignoreUndefined: true});
 
-// context
+// REPL context - Working $tw(s) and client sockets
 var $rw, $sockets = {};
 function replContext() {
 	$rt.context.$rt = $rt;	// the REPL itself

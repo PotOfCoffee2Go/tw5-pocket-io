@@ -2,6 +2,7 @@
 //  used to pass wiki messages to Node-Red
 const $nrMsgNodes = [];
 
+// express server instance that hosts (embeds) Node-Red
 const $NodeRed = function () {
 	var express = require("express");
 	this.RED = require("node-red");
@@ -9,14 +10,15 @@ const $NodeRed = function () {
 	this.app = express();
 	this.server = http.createServer(this.app);
 
-	// tw5-node-red directory inside ./node_modules
+	// tw5-node-red program (usually sub-directory in ./node_modules)
 	this.programDir = $config.programDir;
 	
-	// Node-Red settings
+	// Copy Node-Red settings from tw5-node-red 'config.js'
 	this.nodered = Object.assign({}, $config.nodered);
-	// Using the Node-Red settings file specified in ./config.js
+	// Use Node-Red settings file from Node-Red User Directory specified in ./config.js
 	this.settings = require(this.nodered.userDir + '/settings.js');
 
+	// HTTP link to Flow Editor and nodes
 	this.nodered.link = {
 		admin: `${$config.privateName}:${this.settings.uiPort || 1880}` +
 		`${this.nodered.httpAdminRoot}`,
@@ -24,8 +26,9 @@ const $NodeRed = function () {
 		`${this.nodered.httpNodeRoot}`
 	}
 
-	// functions to Node-Red global context
+	// Map tw5-node-red functions in REPL context to Node-Red global context
 	//  see codebase [[startup-code-globals]]
+	// Note: can not map 'this' Node-Red server - circular reference issues
 	this.repl = {
 		log, hue, hog, tog,
 		$displayPrompt, $rw, $db,
@@ -44,7 +47,15 @@ const $NodeRed = function () {
 		{},	this.nodered.functionGlobalContext, globalFunctions
 	)
 
-	// Merge Node-Red settings
+	// Get our theme values and remove so not polluting nodered settings
+	const darkTheme = {
+		workspace: 'dark',
+		editor: 'dracula'
+	}
+	const theme = Object.assign({}, darkTheme, this.nodered.theme);
+	delete this.nodered.theme;
+
+	// Merge config.js nodered setting with Node-Red settings from User Directory
 	this.settings = Object.assign({}, this.settings, this.nodered)
 
 	// Personalize Flow editor settings for TW5-Node-Red
@@ -60,22 +71,23 @@ const $NodeRed = function () {
 		image: path.resolve(this.programDir, 'public/images/system/tw5-node-red-login.png')
 	};
 	
-	this.settings.editorTheme.theme = this.settings.editorTheme.theme || 'dark';
+	this.settings.editorTheme.theme = this.settings.editorTheme.theme || theme.workspace;
 	
 	this.settings.editorTheme.palette = this.settings.editorTheme.palette || {};
 	this.settings.editorTheme.palette.categories = this.settings.editorTheme.palette.categories || ['subflows', 'common', 'function', 'tiddlywiki'];
 
 	this.settings.editorTheme.codeEditor = this.settings.editorTheme.codeEditor || {};
 	this.settings.editorTheme.codeEditor.options = this.settings.editorTheme.codeEditor.options || {};
-	this.settings.editorTheme.codeEditor.options.theme = this.settings.editorTheme.codeEditor.options.theme || 'dracula';
+	this.settings.editorTheme.codeEditor.options.theme = this.settings.editorTheme.codeEditor.options.theme || theme.editor;
 
+	// Add our import/export library 
 	this.settings.editorTheme.library = this.settings.editorTheme.library || {};
 	this.settings.editorTheme.library.sources = this.settings.editorTheme.library.sources || [];
 	this.settings.editorTheme.library.sources.push({
 		id: "tw5-node-red-library",
 		type: "node-red-library-file-store",
 		path: `${$config.flowsDir}/library/`,
-		label: "TW5-Node-Red Library",
+		label: "TW5-Node-Red",
 		icon: "font-awesome/fa-users"
 	});
 
