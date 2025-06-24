@@ -2,6 +2,8 @@ autoLoad: no
 caption: Hello Node-Red
 created: 20250316181837609
 creator: poc2go
+filename: package.json
+filetype: application/json
 ioConfirmDelete: no
 ioPrjCategoryPillTitle: 
 ioPrjCategoryType: 
@@ -13,8 +15,8 @@ ioResult:
 ioResultUpload: 
 ioToStory: no
 list: dashboard docs template code
-modified: 20250430040051006
-modifier: poc2go
+modified: 20250526134603956
+modifier: owner
 tags: hello-nodered
 title: hello-nodered
 type: text/vnd.tiddlywiki

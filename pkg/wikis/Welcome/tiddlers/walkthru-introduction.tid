@@ -1,7 +1,7 @@
 caption: Introduction
 created: 20250523231441639
 creator: poc2go
-modified: 20250524202428721
+modified: 20250613173510789
 modifier: poc2go
 title: walkthru-introduction
 type: text/vnd.tiddlywiki
@@ -62,7 +62,7 @@ The TW5-Node-Red system provides:
 ** Upstream to GitHub, BitBucket, etc
 ** Can share using a public repository or by publishing the NPM package
 
-* Building of server-side applications
+* Building server-side applications
 ** Native JavaScript
 *** Stored in wikis as JavaScript tiddlers
 *** Code is minified and uploaded to server on startup

@@ -1,7 +1,7 @@
 caption: Install
 created: 20250518140751599
 creator: jane
-modified: 20250522232744678
+modified: 20250614075433282
 modifier: poc2go
 tags: 
 title: walkthru-install
@@ -12,7 +12,7 @@ type: text/vnd.tiddlywiki
 Install tw5-node-red into directory 'my-wikis' or any name you wish (without spaces). This directory is called the '''package''' directory in the documentation.
 
 ```
-git clone git@github.com:PotOfCoffee2Go/tw5-node-red.git my-wikis
+git clone https://github.com/PotOfCoffee2Go/tw5-node-red.git my-wikis
 cd my-wikis
 npm install
 ```

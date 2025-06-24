@@ -1,8 +1,8 @@
 closer: walkthru-close
 created: 20250518140427576
 creator: jane
-list: walkthru-introduction walkthru-package walkthru-nodered walkthru-tiddlywiki walkthru-install walkthru-navigation walkthru-security walkthru-addwiki walkthru-existingwiki walkthru-removewiki walkthru-shutdown walkthru-ports walkthru-configuration walkthru-git
-modified: 20250523231414119
+list: walkthru-introduction walkthru-install walkthru-package walkthru-nodered walkthru-tiddlywiki walkthru-navigation walkthru-security walkthru-addwiki walkthru-existingwiki walkthru-removewiki walkthru-shutdown walkthru-ports walkthru-configuration walkthru-git
+modified: 20250614075238622
 modifier: poc2go
 tags: 
 title: Welcome

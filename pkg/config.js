@@ -1,3 +1,5 @@
+"use strict";
+
 const os = require('node:os');
 const path = require('node:path');
 
@@ -105,8 +107,15 @@ exports.config = {
 		exportGlobalContextKeys: true,
 
 		// URL path to Node-Red flow editor and http nodes
-		httpAdminRoot: '/red',
+		httpAdminRoot: '/',
 		httpNodeRoot:  '/api',
+
+		// See https://github.com/node-red-contrib-themes/theme-collection
+		// screenshots https://github.com/node-red-contrib-themes/theme-collection/blob/screenshots/README.md
+		theme: {
+			workspace: 'monokai-dimmed',
+			editor: 'dracula'
+		},
 
 		// Override flow editor default host & port
 		// uiHost: '0.0.0.0',

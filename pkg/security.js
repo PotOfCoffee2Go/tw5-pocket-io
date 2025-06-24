@@ -2,7 +2,7 @@
 // The system uses the Basic Authentication method
 // see https://tiddlywiki.com/static/WebServer%2520Basic%2520Authentication.html
 
-// NOTE: To build credential files, start the server
+// NOTE: To rebuild credential files, start the server
 //  with the '-c' option
 // 'npm start -- -c'
 
@@ -14,10 +14,8 @@ module.exports = {
 	//  otherwise these demo users are ignored
 	demo: {
 		"owner":  { "password": "pwned" },
-		"demo":   { "password": "demo" },
 		"poc2go": { "password": "ppp" },
 		"jane":   { "password": "do3" },
-		"andy":   { "password": "smith" },
 		"roger":  { "password": "m00re" },
 		"chuck":  { "password": "n0rri5" },
 	},
@@ -25,13 +23,14 @@ module.exports = {
 	// Default credentials
 	// Users and webserver authorization parameters
 	// see https://tiddlywiki.com/static/WebServer%2520Authorization.html
+	// New wikis not listed below will automatically have the default credentials
 	default: {
-		users: ['owner', 'poc2go', 'demo', 'jane', 'andy', 'roger', 'chuck'],
+		users: ['owner', 'poc2go', 'jane', 'roger', 'chuck'],
 		authorization: ['readers=(authenticated)', 'writers=(authenticated)', 'admin=owner'],
 	},
 
-	// Webserver wikis not listed below will have the Default credentials above
-	//  (entry will be ignored for any wikis that do not exist in 'wikisDir')
+	// Override default
+	// Entry will be ignored for wikis that do not exist
 	wikis: {
 		'Home': {
 			authorization: ['readers=(authenticated)', 'writers=(authenticated)', 'admin=owner'],
@@ -41,15 +40,15 @@ module.exports = {
 			authorization: ['readers=(anon)', 'writers=(authenticated)', 'admin=owner'],
 		},
 		'Welcome': {
-			users: ['owner', 'poc2go', 'jane'],
+			users: ['owner', 'poc2go', 'chuck'],
 			authorization: ['readers=(anon)', 'writers=(authenticated)', 'admin=owner'],
 		},
 		'rpi-zero': {
-			users: ['poc2go', 'owner'],
+			users: ['owner', 'poc2go'],
 			authorization: ['readers=(anon)', 'writers=(authenticated)', 'admin=owner'],
 		},
 		'codebase': {
-			users: ['poc2go', 'owner'],
+			users: ['owner', 'poc2go'],
 			authorization: ['readers=(authenticated)', 'writers=(authenticated)', 'admin=owner'],
 		},
 	}
