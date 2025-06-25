@@ -1,0 +1,3 @@
+[submodule "pkg/wikis/Swarms/tiddlers"]
+	path = pkg/wikis/Swarms/tiddlers
+	url = https://gist.github.com/3722ae2fdd7c0d0a4890672d954e02f7.git
