@@ -1,6 +1,14 @@
 [
     {
-        "id": "62c6b96ab760ca78",
+        "id": "fc4bfaedf35c3def",
+        "type": "tab",
+        "label": "Introduction",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "bf7dcf36ee1b438a",
         "type": "tab",
         "label": "TiddlyWiki",
         "disabled": false,
@@ -32,7 +40,7 @@
         "env": []
     },
     {
-        "id": "5b24d6e63acf9047",
+        "id": "8a1cb15d54e1d437",
         "type": "tab",
         "label": "experiments",
         "disabled": false,
@@ -40,375 +48,9 @@
         "env": []
     },
     {
-        "id": "966a05f4e1b8dcf0",
-        "type": "tab",
-        "label": "TPI Projects",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "8adf8de645b60e16",
-        "type": "subflow",
-        "name": "TW client in",
-        "info": "",
-        "category": "tiddlywiki",
-        "in": [],
-        "out": [
-            {
-                "x": 320,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "c423533ded980b73",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "meta": {},
-        "color": "#C0DEED",
-        "icon": "tw5-nodes/networkdown.svg",
-        "status": {
-            "x": 320,
-            "y": 140,
-            "wires": [
-                {
-                    "id": "cadd7bb71eeb7243",
-                    "port": 0
-                }
-            ]
-        }
-    },
-    {
-        "id": "83b81066588d5f7b",
-        "type": "subflow",
-        "name": "TW client out",
-        "info": "",
-        "category": "tiddlywiki",
-        "in": [
-            {
-                "x": 80,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "4876804024f936fa"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 400,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "4876804024f936fa",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "meta": {},
-        "color": "#C0DEED",
-        "icon": "tw5-nodes/networkup.svg"
-    },
-    {
-        "id": "1d5b93e906f67840",
-        "type": "subflow",
-        "name": "TW broadcast",
-        "info": "",
-        "category": "tiddlywiki",
-        "in": [
-            {
-                "x": 80,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "5a302b26a3767cb1"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 420,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "5a302b26a3767cb1",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "meta": {},
-        "color": "#C0DEED",
-        "icon": "tw5-nodes/broadcast.png",
-        "status": {
-            "x": 420,
-            "y": 140,
-            "wires": [
-                {
-                    "id": "edb1d8695ef972b8",
-                    "port": 0
-                }
-            ]
-        }
-    },
-    {
-        "id": "0d3535cb27027846",
-        "type": "subflow",
-        "name": "tiddler parser",
-        "info": "\r\nAppend tiddler or array of tiddlers in `msg.payload`\r\nto the msg being returned to the requesting wiki.\r\nThe node can be used multiple times in a single flow.\r\n\r\n## msg.payload\r\nContains JavaScript object or array of objects containing the fields of the tiddler.\r\n - **title** field is required \r\n - **text** is not required - but is very common\r\n \r\n",
-        "category": "tiddlywiki",
-        "in": [
-            {
-                "x": 100,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "1b089e0ef2eb4a3e"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 520,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "1b089e0ef2eb4a3e",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "meta": {
-            "license": "MIT"
-        },
-        "color": "#A6BBCF",
-        "icon": "tw5-nodes/tiddlywiki-dark.png",
-        "status": {
-            "x": 520,
-            "y": 140,
-            "wires": [
-                {
-                    "id": "739878cd3a06c69a",
-                    "port": 0
-                }
-            ]
-        }
-    },
-    {
-        "id": "295b59907f0d97d2",
-        "type": "subflow",
-        "name": "read wiki",
-        "info": "Read tiddlers from a wiki. Normally uses the `msg.wikiname` and `msg.twfilter` fields.\r\n\r\n",
-        "category": "tiddlywiki",
-        "in": [
-            {
-                "x": 80,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "b7e1909b4d67f4cf"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 400,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "b7e1909b4d67f4cf",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [
-            {
-                "name": "tw_msg_overrides",
-                "type": "bool",
-                "value": "true",
-                "ui": {
-                    "label": {
-                        "en-US": "Use msg.wikiname / msg.twfilter"
-                    },
-                    "type": "checkbox"
-                }
-            },
-            {
-                "name": "tw_wikiname",
-                "type": "str",
-                "value": "",
-                "ui": {
-                    "icon": "font-awesome/fa-bookmark-o",
-                    "label": {
-                        "en-US": "Default wiki"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str",
-                            "num",
-                            "bool",
-                            "json",
-                            "bin",
-                            "env",
-                            "conf-types"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "tw_filter",
-                "type": "str",
-                "value": "",
-                "ui": {
-                    "icon": "font-awesome/fa-filter",
-                    "label": {
-                        "en-US": "Default filter"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str",
-                            "num",
-                            "bool",
-                            "json",
-                            "bin",
-                            "env",
-                            "conf-types"
-                        ]
-                    }
-                }
-            }
-        ],
-        "meta": {
-            "license": "MIT"
-        },
-        "color": "#A6BBCF",
-        "icon": "tw5-nodes/read-wiki.png",
-        "status": {
-            "x": 400,
-            "y": 140,
-            "wires": [
-                {
-                    "id": "e81be91656e745fa",
-                    "port": 0
-                }
-            ]
-        }
-    },
-    {
-        "id": "489223c003015b3f",
-        "type": "subflow",
-        "name": "write wiki",
-        "info": "",
-        "category": "tiddlywiki",
-        "in": [
-            {
-                "x": 80,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "6801d4530f3d9135"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 380,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "6801d4530f3d9135",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [
-            {
-                "name": "tw_msg_overrides",
-                "type": "bool",
-                "value": "true",
-                "ui": {
-                    "label": {
-                        "en-US": "Use msg.wikiname"
-                    },
-                    "type": "checkbox"
-                }
-            },
-            {
-                "name": "tw_wikiname",
-                "type": "str",
-                "value": "",
-                "ui": {
-                    "label": {
-                        "en-US": "Default wikiname"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str",
-                            "num",
-                            "bool",
-                            "json",
-                            "bin",
-                            "env",
-                            "conf-types"
-                        ]
-                    }
-                }
-            }
-        ],
-        "meta": {},
-        "color": "#A6BBCF",
-        "icon": "tw5-nodes/write-wiki.png",
-        "status": {
-            "x": 380,
-            "y": 140,
-            "wires": [
-                {
-                    "id": "24783140a82cde75",
-                    "port": 0
-                }
-            ]
-        }
-    },
-    {
-        "id": "392b55f1513f4105",
-        "type": "group",
-        "z": "83b81066588d5f7b",
-        "name": "\\n Sends message response back to TiddlyWiki \\n   ",
-        "style": {
-            "label": true,
-            "label-position": "s",
-            "stroke": "none"
-        },
-        "nodes": [
-            "4876804024f936fa"
-        ],
-        "x": 114,
-        "y": 39,
-        "w": 286,
-        "h": 122
-    },
-    {
         "id": "f7464a8f5cc4e442",
         "type": "group",
-        "z": "62c6b96ab760ca78",
+        "z": "bf7dcf36ee1b438a",
         "name": "\\n Returns a few tiddlers in response to the topic 'hello' \\n  A 'TW client in' will always be followed by a switch node \\n to select the flow based on msg.topic \\n  \\n In TiddlyWiki :",
         "style": {
             "label": true,
@@ -418,70 +60,11 @@
             "f851efef43d004c1",
             "c95074a4d7aa6070"
         ],
-        "x": 22,
-        "y": 319,
-        "w": 1132,
+        "x": 12,
+        "y": 19,
+        "w": 1162,
         "h": 448,
         "info": "# Example of Tiddlywiki Request\r\n\r\n"
-    },
-    {
-        "id": "a7c5d113bcde7caa",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "name": "\\n Send contents of a file on the server as a tiddler",
-        "style": {
-            "label": true,
-            "label-position": "n"
-        },
-        "nodes": [
-            "387aee9414b96304",
-            "38f58f1538e9684a",
-            "37dfe29593404c76",
-            "ddec69f95434e42a",
-            "694cb905ee221edc",
-            "9e9d7d5d6677e99e",
-            "dbbdc46edaf683d5"
-        ],
-        "x": 24,
-        "y": 817,
-        "w": 922,
-        "h": 310
-    },
-    {
-        "id": "13637ad3fcc72fea",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "name": "Node-Red receives/replies to messages from  \\n TiddlyWiki clients via these two nodes \\n  \\n 'TW client out' will only work from messages \\n originating from 'TW client in'",
-        "style": {
-            "label": true,
-            "label-position": "n"
-        },
-        "nodes": [
-            "add2325b1cc1c629",
-            "21d6d79a549684ce"
-        ],
-        "x": 88,
-        "y": 29,
-        "w": 464,
-        "h": 238
-    },
-    {
-        "id": "78d42539d58ea4f6",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "name": "\\n TiddlyWiki 'tiddler parser' node",
-        "style": {
-            "label": true,
-            "label-position": "n",
-            "stroke": "#3f3f3f"
-        },
-        "nodes": [
-            "122e9298ddc68975"
-        ],
-        "x": 568,
-        "y": 57,
-        "w": 289,
-        "h": 206
     },
     {
         "id": "4a7e4defec73ba6f",
@@ -541,16 +124,16 @@
             "color": "#cccccc"
         },
         "nodes": [
-            "ccca438d7f47e763",
-            "7c793d490c8c1208",
             "f7f87f739520cf6c",
             "612dd97f9803d988",
             "d7e3072a8dfa19ac",
-            "784f277fe4392287"
+            "784f277fe4392287",
+            "5c9d161d5c1e5c04",
+            "6dbe0d95eac94002"
         ],
-        "x": 44,
+        "x": 24,
         "y": 221,
-        "w": 992,
+        "w": 1012,
         "h": 326
     },
     {
@@ -571,169 +154,68 @@
         "h": 174
     },
     {
-        "id": "37dfe29593404c76",
+        "id": "a7c5d113bcde7caa",
         "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "a7c5d113bcde7caa",
-        "name": "Switch node \\n msg.topic matches \\n 'show file'",
+        "z": "bf7dcf36ee1b438a",
+        "name": "\\n Send contents of a file on the server as a tiddler",
         "style": {
             "label": true,
-            "label-position": "s",
-            "stroke": "none",
-            "fill": "none"
+            "label-position": "n"
         },
         "nodes": [
-            "dac6f5642101f3b0"
+            "37dfe29593404c76",
+            "ddec69f95434e42a",
+            "694cb905ee221edc",
+            "9e9d7d5d6677e99e",
+            "dbbdc46edaf683d5",
+            "cd36b1e25870ed26",
+            "c52a028d6325044e"
         ],
-        "x": 84,
-        "y": 979,
-        "w": 172,
-        "h": 122
+        "x": 124,
+        "y": 497,
+        "w": 912,
+        "h": 310
     },
     {
-        "id": "ddec69f95434e42a",
+        "id": "13637ad3fcc72fea",
         "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "a7c5d113bcde7caa",
-        "name": "Read the filename \\n provided by \\n requesting  (sender) tiddler",
+        "z": "fc4bfaedf35c3def",
+        "name": "Node-Red receives/replies to messages from  \\n TiddlyWiki clients via these two nodes \\n  \\n 'TW client out' will only work from messages \\n originating from 'TW client in'",
         "style": {
-            "stroke": "none",
-            "fill": "none",
             "label": true,
-            "label-position": "s"
+            "label-position": "n"
         },
         "nodes": [
-            "6ab74c412581482f"
+            "add2325b1cc1c629",
+            "21d6d79a549684ce"
         ],
-        "x": 224,
-        "y": 979,
-        "w": 232,
-        "h": 122
+        "x": 88,
+        "y": 49,
+        "w": 444,
+        "h": 238
     },
     {
-        "id": "694cb905ee221edc",
+        "id": "78d42539d58ea4f6",
         "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "a7c5d113bcde7caa",
-        "name": "Move file contents from \\n msg.payload to msg.filetext \\n to free up msg.payload",
-        "style": {
-            "stroke": "none",
-            "fill": "none",
-            "label": true,
-            "label-position": "s"
-        },
-        "nodes": [
-            "1688a65dacdd55fe"
-        ],
-        "x": 424,
-        "y": 979,
-        "w": 292,
-        "h": 122
-    },
-    {
-        "id": "9e9d7d5d6677e99e",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "a7c5d113bcde7caa",
-        "name": "Template to create \\n tiddler of file contents \\n into msg.payload",
-        "style": {
-            "stroke": "none",
-            "fill": "none",
-            "label": true,
-            "label-position": "s"
-        },
-        "nodes": [
-            "062e70cc3789a1a1"
-        ],
-        "x": 684,
-        "y": 979,
-        "w": 212,
-        "h": 122
-    },
-    {
-        "id": "dbbdc46edaf683d5",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "a7c5d113bcde7caa",
-        "name": "This TW GUI template (in 'Home' wiki) asks for the \\n file path and file type \\n which are placed in tiddler fields \\n and sent with the request to Node-Red ",
-        "style": {
-            "stroke": "none",
-            "fill": "none",
-            "label": true,
-            "label-position": "s"
-        },
-        "nodes": [
-            "9a84940484428484"
-        ],
-        "x": 304,
-        "y": 859,
-        "w": 332,
-        "h": 138
-    },
-    {
-        "id": "add2325b1cc1c629",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "13637ad3fcc72fea",
-        "name": "'TW client in' has the sender \\n client wiki information in msg.wiki \\n needed to respond",
+        "z": "fc4bfaedf35c3def",
+        "name": " \\n TiddlyWiki 'tiddler parser' node \\n \\n Parses tiddlers that are in text format \\n JSON or .TID into",
         "style": {
             "label": true,
-            "label-position": "s",
-            "stroke": "none",
-            "fill": "none"
+            "label-position": "n",
+            "stroke": "#3f3f3f"
         },
         "nodes": [
-            "4f51d7d6cece1a40"
+            "122e9298ddc68975"
         ],
-        "x": 114,
-        "y": 119,
-        "w": 213,
-        "h": 122
-    },
-    {
-        "id": "21d6d79a549684ce",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "13637ad3fcc72fea",
-        "name": "'TW client out' sends tiddlers \\n in msg.payload back to \\n the client",
-        "style": {
-            "label": true,
-            "label-position": "s",
-            "stroke": "none",
-            "fill": "none"
-        },
-        "nodes": [
-            "69d8a8f64ea87d59"
-        ],
-        "x": 334,
-        "y": 119,
-        "w": 192,
-        "h": 122
-    },
-    {
-        "id": "122e9298ddc68975",
-        "type": "group",
-        "z": "62c6b96ab760ca78",
-        "g": "78d42539d58ea4f6",
-        "name": "Parses tiddlers that are in text format \\n JSON or .tid \\n into Javascript objects \\n Is done automatically in most cases",
-        "style": {
-            "label": true,
-            "label-position": "s",
-            "stroke": "none",
-            "fill": "none"
-        },
-        "nodes": [
-            "2a97f1fbcf6e3dfa"
-        ],
-        "x": 594,
-        "y": 99,
-        "w": 237,
-        "h": 138
+        "x": 568,
+        "y": 49,
+        "w": 281,
+        "h": 222
     },
     {
         "id": "c95074a4d7aa6070",
         "type": "group",
-        "z": "62c6b96ab760ca78",
+        "z": "bf7dcf36ee1b438a",
         "g": "f7464a8f5cc4e442",
         "name": "\\n This 'hello' flow responds to above TiddlyWiki request \\n with tiddlers in the Node-Red standard 'Template' node \\n ",
         "style": {
@@ -751,9 +233,9 @@
             "7c0c6a890fdeb607",
             "a65ba819d5721d4f"
         ],
-        "x": 48,
-        "y": 465,
-        "w": 1080,
+        "x": 38,
+        "y": 165,
+        "w": 1110,
         "h": 276
     },
     {
@@ -840,9 +322,169 @@
         "h": 82
     },
     {
+        "id": "37dfe29593404c76",
+        "type": "group",
+        "z": "bf7dcf36ee1b438a",
+        "g": "a7c5d113bcde7caa",
+        "name": "Switch node \\n msg.topic matches \\n 'show file'",
+        "style": {
+            "label": true,
+            "label-position": "s",
+            "stroke": "none",
+            "fill": "none"
+        },
+        "nodes": [
+            "dac6f5642101f3b0"
+        ],
+        "x": 174,
+        "y": 659,
+        "w": 172,
+        "h": 122
+    },
+    {
+        "id": "ddec69f95434e42a",
+        "type": "group",
+        "z": "bf7dcf36ee1b438a",
+        "g": "a7c5d113bcde7caa",
+        "name": "Read the filename \\n provided by \\n requesting  (sender) tiddler",
+        "style": {
+            "stroke": "none",
+            "fill": "none",
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "6ab74c412581482f"
+        ],
+        "x": 314,
+        "y": 659,
+        "w": 232,
+        "h": 122
+    },
+    {
+        "id": "694cb905ee221edc",
+        "type": "group",
+        "z": "bf7dcf36ee1b438a",
+        "g": "a7c5d113bcde7caa",
+        "name": "Move file contents from \\n msg.payload to msg.filetext \\n to free up msg.payload",
+        "style": {
+            "stroke": "none",
+            "fill": "none",
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "1688a65dacdd55fe"
+        ],
+        "x": 514,
+        "y": 659,
+        "w": 292,
+        "h": 122
+    },
+    {
+        "id": "9e9d7d5d6677e99e",
+        "type": "group",
+        "z": "bf7dcf36ee1b438a",
+        "g": "a7c5d113bcde7caa",
+        "name": "Template to create \\n tiddler of file contents \\n into msg.payload",
+        "style": {
+            "stroke": "none",
+            "fill": "none",
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "062e70cc3789a1a1"
+        ],
+        "x": 774,
+        "y": 659,
+        "w": 212,
+        "h": 122
+    },
+    {
+        "id": "dbbdc46edaf683d5",
+        "type": "group",
+        "z": "bf7dcf36ee1b438a",
+        "g": "a7c5d113bcde7caa",
+        "name": "This TW GUI template (in 'Home' wiki) asks for the \\n file path and file type \\n which are placed in tiddler fields \\n and sent with the request to Node-Red ",
+        "style": {
+            "stroke": "none",
+            "fill": "none",
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "9a84940484428484"
+        ],
+        "x": 394,
+        "y": 539,
+        "w": 332,
+        "h": 138
+    },
+    {
+        "id": "add2325b1cc1c629",
+        "type": "group",
+        "z": "fc4bfaedf35c3def",
+        "g": "13637ad3fcc72fea",
+        "name": "'TW client in' has the sender \\n client wiki information in msg.wiki \\n needed to respond",
+        "style": {
+            "label": true,
+            "label-position": "s",
+            "stroke": "none",
+            "fill": "none"
+        },
+        "nodes": [
+            "b8406370c505620c"
+        ],
+        "x": 114,
+        "y": 139,
+        "w": 213,
+        "h": 122
+    },
+    {
+        "id": "21d6d79a549684ce",
+        "type": "group",
+        "z": "fc4bfaedf35c3def",
+        "g": "13637ad3fcc72fea",
+        "name": "'TW client out' sends tiddlers \\n in msg.payload back to \\n the client",
+        "style": {
+            "label": true,
+            "label-position": "s",
+            "stroke": "none",
+            "fill": "none"
+        },
+        "nodes": [
+            "2bffb7161587546b"
+        ],
+        "x": 314,
+        "y": 139,
+        "w": 192,
+        "h": 122
+    },
+    {
+        "id": "122e9298ddc68975",
+        "type": "group",
+        "z": "fc4bfaedf35c3def",
+        "g": "78d42539d58ea4f6",
+        "name": "Javascript objects \\n Is done automatically in most cases",
+        "style": {
+            "label": true,
+            "label-position": "s",
+            "stroke": "none",
+            "fill": "none"
+        },
+        "nodes": [
+            "4f9ce3c271741573"
+        ],
+        "x": 594,
+        "y": 139,
+        "w": 229,
+        "h": 106
+    },
+    {
         "id": "0a11219ac3279f4f",
         "type": "group",
-        "z": "62c6b96ab760ca78",
+        "z": "bf7dcf36ee1b438a",
         "g": "c95074a4d7aa6070",
         "name": "Switch node \\n msg.topic matches \\n 'hello'",
         "style": {
@@ -854,15 +496,15 @@
         "nodes": [
             "cdcaa30c8d7b6208"
         ],
-        "x": 154,
-        "y": 539,
+        "x": 174,
+        "y": 239,
         "w": 152,
         "h": 122
     },
     {
         "id": "ddd1dfc131b74fd7",
         "type": "group",
-        "z": "62c6b96ab760ca78",
+        "z": "bf7dcf36ee1b438a",
         "g": "c95074a4d7aa6070",
         "name": "'Template' nodes \\n Tiddlers in JSON \\n format above \\n .tid format below",
         "style": {
@@ -874,15 +516,15 @@
         "nodes": [
             "5516b95ab068d43b"
         ],
-        "x": 294,
-        "y": 539,
+        "x": 314,
+        "y": 239,
         "w": 252,
         "h": 138
     },
     {
         "id": "c882655e8d51597f",
         "type": "group",
-        "z": "62c6b96ab760ca78",
+        "z": "bf7dcf36ee1b438a",
         "g": "c95074a4d7aa6070",
         "name": "Tiddlywiki \\n 'TW  client  in' \\n Node",
         "style": {
@@ -892,17 +534,17 @@
             "fill": "none"
         },
         "nodes": [
-            "07f989c3cdeb14cb"
+            "1673c677b6a5fee7"
         ],
-        "x": 74,
-        "y": 539,
+        "x": 64,
+        "y": 239,
         "w": 86,
         "h": 122
     },
     {
         "id": "c8562eaca2dbbd8d",
         "type": "group",
-        "z": "62c6b96ab760ca78",
+        "z": "bf7dcf36ee1b438a",
         "g": "c95074a4d7aa6070",
         "name": "TiddlyWiki \\n 'TW client out' \\n node",
         "style": {
@@ -912,17 +554,17 @@
             "fill": "none"
         },
         "nodes": [
-            "fd667c5c3ed8286e"
+            "f08843cf09c6a00c"
         ],
-        "x": 574,
-        "y": 539,
+        "x": 594,
+        "y": 239,
         "w": 95,
         "h": 122
     },
     {
         "id": "7c0c6a890fdeb607",
         "type": "group",
-        "z": "62c6b96ab760ca78",
+        "z": "bf7dcf36ee1b438a",
         "g": "c95074a4d7aa6070",
         "name": "The flow continues after 'TW client out' \\n as can do more processing \\n and send more tiddlers later in the flow",
         "style": {
@@ -934,8 +576,8 @@
         "nodes": [
             "de83c426cb05bd04"
         ],
-        "x": 854,
-        "y": 539,
+        "x": 874,
+        "y": 239,
         "w": 248,
         "h": 122
     },
@@ -953,209 +595,77 @@
         ]
     },
     {
-        "id": "590a6e25b544a6f4",
-        "type": "mqtt-broker",
+        "id": "b8406370c505620c",
+        "type": "twiki-in",
+        "z": "fc4bfaedf35c3def",
+        "g": "add2325b1cc1c629",
         "name": "",
-        "broker": "pocket-io",
-        "port": 1883,
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": 4,
-        "keepalive": 60,
-        "cleansession": true,
-        "autoUnsubscribe": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthRetain": "false",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closeRetain": "false",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willRetain": "false",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
-    },
-    {
-        "id": "c423533ded980b73",
-        "type": "function",
-        "z": "8adf8de645b60e16",
-        "name": "From TW Webserver",
-        "func": "// see 'On Start' tab for implementation\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\nconst $nrMsgNodes = global.get('$nrMsgNodes');\nconst index = $nrMsgNodes.findIndex((element) => element.id === node.id);\n\nif (index > -1) {\n    $nrMsgNodes.splice(index, 1);\n}\n\n$nrMsgNodes.push(node);\n",
-        "finalize": "",
-        "libs": [],
-        "x": 180,
-        "y": 80,
+        "x": 210,
+        "y": 180,
         "wires": [
             []
         ]
     },
     {
-        "id": "cadd7bb71eeb7243",
-        "type": "status",
-        "z": "8adf8de645b60e16",
+        "id": "2bffb7161587546b",
+        "type": "twiki-out",
+        "z": "fc4bfaedf35c3def",
+        "g": "21d6d79a549684ce",
         "name": "",
-        "scope": null,
-        "x": 140,
+        "x": 410,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4f9ce3c271741573",
+        "type": "twiki-parser",
+        "z": "fc4bfaedf35c3def",
+        "g": "122e9298ddc68975",
+        "name": "",
+        "x": 690,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f851efef43d004c1",
+        "type": "comment",
+        "z": "bf7dcf36ee1b438a",
+        "g": "f7464a8f5cc4e442",
+        "name": "<$button actions=\"<<node-red 'hello'>>\"> Hello Node-Red </$button>",
+        "info": "",
+        "x": 630,
         "y": 140,
-        "wires": [
-            []
-        ]
+        "wires": [],
+        "icon": "pocket-io-icons/tiddlywiki-dark.png"
     },
     {
-        "id": "4876804024f936fa",
-        "type": "function",
-        "z": "83b81066588d5f7b",
-        "g": "392b55f1513f4105",
-        "name": "To TW Webserver",
-        "func": "const repl = global.get('repl'); // REPL context\n\nmsg.payload = repl.$nrParser(msg.payload);\n\n// Send to a specific client\nif (msg.wiki && msg.wiki.req.socketId) {\n\tmsg.payload.forEach(tiddler => {\n\t\tif (tiddler.ioToStory !== undefined) {\n\t\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\t\tdelete tiddler.ioToStory;\n\t\t}\n\t\tmsg.wiki.resultTiddlers.push(tiddler);\n\t})\n   repl.$sockets[msg.wiki.req.socketId].socket.emit('msg', msg.wiki);\n}\n// Refresh any client connect to this wiki\nrepl.$refreshClients(msg.wikiname);\n\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 230,
-        "y": 80,
+        "id": "80407f300ac7033c",
+        "type": "template",
+        "z": "bf7dcf36ee1b438a",
+        "g": "c95074a4d7aa6070",
+        "name": "and .tid formatted",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\ntitle: I'm a tid formatted tiddler\ntags: node-red1\n\nThis request from wiki '{{wikiname}}'.\n+===+\n\ntags: node-red1\ntitle: another tiddler\n\nThese tiddlers are tagged 'node-red1'.\n+===+\n\n",
+        "output": "str",
+        "x": 450,
+        "y": 400,
         "wires": [
-            []
-        ]
-    },
-    {
-        "id": "5a302b26a3767cb1",
-        "type": "function",
-        "z": "1d5b93e906f67840",
-        "name": "Broadcast to TW Webservers",
-        "func": "const repl = global.get('repl');\n\nmsg.payload = repl.$nrParser(msg.payload);\n// Required wiki fields\nmsg.wiki = {req:{sender:''},riverTitles:[],resultTiddlers:[]};\n\nmsg.payload.forEach(tid => {\n\tvar tiddler = Object.assign({}, tid);\n\tif (tiddler.ioToStory !== undefined) {\n\t\tmsg.wiki.riverTitles.push(tiddler.title);\n\t\tdelete tiddler.ioToStory;\n\t}\n\tmsg.wiki.resultTiddlers.push(tiddler);\n})\n// Refresh any client connect to this wiki\nrepl.$broadcastClients(msg.wikiname, msg.wiki);\n\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 260,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "edb1d8695ef972b8",
-        "type": "status",
-        "z": "1d5b93e906f67840",
-        "name": "",
-        "scope": null,
-        "x": 120,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "1b089e0ef2eb4a3e",
-        "type": "function",
-        "z": "0d3535cb27027846",
-        "name": "Parse JSON or .tid tiddlers in msg.payload  \\n into javascript array of tiddler objects",
-        "func": "\n// msg.payload transformed into a JavaScript array of tiddler field objects\n//  then appended the tiddlers to be sent back to webserver client\nconst repl = global.get('repl');\n\nmsg.payload = repl.$nrParser(msg.payload);\n\nnode.status(`${msg.payload.length} tiddlers parsed`);\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 310,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "739878cd3a06c69a",
-        "type": "status",
-        "z": "0d3535cb27027846",
-        "name": "",
-        "scope": null,
-        "x": 200,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b7e1909b4d67f4cf",
-        "type": "function",
-        "z": "295b59907f0d97d2",
-        "name": "read tiddlers from wiki",
-        "func": "const repl = global.get('repl');\n\nvar wikiname = msg.wikiname || env.get('tw_wikiname');\nvar twfilter = msg.twfilter || env.get('tw_filter');\n\nif (!wikiname || !twfilter) {\n    node.error(`Need both wikiname and twfilter`);\n    node.done();\n    return;\n}\n\nvar isDb = false;\nvar $tw = repl.get$tw(wikiname);\nif (!$tw) {\n    $tw = repl.get$db(wikiname);\n    isDb = true;\n}\n\nif (!$tw) {\n    node.error(`Wiki ${wikiname} is not found`);\n    node.done();\n    return;\n}\n\nmsg.payload = JSON.parse($tw.wiki.getTiddlersAsJson(twfilter));\nnode.status(`'${wikiname}' ${msg.payload.length} tiddlers read`);\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 240,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e81be91656e745fa",
-        "type": "status",
-        "z": "295b59907f0d97d2",
-        "name": "",
-        "scope": null,
-        "x": 120,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "6801d4530f3d9135",
-        "type": "function",
-        "z": "489223c003015b3f",
-        "name": "write tiddlers to wiki",
-        "func": "const repl = global.get('repl');\n\nvar wikiname = msg.wikiname || env.get('tw_wikiname');\n\nif (!wikiname) {\n\tnode.error(`Need wikiname to write`);\n\tnode.done();\n\treturn;\n}\n\nconst $tw = repl.get$tw(wikiname);\nif (!$tw) {\n    node.error(`Wiki ${wikiname} is not found`);\n    node.done();\n    return;\n}\n\nmsg.payload = repl.$nrParser(msg.payload);\n\nmsg.payload.forEach(tid => {\n\t// copy so not delete ioToStory on the original\n\tvar tiddler = Object.assign({},tid); \n\tdelete tiddler.ioToStory;\n\trepl.ins$tw(wikiname, tiddler);\n})\n\nrepl.$refreshClients(wikiname);\n\nnode.status(`${msg.payload.length} tiddlers written`);\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 230,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "24783140a82cde75",
-        "type": "status",
-        "z": "489223c003015b3f",
-        "name": "",
-        "scope": null,
-        "x": 120,
-        "y": 140,
-        "wires": [
-            []
+            [
+                "f08843cf09c6a00c"
+            ]
         ]
     },
     {
         "id": "cdcaa30c8d7b6208",
         "type": "switch",
-        "z": "62c6b96ab760ca78",
+        "z": "bf7dcf36ee1b438a",
         "g": "0a11219ac3279f4f",
         "name": "hello",
         "property": "topic",
@@ -1170,8 +680,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 230,
-        "y": 580,
+        "x": 250,
+        "y": 280,
         "wires": [
             [
                 "80407f300ac7033c",
@@ -1182,7 +692,7 @@
     {
         "id": "5516b95ab068d43b",
         "type": "template",
-        "z": "62c6b96ab760ca78",
+        "z": "bf7dcf36ee1b438a",
         "g": "ddd1dfc131b74fd7",
         "name": "a few JSON tiddlers",
         "field": "payload",
@@ -1191,30 +701,18 @@
         "syntax": "mustache",
         "template": "[\n    {\n        \"title\": \"My first Node-Red tiddler\",\n        \"text\": \"Your socketId is @@color:aqua; {{wiki.req.socketId}} @@\",\n        \"ioToStory\": \"yes\",\n        \"tags\": \"node-red1\"\n    },\n    {\n        \"title\": \"My second Node-Red tiddler\",\n        \"tags\": \"node-red1\",\n        \"text\": \"Your wiki name is @@border:1px solid aqua; &nbsp;{{wiki.req.wikiName}}&nbsp; @@\"\n    }\n]\n",
         "output": "str",
-        "x": 420,
-        "y": 580,
+        "x": 440,
+        "y": 280,
         "wires": [
             [
-                "fd667c5c3ed8286e"
+                "f08843cf09c6a00c"
             ]
-        ]
-    },
-    {
-        "id": "2a97f1fbcf6e3dfa",
-        "type": "subflow:0d3535cb27027846",
-        "z": "62c6b96ab760ca78",
-        "g": "122e9298ddc68975",
-        "name": "tiddler parser",
-        "x": 690,
-        "y": 140,
-        "wires": [
-            []
         ]
     },
     {
         "id": "de83c426cb05bd04",
         "type": "debug",
-        "z": "62c6b96ab760ca78",
+        "z": "bf7dcf36ee1b438a",
         "g": "7c0c6a890fdeb607",
         "name": "debug msg out",
         "active": true,
@@ -1225,65 +723,39 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 960,
-        "y": 580,
+        "x": 980,
+        "y": 280,
         "wires": []
     },
     {
-        "id": "f851efef43d004c1",
-        "type": "comment",
-        "z": "62c6b96ab760ca78",
-        "g": "f7464a8f5cc4e442",
-        "name": "<$button actions=\"<<node-red 'hello'>>\"> Hello Node-Red </$button>",
-        "info": "",
-        "x": 610,
-        "y": 440,
-        "wires": [],
-        "icon": "pocket-io-icons/tiddlywiki-dark.png"
-    },
-    {
-        "id": "80407f300ac7033c",
-        "type": "template",
-        "z": "62c6b96ab760ca78",
+        "id": "a65ba819d5721d4f",
+        "type": "function",
+        "z": "bf7dcf36ee1b438a",
         "g": "c95074a4d7aa6070",
-        "name": "and .tid formatted",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "\ntitle: I'm a tid formatted tiddler\ntags: node-red1\n\nThis request from wiki '{{wikiname}}'.\n+===+\n\ntags: node-red1\ntitle: another tiddler\n\nThese tiddlers are tagged 'node-red1'.\n+===+\n\n",
-        "output": "str",
-        "x": 430,
-        "y": 700,
+        "name": "text to console",
+        "func": "const repl = global.get('repl');\nrepl.tog(`'hello' topic from wiki '${msg.wikiname}' processed`, 181);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 280,
         "wires": [
             [
-                "fd667c5c3ed8286e"
+                "de83c426cb05bd04"
             ]
         ]
     },
     {
-        "id": "fd667c5c3ed8286e",
-        "type": "subflow:83b81066588d5f7b",
-        "z": "62c6b96ab760ca78",
-        "g": "c8562eaca2dbbd8d",
-        "name": "",
-        "x": 615,
-        "y": 580,
-        "wires": [
-            [
-                "a65ba819d5721d4f"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "07f989c3cdeb14cb",
-        "type": "subflow:8adf8de645b60e16",
-        "z": "62c6b96ab760ca78",
+        "id": "1673c677b6a5fee7",
+        "type": "twiki-in",
+        "z": "bf7dcf36ee1b438a",
         "g": "c882655e8d51597f",
         "name": "",
-        "x": 115,
-        "y": 580,
+        "x": 105,
+        "y": 280,
         "wires": [
             [
                 "cdcaa30c8d7b6208"
@@ -1292,24 +764,95 @@
         "l": false
     },
     {
-        "id": "387aee9414b96304",
-        "type": "subflow:8adf8de645b60e16",
-        "z": "62c6b96ab760ca78",
-        "g": "a7c5d113bcde7caa",
+        "id": "f08843cf09c6a00c",
+        "type": "twiki-out",
+        "z": "bf7dcf36ee1b438a",
+        "g": "c8562eaca2dbbd8d",
         "name": "",
-        "x": 65,
-        "y": 1020,
+        "x": 635,
+        "y": 280,
         "wires": [
             [
-                "dac6f5642101f3b0"
+                "a65ba819d5721d4f"
             ]
         ],
         "l": false
     },
     {
+        "id": "1873a972a27c2906",
+        "type": "function",
+        "z": "bf7dcf36ee1b438a",
+        "name": "Display REPL prompt after deploy",
+        "func": "// See 'On Start' and 'On Stop'\n",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nconst repl = global.get('repl');\nrepl.tog('Node-Red interface established');\n",
+        "finalize": "// Code added here will be run when the\n// node is being stopped or re-deployed.\nconst repl = global.get('repl');\nrepl.tog('Node-Red interface suspended', 128);\n",
+        "libs": [],
+        "x": 540,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "43485fe08103531d",
+        "type": "debug",
+        "z": "bf7dcf36ee1b438a",
+        "name": "wiki connected",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "7cbe649ab68de841",
+        "type": "switch",
+        "z": "bf7dcf36ee1b438a",
+        "name": "ackConnect",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ackConnect",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 530,
+        "y": 920,
+        "wires": [
+            [
+                "43485fe08103531d"
+            ]
+        ]
+    },
+    {
+        "id": "cec66b81efd1e258",
+        "type": "twiki-in",
+        "z": "bf7dcf36ee1b438a",
+        "name": "",
+        "x": 370,
+        "y": 920,
+        "wires": [
+            [
+                "7cbe649ab68de841"
+            ]
+        ]
+    },
+    {
         "id": "dac6f5642101f3b0",
         "type": "switch",
-        "z": "62c6b96ab760ca78",
+        "z": "bf7dcf36ee1b438a",
         "g": "37dfe29593404c76",
         "name": "show file",
         "property": "topic",
@@ -1325,8 +868,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 170,
-        "y": 1020,
+        "x": 260,
+        "y": 700,
         "wires": [
             [
                 "6ab74c412581482f"
@@ -1336,7 +879,7 @@
     {
         "id": "6ab74c412581482f",
         "type": "file in",
-        "z": "62c6b96ab760ca78",
+        "z": "bf7dcf36ee1b438a",
         "g": "ddec69f95434e42a",
         "name": "read msg.filename",
         "filename": "wiki.senderTiddler.filename",
@@ -1346,8 +889,8 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 340,
-        "y": 1020,
+        "x": 430,
+        "y": 700,
         "wires": [
             [
                 "1688a65dacdd55fe"
@@ -1357,7 +900,7 @@
     {
         "id": "1688a65dacdd55fe",
         "type": "change",
-        "z": "62c6b96ab760ca78",
+        "z": "bf7dcf36ee1b438a",
         "g": "694cb905ee221edc",
         "name": "msg.payload to msg.filetext",
         "rules": [
@@ -1374,8 +917,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 570,
-        "y": 1020,
+        "x": 660,
+        "y": 700,
         "wires": [
             [
                 "062e70cc3789a1a1"
@@ -1385,7 +928,7 @@
     {
         "id": "062e70cc3789a1a1",
         "type": "template",
-        "z": "62c6b96ab760ca78",
+        "z": "bf7dcf36ee1b438a",
         "g": "9e9d7d5d6677e99e",
         "name": "Create tiddler",
         "field": "payload",
@@ -1394,155 +937,53 @@
         "syntax": "mustache",
         "template": "title: {{{filename}}}\ntype: {{{wiki.senderTiddler.filetype}}}\nioToStory: yes\n\n{{{filetext}}}\n",
         "output": "str",
-        "x": 790,
-        "y": 1020,
+        "x": 880,
+        "y": 700,
         "wires": [
             [
-                "38f58f1538e9684a"
+                "c52a028d6325044e"
             ]
         ]
-    },
-    {
-        "id": "38f58f1538e9684a",
-        "type": "subflow:83b81066588d5f7b",
-        "z": "62c6b96ab760ca78",
-        "g": "a7c5d113bcde7caa",
-        "name": "",
-        "x": 905,
-        "y": 1020,
-        "wires": [
-            []
-        ],
-        "l": false
     },
     {
         "id": "9a84940484428484",
         "type": "comment",
-        "z": "62c6b96ab760ca78",
+        "z": "bf7dcf36ee1b438a",
         "g": "dbbdc46edaf683d5",
         "name": "{{||hello-nodered-template-show-file}}",
         "info": "",
-        "x": 470,
-        "y": 900,
+        "x": 560,
+        "y": 580,
         "wires": [],
         "icon": "pocket-io-icons/tiddlywiki-dark.png"
     },
     {
-        "id": "4f51d7d6cece1a40",
-        "type": "subflow:8adf8de645b60e16",
-        "z": "62c6b96ab760ca78",
-        "g": "add2325b1cc1c629",
+        "id": "cd36b1e25870ed26",
+        "type": "twiki-in",
+        "z": "bf7dcf36ee1b438a",
+        "g": "a7c5d113bcde7caa",
         "name": "",
-        "x": 210,
-        "y": 160,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "69d8a8f64ea87d59",
-        "type": "subflow:83b81066588d5f7b",
-        "z": "62c6b96ab760ca78",
-        "g": "21d6d79a549684ce",
-        "name": "",
-        "x": 430,
-        "y": 160,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "1873a972a27c2906",
-        "type": "function",
-        "z": "62c6b96ab760ca78",
-        "name": "Display REPL prompt after deploy",
-        "func": "// See 'On Start' and 'On Stop'\n",
-        "outputs": 0,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\nconst repl = global.get('repl');\nrepl.tog('Node-Red interface established');\n",
-        "finalize": "// Code added here will be run when the\n// node is being stopped or re-deployed.\nconst repl = global.get('repl');\nrepl.tog('Node-Red interface suspended', 128);\n",
-        "libs": [],
-        "x": 260,
-        "y": 1180,
-        "wires": []
-    },
-    {
-        "id": "a65ba819d5721d4f",
-        "type": "function",
-        "z": "62c6b96ab760ca78",
-        "g": "c95074a4d7aa6070",
-        "name": "text to console",
-        "func": "const repl = global.get('repl');\nrepl.tog(`'hello' topic from wiki '${msg.wikiname}' processed`, 181);\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 780,
-        "y": 580,
+        "x": 165,
+        "y": 700,
         "wires": [
             [
-                "de83c426cb05bd04"
-            ]
-        ]
-    },
-    {
-        "id": "f663b517feea0ee4",
-        "type": "subflow:8adf8de645b60e16",
-        "z": "62c6b96ab760ca78",
-        "name": "",
-        "x": 135,
-        "y": 1240,
-        "wires": [
-            [
-                "7cbe649ab68de841"
+                "dac6f5642101f3b0"
             ]
         ],
         "l": false
     },
     {
-        "id": "43485fe08103531d",
-        "type": "debug",
-        "z": "62c6b96ab760ca78",
-        "name": "wiki connected",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 430,
-        "y": 1240,
-        "wires": []
-    },
-    {
-        "id": "7cbe649ab68de841",
-        "type": "switch",
-        "z": "62c6b96ab760ca78",
-        "name": "ackConnect",
-        "property": "topic",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "ackConnect",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 240,
-        "y": 1240,
+        "id": "c52a028d6325044e",
+        "type": "twiki-out",
+        "z": "bf7dcf36ee1b438a",
+        "g": "a7c5d113bcde7caa",
+        "name": "",
+        "x": 995,
+        "y": 700,
         "wires": [
-            [
-                "43485fe08103531d"
-            ]
-        ]
+            []
+        ],
+        "l": false
     },
     {
         "id": "0d759124e9cd878b",
@@ -2096,36 +1537,6 @@
         "wires": []
     },
     {
-        "id": "ccca438d7f47e763",
-        "type": "subflow:8adf8de645b60e16",
-        "z": "a10937a730662247",
-        "g": "7cf576bc81702e1e",
-        "name": "",
-        "x": 85,
-        "y": 380,
-        "wires": [
-            [
-                "f7f87f739520cf6c"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "7c793d490c8c1208",
-        "type": "subflow:83b81066588d5f7b",
-        "z": "a10937a730662247",
-        "g": "7cf576bc81702e1e",
-        "name": "",
-        "x": 925,
-        "y": 400,
-        "wires": [
-            [
-                "d7e3072a8dfa19ac"
-            ]
-        ],
-        "l": false
-    },
-    {
         "id": "f7f87f739520cf6c",
         "type": "switch",
         "z": "a10937a730662247",
@@ -2219,7 +1630,7 @@
         "y": 320,
         "wires": [
             [
-                "7c793d490c8c1208"
+                "6dbe0d95eac94002"
             ]
         ]
     },
@@ -2275,7 +1686,7 @@
         "y": 480,
         "wires": [
             [
-                "7c793d490c8c1208"
+                "6dbe0d95eac94002"
             ]
         ]
     },
@@ -2340,7 +1751,7 @@
         "y": 360,
         "wires": [
             [
-                "7c793d490c8c1208"
+                "6dbe0d95eac94002"
             ]
         ]
     },
@@ -2361,7 +1772,7 @@
         "y": 400,
         "wires": [
             [
-                "7c793d490c8c1208"
+                "6dbe0d95eac94002"
             ]
         ]
     },
@@ -2404,7 +1815,7 @@
         "y": 440,
         "wires": [
             [
-                "7c793d490c8c1208"
+                "6dbe0d95eac94002"
             ]
         ]
     },
@@ -2419,6 +1830,36 @@
         "y": 80,
         "wires": [],
         "icon": "pocket-io-icons/tiddlywiki-dark.png"
+    },
+    {
+        "id": "5c9d161d5c1e5c04",
+        "type": "twiki-in",
+        "z": "a10937a730662247",
+        "g": "7cf576bc81702e1e",
+        "name": "",
+        "x": 65,
+        "y": 380,
+        "wires": [
+            [
+                "f7f87f739520cf6c"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "6dbe0d95eac94002",
+        "type": "twiki-out",
+        "z": "a10937a730662247",
+        "g": "7cf576bc81702e1e",
+        "name": "",
+        "x": 915,
+        "y": 400,
+        "wires": [
+            [
+                "d7e3072a8dfa19ac"
+            ]
+        ],
+        "l": false
     },
     {
         "id": "499eef7df40ed31b",
@@ -2436,7 +1877,7 @@
         "y": 80,
         "wires": [
             [
-                "99023d402f22bdb8"
+                "1a983ef48a875911"
             ]
         ]
     },
@@ -2505,7 +1946,7 @@
         "y": 160,
         "wires": [
             [
-                "99023d402f22bdb8"
+                "1a983ef48a875911"
             ]
         ]
     },
@@ -2525,35 +1966,9 @@
         "y": 120,
         "wires": [
             [
-                "99023d402f22bdb8"
+                "1a983ef48a875911"
             ]
         ]
-    },
-    {
-        "id": "c594ed17e69a1fd9",
-        "type": "subflow:8adf8de645b60e16",
-        "z": "faf664cead0da5c0",
-        "name": "",
-        "x": 95,
-        "y": 140,
-        "wires": [
-            [
-                "7a8291e0077e9494"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "99023d402f22bdb8",
-        "type": "subflow:83b81066588d5f7b",
-        "z": "faf664cead0da5c0",
-        "name": "",
-        "x": 615,
-        "y": 120,
-        "wires": [
-            []
-        ],
-        "l": false
     },
     {
         "id": "742ec21f03e45d5c",
@@ -2593,9 +2008,35 @@
         "wires": []
     },
     {
+        "id": "e5c7acf7a45dc1be",
+        "type": "twiki-in",
+        "z": "faf664cead0da5c0",
+        "name": "",
+        "x": 75,
+        "y": 140,
+        "wires": [
+            [
+                "7a8291e0077e9494"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "1a983ef48a875911",
+        "type": "twiki-out",
+        "z": "faf664cead0da5c0",
+        "name": "",
+        "x": 575,
+        "y": 120,
+        "wires": [
+            []
+        ],
+        "l": false
+    },
+    {
         "id": "014708f6c0e76350",
         "type": "debug",
-        "z": "5b24d6e63acf9047",
+        "z": "8a1cb15d54e1d437",
         "name": "debug 3",
         "active": true,
         "tosidebar": true,
@@ -2605,43 +2046,143 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 560,
-        "y": 280,
+        "x": 660,
+        "y": 260,
         "wires": []
     },
     {
-        "id": "25f77ae45a3b5723",
-        "type": "subflow:8adf8de645b60e16",
-        "z": "5b24d6e63acf9047",
+        "id": "e59a16e005eba7dd",
+        "type": "http request",
+        "z": "8a1cb15d54e1d437",
         "name": "",
-        "x": 45,
-        "y": 380,
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://rpi5:3000/Home/tiddlers/[[Pocket-io System]]",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 330,
+        "y": 260,
         "wires": [
             [
-                "8b17abc06620f4dd",
-                "76b07d638e1110c9"
+                "ac6671cce8cf55d5"
             ]
+        ]
+    },
+    {
+        "id": "ffcc7fe816cc5596",
+        "type": "inject",
+        "z": "8a1cb15d54e1d437",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
         ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 260,
+        "wires": [
+            [
+                "e59a16e005eba7dd"
+            ]
+        ]
+    },
+    {
+        "id": "8c75cd6c898531c4",
+        "type": "inject",
+        "z": "8a1cb15d54e1d437",
+        "name": "msg.wikiname: Home",
+        "props": [
+            {
+                "p": "wikiname",
+                "v": "Home",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 220,
+        "y": 200,
+        "wires": [
+            [
+                "900a8c6c9eec40f3"
+            ]
+        ]
+    },
+    {
+        "id": "900a8c6c9eec40f3",
+        "type": "function",
+        "z": "8a1cb15d54e1d437",
+        "name": "Display given wiki URL in debug panel",
+        "func": "const repl = global.get('repl');\n\nmsg.payload = `Wiki ${msg.wikiname} is ${repl.get$proxy(msg.wikiname).link}`\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 200,
+        "wires": [
+            [
+                "374eafaeec7f78ad"
+            ]
+        ]
+    },
+    {
+        "id": "374eafaeec7f78ad",
+        "type": "debug",
+        "z": "8a1cb15d54e1d437",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 705,
+        "y": 200,
+        "wires": [],
         "l": false
     },
     {
-        "id": "e09f2f8c27050cf3",
-        "type": "subflow:83b81066588d5f7b",
-        "z": "5b24d6e63acf9047",
+        "id": "ac6671cce8cf55d5",
+        "type": "twiki-parser",
+        "z": "8a1cb15d54e1d437",
         "name": "",
-        "x": 435,
-        "y": 380,
+        "x": 490,
+        "y": 260,
         "wires": [
             [
                 "014708f6c0e76350"
             ]
-        ],
-        "l": false
+        ]
     },
     {
         "id": "1732ef7f92556ce7",
         "type": "template",
-        "z": "5b24d6e63acf9047",
+        "z": "8a1cb15d54e1d437",
         "name": "",
         "field": "payload",
         "fieldType": "msg",
@@ -2649,18 +2190,18 @@
         "syntax": "mustache",
         "template": "{\n    \"title\": \"test it 2\",\n    \"text\": \"some test!!!\",\n    \"ioToStory\": \"yes\"\n}",
         "output": "str",
-        "x": 320,
-        "y": 360,
+        "x": 400,
+        "y": 340,
         "wires": [
             [
-                "e09f2f8c27050cf3"
+                "ca4f46301f55353d"
             ]
         ]
     },
     {
         "id": "8b17abc06620f4dd",
         "type": "switch",
-        "z": "5b24d6e63acf9047",
+        "z": "8a1cb15d54e1d437",
         "name": "Topic 'test'",
         "property": "topic",
         "propertyType": "msg",
@@ -2674,8 +2215,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 170,
-        "y": 360,
+        "x": 250,
+        "y": 340,
         "wires": [
             [
                 "1732ef7f92556ce7"
@@ -2683,87 +2224,9 @@
         ]
     },
     {
-        "id": "e59a16e005eba7dd",
-        "type": "http request",
-        "z": "5b24d6e63acf9047",
-        "name": "",
-        "method": "GET",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "http://raspberrypi:3004/tiddlers/[[Pocket-io System]]",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 250,
-        "y": 280,
-        "wires": [
-            [
-                "69919df3eb58b68d"
-            ]
-        ]
-    },
-    {
-        "id": "ffcc7fe816cc5596",
-        "type": "inject",
-        "z": "5b24d6e63acf9047",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 100,
-        "y": 280,
-        "wires": [
-            [
-                "e59a16e005eba7dd"
-            ]
-        ]
-    },
-    {
-        "id": "69919df3eb58b68d",
-        "type": "subflow:0d3535cb27027846",
-        "z": "5b24d6e63acf9047",
-        "name": "",
-        "x": 410,
-        "y": 280,
-        "wires": [
-            [
-                "014708f6c0e76350"
-            ]
-        ]
-    },
-    {
-        "id": "7de5076334dee376",
-        "type": "subflow:8adf8de645b60e16",
-        "z": "5b24d6e63acf9047",
-        "name": "",
-        "x": 135,
-        "y": 640,
-        "wires": [
-            []
-        ],
-        "l": false
-    },
-    {
         "id": "a993d29142a7f5c7",
         "type": "template",
-        "z": "5b24d6e63acf9047",
+        "z": "8a1cb15d54e1d437",
         "name": "",
         "field": "payload",
         "fieldType": "msg",
@@ -2771,18 +2234,18 @@
         "syntax": "mustache",
         "template": "title: Hi demo 2.2\nioToStory: yes\n\nthis is some test tooooo!!!",
         "output": "str",
-        "x": 320,
-        "y": 400,
+        "x": 400,
+        "y": 380,
         "wires": [
             [
-                "e09f2f8c27050cf3"
+                "ca4f46301f55353d"
             ]
         ]
     },
     {
         "id": "76b07d638e1110c9",
         "type": "switch",
-        "z": "5b24d6e63acf9047",
+        "z": "8a1cb15d54e1d437",
         "name": "'demo 2'",
         "property": "topic",
         "propertyType": "msg",
@@ -2796,8 +2259,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 161,
-        "y": 400,
+        "x": 241,
+        "y": 380,
         "wires": [
             [
                 "a993d29142a7f5c7"
@@ -2805,97 +2268,38 @@
         ]
     },
     {
-        "id": "7dbc9660e316e32f",
-        "type": "inject",
-        "z": "5b24d6e63acf9047",
+        "id": "e3b1b81cb123aba0",
+        "type": "twiki-in",
+        "z": "8a1cb15d54e1d437",
         "name": "",
-        "props": [
-            {
-                "p": "wikiname",
-                "v": "users",
-                "vt": "str"
-            },
-            {
-                "p": "twfilter",
-                "v": "[prefix[cool]]",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 90,
-        "y": 480,
+        "x": 135,
+        "y": 360,
         "wires": [
             [
-                "91155920dfae832b"
+                "8b17abc06620f4dd",
+                "76b07d638e1110c9"
             ]
-        ]
+        ],
+        "l": false
     },
     {
-        "id": "91155920dfae832b",
-        "type": "subflow:295b59907f0d97d2",
-        "z": "5b24d6e63acf9047",
+        "id": "ca4f46301f55353d",
+        "type": "twiki-out",
+        "z": "8a1cb15d54e1d437",
         "name": "",
-        "x": 320,
-        "y": 480,
+        "x": 505,
+        "y": 360,
         "wires": [
             [
-                "c8114f4674dcad28"
+                "014708f6c0e76350"
             ]
-        ]
-    },
-    {
-        "id": "8c75cd6c898531c4",
-        "type": "inject",
-        "z": "5b24d6e63acf9047",
-        "name": "msg.wikiname: Home",
-        "props": [
-            {
-                "p": "wikiname",
-                "v": "Home",
-                "vt": "str"
-            }
         ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 140,
-        "y": 220,
-        "wires": [
-            [
-                "900a8c6c9eec40f3"
-            ]
-        ]
-    },
-    {
-        "id": "900a8c6c9eec40f3",
-        "type": "function",
-        "z": "5b24d6e63acf9047",
-        "name": "Display given wiki URL in debug panel",
-        "func": "const repl = global.get('repl');\n\nmsg.payload = `Wiki ${msg.wikiname} is ${repl.get$proxy(msg.wikiname).link}`\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 430,
-        "y": 220,
-        "wires": [
-            [
-                "374eafaeec7f78ad"
-            ]
-        ]
+        "l": false
     },
     {
         "id": "d2a0bb33e100a072",
         "type": "template",
-        "z": "5b24d6e63acf9047",
+        "z": "8a1cb15d54e1d437",
         "name": "Tiddler to broadcast",
         "field": "payload",
         "fieldType": "msg",
@@ -2903,18 +2307,18 @@
         "syntax": "mustache",
         "template": "title: I'm getting around\nioToStory: yes\n\nSome tiddlers end up everywhere!\n",
         "output": "str",
-        "x": 370,
-        "y": 100,
+        "x": 450,
+        "y": 60,
         "wires": [
             [
-                "65e1ed3d1027e6b8"
+                "b4d3d3a126e331a3"
             ]
         ]
     },
     {
         "id": "f41d2f96fc126522",
         "type": "inject",
-        "z": "5b24d6e63acf9047",
+        "z": "8a1cb15d54e1d437",
         "name": "msg.wikiname: Home",
         "props": [
             {
@@ -2928,8 +2332,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 140,
-        "y": 100,
+        "x": 220,
+        "y": 60,
         "wires": [
             [
                 "d2a0bb33e100a072"
@@ -2937,50 +2341,20 @@
         ]
     },
     {
-        "id": "65e1ed3d1027e6b8",
-        "type": "subflow:1d5b93e906f67840",
-        "z": "5b24d6e63acf9047",
+        "id": "b4d3d3a126e331a3",
+        "type": "twiki-broadcast",
+        "z": "8a1cb15d54e1d437",
         "name": "",
-        "x": 580,
-        "y": 100,
+        "x": 660,
+        "y": 60,
         "wires": [
             []
         ]
     },
     {
-        "id": "9aabdf07c3d6afe2",
-        "type": "subflow:295b59907f0d97d2",
-        "z": "5b24d6e63acf9047",
-        "name": "",
-        "env": [
-            {
-                "name": "tw_msg_overrides",
-                "type": "bool",
-                "value": "false"
-            },
-            {
-                "name": "tw_wikiname",
-                "value": "Home",
-                "type": "str"
-            },
-            {
-                "name": "tw_filter",
-                "value": "[[I'm getting around]]",
-                "type": "str"
-            }
-        ],
-        "x": 240,
-        "y": 160,
-        "wires": [
-            [
-                "16c21eba33a24f3d"
-            ]
-        ]
-    },
-    {
-        "id": "991ec7ae344d87c3",
+        "id": "8c9d51784b1c38b2",
         "type": "inject",
-        "z": "5b24d6e63acf9047",
+        "z": "8a1cb15d54e1d437",
         "name": "",
         "props": [
             {
@@ -2998,244 +2372,40 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 100,
-        "y": 160,
+        "x": 180,
+        "y": 140,
         "wires": [
             [
-                "9aabdf07c3d6afe2"
+                "073014720e48c887"
             ]
         ]
     },
     {
-        "id": "16c21eba33a24f3d",
-        "type": "subflow:489223c003015b3f",
-        "z": "5b24d6e63acf9047",
+        "id": "3fc7ab2cd8ff956b",
+        "type": "twiki-write",
+        "z": "8a1cb15d54e1d437",
         "name": "",
-        "env": [
-            {
-                "name": "tw_msg_overrides",
-                "type": "bool",
-                "value": "false"
-            },
-            {
-                "name": "tw_wikiname",
-                "value": "MyWiki",
-                "type": "str"
-            }
-        ],
-        "x": 380,
-        "y": 160,
+        "tw_msg_overrides": false,
+        "tw_wikiname": "tester",
+        "x": 500,
+        "y": 140,
         "wires": [
             []
         ]
     },
     {
-        "id": "374eafaeec7f78ad",
-        "type": "debug",
-        "z": "5b24d6e63acf9047",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 625,
-        "y": 220,
-        "wires": [],
-        "l": false
-    },
-    {
-        "id": "c8114f4674dcad28",
-        "type": "debug",
-        "z": "5b24d6e63acf9047",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 455,
-        "y": 480,
-        "wires": [],
-        "l": false
-    },
-    {
-        "id": "6576d4c34914df3d",
-        "type": "mqtt in",
-        "z": "5b24d6e63acf9047",
-        "d": true,
-        "name": "pocket-io broker",
-        "topic": "testTopic",
-        "qos": "0",
-        "datatype": "auto-detect",
-        "broker": "590a6e25b544a6f4",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 200,
-        "y": 560,
-        "wires": [
-            [
-                "8f0adec866101709"
-            ]
-        ]
-    },
-    {
-        "id": "8f0adec866101709",
-        "type": "debug",
-        "z": "5b24d6e63acf9047",
-        "name": "debug 10",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 380,
-        "y": 560,
-        "wires": []
-    },
-    {
-        "id": "2515a7da9646a058",
-        "type": "function",
-        "z": "5b24d6e63acf9047",
-        "name": "register for MQTT message",
-        "func": "const repl = global.get('repl');\n\nvar mqttSockets = flow.get('mqttSockets');\nif (!Array.isArray(mqttSockets)) {\n    flow.set('mqttSockets', []);\n    mqttSockets = [];\n}\n\n// Request from a wiki\nif (msg.wiki) {\n    if (!mqttSockets.includes(msg.wiki.req.socketId)) {\n        mqttSockets.push(msg.wiki.req.socketId);\n    }\n    flow.set('mqttSockets', mqttSockets);\n}\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 360,
-        "y": 640,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "66ce86cab171196a",
-        "type": "subflow:8adf8de645b60e16",
-        "z": "966a05f4e1b8dcf0",
+        "id": "073014720e48c887",
+        "type": "twiki-read",
+        "z": "8a1cb15d54e1d437",
         "name": "",
-        "x": 135,
-        "y": 120,
+        "tw_msg_overrides": false,
+        "tw_wikiname": "Home",
+        "tw_filter": "[[gettingstarted]]",
+        "x": 320,
+        "y": 140,
         "wires": [
             [
-                "6ce0b98cad9e43b2"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "c4720ca803554503",
-        "type": "subflow:83b81066588d5f7b",
-        "z": "966a05f4e1b8dcf0",
-        "name": "",
-        "x": 665,
-        "y": 80,
-        "wires": [
-            []
-        ],
-        "l": false
-    },
-    {
-        "id": "6ce0b98cad9e43b2",
-        "type": "switch",
-        "z": "966a05f4e1b8dcf0",
-        "name": "",
-        "property": "topic",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "new category",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 230,
-        "y": 120,
-        "wires": [
-            [
-                "39971eafdfbcc28f"
-            ]
-        ]
-    },
-    {
-        "id": "39971eafdfbcc28f",
-        "type": "function",
-        "z": "966a05f4e1b8dcf0",
-        "name": "function 1",
-        "func": "const repl = global.get('$rt').context;\n\nmsg.context = repl.see$me();\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 400,
-        "y": 80,
-        "wires": [
-            [
-                "1a84981a9915de90"
-            ]
-        ]
-    },
-    {
-        "id": "1a84981a9915de90",
-        "type": "debug",
-        "z": "966a05f4e1b8dcf0",
-        "name": "debug 5",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 550,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "a61d9ee1c2d18141",
-        "type": "inject",
-        "z": "966a05f4e1b8dcf0",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 200,
-        "y": 40,
-        "wires": [
-            [
-                "39971eafdfbcc28f"
+                "3fc7ab2cd8ff956b"
             ]
         ]
     }
