@@ -1,3 +1,6 @@
 [submodule "pkg/wikis/Swarms/tiddlers"]
 	path = pkg/wikis/Swarms/tiddlers
 	url = https://gist.github.com/3722ae2fdd7c0d0a4890672d954e02f7.git
+[submodule "pkg/wikis/rpi-zero/tiddlers"]
+	path = pkg/wikis/rpi-zero/tiddlers
+	url = https://gist.github.com/921106804da1b8cb0051ee29717745a3.git
