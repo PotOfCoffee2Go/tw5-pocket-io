@@ -7,3 +7,6 @@
 [submodule "pkg/wikis/Welcome/tiddlers"]
 	path = pkg/wikis/Welcome/tiddlers
 	url = git@gist.github.com:b28089861a8e6b30380ece862a2d9f01.git
+[submodule "pkg/wikis/Home/tiddlers"]
+	path = pkg/wikis/Home/tiddlers
+	url = https://gist.github.com/b28089861a8e6b30380ece862a2d9f01.git
