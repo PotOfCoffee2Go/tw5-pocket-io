@@ -1,0 +1,11 @@
+caption: message
+created: 20250228132605505
+creator: poc2go
+modified: 20250509034142874
+modifier: poc2go
+tags: dashboard sendtest $:/pocket-io/sendtest/dashboard
+title: sendtest-dashboard-message
+type: text/vnd.tiddlywiki
+
+<$button actions="<<pocket-io testMsg>>" > test </$button>
+

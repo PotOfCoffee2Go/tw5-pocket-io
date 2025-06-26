@@ -1,0 +1,20 @@
+caption: @@color:aqua;public@@
+created: 20250427050520433
+creator: poc2go
+modified: 20250427172118851
+modifier: poc2go
+tags: 
+title: gettingstarted-docs-pkg-tab10
+type: text/vnd.tiddlywiki
+
+!! @@color:aqua;public@@
+
+The 'public' directory is used to hold resources that can be accessed by any wiki in the network. The directory is empty on initial install.
+
+An example would be image files. Copy a '.png' file into 'public' and it can be accessed by any wiki by URL.
+
+```
+<img src="/img_kitty.jpg" alt="Kitty in a jacket" width="400" height="300">
+```
+
+There are other methods to access resources using the TiddlyWiki '_canonical_uri' field. Can also [[embed a resource|https://tiddlywiki.com/static/How%2520to%2520embed%2520PDF%2520and%2520other%2520documents.html]] using `[ext[title|path/to/that.file]]`.
