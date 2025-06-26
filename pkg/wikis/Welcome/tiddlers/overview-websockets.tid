@@ -1,0 +1,18 @@
+caption: Websocket Access
+created: 20250520074318892
+creator: poc2go
+modified: 20250523111839185
+modifier: poc2go
+title: overview-websockets
+type: text/vnd.tiddlywiki
+
+A second communication channel (websocket) compliments the normal WebServer HTTP channel. This channel has access to each wiki's `$tw` instance as well as access to all other components of the system.
+
+* This allows clients to access server-side JavaScript code which has complete access to wikis via TiddlyWiki `$tw` functions ($tw.utils, $tw.wiki, etc)
+
+<$image source="overview-websockets.png" />
+
+The client sends messages to the proxy which runs JavaScript functions that can access $tw instances. This allows total control of the each WebServer's wiki.
+
+The Websocket channel is bi-directional thus can send tiddlers to the server as well as the server can send tiddlers to the client(s) at any time.
+

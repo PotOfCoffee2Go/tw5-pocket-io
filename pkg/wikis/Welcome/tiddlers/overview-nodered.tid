@@ -1,0 +1,19 @@
+caption: Node-Red Context
+created: 20250520151155515
+creator: poc2go
+modified: 20250523133618475
+modifier: poc2go
+title: overview-nodered
+type: text/vnd.tiddlywiki
+
+The REPL Context and Node-Red interface through Node-Red's [[Global Context|https://nodered.org/docs/user-guide/context]].
+
+* The REPL context is mapped into Node-Red Global Context.
+
+<$image source="overview-nodered.png" />
+
+An interesting little twist is that the Node-Red instance itself is running inside the REPL Context. The Node-Red internal functions and objects (express server, app, routing tables, workspace, flows, nodes, and other naughty-bits) can be accessed as objects in the REPL context.
+
+Since the Node-Red instance resides in the REPL context there are circular references which can cause nastiness to happen if the full set of objects in the REPL Context were to be mapped into Node-Red's Global Context.
+
+> Thus, only a subset of objects in the ''REPL Context'' (excluding the Node-Red instance itself) are available to the Node-Red ''function'' node. As a general rule, the ''function'' node should not be accessing itself from within itself - anyone what to go down that rabbit hole? - didn't think so.

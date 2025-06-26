@@ -1,0 +1,31 @@
+caption: Facing the Web
+created: 20250520162351561
+creator: poc2go
+modified: 20250524032205993
+modifier: poc2go
+title: overview-tunnel
+type: text/vnd.tiddlywiki
+
+There are many companies that have reverse proxies (tunnels) which can provide access to your public proxy. They usually charge by the port. Each Webserver needs to run on a separate port, HOWEVER, the public proxy runs on a single port and it accesses all the public wikis!
+
+* [[Ngrok|https://ngrok.com/]], [[pinggy|https://pinggy.io/]], [[localxpose|https://localxpose.io/]], [[localtunnel|https://theboroer.github.io/localtunnel-www/]] to name a few
+* [[Ngrok|https://ngrok.com/]] has the most options - but is pricey, more business oriented
+** I have used Ngrok, but paying for services I do not use
+** My experience is that they are the most reliable  
+* I use [[pinggy|https://pinggy.io/]] - currently $30 USD a year per port
+** I am not affiliated with them in any way
+** Have very few issues - occasionally have to re-start
+*** But normally caused by issues on my local network
+* Search for 'Ngrok alternatives' to see many more HTTP tunnel providers
+
+<p style="margin-left:145px;">
+
+<$image source="overview-tunnel.png" />
+
+</p>
+
+<$image source="overview-http.png" />
+
+Each provider has various security and authorisation options. Most have a 'free' account - but the internet address changes each time it is brought up. A paid account can have a fixed internet address. Most paid accounts allow a 'custom domain' option which allows you to setup your domain to point to the reverse proxy.
+
+> Notice on your address bar - 'wikis.poc2go.net'. It points to the pinggy reverse proxy which in turn points to my public proxy.

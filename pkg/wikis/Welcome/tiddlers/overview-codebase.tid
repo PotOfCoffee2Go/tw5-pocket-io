@@ -1,0 +1,37 @@
+caption: Codebase
+created: 20250521130016911
+creator: poc2go
+modified: 20250614145829382
+modifier: poc2go
+title: overview-codebase
+type: text/vnd.tiddlywiki
+
+!!! Codebase
+
+A wiki named '''codebase''' contain tiddlers that are distributed to networked wikis. It also has JavaScript tiddlers loaded to the REPL Context. 'codebase' can be accessed from http://localhost:4000/codebase
+
+* JavaScript code for the server comes from tiddlers stored in wikis
+
+Node-Red is just an extension of this concept - the system implements server-side code written using Node-Red's ''low code'' programming paradigm.
+
+Any wiki can load JavaScript code into the server REPL context by tagging the tiddlers to be loaded. These wikis should be tucked away under the private proxy or be setup as a Database wiki.
+
+An example of a JavaScript tiddler that is loaded to the server:
+
+```js
+// Get tiddlers based on TiddlyWiki filter
+// ex: '/wikiname/tiddlers/[tag[About]]
+$wikiNames.forEach(name => {
+	get$router(name).get(`/${name}/tiddlers/:filter`, (req, res) => {
+		const $tw = get$tw(name);
+		var { filter } = req.params;
+		var tiddlers = JSON.parse($tw.wiki.getTiddlersAsJson(filter));
+		res.set('content-type', 'application/json');
+		res.send(JSON.stringify(tiddlers, null, 4));
+	});
+})
+```
+
+This tiddler ('REST-code-tiddlers' in the ''codebase'' wiki) is tagged to be loaded to the server. It adds an [[express route|https://expressjs.com/en/starter/basic-routing.html]] for each wiki. The route responds with tiddlers from the requested wiki matching the given TW filter.
+
+Enter in a browser: `https://wikis.poc2go.net/Welcome/tiddlers/[[overview-codebase]]` to see the tiddler you are currently reading.
