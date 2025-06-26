@@ -1,0 +1,13 @@
+caption: http-server
+created: 20241027163028893
+creator: poc2go
+modified: 20241027163200264
+modifier: poc2go
+tags: cmd
+title: http-server
+type: text/vnd.tiddlywiki
+
+```
+npm install http-server -g
+http-server -v
+```

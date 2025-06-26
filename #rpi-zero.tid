@@ -1,0 +1,10 @@
+created: 20250625135123891
+creator: poc2go
+modified: 20250625135123891
+modifier: poc2go
+title: #rpi-zero
+type: text/vnd.tiddlywiki
+
+Gist: https://gist.github.com/PotOfCoffee2Go/921106804da1b8cb0051ee29717745a3
+
+`tiddlywiki rpi-zero --listen path-prefix=/rpi-zero`

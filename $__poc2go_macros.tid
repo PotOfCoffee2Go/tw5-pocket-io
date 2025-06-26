@@ -1,0 +1,23 @@
+created: 20241024102535771
+creator: poc2go
+modified: 20241024170958837
+modifier: poc2go
+tags: $:/tags/Macro
+title: $:/poc2go/macros
+type: text/vnd.tiddlywiki
+
+\define selectTab(tab,name,text)
+<$button class="tc-btn-invisible tc-tiddlylink" style="inline">
+<$action-setfield $tiddler="$:/state/tabs/$tab$" text="$name$"/>
+$text$
+</$button>
+\end
+\define selectTabMain(maintab,tab,name,text)
+<$button class="tc-btn-invisible tc-tiddlylink" style="inline">
+<$action-setfield $tiddler="$:/state/tabs/docs--1218973114" text="$maintab$"/>
+<$action-setfield $tiddler="$:/state/tabs/$tab$" text="$name$"/>
+$text$
+</$button>
+\end
+
+
