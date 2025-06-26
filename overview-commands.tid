@@ -1,0 +1,21 @@
+caption: REPL Prompt
+created: 20250520185822496
+creator: poc2go
+modified: 20250523113613685
+modifier: poc2go
+title: overview-commands
+type: text/vnd.tiddlywiki
+
+The REPL context has a built-in command prompt.
+
+* The command prompt gives you access to all the functions and objects in the ''REPL Context''.
+
+On startup the system displays a bunch of gibberish of the components being loaded into the REPL context followed by a command prompt. From the command prompt can access all functions and objects in the REPL context.
+
+To see the current configuration object type `$config`. The object displayed are the properties in the 'config.js' file which where loaded into the context on startup.
+
+Similar to the prompt, any JavaScript function or the Node-Red 'Function' node can access the $config object or all of the numerous functions and objects in the REPL Context.
+
+The command prompt is a great debugging tool - as can run any function or display the current state of any object in the ''REPL Context'' (which is the complete system as ''everything'' is running in the REPL context).
+
+  
