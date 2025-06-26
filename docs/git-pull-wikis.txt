@@ -1,0 +1,5 @@
+git subtree pull --prefix=pkg/wikis/Home/tiddlers https://gist.github.com/8ac696b79814ce53103492d9c6395579.git main --squash
+git subtree pull --prefix=pkg/wikis/Welcome/tiddlers https://gist.github.com/b28089861a8e6b30380ece862a2d9f01.git main --squash
+git subtree pull --prefix=pkg/wikis/Swarms/tiddlers https://gist.github.com/3722ae2fdd7c0d0a4890672d954e02f7.git main --squash
+git subtree pull --prefix=pkg/wikis/rpi-zero/tiddlers https://gist.github.com/921106804da1b8cb0051ee29717745a3.git main --squash
+
