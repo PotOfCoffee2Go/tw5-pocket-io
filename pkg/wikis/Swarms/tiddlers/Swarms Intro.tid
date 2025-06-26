@@ -1,0 +1,22 @@
+caption: Introduction
+created: 20240930203357546
+creator: poc2go
+modified: 20250515153752936
+modifier: poc2go
+tags: analysis/tech/swarms
+title: Swarms Intro
+type: text/vnd.tiddlywiki
+
+!! Introduction
+
+Swarm behavior arises naturally by individuals mutually following three simple rules - called the Basic Behavior Model.
+
+ * separation: steer to avoid crowding local flockmates
+ * alignment: steer towards the average heading of local flockmates
+ * cohesion: steer to move toward the average position ('center of mass') of local flockmates
+
+> see [[WikipediA|https://en.wikipedia.org/wiki/Swarm_intelligence]] for more details.
+
+Values (biases) are applied to the rules which influence each individual's behavior. Attributes of the individual; such as accuracy, vision, minimum / maximum speed, etc. play a role in the behavior of each individual.
+
+Environmental conditions also influence the results; such as temperature, drag, and noise.   
