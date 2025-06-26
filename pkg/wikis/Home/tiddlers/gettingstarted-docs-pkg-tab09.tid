@@ -1,0 +1,12 @@
+caption: @@color:aqua;node_modules@@
+created: 20250427050405548
+creator: poc2go
+modified: 20250427172058450
+modifier: poc2go
+tags: 
+title: gettingstarted-docs-pkg-tab09
+type: text/vnd.tiddlywiki
+
+!! @@color:aqua;node_modules@@
+
+This directory is created/updated by NPM when running a 'npm install'. It contains all of the modules required to run the TW5-Node-Red system.

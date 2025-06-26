@@ -1,0 +1,10 @@
+caption: Hello Node-Red
+created: 20250316183136904
+creator: poc2go
+modified: 20250410142029751
+modifier: poc2go
+tags: dashboard hello-nodered $:/pocket-io/hello-nodered/dashboard
+title: hello-nodered-dashboard-hello
+type: text/vnd.tiddlywiki
+
+<$button actions="<<node-red 'hello'>>"> Hi, Node-Red </$button>

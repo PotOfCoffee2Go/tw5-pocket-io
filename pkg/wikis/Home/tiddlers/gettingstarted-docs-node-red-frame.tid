@@ -1,0 +1,11 @@
+created: 20250428172246048
+creator: poc2go
+modified: 20250428172610559
+modifier: poc2go
+tags: 
+title: gettingstarted-docs-node-red-frame
+type: text/vnd.tiddlywiki
+
+Go to <a href={{$:/temp/pocket-io/nodered}} rel="noopener noreferrer" target="_blank">Node-Red</a> to see in a browser tab.
+
+<iframe src={{$:/temp/pocket-io/nodered}} style="width:98%;height:500px;" />
