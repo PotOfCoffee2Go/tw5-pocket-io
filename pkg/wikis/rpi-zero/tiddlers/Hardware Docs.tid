@@ -1,0 +1,16 @@
+caption: Hardware
+created: 20241024015916892
+creator: poc2go
+modified: 20250511192619847
+modifier: poc2go
+tags: docs
+title: Hardware Docs
+type: text/vnd.tiddlywiki
+
+!! Hardware
+
+Will only require the <<selectTab hard-1881689517 "Zero 2 W" "RPi Zero 2 W">> and a <<selectTab hard-1881689517 "Cables" "micro USB to standard USB cable">> to run the system. Plug the cable into either a powered USB hub or computer with a <<selectTab hard-1881689517 "Power supply" "USB 3.0 port">>. 
+
+A <<selectTab hard-1881689517 "SD Card" "SD card">> will be needed to hold the operating system. A <<selectTab hard-1881689517 "Card reader" "card reader">> is required to write the Raspberry Pi OS Lite (64-bit) operating system onto the SD card.
+
+<<tabs "[tag[hard]]" "Zero 2 W" "$:/state/tabs/hard" "tc-horizontal">>

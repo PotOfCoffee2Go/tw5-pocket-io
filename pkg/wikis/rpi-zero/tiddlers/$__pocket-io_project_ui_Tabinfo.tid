@@ -1,0 +1,11 @@
+caption: Plugin Info
+created: 20250118160218676
+creator: poc2go
+modified: 20250323194531925
+modifier: poc2go
+tabtype: info
+tags: $:/tags/pocket-io/tabtype $:/tags/pocket-io/broadcast
+title: $:/pocket-io/project/ui/Tabinfo
+type: text/vnd.tiddlywiki
+
+<<categoryPill 'Plugin Info'>>
