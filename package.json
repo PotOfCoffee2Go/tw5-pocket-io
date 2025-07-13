@@ -1,6 +1,6 @@
 {
   "name": "tw5-pocket-io",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Pocket.io interface for single file wikis to a code and database wiki. ",
   "main": "tw5-node-red.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "http-proxy": "github:PotOfCoffee2Go/node-http-proxy",
     "node-red": "^4.0.9",
     "pocket.io": "github:PotOfCoffee2Go/pocket.io",
-    "tiddlywiki": "^5.3.6",
+    "tiddlywiki": "^5.3.7",
     "uglify-js": "github:mishoo/UglifyJS"
   },
   "unused-nodes": {
