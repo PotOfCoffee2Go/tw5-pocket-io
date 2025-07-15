@@ -1,0 +1,29 @@
+caption: Credits
+created: 20250713103242095
+creator: poc2go
+modified: 20250713114752782
+modifier: poc2go
+title: walkthru-credits
+type: text/vnd.tiddlywiki
+
+<div style="float:left;margin: 0 1em;">
+<$image source="$:/favicon.ico" width="130px"/>
+</div>
+
+|tc-table-no-border|k
+|Frameworks|[[TiddlyWiki|https://tiddlywiki.com]]|[[Jeremy & community|https://github.com/TiddlyWiki/TiddlyWiki5/tree/master]]|
+||[[Node.js|https://nodejs.org/en]]|[[OpenJS Foundation|https://openjsf.org/]]|
+||[[Node-RED|https://nodered.org/]]|[[OpenJS Foundation|https://openjsf.org/]]|
+|Servers |[[express|http://expressjs.com/]]|[[OpenJS Foundation|https://openjsf.org/]]|
+||[[WebServer|https://tiddlywiki.com/static/WebServer.html]]|[[TiddlyWiki|https://tiddlywiki.com]]|
+|Network |[[pocket.io|https://github.com/WebReflection/pocket.io]]|>|
+|Proxy |[[node-http-proxy|https://github.com/http-party/node-http-proxy#readme]]|>|
+|CLI|[[commander|https://github.com/tj/commander.js#readme]]|>|
+|TW Plugins|[[Shiraz|$:/plugins/kookma/shiraz]]|[[Mohammad|https://github.com/kookma]]|
+||[[link-to-tabs|$:/plugins/wikilabs/link-to-tabs]]|[[PMario|https://github.com/pmario]]|
+||[[highlight|$:/plugins/tiddlywiki/highlight]]|[[TiddlyWiki|https://tiddlywiki.com]]|
+||[[markdown|$:/plugins/tiddlywiki/markdown]]|[[TiddlyWiki|https://tiddlywiki.com]]|
+|Images |[[Pixabay|https://pixabay.com/]]|>|
+|Icons |[[TW Icons v1.10|https://morosanuae.github.io/tw-icons/]]|>|
+|Minify |[[UglifyJS 3|https://github.com/mishoo/UglifyJS#readme]]|>|
+
