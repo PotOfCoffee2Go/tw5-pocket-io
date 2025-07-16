@@ -17,7 +17,7 @@ const { PocketIoServer } = require('./lib/pocketIoServer');
 const { replTwBoot } = require('./lib/replTwBoot');
 const { twServerBoot } = require('./lib/twServerBoot');
 const { replGetCodeFromWikis } = require('./lib/replGetCode');
-const { dataTwBoot, databaseStats } = require('./lib/twDbsBoot');
+const { twDbsBoot, databaseStats } = require('./lib/twDbsBoot');
 
 hog(`${config.pkg.name} - v${config.pkg.version}\n`,40);
 
@@ -119,7 +119,7 @@ log(hue(` wikisDir ${col(13)}: `,40) + config.wikisDir);
 log(hue(` flowFile ${col(13)}: `,40) + config.nodered.flowFile);
 
 hog(`\nStartup database wikis`, 156);
-const $db = dataTwBoot(config.wikidbsDir);
+const $db = twDbsBoot(config.wikidbsDir);
 databaseStats($db);
 hog(`Database wikis startup complete\n`, 156);
 
