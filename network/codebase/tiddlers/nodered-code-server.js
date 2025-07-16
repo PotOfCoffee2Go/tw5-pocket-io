@@ -49,8 +49,8 @@ const $NodeRed = function () {
 
 	// Get our theme values and remove so not polluting nodered settings
 	const darkTheme = {
-		workspace: 'dark',
-		editor: 'dracula'
+		workspace: $config.nodered.theme.workspace,
+		editor: $config.nodered.theme.editor
 	}
 	const theme = Object.assign({}, darkTheme, this.nodered.theme);
 	delete this.nodered.theme;

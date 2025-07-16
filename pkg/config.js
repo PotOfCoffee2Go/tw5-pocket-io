@@ -113,7 +113,7 @@ exports.config = {
 		// See https://github.com/node-red-contrib-themes/theme-collection
 		// screenshots https://github.com/node-red-contrib-themes/theme-collection/blob/screenshots/README.md
 		theme: {
-			workspace: 'monokai-dimmed',
+			workspace: 'cobalt2',
 			editor: 'dracula'
 		},
 
