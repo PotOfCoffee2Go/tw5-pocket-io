@@ -1,10 +1,12 @@
 title: $:/poc2go/macro/tw5-pocket-io/network.js
 caption: Pocket.io Interface
-tags: pocket-io
 created: 20240908115506327
-modified: 20240908115506327
-type: application/javascript
+creator: poc2go
+modified: 20250716120206920
+modifier: poc2go
 module-type: macro
+tags: pocket-io
+type: application/javascript
 
 /*\
  * v0.1.0
@@ -305,7 +307,7 @@ fetch(socketLibrary).then((res) => {
 .then(() => {
 	// Macro to access pocket.io server
 	$tw.wiki.addTiddler(new $tw.Tiddler(pocketIoDefines));
-	// Macro to access pocket.io server
+	// Macro to access node-red server
 	$tw.wiki.addTiddler(new $tw.Tiddler(nodeRedDefines));
 	// Initialize the network interface
 	setNetstat('Pocket.io Initializing...');

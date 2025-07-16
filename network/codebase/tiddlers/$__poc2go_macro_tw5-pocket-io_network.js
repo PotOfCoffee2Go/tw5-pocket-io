@@ -297,7 +297,7 @@ fetch(socketLibrary).then((res) => {
 .then(() => {
 	// Macro to access pocket.io server
 	$tw.wiki.addTiddler(new $tw.Tiddler(pocketIoDefines));
-	// Macro to access pocket.io server
+	// Macro to access node-red server
 	$tw.wiki.addTiddler(new $tw.Tiddler(nodeRedDefines));
 	// Initialize the network interface
 	setNetstat('Pocket.io Initializing...');
